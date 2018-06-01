@@ -8,6 +8,15 @@
 
 import Cocoa
 
+enum InterfaceStyle : String {
+    case Dark, Light
+    
+    init() {
+        let type = UserDefaults.standard.string(forKey: "AppleInterfaceStyle") ?? "Light"
+        self = InterfaceStyle(rawValue: type)!
+    }
+}
+
 @NSApplicationMain
 class AppDelegate: NSObject, NSApplicationDelegate {
 
@@ -36,25 +45,15 @@ class AppDelegate: NSObject, NSApplicationDelegate {
 
     func initCPUUtil()
     {
-        /*
-         btnCPUUtil = sItemCPUUtil.button
-         let img1 = NSImage(named:NSImage.Name("menubar-label-cpu-black"))
-         let img2 = NSImage(named:NSImage.Name("tempwhitedonetestdark"))
-         let img3 = NSImage(size: NSSize(width: 20, height: 18))
-         img3.lockFocus()
-         img1?.draw(at: NSPoint(x: 0, y: 0), from: NSZeroRect, operation: NSCompositingOperation.sourceOver, fraction: 1.0)
-         img2?.draw(at: NSPoint(x: 10, y: 0), from: NSZeroRect, operation: NSCompositingOperation.sourceOver, fraction: 1.0)
-         img3.unlockFocus()
-         
-         btnCPUUtil?.image = img3
-         */
-        
         btnCPUUtil = sItemCPUUtil.button
         let myCPUView = CPUUsageView()
         myCPUView.frame = (btnCPUUtil?.frame)!
         btnCPUUtil?.addSubview(myCPUView)
+        let fm = FileManager()
         
-        
+        print(FileManager.default.urls(for: .applicationSupportDirectory, in: .userDomainMask).first)
+        let CPUTask = Process()
+        CPUTask.launchPath = ""
     }
     
     func initMemUsage()
