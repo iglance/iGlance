@@ -13,6 +13,7 @@
 		025AC39220C0AFE0000E0837 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 025AC39020C0AFE0000E0837 /* Main.storyboard */; };
 		025AC39B20C0B09C000E0837 /* BandwidthView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 025AC39A20C0B09C000E0837 /* BandwidthView.swift */; };
 		025AC39D20C0B120000E0837 /* CPUUsageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 025AC39C20C0B120000E0837 /* CPUUsageView.swift */; };
+		025AC39F20C0CD77000E0837 /* cpu_mem_util in Resources */ = {isa = PBXBuildFile; fileRef = 025AC39E20C0CD77000E0837 /* cpu_mem_util */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -25,6 +26,7 @@
 		025AC39420C0AFE0000E0837 /* iGlance.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = iGlance.entitlements; sourceTree = "<group>"; };
 		025AC39A20C0B09C000E0837 /* BandwidthView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BandwidthView.swift; sourceTree = "<group>"; };
 		025AC39C20C0B120000E0837 /* CPUUsageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CPUUsageView.swift; sourceTree = "<group>"; };
+		025AC39E20C0CD77000E0837 /* cpu_mem_util */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.executable"; name = cpu_mem_util; path = ../../../../../Documents/iGlanceBackupDom/iGlance/iGlance/cpu_mem_util; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -57,6 +59,7 @@
 		025AC38920C0AFDD000E0837 /* iGlance */ = {
 			isa = PBXGroup;
 			children = (
+				025AC39E20C0CD77000E0837 /* cpu_mem_util */,
 				025AC39A20C0B09C000E0837 /* BandwidthView.swift */,
 				025AC38A20C0AFDD000E0837 /* AppDelegate.swift */,
 				025AC38C20C0AFDD000E0837 /* ViewController.swift */,
@@ -127,6 +130,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				025AC39F20C0CD77000E0837 /* cpu_mem_util in Resources */,
 				025AC38F20C0AFE0000E0837 /* Assets.xcassets in Resources */,
 				025AC39220C0AFE0000E0837 /* Main.storyboard in Resources */,
 			);
