@@ -49,11 +49,12 @@ class AppDelegate: NSObject, NSApplicationDelegate {
         let myCPUView = CPUUsageView()
         myCPUView.frame = (btnCPUUtil?.frame)!
         btnCPUUtil?.addSubview(myCPUView)
-        let fm = FileManager()
         
-        print(FileManager.default.urls(for: .applicationSupportDirectory, in: .userDomainMask).first)
-        let CPUTask = Process()
-        CPUTask.launchPath = ""
+        let str = Bundle.main.executableURL!.absoluteString
+        let components = str.split(separator: "/")
+        let head = "/" + components.dropLast(1).dropFirst(1).map(String.init).joined(separator: "/") + "/cpu_mem_util"
+        
+        print(head)
     }
     
     func initMemUsage()
