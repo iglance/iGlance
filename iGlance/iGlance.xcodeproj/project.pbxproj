@@ -14,7 +14,21 @@
 		025AC39B20C0B09C000E0837 /* BandwidthView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 025AC39A20C0B09C000E0837 /* BandwidthView.swift */; };
 		025AC39D20C0B120000E0837 /* CPUUsageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 025AC39C20C0B120000E0837 /* CPUUsageView.swift */; };
 		025AC39F20C0CD77000E0837 /* cpu_mem_util in Resources */ = {isa = PBXBuildFile; fileRef = 025AC39E20C0CD77000E0837 /* cpu_mem_util */; };
+		02EBE18C20C337170064A55C /* cpu_mem_util in CopyFiles */ = {isa = PBXBuildFile; fileRef = 025AC39E20C0CD77000E0837 /* cpu_mem_util */; settings = {ATTRIBUTES = (CodeSignOnCopy, ); }; };
 /* End PBXBuildFile section */
+
+/* Begin PBXCopyFilesBuildPhase section */
+		02EBE18B20C3370B0064A55C /* CopyFiles */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 6;
+			files = (
+				02EBE18C20C337170064A55C /* cpu_mem_util in CopyFiles */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
 		025AC38720C0AFDD000E0837 /* iGlance.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = iGlance.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -82,6 +96,7 @@
 				025AC38320C0AFDD000E0837 /* Sources */,
 				025AC38420C0AFDD000E0837 /* Frameworks */,
 				025AC38520C0AFDD000E0837 /* Resources */,
+				02EBE18B20C3370B0064A55C /* CopyFiles */,
 			);
 			buildRules = (
 			);
