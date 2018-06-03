@@ -34,6 +34,8 @@ class AppDelegate: NSObject, NSApplicationDelegate {
     
     let sItemCPUTemp = NSStatusBar.system.statusItem(withLength: NSStatusItem.variableLength)
     var btnCPUTemp: NSStatusBarButton?
+    
+    var mySystem: System?
 
     func applicationDidFinishLaunching(_ aNotification: Notification) {
         initCPUUtil()
@@ -55,7 +57,30 @@ class AppDelegate: NSObject, NSApplicationDelegate {
         let head = "/" + components.dropLast(1).dropFirst(1).map(String.init).joined(separator: "/") + "/cpu_mem_util"
         
         print(head)
+        
+        mySystem = System()
+        DispatchQueue.global(qos: .background).async {
+            
+            while(true)
+            {
+                let cpuStats = self.mySystem!.usageCPU()
+                print(Double(round(100*cpuStats.user)/100))
+                print(Double(round(100*cpuStats.system)/100))
+                print(Double(round(100*cpuStats.idle)/100))
+                print(Double(round(100*cpuStats.nice)/100))
+                
+                let res = Double(round(100*cpuStats.user)/100) + Double(round(100*cpuStats.system)/100)
+                myCPUView.setPercent(percent: res)
+                sleep(1)
+            }
+        }
+        
+        let x = System.modelName()
+        print(x)
+        
+        
     }
+    
     
     func initMemUsage()
     {

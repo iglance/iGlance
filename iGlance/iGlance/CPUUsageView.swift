@@ -26,6 +26,7 @@ class CPUUsageView: NSView {
             self.frame.fill()
             NSColor.clear.setFill()
         }
+        
         let img1 = NSImage(named:NSImage.Name("menubar-label-cpu-white"))
         img1?.draw(at: NSPoint(x: 2, y: 3), from: self.frame, operation: NSCompositingOperation.sourceOver, fraction: 1.0)
         let img2 = NSImage(named:NSImage.Name("progressbar-white"))
