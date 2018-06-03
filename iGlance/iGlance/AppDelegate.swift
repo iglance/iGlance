@@ -55,7 +55,7 @@ class AppDelegate: NSObject, NSApplicationDelegate {
         {
         
         }
-        Timer.scheduledTimer(timeInterval: 1, target: self, selector: #selector(printTemperatureInformation), userInfo: nil, repeats: true)
+        Timer.scheduledTimer(timeInterval: 1, target: self, selector: #selector(updateCPUTemp), userInfo: nil, repeats: true)
         
         /*
         DispatchQueue.global(qos: .background).async {
@@ -159,55 +159,16 @@ class AppDelegate: NSObject, NSApplicationDelegate {
         }
     }
     
-    @objc func printTemperatureInformation(known: Bool = true) {
-        print("-- Temperature --")
+    @objc func updateCPUTemp() {
         
-        let sensors: [TemperatureSensor]
-        do {
-            if known {
-                sensors = try SMCKit.allKnownTemperatureSensors().sorted
-                    { $0.name < $1.name }
-            } else {
-                sensors = try SMCKit.allUnknownTemperatureSensors()
-            }
-            
-        } catch {
-            print(error)
+        let core0 = TemperatureSensor(name: "CPU_0_DIE", code: FourCharCode(fromStaticString: "TC0F"))
+
+        guard let temperature = try? SMCKit.temperature(core0.code) else {
+            btnCPUTemp?.title = "NA"
             return
         }
-        
-        
-        let sensorWithLongestName = sensors.max { $0.name.count <
-            $1.name.count }
-        
-        guard let longestSensorNameCount = sensorWithLongestName?.name.count else {
-            print("No temperature sensors found")
-            return
+        btnCPUTemp?.title = String(Int(temperature)) + "°"
         }
-        
-        
-        for sensor in sensors {
-            let padding = String(repeating: " ",
-                                 count: longestSensorNameCount - sensor.name.count)
-            
-            let smcKey  = "(\(sensor.code.toString()))"
-            print("\(sensor.name + padding)   \(smcKey)  ", terminator: "")
-            
-            
-            guard let temperature = try? SMCKit.temperature(sensor.code) else {
-                print("NA")
-                return
-            }
-            
-            //let warning = warningLevel(value: temperature, maxValue: maxTemperatureCelsius)
-            //let level   = "(\(warning.name))"
-            //let color   = warning.color
-            
-            //print("\(color.rawValue)\(temperature)°C \(level)" +
-            //  "\(ANSIColor.Off.rawValue)")
-            print("\(temperature)°C")
-        }
-    }
     
     func initMemUsage()
     {
