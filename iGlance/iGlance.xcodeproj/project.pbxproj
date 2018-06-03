@@ -19,8 +19,19 @@
 		0275B7CF20C3BE8D000BEC7F /* smc.c in Sources */ = {isa = PBXBuildFile; fileRef = 0275B7CE20C3BE8D000BEC7F /* smc.c */; };
 		0275B7D220C3BEAE000BEC7F /* SMCObjC.m in Sources */ = {isa = PBXBuildFile; fileRef = 0275B7D120C3BEAE000BEC7F /* SMCObjC.m */; };
 		0275B7D520C3C211000BEC7F /* SMC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0275B7D420C3C211000BEC7F /* SMC.swift */; };
+		0275B7DE20C3D1B3000BEC7F /* String.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0275B7D720C3D1B2000BEC7F /* String.swift */; };
+		0275B7DF20C3D1B3000BEC7F /* FileHandle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0275B7D820C3D1B2000BEC7F /* FileHandle.swift */; };
+		0275B7E020C3D1B3000BEC7F /* Process.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0275B7D920C3D1B2000BEC7F /* Process.swift */; };
+		0275B7E220C3D1B3000BEC7F /* Files.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0275B7DB20C3D1B2000BEC7F /* Files.swift */; };
+		0275B7E320C3D1B3000BEC7F /* Bash.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0275B7DC20C3D1B2000BEC7F /* Bash.swift */; };
+		0275B7E420C3D1B3000BEC7F /* Command.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0275B7DD20C3D1B3000BEC7F /* Command.swift */; };
+		0275B7E820C3D1D2000BEC7F /* Array.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0275B7E720C3D1D1000BEC7F /* Array.swift */; };
+		0275B7EB20C3D1DA000BEC7F /* Lazy-split.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0275B7E920C3D1DA000BEC7F /* Lazy-split.swift */; };
+		0275B7EC20C3D1DA000BEC7F /* Stream.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0275B7EA20C3D1DA000BEC7F /* Stream.swift */; };
+		0275B7F220C3D51F000BEC7F /* Context.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0275B7F120C3D51E000BEC7F /* Context.swift */; };
+		0275B7F420C3DBF9000BEC7F /* Stopwatch.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0275B7F320C3DBF9000BEC7F /* Stopwatch.swift */; };
 		02AF908820C36F05002CE6C9 /* System.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02AF908720C36F05002CE6C9 /* System.swift */; };
-		02AF908A20C36F9E002CE6C9 /* Process.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02AF908920C36F9E002CE6C9 /* Process.swift */; };
+		02AF908A20C36F9E002CE6C9 /* Process2.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02AF908920C36F9E002CE6C9 /* Process2.swift */; };
 		02EBE18C20C337170064A55C /* cpu_mem_util in CopyFiles */ = {isa = PBXBuildFile; fileRef = 025AC39E20C0CD77000E0837 /* cpu_mem_util */; settings = {ATTRIBUTES = (CodeSignOnCopy, ); }; };
 /* End PBXBuildFile section */
 
@@ -57,8 +68,19 @@
 		0275B7D320C3BEB6000BEC7F /* SMCObjC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SMCObjC.h; path = ../../../../../Documents/iGlanceBackupDom/iGlance/iGlance/SMCObjC.h; sourceTree = "<group>"; };
 		0275B7D420C3C211000BEC7F /* SMC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = SMC.swift; path = ../../../../../Downloads/SMC.swift; sourceTree = "<group>"; };
 		0275B7D620C3C24A000BEC7F /* SMCKit.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SMCKit.h; path = ../../../../../Downloads/SMCKit.h; sourceTree = "<group>"; };
+		0275B7D720C3D1B2000BEC7F /* String.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = String.swift; path = "../../../../../Downloads/SwiftShell-master/Sources/SwiftShell/String.swift"; sourceTree = "<group>"; };
+		0275B7D820C3D1B2000BEC7F /* FileHandle.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = FileHandle.swift; path = "../../../../../Downloads/SwiftShell-master/Sources/SwiftShell/FileHandle.swift"; sourceTree = "<group>"; };
+		0275B7D920C3D1B2000BEC7F /* Process.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Process.swift; path = "../../../../../Downloads/SwiftShell-master/Sources/SwiftShell/Process.swift"; sourceTree = "<group>"; };
+		0275B7DB20C3D1B2000BEC7F /* Files.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Files.swift; path = "../../../../../Downloads/SwiftShell-master/Sources/SwiftShell/Files.swift"; sourceTree = "<group>"; };
+		0275B7DC20C3D1B2000BEC7F /* Bash.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Bash.swift; path = "../../../../../Downloads/SwiftShell-master/Sources/SwiftShell/Bash.swift"; sourceTree = "<group>"; };
+		0275B7DD20C3D1B3000BEC7F /* Command.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Command.swift; path = "../../../../../Downloads/SwiftShell-master/Sources/SwiftShell/Command.swift"; sourceTree = "<group>"; };
+		0275B7E720C3D1D1000BEC7F /* Array.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Array.swift; path = "../../../../../../Downloads/SwiftShell-master/Sources/SwiftShell/General/Array.swift"; sourceTree = "<group>"; };
+		0275B7E920C3D1DA000BEC7F /* Lazy-split.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = "Lazy-split.swift"; path = "../../../../../../Downloads/SwiftShell-master/Sources/SwiftShell/Stream/Lazy-split.swift"; sourceTree = "<group>"; };
+		0275B7EA20C3D1DA000BEC7F /* Stream.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Stream.swift; path = "../../../../../../Downloads/SwiftShell-master/Sources/SwiftShell/Stream/Stream.swift"; sourceTree = "<group>"; };
+		0275B7F120C3D51E000BEC7F /* Context.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Context.swift; path = "../../../../../Downloads/SwiftShell-master/Sources/SwiftShell/Context.swift"; sourceTree = "<group>"; };
+		0275B7F320C3DBF9000BEC7F /* Stopwatch.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Stopwatch.swift; sourceTree = "<group>"; };
 		02AF908720C36F05002CE6C9 /* System.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = System.swift; path = ../../../../../Downloads/System.swift; sourceTree = "<group>"; };
-		02AF908920C36F9E002CE6C9 /* Process.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Process.swift; path = ../../../../../Downloads/Process.swift; sourceTree = "<group>"; };
+		02AF908920C36F9E002CE6C9 /* Process2.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Process2.swift; path = ../../../../../Downloads/Process2.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -91,12 +113,21 @@
 		025AC38920C0AFDD000E0837 /* iGlance */ = {
 			isa = PBXGroup;
 			children = (
+				0275B7E620C3D1C6000BEC7F /* Stream */,
+				0275B7E520C3D1BD000BEC7F /* General */,
 				025AC39E20C0CD77000E0837 /* cpu_mem_util */,
-				025AC39A20C0B09C000E0837 /* BandwidthView.swift */,
 				025AC38A20C0AFDD000E0837 /* AppDelegate.swift */,
 				025AC38C20C0AFDD000E0837 /* ViewController.swift */,
-				02AF908920C36F9E002CE6C9 /* Process.swift */,
+				0275B7DB20C3D1B2000BEC7F /* Files.swift */,
+				0275B7F320C3DBF9000BEC7F /* Stopwatch.swift */,
+				02AF908920C36F9E002CE6C9 /* Process2.swift */,
 				0275B7CE20C3BE8D000BEC7F /* smc.c */,
+				0275B7F120C3D51E000BEC7F /* Context.swift */,
+				0275B7DC20C3D1B2000BEC7F /* Bash.swift */,
+				0275B7DD20C3D1B3000BEC7F /* Command.swift */,
+				0275B7D820C3D1B2000BEC7F /* FileHandle.swift */,
+				0275B7D920C3D1B2000BEC7F /* Process.swift */,
+				0275B7D720C3D1B2000BEC7F /* String.swift */,
 				0275B7C920C3A1BF000BEC7F /* Battery.swift */,
 				025AC38E20C0AFE0000E0837 /* Assets.xcassets */,
 				0275B7D420C3C211000BEC7F /* SMC.swift */,
@@ -109,10 +140,28 @@
 				025AC39320C0AFE0000E0837 /* Info.plist */,
 				025AC39420C0AFE0000E0837 /* iGlance.entitlements */,
 				025AC39C20C0B120000E0837 /* CPUUsageView.swift */,
+				025AC39A20C0B09C000E0837 /* BandwidthView.swift */,
 				0275B7CB20C3B015000BEC7F /* MemUsageView.swift */,
 				0275B7CD20C3BE8C000BEC7F /* iGlance-Bridging-Header.h */,
 			);
 			path = iGlance;
+			sourceTree = "<group>";
+		};
+		0275B7E520C3D1BD000BEC7F /* General */ = {
+			isa = PBXGroup;
+			children = (
+				0275B7E720C3D1D1000BEC7F /* Array.swift */,
+			);
+			path = General;
+			sourceTree = "<group>";
+		};
+		0275B7E620C3D1C6000BEC7F /* Stream */ = {
+			isa = PBXGroup;
+			children = (
+				0275B7E920C3D1DA000BEC7F /* Lazy-split.swift */,
+				0275B7EA20C3D1DA000BEC7F /* Stream.swift */,
+			);
+			path = Stream;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -195,15 +244,26 @@
 			files = (
 				0275B7CA20C3A1BF000BEC7F /* Battery.swift in Sources */,
 				02AF908820C36F05002CE6C9 /* System.swift in Sources */,
+				0275B7DF20C3D1B3000BEC7F /* FileHandle.swift in Sources */,
+				0275B7F220C3D51F000BEC7F /* Context.swift in Sources */,
 				025AC38D20C0AFDD000E0837 /* ViewController.swift in Sources */,
+				0275B7E420C3D1B3000BEC7F /* Command.swift in Sources */,
 				0275B7CF20C3BE8D000BEC7F /* smc.c in Sources */,
 				025AC39D20C0B120000E0837 /* CPUUsageView.swift in Sources */,
+				0275B7E320C3D1B3000BEC7F /* Bash.swift in Sources */,
+				0275B7E820C3D1D2000BEC7F /* Array.swift in Sources */,
 				0275B7D220C3BEAE000BEC7F /* SMCObjC.m in Sources */,
+				0275B7DE20C3D1B3000BEC7F /* String.swift in Sources */,
+				0275B7EB20C3D1DA000BEC7F /* Lazy-split.swift in Sources */,
+				0275B7EC20C3D1DA000BEC7F /* Stream.swift in Sources */,
+				0275B7E220C3D1B3000BEC7F /* Files.swift in Sources */,
+				0275B7F420C3DBF9000BEC7F /* Stopwatch.swift in Sources */,
 				0275B7CC20C3B015000BEC7F /* MemUsageView.swift in Sources */,
 				0275B7D520C3C211000BEC7F /* SMC.swift in Sources */,
 				025AC38B20C0AFDD000E0837 /* AppDelegate.swift in Sources */,
 				025AC39B20C0B09C000E0837 /* BandwidthView.swift in Sources */,
-				02AF908A20C36F9E002CE6C9 /* Process.swift in Sources */,
+				02AF908A20C36F9E002CE6C9 /* Process2.swift in Sources */,
+				0275B7E020C3D1B3000BEC7F /* Process.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

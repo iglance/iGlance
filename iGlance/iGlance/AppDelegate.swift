@@ -38,6 +38,12 @@ class AppDelegate: NSObject, NSApplicationDelegate {
     var mySystem: System?
     var myCPUView: CPUUsageView?
     var myMemView: MemUsageView?
+    var myBandwidthView: BandwidthView?
+    
+    var finalDown: Int64?
+    var finalUp: Int64?
+    var finalDownLast: Int64?
+    var finalUpLast: Int64?
 
     func applicationDidFinishLaunching(_ aNotification: Notification) {
         initCPUUtil()
@@ -46,6 +52,7 @@ class AppDelegate: NSObject, NSApplicationDelegate {
         initFanSpeed()
         initBandwidth()
         
+        updateBandwidth()
         
         do
         {
@@ -55,7 +62,7 @@ class AppDelegate: NSObject, NSApplicationDelegate {
         {
         
         }
-        Timer.scheduledTimer(timeInterval: 1, target: self, selector: #selector(updateCPUTemp), userInfo: nil, repeats: true)
+        Timer.scheduledTimer(timeInterval: 1, target: self, selector: #selector(updateAll), userInfo: nil, repeats: true)
         
         /*
         DispatchQueue.global(qos: .background).async {
@@ -124,6 +131,15 @@ class AppDelegate: NSObject, NSApplicationDelegate {
         self.myMemView?.setPercent(percent: memUtil)
     }
     
+    @objc func updateAll()
+    {
+        updateCPUTemp()
+        updateCPUUsage()
+        updateMemUsage()
+        updateFanSpeed()
+        reallyUpdateBandwidth()
+    }
+    
     @objc func updateFanSpeed()
     {
         let allFans: [Fan]
@@ -156,6 +172,81 @@ class AppDelegate: NSObject, NSApplicationDelegate {
             }
             break;
             
+        }
+    }
+    
+    @objc func reallyUpdateBandwidth()
+    {
+        var needUpdate: Bool?
+        needUpdate = false
+        if (finalDown != finalDownLast)
+        {
+            needUpdate = true
+        }
+        
+        if (finalUp != finalUpLast)
+        {
+            needUpdate = true
+        }
+        
+        if (needUpdate)!
+        {
+            myBandwidthView?.updateBandwidth(down: finalDown!, up: finalUp!)
+            finalUpLast = finalUp
+            finalDownLast = finalDown
+        }
+    }
+    
+    @objc func updateBandwidth()
+    {
+        let command = runAsync("netstat","-w1 -l en0").onCompletion { command in
+            print("fin")
+        }
+        var curr: Array<Substring>?
+        
+        curr = [""]
+        var str1: String?
+        var str2: String?
+        
+        command.stdout.onOutput { stdout in
+            for line in command.stdout.lines()
+            {
+                curr = line.replacingOccurrences(of: "  ", with: " ").replacingOccurrences(of: "  ", with: " ").replacingOccurrences(of: "  ", with: " ").replacingOccurrences(of: "  ", with: " ").split(separator: " ")
+                if (curr == nil || (curr?.count)! < 6)
+                {
+                    continue
+                }
+                if (Int64(curr![2]) == nil)
+                {
+                    continue
+                }
+                else
+                {
+                    print(curr ?? "")
+                    str1 = "Download: " + curr![2]
+                    str2 = "Upload: " + curr![5]
+                    print(str1 ?? "")
+                    print(str2 ?? "")
+                    //self.myBandwidthView?.updateBandwidth(down: Int64(curr![2])!, up: Int64(curr![5])!)
+                    self.finalDown = Int64(curr![2])
+                    self.finalUp = Int64(curr![5])
+                }
+                print("-------")
+            }
+            /*
+            let str = command.stdout.readSome() ?? ""
+            let trimmedString = str.replacingOccurrences(of: "  ", with: " ").replacingOccurrences(of: "  ", with: " ").replacingOccurrences(of: "  ", with: " ").replacingOccurrences(of: "  ", with: " ").split(separator: " ")
+            
+            if (Int64(trimmedString[0]) != nil)
+            {
+                print(trimmedString)
+                let str1 = "Download: " + trimmedString[2]
+                let str2 = "Upload: " + trimmedString[5]
+                print(str1)
+                print(str2)
+            }
+             */
+            print("---------")
         }
     }
     
@@ -204,9 +295,9 @@ class AppDelegate: NSObject, NSApplicationDelegate {
     {
         btnBandwidth = sItemBandwidth.button
         //btnBandwidth?.image = NSImage(named:NSImage.Name("menubar-label-network"))
-        let myBWView = BandwidthView()
-        myBWView.frame = (btnBandwidth?.frame)!
-        btnBandwidth?.addSubview(myBWView)
+        myBandwidthView = BandwidthView()
+        myBandwidthView?.frame = (btnBandwidth?.frame)!
+        btnBandwidth?.addSubview(myBandwidthView!)
     }
     
     func applicationWillTerminate(_ aNotification: Notification) {
