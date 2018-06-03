@@ -1,14 +1,14 @@
 //
-//  CPUUsageView.swift
+//  MemUsageView.swift
 //  iGlance
 //
-//  Created by Cemal on 01.06.18.
+//  Created by Cemal on 03.06.18.
 //  Copyright © 2018 iGlance Corp. All rights reserved.
 //
 
 import Cocoa
 
-class CPUUsageView: NSView {
+class MemUsageView: NSView {
 
     var pbFillRect: NSRect?
     var mouseIsDown: Bool?
@@ -16,7 +16,7 @@ class CPUUsageView: NSView {
     var cMouseDown: NSColor?
     var pixelWidth: Double?
     var pixelHeight: Double?
-    var cpuIMG: String?
+    var memIMG: String?
     var pbIMG: String?
     
     override func draw(_ dirtyRect: NSRect) {
@@ -31,15 +31,15 @@ class CPUUsageView: NSView {
         let cTheme = InterfaceStyle()
         if (cTheme == InterfaceStyle.Dark)
         {
-            cpuIMG = "menubar-label-cpu-white"
+            memIMG = "menubar-label-mem-white"
             pbIMG = "progressbar-white"
         }
         else
         {
-            cpuIMG = "menubar-label-cpu-black"
+            memIMG = "menubar-label-mem-black"
             pbIMG = "progressbar-black"
         }
-        let img1 = NSImage(named:NSImage.Name(cpuIMG!))
+        let img1 = NSImage(named:NSImage.Name(memIMG!))
         img1?.draw(at: NSPoint(x: 2, y: 3), from: self.frame, operation: NSCompositingOperation.sourceOver, fraction: 1.0)
         let img2 = NSImage(named:NSImage.Name(pbIMG!))
         img2?.draw(at: NSPoint(x: 12, y: 3), from: self.frame, operation: NSCompositingOperation.sourceOver, fraction: 1.0)

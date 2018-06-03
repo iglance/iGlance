@@ -15,6 +15,10 @@
 		025AC39D20C0B120000E0837 /* CPUUsageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 025AC39C20C0B120000E0837 /* CPUUsageView.swift */; };
 		025AC39F20C0CD77000E0837 /* cpu_mem_util in Resources */ = {isa = PBXBuildFile; fileRef = 025AC39E20C0CD77000E0837 /* cpu_mem_util */; };
 		0275B7CA20C3A1BF000BEC7F /* Battery.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0275B7C920C3A1BF000BEC7F /* Battery.swift */; };
+		0275B7CC20C3B015000BEC7F /* MemUsageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0275B7CB20C3B015000BEC7F /* MemUsageView.swift */; };
+		0275B7CF20C3BE8D000BEC7F /* smc.c in Sources */ = {isa = PBXBuildFile; fileRef = 0275B7CE20C3BE8D000BEC7F /* smc.c */; };
+		0275B7D220C3BEAE000BEC7F /* SMCObjC.m in Sources */ = {isa = PBXBuildFile; fileRef = 0275B7D120C3BEAE000BEC7F /* SMCObjC.m */; };
+		0275B7D520C3C211000BEC7F /* SMC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0275B7D420C3C211000BEC7F /* SMC.swift */; };
 		02AF908820C36F05002CE6C9 /* System.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02AF908720C36F05002CE6C9 /* System.swift */; };
 		02AF908A20C36F9E002CE6C9 /* Process.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02AF908920C36F9E002CE6C9 /* Process.swift */; };
 		02EBE18C20C337170064A55C /* cpu_mem_util in CopyFiles */ = {isa = PBXBuildFile; fileRef = 025AC39E20C0CD77000E0837 /* cpu_mem_util */; settings = {ATTRIBUTES = (CodeSignOnCopy, ); }; };
@@ -45,6 +49,14 @@
 		025AC39C20C0B120000E0837 /* CPUUsageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CPUUsageView.swift; sourceTree = "<group>"; };
 		025AC39E20C0CD77000E0837 /* cpu_mem_util */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.executable"; name = cpu_mem_util; path = ../../../../../Documents/iGlanceBackupDom/iGlance/iGlance/cpu_mem_util; sourceTree = "<group>"; };
 		0275B7C920C3A1BF000BEC7F /* Battery.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Battery.swift; path = ../../../../../Downloads/Battery.swift; sourceTree = "<group>"; };
+		0275B7CB20C3B015000BEC7F /* MemUsageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MemUsageView.swift; sourceTree = "<group>"; };
+		0275B7CD20C3BE8C000BEC7F /* iGlance-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "iGlance-Bridging-Header.h"; sourceTree = "<group>"; };
+		0275B7CE20C3BE8D000BEC7F /* smc.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; name = smc.c; path = ../../../../../Documents/iGlanceBackupDom/iGlance/iGlance/smc.c; sourceTree = "<group>"; };
+		0275B7D020C3BE9A000BEC7F /* smc.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = smc.h; path = ../../../../../Documents/iGlanceBackupDom/iGlance/iGlance/smc.h; sourceTree = "<group>"; };
+		0275B7D120C3BEAE000BEC7F /* SMCObjC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SMCObjC.m; path = ../../../../../Documents/iGlanceBackupDom/iGlance/iGlance/SMCObjC.m; sourceTree = "<group>"; };
+		0275B7D320C3BEB6000BEC7F /* SMCObjC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SMCObjC.h; path = ../../../../../Documents/iGlanceBackupDom/iGlance/iGlance/SMCObjC.h; sourceTree = "<group>"; };
+		0275B7D420C3C211000BEC7F /* SMC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = SMC.swift; path = ../../../../../Downloads/SMC.swift; sourceTree = "<group>"; };
+		0275B7D620C3C24A000BEC7F /* SMCKit.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SMCKit.h; path = ../../../../../Downloads/SMCKit.h; sourceTree = "<group>"; };
 		02AF908720C36F05002CE6C9 /* System.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = System.swift; path = ../../../../../Downloads/System.swift; sourceTree = "<group>"; };
 		02AF908920C36F9E002CE6C9 /* Process.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Process.swift; path = ../../../../../Downloads/Process.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -84,13 +96,21 @@
 				025AC38A20C0AFDD000E0837 /* AppDelegate.swift */,
 				025AC38C20C0AFDD000E0837 /* ViewController.swift */,
 				02AF908920C36F9E002CE6C9 /* Process.swift */,
+				0275B7CE20C3BE8D000BEC7F /* smc.c */,
 				0275B7C920C3A1BF000BEC7F /* Battery.swift */,
 				025AC38E20C0AFE0000E0837 /* Assets.xcassets */,
+				0275B7D420C3C211000BEC7F /* SMC.swift */,
+				0275B7D620C3C24A000BEC7F /* SMCKit.h */,
+				0275B7D020C3BE9A000BEC7F /* smc.h */,
 				02AF908720C36F05002CE6C9 /* System.swift */,
+				0275B7D120C3BEAE000BEC7F /* SMCObjC.m */,
 				025AC39020C0AFE0000E0837 /* Main.storyboard */,
+				0275B7D320C3BEB6000BEC7F /* SMCObjC.h */,
 				025AC39320C0AFE0000E0837 /* Info.plist */,
 				025AC39420C0AFE0000E0837 /* iGlance.entitlements */,
 				025AC39C20C0B120000E0837 /* CPUUsageView.swift */,
+				0275B7CB20C3B015000BEC7F /* MemUsageView.swift */,
+				0275B7CD20C3BE8C000BEC7F /* iGlance-Bridging-Header.h */,
 			);
 			path = iGlance;
 			sourceTree = "<group>";
@@ -128,6 +148,7 @@
 				TargetAttributes = {
 					025AC38620C0AFDD000E0837 = {
 						CreatedOnToolsVersion = 9.4;
+						LastSwiftMigration = 0940;
 						SystemCapabilities = {
 							com.apple.Sandbox = {
 								enabled = 0;
@@ -175,7 +196,11 @@
 				0275B7CA20C3A1BF000BEC7F /* Battery.swift in Sources */,
 				02AF908820C36F05002CE6C9 /* System.swift in Sources */,
 				025AC38D20C0AFDD000E0837 /* ViewController.swift in Sources */,
+				0275B7CF20C3BE8D000BEC7F /* smc.c in Sources */,
 				025AC39D20C0B120000E0837 /* CPUUsageView.swift in Sources */,
+				0275B7D220C3BEAE000BEC7F /* SMCObjC.m in Sources */,
+				0275B7CC20C3B015000BEC7F /* MemUsageView.swift in Sources */,
+				0275B7D520C3C211000BEC7F /* SMC.swift in Sources */,
 				025AC38B20C0AFDD000E0837 /* AppDelegate.swift in Sources */,
 				025AC39B20C0B09C000E0837 /* BandwidthView.swift in Sources */,
 				02AF908A20C36F9E002CE6C9 /* Process.swift in Sources */,
@@ -313,6 +338,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_STYLE = Automatic;
 				COMBINE_HIDPI_IMAGES = YES;
 				INFOPLIST_FILE = iGlance/Info.plist;
@@ -322,6 +348,8 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = noorganization.iGlance;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OBJC_BRIDGING_HEADER = "iGlance/iGlance-Bridging-Header.h";
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_VERSION = 4.0;
 			};
 			name = Debug;
@@ -330,6 +358,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_STYLE = Automatic;
 				COMBINE_HIDPI_IMAGES = YES;
 				INFOPLIST_FILE = iGlance/Info.plist;
@@ -339,6 +368,7 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = noorganization.iGlance;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OBJC_BRIDGING_HEADER = "iGlance/iGlance-Bridging-Header.h";
 				SWIFT_VERSION = 4.0;
 			};
 			name = Release;
