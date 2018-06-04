@@ -18,6 +18,9 @@ class CPUUsageView: NSView {
     var pixelHeight: Double?
     var cpuIMG: String?
     var pbIMG: String?
+    var context: AppDelegate?
+    var needsPopover: Bool?
+    
     
     override func draw(_ dirtyRect: NSRect) {
         super.draw(dirtyRect)
@@ -27,6 +30,18 @@ class CPUUsageView: NSView {
             cMouseDown?.setFill()
             self.frame.fill()
             NSColor.clear.setFill()
+            if (context != nil)
+            {
+                if (needsPopover)!
+                {
+                    //context?.togglePopover(nil)
+                    needsPopover = false
+                }
+            }
+        }
+        else
+        {
+            needsPopover = true
         }
         let cTheme = InterfaceStyle()
         if (cTheme == InterfaceStyle.Dark)
@@ -48,11 +63,17 @@ class CPUUsageView: NSView {
         pbFillRect?.fill()
         NSColor.clear.setFill()
     }
+ 
     
     func setPercent(percent: Double)
     {
         pixelHeight = Double((pbMax! / 100.0) * percent)
         needsDisplay = true
+    }
+    
+    func giveContext(contextNew: AppDelegate)
+    {
+        context = contextNew
     }
     
     override init(frame frameRect: NSRect)
@@ -62,6 +83,7 @@ class CPUUsageView: NSView {
         pbMax = 16.0 // 32*0.5
         pixelWidth = 7 // 14*0.5
         pixelHeight = 0
+        needsPopover = true
     }
     
     required init?(coder decoder: NSCoder) {

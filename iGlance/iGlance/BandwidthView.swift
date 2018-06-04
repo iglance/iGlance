@@ -74,34 +74,34 @@ class BandwidthView: NSView {
     
     func updateBandwidth(down: Int64, up: Int64)
     {
-        if (down < 1000)
+        if (down < 1024)
         {
             // B
             finalDown = "0 KB/s"
         }
-        else if (down < 1000000)
+        else if (down < 1048576)
         {
             // KB
-            finalDown = String((Int(down / 1000) / 4) * 4) + " KB/s"
+            finalDown = String((Int(down / 1024) / 4) * 4) + " KB/s"
         }
         else
         {
-            finalDown = String(format: "%.1f", Double(down) / 1000000.0) + " MB/s"
+            finalDown = String(format: "%.1f", Double(down) / 1048576.0) + " MB/s"
         }
         
-        if (up < 1000)
+        if (up < 1024)
         {
             // B
             finalUp = "0 KB/s"
         }
-        else if (up < 1000000)
+        else if (up < 1048576)
         {
             // KB
-            finalUp = String((Int(up / 1000) / 4) * 4) + " KB/s"
+            finalUp = String((Int(up / 1024) / 4) * 4) + " KB/s"
         }
         else
         {
-            finalUp = String(format: "%.1f", Double(down) / 1000000.0) + " MB/s"
+            finalUp = String(format: "%.1f", Double(down) / 1048576.0) + " MB/s"
         }
         bandText = finalDown! + "\n" + finalUp!
         needsDisplay = true

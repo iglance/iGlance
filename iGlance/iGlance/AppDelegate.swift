@@ -22,18 +22,23 @@ class AppDelegate: NSObject, NSApplicationDelegate {
 
     let sItemFanSpeed = NSStatusBar.system.statusItem(withLength: NSStatusItem.variableLength)
     var btnFanSpeed: NSStatusBarButton?
+    var menuFanSpeed: NSMenu?
     
     let sItemBandwidth = NSStatusBar.system.statusItem(withLength: 60.0)
     var btnBandwidth: NSStatusBarButton?
+    var menuBandwidth: NSMenu?
     
     let sItemMemUsage = NSStatusBar.system.statusItem(withLength: 25.0)
     var btnMemUsage: NSStatusBarButton?
+    var menuMemUsage: NSMenu?
     
     let sItemCPUUtil = NSStatusBar.system.statusItem(withLength: 25.0)
     var btnCPUUtil: NSStatusBarButton?
+    var menuCPUUtil: NSMenu?
     
     let sItemCPUTemp = NSStatusBar.system.statusItem(withLength: NSStatusItem.variableLength)
     var btnCPUTemp: NSStatusBarButton?
+    var menuCPUTemp: NSMenu?
     
     var mySystem: System?
     var myCPUView: CPUUsageView?
@@ -44,8 +49,13 @@ class AppDelegate: NSObject, NSApplicationDelegate {
     var finalUp: Int64?
     var finalDownLast: Int64?
     var finalUpLast: Int64?
+    
+    let popover = NSPopover()
 
     func applicationDidFinishLaunching(_ aNotification: Notification) {
+        //popover = NSPopover()
+        popover.behavior = NSPopover.Behavior.transient;
+        constructMenu()
         initCPUUtil()
         initCPUTemp()
         initMemUsage()
@@ -74,13 +84,40 @@ class AppDelegate: NSObject, NSApplicationDelegate {
         }
     */
     }
+    
+    @objc func mouseDown(_ sender: Any)
+    {
+        print("click")
+    }
 
     func initCPUUtil()
     {
         btnCPUUtil = sItemCPUUtil.button
         myCPUView = CPUUsageView()
-        myCPUView?.frame = (btnCPUUtil?.frame)!
-        btnCPUUtil?.addSubview(myCPUView!)
+        myCPUView?.giveContext(contextNew: self)
+        //myCPUView?.frame = (AppDelegate.btnCPUUtil?.frame)!
+        popover.contentViewController = CPUUsageViewController.freshController()
+        //AppDelegate.btnCPUUtil?.addSubview(myCPUView!)
+        btnCPUUtil?.target = self
+        sItemCPUUtil.target = self;
+        sItemCPUUtil.action = #selector(mouseDown(_:));
+        sItemCPUUtil.sendAction(on: NSEvent.EventTypeMask.leftMouseDown)
+        
+        let buttonimage3 = NSImage(named:NSImage.Name("menubar-label-cpu"))
+        let buttonimage4 = NSImage(named:NSImage.Name("progressbar"))
+        let img4 = NSImage(size: NSSize(width: 20, height: 18))
+        img4.lockFocus()
+        buttonimage3?.draw(at: NSPoint(x: 0, y: 0), from: NSZeroRect, operation: NSCompositingOperation.sourceOver, fraction: 1.0)
+        buttonimage4?.draw(at: NSPoint(x: 10, y: 0), from: NSZeroRect, operation: NSCompositingOperation.sourceOver, fraction: 1.0)
+        let pbFillRect = NSRect(x: 13.0, y: 4.0, width: 10, height: 10)
+        NSColor.blue.setFill()
+        pbFillRect.fill()
+        NSColor.clear.setFill()
+        img4.unlockFocus()
+        
+        
+        btnCPUUtil?.image = img4
+        
         /*
         let str = Bundle.main.executableURL!.absoluteString
         let components = str.split(separator: "/")
@@ -90,6 +127,58 @@ class AppDelegate: NSObject, NSApplicationDelegate {
         
         mySystem = System()
         
+    }
+    
+    func constructMenu() {
+        menuCPUUtil = NSMenu()
+        menuCPUUtil?.addItem(NSMenuItem(title: "Quit Quotes", action: #selector(NSApplication.terminate(_:)), keyEquivalent: "q"))
+        //menuCPUUtil?.addItem(NSMenuItem.separator())
+        sItemCPUUtil.menu = menuCPUUtil
+        
+        menuFanSpeed = NSMenu()
+        menuFanSpeed?.addItem(NSMenuItem(title: "Quit Quotes", action: #selector(NSApplication.terminate(_:)), keyEquivalent: "q"))
+        sItemFanSpeed.menu = menuFanSpeed
+        
+        menuCPUTemp = NSMenu()
+        menuCPUTemp?.addItem(NSMenuItem(title: "Quit Quotes", action: #selector(NSApplication.terminate(_:)), keyEquivalent: "q"))
+        sItemCPUTemp.menu = menuCPUTemp
+        
+        menuBandwidth = NSMenu()
+        menuBandwidth?.addItem(NSMenuItem(title: "Quit Quotes", action: #selector(NSApplication.terminate(_:)), keyEquivalent: "q"))
+        sItemBandwidth.menu = menuBandwidth
+    }
+    
+    @objc func printQuote(_ sender: Any?) {
+        let quoteText = "Never put off until tomorrow what you can do the day after tomorrow."
+        let quoteAuthor = "Mark Twain"
+        
+        print("\(quoteText) — \(quoteAuthor)")
+    }
+    
+    /*
+    @objc func togglePopover(_ sender: Any?) {
+        print("ok--------------------------")
+        if (popover.isShown) {
+            closePopover(sender: sender)
+        } else {
+            showPopover(sender: sender)
+        }
+    }
+    
+    
+    func showPopover(sender: Any?) {
+        popover.show(relativeTo: (AppDelegate.btnCPUUtil!.bounds), of: AppDelegate.btnCPUUtil!, preferredEdge: NSRectEdge.minY)
+    }
+    */
+    
+    func closePopover(sender: Any?) {
+        if (sender == nil)
+        {
+            popover.performClose(btnCPUUtil)
+            return
+        }
+        print(sender)
+        popover.performClose(sender)
     }
     
     @objc func updateCPUUsage()
@@ -222,11 +311,13 @@ class AppDelegate: NSObject, NSApplicationDelegate {
                 }
                 else
                 {
+                    /*
                     print(curr ?? "")
                     str1 = "Download: " + curr![2]
                     str2 = "Upload: " + curr![5]
                     print(str1 ?? "")
                     print(str2 ?? "")
+                    */
                     //self.myBandwidthView?.updateBandwidth(down: Int64(curr![2])!, up: Int64(curr![5])!)
                     self.finalDown = Int64(curr![2])
                     self.finalUp = Int64(curr![5])
