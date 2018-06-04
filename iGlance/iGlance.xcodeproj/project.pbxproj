@@ -32,6 +32,7 @@
 		0275B7F420C3DBF9000BEC7F /* Stopwatch.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0275B7F320C3DBF9000BEC7F /* Stopwatch.swift */; };
 		02AF908820C36F05002CE6C9 /* System.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02AF908720C36F05002CE6C9 /* System.swift */; };
 		02AF908A20C36F9E002CE6C9 /* Process2.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02AF908920C36F9E002CE6C9 /* Process2.swift */; };
+		02E9CE2820C4DE1A00879EB1 /* CPUUsageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02E9CE2720C4DE1A00879EB1 /* CPUUsageViewController.swift */; };
 		02EBE18C20C337170064A55C /* cpu_mem_util in CopyFiles */ = {isa = PBXBuildFile; fileRef = 025AC39E20C0CD77000E0837 /* cpu_mem_util */; settings = {ATTRIBUTES = (CodeSignOnCopy, ); }; };
 /* End PBXBuildFile section */
 
@@ -81,6 +82,7 @@
 		0275B7F320C3DBF9000BEC7F /* Stopwatch.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Stopwatch.swift; sourceTree = "<group>"; };
 		02AF908720C36F05002CE6C9 /* System.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = System.swift; path = ../../../../../Downloads/System.swift; sourceTree = "<group>"; };
 		02AF908920C36F9E002CE6C9 /* Process2.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Process2.swift; path = ../../../../../Downloads/Process2.swift; sourceTree = "<group>"; };
+		02E9CE2720C4DE1A00879EB1 /* CPUUsageViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CPUUsageViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -143,6 +145,7 @@
 				025AC39A20C0B09C000E0837 /* BandwidthView.swift */,
 				0275B7CB20C3B015000BEC7F /* MemUsageView.swift */,
 				0275B7CD20C3BE8C000BEC7F /* iGlance-Bridging-Header.h */,
+				02E9CE2720C4DE1A00879EB1 /* CPUUsageViewController.swift */,
 			);
 			path = iGlance;
 			sourceTree = "<group>";
@@ -258,6 +261,7 @@
 				0275B7EC20C3D1DA000BEC7F /* Stream.swift in Sources */,
 				0275B7E220C3D1B3000BEC7F /* Files.swift in Sources */,
 				0275B7F420C3DBF9000BEC7F /* Stopwatch.swift in Sources */,
+				02E9CE2820C4DE1A00879EB1 /* CPUUsageViewController.swift in Sources */,
 				0275B7CC20C3B015000BEC7F /* MemUsageView.swift in Sources */,
 				0275B7D520C3C211000BEC7F /* SMC.swift in Sources */,
 				025AC38B20C0AFDD000E0837 /* AppDelegate.swift in Sources */,

@@ -6,7 +6,7 @@
     },
     {
       "idiom" : "universal",
-      "filename" : "menubar-label-cpu-black@2x.png",
+      "filename" : "bandwidth-black.png",
       "scale" : "2x"
     },
     {
@@ -19,6 +19,6 @@
     "author" : "xcode"
   },
   "properties" : {
-    "template-rendering-intent" : "original"
+    "template-rendering-intent" : "template"
   }
 }
