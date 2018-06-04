@@ -33,6 +33,8 @@
 		02AF908820C36F05002CE6C9 /* System.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02AF908720C36F05002CE6C9 /* System.swift */; };
 		02AF908A20C36F9E002CE6C9 /* Process2.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02AF908920C36F9E002CE6C9 /* Process2.swift */; };
 		02E9CE2820C4DE1A00879EB1 /* CPUUsageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02E9CE2720C4DE1A00879EB1 /* CPUUsageViewController.swift */; };
+		02E9CE3020C526BE00879EB1 /* MyMainWindow.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02E9CE2F20C526BE00879EB1 /* MyMainWindow.swift */; };
+		02E9CE3220C5457500879EB1 /* MyMainWin.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02E9CE3120C5457500879EB1 /* MyMainWin.swift */; };
 		02EBE18C20C337170064A55C /* cpu_mem_util in CopyFiles */ = {isa = PBXBuildFile; fileRef = 025AC39E20C0CD77000E0837 /* cpu_mem_util */; settings = {ATTRIBUTES = (CodeSignOnCopy, ); }; };
 /* End PBXBuildFile section */
 
@@ -83,6 +85,8 @@
 		02AF908720C36F05002CE6C9 /* System.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = System.swift; path = ../../../../../Downloads/System.swift; sourceTree = "<group>"; };
 		02AF908920C36F9E002CE6C9 /* Process2.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Process2.swift; path = ../../../../../Downloads/Process2.swift; sourceTree = "<group>"; };
 		02E9CE2720C4DE1A00879EB1 /* CPUUsageViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CPUUsageViewController.swift; sourceTree = "<group>"; };
+		02E9CE2F20C526BE00879EB1 /* MyMainWindow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = MyMainWindow.swift; path = iGlance/MyMainWindow.swift; sourceTree = SOURCE_ROOT; };
+		02E9CE3120C5457500879EB1 /* MyMainWin.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyMainWin.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -121,6 +125,7 @@
 				025AC38A20C0AFDD000E0837 /* AppDelegate.swift */,
 				025AC38C20C0AFDD000E0837 /* ViewController.swift */,
 				0275B7DB20C3D1B2000BEC7F /* Files.swift */,
+				02E9CE2F20C526BE00879EB1 /* MyMainWindow.swift */,
 				0275B7F320C3DBF9000BEC7F /* Stopwatch.swift */,
 				02AF908920C36F9E002CE6C9 /* Process2.swift */,
 				0275B7CE20C3BE8D000BEC7F /* smc.c */,
@@ -146,6 +151,7 @@
 				0275B7CB20C3B015000BEC7F /* MemUsageView.swift */,
 				0275B7CD20C3BE8C000BEC7F /* iGlance-Bridging-Header.h */,
 				02E9CE2720C4DE1A00879EB1 /* CPUUsageViewController.swift */,
+				02E9CE3120C5457500879EB1 /* MyMainWin.swift */,
 			);
 			path = iGlance;
 			sourceTree = "<group>";
@@ -245,9 +251,11 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				02E9CE3020C526BE00879EB1 /* MyMainWindow.swift in Sources */,
 				0275B7CA20C3A1BF000BEC7F /* Battery.swift in Sources */,
 				02AF908820C36F05002CE6C9 /* System.swift in Sources */,
 				0275B7DF20C3D1B3000BEC7F /* FileHandle.swift in Sources */,
+				02E9CE3220C5457500879EB1 /* MyMainWin.swift in Sources */,
 				0275B7F220C3D51F000BEC7F /* Context.swift in Sources */,
 				025AC38D20C0AFDD000E0837 /* ViewController.swift in Sources */,
 				0275B7E420C3D1B3000BEC7F /* Command.swift in Sources */,
