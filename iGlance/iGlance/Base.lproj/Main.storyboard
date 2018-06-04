@@ -680,18 +680,286 @@
             </objects>
             <point key="canvasLocation" x="75" y="0.0"/>
         </scene>
-        <!--Usage View Controller-->
-        <scene sceneID="hIz-AP-VOD">
+        <!--Window Controller-->
+        <scene sceneID="0QS-fP-Jsq">
             <objects>
-                <viewController storyboardIdentifier="CPUUsageViewController" id="XfG-lQ-9wD" customClass="CPUUsageViewController" customModule="iGlance" customModuleProvider="target" sceneMemberID="viewController">
-                    <view key="view" wantsLayer="YES" id="m2S-Jp-Qdl">
-                        <rect key="frame" x="0.0" y="0.0" width="480" height="270"/>
+                <windowController storyboardIdentifier="abcd" id="Nki-bW-wqW" customClass="MyMainWindow" customModule="iGlance" customModuleProvider="target" sceneMemberID="viewController">
+                    <window key="window" identifier="abcde" title="iGlance" allowsToolTipsWhenApplicationIsInactive="NO" autorecalculatesKeyViewLoop="NO" oneShot="NO" releasedWhenClosed="NO" showsToolbarButton="NO" visibleAtLaunch="NO" frameAutosaveName="" animationBehavior="default" id="bKg-Lc-KxR">
+                        <windowStyleMask key="styleMask" titled="YES" closable="YES" miniaturizable="YES"/>
+                        <windowPositionMask key="initialPositionMask" leftStrut="YES" rightStrut="YES" topStrut="YES" bottomStrut="YES"/>
+                        <rect key="contentRect" x="196" y="238" width="480" height="272"/>
+                        <rect key="screenRect" x="0.0" y="0.0" width="1440" height="878"/>
+                        <connections>
+                            <outlet property="delegate" destination="Nki-bW-wqW" id="SzL-HE-YQl"/>
+                        </connections>
+                    </window>
+                    <connections>
+                        <segue destination="KIT-H3-eIh" kind="relationship" relationship="window.shadowedContentViewController" id="mpt-BI-1Yg"/>
+                    </connections>
+                </windowController>
+                <customObject id="kPL-go-s96" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="984" y="-814"/>
+        </scene>
+        <!--View Controller-->
+        <scene sceneID="wcY-lL-bFN">
+            <objects>
+                <customObject id="auT-CO-DCf" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
+                <viewController id="KIT-H3-eIh" sceneMemberID="viewController">
+                    <view key="view" id="qoS-Ji-jef">
+                        <rect key="frame" x="0.0" y="0.0" width="350" height="280"/>
                         <autoresizingMask key="autoresizingMask"/>
+                        <subviews>
+                            <containerView fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="gzH-1r-tGH">
+                                <rect key="frame" x="0.0" y="0.0" width="350" height="280"/>
+                                <autoresizingMask key="autoresizingMask"/>
+                                <connections>
+                                    <segue destination="AKF-fH-GG9" kind="embed" id="5Gn-CH-pxQ"/>
+                                </connections>
+                            </containerView>
+                        </subviews>
                     </view>
                 </viewController>
-                <customObject id="rPt-NT-nkU" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="75" y="655"/>
+            <point key="canvasLocation" x="899" y="-348"/>
+        </scene>
+        <!--Tab View Controller-->
+        <scene sceneID="YAL-it-oQW">
+            <objects>
+                <tabViewController storyboardIdentifier="tabXD" selectedTabViewItemIndex="0" id="AKF-fH-GG9" sceneMemberID="viewController">
+                    <tabViewItems>
+                        <tabViewItem identifier="" id="fXj-Xh-2lt"/>
+                        <tabViewItem identifier="" id="yPM-6f-DIb"/>
+                        <tabViewItem id="TKc-2Y-sdn"/>
+                        <tabViewItem id="Qg1-JN-W4b"/>
+                        <tabViewItem id="fSx-c1-efQ"/>
+                    </tabViewItems>
+                    <tabView key="tabView" identifier="tabXD" type="noTabsNoBorder" id="yZB-z7-73Z">
+                        <rect key="frame" x="0.0" y="0.0" width="354" height="300"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                        <font key="font" metaFont="message"/>
+                        <connections>
+                            <outlet property="delegate" destination="AKF-fH-GG9" id="goX-Kk-2Yc"/>
+                        </connections>
+                    </tabView>
+                    <connections>
+                        <outlet property="tabView" destination="yZB-z7-73Z" id="GPO-Hl-uXx"/>
+                        <segue destination="LmA-Zk-Axh" kind="relationship" relationship="tabItems" id="Ax5-69-v5w"/>
+                        <segue destination="MQx-3P-zDy" kind="relationship" relationship="tabItems" id="Aed-5T-mlL"/>
+                        <segue destination="rub-dP-mB3" kind="relationship" relationship="tabItems" id="SMN-0p-uz8"/>
+                        <segue destination="kQk-rd-Ybg" kind="relationship" relationship="tabItems" id="nrq-ah-ErQ"/>
+                        <segue destination="sbb-f9-Hi2" kind="relationship" relationship="tabItems" id="RqC-Eo-yuJ"/>
+                    </connections>
+                </tabViewController>
+                <customObject id="ceA-Th-UJm" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1424" y="-473"/>
+        </scene>
+        <!--General-->
+        <scene sceneID="quP-7s-nmW">
+            <objects>
+                <viewController title="General" id="LmA-Zk-Axh" sceneMemberID="viewController">
+                    <view key="view" id="vac-fw-9gH">
+                        <rect key="frame" x="0.0" y="0.0" width="268" height="253"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                        <subviews>
+                            <imageView horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="tMQ-Kz-n1a">
+                                <rect key="frame" x="19" y="164" width="180" height="69"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                                <imageCell key="cell" refusesFirstResponder="YES" alignment="left" imageScaling="proportionallyDown" id="som-k2-a7S"/>
+                            </imageView>
+                            <button verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="6Os-fs-yO4">
+                                <rect key="frame" x="18" y="106" width="183" height="28"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                                <buttonCell key="cell" type="check" title="Autostart on Boot" bezelStyle="regularSquare" imagePosition="left" state="on" inset="2" id="ANI-7M-y7r">
+                                    <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
+                                    <font key="font" metaFont="system"/>
+                                </buttonCell>
+                            </button>
+                            <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="k3z-0j-Nsz">
+                                <rect key="frame" x="17" y="71" width="105" height="17"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                                <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="Update Interval:" id="b3G-As-uJT">
+                                    <font key="font" metaFont="system"/>
+                                    <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
+                                    <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
+                                </textFieldCell>
+                            </textField>
+                            <popUpButton verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="jWj-II-jS5">
+                                <rect key="frame" x="126" y="66" width="76" height="26"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                                <popUpButtonCell key="cell" type="push" title="1 sec" bezelStyle="rounded" alignment="left" lineBreakMode="truncatingTail" state="on" borderStyle="borderAndBezel" imageScaling="proportionallyDown" inset="2" selectedItem="VRS-TR-9YA" id="Vcw-tb-IiQ">
+                                    <behavior key="behavior" lightByBackground="YES" lightByGray="YES"/>
+                                    <font key="font" metaFont="menu"/>
+                                    <menu key="menu" id="o3y-o9-p0Z">
+                                        <items>
+                                            <menuItem title="1 sec" state="on" id="VRS-TR-9YA"/>
+                                            <menuItem title="2 sec" id="UBg-YY-DxO"/>
+                                            <menuItem title="3 sec" id="zsi-w2-Zhv"/>
+                                        </items>
+                                    </menu>
+                                </popUpButtonCell>
+                            </popUpButton>
+                            <button verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="d11-es-ZyP">
+                                <rect key="frame" x="13" y="21" width="192" height="32"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                                <buttonCell key="cell" type="push" title="Check for Updates" bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="hTB-uA-hba">
+                                    <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
+                                    <font key="font" metaFont="system"/>
+                                </buttonCell>
+                            </button>
+                            <progressIndicator wantsLayer="YES" horizontalHuggingPriority="750" verticalHuggingPriority="750" fixedFrame="YES" maxValue="100" bezeled="NO" indeterminate="YES" style="spinning" translatesAutoresizingMaskIntoConstraints="NO" id="pEC-bh-7n7">
+                                <rect key="frame" x="236" y="23" width="32" height="32"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                            </progressIndicator>
+                        </subviews>
+                    </view>
+                </viewController>
+                <customObject id="BGp-qo-oOy" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1674" y="-44.5"/>
+        </scene>
+        <!--CPU-->
+        <scene sceneID="YzJ-34-hl0">
+            <objects>
+                <viewController title="CPU" id="MQx-3P-zDy" sceneMemberID="viewController">
+                    <view key="view" id="GNc-S1-j00">
+                        <rect key="frame" x="0.0" y="0.0" width="450" height="127"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                        <subviews>
+                            <button identifier="wantsCPU" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="gpa-qj-kWb">
+                                <rect key="frame" x="18" y="81" width="202" height="28"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                                <buttonCell key="cell" type="check" title="CPU Utilization" bezelStyle="regularSquare" imagePosition="left" state="on" inset="2" id="45J-jx-M3f">
+                                    <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
+                                    <font key="font" metaFont="system"/>
+                                </buttonCell>
+                            </button>
+                            <button verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="TfC-J4-Qzk">
+                                <rect key="frame" x="18" y="49" width="146" height="28"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                                <buttonCell key="cell" type="check" title="CPU Temperature" bezelStyle="regularSquare" imagePosition="left" state="on" inset="2" id="T4w-K8-qUh">
+                                    <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
+                                    <font key="font" metaFont="system"/>
+                                </buttonCell>
+                            </button>
+                            <popUpButton verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="28T-ir-Zeo">
+                                <rect key="frame" x="158" y="49" width="53" height="26"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                                <popUpButtonCell key="cell" type="push" title="°C" bezelStyle="rounded" alignment="left" lineBreakMode="truncatingTail" state="on" borderStyle="borderAndBezel" imageScaling="proportionallyDown" inset="2" selectedItem="eom-aU-fJu" id="g02-hl-v6J">
+                                    <behavior key="behavior" lightByBackground="YES" lightByGray="YES"/>
+                                    <font key="font" metaFont="menu"/>
+                                    <menu key="menu" id="cSw-Zj-d4f">
+                                        <items>
+                                            <menuItem title="°C" state="on" id="eom-aU-fJu"/>
+                                            <menuItem title="°F" id="YPT-e0-FTZ"/>
+                                        </items>
+                                    </menu>
+                                </popUpButtonCell>
+                            </popUpButton>
+                            <colorWell fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="W9N-7k-Xkt">
+                                <rect key="frame" x="160" y="20" width="48" height="23"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                                <color key="color" red="0.05813049898" green="0.055541899059999997" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                            </colorWell>
+                            <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="eWF-H4-Y17">
+                                <rect key="frame" x="20" y="26" width="118" height="17"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                                <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="Progressbar Color:" id="KRY-WL-Nxx">
+                                    <font key="font" metaFont="system"/>
+                                    <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
+                                    <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
+                                </textFieldCell>
+                            </textField>
+                        </subviews>
+                    </view>
+                </viewController>
+                <customObject id="gG7-L0-jME" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1283" y="-107.5"/>
+        </scene>
+        <!--Memory-->
+        <scene sceneID="0lC-Lo-bY8">
+            <objects>
+                <viewController title="Memory" id="rub-dP-mB3" sceneMemberID="viewController">
+                    <view key="view" id="bhi-UL-h7p">
+                        <rect key="frame" x="0.0" y="0.0" width="450" height="300"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                        <subviews>
+                            <button verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="v1t-v1-O2M">
+                                <rect key="frame" x="18" y="254" width="202" height="28"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                                <buttonCell key="cell" type="check" title="Memory Utilization" bezelStyle="regularSquare" imagePosition="left" state="on" inset="2" id="9eY-8f-74e">
+                                    <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
+                                    <font key="font" metaFont="system"/>
+                                </buttonCell>
+                            </button>
+                            <colorWell fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="mgz-kS-K4o">
+                                <rect key="frame" x="158" y="225" width="48" height="23"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                                <color key="color" red="0.05813049898" green="0.055541899059999997" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                            </colorWell>
+                            <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="JXx-OU-pkU">
+                                <rect key="frame" x="18" y="231" width="118" height="17"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                                <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="Progressbar Color:" id="WyU-WB-8S9">
+                                    <font key="font" metaFont="system"/>
+                                    <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
+                                    <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
+                                </textFieldCell>
+                            </textField>
+                        </subviews>
+                    </view>
+                </viewController>
+                <customObject id="5NP-Qv-Hqp" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2022" y="-375"/>
+        </scene>
+        <!--Network-->
+        <scene sceneID="m6R-gd-lEs">
+            <objects>
+                <viewController title="Network" id="kQk-rd-Ybg" sceneMemberID="viewController">
+                    <view key="view" id="C9t-j1-iwP">
+                        <rect key="frame" x="0.0" y="0.0" width="450" height="300"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                        <subviews>
+                            <button verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="VSk-WT-KSh">
+                                <rect key="frame" x="18" y="254" width="202" height="28"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                                <buttonCell key="cell" type="check" title="Network Usage" bezelStyle="regularSquare" imagePosition="left" state="on" inset="2" id="R2J-VA-xE3">
+                                    <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
+                                    <font key="font" metaFont="system"/>
+                                </buttonCell>
+                            </button>
+                        </subviews>
+                    </view>
+                </viewController>
+                <customObject id="xS9-ca-wb9" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2031" y="-741"/>
+        </scene>
+        <!--Fan-->
+        <scene sceneID="hls-JT-XGd">
+            <objects>
+                <viewController title="Fan" id="sbb-f9-Hi2" sceneMemberID="viewController">
+                    <view key="view" id="gU1-tg-Ih3">
+                        <rect key="frame" x="0.0" y="0.0" width="450" height="300"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                        <subviews>
+                            <button verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="dj8-oI-SnN">
+                                <rect key="frame" x="18" y="254" width="202" height="28"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                                <buttonCell key="cell" type="check" title="Fan Speed" bezelStyle="regularSquare" imagePosition="left" state="on" inset="2" id="fRN-D0-hOQ">
+                                    <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
+                                    <font key="font" metaFont="system"/>
+                                </buttonCell>
+                            </button>
+                        </subviews>
+                    </view>
+                </viewController>
+                <customObject id="vBj-P5-w3G" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1883" y="-839"/>
         </scene>
     </scenes>
 </document>

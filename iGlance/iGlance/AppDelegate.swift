@@ -20,6 +20,9 @@ enum InterfaceStyle : String {
 @NSApplicationMain
 class AppDelegate: NSObject, NSApplicationDelegate {
 
+    /**
+    * StatusBarItems, Buttons and Menus declaration
+    */
     let sItemFanSpeed = NSStatusBar.system.statusItem(withLength: NSStatusItem.variableLength)
     var btnFanSpeed: NSStatusBarButton?
     var menuFanSpeed: NSMenu?
@@ -40,20 +43,61 @@ class AppDelegate: NSObject, NSApplicationDelegate {
     var btnCPUTemp: NSStatusBarButton?
     var menuCPUTemp: NSMenu?
     
+    // Todo: Delete
     var mySystem: System?
     var myCPUView: CPUUsageView?
     var myMemView: MemUsageView?
     var myBandwidthView: BandwidthView?
     
-    var finalDown: Int64?
-    var finalUp: Int64?
-    var finalDownLast: Int64?
-    var finalUpLast: Int64?
+    /**
+    * Bandwidth variables
+    */
+    var dSpeed: Int64?
+    var uSpeed: Int64?
+    var dSpeedLast: Int64?
+    var uSpeedLast: Int64?
+    
+    var bandIMG: String?
+    var bandColor: NSColor?
+    var bandText: String?
+    var finalDown: String?
+    var finalUp: String?
+    var pbFillRectBandwidth: NSRect?
+    var len1: Int?
+    var len2: Int?
+    
+    /**
+    * CPU Button Image variables
+    */
+    var pbFillRectCPU: NSRect?
+    var pixelHeightCPU: Double?
+    var cpuIMG: String?
+    
+    /**
+     * MEM Button Image variables
+     */
+    var pbFillRectMEM: NSRect?
+    var pbMaxMEM: Double?
+    var pixelHeightMEM: Double?
+    var memIMG: String?
+    
+    /**
+    * Shared variables
+    */
+    var pixelWidth: Double?
+    var pbIMG: String?
+    var pbMax: Double?
+    
+    var myWindow: MyMainWindow?
+    var myWin: MyMainWin?
     
     let popover = NSPopover()
 
     func applicationDidFinishLaunching(_ aNotification: Notification) {
-        //popover = NSPopover()
+        let myWindowController = NSStoryboard(name: NSStoryboard.Name(rawValue: "Main"), bundle: nil).instantiateController(withIdentifier: NSStoryboard.SceneIdentifier(rawValue: "abcd")) as! MyMainWindow
+        myWindowController.showWindow(self)
+        
+        
         popover.behavior = NSPopover.Behavior.transient;
         constructMenu()
         initCPUUtil()
@@ -70,53 +114,53 @@ class AppDelegate: NSObject, NSApplicationDelegate {
         }
         catch
         {
-        
+            
         }
         Timer.scheduledTimer(timeInterval: 1, target: self, selector: #selector(updateAll), userInfo: nil, repeats: true)
-        
-        /*
-        DispatchQueue.global(qos: .background).async {
-            while (true)
-            {
-                self.updateCPUUsage()
-                sleep(1)
-            }
-        }
-    */
-    }
-    
-    @objc func mouseDown(_ sender: Any)
-    {
-        print("click")
     }
 
     func initCPUUtil()
     {
+        pbMax = 16.0 // 32*0.5
+        pixelWidth = 7 // 14*0.5
+        pixelHeightCPU = 0
+        
         btnCPUUtil = sItemCPUUtil.button
         myCPUView = CPUUsageView()
         myCPUView?.giveContext(contextNew: self)
         //myCPUView?.frame = (AppDelegate.btnCPUUtil?.frame)!
-        popover.contentViewController = CPUUsageViewController.freshController()
+        //popover.contentViewController = CPUUsageViewController.freshController()
         //AppDelegate.btnCPUUtil?.addSubview(myCPUView!)
         btnCPUUtil?.target = self
         sItemCPUUtil.target = self;
-        sItemCPUUtil.action = #selector(mouseDown(_:));
-        sItemCPUUtil.sendAction(on: NSEvent.EventTypeMask.leftMouseDown)
+        //sItemCPUUtil.action = #selector(mouseDown(_:));
+        //sItemCPUUtil.sendAction(on: NSEvent.EventTypeMask.leftMouseDown)
         
-        let buttonimage3 = NSImage(named:NSImage.Name("menubar-label-cpu"))
-        let buttonimage4 = NSImage(named:NSImage.Name("progressbar"))
+        if (InterfaceStyle() == InterfaceStyle.Dark)
+        {
+            cpuIMG = "menubar-label-cpu-white"
+            pbIMG = "progressbar-white"
+            
+        }
+        else
+        {
+            cpuIMG = "menubar-label-cpu-black"
+            pbIMG = "progressbar-black"
+            
+        }
         let img4 = NSImage(size: NSSize(width: 20, height: 18))
         img4.lockFocus()
-        buttonimage3?.draw(at: NSPoint(x: 0, y: 0), from: NSZeroRect, operation: NSCompositingOperation.sourceOver, fraction: 1.0)
-        buttonimage4?.draw(at: NSPoint(x: 10, y: 0), from: NSZeroRect, operation: NSCompositingOperation.sourceOver, fraction: 1.0)
-        let pbFillRect = NSRect(x: 13.0, y: 4.0, width: 10, height: 10)
-        NSColor.blue.setFill()
-        pbFillRect.fill()
+        let img1 = NSImage(named:NSImage.Name(cpuIMG!))
+        img1?.draw(at: NSPoint(x: 0, y: 0), from: NSZeroRect, operation: NSCompositingOperation.sourceOver, fraction: 1.0)
+        let img2 = NSImage(named:NSImage.Name(pbIMG!))
+        img2?.draw(at: NSPoint(x: 10, y: 0), from: NSZeroRect, operation: NSCompositingOperation.sourceOver, fraction: 1.0)
+        pbFillRectCPU = NSRect(x: 13.0, y: 4.0, width: pixelWidth!, height: pixelHeightCPU!)
+        NSColor.red.setFill()
+        pbFillRectCPU?.fill()
         NSColor.clear.setFill()
         img4.unlockFocus()
         
-        
-        btnCPUUtil?.image = img4
+        //btnCPUUtil?.image = img4
         
         /*
         let str = Bundle.main.executableURL!.absoluteString
@@ -131,28 +175,35 @@ class AppDelegate: NSObject, NSApplicationDelegate {
     
     func constructMenu() {
         menuCPUUtil = NSMenu()
-        menuCPUUtil?.addItem(NSMenuItem(title: "Quit Quotes", action: #selector(NSApplication.terminate(_:)), keyEquivalent: "q"))
+        menuCPUUtil?.addItem(NSMenuItem(title: "Settings", action: #selector(NSApplication.terminate(_:)), keyEquivalent: "s"))
+        menuCPUUtil?.addItem(NSMenuItem.separator())
+        menuCPUUtil?.addItem(NSMenuItem(title: "Quit iGlance", action: #selector(NSApplication.terminate(_:)), keyEquivalent: "q"))
         //menuCPUUtil?.addItem(NSMenuItem.separator())
         sItemCPUUtil.menu = menuCPUUtil
         
         menuFanSpeed = NSMenu()
-        menuFanSpeed?.addItem(NSMenuItem(title: "Quit Quotes", action: #selector(NSApplication.terminate(_:)), keyEquivalent: "q"))
+        menuFanSpeed?.addItem(NSMenuItem(title: "Settings", action: #selector(NSApplication.terminate(_:)), keyEquivalent: "s"))
+        menuFanSpeed?.addItem(NSMenuItem.separator())
+        menuFanSpeed?.addItem(NSMenuItem(title: "Quit iGlance", action: #selector(NSApplication.terminate(_:)), keyEquivalent: "q"))
         sItemFanSpeed.menu = menuFanSpeed
         
+        menuMemUsage = NSMenu()
+        menuMemUsage?.addItem(NSMenuItem(title: "Settings", action: #selector(NSApplication.terminate(_:)), keyEquivalent: "s"))
+        menuMemUsage?.addItem(NSMenuItem.separator())
+        menuMemUsage?.addItem(NSMenuItem(title: "Quit iGlance", action: #selector(NSApplication.terminate(_:)), keyEquivalent: "q"))
+        sItemMemUsage.menu = menuMemUsage
+        
         menuCPUTemp = NSMenu()
-        menuCPUTemp?.addItem(NSMenuItem(title: "Quit Quotes", action: #selector(NSApplication.terminate(_:)), keyEquivalent: "q"))
+        menuCPUTemp?.addItem(NSMenuItem(title: "Settings", action: #selector(NSApplication.terminate(_:)), keyEquivalent: "s"))
+        menuCPUTemp?.addItem(NSMenuItem.separator())
+        menuCPUTemp?.addItem(NSMenuItem(title: "Quit iGlance", action: #selector(NSApplication.terminate(_:)), keyEquivalent: "q"))
         sItemCPUTemp.menu = menuCPUTemp
         
         menuBandwidth = NSMenu()
-        menuBandwidth?.addItem(NSMenuItem(title: "Quit Quotes", action: #selector(NSApplication.terminate(_:)), keyEquivalent: "q"))
+        menuBandwidth?.addItem(NSMenuItem(title: "Settings", action: #selector(NSApplication.terminate(_:)), keyEquivalent: "s"))
+        menuBandwidth?.addItem(NSMenuItem.separator())
+        menuBandwidth?.addItem(NSMenuItem(title: "Quit iGlance", action: #selector(NSApplication.terminate(_:)), keyEquivalent: "q"))
         sItemBandwidth.menu = menuBandwidth
-    }
-    
-    @objc func printQuote(_ sender: Any?) {
-        let quoteText = "Never put off until tomorrow what you can do the day after tomorrow."
-        let quoteAuthor = "Mark Twain"
-        
-        print("\(quoteText) — \(quoteAuthor)")
     }
     
     /*
@@ -189,7 +240,34 @@ class AppDelegate: NSObject, NSApplicationDelegate {
         let cpuIdle = Double(round(100*cpuStats.idle)/100)
         let cpuNice = Double(round(100*cpuStats.nice)/100)
         let cpuUsageTotal = cpuUser + cpuSystem
-        self.myCPUView?.setPercent(percent: cpuUsageTotal)
+        //self.myCPUView?.setPercent(percent: cpuUsageTotal)
+        pixelHeightCPU = Double((pbMax! / 100.0) * cpuUsageTotal)
+        
+        if (InterfaceStyle() == InterfaceStyle.Dark)
+        {
+            cpuIMG = "menubar-label-cpu-white"
+            pbIMG = "progressbar-white"
+            
+        }
+        else
+        {
+            cpuIMG = "menubar-label-cpu-black"
+            pbIMG = "progressbar-black"
+            
+        }
+        let imgFinal = NSImage(size: NSSize(width: 20, height: 18))
+        imgFinal.lockFocus()
+        let img1 = NSImage(named:NSImage.Name(cpuIMG!))
+        img1?.draw(at: NSPoint(x: 0, y: 0), from: NSZeroRect, operation: NSCompositingOperation.sourceOver, fraction: 1.0)
+        let img2 = NSImage(named:NSImage.Name(pbIMG!))
+        img2?.draw(at: NSPoint(x: 10, y: 0), from: NSZeroRect, operation: NSCompositingOperation.sourceOver, fraction: 1.0)
+        pbFillRectCPU = NSRect(x: 11.0, y: 1.0, width: pixelWidth!, height: pixelHeightCPU!)
+        NSColor.red.setFill()
+        pbFillRectCPU?.fill()
+        NSColor.clear.setFill()
+        imgFinal.unlockFocus()
+        
+        btnCPUUtil?.image = imgFinal
     }
     
     @objc func updateMemUsage()
@@ -217,7 +295,36 @@ class AppDelegate: NSObject, NSApplicationDelegate {
         let memTaken = memActive + memCompressed + memWired
         print(System.physicalMemory())
         let memUtil = Double(memTaken / System.physicalMemory()) * 100
-        self.myMemView?.setPercent(percent: memUtil)
+        //self.myMemView?.setPercent(percent: memUtil)
+        
+        pixelHeightMEM = Double((pbMax! / 100.0) * memUtil)
+
+        
+        if (InterfaceStyle() == InterfaceStyle.Dark)
+        {
+            memIMG = "menubar-label-mem-white"
+            pbIMG = "progressbar-white"
+            
+        }
+        else
+        {
+            memIMG = "menubar-label-mem-black"
+            pbIMG = "progressbar-black"
+            
+        }
+        let imgFinal = NSImage(size: NSSize(width: 20, height: 18))
+        imgFinal.lockFocus()
+        let img1 = NSImage(named:NSImage.Name(memIMG!))
+        img1?.draw(at: NSPoint(x: 0, y: 0), from: NSZeroRect, operation: NSCompositingOperation.sourceOver, fraction: 1.0)
+        let img2 = NSImage(named:NSImage.Name(pbIMG!))
+        img2?.draw(at: NSPoint(x: 10, y: 0), from: NSZeroRect, operation: NSCompositingOperation.sourceOver, fraction: 1.0)
+        pbFillRectCPU = NSRect(x: 11.0, y: 1.0, width: pixelWidth!, height: pixelHeightMEM!)
+        NSColor.red.setFill()
+        pbFillRectCPU?.fill()
+        NSColor.clear.setFill()
+        imgFinal.unlockFocus()
+        
+        btnMemUsage?.image = imgFinal
     }
     
     @objc func updateAll()
@@ -268,22 +375,101 @@ class AppDelegate: NSObject, NSApplicationDelegate {
     {
         var needUpdate: Bool?
         needUpdate = false
-        if (finalDown != finalDownLast)
+        if (dSpeed != dSpeedLast)
         {
             needUpdate = true
         }
         
-        if (finalUp != finalUpLast)
+        if (uSpeed != uSpeedLast)
         {
             needUpdate = true
         }
         
         if (needUpdate)!
         {
-            myBandwidthView?.updateBandwidth(down: finalDown!, up: finalUp!)
-            finalUpLast = finalUp
-            finalDownLast = finalDown
+            updateBandText(down: dSpeed!, up: uSpeed!)
+            dSpeedLast = dSpeed
+            uSpeedLast = uSpeed
         }
+        
+        if (InterfaceStyle() == InterfaceStyle.Dark)
+        {
+            bandIMG = "bandwidth-white"
+            bandColor = NSColor.white
+        }
+        else
+        {
+            bandIMG = "bandwidth-black"
+            bandColor = NSColor.black
+        }
+        
+        let imgFinal = NSImage(size: NSSize(width: 60, height: 18))
+        imgFinal.lockFocus()
+        let img1 = NSImage(named:NSImage.Name(bandIMG!))
+        
+        img1?.draw(at: NSPoint(x: 0, y: 3), from: NSZeroRect, operation: NSCompositingOperation.sourceOver, fraction: 1.0)
+        
+        let paragraphStyle = NSMutableParagraphStyle()
+        paragraphStyle.lineSpacing = 0.00000001
+        
+        len1 = finalDown?.count
+        len2 = finalUp?.count
+        
+        
+        
+        let font = NSFont(name: "Apple SD Gothic Neo Bold", size: 11.0)
+        let fontSmall = NSFont(name: "Apple SD Gothic Neo Bold", size: 8.0)
+        let attrString = NSMutableAttributedString(string: finalDown ?? "0 KB/s")
+        attrString.addAttribute(.paragraphStyle, value:paragraphStyle, range:NSMakeRange(0, attrString.length))
+        attrString.addAttribute(.font, value: font as Any, range:NSMakeRange(0, attrString.length - 4))
+        attrString.addAttribute(.font, value: fontSmall as Any, range:NSMakeRange(attrString.length - 4, 4))
+        attrString.addAttribute(.foregroundColor, value: bandColor ?? NSColor.white, range:NSMakeRange(0, attrString.length))
+        attrString.draw(at: NSPoint(x:16, y:6))
+        
+        let attrString2 = NSMutableAttributedString(string: finalUp ?? "0 KB/s")
+        attrString2.addAttribute(.paragraphStyle, value:paragraphStyle, range:NSMakeRange(0, attrString2.length))
+        attrString2.addAttribute(.font, value: font as Any, range:NSMakeRange(0, attrString2.length - 4))
+        attrString2.addAttribute(.font, value: fontSmall as Any, range:NSMakeRange(attrString2.length - 4, 4))
+        attrString2.addAttribute(.foregroundColor, value: bandColor ?? NSColor.white, range:NSMakeRange(0, attrString2.length))
+        attrString2.draw(at: NSPoint(x:16, y:-4))
+        imgFinal.unlockFocus()
+        btnBandwidth?.image = imgFinal
+    }
+    
+    func updateBandText(down: Int64, up: Int64)
+    {
+        if (down < 1024)
+        {
+            // B
+            finalDown = "0 KB/s"
+        }
+        else if (down < 1048576)
+        {
+            // KB
+            finalDown = String((Int(down / 1024) / 4) * 4) + " KB/s"
+        }
+        else
+        {
+            // MB
+            finalDown = String(format: "%.1f", Double(down) / 1048576.0) + " MB/s"
+        }
+        
+        if (up < 1024)
+        {
+            // B
+            finalUp = "0 KB/s"
+        }
+        else if (up < 1048576)
+        {
+            // KB
+            finalUp = String((Int(up / 1024) / 4) * 4) + " KB/s"
+        }
+        else
+        {
+            // MB
+            finalUp = String(format: "%.1f", Double(down) / 1048576.0) + " MB/s"
+        }
+        bandText = finalDown! + "\n" + finalUp!
     }
     
     @objc func updateBandwidth()
@@ -319,10 +505,10 @@ class AppDelegate: NSObject, NSApplicationDelegate {
                     print(str2 ?? "")
                     */
                     //self.myBandwidthView?.updateBandwidth(down: Int64(curr![2])!, up: Int64(curr![5])!)
-                    self.finalDown = Int64(curr![2])
-                    self.finalUp = Int64(curr![5])
+                    self.dSpeed = Int64(curr![2])
+                    self.uSpeed = Int64(curr![5])
                 }
-                print("-------")
+                //print("-------")
             }
             /*
             let str = command.stdout.readSome() ?? ""
@@ -337,7 +523,7 @@ class AppDelegate: NSObject, NSApplicationDelegate {
                 print(str2)
             }
              */
-            print("---------")
+            //print("---------")
         }
     }
     
@@ -356,8 +542,8 @@ class AppDelegate: NSObject, NSApplicationDelegate {
     {
         btnMemUsage = sItemMemUsage.button
         myMemView = MemUsageView()
-        myMemView?.frame = (btnMemUsage?.frame)!
-        btnMemUsage?.addSubview(myMemView!)
+        //myMemView?.frame = (btnMemUsage?.frame)!
+        //btnMemUsage?.addSubview(myMemView!)
         /*
         let img1 = NSImage(named:NSImage.Name("menubar-label-mem-white"))
         let img2 = NSImage(named:NSImage.Name("progressbar-white"))
@@ -368,27 +554,57 @@ class AppDelegate: NSObject, NSApplicationDelegate {
         img3.unlockFocus()
         btnMemUsage?.image = img3
          */
+        
+        pixelHeightMEM = 0
+        
+        if (InterfaceStyle() == InterfaceStyle.Dark)
+        {
+            memIMG = "menubar-label-mem-white"
+            pbIMG = "progressbar-white"
+            
+        }
+        else
+        {
+            memIMG = "menubar-label-mem-black"
+            pbIMG = "progressbar-black"
+            
+        }
+        let imgFinal = NSImage(size: NSSize(width: 20, height: 18))
+        imgFinal.lockFocus()
+        let img1 = NSImage(named:NSImage.Name(memIMG!))
+        img1?.draw(at: NSPoint(x: 0, y: 0), from: NSZeroRect, operation: NSCompositingOperation.sourceOver, fraction: 1.0)
+        let img2 = NSImage(named:NSImage.Name(pbIMG!))
+        img2?.draw(at: NSPoint(x: 10, y: 0), from: NSZeroRect, operation: NSCompositingOperation.sourceOver, fraction: 1.0)
+        pbFillRectCPU = NSRect(x: 11.0, y: 1.0, width: pixelWidth!, height: pixelHeightMEM!)
+        NSColor.red.setFill()
+        pbFillRectCPU?.fill()
+        NSColor.clear.setFill()
+        imgFinal.unlockFocus()
+        
+        //btnMemUsage?.image = imgFinal
     }
     
     func initCPUTemp()
     {
         btnCPUTemp = sItemCPUTemp.button
-        btnCPUTemp?.title = "53°"
     }
     
     func initFanSpeed()
     {
         btnFanSpeed = sItemFanSpeed.button
-        btnFanSpeed?.title = "1330"
     }
     
     func initBandwidth()
     {
         btnBandwidth = sItemBandwidth.button
         //btnBandwidth?.image = NSImage(named:NSImage.Name("menubar-label-network"))
-        myBandwidthView = BandwidthView()
-        myBandwidthView?.frame = (btnBandwidth?.frame)!
-        btnBandwidth?.addSubview(myBandwidthView!)
+        //myBandwidthView = BandwidthView()
+        //myBandwidthView?.frame = (btnBandwidth?.frame)!
+        //btnBandwidth?.addSubview(myBandwidthView!)
+        
+        len1 = 6
+        len2 = 6
+        bandText = ""
     }
     
     func applicationWillTerminate(_ aNotification: Notification) {
