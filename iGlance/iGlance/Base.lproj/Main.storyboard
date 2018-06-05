@@ -705,7 +705,7 @@
         <scene sceneID="wcY-lL-bFN">
             <objects>
                 <customObject id="auT-CO-DCf" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
-                <viewController id="KIT-H3-eIh" sceneMemberID="viewController">
+                <viewController id="KIT-H3-eIh" customClass="ViewController" customModule="iGlance" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" id="qoS-Ji-jef">
                         <rect key="frame" x="0.0" y="0.0" width="350" height="280"/>
                         <autoresizingMask key="autoresizingMask"/>
@@ -758,8 +758,8 @@
         <!--General-->
         <scene sceneID="quP-7s-nmW">
             <objects>
-                <viewController title="General" id="LmA-Zk-Axh" sceneMemberID="viewController">
-                    <view key="view" id="vac-fw-9gH">
+                <viewController title="General" id="LmA-Zk-Axh" customClass="ViewController" customModule="iGlance" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" wantsLayer="YES" id="vac-fw-9gH">
                         <rect key="frame" x="0.0" y="0.0" width="268" height="253"/>
                         <autoresizingMask key="autoresizingMask"/>
                         <subviews>
@@ -771,10 +771,13 @@
                             <button verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="6Os-fs-yO4">
                                 <rect key="frame" x="18" y="106" width="183" height="28"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                                <buttonCell key="cell" type="check" title="Autostart on Boot" bezelStyle="regularSquare" imagePosition="left" state="on" inset="2" id="ANI-7M-y7r">
+                                <buttonCell key="cell" type="check" title="Autostart on Boot" bezelStyle="regularSquare" imagePosition="left" inset="2" id="ANI-7M-y7r">
                                     <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
                                     <font key="font" metaFont="system"/>
                                 </buttonCell>
+                                <connections>
+                                    <action selector="cbAutostart_clicked:" target="LmA-Zk-Axh" id="k94-mw-sEN"/>
+                                </connections>
                             </button>
                             <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="k3z-0j-Nsz">
                                 <rect key="frame" x="17" y="71" width="105" height="17"/>
@@ -799,6 +802,9 @@
                                         </items>
                                     </menu>
                                 </popUpButtonCell>
+                                <connections>
+                                    <action selector="ddUpdateInterval_clicked:" target="LmA-Zk-Axh" id="XWc-z1-s9P"/>
+                                </connections>
                             </popUpButton>
                             <button verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="d11-es-ZyP">
                                 <rect key="frame" x="13" y="21" width="192" height="32"/>
@@ -807,13 +813,21 @@
                                     <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
                                     <font key="font" metaFont="system"/>
                                 </buttonCell>
+                                <connections>
+                                    <action selector="btnCheckUpdate_clicked:" target="LmA-Zk-Axh" id="EnS-2t-yZW"/>
+                                </connections>
                             </button>
-                            <progressIndicator wantsLayer="YES" horizontalHuggingPriority="750" verticalHuggingPriority="750" fixedFrame="YES" maxValue="100" bezeled="NO" indeterminate="YES" style="spinning" translatesAutoresizingMaskIntoConstraints="NO" id="pEC-bh-7n7">
+                            <progressIndicator hidden="YES" wantsLayer="YES" horizontalHuggingPriority="750" verticalHuggingPriority="750" fixedFrame="YES" maxValue="100" bezeled="NO" indeterminate="YES" style="spinning" translatesAutoresizingMaskIntoConstraints="NO" id="pEC-bh-7n7">
                                 <rect key="frame" x="236" y="23" width="32" height="32"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                             </progressIndicator>
                         </subviews>
                     </view>
+                    <connections>
+                        <outlet property="btnCheckUpdate" destination="d11-es-ZyP" id="MfG-9t-qOK"/>
+                        <outlet property="cbAutostart" destination="6Os-fs-yO4" id="RVC-xw-FKl"/>
+                        <outlet property="ddUpdateInterval" destination="jWj-II-jS5" id="7GB-eF-8Ii"/>
+                    </connections>
                 </viewController>
                 <customObject id="BGp-qo-oOy" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
             </objects>
@@ -822,7 +836,7 @@
         <!--CPU-->
         <scene sceneID="YzJ-34-hl0">
             <objects>
-                <viewController title="CPU" id="MQx-3P-zDy" sceneMemberID="viewController">
+                <viewController title="CPU" id="MQx-3P-zDy" customClass="ViewController" customModule="iGlance" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" id="GNc-S1-j00">
                         <rect key="frame" x="0.0" y="0.0" width="450" height="127"/>
                         <autoresizingMask key="autoresizingMask"/>
@@ -834,6 +848,9 @@
                                     <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
                                     <font key="font" metaFont="system"/>
                                 </buttonCell>
+                                <connections>
+                                    <action selector="cbCPUUtil_clicked:" target="MQx-3P-zDy" id="2kY-I2-WQH"/>
+                                </connections>
                             </button>
                             <button verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="TfC-J4-Qzk">
                                 <rect key="frame" x="18" y="49" width="146" height="28"/>
@@ -842,6 +859,9 @@
                                     <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
                                     <font key="font" metaFont="system"/>
                                 </buttonCell>
+                                <connections>
+                                    <action selector="cbCPUTemp_clicked:" target="MQx-3P-zDy" id="86j-4G-jL5"/>
+                                </connections>
                             </button>
                             <popUpButton verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="28T-ir-Zeo">
                                 <rect key="frame" x="158" y="49" width="53" height="26"/>
@@ -856,11 +876,17 @@
                                         </items>
                                     </menu>
                                 </popUpButtonCell>
+                                <connections>
+                                    <action selector="ddTempUnit_clicked:" target="MQx-3P-zDy" id="FfE-qu-68c"/>
+                                </connections>
                             </popUpButton>
                             <colorWell fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="W9N-7k-Xkt">
                                 <rect key="frame" x="160" y="20" width="48" height="23"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                 <color key="color" red="0.05813049898" green="0.055541899059999997" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                <connections>
+                                    <action selector="cpCPU_clicked:" target="MQx-3P-zDy" id="Ys9-Jz-cEt"/>
+                                </connections>
                             </colorWell>
                             <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="eWF-H4-Y17">
                                 <rect key="frame" x="20" y="26" width="118" height="17"/>
@@ -873,6 +899,12 @@
                             </textField>
                         </subviews>
                     </view>
+                    <connections>
+                        <outlet property="cbCPUTemp" destination="TfC-J4-Qzk" id="CFQ-fy-GHR"/>
+                        <outlet property="cbCPUUtil" destination="gpa-qj-kWb" id="uJJ-Qs-xPL"/>
+                        <outlet property="cpCPU" destination="W9N-7k-Xkt" id="O3a-jZ-g0I"/>
+                        <outlet property="ddTempUnit" destination="28T-ir-Zeo" id="ZfR-04-r5c"/>
+                    </connections>
                 </viewController>
                 <customObject id="gG7-L0-jME" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
             </objects>
@@ -881,7 +913,7 @@
         <!--Memory-->
         <scene sceneID="0lC-Lo-bY8">
             <objects>
-                <viewController title="Memory" id="rub-dP-mB3" sceneMemberID="viewController">
+                <viewController title="Memory" id="rub-dP-mB3" customClass="ViewController" customModule="iGlance" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" id="bhi-UL-h7p">
                         <rect key="frame" x="0.0" y="0.0" width="450" height="300"/>
                         <autoresizingMask key="autoresizingMask"/>
@@ -889,15 +921,21 @@
                             <button verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="v1t-v1-O2M">
                                 <rect key="frame" x="18" y="254" width="202" height="28"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                                <buttonCell key="cell" type="check" title="Memory Utilization" bezelStyle="regularSquare" imagePosition="left" state="on" inset="2" id="9eY-8f-74e">
+                                <buttonCell key="cell" type="check" title="Memory Utilization" bezelStyle="regularSquare" imagePosition="left" inset="2" id="9eY-8f-74e">
                                     <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
                                     <font key="font" metaFont="system"/>
                                 </buttonCell>
+                                <connections>
+                                    <action selector="cbMemUtil_clicked:" target="rub-dP-mB3" id="Lel-Ra-m2I"/>
+                                </connections>
                             </button>
                             <colorWell fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="mgz-kS-K4o">
                                 <rect key="frame" x="158" y="225" width="48" height="23"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                 <color key="color" red="0.05813049898" green="0.055541899059999997" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                <connections>
+                                    <action selector="cpMem_clicked:" target="rub-dP-mB3" id="q9z-Ir-WXq"/>
+                                </connections>
                             </colorWell>
                             <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="JXx-OU-pkU">
                                 <rect key="frame" x="18" y="231" width="118" height="17"/>
@@ -910,6 +948,10 @@
                             </textField>
                         </subviews>
                     </view>
+                    <connections>
+                        <outlet property="cbMemUtil" destination="v1t-v1-O2M" id="0Vi-Hy-f6e"/>
+                        <outlet property="cpMemUtil" destination="mgz-kS-K4o" id="ykX-lu-Z88"/>
+                    </connections>
                 </viewController>
                 <customObject id="5NP-Qv-Hqp" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
             </objects>
@@ -918,7 +960,7 @@
         <!--Network-->
         <scene sceneID="m6R-gd-lEs">
             <objects>
-                <viewController title="Network" id="kQk-rd-Ybg" sceneMemberID="viewController">
+                <viewController title="Network" id="kQk-rd-Ybg" customClass="ViewController" customModule="iGlance" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" id="C9t-j1-iwP">
                         <rect key="frame" x="0.0" y="0.0" width="450" height="300"/>
                         <autoresizingMask key="autoresizingMask"/>
@@ -926,13 +968,19 @@
                             <button verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="VSk-WT-KSh">
                                 <rect key="frame" x="18" y="254" width="202" height="28"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                                <buttonCell key="cell" type="check" title="Network Usage" bezelStyle="regularSquare" imagePosition="left" state="on" inset="2" id="R2J-VA-xE3">
+                                <buttonCell key="cell" type="check" title="Network Usage" bezelStyle="regularSquare" imagePosition="left" inset="2" id="R2J-VA-xE3">
                                     <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
                                     <font key="font" metaFont="system"/>
                                 </buttonCell>
+                                <connections>
+                                    <action selector="cbNetUsage_clicked:" target="kQk-rd-Ybg" id="pwA-Hh-xFD"/>
+                                </connections>
                             </button>
                         </subviews>
                     </view>
+                    <connections>
+                        <outlet property="cbNetUsage" destination="VSk-WT-KSh" id="I85-Aj-ghb"/>
+                    </connections>
                 </viewController>
                 <customObject id="xS9-ca-wb9" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
             </objects>
@@ -941,7 +989,7 @@
         <!--Fan-->
         <scene sceneID="hls-JT-XGd">
             <objects>
-                <viewController title="Fan" id="sbb-f9-Hi2" sceneMemberID="viewController">
+                <viewController title="Fan" id="sbb-f9-Hi2" customClass="ViewController" customModule="iGlance" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" id="gU1-tg-Ih3">
                         <rect key="frame" x="0.0" y="0.0" width="450" height="300"/>
                         <autoresizingMask key="autoresizingMask"/>
@@ -949,13 +997,19 @@
                             <button verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="dj8-oI-SnN">
                                 <rect key="frame" x="18" y="254" width="202" height="28"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                                <buttonCell key="cell" type="check" title="Fan Speed" bezelStyle="regularSquare" imagePosition="left" state="on" inset="2" id="fRN-D0-hOQ">
+                                <buttonCell key="cell" type="check" title="Fan Speed" bezelStyle="regularSquare" imagePosition="left" inset="2" id="fRN-D0-hOQ">
                                     <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
                                     <font key="font" metaFont="system"/>
                                 </buttonCell>
+                                <connections>
+                                    <action selector="cbFanSpeed_clicked:" target="sbb-f9-Hi2" id="s9w-24-GDo"/>
+                                </connections>
                             </button>
                         </subviews>
                     </view>
+                    <connections>
+                        <outlet property="cbFanSpeed" destination="dj8-oI-SnN" id="DZz-aP-gCl"/>
+                    </connections>
                 </viewController>
                 <customObject id="vBj-P5-w3G" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
             </objects>
