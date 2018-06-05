@@ -43,6 +43,20 @@ class AppDelegate: NSObject, NSApplicationDelegate {
     var btnCPUTemp: NSStatusBarButton?
     var menuCPUTemp: NSMenu?
     
+    struct UserSettings
+    {
+        static var userWantsFanSpeed = false
+        static var userWantsBandwidth = false
+        static var userWantsMemUsage = false
+        static var userWantsCPUUtil = false
+        static var userWantsCPUTemp = false
+        static var userWantsAutostart = false
+        static var cpuColor = NSColor.blue
+        static var memColor = NSColor.green
+        static var updateInterval = 1.0
+    }
+    
+    
     // Todo: Delete
     var mySystem: System?
     var myCPUView: CPUUsageView?
@@ -94,6 +108,18 @@ class AppDelegate: NSObject, NSApplicationDelegate {
     let popover = NSPopover()
 
     func applicationDidFinishLaunching(_ aNotification: Notification) {
+        
+        // Replace with loadSessionSettings
+        /*
+        AppDelegate.UserSettings.userWantsCPUUtil = true
+        AppDelegate.UserSettings.userWantsCPUTemp = true
+        AppDelegate.UserSettings.userWantsFanSpeed = true
+        AppDelegate.UserSettings.userWantsMemUsage = true
+        AppDelegate.UserSettings.userWantsBandwidth = true
+        AppDelegate.UserSettings.userWantsAutostart = true
+        */
+        
+        
         let myWindowController = NSStoryboard(name: NSStoryboard.Name(rawValue: "Main"), bundle: nil).instantiateController(withIdentifier: NSStoryboard.SceneIdentifier(rawValue: "abcd")) as! MyMainWindow
         myWindowController.showWindow(self)
         
@@ -116,7 +142,7 @@ class AppDelegate: NSObject, NSApplicationDelegate {
         {
             
         }
-        Timer.scheduledTimer(timeInterval: 1, target: self, selector: #selector(updateAll), userInfo: nil, repeats: true)
+        Timer.scheduledTimer(timeInterval: 1.0, target: self, selector: #selector(updateAll), userInfo: nil, repeats: true)
     }
 
     func initCPUUtil()
@@ -293,7 +319,7 @@ class AppDelegate: NSObject, NSApplicationDelegate {
         print("")
          */
         let memTaken = memActive + memCompressed + memWired
-        print(System.physicalMemory())
+        //print(System.physicalMemory())
         let memUtil = Double(memTaken / System.physicalMemory()) * 100
         //self.myMemView?.setPercent(percent: memUtil)
         
