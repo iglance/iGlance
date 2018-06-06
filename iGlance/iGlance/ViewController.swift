@@ -9,6 +9,37 @@
 import Cocoa
 import ServiceManagement
 
+extension Data
+{
+    func toString() -> String
+    {
+        return String(data: self, encoding: .utf8)!
+    }
+}
+
+extension URLSession {
+    func synchronousDataTask(urlrequest: URLRequest) -> (data: Data?, response: URLResponse?, error: Error?) {
+        var data: Data?
+        var response: URLResponse?
+        var error: Error?
+        
+        let semaphore = DispatchSemaphore(value: 0)
+        
+        let dataTask = self.dataTask(with: urlrequest) {
+            data = $0
+            response = $1
+            error = $2
+            
+            semaphore.signal()
+        }
+        dataTask.resume()
+        
+        _ = semaphore.wait(timeout: .distantFuture)
+        
+        return (data, response, error)
+    }
+}
+
 class ViewController: NSViewController {
 
     @IBOutlet weak var cbCPUUtil: NSButton! {
@@ -87,6 +118,16 @@ class ViewController: NSViewController {
             cbFanSpeed.state = AppDelegate.UserSettings.userWantsFanSpeed ? NSButton.StateValue.on : NSButton.StateValue.off
         }
     }
+    @IBOutlet weak var cbCPUBorder: NSButton! {
+        didSet {
+            cbCPUBorder.state = AppDelegate.UserSettings.userWantsCPUBorder ? NSButton.StateValue.on : NSButton.StateValue.off
+        }
+    }
+    @IBOutlet weak var cbMemBorder: NSButton! {
+        didSet {
+            cbMemBorder.state = AppDelegate.UserSettings.userWantsMemBorder ? NSButton.StateValue.on : NSButton.StateValue.off
+        }
+    }
     //MARK: Properties
     
     override func viewDidLoad() {
@@ -159,6 +200,103 @@ class ViewController: NSViewController {
         }
     }
     @IBAction func btnCheckUpdate_clicked(_ sender: NSButton) {
+        /*
+        let scriptUrl = "https://raw.githubusercontent.com/Moneypulation/iGlance/master/Version.txt"
+        // Create NSURL Ibject
+        let myUrl = NSURL(string: scriptUrl);
+        
+        // Creaste URL Request
+        let request = NSMutableURLRequest(url:myUrl! as URL);
+        
+        // Set request HTTP method to GET. It could be POST as well
+        request.httpMethod = "GET"
+        
+        let task = URLSession.shared.dataTask(with: request as URLRequest) {
+            data, response, error in
+            
+            // Check for error
+            if error != nil
+            {
+                print("error=\(String(describing: error))")
+                return
+            }
+            
+            // Print out response string
+            let responseString = NSString(data: data!, encoding: String.Encoding.utf8.rawValue)
+            print("responseString = \(responseString ?? "NA")")
+            //AppDelegate.dialogOK(question: "hi",text: responseString! as String)
+        }
+        task.resume()
+ */
+        var request = URLRequest(url: URL(string: "https://raw.githubusercontent.com/Moneypulation/iGlance/master/Version.txt")!)
+        //var htmltext = ""
+        //request.httpBody = body
+        request.httpMethod = "GET"
+        let (htmltext, _, error) = URLSession.shared.synchronousDataTask(urlrequest: request)
+        if let error = error {
+            // print("Synchronous task ended with error: \(error)")
+            let alert = NSAlert()
+            alert.messageText = ""
+            alert.informativeText = "Unable to check for updates. Please check yourself on https://github.com/Moneypulation/iGlance"
+            alert.alertStyle = .warning
+            alert.addButton(withTitle: "OK")
+            alert.runModal()
+        }
+        else {
+            // print("Synchronous task ended without errors.")
+            // html = String(data: htmltext!, encoding: String.Encoding.utf8)!
+            
+            let pat = "\\[version\\](.*)\\[\\/version\\]"
+            let res = matches(for: pat, in: String(data: htmltext!, encoding: String.Encoding.utf8)!)
+            print(res)
+            if res.count != 1
+            {
+                let alert = NSAlert()
+                alert.messageText = ""
+                alert.informativeText = "Unable to check for updates. Please check yourself on https://github.com/Moneypulation/iGlance"
+                alert.alertStyle = .warning
+                alert.addButton(withTitle: "OK")
+                alert.runModal()
+            }
+            else
+            {
+                let onlyversion = res[0].replacingOccurrences(of: "[version]", with: "").replacingOccurrences(of: "[/version]", with: "")
+                print(onlyversion)
+                if (onlyversion != AppDelegate.VERSION)
+                {
+                    let alert = NSAlert()
+                    alert.messageText = ""
+                    alert.informativeText = "A new version (" + onlyversion + ") is available. Please visit: \n\n https://github.com/Moneypulation/iGlance"
+                    alert.alertStyle = .informational
+                    alert.addButton(withTitle: "OK")
+                    alert.runModal()
+                }
+                else
+                {
+                    let alert = NSAlert()
+                    alert.messageText = ""
+                    alert.informativeText = "Running latest version (" + onlyversion + ")"
+                    alert.alertStyle = .informational
+                    alert.addButton(withTitle: "OK")
+                    alert.runModal()
+                }
+            }
+        }
+    }
+    
+    func matches(for regex: String, in text: String) -> [String] {
+        
+        do {
+            let regex = try NSRegularExpression(pattern: regex)
+            let results = regex.matches(in: text,
+                                        range: NSRange(text.startIndex..., in: text))
+            return results.map {
+                String(text[Range($0.range, in: text)!])
+            }
+        } catch let error {
+            print("invalid regex: \(error.localizedDescription)")
+            return []
+        }
     }
     
     @IBAction func cbMemUtil_clicked(_ sender: NSButton) {
@@ -175,6 +313,12 @@ class ViewController: NSViewController {
     
     @IBAction func cbFanSpeed_clicked(_ sender: NSButton) {
         AppDelegate.UserSettings.userWantsFanSpeed = (cbFanSpeed.state == NSButton.StateValue.on)
+    }
+    @IBAction func cbCPUBorder_clicked(_ sender: NSButton) {
+        AppDelegate.UserSettings.userWantsCPUBorder = (cbCPUBorder.state == NSButton.StateValue.on)
+    }
+    @IBAction func cbMemBorder_clicked(_ sender: NSButton) {
+        AppDelegate.UserSettings.userWantsMemBorder = (cbMemBorder.state == NSButton.StateValue.on)
     }
     //MARK: Actions
 }

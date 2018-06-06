@@ -21,6 +21,7 @@ enum InterfaceStyle : String {
 @NSApplicationMain
 class AppDelegate: NSObject, NSApplicationDelegate {
 
+    public static var VERSION = "1.0"
     /**
     * StatusBarItems, Buttons and Menus declaration
     */
@@ -63,6 +64,8 @@ class AppDelegate: NSObject, NSApplicationDelegate {
         static var memColor = NSColor.green
         static var updateInterval = 1.0
         static var tempUnit = TempUnit.Celcius
+        static var userWantsCPUBorder = true
+        static var userWantsMemBorder = true
     }
     
     
@@ -171,7 +174,7 @@ class AppDelegate: NSObject, NSApplicationDelegate {
         }
         catch
         {
-            dialogOK(question: "Fatal Error", text: "Couldn't open SMCKit")
+            AppDelegate.dialogOK(question: "Fatal Error", text: "Couldn't open SMCKit")
             NSApp.terminate(nil)
         }
         
@@ -179,7 +182,7 @@ class AppDelegate: NSObject, NSApplicationDelegate {
     }
     
     
-    func dialogOK(question: String, text: String) -> Bool {
+    static func dialogOK(question: String, text: String) -> Bool {
         let alert = NSAlert()
         alert.messageText = question
         alert.informativeText = text
@@ -315,8 +318,11 @@ class AppDelegate: NSObject, NSApplicationDelegate {
         imgFinal.lockFocus()
         let img1 = NSImage(named:NSImage.Name(cpuIMG!))
         img1?.draw(at: NSPoint(x: 0, y: 0), from: NSZeroRect, operation: NSCompositingOperation.sourceOver, fraction: 1.0)
-        let img2 = NSImage(named:NSImage.Name(pbIMG!))
-        img2?.draw(at: NSPoint(x: 10, y: 0), from: NSZeroRect, operation: NSCompositingOperation.sourceOver, fraction: 1.0)
+        if (AppDelegate.UserSettings.userWantsCPUBorder)
+        {
+            let img2 = NSImage(named:NSImage.Name(pbIMG!))
+            img2?.draw(at: NSPoint(x: 10, y: 0), from: NSZeroRect, operation: NSCompositingOperation.sourceOver, fraction: 1.0)
+        }
         pbFillRectCPU = NSRect(x: 11.0, y: 1.0, width: pixelWidth!, height: pixelHeightCPU!)
         AppDelegate.UserSettings.cpuColor.setFill()
         pbFillRectCPU?.fill()
@@ -372,8 +378,12 @@ class AppDelegate: NSObject, NSApplicationDelegate {
         imgFinal.lockFocus()
         let img1 = NSImage(named:NSImage.Name(memIMG!))
         img1?.draw(at: NSPoint(x: 0, y: 0), from: NSZeroRect, operation: NSCompositingOperation.sourceOver, fraction: 1.0)
-        let img2 = NSImage(named:NSImage.Name(pbIMG!))
-        img2?.draw(at: NSPoint(x: 10, y: 0), from: NSZeroRect, operation: NSCompositingOperation.sourceOver, fraction: 1.0)
+        if (AppDelegate.UserSettings.userWantsMemBorder)
+        {
+            let img2 = NSImage(named:NSImage.Name(pbIMG!))
+            img2?.draw(at: NSPoint(x: 10, y: 0), from: NSZeroRect, operation: NSCompositingOperation.sourceOver, fraction: 1.0)
+            
+        }
         pbFillRectCPU = NSRect(x: 11.0, y: 1.0, width: pixelWidth!, height: pixelHeightMEM!)
         AppDelegate.UserSettings.memColor.setFill()
         pbFillRectCPU?.fill()
