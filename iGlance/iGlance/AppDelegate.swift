@@ -7,6 +7,7 @@
 //
 
 import Cocoa
+import ServiceManagement
 
 enum InterfaceStyle : String {
     case Dark, Light
@@ -43,6 +44,8 @@ class AppDelegate: NSObject, NSApplicationDelegate {
     var btnCPUTemp: NSStatusBarButton?
     var menuCPUTemp: NSMenu?
     
+    var myWindowController: MyMainWindow?
+    
     public enum TempUnit {
         case Celcius
         case Fahrenheit
@@ -50,24 +53,27 @@ class AppDelegate: NSObject, NSApplicationDelegate {
     
     struct UserSettings
     {
-        static var userWantsFanSpeed = false
-        static var userWantsBandwidth = false
-        static var userWantsMemUsage = false
-        static var userWantsCPUUtil = false
-        static var userWantsCPUTemp = false
-        static var userWantsAutostart = false
+        static var userWantsFanSpeed = true
+        static var userWantsBandwidth = true
+        static var userWantsMemUsage = true
+        static var userWantsCPUUtil = true
+        static var userWantsCPUTemp = true
+        static var userWantsAutostart = true
         static var cpuColor = NSColor.blue
         static var memColor = NSColor.green
         static var updateInterval = 1.0
-        static var tempUnit = TempUnit.Fahrenheit
+        static var tempUnit = TempUnit.Celcius
     }
     
     
     // Todo: Delete
+    
     var mySystem: System?
+    /*
     var myCPUView: CPUUsageView?
     var myMemView: MemUsageView?
     var myBandwidthView: BandwidthView?
+    */
     
     /**
     * Bandwidth variables
@@ -85,6 +91,7 @@ class AppDelegate: NSObject, NSApplicationDelegate {
     var pbFillRectBandwidth: NSRect?
     var len1: Int?
     var len2: Int?
+    var firstBandwidth = true
     
     /**
     * CPU Button Image variables
@@ -108,8 +115,8 @@ class AppDelegate: NSObject, NSApplicationDelegate {
     var pbIMG: String?
     var pbMax: Double?
     
-    var myWindow: MyMainWindow?
-    var myWin: MyMainWin?
+    //var myWindow: MyMainWindow?
+    //var myWin: MyMainWin?
     
     //let popover = NSPopover()
 
@@ -128,9 +135,25 @@ class AppDelegate: NSObject, NSApplicationDelegate {
         AppDelegate.UserSettings.userWantsAutostart = true
         */
         
+        var startedAtLogin = false
+        for app in NSWorkspace.shared.runningApplications {
+            if app.bundleIdentifier == NCConstants.launcherApplicationIdentifier {
+                startedAtLogin = true
+            }
+        }
         
-        let myWindowController = NSStoryboard(name: NSStoryboard.Name(rawValue: "Main"), bundle: nil).instantiateController(withIdentifier: NSStoryboard.SceneIdentifier(rawValue: "abcd")) as! MyMainWindow
-        myWindowController.showWindow(self)
+        // If the app's started, post to the notification center to kill the launcher app
+        if startedAtLogin {
+            DistributedNotificationCenter.default().postNotificationName(NCConstants.KILLME, object: Bundle.main.bundleIdentifier, userInfo: nil, options: DistributedNotificationCenter.Options.deliverImmediately)
+        }
+        
+        
+        myWindowController = NSStoryboard(name: NSStoryboard.Name(rawValue: "Main"), bundle: nil).instantiateController(withIdentifier: NSStoryboard.SceneIdentifier(rawValue: "abcd")) as! MyMainWindow
+        myWindowController?.showWindow(self)
+        print("1")
+        myWindowController?.windowDidLoad()
+        print("2")
+        myWindowController?.window?.makeKey()
         
         
         //popover.behavior = NSPopover.Behavior.transient;
@@ -141,7 +164,6 @@ class AppDelegate: NSObject, NSApplicationDelegate {
         initFanSpeed()
         initBandwidth()
         
-        updateBandwidth()
         
         do
         {
@@ -149,19 +171,21 @@ class AppDelegate: NSObject, NSApplicationDelegate {
         }
         catch
         {
-            
+            dialogOK(question: "Fatal Error", text: "Couldn't open SMCKit")
+            NSApp.terminate(nil)
         }
+        
         intervalTimer = Timer.scheduledTimer(timeInterval: UserSettings.updateInterval, target: self, selector: #selector(updateAll), userInfo: nil, repeats: true)
     }
     
     
-    func dialogOKCancel(question: String, text: String) -> Bool {
+    func dialogOK(question: String, text: String) -> Bool {
         let alert = NSAlert()
         alert.messageText = question
         alert.informativeText = text
-        alert.alertStyle = .warning
+        alert.alertStyle = .critical
         alert.addButton(withTitle: "OK")
-        alert.addButton(withTitle: "Cancel")
+        //alert.addButton(withTitle: "Cancel")
         return alert.runModal() == .alertFirstButtonReturn
     }
     
@@ -172,10 +196,12 @@ class AppDelegate: NSObject, NSApplicationDelegate {
         pbMax = 16.0 // 32*0.5
         pixelWidth = 7 // 14*0.5
         pixelHeightCPU = 0
-        
+        mySystem = System()
         btnCPUUtil = sItemCPUUtil.button
-        myCPUView = CPUUsageView()
-        myCPUView?.giveContext(contextNew: self)
+        /*
+ 
+        //myCPUView = CPUUsageView()
+        //myCPUView?.giveContext(contextNew: self)
         //myCPUView?.frame = (AppDelegate.btnCPUUtil?.frame)!
         //popover.contentViewController = CPUUsageViewController.freshController()
         //AppDelegate.btnCPUUtil?.addSubview(myCPUView!)
@@ -216,39 +242,47 @@ class AppDelegate: NSObject, NSApplicationDelegate {
         let head = "/" + components.dropLast(1).dropFirst(1).map(String.init).joined(separator: "/") + "/cpu_mem_util"
         print(head)
         */
+ 
+    */
         
-        mySystem = System()
         
+        
+    }
+    
+    @objc func settings_clicked()
+    {
+        myWindowController?.showWindow(nil)
+        NSApp.activate(ignoringOtherApps: true)
     }
     
     func constructMenu() {
         menuCPUUtil = NSMenu()
-        menuCPUUtil?.addItem(NSMenuItem(title: "Settings", action: #selector(NSApplication.terminate(_:)), keyEquivalent: "s"))
+        menuCPUUtil?.addItem(NSMenuItem(title: "Settings", action: #selector(settings_clicked), keyEquivalent: "s"))
         menuCPUUtil?.addItem(NSMenuItem.separator())
         menuCPUUtil?.addItem(NSMenuItem(title: "Quit iGlance", action: #selector(NSApplication.terminate(_:)), keyEquivalent: "q"))
         //menuCPUUtil?.addItem(NSMenuItem.separator())
         sItemCPUUtil.menu = menuCPUUtil
         
         menuFanSpeed = NSMenu()
-        menuFanSpeed?.addItem(NSMenuItem(title: "Settings", action: #selector(NSApplication.terminate(_:)), keyEquivalent: "s"))
+        menuFanSpeed?.addItem(NSMenuItem(title: "Settings", action: #selector(settings_clicked), keyEquivalent: "s"))
         menuFanSpeed?.addItem(NSMenuItem.separator())
         menuFanSpeed?.addItem(NSMenuItem(title: "Quit iGlance", action: #selector(NSApplication.terminate(_:)), keyEquivalent: "q"))
         sItemFanSpeed.menu = menuFanSpeed
         
         menuMemUsage = NSMenu()
-        menuMemUsage?.addItem(NSMenuItem(title: "Settings", action: #selector(NSApplication.terminate(_:)), keyEquivalent: "s"))
+        menuMemUsage?.addItem(NSMenuItem(title: "Settings", action: #selector(settings_clicked), keyEquivalent: "s"))
         menuMemUsage?.addItem(NSMenuItem.separator())
         menuMemUsage?.addItem(NSMenuItem(title: "Quit iGlance", action: #selector(NSApplication.terminate(_:)), keyEquivalent: "q"))
         sItemMemUsage.menu = menuMemUsage
         
         menuCPUTemp = NSMenu()
-        menuCPUTemp?.addItem(NSMenuItem(title: "Settings", action: #selector(NSApplication.terminate(_:)), keyEquivalent: "s"))
+        menuCPUTemp?.addItem(NSMenuItem(title: "Settings", action: #selector(settings_clicked), keyEquivalent: "s"))
         menuCPUTemp?.addItem(NSMenuItem.separator())
         menuCPUTemp?.addItem(NSMenuItem(title: "Quit iGlance", action: #selector(NSApplication.terminate(_:)), keyEquivalent: "q"))
         sItemCPUTemp.menu = menuCPUTemp
         
         menuBandwidth = NSMenu()
-        menuBandwidth?.addItem(NSMenuItem(title: "Settings", action: #selector(NSApplication.terminate(_:)), keyEquivalent: "s"))
+        menuBandwidth?.addItem(NSMenuItem(title: "Settings", action: #selector(settings_clicked), keyEquivalent: "s"))
         menuBandwidth?.addItem(NSMenuItem.separator())
         menuBandwidth?.addItem(NSMenuItem(title: "Quit iGlance", action: #selector(NSApplication.terminate(_:)), keyEquivalent: "q"))
         sItemBandwidth.menu = menuBandwidth
@@ -351,11 +385,56 @@ class AppDelegate: NSObject, NSApplicationDelegate {
     
     @objc func updateAll()
     {
-        updateCPUTemp()
-        updateCPUUsage()
-        updateMemUsage()
-        updateFanSpeed()
-        reallyUpdateBandwidth()
+        if (AppDelegate.UserSettings.userWantsCPUTemp)
+        {
+            sItemCPUTemp.isVisible = true
+            updateCPUTemp()
+        }
+        else
+        {
+            sItemCPUTemp.isVisible = false
+        }
+        if (AppDelegate.UserSettings.userWantsCPUUtil)
+        {
+            sItemCPUUtil.isVisible = true
+            updateCPUUsage()
+        }
+        else
+        {
+            sItemCPUUtil.isVisible = false
+        }
+        if (AppDelegate.UserSettings.userWantsMemUsage)
+        {
+            sItemMemUsage.isVisible = true
+            updateMemUsage()
+        }
+        else
+        {
+            sItemMemUsage.isVisible = false
+        }
+        if (AppDelegate.UserSettings.userWantsFanSpeed)
+        {
+            sItemFanSpeed.isVisible = true
+            updateFanSpeed()
+        }
+        else
+        {
+            sItemFanSpeed.isVisible = false
+        }
+        if (AppDelegate.UserSettings.userWantsBandwidth)
+        {
+            sItemBandwidth.isVisible = true
+            if (firstBandwidth)
+            {
+                updateBandwidth()
+                firstBandwidth = false
+            }
+            reallyUpdateBandwidth()
+        }
+        else
+        {
+            sItemBandwidth.isVisible = false
+        }
         if (AppDelegate.changeInterval())
         {
             intervalTimer?.invalidate()
@@ -521,8 +600,8 @@ class AppDelegate: NSObject, NSApplicationDelegate {
         var curr: Array<Substring>?
         
         curr = [""]
-        var str1: String?
-        var str2: String?
+        //var str1: String?
+        //var str2: String?
         
         command.stdout.onOutput { stdout in
             for line in command.stdout.lines()
@@ -576,13 +655,23 @@ class AppDelegate: NSObject, NSApplicationDelegate {
             btnCPUTemp?.title = "NA"
             return
         }
-        btnCPUTemp?.title = String(Int(temperature)) + "°"
+        if (AppDelegate.UserSettings.tempUnit == AppDelegate.TempUnit.Fahrenheit)
+        {
+            let temperatureF = (temperature * 1.8) + 32
+            btnCPUTemp?.title = String(Int(temperatureF)) + "°F"
+        }
+        else
+        {
+            btnCPUTemp?.title = String(Int(temperature)) + "°C"
+        }
         }
     
     func initMemUsage()
     {
         btnMemUsage = sItemMemUsage.button
-        myMemView = MemUsageView()
+        pixelHeightMEM = 0
+        
+        //myMemView = MemUsageView()
         //myMemView?.frame = (btnMemUsage?.frame)!
         //btnMemUsage?.addSubview(myMemView!)
         /*
@@ -596,8 +685,8 @@ class AppDelegate: NSObject, NSApplicationDelegate {
         btnMemUsage?.image = img3
          */
         
-        pixelHeightMEM = 0
         
+        /*
         if (InterfaceStyle() == InterfaceStyle.Dark)
         {
             memIMG = "menubar-label-mem-white"
@@ -610,6 +699,7 @@ class AppDelegate: NSObject, NSApplicationDelegate {
             pbIMG = "progressbar-black"
             
         }
+        
         let imgFinal = NSImage(size: NSSize(width: 20, height: 18))
         imgFinal.lockFocus()
         let img1 = NSImage(named:NSImage.Name(memIMG!))
@@ -623,6 +713,7 @@ class AppDelegate: NSObject, NSApplicationDelegate {
         imgFinal.unlockFocus()
         
         //btnMemUsage?.image = imgFinal
+        */
     }
     
     func initCPUTemp()
@@ -653,5 +744,11 @@ class AppDelegate: NSObject, NSApplicationDelegate {
     }
 
 
+}
+
+class NCConstants { // Notify constant
+    static let KILLME = Notification.Name("killme")
+    static let launcherApplicationIdentifier = "noorganization.iGlanceLauncher"
+    
 }
 

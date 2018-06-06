@@ -7,6 +7,7 @@
 //
 
 import Cocoa
+import ServiceManagement
 
 class ViewController: NSViewController {
 
@@ -116,11 +117,29 @@ class ViewController: NSViewController {
         AppDelegate.UserSettings.cpuColor = sender.color
     }
     @IBAction func ddTempUnit_clicked(_ sender: Any) {
-        AppDelegate.UserSettings.tempUnit = ddTempUnit.selectedTag() == 0 ? AppDelegate.TempUnit.Celcius : AppDelegate.TempUnit.Fahrenheit
+        AppDelegate.UserSettings.tempUnit = ddTempUnit.indexOfSelectedItem == 0 ? AppDelegate.TempUnit.Celcius : AppDelegate.TempUnit.Fahrenheit
     }
     
     @IBAction func cbAutostart_clicked(_ sender: NSButton) {
         AppDelegate.UserSettings.userWantsAutostart = (cbAutostart.state == NSButton.StateValue.on)
+        if (cbAutostart.state == NSButton.StateValue.on) {
+            if !SMLoginItemSetEnabled(NCConstants.launcherApplicationIdentifier as CFString, true) {
+                print("The login item was not successfull")
+            }
+            else {
+                UserDefaults.standard.set("true", forKey: "appLoginStart")
+                print("autostart true")
+            }
+        }
+        else {
+            if !SMLoginItemSetEnabled(NCConstants.launcherApplicationIdentifier as CFString, false) {
+                print("The login item was not successfull")
+            }
+            else {
+                UserDefaults.standard.set("false", forKey: "appLoginStart")
+                print("autostart false")
+            }
+        }
     }
     @IBAction func ddUpdateInterval_clicked(_ sender: NSPopUpButton) {
         switch (ddUpdateInterval.indexOfSelectedItem)
