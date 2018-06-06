@@ -20,7 +20,22 @@ class ViewController: NSViewController {
             cbCPUTemp.state = AppDelegate.UserSettings.userWantsCPUTemp ? NSButton.StateValue.on : NSButton.StateValue.off
         }
     }
-    @IBOutlet weak var ddTempUnit: NSPopUpButton!
+    @IBOutlet weak var ddTempUnit: NSPopUpButton! {
+        didSet {
+            switch(AppDelegate.UserSettings.tempUnit)
+            {
+            case AppDelegate.TempUnit.Celcius:
+                ddTempUnit.selectItem(at: 0)
+                break;
+            case AppDelegate.TempUnit.Fahrenheit:
+                ddTempUnit.selectItem(at: 1)
+                break;
+            default:
+                ddTempUnit.selectItem(at: 0)
+            }
+            
+        }
+    }
     @IBOutlet weak var cpCPU: NSColorWell! {
         didSet {
             cpCPU.color = AppDelegate.UserSettings.cpuColor
@@ -31,7 +46,25 @@ class ViewController: NSViewController {
             cbAutostart.state = (AppDelegate.UserSettings.userWantsAutostart) ? NSButton.StateValue.on : NSButton.StateValue.off
         }
     }
-    @IBOutlet weak var ddUpdateInterval: NSPopUpButton!
+    @IBOutlet weak var ddUpdateInterval: NSPopUpButton! {
+        didSet {
+            switch (AppDelegate.UserSettings.updateInterval)
+            {
+            case 1.0:
+                ddUpdateInterval.selectItem(at: 0)
+                break;
+            case 2.0:
+                ddUpdateInterval.selectItem(at: 1)
+                break;
+            case 3.0:
+                ddUpdateInterval.selectItem(at: 2)
+                break;
+            default:
+                ddUpdateInterval.selectItem(at: 1)
+            }
+            
+        }
+    }
     @IBOutlet weak var btnCheckUpdate: NSButton!
     @IBOutlet weak var cbMemUtil: NSButton! {
         didSet {
@@ -83,12 +116,28 @@ class ViewController: NSViewController {
         AppDelegate.UserSettings.cpuColor = sender.color
     }
     @IBAction func ddTempUnit_clicked(_ sender: Any) {
+        AppDelegate.UserSettings.tempUnit = ddTempUnit.selectedTag() == 0 ? AppDelegate.TempUnit.Celcius : AppDelegate.TempUnit.Fahrenheit
     }
     
     @IBAction func cbAutostart_clicked(_ sender: NSButton) {
         AppDelegate.UserSettings.userWantsAutostart = (cbAutostart.state == NSButton.StateValue.on)
     }
     @IBAction func ddUpdateInterval_clicked(_ sender: NSPopUpButton) {
+        switch (ddUpdateInterval.indexOfSelectedItem)
+            
+        {
+        case 0:
+            AppDelegate.UserSettings.updateInterval = 1.0
+            break
+        case 1:
+            AppDelegate.UserSettings.updateInterval = 2.0
+            break
+        case 2:
+            AppDelegate.UserSettings.updateInterval = 3.0
+            break
+        default:
+            AppDelegate.UserSettings.updateInterval = 2.0
+        }
     }
     @IBAction func btnCheckUpdate_clicked(_ sender: NSButton) {
     }
