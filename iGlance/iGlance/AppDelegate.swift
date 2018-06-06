@@ -43,6 +43,11 @@ class AppDelegate: NSObject, NSApplicationDelegate {
     var btnCPUTemp: NSStatusBarButton?
     var menuCPUTemp: NSMenu?
     
+    public enum TempUnit {
+        case Celcius
+        case Fahrenheit
+    }
+    
     struct UserSettings
     {
         static var userWantsFanSpeed = false
@@ -54,6 +59,7 @@ class AppDelegate: NSObject, NSApplicationDelegate {
         static var cpuColor = NSColor.blue
         static var memColor = NSColor.green
         static var updateInterval = 1.0
+        static var tempUnit = TempUnit.Fahrenheit
     }
     
     
@@ -105,8 +111,11 @@ class AppDelegate: NSObject, NSApplicationDelegate {
     var myWindow: MyMainWindow?
     var myWin: MyMainWin?
     
-    let popover = NSPopover()
+    //let popover = NSPopover()
 
+    var intervalTimer: Timer?
+    static var currTimeInterval = AppDelegate.UserSettings.updateInterval
+    
     func applicationDidFinishLaunching(_ aNotification: Notification) {
         
         // Replace with loadSessionSettings
@@ -124,7 +133,7 @@ class AppDelegate: NSObject, NSApplicationDelegate {
         myWindowController.showWindow(self)
         
         
-        popover.behavior = NSPopover.Behavior.transient;
+        //popover.behavior = NSPopover.Behavior.transient;
         constructMenu()
         initCPUUtil()
         initCPUTemp()
@@ -142,8 +151,21 @@ class AppDelegate: NSObject, NSApplicationDelegate {
         {
             
         }
-        Timer.scheduledTimer(timeInterval: 1.0, target: self, selector: #selector(updateAll), userInfo: nil, repeats: true)
+        intervalTimer = Timer.scheduledTimer(timeInterval: UserSettings.updateInterval, target: self, selector: #selector(updateAll), userInfo: nil, repeats: true)
     }
+    
+    
+    func dialogOKCancel(question: String, text: String) -> Bool {
+        let alert = NSAlert()
+        alert.messageText = question
+        alert.informativeText = text
+        alert.alertStyle = .warning
+        alert.addButton(withTitle: "OK")
+        alert.addButton(withTitle: "Cancel")
+        return alert.runModal() == .alertFirstButtonReturn
+    }
+    
+    
 
     func initCPUUtil()
     {
@@ -181,7 +203,7 @@ class AppDelegate: NSObject, NSApplicationDelegate {
         let img2 = NSImage(named:NSImage.Name(pbIMG!))
         img2?.draw(at: NSPoint(x: 10, y: 0), from: NSZeroRect, operation: NSCompositingOperation.sourceOver, fraction: 1.0)
         pbFillRectCPU = NSRect(x: 13.0, y: 4.0, width: pixelWidth!, height: pixelHeightCPU!)
-        NSColor.red.setFill()
+        AppDelegate.UserSettings.cpuColor.setFill()
         pbFillRectCPU?.fill()
         NSColor.clear.setFill()
         img4.unlockFocus()
@@ -232,32 +254,6 @@ class AppDelegate: NSObject, NSApplicationDelegate {
         sItemBandwidth.menu = menuBandwidth
     }
     
-    /*
-    @objc func togglePopover(_ sender: Any?) {
-        print("ok--------------------------")
-        if (popover.isShown) {
-            closePopover(sender: sender)
-        } else {
-            showPopover(sender: sender)
-        }
-    }
-    
-    
-    func showPopover(sender: Any?) {
-        popover.show(relativeTo: (AppDelegate.btnCPUUtil!.bounds), of: AppDelegate.btnCPUUtil!, preferredEdge: NSRectEdge.minY)
-    }
-    */
-    
-    func closePopover(sender: Any?) {
-        if (sender == nil)
-        {
-            popover.performClose(btnCPUUtil)
-            return
-        }
-        print(sender)
-        popover.performClose(sender)
-    }
-    
     @objc func updateCPUUsage()
     {
         let cpuStats = self.mySystem!.usageCPU()
@@ -288,7 +284,7 @@ class AppDelegate: NSObject, NSApplicationDelegate {
         let img2 = NSImage(named:NSImage.Name(pbIMG!))
         img2?.draw(at: NSPoint(x: 10, y: 0), from: NSZeroRect, operation: NSCompositingOperation.sourceOver, fraction: 1.0)
         pbFillRectCPU = NSRect(x: 11.0, y: 1.0, width: pixelWidth!, height: pixelHeightCPU!)
-        NSColor.red.setFill()
+        AppDelegate.UserSettings.cpuColor.setFill()
         pbFillRectCPU?.fill()
         NSColor.clear.setFill()
         imgFinal.unlockFocus()
@@ -345,7 +341,7 @@ class AppDelegate: NSObject, NSApplicationDelegate {
         let img2 = NSImage(named:NSImage.Name(pbIMG!))
         img2?.draw(at: NSPoint(x: 10, y: 0), from: NSZeroRect, operation: NSCompositingOperation.sourceOver, fraction: 1.0)
         pbFillRectCPU = NSRect(x: 11.0, y: 1.0, width: pixelWidth!, height: pixelHeightMEM!)
-        NSColor.red.setFill()
+        AppDelegate.UserSettings.memColor.setFill()
         pbFillRectCPU?.fill()
         NSColor.clear.setFill()
         imgFinal.unlockFocus()
@@ -360,6 +356,25 @@ class AppDelegate: NSObject, NSApplicationDelegate {
         updateMemUsage()
         updateFanSpeed()
         reallyUpdateBandwidth()
+        if (AppDelegate.changeInterval())
+        {
+            intervalTimer?.invalidate()
+            print(UserSettings.updateInterval)
+            intervalTimer = Timer.scheduledTimer(timeInterval: UserSettings.updateInterval, target: self, selector: #selector(updateAll), userInfo: nil, repeats: true)
+            AppDelegate.currTimeInterval = AppDelegate.UserSettings.updateInterval
+        }
+    }
+    
+    static func changeInterval() -> Bool
+    {
+        if (AppDelegate.currTimeInterval != AppDelegate.UserSettings.updateInterval)
+        {
+            return true;
+        }
+        else
+        {
+            return false;
+        }
     }
     
     @objc func updateFanSpeed()
@@ -602,7 +617,7 @@ class AppDelegate: NSObject, NSApplicationDelegate {
         let img2 = NSImage(named:NSImage.Name(pbIMG!))
         img2?.draw(at: NSPoint(x: 10, y: 0), from: NSZeroRect, operation: NSCompositingOperation.sourceOver, fraction: 1.0)
         pbFillRectCPU = NSRect(x: 11.0, y: 1.0, width: pixelWidth!, height: pixelHeightMEM!)
-        NSColor.red.setFill()
+        AppDelegate.UserSettings.memColor.setFill()
         pbFillRectCPU?.fill()
         NSColor.clear.setFill()
         imgFinal.unlockFocus()
