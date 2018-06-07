@@ -60,12 +60,6 @@ class CPUMenuView: NSView {
         self.addSubview(self.contentView)
     }
     
-    func setPercentNice(val: String)
-    {
-        percentNice.stringValue = val
-        needsDisplay = true
-    }
-    
     required init?(coder decoder: NSCoder) {
         super.init(coder: decoder)
         //fatalError("init(coder:) has not been implemented")

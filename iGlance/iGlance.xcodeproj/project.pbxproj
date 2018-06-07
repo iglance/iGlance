@@ -35,6 +35,7 @@
 		02B8120720C95CAC00C98F0D /* CPUMenuView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 02B8120620C95CAC00C98F0D /* CPUMenuView.xib */; };
 		02B8120920C95D6600C98F0D /* CPUMenuView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02B8120820C95D6600C98F0D /* CPUMenuView.swift */; };
 		02B8120B20C9871000C98F0D /* MemMenuView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 02B8120A20C9871000C98F0D /* MemMenuView.xib */; };
+		02B8120D20C9874D00C98F0D /* MemMenuView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02B8120C20C9874D00C98F0D /* MemMenuView.swift */; };
 		02BF508020C7345600EC8E69 /* CPUViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02BF507F20C7345600EC8E69 /* CPUViewController.swift */; };
 		02E9CE2820C4DE1A00879EB1 /* CPUUsageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02E9CE2720C4DE1A00879EB1 /* CPUUsageViewController.swift */; };
 		02E9CE3020C526BE00879EB1 /* MyMainWindow.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02E9CE2F20C526BE00879EB1 /* MyMainWindow.swift */; };
@@ -97,6 +98,7 @@
 		02B8120620C95CAC00C98F0D /* CPUMenuView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = CPUMenuView.xib; sourceTree = "<group>"; };
 		02B8120820C95D6600C98F0D /* CPUMenuView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CPUMenuView.swift; sourceTree = "<group>"; };
 		02B8120A20C9871000C98F0D /* MemMenuView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MemMenuView.xib; sourceTree = "<group>"; };
+		02B8120C20C9874D00C98F0D /* MemMenuView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MemMenuView.swift; sourceTree = "<group>"; };
 		02BF507F20C7345600EC8E69 /* CPUViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CPUViewController.swift; sourceTree = "<group>"; };
 		02E9CE2720C4DE1A00879EB1 /* CPUUsageViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CPUUsageViewController.swift; sourceTree = "<group>"; };
 		02E9CE2F20C526BE00879EB1 /* MyMainWindow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = MyMainWindow.swift; path = iGlance/MyMainWindow.swift; sourceTree = SOURCE_ROOT; };
@@ -188,6 +190,7 @@
 				02B8120620C95CAC00C98F0D /* CPUMenuView.xib */,
 				02B8120820C95D6600C98F0D /* CPUMenuView.swift */,
 				02B8120A20C9871000C98F0D /* MemMenuView.xib */,
+				02B8120C20C9874D00C98F0D /* MemMenuView.swift */,
 			);
 			path = iGlance;
 			sourceTree = "<group>";
@@ -347,6 +350,7 @@
 				02E9CE3020C526BE00879EB1 /* MyMainWindow.swift in Sources */,
 				0275B7CA20C3A1BF000BEC7F /* Battery.swift in Sources */,
 				02AF908820C36F05002CE6C9 /* System.swift in Sources */,
+				02B8120D20C9874D00C98F0D /* MemMenuView.swift in Sources */,
 				0275B7DF20C3D1B3000BEC7F /* FileHandle.swift in Sources */,
 				02E9CE3220C5457500879EB1 /* MyMainWin.swift in Sources */,
 				02BF508020C7345600EC8E69 /* CPUViewController.swift in Sources */,
