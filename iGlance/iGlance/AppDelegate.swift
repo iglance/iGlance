@@ -34,6 +34,8 @@ class AppDelegate: NSObject, NSApplicationDelegate {
     var menuBandwidth: NSMenu?
     
     let sItemMemUsage = NSStatusBar.system.statusItem(withLength: 25.0)
+    let myMemMenuView = MemMenuView(frame: NSRect(x: 0, y: 0, width: 170, height: 110))
+    let niceitem2 = NSMenuItem(title: "", action: nil, keyEquivalent: "")
     var btnMemUsage: NSStatusBarButton?
     var menuMemUsage: NSMenu?
     
@@ -259,7 +261,7 @@ class AppDelegate: NSObject, NSApplicationDelegate {
     }
     
     func constructMenu() {
-        menuCPUUtil = NSMenu()
+        
         /*
         let niceattr = NSMutableAttributedString(string: "haharechts")
         let font = NSFont(name: "Apple SD Gothic Neo Bold", size: 11.0)
@@ -274,8 +276,9 @@ class AppDelegate: NSObject, NSApplicationDelegate {
         niceitem.attributedTitle = niceattr*/
         
         niceitem.view = myCPUMenuView
+        niceitem2.view = myMemMenuView
         
-        
+        menuCPUUtil = NSMenu()
         menuCPUUtil?.addItem(niceitem)
         menuCPUUtil?.addItem(NSMenuItem.separator())
         menuCPUUtil?.addItem(NSMenuItem(title: "Settings", action: #selector(settings_clicked), keyEquivalent: "s"))
@@ -291,6 +294,8 @@ class AppDelegate: NSObject, NSApplicationDelegate {
         sItemFanSpeed.menu = menuFanSpeed
         
         menuMemUsage = NSMenu()
+        menuMemUsage?.addItem(niceitem2)
+        menuMemUsage?.addItem(NSMenuItem.separator())
         menuMemUsage?.addItem(NSMenuItem(title: "Settings", action: #selector(settings_clicked), keyEquivalent: "s"))
         menuMemUsage?.addItem(NSMenuItem.separator())
         menuMemUsage?.addItem(NSMenuItem(title: "Quit iGlance", action: #selector(NSApplication.terminate(_:)), keyEquivalent: "q"))
@@ -323,8 +328,9 @@ class AppDelegate: NSObject, NSApplicationDelegate {
         myCPUMenuView.percentUser.stringValue = String(Int(cpuUser)) + "%"
         myCPUMenuView.percentIdle.stringValue = String(Int(cpuIdle)) + "%"
         //myCPUMenuView.percentNice.stringValue = String(cpuNice)
-        myCPUMenuView.setPercentNice(val: String(Int(cpuNice)) + "%")
-        RunLoop.current.add(Timer(timeInterval: 1.0, repeats: true, block: { (timer) in print("Hi!")}), forMode: RunLoopMode.commonModes)
+        //myCPUMenuView.setPercentNice(val: String(Int(cpuNice)) + "%")
+        myCPUMenuView.percentNice.stringValue = String(Int(cpuNice)) + "%"
+        RunLoop.current.add(Timer(timeInterval: 1.0, repeats: true, block: { (timer) in print("")}), forMode: RunLoopMode.commonModes)
         
         
         pixelHeightCPU = Double((pbMax! / 100.0) * cpuUsageTotal)
@@ -367,6 +373,12 @@ class AppDelegate: NSObject, NSApplicationDelegate {
         let memFree = Double(round(100*memStats.free)/100)
         let memInactive = Double(round(100*memStats.inactive)/100)
         let memWired = Double(round(100*memStats.wired)/100)
+        
+        myMemMenuView.percentActive.stringValue = String(memActive) + " GB"
+        myMemMenuView.percentCompressed.stringValue = String(memCompressed) + " GB"
+        myMemMenuView.percentFree.stringValue = String(memFree) + " GB"
+        myMemMenuView.percentInactive.stringValue = String(memInactive) + " GB"
+        myMemMenuView.percentWired.stringValue = String(memWired) + " GB"
         
         /*
         print("active")
