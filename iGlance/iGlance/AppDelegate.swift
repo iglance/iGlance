@@ -38,6 +38,8 @@ class AppDelegate: NSObject, NSApplicationDelegate {
     var menuMemUsage: NSMenu?
     
     let sItemCPUUtil = NSStatusBar.system.statusItem(withLength: 25.0)
+    let myCPUMenuView = CPUMenuView(frame: NSRect(x: 0, y: 0, width: 170, height: 90))
+    let niceitem = NSMenuItem(title: "", action: nil, keyEquivalent: "")
     var btnCPUUtil: NSStatusBarButton?
     var menuCPUUtil: NSMenu?
     
@@ -153,10 +155,7 @@ class AppDelegate: NSObject, NSApplicationDelegate {
         
         myWindowController = NSStoryboard(name: NSStoryboard.Name(rawValue: "Main"), bundle: nil).instantiateController(withIdentifier: NSStoryboard.SceneIdentifier(rawValue: "abcd")) as! MyMainWindow
         myWindowController?.showWindow(self)
-        print("1")
-        myWindowController?.windowDidLoad()
-        print("2")
-        myWindowController?.window?.makeKey()
+        NSApp.activate(ignoringOtherApps: true)
         
         
         //popover.behavior = NSPopover.Behavior.transient;
@@ -179,6 +178,7 @@ class AppDelegate: NSObject, NSApplicationDelegate {
         }
         
         intervalTimer = Timer.scheduledTimer(timeInterval: UserSettings.updateInterval, target: self, selector: #selector(updateAll), userInfo: nil, repeats: true)
+        RunLoop.current.add(intervalTimer!, forMode: RunLoopMode.commonModes)
     }
     
     
@@ -260,6 +260,24 @@ class AppDelegate: NSObject, NSApplicationDelegate {
     
     func constructMenu() {
         menuCPUUtil = NSMenu()
+        /*
+        let niceattr = NSMutableAttributedString(string: "haharechts")
+        let font = NSFont(name: "Apple SD Gothic Neo Bold", size: 11.0)
+        let fontSmall = NSFont(name: "Apple SD Gothic Neo Bold", size: 8.0)
+        niceattr.addAttribute(.font, value: font as Any, range: NSMakeRange(0,4))
+        let myParagraphStyle2 = NSMutableParagraphStyle()
+        myParagraphStyle2.alignment = .left
+        niceattr.addAttribute(.paragraphStyle, value: myParagraphStyle2, range: NSMakeRange(0, 4))
+        let myParagraphStyle = NSMutableParagraphStyle()
+        myParagraphStyle.alignment = .right
+        niceattr.addAttribute(.paragraphStyle, value: myParagraphStyle, range: NSMakeRange(4, 6))
+        niceitem.attributedTitle = niceattr*/
+        
+        niceitem.view = myCPUMenuView
+        
+        
+        menuCPUUtil?.addItem(niceitem)
+        menuCPUUtil?.addItem(NSMenuItem.separator())
         menuCPUUtil?.addItem(NSMenuItem(title: "Settings", action: #selector(settings_clicked), keyEquivalent: "s"))
         menuCPUUtil?.addItem(NSMenuItem.separator())
         menuCPUUtil?.addItem(NSMenuItem(title: "Quit iGlance", action: #selector(NSApplication.terminate(_:)), keyEquivalent: "q"))
@@ -300,6 +318,15 @@ class AppDelegate: NSObject, NSApplicationDelegate {
         let cpuNice = Double(round(100*cpuStats.nice)/100)
         let cpuUsageTotal = cpuUser + cpuSystem
         //self.myCPUView?.setPercent(percent: cpuUsageTotal)
+        
+        myCPUMenuView.percentSystem.stringValue = String(Int(cpuSystem)) + "%"
+        myCPUMenuView.percentUser.stringValue = String(Int(cpuUser)) + "%"
+        myCPUMenuView.percentIdle.stringValue = String(Int(cpuIdle)) + "%"
+        //myCPUMenuView.percentNice.stringValue = String(cpuNice)
+        myCPUMenuView.setPercentNice(val: String(Int(cpuNice)) + "%")
+        RunLoop.current.add(Timer(timeInterval: 1.0, repeats: true, block: { (timer) in print("Hi!")}), forMode: RunLoopMode.commonModes)
+        
+        
         pixelHeightCPU = Double((pbMax! / 100.0) * cpuUsageTotal)
         
         if (InterfaceStyle() == InterfaceStyle.Dark)
@@ -450,6 +477,7 @@ class AppDelegate: NSObject, NSApplicationDelegate {
             intervalTimer?.invalidate()
             print(UserSettings.updateInterval)
             intervalTimer = Timer.scheduledTimer(timeInterval: UserSettings.updateInterval, target: self, selector: #selector(updateAll), userInfo: nil, repeats: true)
+            RunLoop.current.add(intervalTimer!, forMode: RunLoopMode.commonModes)
             AppDelegate.currTimeInterval = AppDelegate.UserSettings.updateInterval
         }
     }
