@@ -32,6 +32,9 @@
 		0275B7F420C3DBF9000BEC7F /* Stopwatch.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0275B7F320C3DBF9000BEC7F /* Stopwatch.swift */; };
 		02AF908820C36F05002CE6C9 /* System.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02AF908720C36F05002CE6C9 /* System.swift */; };
 		02AF908A20C36F9E002CE6C9 /* Process2.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02AF908920C36F9E002CE6C9 /* Process2.swift */; };
+		02B8120720C95CAC00C98F0D /* CPUMenuView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 02B8120620C95CAC00C98F0D /* CPUMenuView.xib */; };
+		02B8120920C95D6600C98F0D /* CPUMenuView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02B8120820C95D6600C98F0D /* CPUMenuView.swift */; };
+		02B8120B20C9871000C98F0D /* MemMenuView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 02B8120A20C9871000C98F0D /* MemMenuView.xib */; };
 		02BF508020C7345600EC8E69 /* CPUViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02BF507F20C7345600EC8E69 /* CPUViewController.swift */; };
 		02E9CE2820C4DE1A00879EB1 /* CPUUsageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02E9CE2720C4DE1A00879EB1 /* CPUUsageViewController.swift */; };
 		02E9CE3020C526BE00879EB1 /* MyMainWindow.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02E9CE2F20C526BE00879EB1 /* MyMainWindow.swift */; };
@@ -91,6 +94,9 @@
 		0275B7F320C3DBF9000BEC7F /* Stopwatch.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Stopwatch.swift; sourceTree = "<group>"; };
 		02AF908720C36F05002CE6C9 /* System.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = System.swift; path = ../../../../../Downloads/System.swift; sourceTree = "<group>"; };
 		02AF908920C36F9E002CE6C9 /* Process2.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Process2.swift; path = ../../../../../Downloads/Process2.swift; sourceTree = "<group>"; };
+		02B8120620C95CAC00C98F0D /* CPUMenuView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = CPUMenuView.xib; sourceTree = "<group>"; };
+		02B8120820C95D6600C98F0D /* CPUMenuView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CPUMenuView.swift; sourceTree = "<group>"; };
+		02B8120A20C9871000C98F0D /* MemMenuView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MemMenuView.xib; sourceTree = "<group>"; };
 		02BF507F20C7345600EC8E69 /* CPUViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CPUViewController.swift; sourceTree = "<group>"; };
 		02E9CE2720C4DE1A00879EB1 /* CPUUsageViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CPUUsageViewController.swift; sourceTree = "<group>"; };
 		02E9CE2F20C526BE00879EB1 /* MyMainWindow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = MyMainWindow.swift; path = iGlance/MyMainWindow.swift; sourceTree = SOURCE_ROOT; };
@@ -179,6 +185,9 @@
 				02E9CE2720C4DE1A00879EB1 /* CPUUsageViewController.swift */,
 				02E9CE3120C5457500879EB1 /* MyMainWin.swift */,
 				02BF507F20C7345600EC8E69 /* CPUViewController.swift */,
+				02B8120620C95CAC00C98F0D /* CPUMenuView.xib */,
+				02B8120820C95D6600C98F0D /* CPUMenuView.swift */,
+				02B8120A20C9871000C98F0D /* MemMenuView.xib */,
 			);
 			path = iGlance;
 			sourceTree = "<group>";
@@ -311,6 +320,8 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				02B8120720C95CAC00C98F0D /* CPUMenuView.xib in Resources */,
+				02B8120B20C9871000C98F0D /* MemMenuView.xib in Resources */,
 				025AC39F20C0CD77000E0837 /* cpu_mem_util in Resources */,
 				025AC38F20C0AFE0000E0837 /* Assets.xcassets in Resources */,
 				025AC39220C0AFE0000E0837 /* Main.storyboard in Resources */,
@@ -350,6 +361,7 @@
 				0275B7DE20C3D1B3000BEC7F /* String.swift in Sources */,
 				0275B7EB20C3D1DA000BEC7F /* Lazy-split.swift in Sources */,
 				0275B7EC20C3D1DA000BEC7F /* Stream.swift in Sources */,
+				02B8120920C95D6600C98F0D /* CPUMenuView.swift in Sources */,
 				0275B7E220C3D1B3000BEC7F /* Files.swift in Sources */,
 				0275B7F420C3DBF9000BEC7F /* Stopwatch.swift in Sources */,
 				02E9CE2820C4DE1A00879EB1 /* CPUUsageViewController.swift in Sources */,

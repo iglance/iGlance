@@ -266,10 +266,16 @@ class ViewController: NSViewController {
                 {
                     let alert = NSAlert()
                     alert.messageText = ""
-                    alert.informativeText = "A new version (" + onlyversion + ") is available. Please visit: \n\n https://github.com/Moneypulation/iGlance"
+                    alert.informativeText = "A new version (" + onlyversion + ") is available at: \n\n https://github.com/Moneypulation/iGlance"
                     alert.alertStyle = .informational
+                    alert.addButton(withTitle: "Visit Website")
                     alert.addButton(withTitle: "OK")
-                    alert.runModal()
+                    if (alert.runModal() == .alertFirstButtonReturn)
+                    {
+                        if let url = URL(string: "https://github.com/Moneypulation/iGlance"), NSWorkspace.shared.open(url) {
+                            
+                        }
+                    }
                 }
                 else
                 {
@@ -277,6 +283,9 @@ class ViewController: NSViewController {
                     alert.messageText = ""
                     alert.informativeText = "Running latest version (" + onlyversion + ")"
                     alert.alertStyle = .informational
+                    let btnvisit = NSButtonCell(textCell: "Visit website")
+                    btnvisit.bezelStyle = .rounded
+                    btnvisit.isHighlighted = true
                     alert.addButton(withTitle: "OK")
                     alert.runModal()
                 }
@@ -322,4 +331,3 @@ class ViewController: NSViewController {
     }
     //MARK: Actions
 }
-
