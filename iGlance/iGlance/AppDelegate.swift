@@ -29,17 +29,17 @@ class AppDelegate: NSObject, NSApplicationDelegate {
     var btnFanSpeed: NSStatusBarButton?
     var menuFanSpeed: NSMenu?
     
-    let sItemBandwidth = NSStatusBar.system.statusItem(withLength: 60.0)
+    let sItemBandwidth = NSStatusBar.system.statusItem(withLength: 62.0)
     var btnBandwidth: NSStatusBarButton?
     var menuBandwidth: NSMenu?
     
-    let sItemMemUsage = NSStatusBar.system.statusItem(withLength: 25.0)
+    let sItemMemUsage = NSStatusBar.system.statusItem(withLength: 27.0)
     let myMemMenuView = MemMenuView(frame: NSRect(x: 0, y: 0, width: 170, height: 110))
     let niceitem2 = NSMenuItem(title: "", action: nil, keyEquivalent: "")
     var btnMemUsage: NSStatusBarButton?
     var menuMemUsage: NSMenu?
     
-    let sItemCPUUtil = NSStatusBar.system.statusItem(withLength: 25.0)
+    let sItemCPUUtil = NSStatusBar.system.statusItem(withLength: 27.0)
     let myCPUMenuView = CPUMenuView(frame: NSRect(x: 0, y: 0, width: 170, height: 90))
     let niceitem = NSMenuItem(title: "", action: nil, keyEquivalent: "")
     var btnCPUUtil: NSStatusBarButton?
@@ -48,6 +48,8 @@ class AppDelegate: NSObject, NSApplicationDelegate {
     let sItemCPUTemp = NSStatusBar.system.statusItem(withLength: NSStatusItem.variableLength)
     var btnCPUTemp: NSStatusBarButton?
     var menuCPUTemp: NSMenu?
+    
+    //var command: AsyncCommand?
     
     var myWindowController: MyMainWindow?
     
@@ -64,7 +66,7 @@ class AppDelegate: NSObject, NSApplicationDelegate {
         static var userWantsCPUUtil = true
         static var userWantsCPUTemp = true
         static var userWantsAutostart = true
-        static var cpuColor = NSColor.blue
+        static var cpuColor = NSColor.red
         static var memColor = NSColor.green
         static var updateInterval = 1.0
         static var tempUnit = TempUnit.Celcius
@@ -129,18 +131,74 @@ class AppDelegate: NSObject, NSApplicationDelegate {
 
     var intervalTimer: Timer?
     static var currTimeInterval = AppDelegate.UserSettings.updateInterval
+
+    var bandwidthTask: Process?
+    var curr: Array<Substring>?
     
     func applicationDidFinishLaunching(_ aNotification: Notification) {
         
-        // Replace with loadSessionSettings
-        /*
-        AppDelegate.UserSettings.userWantsCPUUtil = true
-        AppDelegate.UserSettings.userWantsCPUTemp = true
-        AppDelegate.UserSettings.userWantsFanSpeed = true
-        AppDelegate.UserSettings.userWantsMemUsage = true
-        AppDelegate.UserSettings.userWantsBandwidth = true
-        AppDelegate.UserSettings.userWantsAutostart = true
-        */
+        
+        // Create a Task instance
+        bandwidthTask = Process()
+        
+        // Set the task parameters
+        bandwidthTask?.launchPath = "/usr/bin/env"
+        bandwidthTask?.arguments = ["netstat", "-w1", "-l", "en0"]
+        
+        // Create a Pipe and make the task
+        // put all the output there
+        let pipe = Pipe()
+        bandwidthTask?.standardOutput = pipe
+        
+        let outputHandle = pipe.fileHandleForReading
+        outputHandle.waitForDataInBackgroundAndNotify()
+        
+        // When new data is available
+        var dataAvailable : NSObjectProtocol!
+        dataAvailable = NotificationCenter.default.addObserver(forName: NSNotification.Name.NSFileHandleDataAvailable, object: outputHandle, queue: nil) {  notification -> Void in
+                let data = pipe.fileHandleForReading.availableData
+                if data.count > 0 {
+                    if let str = NSString(data: data, encoding: String.Encoding.utf8.rawValue) {
+                        self.curr = [""]
+                        self.curr = str.replacingOccurrences(of: "  ", with: " ").replacingOccurrences(of: "  ", with: " ").replacingOccurrences(of: "  ", with: " ").replacingOccurrences(of: "  ", with: " ").split(separator: " ")
+                        if (self.curr == nil || (self.curr?.count)! < 6)
+                        {
+                            
+                        }
+                        else
+                        {
+                            if (Int64(self.curr![2]) == nil)
+                            {
+                                
+                            }
+                            else
+                            {
+                                self.dSpeed = Int64(self.curr![2])
+                                self.uSpeed = Int64(self.curr![5])
+                            }
+                        }
+                        
+                    }
+                    outputHandle.waitForDataInBackgroundAndNotify()
+                } else {
+                    NotificationCenter.default.removeObserver(dataAvailable)
+                }
+        }
+        
+        // When task has finished
+        var dataReady : NSObjectProtocol!
+        dataReady = NotificationCenter.default.addObserver(forName: Process.didTerminateNotification, object: pipe.fileHandleForReading, queue: nil) { notification -> Void in
+                print("Task terminated!")
+                NotificationCenter.default.removeObserver(dataReady)
+            }
+        
+        // Launch the task
+        bandwidthTask?.launch()
+ 
+
+        // ------------ MISSING LOAD SESSION SETTINGS ------------------
+        // -------------------------------------------------------------
+        
         
         var startedAtLogin = false
         for app in NSWorkspace.shared.runningApplications {
@@ -156,8 +214,8 @@ class AppDelegate: NSObject, NSApplicationDelegate {
         
         
         myWindowController = NSStoryboard(name: NSStoryboard.Name(rawValue: "Main"), bundle: nil).instantiateController(withIdentifier: NSStoryboard.SceneIdentifier(rawValue: "abcd")) as! MyMainWindow
-        myWindowController?.showWindow(self)
-        NSApp.activate(ignoringOtherApps: true)
+        //myWindowController?.showWindow(self)
+        //NSApp.activate(ignoringOtherApps: true)
         
         
         //popover.behavior = NSPopover.Behavior.transient;
@@ -330,7 +388,7 @@ class AppDelegate: NSObject, NSApplicationDelegate {
         //myCPUMenuView.percentNice.stringValue = String(cpuNice)
         //myCPUMenuView.setPercentNice(val: String(Int(cpuNice)) + "%")
         myCPUMenuView.percentNice.stringValue = String(Int(cpuNice)) + "%"
-        RunLoop.current.add(Timer(timeInterval: 1.0, repeats: true, block: { (timer) in print("")}), forMode: RunLoopMode.commonModes)
+        //RunLoop.current.add(Timer(timeInterval: 1.0, repeats: true, block: { (timer) in print("")}), forMode: RunLoopMode.commonModes)
         
         
         pixelHeightCPU = Double((pbMax! / 100.0) * cpuUsageTotal)
@@ -350,13 +408,13 @@ class AppDelegate: NSObject, NSApplicationDelegate {
         let imgFinal = NSImage(size: NSSize(width: 20, height: 18))
         imgFinal.lockFocus()
         let img1 = NSImage(named:NSImage.Name(cpuIMG!))
-        img1?.draw(at: NSPoint(x: 0, y: 0), from: NSZeroRect, operation: NSCompositingOperation.sourceOver, fraction: 1.0)
+        img1?.draw(at: NSPoint(x: 1, y: 0), from: NSZeroRect, operation: NSCompositingOperation.sourceOver, fraction: 1.0)
         if (AppDelegate.UserSettings.userWantsCPUBorder)
         {
             let img2 = NSImage(named:NSImage.Name(pbIMG!))
-            img2?.draw(at: NSPoint(x: 10, y: 0), from: NSZeroRect, operation: NSCompositingOperation.sourceOver, fraction: 1.0)
+            img2?.draw(at: NSPoint(x: 11, y: 0), from: NSZeroRect, operation: NSCompositingOperation.sourceOver, fraction: 1.0)
         }
-        pbFillRectCPU = NSRect(x: 11.0, y: 1.0, width: pixelWidth!, height: pixelHeightCPU!)
+        pbFillRectCPU = NSRect(x: 12.0, y: 1.0, width: pixelWidth!, height: pixelHeightCPU!)
         AppDelegate.UserSettings.cpuColor.setFill()
         pbFillRectCPU?.fill()
         NSColor.clear.setFill()
@@ -416,14 +474,14 @@ class AppDelegate: NSObject, NSApplicationDelegate {
         let imgFinal = NSImage(size: NSSize(width: 20, height: 18))
         imgFinal.lockFocus()
         let img1 = NSImage(named:NSImage.Name(memIMG!))
-        img1?.draw(at: NSPoint(x: 0, y: 0), from: NSZeroRect, operation: NSCompositingOperation.sourceOver, fraction: 1.0)
+        img1?.draw(at: NSPoint(x: 1, y: 0), from: NSZeroRect, operation: NSCompositingOperation.sourceOver, fraction: 1.0)
         if (AppDelegate.UserSettings.userWantsMemBorder)
         {
             let img2 = NSImage(named:NSImage.Name(pbIMG!))
-            img2?.draw(at: NSPoint(x: 10, y: 0), from: NSZeroRect, operation: NSCompositingOperation.sourceOver, fraction: 1.0)
+            img2?.draw(at: NSPoint(x: 11, y: 0), from: NSZeroRect, operation: NSCompositingOperation.sourceOver, fraction: 1.0)
             
         }
-        pbFillRectCPU = NSRect(x: 11.0, y: 1.0, width: pixelWidth!, height: pixelHeightMEM!)
+        pbFillRectCPU = NSRect(x: 12.0, y: 1.0, width: pixelWidth!, height: pixelHeightMEM!)
         AppDelegate.UserSettings.memColor.setFill()
         pbFillRectCPU?.fill()
         NSColor.clear.setFill()
@@ -475,8 +533,17 @@ class AppDelegate: NSObject, NSApplicationDelegate {
             sItemBandwidth.isVisible = true
             if (firstBandwidth)
             {
-                updateBandwidth()
+                //updateBandwidth()
                 firstBandwidth = false
+            }
+            else
+            {
+                /*
+                if (command?.isRunning)!
+                {
+                    //print(command?.suspend())
+                }
+                */
             }
             reallyUpdateBandwidth()
         }
@@ -489,7 +556,7 @@ class AppDelegate: NSObject, NSApplicationDelegate {
             intervalTimer?.invalidate()
             print(UserSettings.updateInterval)
             intervalTimer = Timer.scheduledTimer(timeInterval: UserSettings.updateInterval, target: self, selector: #selector(updateAll), userInfo: nil, repeats: true)
-            RunLoop.current.add(intervalTimer!, forMode: RunLoopMode.commonModes)
+            //RunLoop.current.add(intervalTimer!, forMode: RunLoopMode.commonModes)
             AppDelegate.currTimeInterval = AppDelegate.UserSettings.updateInterval
         }
     }
@@ -577,7 +644,7 @@ class AppDelegate: NSObject, NSApplicationDelegate {
         imgFinal.lockFocus()
         let img1 = NSImage(named:NSImage.Name(bandIMG!))
         
-        img1?.draw(at: NSPoint(x: 0, y: 3), from: NSZeroRect, operation: NSCompositingOperation.sourceOver, fraction: 1.0)
+        img1?.draw(at: NSPoint(x: 2, y: 3), from: NSZeroRect, operation: NSCompositingOperation.sourceOver, fraction: 1.0)
         
         let paragraphStyle = NSMutableParagraphStyle()
         paragraphStyle.lineSpacing = 0.00000001
@@ -644,7 +711,11 @@ class AppDelegate: NSObject, NSApplicationDelegate {
     
     @objc func updateBandwidth()
     {
-        let command = runAsync("netstat","-w1 -l en0").onCompletion { command in
+        return
+        //print("UPDATE CALLED")
+        //command = runAsync("netstat","-w1 -l en0").onCompletion { command in
+        /*
+        command = runAsync("netstat","-w1 -l en0&\nt=$!\nsleep 3\nkill $t").onCompletion { command in
             print("fin")
         }
         var curr: Array<Substring>?
@@ -653,9 +724,10 @@ class AppDelegate: NSObject, NSApplicationDelegate {
         //var str1: String?
         //var str2: String?
         
-        command.stdout.onOutput { stdout in
-            for line in command.stdout.lines()
+        command?.stdout.onOutput { stdout in
+            for line in (self.command?.stdout.lines())!
             {
+                print("aha")
                 curr = line.replacingOccurrences(of: "  ", with: " ").replacingOccurrences(of: "  ", with: " ").replacingOccurrences(of: "  ", with: " ").replacingOccurrences(of: "  ", with: " ").split(separator: " ")
                 if (curr == nil || (curr?.count)! < 6)
                 {
@@ -667,34 +739,15 @@ class AppDelegate: NSObject, NSApplicationDelegate {
                 }
                 else
                 {
-                    /*
-                    print(curr ?? "")
-                    str1 = "Download: " + curr![2]
-                    str2 = "Upload: " + curr![5]
-                    print(str1 ?? "")
-                    print(str2 ?? "")
-                    */
-                    //self.myBandwidthView?.updateBandwidth(down: Int64(curr![2])!, up: Int64(curr![5])!)
                     self.dSpeed = Int64(curr![2])
                     self.uSpeed = Int64(curr![5])
                 }
                 //print("-------")
             }
-            /*
-            let str = command.stdout.readSome() ?? ""
-            let trimmedString = str.replacingOccurrences(of: "  ", with: " ").replacingOccurrences(of: "  ", with: " ").replacingOccurrences(of: "  ", with: " ").replacingOccurrences(of: "  ", with: " ").split(separator: " ")
             
-            if (Int64(trimmedString[0]) != nil)
-            {
-                print(trimmedString)
-                let str1 = "Download: " + trimmedString[2]
-                let str2 = "Upload: " + trimmedString[5]
-                print(str1)
-                print(str2)
-            }
-             */
-            //print("---------")
         }
+        */
+        
     }
     
     @objc func updateCPUTemp() {

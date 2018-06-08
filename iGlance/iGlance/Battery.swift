@@ -4,7 +4,7 @@
 //
 // The MIT License
 //
-// Copyright (C) 2014, 2015  beltex <https://github.com/beltex>
+// Copyright (C) 2014-2017  beltex <https://github.com/beltex>
 //
 // Permission is hereby granted, free of charge, to any person obtaining a copy
 // of this software and associated documentation files (the "Software"), to deal
@@ -43,9 +43,9 @@ public struct Battery {
     
     /// Temperature units
     public enum TemperatureUnit {
-        case Celsius
-        case Fahrenheit
-        case Kelvin
+        case celsius
+        case fahrenheit
+        case kelvin
     }
     
     
@@ -55,7 +55,7 @@ public struct Battery {
     
     
     /// Battery property keys. Sourced via 'ioreg -brc AppleSmartBattery'
-    private enum Key: String {
+    fileprivate enum Key: String {
         case ACPowered        = "ExternalConnected"
         case Amperage         = "Amperage"
         /// Current charge
@@ -80,10 +80,10 @@ public struct Battery {
     
     
     /// Name of the battery IOService as seen in the IORegistry
-    private static let IOSERVICE_BATTERY = "AppleSmartBattery"
+    fileprivate static let IOSERVICE_BATTERY = "AppleSmartBattery"
     
     
-    private var service: io_service_t = 0
+    fileprivate var service: io_service_t = 0
     
     
     //--------------------------------------------------------------------------
@@ -107,7 +107,7 @@ public struct Battery {
     public mutating func open() -> kern_return_t {
         if (service != 0) {
             #if DEBUG
-                println("WARNING - \(__FILE__):\(__FUNCTION__) - " +
+                print("WARNING - \(#file):\(#function) - " +
                         "\(Battery.IOSERVICE_BATTERY) connection already open")
             #endif
             return kIOReturnStillOpen
@@ -116,11 +116,11 @@ public struct Battery {
         
         // TODO: Could there be more than one service? serveral batteries?
         service = IOServiceGetMatchingService(kIOMasterPortDefault,
-         IOServiceNameMatching(Battery.IOSERVICE_BATTERY).takeUnretainedValue())
+                  IOServiceNameMatching(Battery.IOSERVICE_BATTERY))
         
         if (service == 0) {
             #if DEBUG
-                println("ERROR - \(__FILE__):\(__FUNCTION__) - " +
+                print("ERROR - \(#file):\(#function) - " +
                         "\(Battery.IOSERVICE_BATTERY) service not found")
             #endif
             return kIOReturnNotFound
@@ -141,7 +141,7 @@ public struct Battery {
         
         #if DEBUG
             if (result != kIOReturnSuccess) {
-                println("ERROR - \(__FILE__):\(__FUNCTION__) - Failed to close")
+                print("ERROR - \(#file):\(#function) - Failed to close")
             }
         #endif
         
@@ -162,9 +162,9 @@ public struct Battery {
     */
     public func currentCapacity() -> Int {
         let prop = IORegistryEntryCreateCFProperty(service,
-                                                   Key.CurrentCapacity.rawValue,
+                                                   Key.CurrentCapacity.rawValue as CFString?,
                                                    kCFAllocatorDefault,0)
-        return prop.takeUnretainedValue() as! Int
+        return prop!.takeUnretainedValue() as! Int
     }
     
     
@@ -176,9 +176,9 @@ public struct Battery {
     */
     public func maxCapactiy() -> Int {
         let prop = IORegistryEntryCreateCFProperty(service,
-                                                   Key.MaxCapacity.rawValue,
+                                                   Key.MaxCapacity.rawValue as CFString?,
                                                    kCFAllocatorDefault, 0)
-        return prop.takeUnretainedValue() as! Int
+        return prop!.takeUnretainedValue() as! Int
     }
     
     
@@ -191,9 +191,9 @@ public struct Battery {
     */
     public func designCapacity() -> Int {
         let prop = IORegistryEntryCreateCFProperty(service,
-                                                   Key.DesignCapacity.rawValue,
+                                                   Key.DesignCapacity.rawValue as CFString?,
                                                    kCFAllocatorDefault, 0)
-        return prop.takeUnretainedValue() as! Int
+        return prop!.takeUnretainedValue() as! Int
     }
     
     
@@ -204,9 +204,9 @@ public struct Battery {
     */
     public func cycleCount() -> Int {
         let prop = IORegistryEntryCreateCFProperty(service,
-                                                   Key.CycleCount.rawValue,
+                                                   Key.CycleCount.rawValue as CFString?,
                                                    kCFAllocatorDefault, 0)
-        return prop.takeUnretainedValue() as! Int
+        return prop!.takeUnretainedValue() as! Int
     }
     
     
@@ -217,9 +217,9 @@ public struct Battery {
     */
     public func designCycleCount() -> Int {
         let prop = IORegistryEntryCreateCFProperty(service,
-                                                  Key.DesignCycleCount.rawValue,
+                                                   Key.DesignCycleCount.rawValue as CFString?,
                                                   kCFAllocatorDefault, 0)
-        return prop.takeUnretainedValue() as! Int
+        return prop!.takeUnretainedValue() as! Int
     }
     
     
@@ -230,9 +230,9 @@ public struct Battery {
     */
     public func isACPowered() -> Bool {
         let prop = IORegistryEntryCreateCFProperty(service,
-                                                   Key.ACPowered.rawValue,
+                                                   Key.ACPowered.rawValue as CFString?,
                                                    kCFAllocatorDefault, 0)
-        return prop.takeUnretainedValue() as! Bool
+        return prop!.takeUnretainedValue() as! Bool
     }
     
     
@@ -243,9 +243,9 @@ public struct Battery {
     */
     public func isCharging() -> Bool {
         let prop = IORegistryEntryCreateCFProperty(service,
-                                                   Key.IsCharging.rawValue,
+                                                   Key.IsCharging.rawValue as CFString?,
                                                    kCFAllocatorDefault, 0)
-        return prop.takeUnretainedValue() as! Bool
+        return prop!.takeUnretainedValue() as! Bool
     }
     
     
@@ -256,9 +256,9 @@ public struct Battery {
     */
     public func isCharged() -> Bool {
         let prop = IORegistryEntryCreateCFProperty(service,
-                                                   Key.FullyCharged.rawValue,
+                                                   Key.FullyCharged.rawValue as CFString?,
                                                    kCFAllocatorDefault, 0)
-        return prop.takeUnretainedValue() as! Bool
+        return prop!.takeUnretainedValue() as! Bool
     }
     
     
@@ -282,9 +282,9 @@ public struct Battery {
     */
     public func timeRemaining() -> Int {        
         let prop = IORegistryEntryCreateCFProperty(service,
-                                                   Key.TimeRemaining.rawValue,
+                                                   Key.TimeRemaining.rawValue as CFString?,
                                                    kCFAllocatorDefault, 0)
-        return prop.takeUnretainedValue() as! Int
+        return prop!.takeUnretainedValue() as! Int
     }
 
     
@@ -310,21 +310,21 @@ public struct Battery {
     
     :returns: Battery temperature, by default in Celsius.
     */
-    public func temperature(unit: TemperatureUnit = .Celsius) -> Double {
+    public func temperature(_ unit: TemperatureUnit = .celsius) -> Double {
         let prop = IORegistryEntryCreateCFProperty(service,
-                                                   Key.Temperature.rawValue,
+                                                   Key.Temperature.rawValue as CFString?,
                                                    kCFAllocatorDefault, 0)
         
-        var temperature = prop.takeUnretainedValue() as! Double / 100.0
+        var temperature = prop?.takeUnretainedValue() as! Double / 100.0
         
         switch unit {
-            case .Celsius:
+            case .celsius:
                 // Do nothing - in Celsius by default
                 // Must have complete switch though with executed command
                 break
-            case .Fahrenheit:
+            case .fahrenheit:
                 temperature = Battery.toFahrenheit(temperature)
-            case .Kelvin:
+            case .kelvin:
                 temperature = Battery.toKelvin(temperature)
         }
         
@@ -343,7 +343,7 @@ public struct Battery {
     :param: temperature Temperature in Celsius
     :returns: Temperature in Fahrenheit
     */
-    private static func toFahrenheit(temperature: Double) -> Double {
+    fileprivate static func toFahrenheit(_ temperature: Double) -> Double {
         // https://en.wikipedia.org/wiki/Fahrenheit#Definition_and_conversions
         return (temperature * 1.8) + 32
     }
@@ -355,7 +355,7 @@ public struct Battery {
     :param: temperature Temperature in Celsius
     :returns: Temperature in Kelvin
     */
-    private static func toKelvin(temperature: Double) -> Double {
+    fileprivate static func toKelvin(_ temperature: Double) -> Double {
         // https://en.wikipedia.org/wiki/Kelvin
         return temperature + 273.15
     }

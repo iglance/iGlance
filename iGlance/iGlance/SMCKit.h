@@ -1,10 +1,10 @@
 //
-// SystemKit.h
-// SystemKit
+// SMCKit.h
+// SMCKit
 //
 // The MIT License
 //
-// Copyright (C) 2014, 2015  beltex <https://github.com/beltex>
+// Copyright (C) 2014-2017  beltex <https://beltex.github.io>
 //
 // Permission is hereby granted, free of charge, to any person obtaining a copy
 // of this software and associated documentation files (the "Software"), to deal
@@ -26,11 +26,11 @@
 
 #import <Cocoa/Cocoa.h>
 
-//! Project version number for SystemKit.
-FOUNDATION_EXPORT double SystemKitVersionNumber;
+//! Project version number for SMCKit.
+FOUNDATION_EXPORT double SMCKitVersionNumber;
 
-//! Project version string for SystemKit.
-FOUNDATION_EXPORT const unsigned char SystemKitVersionString[];
+//! Project version string for SMCKit.
+FOUNDATION_EXPORT const unsigned char SMCKitVersionString[];
 
 // In this header, you should import all the public headers of your framework
-// using statements like #import <SystemKit/PublicHeader.h>
+// using statements like #import <SMCKit/PublicHeader.h>

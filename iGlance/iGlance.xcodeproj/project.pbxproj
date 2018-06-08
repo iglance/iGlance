@@ -7,40 +7,19 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		023642E820CAD73B00CDB17D /* Process.swift in Sources */ = {isa = PBXBuildFile; fileRef = 023642E720CAD73B00CDB17D /* Process.swift */; };
+		023642EC20CAD7AD00CDB17D /* Battery.swift in Sources */ = {isa = PBXBuildFile; fileRef = 023642EB20CAD7AD00CDB17D /* Battery.swift */; };
+		023642F120CAD81D00CDB17D /* SMC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 023642F020CAD81D00CDB17D /* SMC.swift */; };
+		023642F320CAD86B00CDB17D /* System.swift in Sources */ = {isa = PBXBuildFile; fileRef = 023642F220CAD86B00CDB17D /* System.swift */; };
 		025AC38B20C0AFDD000E0837 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 025AC38A20C0AFDD000E0837 /* AppDelegate.swift */; };
 		025AC38D20C0AFDD000E0837 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 025AC38C20C0AFDD000E0837 /* ViewController.swift */; };
 		025AC38F20C0AFE0000E0837 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 025AC38E20C0AFE0000E0837 /* Assets.xcassets */; };
 		025AC39220C0AFE0000E0837 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 025AC39020C0AFE0000E0837 /* Main.storyboard */; };
-		025AC39B20C0B09C000E0837 /* BandwidthView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 025AC39A20C0B09C000E0837 /* BandwidthView.swift */; };
-		025AC39D20C0B120000E0837 /* CPUUsageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 025AC39C20C0B120000E0837 /* CPUUsageView.swift */; };
-		025AC39F20C0CD77000E0837 /* cpu_mem_util in Resources */ = {isa = PBXBuildFile; fileRef = 025AC39E20C0CD77000E0837 /* cpu_mem_util */; };
-		0275B7CA20C3A1BF000BEC7F /* Battery.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0275B7C920C3A1BF000BEC7F /* Battery.swift */; };
-		0275B7CC20C3B015000BEC7F /* MemUsageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0275B7CB20C3B015000BEC7F /* MemUsageView.swift */; };
-		0275B7CF20C3BE8D000BEC7F /* smc.c in Sources */ = {isa = PBXBuildFile; fileRef = 0275B7CE20C3BE8D000BEC7F /* smc.c */; };
-		0275B7D220C3BEAE000BEC7F /* SMCObjC.m in Sources */ = {isa = PBXBuildFile; fileRef = 0275B7D120C3BEAE000BEC7F /* SMCObjC.m */; };
-		0275B7D520C3C211000BEC7F /* SMC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0275B7D420C3C211000BEC7F /* SMC.swift */; };
-		0275B7DE20C3D1B3000BEC7F /* String.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0275B7D720C3D1B2000BEC7F /* String.swift */; };
-		0275B7DF20C3D1B3000BEC7F /* FileHandle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0275B7D820C3D1B2000BEC7F /* FileHandle.swift */; };
-		0275B7E020C3D1B3000BEC7F /* Process.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0275B7D920C3D1B2000BEC7F /* Process.swift */; };
-		0275B7E220C3D1B3000BEC7F /* Files.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0275B7DB20C3D1B2000BEC7F /* Files.swift */; };
-		0275B7E320C3D1B3000BEC7F /* Bash.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0275B7DC20C3D1B2000BEC7F /* Bash.swift */; };
-		0275B7E420C3D1B3000BEC7F /* Command.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0275B7DD20C3D1B3000BEC7F /* Command.swift */; };
-		0275B7E820C3D1D2000BEC7F /* Array.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0275B7E720C3D1D1000BEC7F /* Array.swift */; };
-		0275B7EB20C3D1DA000BEC7F /* Lazy-split.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0275B7E920C3D1DA000BEC7F /* Lazy-split.swift */; };
-		0275B7EC20C3D1DA000BEC7F /* Stream.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0275B7EA20C3D1DA000BEC7F /* Stream.swift */; };
-		0275B7F220C3D51F000BEC7F /* Context.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0275B7F120C3D51E000BEC7F /* Context.swift */; };
-		0275B7F420C3DBF9000BEC7F /* Stopwatch.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0275B7F320C3DBF9000BEC7F /* Stopwatch.swift */; };
-		02AF908820C36F05002CE6C9 /* System.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02AF908720C36F05002CE6C9 /* System.swift */; };
-		02AF908A20C36F9E002CE6C9 /* Process2.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02AF908920C36F9E002CE6C9 /* Process2.swift */; };
 		02B8120720C95CAC00C98F0D /* CPUMenuView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 02B8120620C95CAC00C98F0D /* CPUMenuView.xib */; };
 		02B8120920C95D6600C98F0D /* CPUMenuView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02B8120820C95D6600C98F0D /* CPUMenuView.swift */; };
 		02B8120B20C9871000C98F0D /* MemMenuView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 02B8120A20C9871000C98F0D /* MemMenuView.xib */; };
 		02B8120D20C9874D00C98F0D /* MemMenuView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02B8120C20C9874D00C98F0D /* MemMenuView.swift */; };
-		02BF508020C7345600EC8E69 /* CPUViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02BF507F20C7345600EC8E69 /* CPUViewController.swift */; };
-		02E9CE2820C4DE1A00879EB1 /* CPUUsageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02E9CE2720C4DE1A00879EB1 /* CPUUsageViewController.swift */; };
 		02E9CE3020C526BE00879EB1 /* MyMainWindow.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02E9CE2F20C526BE00879EB1 /* MyMainWindow.swift */; };
-		02E9CE3220C5457500879EB1 /* MyMainWin.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02E9CE3120C5457500879EB1 /* MyMainWin.swift */; };
-		02EBE18C20C337170064A55C /* cpu_mem_util in CopyFiles */ = {isa = PBXBuildFile; fileRef = 025AC39E20C0CD77000E0837 /* cpu_mem_util */; settings = {ATTRIBUTES = (CodeSignOnCopy, ); }; };
 		02ECFC7420C80A9300E0A1D7 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02ECFC7320C80A9300E0A1D7 /* AppDelegate.swift */; };
 		02ECFC7820C80A9500E0A1D7 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 02ECFC7720C80A9500E0A1D7 /* Assets.xcassets */; };
 		02ECFC7B20C80A9500E0A1D7 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 02ECFC7920C80A9500E0A1D7 /* Main.storyboard */; };
@@ -56,13 +35,17 @@
 			dstSubfolderSpec = 1;
 			files = (
 				02ECFC8120C80CBA00E0A1D7 /* iGlanceLauncher.app in CopyFiles */,
-				02EBE18C20C337170064A55C /* cpu_mem_util in CopyFiles */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		023642E720CAD73B00CDB17D /* Process.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Process.swift; sourceTree = "<group>"; };
+		023642EB20CAD7AD00CDB17D /* Battery.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Battery.swift; sourceTree = "<group>"; };
+		023642EE20CAD80500CDB17D /* SMCKit.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SMCKit.h; sourceTree = "<group>"; };
+		023642F020CAD81D00CDB17D /* SMC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SMC.swift; sourceTree = "<group>"; };
+		023642F220CAD86B00CDB17D /* System.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = System.swift; sourceTree = "<group>"; };
 		025AC38720C0AFDD000E0837 /* iGlance.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = iGlance.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		025AC38A20C0AFDD000E0837 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		025AC38C20C0AFDD000E0837 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -70,39 +53,11 @@
 		025AC39120C0AFE0000E0837 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		025AC39320C0AFE0000E0837 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		025AC39420C0AFE0000E0837 /* iGlance.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = iGlance.entitlements; sourceTree = "<group>"; };
-		025AC39A20C0B09C000E0837 /* BandwidthView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BandwidthView.swift; sourceTree = "<group>"; };
-		025AC39C20C0B120000E0837 /* CPUUsageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CPUUsageView.swift; sourceTree = "<group>"; };
-		025AC39E20C0CD77000E0837 /* cpu_mem_util */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.executable"; name = cpu_mem_util; path = ../../../../../Documents/iGlanceBackupDom/iGlance/iGlance/cpu_mem_util; sourceTree = "<group>"; };
-		0275B7C920C3A1BF000BEC7F /* Battery.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Battery.swift; path = ../../../../../Downloads/Battery.swift; sourceTree = "<group>"; };
-		0275B7CB20C3B015000BEC7F /* MemUsageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MemUsageView.swift; sourceTree = "<group>"; };
-		0275B7CD20C3BE8C000BEC7F /* iGlance-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "iGlance-Bridging-Header.h"; sourceTree = "<group>"; };
-		0275B7CE20C3BE8D000BEC7F /* smc.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; name = smc.c; path = ../../../../../Documents/iGlanceBackupDom/iGlance/iGlance/smc.c; sourceTree = "<group>"; };
-		0275B7D020C3BE9A000BEC7F /* smc.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = smc.h; path = ../../../../../Documents/iGlanceBackupDom/iGlance/iGlance/smc.h; sourceTree = "<group>"; };
-		0275B7D120C3BEAE000BEC7F /* SMCObjC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SMCObjC.m; path = ../../../../../Documents/iGlanceBackupDom/iGlance/iGlance/SMCObjC.m; sourceTree = "<group>"; };
-		0275B7D320C3BEB6000BEC7F /* SMCObjC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SMCObjC.h; path = ../../../../../Documents/iGlanceBackupDom/iGlance/iGlance/SMCObjC.h; sourceTree = "<group>"; };
-		0275B7D420C3C211000BEC7F /* SMC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = SMC.swift; path = ../../../../../Downloads/SMC.swift; sourceTree = "<group>"; };
-		0275B7D620C3C24A000BEC7F /* SMCKit.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SMCKit.h; path = ../../../../../Downloads/SMCKit.h; sourceTree = "<group>"; };
-		0275B7D720C3D1B2000BEC7F /* String.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = String.swift; path = "../../../../../Downloads/SwiftShell-master/Sources/SwiftShell/String.swift"; sourceTree = "<group>"; };
-		0275B7D820C3D1B2000BEC7F /* FileHandle.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = FileHandle.swift; path = "../../../../../Downloads/SwiftShell-master/Sources/SwiftShell/FileHandle.swift"; sourceTree = "<group>"; };
-		0275B7D920C3D1B2000BEC7F /* Process.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Process.swift; path = "../../../../../Downloads/SwiftShell-master/Sources/SwiftShell/Process.swift"; sourceTree = "<group>"; };
-		0275B7DB20C3D1B2000BEC7F /* Files.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Files.swift; path = "../../../../../Downloads/SwiftShell-master/Sources/SwiftShell/Files.swift"; sourceTree = "<group>"; };
-		0275B7DC20C3D1B2000BEC7F /* Bash.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Bash.swift; path = "../../../../../Downloads/SwiftShell-master/Sources/SwiftShell/Bash.swift"; sourceTree = "<group>"; };
-		0275B7DD20C3D1B3000BEC7F /* Command.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Command.swift; path = "../../../../../Downloads/SwiftShell-master/Sources/SwiftShell/Command.swift"; sourceTree = "<group>"; };
-		0275B7E720C3D1D1000BEC7F /* Array.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Array.swift; path = "../../../../../../Downloads/SwiftShell-master/Sources/SwiftShell/General/Array.swift"; sourceTree = "<group>"; };
-		0275B7E920C3D1DA000BEC7F /* Lazy-split.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = "Lazy-split.swift"; path = "../../../../../../Downloads/SwiftShell-master/Sources/SwiftShell/Stream/Lazy-split.swift"; sourceTree = "<group>"; };
-		0275B7EA20C3D1DA000BEC7F /* Stream.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Stream.swift; path = "../../../../../../Downloads/SwiftShell-master/Sources/SwiftShell/Stream/Stream.swift"; sourceTree = "<group>"; };
-		0275B7F120C3D51E000BEC7F /* Context.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Context.swift; path = "../../../../../Downloads/SwiftShell-master/Sources/SwiftShell/Context.swift"; sourceTree = "<group>"; };
-		0275B7F320C3DBF9000BEC7F /* Stopwatch.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Stopwatch.swift; sourceTree = "<group>"; };
-		02AF908720C36F05002CE6C9 /* System.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = System.swift; path = ../../../../../Downloads/System.swift; sourceTree = "<group>"; };
-		02AF908920C36F9E002CE6C9 /* Process2.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Process2.swift; path = ../../../../../Downloads/Process2.swift; sourceTree = "<group>"; };
 		02B8120620C95CAC00C98F0D /* CPUMenuView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = CPUMenuView.xib; sourceTree = "<group>"; };
 		02B8120820C95D6600C98F0D /* CPUMenuView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CPUMenuView.swift; sourceTree = "<group>"; };
 		02B8120A20C9871000C98F0D /* MemMenuView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MemMenuView.xib; sourceTree = "<group>"; };
 		02B8120C20C9874D00C98F0D /* MemMenuView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MemMenuView.swift; sourceTree = "<group>"; };
-		02BF507F20C7345600EC8E69 /* CPUViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CPUViewController.swift; sourceTree = "<group>"; };
-		02E9CE2720C4DE1A00879EB1 /* CPUUsageViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CPUUsageViewController.swift; sourceTree = "<group>"; };
 		02E9CE2F20C526BE00879EB1 /* MyMainWindow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = MyMainWindow.swift; path = iGlance/MyMainWindow.swift; sourceTree = SOURCE_ROOT; };
-		02E9CE3120C5457500879EB1 /* MyMainWin.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyMainWin.swift; sourceTree = "<group>"; };
 		02ECFC7120C80A9300E0A1D7 /* iGlanceLauncher.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = iGlanceLauncher.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		02ECFC7320C80A9300E0A1D7 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		02ECFC7720C80A9500E0A1D7 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -153,63 +108,24 @@
 		025AC38920C0AFDD000E0837 /* iGlance */ = {
 			isa = PBXGroup;
 			children = (
-				0275B7E620C3D1C6000BEC7F /* Stream */,
-				0275B7E520C3D1BD000BEC7F /* General */,
-				025AC39E20C0CD77000E0837 /* cpu_mem_util */,
 				025AC38A20C0AFDD000E0837 /* AppDelegate.swift */,
 				025AC38C20C0AFDD000E0837 /* ViewController.swift */,
-				0275B7DB20C3D1B2000BEC7F /* Files.swift */,
 				02E9CE2F20C526BE00879EB1 /* MyMainWindow.swift */,
-				0275B7F320C3DBF9000BEC7F /* Stopwatch.swift */,
-				02AF908920C36F9E002CE6C9 /* Process2.swift */,
-				0275B7CE20C3BE8D000BEC7F /* smc.c */,
-				0275B7F120C3D51E000BEC7F /* Context.swift */,
-				0275B7DC20C3D1B2000BEC7F /* Bash.swift */,
-				0275B7DD20C3D1B3000BEC7F /* Command.swift */,
-				0275B7D820C3D1B2000BEC7F /* FileHandle.swift */,
-				0275B7D920C3D1B2000BEC7F /* Process.swift */,
-				0275B7D720C3D1B2000BEC7F /* String.swift */,
-				0275B7C920C3A1BF000BEC7F /* Battery.swift */,
+				023642E720CAD73B00CDB17D /* Process.swift */,
+				023642EB20CAD7AD00CDB17D /* Battery.swift */,
 				025AC38E20C0AFE0000E0837 /* Assets.xcassets */,
-				0275B7D420C3C211000BEC7F /* SMC.swift */,
-				0275B7D620C3C24A000BEC7F /* SMCKit.h */,
-				0275B7D020C3BE9A000BEC7F /* smc.h */,
-				02AF908720C36F05002CE6C9 /* System.swift */,
-				0275B7D120C3BEAE000BEC7F /* SMCObjC.m */,
+				023642F220CAD86B00CDB17D /* System.swift */,
+				023642F020CAD81D00CDB17D /* SMC.swift */,
+				023642EE20CAD80500CDB17D /* SMCKit.h */,
 				025AC39020C0AFE0000E0837 /* Main.storyboard */,
-				0275B7D320C3BEB6000BEC7F /* SMCObjC.h */,
 				025AC39320C0AFE0000E0837 /* Info.plist */,
 				025AC39420C0AFE0000E0837 /* iGlance.entitlements */,
-				025AC39C20C0B120000E0837 /* CPUUsageView.swift */,
-				025AC39A20C0B09C000E0837 /* BandwidthView.swift */,
-				0275B7CB20C3B015000BEC7F /* MemUsageView.swift */,
-				0275B7CD20C3BE8C000BEC7F /* iGlance-Bridging-Header.h */,
-				02E9CE2720C4DE1A00879EB1 /* CPUUsageViewController.swift */,
-				02E9CE3120C5457500879EB1 /* MyMainWin.swift */,
-				02BF507F20C7345600EC8E69 /* CPUViewController.swift */,
 				02B8120620C95CAC00C98F0D /* CPUMenuView.xib */,
 				02B8120820C95D6600C98F0D /* CPUMenuView.swift */,
 				02B8120A20C9871000C98F0D /* MemMenuView.xib */,
 				02B8120C20C9874D00C98F0D /* MemMenuView.swift */,
 			);
 			path = iGlance;
-			sourceTree = "<group>";
-		};
-		0275B7E520C3D1BD000BEC7F /* General */ = {
-			isa = PBXGroup;
-			children = (
-				0275B7E720C3D1D1000BEC7F /* Array.swift */,
-			);
-			path = General;
-			sourceTree = "<group>";
-		};
-		0275B7E620C3D1C6000BEC7F /* Stream */ = {
-			isa = PBXGroup;
-			children = (
-				0275B7E920C3D1DA000BEC7F /* Lazy-split.swift */,
-				0275B7EA20C3D1DA000BEC7F /* Stream.swift */,
-			);
-			path = Stream;
 			sourceTree = "<group>";
 		};
 		02ECFC7220C80A9300E0A1D7 /* iGlanceLauncher */ = {
@@ -325,7 +241,6 @@
 			files = (
 				02B8120720C95CAC00C98F0D /* CPUMenuView.xib in Resources */,
 				02B8120B20C9871000C98F0D /* MemMenuView.xib in Resources */,
-				025AC39F20C0CD77000E0837 /* cpu_mem_util in Resources */,
 				025AC38F20C0AFE0000E0837 /* Assets.xcassets in Resources */,
 				025AC39220C0AFE0000E0837 /* Main.storyboard in Resources */,
 			);
@@ -347,34 +262,15 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				023642F320CAD86B00CDB17D /* System.swift in Sources */,
 				02E9CE3020C526BE00879EB1 /* MyMainWindow.swift in Sources */,
-				0275B7CA20C3A1BF000BEC7F /* Battery.swift in Sources */,
-				02AF908820C36F05002CE6C9 /* System.swift in Sources */,
+				023642E820CAD73B00CDB17D /* Process.swift in Sources */,
 				02B8120D20C9874D00C98F0D /* MemMenuView.swift in Sources */,
-				0275B7DF20C3D1B3000BEC7F /* FileHandle.swift in Sources */,
-				02E9CE3220C5457500879EB1 /* MyMainWin.swift in Sources */,
-				02BF508020C7345600EC8E69 /* CPUViewController.swift in Sources */,
-				0275B7F220C3D51F000BEC7F /* Context.swift in Sources */,
+				023642EC20CAD7AD00CDB17D /* Battery.swift in Sources */,
 				025AC38D20C0AFDD000E0837 /* ViewController.swift in Sources */,
-				0275B7E420C3D1B3000BEC7F /* Command.swift in Sources */,
-				0275B7CF20C3BE8D000BEC7F /* smc.c in Sources */,
-				025AC39D20C0B120000E0837 /* CPUUsageView.swift in Sources */,
-				0275B7E320C3D1B3000BEC7F /* Bash.swift in Sources */,
-				0275B7E820C3D1D2000BEC7F /* Array.swift in Sources */,
-				0275B7D220C3BEAE000BEC7F /* SMCObjC.m in Sources */,
-				0275B7DE20C3D1B3000BEC7F /* String.swift in Sources */,
-				0275B7EB20C3D1DA000BEC7F /* Lazy-split.swift in Sources */,
-				0275B7EC20C3D1DA000BEC7F /* Stream.swift in Sources */,
+				023642F120CAD81D00CDB17D /* SMC.swift in Sources */,
 				02B8120920C95D6600C98F0D /* CPUMenuView.swift in Sources */,
-				0275B7E220C3D1B3000BEC7F /* Files.swift in Sources */,
-				0275B7F420C3DBF9000BEC7F /* Stopwatch.swift in Sources */,
-				02E9CE2820C4DE1A00879EB1 /* CPUUsageViewController.swift in Sources */,
-				0275B7CC20C3B015000BEC7F /* MemUsageView.swift in Sources */,
-				0275B7D520C3C211000BEC7F /* SMC.swift in Sources */,
 				025AC38B20C0AFDD000E0837 /* AppDelegate.swift in Sources */,
-				025AC39B20C0B09C000E0837 /* BandwidthView.swift in Sources */,
-				02AF908A20C36F9E002CE6C9 /* Process2.swift in Sources */,
-				0275B7E020C3D1B3000BEC7F /* Process.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -538,7 +434,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = noorganization.iGlance;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
-				SWIFT_OBJC_BRIDGING_HEADER = "iGlance/iGlance-Bridging-Header.h";
+				SWIFT_OBJC_BRIDGING_HEADER = "";
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_VERSION = 4.0;
 			};
@@ -561,7 +457,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = noorganization.iGlance;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
-				SWIFT_OBJC_BRIDGING_HEADER = "iGlance/iGlance-Bridging-Header.h";
+				SWIFT_OBJC_BRIDGING_HEADER = "";
 				SWIFT_VERSION = 4.0;
 			};
 			name = Release;
