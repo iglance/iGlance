@@ -18,6 +18,22 @@ enum InterfaceStyle : String {
     }
 }
 
+extension NSColor {
+    
+    func rgb() -> (red:Int, green:Int, blue:Int, alpha:Int)? {
+        var fRed : CGFloat = 0
+        var fGreen : CGFloat = 0
+        var fBlue : CGFloat = 0
+        var fAlpha: CGFloat = 0
+        getRed(&fRed, green: &fGreen, blue: &fBlue, alpha: &fAlpha)
+        let iRed = Int(fRed * 255.0)
+        let iGreen = Int(fGreen * 255.0)
+        let iBlue = Int(fBlue * 255.0)
+        let iAlpha = Int(fAlpha * 255.0)
+        return (red:iRed, green:iGreen, blue:iBlue, alpha:iAlpha)
+    }
+}
+
 @NSApplicationMain
 class AppDelegate: NSObject, NSApplicationDelegate {
 
@@ -137,6 +153,28 @@ class AppDelegate: NSObject, NSApplicationDelegate {
     
     func applicationDidFinishLaunching(_ aNotification: Notification) {
         
+        //print(UserDefaults.standard.setValue(":=0", forKeyPath: "NICHT XD"))
+        var col = NSColor.init(red: 0.0/255.0, green: 0.0/255.0, blue: 0.0/255.0, alpha: 1.0)
+        var colRed: CGFloat = 0
+        var colGreen: CGFloat = 0
+        var colBlue: CGFloat = 0
+        var colAlpha: CGFloat = 0
+        if (UserDefaults.standard.value(forKey: "colRedMem") != nil)
+        {
+            colRed = UserDefaults.standard.value(forKey: "colRedMem") as! CGFloat
+            colGreen = UserDefaults.standard.value(forKey: "colGreenMem") as! CGFloat
+            colBlue = UserDefaults.standard.value(forKey: "colBlueMem") as! CGFloat
+            colAlpha = UserDefaults.standard.value(forKey: "colAlphaMem") as! CGFloat
+        }
+        
+        
+        
+        col.getRed(&colRed, green: &colGreen, blue: &colBlue, alpha: &colAlpha)
+        print(colRed*255.0)
+        print(colGreen*255.0)
+        print(colBlue*255.0)
+        print(colAlpha*255.0)
+        print(UserDefaults.standard.value(forKey: "NICHT XD"))
         
         // Create a Task instance
         bandwidthTask = Process()
