@@ -47,6 +47,11 @@ class ViewController: NSViewController {
             cbCPUUtil.state = AppDelegate.UserSettings.userWantsCPUUtil ? NSButton.StateValue.on : NSButton.StateValue.off
         }
     }
+    @IBOutlet weak var imgLogo: NSImageView! {
+        didSet {
+            imgLogo.image = NSImage(named:NSImage.Name("logo"))
+        }
+    }
     @IBOutlet weak var cbCPUTemp: NSButton! {
         didSet {
             cbCPUTemp.state = AppDelegate.UserSettings.userWantsCPUTemp ? NSButton.StateValue.on : NSButton.StateValue.off

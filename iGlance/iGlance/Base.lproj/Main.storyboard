@@ -760,7 +760,7 @@
             <objects>
                 <viewController title="General" id="LmA-Zk-Axh" customClass="ViewController" customModule="iGlance" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" wantsLayer="YES" id="vac-fw-9gH">
-                        <rect key="frame" x="0.0" y="0.0" width="268" height="253"/>
+                        <rect key="frame" x="0.0" y="0.0" width="385" height="253"/>
                         <autoresizingMask key="autoresizingMask"/>
                         <subviews>
                             <imageView horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="tMQ-Kz-n1a">
@@ -817,21 +817,23 @@
                                     <action selector="btnCheckUpdate_clicked:" target="LmA-Zk-Axh" id="EnS-2t-yZW"/>
                                 </connections>
                             </button>
-                            <progressIndicator hidden="YES" wantsLayer="YES" horizontalHuggingPriority="750" verticalHuggingPriority="750" fixedFrame="YES" maxValue="100" bezeled="NO" indeterminate="YES" style="spinning" translatesAutoresizingMaskIntoConstraints="NO" id="pEC-bh-7n7">
-                                <rect key="frame" x="236" y="23" width="32" height="32"/>
+                            <imageView horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="65M-BJ-jj2">
+                                <rect key="frame" x="19" y="164" width="306" height="69"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                            </progressIndicator>
+                                <imageCell key="cell" refusesFirstResponder="YES" alignment="left" imageScaling="proportionallyDown" id="T9P-eV-wfG"/>
+                            </imageView>
                         </subviews>
                     </view>
                     <connections>
                         <outlet property="btnCheckUpdate" destination="d11-es-ZyP" id="MfG-9t-qOK"/>
                         <outlet property="cbAutostart" destination="6Os-fs-yO4" id="RVC-xw-FKl"/>
                         <outlet property="ddUpdateInterval" destination="jWj-II-jS5" id="7GB-eF-8Ii"/>
+                        <outlet property="imgLogo" destination="65M-BJ-jj2" id="qMX-hC-ghl"/>
                     </connections>
                 </viewController>
                 <customObject id="BGp-qo-oOy" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1674" y="-44.5"/>
+            <point key="canvasLocation" x="1732.5" y="-44.5"/>
         </scene>
         <!--CPU-->
         <scene sceneID="YzJ-34-hl0">
@@ -841,7 +843,7 @@
                         <rect key="frame" x="0.0" y="0.0" width="450" height="159"/>
                         <autoresizingMask key="autoresizingMask"/>
                         <subviews>
-                            <button identifier="wantsCPU" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="gpa-qj-kWb">
+                            <button verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="gpa-qj-kWb">
                                 <rect key="frame" x="18" y="113" width="202" height="28"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                 <buttonCell key="cell" type="check" title="CPU Utilization" bezelStyle="regularSquare" imagePosition="left" inset="2" id="45J-jx-M3f">
@@ -897,7 +899,7 @@
                                     <action selector="cpCPU_clicked:" target="MQx-3P-zDy" id="Ys9-Jz-cEt"/>
                                 </connections>
                             </colorWell>
-                            <button identifier="wantsCPU" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="9PU-LC-0gS">
+                            <button verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="9PU-LC-0gS">
                                 <rect key="frame" x="18" y="15" width="202" height="28"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                 <buttonCell key="cell" type="check" title="Progressbar Border" bezelStyle="regularSquare" imagePosition="left" state="on" inset="2" id="vIT-GG-dAQ">

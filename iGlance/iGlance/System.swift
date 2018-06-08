@@ -4,7 +4,7 @@
 //
 // The MIT License
 //
-// Copyright (C) 2014, 2015  beltex <https://github.com/beltex>
+// Copyright (C) 2014-2017  beltex <https://github.com/beltex>
 //
 // Permission is hereby granted, free of charge, to any person obtaining a copy
 // of this software and associated documentation files (the "Software"), to deal
@@ -36,17 +36,17 @@ import Foundation
 // As defined in <mach/tash_info.h>
 
 private let HOST_BASIC_INFO_COUNT         : mach_msg_type_number_t =
-                      UInt32(sizeof(host_basic_info_data_t) / sizeof(integer_t))
+                      UInt32(MemoryLayout<host_basic_info_data_t>.size / MemoryLayout<integer_t>.size)
 private let HOST_LOAD_INFO_COUNT          : mach_msg_type_number_t =
-                       UInt32(sizeof(host_load_info_data_t) / sizeof(integer_t))
+                       UInt32(MemoryLayout<host_load_info_data_t>.size / MemoryLayout<integer_t>.size)
 private let HOST_CPU_LOAD_INFO_COUNT      : mach_msg_type_number_t =
-                   UInt32(sizeof(host_cpu_load_info_data_t) / sizeof(integer_t))
+                   UInt32(MemoryLayout<host_cpu_load_info_data_t>.size / MemoryLayout<integer_t>.size)
 private let HOST_VM_INFO64_COUNT          : mach_msg_type_number_t =
-                      UInt32(sizeof(vm_statistics64_data_t) / sizeof(integer_t))
+                      UInt32(MemoryLayout<vm_statistics64_data_t>.size / MemoryLayout<integer_t>.size)
 private let HOST_SCHED_INFO_COUNT         : mach_msg_type_number_t =
-                      UInt32(sizeof(host_sched_info_data_t) / sizeof(integer_t))
+                      UInt32(MemoryLayout<host_sched_info_data_t>.size / MemoryLayout<integer_t>.size)
 private let PROCESSOR_SET_LOAD_INFO_COUNT : mach_msg_type_number_t =
-              UInt32(sizeof(processor_set_load_info_data_t) / sizeof(natural_t))
+              UInt32(MemoryLayout<processor_set_load_info_data_t>.size / MemoryLayout<natural_t>.size)
 
 
 public struct System {
@@ -80,20 +80,20 @@ public struct System {
     */
     public enum Unit : Double {
         // For going from byte to -
-        case Byte     = 1
-        case Kilobyte = 1024
-        case Megabyte = 1048576
-        case Gigabyte = 1073741824
+        case byte     = 1
+        case kilobyte = 1024
+        case megabyte = 1048576
+        case gigabyte = 1073741824
     }
     
     
     /// Options for loadAverage()
     public enum LOAD_AVG {
         /// 5, 30, 60 second samples
-        case SHORT
+        case short
         
         /// 1, 5, 15 minute samples
-        case LONG
+        case long
     }
     
     
@@ -119,8 +119,8 @@ public struct System {
     //--------------------------------------------------------------------------
     
 
-    private static let machHost = mach_host_self()
-    private var loadPrevious = host_cpu_load_info()
+    fileprivate static let machHost = mach_host_self()
+    fileprivate var loadPrevious = host_cpu_load_info()
     
     
     //--------------------------------------------------------------------------
@@ -178,21 +178,21 @@ public struct System {
 
         // Max model name size not defined by sysctl. Instead we use io_name_t
         // via I/O Kit which can also get the model name
-        var size = sizeof(io_name_t)
+        var size = MemoryLayout<io_name_t>.size
 
-        var ptr    = UnsafeMutablePointer<io_name_t>.alloc(1)
+        let ptr    = UnsafeMutablePointer<io_name_t>.allocate(capacity: 1)
         let result = sysctl(&mib, u_int(mib.count), ptr, &size, nil, 0)
 
 
-        if result == 0 { name = String.fromCString(UnsafePointer(ptr))! }
+        if result == 0 { name = String(cString: UnsafeRawPointer(ptr).assumingMemoryBound(to: CChar.self)) }
         else           { name = String() }
 
 
-        ptr.dealloc(1)
+        ptr.deallocate()
 
         #if DEBUG
             if result != 0 {
-                println("ERROR - \(__FILE__):\(__FUNCTION__) - errno = "
+                print("ERROR - \(#file):\(#function) - errno = "
                         + "\(result)")
             }
         #endif
@@ -210,44 +210,46 @@ public struct System {
 
     Via uname(3) manual page.
     */
-    public static func uname() -> (sysname: String, nodename: String,
-                                                     release: String,
-                                                     version: String,
-                                                     machine: String) {
-        // Takes a generic pointer type because the type were dealing with
-        // (from the utsname struct) is a huge tuple of Int8s (once bridged to
-        // Swift), so it would be really messy to go that route (would have to
-        // type it all out explicitly)
-        func toString<T>(ptr: UnsafePointer<T>) -> String {
-            return String.fromCString(UnsafePointer<CChar>(ptr))!
-        }
-
-        let tuple: (String, String, String, String, String)
-        var names  = utsname()
-        let result = Foundation.uname(&names)
-
-        #if DEBUG
-            if result != 0 {
-                println("ERROR - \(__FILE__):\(__FUNCTION__) - errno = "
-                        + "\(result)")
-            }
-        #endif
-
-        if result == 0 {
-            let sysname  = withUnsafePointer(&names.sysname,  toString)
-            let nodename = withUnsafePointer(&names.nodename, toString)
-            let release  = withUnsafePointer(&names.release,  toString)
-            let version  = withUnsafePointer(&names.version,  toString)
-            let machine  = withUnsafePointer(&names.machine,  toString)
-
-            tuple = (sysname, nodename, release, version, machine)
-        }
-        else {
-            tuple = ("", "", "", "", "")
-        }
-
-        return tuple
-    }
+    // FIXME: Two compiler bugs here. One has a workaround, the other requires
+    //        a C wrapper function. See issue #18
+//    public static func uname() -> (sysname: String, nodename: String,
+//                                                     release: String,
+//                                                     version: String,
+//                                                     machine: String) {
+//        // Takes a generic pointer type because the type were dealing with
+//        // (from the utsname struct) is a huge tuple of Int8s (once bridged to
+//        // Swift), so it would be really messy to go that route (would have to
+//        // type it all out explicitly)
+//        func toString<T>(ptr: UnsafePointer<T>) -> String {
+//            return String.fromCString(UnsafePointer<CChar>(ptr))!
+//        }
+//
+//        let tuple: (String, String, String, String, String)
+//        var names  = utsname()
+//        let result = Foundation.uname(&names)
+//
+//        #if DEBUG
+//            if result != 0 {
+//                print("ERROR - \(__FILE__):\(__FUNCTION__) - errno = "
+//                        + "\(result)")
+//            }
+//        #endif
+//
+//        if result == 0 {
+//            let sysname  = withUnsafePointer(&names.sysname,  toString)
+//            let nodename = withUnsafePointer(&names.nodename, toString)
+//            let release  = withUnsafePointer(&names.release,  toString)
+//            let version  = withUnsafePointer(&names.version,  toString)
+//            let machine  = withUnsafePointer(&names.machine,  toString)
+//
+//            tuple = (sysname, nodename, release, version, machine)
+//        }
+//        else {
+//            tuple = ("", "", "", "", "")
+//        }
+//
+//        return tuple
+//    }
 
 
     /// Number of physical cores on this machine.
@@ -276,16 +278,16 @@ public struct System {
     
     https://en.wikipedia.org/wiki/Load_(computing)
     */
-    public static func loadAverage(type: LOAD_AVG = .LONG) -> [Double] {
-        var avg = [Double](count: 3, repeatedValue: 0)
+    public static func loadAverage(_ type: LOAD_AVG = .long) -> [Double] {
+        var avg = [Double](repeating: 0, count: 3)
         
         switch type {
-            case .SHORT:
+            case .short:
                 let result = System.hostLoadInfo().avenrun
                 avg = [Double(result.0) / Double(LOAD_SCALE),
                        Double(result.1) / Double(LOAD_SCALE),
                        Double(result.2) / Double(LOAD_SCALE)]
-            case .LONG:
+            case .long:
                 getloadavg(&avg, 3)
         }
         
@@ -323,7 +325,7 @@ public struct System {
     
     
     /// Size of physical memory on this machine
-    public static func physicalMemory(unit: Unit = .Gigabyte) -> Double {
+    public static func physicalMemory(_ unit: Unit = .gigabyte) -> Double {
         return Double(System.hostBasicInfo().max_mem) / unit.rawValue
     }
     
@@ -339,17 +341,17 @@ public struct System {
         let stats = System.VMStatistics64()
         
         let free     = Double(stats.free_count) * Double(PAGE_SIZE)
-                                                        / Unit.Gigabyte.rawValue
+                                                        / Unit.gigabyte.rawValue
         let active   = Double(stats.active_count) * Double(PAGE_SIZE)
-                                                        / Unit.Gigabyte.rawValue
+                                                        / Unit.gigabyte.rawValue
         let inactive = Double(stats.inactive_count) * Double(PAGE_SIZE)
-                                                        / Unit.Gigabyte.rawValue
+                                                        / Unit.gigabyte.rawValue
         let wired    = Double(stats.wire_count) * Double(PAGE_SIZE)
-                                                        / Unit.Gigabyte.rawValue
+                                                        / Unit.gigabyte.rawValue
         
         // Result of the compression. This is what you see in Activity Monitor
         let compressed = Double(stats.compressor_page_count) * Double(PAGE_SIZE)
-                                                        / Unit.Gigabyte.rawValue
+                                                        / Unit.gigabyte.rawValue
         
         return (free, active, inactive, wired, compressed)
     }
@@ -365,13 +367,13 @@ public struct System {
         // alignment (padding)
         // http://stackoverflow.com/a/27640066
         // https://devforums.apple.com/message/1086617#1086617
-        var size = strideof(timeval)
+        var size = MemoryLayout<timeval>.stride
 
         let result = sysctl(&mib, u_int(mib.count), &bootTime, &size, nil, 0)
 
         if result != 0 {
             #if DEBUG
-                println("ERROR - \(__FILE__):\(__FUNCTION__) - errno = "
+                print("ERROR - \(#file):\(#function) - errno = "
                         + "\(result)")
             #endif
 
@@ -431,33 +433,35 @@ public struct System {
         var processorCount = -1
         var schedulerTime  = -1.0
 
-        var status = UnsafeMutablePointer<Unmanaged<CFDictionary>?>.alloc(1)
+        let status = UnsafeMutablePointer<Unmanaged<CFDictionary>?>.allocate(capacity: 1)
 
         let result = IOPMCopyCPUPowerStatus(status)
 
         #if DEBUG
             // TODO: kIOReturnNotFound case as seen in pmset
             if result != kIOReturnSuccess {
-                println("ERROR - \(__FILE__):\(__FUNCTION__) - kern_result_t = "
+                print("ERROR - \(#file):\(#function) - kern_result_t = "
                         + "\(result)")
             }
         #endif
 
 
         if result == kIOReturnSuccess,
-           let data = status.move()?.takeRetainedValue() as? NSDictionary {
+           let data = status.move()?.takeUnretainedValue() {
+                let dataMap = data as NSDictionary
+
                 // TODO: Force unwrapping here should be safe, as
                 //       IOPMCopyCPUPowerStatus() defines the keys, but the
                 //       the cast (from AnyObject) could be problematic
-                processorSpeed = data[kIOPMCPUPowerLimitProcessorSpeedKey]!
+                processorSpeed = dataMap[kIOPMCPUPowerLimitProcessorSpeedKey]!
                                                                       as! Double
-                processorCount = data[kIOPMCPUPowerLimitProcessorCountKey]!
+                processorCount = dataMap[kIOPMCPUPowerLimitProcessorCountKey]!
                                                                       as! Int
-                schedulerTime  = data[kIOPMCPUPowerLimitSchedulerTimeKey]!
+                schedulerTime  = dataMap[kIOPMCPUPowerLimitSchedulerTimeKey]!
                                                                       as! Double
         }
 
-        status.dealloc(1)
+        status.deallocate()
 
         return (processorSpeed, processorCount, schedulerTime)
     }
@@ -476,7 +480,7 @@ public struct System {
 
         #if DEBUG
             if result != kIOReturnSuccess {
-                println("ERROR - \(__FILE__):\(__FUNCTION__) - kern_result_t = "
+                print("ERROR - \(#file):\(#function) - kern_result_t = "
                         + "\(result)")
             }
         #endif
@@ -508,22 +512,22 @@ public struct System {
     //--------------------------------------------------------------------------
     
     
-    private static func hostBasicInfo() -> host_basic_info {
+    fileprivate static func hostBasicInfo() -> host_basic_info {
         // TODO: Why is host_basic_info.max_mem val different from sysctl?
         
         var size     = HOST_BASIC_INFO_COUNT
-        var hostInfo = host_basic_info_t.alloc(1)
+        let hostInfo = host_basic_info_t.allocate(capacity: 1)
         
-        let result = host_info(machHost, HOST_BASIC_INFO,
-                                         UnsafeMutablePointer(hostInfo),
-                                         &size)
-        
+        let result = hostInfo.withMemoryRebound(to: integer_t.self, capacity: Int(size)) {
+            host_info(machHost, HOST_BASIC_INFO, $0, &size)
+        }
+  
         let data = hostInfo.move()
-        hostInfo.dealloc(1)
+        hostInfo.deallocate()
         
         #if DEBUG
             if result != KERN_SUCCESS {
-                println("ERROR - \(__FILE__):\(__FUNCTION__) - kern_result_t = "
+                print("ERROR - \(#file):\(#function) - kern_result_t = "
                         + "\(result)")
             }
         #endif
@@ -532,20 +536,22 @@ public struct System {
     }
 
     
-    private static func hostLoadInfo() -> host_load_info {
+    fileprivate static func hostLoadInfo() -> host_load_info {
         var size     = HOST_LOAD_INFO_COUNT
-        var hostInfo = host_load_info_t.alloc(1)
+        let hostInfo = host_load_info_t.allocate(capacity: 1)
         
-        let result = host_statistics(machHost, HOST_LOAD_INFO,
-                                               UnsafeMutablePointer(hostInfo),
-                                               &size)
+        let result = hostInfo.withMemoryRebound(to: integer_t.self, capacity: Int(size)) {
+            host_statistics(machHost, HOST_LOAD_INFO,
+                                      $0,
+                                      &size)
+        }
         
         let data = hostInfo.move()
-        hostInfo.dealloc(1)
+        hostInfo.deallocate()
         
         #if DEBUG
             if result != KERN_SUCCESS {
-                println("ERROR - \(__FILE__):\(__FUNCTION__) - kern_result_t = "
+                print("ERROR - \(#file):\(#function) - kern_result_t = "
                         + "\(result)")
             }
         #endif
@@ -554,20 +560,22 @@ public struct System {
     }
     
     
-    private static func hostCPULoadInfo() -> host_cpu_load_info {
+    fileprivate static func hostCPULoadInfo() -> host_cpu_load_info {
         var size     = HOST_CPU_LOAD_INFO_COUNT
-        var hostInfo = host_cpu_load_info_t.alloc(1)
+        let hostInfo = host_cpu_load_info_t.allocate(capacity: 1)
         
-        let result = host_statistics(machHost, HOST_CPU_LOAD_INFO,
-                                               UnsafeMutablePointer(hostInfo),
-                                               &size)
+        let result = hostInfo.withMemoryRebound(to: integer_t.self, capacity: Int(size)) {
+            host_statistics(machHost, HOST_CPU_LOAD_INFO,
+                                      $0,
+                                      &size)
+        }
         
         let data = hostInfo.move()
-        hostInfo.dealloc(1)
+        hostInfo.deallocate()
         
         #if DEBUG
             if result != KERN_SUCCESS {
-                println("ERROR - \(__FILE__):\(__FUNCTION__) - kern_result_t = "
+                print("ERROR - \(#file):\(#function) - kern_result_t = "
                         + "\(result)")
             }
         #endif
@@ -576,7 +584,7 @@ public struct System {
     }
     
     
-    private static func processorLoadInfo() -> processor_set_load_info {
+    fileprivate static func processorLoadInfo() -> processor_set_load_info {
         // NOTE: Duplicate load average and mach factor here
         
         var pset   = processor_set_name_t()
@@ -584,7 +592,7 @@ public struct System {
         
         if result != KERN_SUCCESS {
             #if DEBUG
-                println("ERROR - \(__FILE__):\(__FUNCTION__) - kern_result_t = "
+                print("ERROR - \(#file):\(#function) - kern_result_t = "
                         + "\(result)")
             #endif
 
@@ -593,17 +601,18 @@ public struct System {
 
         
         var count    = PROCESSOR_SET_LOAD_INFO_COUNT
-        var info_out = processor_set_load_info_t.alloc(1)
+        let info_out = processor_set_load_info_t.allocate(capacity: 1)
         
-        result = processor_set_statistics(pset,
-                                          PROCESSOR_SET_LOAD_INFO,
-                                          UnsafeMutablePointer(info_out),
-                                          &count)
-
+        result = info_out.withMemoryRebound(to: integer_t.self, capacity: Int(count)) {
+            processor_set_statistics(pset,
+                                     PROCESSOR_SET_LOAD_INFO,
+                                     $0,
+                                     &count)
+        }
 
         #if DEBUG
             if result != KERN_SUCCESS {
-                println("ERROR - \(__FILE__):\(__FUNCTION__) - kern_result_t = "
+                print("ERROR - \(#file):\(#function) - kern_result_t = "
                         + "\(result)")
             }
         #endif
@@ -615,7 +624,7 @@ public struct System {
         mach_port_deallocate(mach_task_self_, pset)
 
         let data = info_out.move()
-        info_out.dealloc(1)
+        info_out.deallocate()
         
         return data
     }
@@ -628,21 +637,23 @@ public struct System {
     Swift runs on 10.9 and above, and 10.9 is x86_64 only. On iOS though its 7
     and above, with both ARM & ARM64.
     */
-    private static func VMStatistics64() -> vm_statistics64 {
+    fileprivate static func VMStatistics64() -> vm_statistics64 {
         var size     = HOST_VM_INFO64_COUNT
-        var hostInfo = vm_statistics64_t.alloc(1)
+        let hostInfo = vm_statistics64_t.allocate(capacity: 1)
         
-        let result = host_statistics64(machHost,
-                                       HOST_VM_INFO64,
-                                       UnsafeMutablePointer(hostInfo),
-                                       &size)
+        let result = hostInfo.withMemoryRebound(to: integer_t.self, capacity: Int(size)) {
+            host_statistics64(machHost,
+                              HOST_VM_INFO64,
+                              $0,
+                              &size)
+        }
 
         let data = hostInfo.move()
-        hostInfo.dealloc(1)
+        hostInfo.deallocate()
         
         #if DEBUG
             if result != KERN_SUCCESS {
-                println("ERROR - \(__FILE__):\(__FUNCTION__) - kern_result_t = "
+                print("ERROR - \(#file):\(#function) - kern_result_t = "
                     + "\(result)")
             }
         #endif
