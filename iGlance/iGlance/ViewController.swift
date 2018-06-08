@@ -42,6 +42,17 @@ extension URLSession {
 
 class ViewController: NSViewController {
 
+    
+    var colRedCPU: CGFloat = 0
+    var colBlueCPU: CGFloat = 0
+    var colGreenCPU: CGFloat = 0
+    var colAlphaCPU: CGFloat = 0
+    var colRedMem: CGFloat = 0
+    var colBlueMem: CGFloat = 0
+    var colGreenMem: CGFloat = 0
+    var colAlphaMem: CGFloat = 0
+    
+    
     @IBOutlet weak var cbCPUUtil: NSButton! {
         didSet {
             cbCPUUtil.state = AppDelegate.UserSettings.userWantsCPUUtil ? NSButton.StateValue.on : NSButton.StateValue.off
@@ -111,6 +122,7 @@ class ViewController: NSViewController {
     @IBOutlet weak var cpMemUtil: NSColorWell! {
         didSet {
             cpMemUtil.color = AppDelegate.UserSettings.memColor
+            AppDelegate.UserSettings.memColor.getRed(&colRedMem, green: &colGreenMem, blue: &colBlueMem, alpha: &colAlphaMem)
         }
     }
     @IBOutlet weak var cbNetUsage: NSButton! {
@@ -319,6 +331,11 @@ class ViewController: NSViewController {
     
     @IBAction func cpMem_clicked(_ sender: NSColorWell) {
         AppDelegate.UserSettings.memColor = sender.color
+        sender.color.usingColorSpace(NSColorSpace.genericRGB)?.getRed(&colRedMem, green: &colGreenMem, blue: &colBlueMem, alpha: &colAlphaMem)
+        UserDefaults.standard.set(CGFloat(round(colRedMem * 10000)/10000), forKey: "colRedMem")
+        UserDefaults.standard.set(CGFloat(round(colGreenMem * 10000)/10000), forKey: "colGreenMem")
+        UserDefaults.standard.set(CGFloat(round(colBlueMem * 10000)/10000), forKey: "colBlueMem")
+        UserDefaults.standard.set(CGFloat(round(colAlphaMem * 10000)/10000), forKey: "colAlphaMem")
     }
     
     @IBAction func cbNetUsage_clicked(_ sender: NSButton) {

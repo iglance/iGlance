@@ -47,6 +47,7 @@ class AppDelegate: NSObject, NSApplicationDelegate {
         }
         else {
             // Main application is already running
+            sleep(15)
             NSApp.terminate(nil)
         }
     }
@@ -57,6 +58,7 @@ class AppDelegate: NSObject, NSApplicationDelegate {
     
     @objc func justTerminate()
     {
+        sleep(15)
         NSApp.terminate(nil)
     }
 
