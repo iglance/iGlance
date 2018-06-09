@@ -88,12 +88,14 @@ class AppDelegate: NSObject, NSApplicationDelegate {
         static var tempUnit = TempUnit.Celcius
         static var userWantsCPUBorder = true
         static var userWantsMemBorder = true
+        static var userWantsBatteryNotification = true;
     }
     
     
     // Todo: Delete
     
     var mySystem: System?
+    var myBattery: Battery?
     /*
     var myCPUView: CPUUsageView?
     var myMemView: MemUsageView?
@@ -132,6 +134,12 @@ class AppDelegate: NSObject, NSApplicationDelegate {
     var pbMaxMEM: Double?
     var pixelHeightMEM: Double?
     var memIMG: String?
+    
+    /**
+     * Battery variables
+     */
+    var previousChargeValue: Double = 0
+    var alreadyNotified: Bool = false
     
     /**
     * Shared variables
@@ -298,6 +306,8 @@ class AppDelegate: NSObject, NSApplicationDelegate {
         pixelWidth = 7 // 14*0.5
         pixelHeightCPU = 0
         mySystem = System()
+        myBattery = Battery()
+        myBattery!.open()
         btnCPUUtil = sItemCPUUtil.button
         /*
  
@@ -528,6 +538,36 @@ class AppDelegate: NSObject, NSApplicationDelegate {
         btnMemUsage?.image = imgFinal
     }
     
+    @objc func updateBatteryStatus() {
+        // TODO: the current charged percentage of the battery is not very accurate
+        let charge = self.myBattery!.charge()
+        
+        if(previousChargeValue <= 80.0 && charge >= 80.0 && alreadyNotified == false) {
+            deliverBatteryNotification(message: "Battery is almost fully charged")
+        } else if(previousChargeValue >= 20.0 && charge <= 20.0 && alreadyNotified == false) {
+            deliverBatteryNotification(message: "Battery is low")
+        } else if(charge < 80.0 && charge > 20.0){
+            alreadyNotified = false
+        }
+        
+        if(abs(previousChargeValue-charge) >= 3) {
+            previousChargeValue = charge
+        }
+        
+        print(previousChargeValue, charge, alreadyNotified)
+    }
+    
+    func deliverBatteryNotification(message: String) {
+        // TODO: add functionality to the show button
+        let notification = NSUserNotification()
+        notification.identifier = "batteryFullNotification"
+        notification.title = "Battery Info"
+        notification.subtitle = message
+        notification.soundName = NSUserNotificationDefaultSoundName
+        NSUserNotificationCenter.default.deliver(notification)
+        alreadyNotified = true
+    }
+    
     @objc func updateAll()
     {
         if (AppDelegate.UserSettings.userWantsCPUTemp)
@@ -588,6 +628,9 @@ class AppDelegate: NSObject, NSApplicationDelegate {
         else
         {
             sItemBandwidth.isVisible = false
+        }
+        if(AppDelegate.UserSettings.userWantsBatteryNotification) {
+            updateBatteryStatus();
         }
         if (AppDelegate.changeInterval())
         {
@@ -882,6 +925,7 @@ class AppDelegate: NSObject, NSApplicationDelegate {
     
     func applicationWillTerminate(_ aNotification: Notification) {
         // Insert code here to tear down your application
+        self.myBattery!.close()
     }
 
 
