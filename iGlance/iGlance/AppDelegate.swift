@@ -511,7 +511,6 @@ class AppDelegate: NSObject, NSApplicationDelegate {
         btnCPUUtil = AppDelegate.sItemCPUUtil.button
         myBattery = Battery()
         myBattery!.open()
-        btnCPUUtil = sItemCPUUtil.button
         /*
  
         //myCPUView = CPUUsageView()
