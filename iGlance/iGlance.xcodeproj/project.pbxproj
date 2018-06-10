@@ -15,6 +15,7 @@
 		025AC38D20C0AFDD000E0837 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 025AC38C20C0AFDD000E0837 /* ViewController.swift */; };
 		025AC38F20C0AFE0000E0837 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 025AC38E20C0AFE0000E0837 /* Assets.xcassets */; };
 		025AC39220C0AFE0000E0837 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 025AC39020C0AFE0000E0837 /* Main.storyboard */; };
+		029DC1AD20CDCA9800F7A30D /* MyStatusItems.swift in Sources */ = {isa = PBXBuildFile; fileRef = 029DC1AC20CDCA9800F7A30D /* MyStatusItems.swift */; };
 		02B8120720C95CAC00C98F0D /* CPUMenuView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 02B8120620C95CAC00C98F0D /* CPUMenuView.xib */; };
 		02B8120920C95D6600C98F0D /* CPUMenuView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02B8120820C95D6600C98F0D /* CPUMenuView.swift */; };
 		02B8120B20C9871000C98F0D /* MemMenuView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 02B8120A20C9871000C98F0D /* MemMenuView.xib */; };
@@ -53,6 +54,7 @@
 		025AC39120C0AFE0000E0837 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		025AC39320C0AFE0000E0837 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		025AC39420C0AFE0000E0837 /* iGlance.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = iGlance.entitlements; sourceTree = "<group>"; };
+		029DC1AC20CDCA9800F7A30D /* MyStatusItems.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyStatusItems.swift; sourceTree = "<group>"; };
 		02B8120620C95CAC00C98F0D /* CPUMenuView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = CPUMenuView.xib; sourceTree = "<group>"; };
 		02B8120820C95D6600C98F0D /* CPUMenuView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CPUMenuView.swift; sourceTree = "<group>"; };
 		02B8120A20C9871000C98F0D /* MemMenuView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MemMenuView.xib; sourceTree = "<group>"; };
@@ -111,6 +113,7 @@
 				025AC38A20C0AFDD000E0837 /* AppDelegate.swift */,
 				025AC38C20C0AFDD000E0837 /* ViewController.swift */,
 				02E9CE2F20C526BE00879EB1 /* MyMainWindow.swift */,
+				029DC1AC20CDCA9800F7A30D /* MyStatusItems.swift */,
 				023642E720CAD73B00CDB17D /* Process.swift */,
 				023642EB20CAD7AD00CDB17D /* Battery.swift */,
 				025AC38E20C0AFE0000E0837 /* Assets.xcassets */,
@@ -266,6 +269,7 @@
 				02E9CE3020C526BE00879EB1 /* MyMainWindow.swift in Sources */,
 				023642E820CAD73B00CDB17D /* Process.swift in Sources */,
 				02B8120D20C9874D00C98F0D /* MemMenuView.swift in Sources */,
+				029DC1AD20CDCA9800F7A30D /* MyStatusItems.swift in Sources */,
 				023642EC20CAD7AD00CDB17D /* Battery.swift in Sources */,
 				025AC38D20C0AFDD000E0837 /* ViewController.swift in Sources */,
 				023642F120CAD81D00CDB17D /* SMC.swift in Sources */,

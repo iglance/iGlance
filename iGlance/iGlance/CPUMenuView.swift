@@ -15,7 +15,7 @@ class CPUMenuView: NSView {
     @IBOutlet var contentView: NSView!
     @IBOutlet weak var percentUser: NSTextField! {
         didSet {
-            percentUser.textColor = NSColor.yellow
+            percentUser.textColor = NSColor.orange
         }
     }
     @IBOutlet weak var percentSystem: NSTextField! {
@@ -25,13 +25,13 @@ class CPUMenuView: NSView {
     }
     @IBOutlet weak var percentIdle: NSTextField! {
         didSet {
-            percentIdle.textColor = NSColor.green
+            percentIdle.textColor = NSColor(calibratedRed: 0.0, green: 190.0/255.0, blue: 0.0, alpha: 1.0)
         }
     }
     @IBOutlet weak var percentNice: NSTextField!
     @IBOutlet weak var lUser: NSTextField! {
         didSet {
-            lUser.textColor = NSColor.yellow
+            lUser.textColor = NSColor.orange
         }
     }
     @IBOutlet weak var lSystem: NSTextField! {
@@ -41,7 +41,7 @@ class CPUMenuView: NSView {
     }
     @IBOutlet weak var lIdle: NSTextField! {
         didSet {
-            lIdle.textColor = NSColor.green
+            lIdle.textColor = NSColor(calibratedRed: 0.0, green: 190.0/255.0, blue: 0.0, alpha: 1.0)
         }
     }
     @IBOutlet weak var lNice: NSTextField!
