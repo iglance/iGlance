@@ -140,6 +140,8 @@ class AppDelegate: NSObject, NSApplicationDelegate {
      */
     var previousChargeValue: Double = 0
     var alreadyNotified: Bool = false
+    var upperBatteryBoundry = 80.0
+    var lowerBatteryBoundry = 20.0
     
     /**
     * Shared variables
@@ -541,13 +543,16 @@ class AppDelegate: NSObject, NSApplicationDelegate {
     @objc func updateBatteryStatus() {
         // TODO: the current charged percentage of the battery is not very accurate
         let charge = self.myBattery!.charge()
+        let upper = self.upperBatteryBoundry
+        let lower = self.lowerBatteryBoundry
         
-        if(previousChargeValue <= 80.0 && charge >= 80.0 && alreadyNotified == false) {
+        if(previousChargeValue <= upper && charge >= upper && alreadyNotified == false) {
             deliverBatteryNotification(message: "Battery is almost fully charged")
-        } else if(previousChargeValue >= 20.0 && charge <= 20.0 && alreadyNotified == false) {
+        } else if(previousChargeValue >= lower && charge <= lower && alreadyNotified == false) {
             deliverBatteryNotification(message: "Battery is low")
-        } else if(charge < 80.0 && charge > 20.0){
+        } else if(charge < upper && charge > lower){
             alreadyNotified = false
+            NSUserNotificationCenter.default.removeAllDeliveredNotifications()
         }
         
         if(abs(previousChargeValue-charge) >= 3) {
