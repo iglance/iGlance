@@ -881,7 +881,7 @@
                                 </connections>
                             </button>
                             <imageView horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="65M-BJ-jj2">
-                                <rect key="frame" x="19" y="164" width="306" height="69"/>
+                                <rect key="frame" x="50" y="164" width="306" height="69"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                 <imageCell key="cell" refusesFirstResponder="YES" alignment="left" imageScaling="proportionallyDown" id="T9P-eV-wfG"/>
                             </imageView>
