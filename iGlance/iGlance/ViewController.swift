@@ -145,13 +145,46 @@ class ViewController: NSViewController {
             cbMemBorder.state = AppDelegate.UserSettings.userWantsMemBorder ? NSButton.StateValue.on : NSButton.StateValue.off
         }
     }
+    @IBOutlet weak var cbBatteryNotification: NSButton! {
+        didSet {
+            cbBatteryNotification.state = AppDelegate.UserSettings.userWantsBatteryNotification ? NSButton.StateValue.on : NSButton.StateValue.off
+        }
+    }
+    @IBOutlet weak var tfLowerBatteryValue: NSTextField! {
+        didSet {
+            tfLowerBatteryValue.intValue = Int32(AppDelegate.UserSettings.lowerBatteryNotificationValue)
+        }
+    }
+    @IBOutlet weak var tfUpperBatteryValue: NSTextField! {
+        didSet {
+            tfUpperBatteryValue.intValue = Int32(AppDelegate.UserSettings.upperBatteryNotificationValue)
+        }
+    }
+    
+    
+    
     //MARK: Properties
     
     override func viewDidLoad() {
         super.viewDidLoad()
     }
     
-
+    @IBAction func cbBatterNotification_clicked(_ sender: NSButton) {
+        let checked = (cbBatteryNotification.state == NSButton.StateValue.on)
+        AppDelegate.UserSettings.userWantsBatteryNotification = checked
+        UserDefaults.standard.set(checked, forKey: "userWantsBatteryNotification")
+    }
+    @IBAction func tfLowerBatteryValue_changed(_ sender: NSTextField) {
+        let value: Int = Int(tfLowerBatteryValue.intValue)
+        AppDelegate.UserSettings.lowerBatteryNotificationValue = value
+        UserDefaults.standard.set(value, forKey: "lowerBatteryNotificationValue")
+    }
+    @IBAction func tfUpperBatteryValue_changed(_ sender: NSTextField) {
+        let value: Int = Int(tfUpperBatteryValue.intValue)
+        AppDelegate.UserSettings.upperBatteryNotificationValue = value
+        UserDefaults.standard.set(value, forKey: "upperBatteryNotificationValue")
+    }
+    
     @IBAction func cbCPUTemp_clicked(_ sender: NSButton) {
         let checked = (cbCPUTemp.state == NSButton.StateValue.on)
         AppDelegate.UserSettings.userWantsCPUTemp = checked
