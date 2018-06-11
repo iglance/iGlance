@@ -2,3 +2,5 @@
 iGlance/iGlance\.xcodeproj/project\.xcworkspace/
 
 iGlance/iGlance\.xcodeproj/xcuserdata/
+
+*.DS_Store
