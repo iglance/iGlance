@@ -1,5 +1,5 @@
 # iGlance
-### macOS System Monitor for the Status Bar
+> macOS System Monitor for the Status Bar
 
 
 ## Introduction
