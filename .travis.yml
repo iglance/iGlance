@@ -1,5 +1,6 @@
 install: true
+os: osx
 osx_image: xcode 9.3
 language: swift
 xcode-project: iGlance/iGlance.xcodeproj
-xcode_scheme: iGlance
+xcode_scheme: iGlance.xcscheme
