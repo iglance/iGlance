@@ -704,7 +704,7 @@
         <!--Battery-->
         <scene sceneID="hHh-Dx-1Vr">
             <objects>
-                <viewController title="Battery" id="Rtx-4o-PWo" sceneMemberID="viewController">
+                <viewController title="Battery" id="Rtx-4o-PWo" customClass="ViewController" customModule="iGlance" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" id="yVW-nm-VQc">
                         <rect key="frame" x="0.0" y="0.0" width="450" height="300"/>
                         <autoresizingMask key="autoresizingMask"/>
@@ -716,6 +716,9 @@
                                     <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
                                     <font key="font" metaFont="system"/>
                                 </buttonCell>
+                                <connections>
+                                    <action selector="cbBatterNotification_clicked:" target="Rtx-4o-PWo" id="MEd-Sq-bP6"/>
+                                </connections>
                             </button>
                             <textField verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="3z8-uV-Rrz">
                                 <rect key="frame" x="177" y="228" width="35" height="22"/>
@@ -726,6 +729,9 @@
                                     <color key="textColor" name="textColor" catalog="System" colorSpace="catalog"/>
                                     <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
                                 </textFieldCell>
+                                <connections>
+                                    <action selector="tfLowerBatteryValue_changed:" target="Rtx-4o-PWo" id="Noe-TC-WLc"/>
+                                </connections>
                             </textField>
                             <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="ETp-4L-u6h">
                                 <rect key="frame" x="18" y="231" width="151" height="17"/>
@@ -745,6 +751,9 @@
                                     <color key="textColor" name="textColor" catalog="System" colorSpace="catalog"/>
                                     <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
                                 </textFieldCell>
+                                <connections>
+                                    <action selector="tfUpperBatteryValue_changed:" target="Rtx-4o-PWo" id="eyD-wa-YKC"/>
+                                </connections>
                             </textField>
                             <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="wTd-AE-Bl0">
                                 <rect key="frame" x="18" y="191" width="153" height="17"/>
@@ -757,6 +766,11 @@
                             </textField>
                         </subviews>
                     </view>
+                    <connections>
+                        <outlet property="cbBatteryNotification" destination="8Qf-yg-6dv" id="vkE-bl-CmQ"/>
+                        <outlet property="tfLowerBatteryValue" destination="3z8-uV-Rrz" id="TFN-M7-SK2"/>
+                        <outlet property="tfUpperBatteryValue" destination="Ro3-eS-ojw" id="eSb-VJ-BZc"/>
+                    </connections>
                 </viewController>
                 <customObject id="yee-Rf-E3k" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
             </objects>

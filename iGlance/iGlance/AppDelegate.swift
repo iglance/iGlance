@@ -88,7 +88,9 @@ class AppDelegate: NSObject, NSApplicationDelegate {
         static var tempUnit = TempUnit.Celcius
         static var userWantsCPUBorder = true
         static var userWantsMemBorder = true
-        static var userWantsBatteryNotification = true;
+        static var userWantsBatteryNotification = true
+        static var lowerBatteryNotificationValue = 20
+        static var upperBatteryNotificationValue = 80
     }
     
     
@@ -140,8 +142,6 @@ class AppDelegate: NSObject, NSApplicationDelegate {
      */
     var previousChargeValue: Double = 0
     var alreadyNotified: Bool = false
-    var upperBatteryBoundry = 80.0
-    var lowerBatteryBoundry = 20.0
     
     /**
     * Shared variables
@@ -366,7 +366,6 @@ class AppDelegate: NSObject, NSApplicationDelegate {
                 if (AppDelegate.UserSettings.userWantsCPUUtil)
                 {
                     AppDelegate.sItemCPUUtil.isVisible = true
-                    print("0")
                     once = true
                 }
                 break
@@ -486,8 +485,15 @@ class AppDelegate: NSObject, NSApplicationDelegate {
         {
             UserSettings.userWantsMemBorder = UserDefaults.standard.value(forKey: "userWantsMemBorder") as! Bool
         }
-        
-        
+        if(UserDefaults.standard.value(forKey: "userWantsBatteryNotification") != nil) {
+            UserSettings.userWantsBatteryNotification = UserDefaults.standard.value(forKey: "userWantsBatteryNotification") as! Bool
+        }
+        if(UserDefaults.standard.value(forKey: "lowerBatteryNotificationValue") != nil) {
+            UserSettings.lowerBatteryNotificationValue = UserDefaults.standard.value(forKey: "lowerBatteryNotificationValue") as! Int
+        }
+        if(UserDefaults.standard.value(forKey: "upperBatteryNotificationValue") != nil) {
+            UserSettings.upperBatteryNotificationValue = UserDefaults.standard.value(forKey: "upperBatteryNotificationValue") as! Int
+        }
     }
     
     static func dialogOK(question: String, text: String) -> Bool {
@@ -743,8 +749,9 @@ class AppDelegate: NSObject, NSApplicationDelegate {
     @objc func updateBatteryStatus() {
         // TODO: the current charged percentage of the battery is not very accurate
         let charge = self.myBattery!.charge()
-        let upper = self.upperBatteryBoundry
-        let lower = self.lowerBatteryBoundry
+        let lower = Double(AppDelegate.UserSettings.lowerBatteryNotificationValue)
+        let upper = Double(AppDelegate.UserSettings.upperBatteryNotificationValue)
+        print(lower, upper)
         
         if(previousChargeValue <= upper && charge >= upper && alreadyNotified == false) {
             deliverBatteryNotification(message: "Battery is almost fully charged")
@@ -758,12 +765,9 @@ class AppDelegate: NSObject, NSApplicationDelegate {
         if(abs(previousChargeValue-charge) >= 3) {
             previousChargeValue = charge
         }
-        
-        print(previousChargeValue, charge, alreadyNotified)
     }
     
     func deliverBatteryNotification(message: String) {
-        // TODO: add functionality to the show button
         let notification = NSUserNotification()
         notification.identifier = "batteryFullNotification"
         notification.title = "Battery Info"
