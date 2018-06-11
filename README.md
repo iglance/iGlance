@@ -1,12 +1,13 @@
 # iGlance
 ### macOS System Monitor for the Status Bar
 
-<img src="https://i.imgur.com/yPJvAIg.png" title="Status Bar" width="300" alt="Status Bar">
-
-<img src="https://i.imgur.com/iVuBvaL.png" title="Status Bar" width="400" alt="Status Bar">
 
 ## Introduction
 iGlance is a small System Monitor that displays current stats about your Mac on the Status Bar. It is built to be highly customizable so that everyone can adjust it to his/her needs. A list of features is listed below. If you encounter any bugs or have suggestions for new features, feel free to write them down in the Issue tab. 
+
+<img src="https://i.imgur.com/yPJvAIg.png" title="Status Bar" width="300" alt="Status Bar">
+
+<img src="https://i.imgur.com/iVuBvaL.png" title="Status Bar" width="400" alt="Status Bar">
 
 ## Features
 - CPU Utilization
