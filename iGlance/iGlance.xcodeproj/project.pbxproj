@@ -8,7 +8,6 @@
 
 /* Begin PBXBuildFile section */
 		023642E820CAD73B00CDB17D /* Process.swift in Sources */ = {isa = PBXBuildFile; fileRef = 023642E720CAD73B00CDB17D /* Process.swift */; };
-		023642EC20CAD7AD00CDB17D /* Battery.swift in Sources */ = {isa = PBXBuildFile; fileRef = 023642EB20CAD7AD00CDB17D /* Battery.swift */; };
 		023642F120CAD81D00CDB17D /* SMC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 023642F020CAD81D00CDB17D /* SMC.swift */; };
 		023642F320CAD86B00CDB17D /* System.swift in Sources */ = {isa = PBXBuildFile; fileRef = 023642F220CAD86B00CDB17D /* System.swift */; };
 		025AC38B20C0AFDD000E0837 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 025AC38A20C0AFDD000E0837 /* AppDelegate.swift */; };
@@ -27,6 +26,7 @@
 		02ECFC8120C80CBA00E0A1D7 /* iGlanceLauncher.app in CopyFiles */ = {isa = PBXBuildFile; fileRef = 02ECFC7120C80A9300E0A1D7 /* iGlanceLauncher.app */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
 		02ECFC8420C80CF800E0A1D7 /* ServiceManagement.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 02ECFC8320C80CF800E0A1D7 /* ServiceManagement.framework */; };
 		B4B6137520CD16600068A789 /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B4B6137420CD16600068A789 /* Cocoa.framework */; };
+		B4FF095120D02270006BE560 /* Battery.swift in Sources */ = {isa = PBXBuildFile; fileRef = B4FF095020D02270006BE560 /* Battery.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -44,7 +44,6 @@
 
 /* Begin PBXFileReference section */
 		023642E720CAD73B00CDB17D /* Process.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Process.swift; sourceTree = "<group>"; };
-		023642EB20CAD7AD00CDB17D /* Battery.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Battery.swift; sourceTree = "<group>"; };
 		023642EE20CAD80500CDB17D /* SMCKit.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SMCKit.h; sourceTree = "<group>"; };
 		023642F020CAD81D00CDB17D /* SMC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SMC.swift; sourceTree = "<group>"; };
 		023642F220CAD86B00CDB17D /* System.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = System.swift; sourceTree = "<group>"; };
@@ -69,6 +68,7 @@
 		02ECFC7D20C80A9500E0A1D7 /* iGlanceLauncher.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = iGlanceLauncher.entitlements; sourceTree = "<group>"; };
 		02ECFC8320C80CF800E0A1D7 /* ServiceManagement.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = ServiceManagement.framework; path = System/Library/Frameworks/ServiceManagement.framework; sourceTree = SDKROOT; };
 		B4B6137420CD16600068A789 /* Cocoa.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Cocoa.framework; path = System/Library/Frameworks/Cocoa.framework; sourceTree = SDKROOT; };
+		B4FF095020D02270006BE560 /* Battery.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Battery.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -113,12 +113,12 @@
 		025AC38920C0AFDD000E0837 /* iGlance */ = {
 			isa = PBXGroup;
 			children = (
+				B4FF094F20D02248006BE560 /* Components */,
 				025AC38A20C0AFDD000E0837 /* AppDelegate.swift */,
 				025AC38C20C0AFDD000E0837 /* ViewController.swift */,
 				02E9CE2F20C526BE00879EB1 /* MyMainWindow.swift */,
 				029DC1AC20CDCA9800F7A30D /* MyStatusItems.swift */,
 				023642E720CAD73B00CDB17D /* Process.swift */,
-				023642EB20CAD7AD00CDB17D /* Battery.swift */,
 				025AC38E20C0AFE0000E0837 /* Assets.xcassets */,
 				023642F220CAD86B00CDB17D /* System.swift */,
 				023642F020CAD81D00CDB17D /* SMC.swift */,
@@ -153,6 +153,14 @@
 				02ECFC8320C80CF800E0A1D7 /* ServiceManagement.framework */,
 			);
 			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		B4FF094F20D02248006BE560 /* Components */ = {
+			isa = PBXGroup;
+			children = (
+				B4FF095020D02270006BE560 /* Battery.swift */,
+			);
+			path = Components;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -274,7 +282,7 @@
 				023642E820CAD73B00CDB17D /* Process.swift in Sources */,
 				02B8120D20C9874D00C98F0D /* MemMenuView.swift in Sources */,
 				029DC1AD20CDCA9800F7A30D /* MyStatusItems.swift in Sources */,
-				023642EC20CAD7AD00CDB17D /* Battery.swift in Sources */,
+				B4FF095120D02270006BE560 /* Battery.swift in Sources */,
 				025AC38D20C0AFDD000E0837 /* ViewController.swift in Sources */,
 				023642F120CAD81D00CDB17D /* SMC.swift in Sources */,
 				02B8120920C95D6600C98F0D /* CPUMenuView.swift in Sources */,

@@ -138,10 +138,10 @@ class AppDelegate: NSObject, NSApplicationDelegate {
     var memIMG: String?
     
     /**
-     * Battery variables
+     *  Battery variables
      */
-    var previousChargeValue: Double = 0
-    var alreadyNotified: Bool = false
+    var remainingTime: Battery.RemainingBatteryTime?
+    var batteryCapacity: Double?
     
     /**
     * Shared variables
@@ -435,7 +435,6 @@ class AppDelegate: NSObject, NSApplicationDelegate {
         
         if (UserDefaults.standard.value(forKey: "colRedCPU") != nil)
         {
-            print("jop")
             colRedCPU = UserDefaults.standard.value(forKey: "colRedCPU") as! CGFloat
             colGreenCPU = UserDefaults.standard.value(forKey: "colGreenCPU") as! CGFloat
             colBlueCPU = UserDefaults.standard.value(forKey: "colBlueCPU") as! CGFloat
@@ -514,58 +513,8 @@ class AppDelegate: NSObject, NSApplicationDelegate {
         pixelWidth = 7 // 14*0.5
         pixelHeightCPU = 0
         mySystem = System()
-        btnCPUUtil = AppDelegate.sItemCPUUtil.button
         myBattery = Battery()
-        myBattery!.open()
-        /*
- 
-        //myCPUView = CPUUsageView()
-        //myCPUView?.giveContext(contextNew: self)
-        //myCPUView?.frame = (AppDelegate.btnCPUUtil?.frame)!
-        //popover.contentViewController = CPUUsageViewController.freshController()
-        //AppDelegate.btnCPUUtil?.addSubview(myCPUView!)
-        btnCPUUtil?.target = self
-        sItemCPUUtil.target = self;
-        //sItemCPUUtil.action = #selector(mouseDown(_:));
-        //sItemCPUUtil.sendAction(on: NSEvent.EventTypeMask.leftMouseDown)
-        
-        if (InterfaceStyle() == InterfaceStyle.Dark)
-        {
-            cpuIMG = "menubar-label-cpu-white"
-            pbIMG = "progressbar-white"
-            
-        }
-        else
-        {
-            cpuIMG = "menubar-label-cpu-black"
-            pbIMG = "progressbar-black"
-            
-        }
-        let img4 = NSImage(size: NSSize(width: 20, height: 18))
-        img4.lockFocus()
-        let img1 = NSImage(named:NSImage.Name(cpuIMG!))
-        img1?.draw(at: NSPoint(x: 0, y: 0), from: NSZeroRect, operation: NSCompositingOperation.sourceOver, fraction: 1.0)
-        let img2 = NSImage(named:NSImage.Name(pbIMG!))
-        img2?.draw(at: NSPoint(x: 10, y: 0), from: NSZeroRect, operation: NSCompositingOperation.sourceOver, fraction: 1.0)
-        pbFillRectCPU = NSRect(x: 13.0, y: 4.0, width: pixelWidth!, height: pixelHeightCPU!)
-        AppDelegate.UserSettings.cpuColor.setFill()
-        pbFillRectCPU?.fill()
-        NSColor.clear.setFill()
-        img4.unlockFocus()
-        
-        //btnCPUUtil?.image = img4
-        
-        /*
-        let str = Bundle.main.executableURL!.absoluteString
-        let components = str.split(separator: "/")
-        let head = "/" + components.dropLast(1).dropFirst(1).map(String.init).joined(separator: "/") + "/cpu_mem_util"
-        print(head)
-        */
- 
-    */
-        
-        
-        
+        btnCPUUtil = AppDelegate.sItemCPUUtil.button
     }
     
     @objc func settings_clicked()
@@ -575,19 +524,6 @@ class AppDelegate: NSObject, NSApplicationDelegate {
     }
     
     func constructMenu() {
-        
-        /*
-        let niceattr = NSMutableAttributedString(string: "haharechts")
-        let font = NSFont(name: "Apple SD Gothic Neo Bold", size: 11.0)
-        let fontSmall = NSFont(name: "Apple SD Gothic Neo Bold", size: 8.0)
-        niceattr.addAttribute(.font, value: font as Any, range: NSMakeRange(0,4))
-        let myParagraphStyle2 = NSMutableParagraphStyle()
-        myParagraphStyle2.alignment = .left
-        niceattr.addAttribute(.paragraphStyle, value: myParagraphStyle2, range: NSMakeRange(0, 4))
-        let myParagraphStyle = NSMutableParagraphStyle()
-        myParagraphStyle.alignment = .right
-        niceattr.addAttribute(.paragraphStyle, value: myParagraphStyle, range: NSMakeRange(4, 6))
-        niceitem.attributedTitle = niceattr*/
         
         niceitem.view = myCPUMenuView
         niceitem2.view = myMemMenuView
@@ -746,37 +682,6 @@ class AppDelegate: NSObject, NSApplicationDelegate {
         btnMemUsage?.image = imgFinal
     }
     
-    @objc func updateBatteryStatus() {
-        // TODO: the current charged percentage of the battery is not very accurate
-        let charge = self.myBattery!.charge()
-        let lower = Double(AppDelegate.UserSettings.lowerBatteryNotificationValue)
-        let upper = Double(AppDelegate.UserSettings.upperBatteryNotificationValue)
-        print(lower, upper)
-        
-        if(previousChargeValue <= upper && charge >= upper && alreadyNotified == false) {
-            deliverBatteryNotification(message: "Battery is almost fully charged")
-        } else if(previousChargeValue >= lower && charge <= lower && alreadyNotified == false) {
-            deliverBatteryNotification(message: "Battery is low")
-        } else if(charge < upper && charge > lower){
-            alreadyNotified = false
-            NSUserNotificationCenter.default.removeAllDeliveredNotifications()
-        }
-        
-        if(abs(previousChargeValue-charge) >= 3) {
-            previousChargeValue = charge
-        }
-    }
-    
-    func deliverBatteryNotification(message: String) {
-        let notification = NSUserNotification()
-        notification.identifier = "batteryFullNotification"
-        notification.title = "Battery Info"
-        notification.subtitle = message
-        notification.soundName = NSUserNotificationDefaultSoundName
-        NSUserNotificationCenter.default.deliver(notification)
-        alreadyNotified = true
-    }
-    
     @objc func updateAll()
     {
         if (AppDelegate.UserSettings.userWantsCPUTemp)
@@ -839,7 +744,14 @@ class AppDelegate: NSObject, NSApplicationDelegate {
             AppDelegate.sItemBandwidth.isVisible = false
         }
         if(AppDelegate.UserSettings.userWantsBatteryNotification) {
-            updateBatteryStatus();
+            let battery = myBattery!
+            
+            // update the current capacity and notify the user if needed
+            battery.notifyUser()
+            batteryCapacity = battery.getBatteryCapacity()
+            
+            // get the remaining time
+            remainingTime = battery.getRemainingBatteryTime()
         }
         if (AppDelegate.changeInterval())
         {
@@ -1063,50 +975,6 @@ class AppDelegate: NSObject, NSApplicationDelegate {
     {
         btnMemUsage = AppDelegate.sItemMemUsage.button
         pixelHeightMEM = 0
-        
-        //myMemView = MemUsageView()
-        //myMemView?.frame = (btnMemUsage?.frame)!
-        //btnMemUsage?.addSubview(myMemView!)
-        /*
-        let img1 = NSImage(named:NSImage.Name("menubar-label-mem-white"))
-        let img2 = NSImage(named:NSImage.Name("progressbar-white"))
-        let img3 = NSImage(size: NSSize(width: 20, height: 18))
-        img3.lockFocus()
-        img1?.draw(at: NSPoint(x: 0, y: 0), from: NSZeroRect, operation: NSCompositingOperation.sourceOver, fraction: 1.0)
-        img2?.draw(at: NSPoint(x: 10, y: 0), from: NSZeroRect, operation: NSCompositingOperation.sourceOver, fraction: 1.0)
-        img3.unlockFocus()
-        btnMemUsage?.image = img3
-         */
-        
-        
-        /*
-        if (InterfaceStyle() == InterfaceStyle.Dark)
-        {
-            memIMG = "menubar-label-mem-white"
-            pbIMG = "progressbar-white"
-            
-        }
-        else
-        {
-            memIMG = "menubar-label-mem-black"
-            pbIMG = "progressbar-black"
-            
-        }
-        
-        let imgFinal = NSImage(size: NSSize(width: 20, height: 18))
-        imgFinal.lockFocus()
-        let img1 = NSImage(named:NSImage.Name(memIMG!))
-        img1?.draw(at: NSPoint(x: 0, y: 0), from: NSZeroRect, operation: NSCompositingOperation.sourceOver, fraction: 1.0)
-        let img2 = NSImage(named:NSImage.Name(pbIMG!))
-        img2?.draw(at: NSPoint(x: 10, y: 0), from: NSZeroRect, operation: NSCompositingOperation.sourceOver, fraction: 1.0)
-        pbFillRectCPU = NSRect(x: 11.0, y: 1.0, width: pixelWidth!, height: pixelHeightMEM!)
-        AppDelegate.UserSettings.memColor.setFill()
-        pbFillRectCPU?.fill()
-        NSColor.clear.setFill()
-        imgFinal.unlockFocus()
-        
-        //btnMemUsage?.image = imgFinal
-        */
     }
     
     func initCPUTemp()
@@ -1122,10 +990,6 @@ class AppDelegate: NSObject, NSApplicationDelegate {
     func initBandwidth()
     {
         btnBandwidth = AppDelegate.sItemBandwidth.button
-        //btnBandwidth?.image = NSImage(named:NSImage.Name("menubar-label-network"))
-        //myBandwidthView = BandwidthView()
-        //myBandwidthView?.frame = (btnBandwidth?.frame)!
-        //btnBandwidth?.addSubview(myBandwidthView!)
         
         len1 = 6
         len2 = 6
@@ -1134,7 +998,6 @@ class AppDelegate: NSObject, NSApplicationDelegate {
     
     func applicationWillTerminate(_ aNotification: Notification) {
         // Insert code here to tear down your application
-        self.myBattery!.close()
     }
 
 
