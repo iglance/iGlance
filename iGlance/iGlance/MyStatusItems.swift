@@ -17,6 +17,7 @@ class MyStatusItems: NSObject {
         case MemUtil
         case Bandwidth
         case FanSpeed
+        case Battery
         case INVALID
     }
     
@@ -149,6 +150,9 @@ class MyStatusItems: NSObject {
                     item = StatusItems.FanSpeed
                     break
                 case 6:
+                    item = StatusItems.Battery
+                    break
+                case 7:
                     item = StatusItems.INVALID
                 default:
                     return
@@ -191,8 +195,11 @@ class MyStatusItems: NSObject {
             case StatusItems.FanSpeed:
                 idx = 5
                 break
-            case StatusItems.INVALID:
+            case StatusItems.Battery:
                 idx = 6
+                break
+            case StatusItems.INVALID:
+                idx = 7
                 break
             default:
                 idx = 0

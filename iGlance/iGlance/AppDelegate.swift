@@ -65,6 +65,10 @@ class AppDelegate: NSObject, NSApplicationDelegate {
     var btnCPUTemp: NSStatusBarButton?
     var menuCPUTemp: NSMenu?
     
+    static let sItemBattery = NSStatusBar.system.statusItem(withLength: NSStatusItem.variableLength)
+    var btnBattery: NSStatusBarButton?
+    var menuBattery: NSMenu?
+    
     //var command: AsyncCommand?
     
     var myWindowController: MyMainWindow?
@@ -88,6 +92,7 @@ class AppDelegate: NSObject, NSApplicationDelegate {
         static var tempUnit = TempUnit.Celcius
         static var userWantsCPUBorder = true
         static var userWantsMemBorder = true
+        static var userWantsBatteryUtil = true
         static var userWantsBatteryNotification = true
         static var lowerBatteryNotificationValue = 20
         static var upperBatteryNotificationValue = 80
@@ -188,6 +193,7 @@ class AppDelegate: NSObject, NSApplicationDelegate {
         AppDelegate.sItemFanSpeed.isVisible = false
         AppDelegate.sItemMemUsage.isVisible = false
         AppDelegate.sItemBandwidth.isVisible = false
+        AppDelegate.sItemBattery.isVisible = false
         
         myWindowController = NSStoryboard(name: NSStoryboard.Name(rawValue: "Main"), bundle: nil).instantiateController(withIdentifier: NSStoryboard.SceneIdentifier(rawValue: "abcd")) as! MyMainWindow
         //UserDefaults.standard.set(4, forKey: "validToIndex")
@@ -297,6 +303,7 @@ class AppDelegate: NSObject, NSApplicationDelegate {
         initMemUsage()
         initFanSpeed()
         initBandwidth()
+        initBattery()
         
         
         do
@@ -373,7 +380,6 @@ class AppDelegate: NSObject, NSApplicationDelegate {
                 if (AppDelegate.UserSettings.userWantsCPUTemp)
                 {
                     AppDelegate.sItemCPUTemp.isVisible = true
-                    print("1")
                     once = true
                 }
                 break
@@ -401,6 +407,11 @@ class AppDelegate: NSObject, NSApplicationDelegate {
                     once = true
                 }
                 break
+            case MyStatusItems.StatusItems.Battery:
+                if(AppDelegate.UserSettings.userWantsBatteryUtil) {
+                    AppDelegate.sItemBattery.isVisible = true
+                    once = true
+                }
             default:
                 continue
             }
@@ -484,6 +495,9 @@ class AppDelegate: NSObject, NSApplicationDelegate {
         {
             UserSettings.userWantsMemBorder = UserDefaults.standard.value(forKey: "userWantsMemBorder") as! Bool
         }
+        if(UserDefaults.standard.value(forKey: "userWantsBatteryUtil") != nil) {
+            UserSettings.userWantsBatteryUtil = UserDefaults.standard.value(forKey: "userWantsBatteryUtil") as! Bool
+        }
         if(UserDefaults.standard.value(forKey: "userWantsBatteryNotification") != nil) {
             UserSettings.userWantsBatteryNotification = UserDefaults.standard.value(forKey: "userWantsBatteryNotification") as! Bool
         }
@@ -562,6 +576,12 @@ class AppDelegate: NSObject, NSApplicationDelegate {
         menuBandwidth?.addItem(NSMenuItem.separator())
         menuBandwidth?.addItem(NSMenuItem(title: "Quit iGlance", action: #selector(NSApplication.terminate(_:)), keyEquivalent: "q"))
         AppDelegate.sItemBandwidth.menu = menuBandwidth
+        
+        menuBattery = NSMenu()
+        menuBattery?.addItem(NSMenuItem(title: "Settings", action: #selector(settings_clicked), keyEquivalent: "s"))
+        menuBattery?.addItem(NSMenuItem.separator())
+        menuBattery?.addItem(NSMenuItem(title: "Quite iGlance", action: #selector(NSApplication.terminate(_:)), keyEquivalent: "q"))
+        AppDelegate.sItemBattery.menu = menuBattery
     }
     
     @objc func updateCPUUsage()
@@ -994,6 +1014,11 @@ class AppDelegate: NSObject, NSApplicationDelegate {
         len1 = 6
         len2 = 6
         bandText = ""
+    }
+    
+    func initBattery() {
+        btnBattery = AppDelegate.sItemBattery.button
+        btnBattery?.title = "Battery"
     }
     
     func applicationWillTerminate(_ aNotification: Notification) {
