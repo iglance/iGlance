@@ -858,7 +858,12 @@ class AppDelegate: NSObject, NSApplicationDelegate {
     
     func initBattery() {
         btnBattery = AppDelegate.sItemBattery.button
-        btnBattery?.title = "Battery"
+        if(InterfaceStyle() == InterfaceStyle.Dark) {
+            btnBattery?.image = NSImage(named: NSImage.Name("battery-icon-white"))
+        } else {
+            btnBattery?.image = NSImage(named: NSImage.Name("battery-icon-black"))
+        }
+       
     }
     
     func applicationWillTerminate(_ aNotification: Notification) {
