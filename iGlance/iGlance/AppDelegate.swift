@@ -103,11 +103,6 @@ class AppDelegate: NSObject, NSApplicationDelegate {
     
     var mySystem: System?
     var myBattery: Battery?
-    /*
-    var myCPUView: CPUUsageView?
-    var myMemView: MemUsageView?
-    var myBandwidthView: BandwidthView?
-    */
     
     /**
     * Bandwidth variables
@@ -166,26 +161,6 @@ class AppDelegate: NSObject, NSApplicationDelegate {
     var bandwidthTask: Process?
     var curr: Array<Substring>?
     
-    /*
-     0: CPUUtil
-     1: CPUTemp
-     2: MemUtil
-     3: Bandwidth
-     4: FanSpeed
- 
-    enum StatusItems {
-        case CPUUtil
-        case CPUTemp
-        case MemUtil
-        case Bandwidth
-        case FanSpeed
-    }
- 
-    public static var StatusItemPos = [StatusItems.CPUTemp, StatusItems.CPUUtil, StatusItems.MemUtil, StatusItems.Bandwidth, StatusItems.FanSpeed]
-    public static var validToIndex = 0
-     */
-
-    
     func applicationDidFinishLaunching(_ aNotification: Notification) {
         
         AppDelegate.sItemCPUTemp.isVisible = false
@@ -196,24 +171,6 @@ class AppDelegate: NSObject, NSApplicationDelegate {
         AppDelegate.sItemBattery.isVisible = false
         
         myWindowController = NSStoryboard(name: NSStoryboard.Name(rawValue: "Main"), bundle: nil).instantiateController(withIdentifier: NSStoryboard.SceneIdentifier(rawValue: "abcd")) as! MyMainWindow
-        //UserDefaults.standard.set(4, forKey: "validToIndex")
-        //NSApp.terminate(nil)
-        
-        
-        /*
-        UserDefaults.standard.set(false, forKey: "userWantsCPUUtil")
-        UserDefaults.standard.set(false, forKey: "userWantsCPUTemp")
-        UserDefaults.standard.set(false, forKey: "userWantsMemUsage")
-        UserDefaults.standard.set(false, forKey: "userWantsBandwidth")
-        UserDefaults.standard.set(false, forKey: "userWantsFanSpeed")
-        UserDefaults.standard.set(6, forKey: "posArray0")
-        UserDefaults.standard.set(6, forKey: "posArray1")
-        UserDefaults.standard.set(6, forKey: "posArray2")
-        UserDefaults.standard.set(6, forKey: "posArray3")
-        UserDefaults.standard.set(6, forKey: "posArray4")
-        UserDefaults.standard.set(0, forKey: "validToIndex")
-        NSApp.terminate(nil)
-        */
         
         loadSessionSettings()
         displayStatusItems()
@@ -292,11 +249,6 @@ class AppDelegate: NSObject, NSApplicationDelegate {
             DistributedNotificationCenter.default().postNotificationName(NCConstants.KILLME, object: Bundle.main.bundleIdentifier, userInfo: nil, options: DistributedNotificationCenter.Options.deliverImmediately)
         }
         
-        //myWindowController?.showWindow(self)
-        //NSApp.activate(ignoringOtherApps: true)
-        
-        
-        //popover.behavior = NSPopover.Behavior.transient;
         constructMenu()
         initCPUUtil()
         initCPUTemp()
@@ -320,44 +272,6 @@ class AppDelegate: NSObject, NSApplicationDelegate {
         RunLoop.current.add(intervalTimer!, forMode: RunLoopMode.commonModes)
     }
     
-    /*
-    func getPosArray()
-    {
-        for i in 0...AppDelegate.StatusItemPos.count - 1
-        {
-            let strKey = "posArray" + String(i)
-            var item: AppDelegate.StatusItems
-            if (UserDefaults.standard.integer(forKey: strKey) == 0)
-            {
-                break
-            }
-            else
-            {
-                switch(UserDefaults.standard.integer(forKey: strKey))
-                {
-                case 1:
-                    item = AppDelegate.StatusItems.CPUUtil
-                    break
-                case 2:
-                    item = AppDelegate.StatusItems.CPUTemp
-                    break
-                case 3:
-                    item = AppDelegate.StatusItems.MemUtil
-                    break
-                case 4:
-                    item = AppDelegate.StatusItems.Bandwidth
-                    break
-                case 5:
-                    item = AppDelegate.StatusItems.FanSpeed
-                    break
-                default:
-                    return
-                }
-                AppDelegate.StatusItemPos[i] = item
-            }
-        }
-    }
-    */
     
     func displayStatusItems()
     {
@@ -369,21 +283,21 @@ class AppDelegate: NSObject, NSApplicationDelegate {
         {
             switch (MyStatusItems.StatusItemPos[i])
             {
-            case MyStatusItems.StatusItems.CPUUtil:
+            case MyStatusItems.StatusItems.cpuUtil:
                 if (AppDelegate.UserSettings.userWantsCPUUtil)
                 {
                     AppDelegate.sItemCPUUtil.isVisible = true
                     once = true
                 }
                 break
-            case MyStatusItems.StatusItems.CPUTemp:
+            case MyStatusItems.StatusItems.cpuTemp:
                 if (AppDelegate.UserSettings.userWantsCPUTemp)
                 {
                     AppDelegate.sItemCPUTemp.isVisible = true
                     once = true
                 }
                 break
-            case MyStatusItems.StatusItems.MemUtil:
+            case MyStatusItems.StatusItems.memUtil:
                 if (AppDelegate.UserSettings.userWantsMemUsage)
                 {
                     AppDelegate.sItemMemUsage.isVisible = true
@@ -391,7 +305,7 @@ class AppDelegate: NSObject, NSApplicationDelegate {
                     once = true
                 }
                 break
-            case MyStatusItems.StatusItems.Bandwidth:
+            case MyStatusItems.StatusItems.bandwidth:
                 if (AppDelegate.UserSettings.userWantsBandwidth)
                 {
                     AppDelegate.sItemBandwidth.isVisible = true
@@ -399,7 +313,7 @@ class AppDelegate: NSObject, NSApplicationDelegate {
                     once = true
                 }
                 break
-            case MyStatusItems.StatusItems.FanSpeed:
+            case MyStatusItems.StatusItems.fanSpeed:
                 if (AppDelegate.UserSettings.userWantsFanSpeed)
                 {
                     AppDelegate.sItemFanSpeed.isVisible = true
@@ -407,7 +321,7 @@ class AppDelegate: NSObject, NSApplicationDelegate {
                     once = true
                 }
                 break
-            case MyStatusItems.StatusItems.Battery:
+            case MyStatusItems.StatusItems.battery:
                 if(AppDelegate.UserSettings.userWantsBatteryUtil) {
                     AppDelegate.sItemBattery.isVisible = true
                     once = true
@@ -419,7 +333,6 @@ class AppDelegate: NSObject, NSApplicationDelegate {
         if (once == false)
         {
             // bring window to front, otherwise the user can't access it
-            print("lol")
             settings_clicked()
         }
     }
@@ -515,7 +428,6 @@ class AppDelegate: NSObject, NSApplicationDelegate {
         alert.informativeText = text
         alert.alertStyle = .critical
         alert.addButton(withTitle: "OK")
-        //alert.addButton(withTitle: "Cancel")
         return alert.runModal() == .alertFirstButtonReturn
     }
     
@@ -548,7 +460,6 @@ class AppDelegate: NSObject, NSApplicationDelegate {
         menuCPUUtil?.addItem(NSMenuItem(title: "Settings", action: #selector(settings_clicked), keyEquivalent: "s"))
         menuCPUUtil?.addItem(NSMenuItem.separator())
         menuCPUUtil?.addItem(NSMenuItem(title: "Quit iGlance", action: #selector(NSApplication.terminate(_:)), keyEquivalent: "q"))
-        //menuCPUUtil?.addItem(NSMenuItem.separator())
         AppDelegate.sItemCPUUtil.menu = menuCPUUtil
         
         menuFanSpeed = NSMenu()
@@ -592,16 +503,11 @@ class AppDelegate: NSObject, NSApplicationDelegate {
         let cpuIdle = Double(round(100*cpuStats.idle)/100)
         let cpuNice = Double(round(100*cpuStats.nice)/100)
         let cpuUsageTotal = cpuUser + cpuSystem
-        //self.myCPUView?.setPercent(percent: cpuUsageTotal)
         
         myCPUMenuView.percentSystem.stringValue = String(Int(cpuSystem)) + "%"
         myCPUMenuView.percentUser.stringValue = String(Int(cpuUser)) + "%"
         myCPUMenuView.percentIdle.stringValue = String(Int(cpuIdle)) + "%"
-        //myCPUMenuView.percentNice.stringValue = String(cpuNice)
-        //myCPUMenuView.setPercentNice(val: String(Int(cpuNice)) + "%")
         myCPUMenuView.percentNice.stringValue = String(Int(cpuNice)) + "%"
-        //RunLoop.current.add(Timer(timeInterval: 1.0, repeats: true, block: { (timer) in print("")}), forMode: RunLoopMode.commonModes)
-        
         
         pixelHeightCPU = Double((pbMax! / 100.0) * cpuUsageTotal)
         
@@ -649,24 +555,9 @@ class AppDelegate: NSObject, NSApplicationDelegate {
         myMemMenuView.percentFree.stringValue = String(memFree) + " GB"
         myMemMenuView.percentInactive.stringValue = String(memInactive) + " GB"
         myMemMenuView.percentWired.stringValue = String(memWired) + " GB"
-        
-        /*
-        print("active")
-        print(memActive)
-        print("compressed")
-        print(memCompressed)
-        print("free")
-        print(memFree)
-        print("inactive")
-        print(memInactive)
-        print("wired")
-        print(memWired)
-        print("")
-         */
+      
         let memTaken = memActive + memCompressed + memWired
-        //print(System.physicalMemory())
         let memUtil = Double(memTaken / System.physicalMemory()) * 100
-        //self.myMemView?.setPercent(percent: memUtil)
         
         pixelHeightMEM = Double((pbMax! / 100.0) * memUtil)
 
@@ -748,15 +639,6 @@ class AppDelegate: NSObject, NSApplicationDelegate {
                 //updateBandwidth()
                 firstBandwidth = false
             }
-            else
-            {
-                /*
-                if (command?.isRunning)!
-                {
-                    //print(command?.suspend())
-                }
-                */
-            }
             reallyUpdateBandwidth()
         }
         else
@@ -778,7 +660,6 @@ class AppDelegate: NSObject, NSApplicationDelegate {
             intervalTimer?.invalidate()
             print(UserSettings.updateInterval)
             intervalTimer = Timer.scheduledTimer(timeInterval: UserSettings.updateInterval, target: self, selector: #selector(updateAll), userInfo: nil, repeats: true)
-            //RunLoop.current.add(intervalTimer!, forMode: RunLoopMode.commonModes)
             AppDelegate.currTimeInterval = AppDelegate.UserSettings.updateInterval
         }
     }
@@ -929,47 +810,6 @@ class AppDelegate: NSObject, NSApplicationDelegate {
             finalUp = String(format: "%.1f", Double(down) / 1048576.0) + " MB/s"
         }
         bandText = finalDown! + "\n" + finalUp!
-    }
-    
-    @objc func updateBandwidth()
-    {
-        return
-        //print("UPDATE CALLED")
-        //command = runAsync("netstat","-w1 -l en0").onCompletion { command in
-        /*
-        command = runAsync("netstat","-w1 -l en0&\nt=$!\nsleep 3\nkill $t").onCompletion { command in
-            print("fin")
-        }
-        var curr: Array<Substring>?
-        
-        curr = [""]
-        //var str1: String?
-        //var str2: String?
-        
-        command?.stdout.onOutput { stdout in
-            for line in (self.command?.stdout.lines())!
-            {
-                print("aha")
-                curr = line.replacingOccurrences(of: "  ", with: " ").replacingOccurrences(of: "  ", with: " ").replacingOccurrences(of: "  ", with: " ").replacingOccurrences(of: "  ", with: " ").split(separator: " ")
-                if (curr == nil || (curr?.count)! < 6)
-                {
-                    continue
-                }
-                if (Int64(curr![2]) == nil)
-                {
-                    continue
-                }
-                else
-                {
-                    self.dSpeed = Int64(curr![2])
-                    self.uSpeed = Int64(curr![5])
-                }
-                //print("-------")
-            }
-            
-        }
-        */
-        
     }
     
     @objc func updateCPUTemp() {
