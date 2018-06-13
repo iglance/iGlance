@@ -26,7 +26,6 @@
 		02ECFC8120C80CBA00E0A1D7 /* iGlanceLauncher.app in CopyFiles */ = {isa = PBXBuildFile; fileRef = 02ECFC7120C80A9300E0A1D7 /* iGlanceLauncher.app */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
 		02ECFC8420C80CF800E0A1D7 /* ServiceManagement.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 02ECFC8320C80CF800E0A1D7 /* ServiceManagement.framework */; };
 		B41EF8EA20D17A2500CFEA2D /* .swiftlint.yml in Resources */ = {isa = PBXBuildFile; fileRef = B41EF8E920D17A2500CFEA2D /* .swiftlint.yml */; };
-		B4AE1F5420D17E560055C1C9 /* CPU.swift in Sources */ = {isa = PBXBuildFile; fileRef = B4AE1F5320D17E560055C1C9 /* CPU.swift */; };
 		B4B6137520CD16600068A789 /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B4B6137420CD16600068A789 /* Cocoa.framework */; };
 		B4FF095120D02270006BE560 /* Battery.swift in Sources */ = {isa = PBXBuildFile; fileRef = B4FF095020D02270006BE560 /* Battery.swift */; };
 /* End PBXBuildFile section */
@@ -70,7 +69,6 @@
 		02ECFC7D20C80A9500E0A1D7 /* iGlanceLauncher.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = iGlanceLauncher.entitlements; sourceTree = "<group>"; };
 		02ECFC8320C80CF800E0A1D7 /* ServiceManagement.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = ServiceManagement.framework; path = System/Library/Frameworks/ServiceManagement.framework; sourceTree = SDKROOT; };
 		B41EF8E920D17A2500CFEA2D /* .swiftlint.yml */ = {isa = PBXFileReference; lastKnownFileType = text; path = .swiftlint.yml; sourceTree = "<group>"; };
-		B4AE1F5320D17E560055C1C9 /* CPU.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CPU.swift; sourceTree = "<group>"; };
 		B4B6137420CD16600068A789 /* Cocoa.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Cocoa.framework; path = System/Library/Frameworks/Cocoa.framework; sourceTree = SDKROOT; };
 		B4FF095020D02270006BE560 /* Battery.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Battery.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -172,7 +170,6 @@
 			isa = PBXGroup;
 			children = (
 				B4FF095020D02270006BE560 /* Battery.swift */,
-				B4AE1F5320D17E560055C1C9 /* CPU.swift */,
 			);
 			path = Components;
 			sourceTree = "<group>";
@@ -312,7 +309,6 @@
 				023642F320CAD86B00CDB17D /* System.swift in Sources */,
 				02E9CE3020C526BE00879EB1 /* MyMainWindow.swift in Sources */,
 				023642E820CAD73B00CDB17D /* Process.swift in Sources */,
-				B4AE1F5420D17E560055C1C9 /* CPU.swift in Sources */,
 				02B8120D20C9874D00C98F0D /* MemMenuView.swift in Sources */,
 				029DC1AD20CDCA9800F7A30D /* MyStatusItems.swift in Sources */,
 				B4FF095120D02270006BE560 /* Battery.swift in Sources */,
