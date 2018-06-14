@@ -493,6 +493,8 @@ class AppDelegate: NSObject, NSApplicationDelegate {
         AppDelegate.sItemBandwidth.menu = menuBandwidth
         
         menuBattery = NSMenu()
+        menuBattery?.addItem(NSMenuItem(title: "Remaining time: ", action: nil, keyEquivalent: ""))
+        menuBattery?.addItem(NSMenuItem.separator())
         menuBattery?.addItem(NSMenuItem(title: "Settings", action: #selector(settings_clicked), keyEquivalent: "s"))
         menuBattery?.addItem(NSMenuItem.separator())
         menuBattery?.addItem(NSMenuItem(title: "Quite iGlance", action: #selector(NSApplication.terminate(_:)), keyEquivalent: "q"))
@@ -714,6 +716,10 @@ class AppDelegate: NSObject, NSApplicationDelegate {
         imageFinal.unlockFocus()
         
         btnBattery?.image = imageFinal
+        
+        // update the menu entry with the current remaining time
+        let timeEntry = menuBattery?.item(withTag: 0)
+        timeEntry?.title = "Remaining time: " + timeValue!
     }
     
     static func changeInterval() -> Bool
