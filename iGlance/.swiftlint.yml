@@ -1,5 +1,0 @@
-excluded:
-    - iGlance/lib
-    - iGlance/AppDelegate.swift
-line_length: 150
-reporter: "xcode"
