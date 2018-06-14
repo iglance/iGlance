@@ -160,19 +160,16 @@ class ViewController: NSViewController {
             tfUpperBatteryValue.intValue = Int32(AppDelegate.UserSettings.upperBatteryNotificationValue)
         }
     }
-    
-    
-    
-    //MARK: Properties
-    
+    // MARK: Properties
     override func viewDidLoad() {
         super.viewDidLoad()
     }
-    
     @IBAction func cbBatterNotification_clicked(_ sender: NSButton) {
         let checked = (cbBatteryNotification.state == NSButton.StateValue.on)
         AppDelegate.UserSettings.userWantsBatteryNotification = checked
+        AppDelegate.sItemBattery.isVisible = checked
         UserDefaults.standard.set(checked, forKey: "userWantsBatteryNotification")
+        checked ? MyStatusItems.insertItem(item: MyStatusItems.StatusItems.battery) : MyStatusItems.removeItem(item: MyStatusItems.StatusItems.battery)
     }
     @IBAction func tfLowerBatteryValue_changed(_ sender: NSTextField) {
         let value: Int = Int(tfLowerBatteryValue.intValue)
@@ -184,7 +181,6 @@ class ViewController: NSViewController {
         AppDelegate.UserSettings.upperBatteryNotificationValue = value
         UserDefaults.standard.set(value, forKey: "upperBatteryNotificationValue")
     }
-    
     @IBAction func cbCPUTemp_clicked(_ sender: NSButton) {
         let checked = (cbCPUTemp.state == NSButton.StateValue.on)
         AppDelegate.UserSettings.userWantsCPUTemp = checked

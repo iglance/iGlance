@@ -97,7 +97,6 @@ class AppDelegate: NSObject, NSApplicationDelegate {
     }
     
     var mySystem: System?
-    var myBattery: Battery?
     
     /**
     * Bandwidth variables
@@ -137,6 +136,7 @@ class AppDelegate: NSObject, NSApplicationDelegate {
      */
     var remainingTime: Battery.RemainingBatteryTime?
     var batteryCapacity: Double?
+    let myBattery = Battery()
     
     /**
     * Shared variables
@@ -273,6 +273,7 @@ class AppDelegate: NSObject, NSApplicationDelegate {
                 if (AppDelegate.UserSettings.userWantsCPUUtil)
                 {
                     AppDelegate.sItemCPUUtil.isVisible = true
+                    print("1")
                     once = true
                 }
                 break
@@ -280,6 +281,7 @@ class AppDelegate: NSObject, NSApplicationDelegate {
                 if (AppDelegate.UserSettings.userWantsCPUTemp)
                 {
                     AppDelegate.sItemCPUTemp.isVisible = true
+                    print("2")
                     once = true
                 }
                 break
@@ -287,7 +289,7 @@ class AppDelegate: NSObject, NSApplicationDelegate {
                 if (AppDelegate.UserSettings.userWantsMemUsage)
                 {
                     AppDelegate.sItemMemUsage.isVisible = true
-                    print("2")
+                    print("3")
                     once = true
                 }
                 break
@@ -295,7 +297,7 @@ class AppDelegate: NSObject, NSApplicationDelegate {
                 if (AppDelegate.UserSettings.userWantsBandwidth)
                 {
                     AppDelegate.sItemBandwidth.isVisible = true
-                    print("3")
+                    print("4")
                     once = true
                 }
                 break
@@ -303,13 +305,14 @@ class AppDelegate: NSObject, NSApplicationDelegate {
                 if (AppDelegate.UserSettings.userWantsFanSpeed)
                 {
                     AppDelegate.sItemFanSpeed.isVisible = true
-                    print("4")
+                    print("5")
                     once = true
                 }
                 break
             case MyStatusItems.StatusItems.battery:
                 if(AppDelegate.UserSettings.userWantsBatteryUtil) {
                     AppDelegate.sItemBattery.isVisible = true
+                    print("6")
                     once = true
                 }
             default:
@@ -425,7 +428,6 @@ class AppDelegate: NSObject, NSApplicationDelegate {
         pixelWidth = 7 // 14*0.5
         pixelHeightCPU = 0
         mySystem = System()
-        myBattery = Battery()
         btnCPUUtil = AppDelegate.sItemCPUUtil.button
     }
     
@@ -631,15 +633,13 @@ class AppDelegate: NSObject, NSApplicationDelegate {
         {
             AppDelegate.sItemBandwidth.isVisible = false
         }
-        if(AppDelegate.UserSettings.userWantsBatteryNotification) {
-            let battery = myBattery!
-            
-            // update the current capacity and notify the user if needed
-            battery.notifyUser()
-            batteryCapacity = battery.getBatteryCapacity()
-            
-            // get the remaining time
-            remainingTime = battery.getRemainingBatteryTime()
+        if (AppDelegate.UserSettings.userWantsBatteryNotification) {
+            AppDelegate.sItemBattery.isVisible = true
+            updateBattery()
+        }
+        else
+        {
+            AppDelegate.sItemBattery.isVisible = false
         }
         if (AppDelegate.changeInterval())
         {
@@ -649,6 +649,23 @@ class AppDelegate: NSObject, NSApplicationDelegate {
             AppDelegate.currTimeInterval = AppDelegate.UserSettings.updateInterval
             RunLoop.current.add(intervalTimer!, forMode: RunLoopMode.commonModes)
         }
+    }
+    
+    
+    func updateBattery()
+    {
+        if(InterfaceStyle() == InterfaceStyle.Dark) {
+            btnBattery?.image = NSImage(named: NSImage.Name("battery-icon-white"))
+        } else {
+            btnBattery?.image = NSImage(named: NSImage.Name("battery-icon-black"))
+        }
+        
+        // update the current capacity and notify the user if needed
+        myBattery.notifyUser()
+        batteryCapacity = myBattery.getBatteryCapacity()
+        
+        // get the remaining time
+        remainingTime = myBattery.getRemainingBatteryTime()
     }
     
     static func changeInterval() -> Bool
@@ -849,12 +866,6 @@ class AppDelegate: NSObject, NSApplicationDelegate {
     
     func initBattery() {
         btnBattery = AppDelegate.sItemBattery.button
-        if(InterfaceStyle() == InterfaceStyle.Dark) {
-            btnBattery?.image = NSImage(named: NSImage.Name("battery-icon-white"))
-        } else {
-            btnBattery?.image = NSImage(named: NSImage.Name("battery-icon-black"))
-        }
-       
     }
     
     func applicationWillTerminate(_ aNotification: Notification) {
