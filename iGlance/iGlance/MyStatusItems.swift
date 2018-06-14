@@ -21,11 +21,12 @@ class MyStatusItems: NSObject {
     }
     // Default settings
     public static var StatusItemPos = [StatusItems.INVALID, StatusItems.INVALID,
-                                       StatusItems.INVALID, StatusItems.INVALID, StatusItems.INVALID] as [StatusItems]
+                                       StatusItems.INVALID, StatusItems.INVALID,
+                                       StatusItems.INVALID, StatusItems.INVALID] as [StatusItems]
     public static var validToIndex = 0
     public static func insertItem(item: StatusItems)
     {
-        if (validToIndex >= (StatusItemPos.count - 1))
+        if validToIndex >= (StatusItemPos.count - 1)
         {
             return
         }
@@ -162,7 +163,8 @@ class MyStatusItems: NSObject {
          2: MemUtil
          3: Bandwidth
          4: FanSpeed
-         5: INVALID
+         5: Battery
+         6: INVALID
          
          Incremented every index on purpose by 1 because userdefault.standard.data(..) returns 0 if no value found
          */
