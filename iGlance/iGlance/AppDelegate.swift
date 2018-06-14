@@ -139,6 +139,14 @@ class AppDelegate: NSObject, NSApplicationDelegate {
     let myBattery = Battery()
     
     /**
+     * FAN variables
+     */
+    
+    var minMenuFan = NSMenuItem(title: "Min:\t\t NA", action: nil, keyEquivalent: "")
+    var maxMenuFan = NSMenuItem(title: "Max:\t NA", action: nil, keyEquivalent: "")
+    var currMenuFan = NSMenuItem(title: "Current:\t NA", action: nil, keyEquivalent: "")
+    
+    /**
     * Shared variables
     */
     var pixelWidth: Double?
@@ -451,6 +459,10 @@ class AppDelegate: NSObject, NSApplicationDelegate {
         AppDelegate.sItemCPUUtil.menu = menuCPUUtil
         
         menuFanSpeed = NSMenu()
+        menuFanSpeed?.addItem(minMenuFan)
+        menuFanSpeed?.addItem(maxMenuFan)
+        menuFanSpeed?.addItem(currMenuFan)
+        menuFanSpeed?.addItem(NSMenuItem.separator())
         menuFanSpeed?.addItem(NSMenuItem(title: "Settings", action: #selector(settings_clicked), keyEquivalent: "s"))
         menuFanSpeed?.addItem(NSMenuItem.separator())
         menuFanSpeed?.addItem(NSMenuItem(title: "Quit iGlance", action: #selector(NSApplication.terminate(_:)), keyEquivalent: "q"))
@@ -465,6 +477,10 @@ class AppDelegate: NSObject, NSApplicationDelegate {
         AppDelegate.sItemMemUsage.menu = menuMemUsage
         
         menuCPUTemp = NSMenu()
+        let myTempMenu = NSMenuItem(title: "", action: nil, keyEquivalent: "")
+        myTempMenu.view = CPUTempMenuView(frame: NSRect(x: 0, y: 0, width: 355, height: 195))
+        menuCPUTemp?.addItem(myTempMenu)
+        menuCPUTemp?.addItem(NSMenuItem.separator())
         menuCPUTemp?.addItem(NSMenuItem(title: "Settings", action: #selector(settings_clicked), keyEquivalent: "s"))
         menuCPUTemp?.addItem(NSMenuItem.separator())
         menuCPUTemp?.addItem(NSMenuItem(title: "Quit iGlance", action: #selector(NSApplication.terminate(_:)), keyEquivalent: "q"))
@@ -701,18 +717,23 @@ class AppDelegate: NSObject, NSApplicationDelegate {
                 print("\tCurrent:  NA")
                 return
             }
+            minMenuFan.title = "Min:\t\t " + String(fan.minSpeed) + " RPM"
+            maxMenuFan.title = "Max:\t " + String(fan.maxSpeed) + " RPM"
             let currentMinus50 = currentSpeed - fan.minSpeed - 50
             if (currentMinus50 < 0)
             {
                 btnFanSpeed?.title = "0"
+                currMenuFan.title = "Current:\t 0 RPM"
             }
             else if (currentSpeed >= fan.maxSpeed)
             {
                 btnFanSpeed?.title = String(fan.maxSpeed - fan.minSpeed)
+                currMenuFan.title = "Current:\t " + String(fan.maxSpeed - fan.minSpeed) + " RPM"
             }
             else
             {
                 btnFanSpeed?.title = String(((currentMinus50+50) / 5)*5)
+                currMenuFan.title = "Current:\t " + String(((currentMinus50+50) / 5)*5) + " RPM"
             }
             break;
             
