@@ -670,10 +670,14 @@ class AppDelegate: NSObject, NSApplicationDelegate {
     
     func updateBattery()
     {
+        var batteryIconString: String?
+        var fontColor: NSColor?
         if(InterfaceStyle() == InterfaceStyle.Dark) {
-            btnBattery?.image = NSImage(named: NSImage.Name("battery-icon-white"))
+            batteryIconString = "battery-icon-white"
+            fontColor = NSColor.white
         } else {
-            btnBattery?.image = NSImage(named: NSImage.Name("battery-icon-black"))
+            batteryIconString = "battery-icon-black"
+            fontColor = NSColor.black
         }
         
         // update the current capacity and notify the user if needed
@@ -682,6 +686,34 @@ class AppDelegate: NSObject, NSApplicationDelegate {
         
         // get the remaining time
         remainingTime = myBattery.getRemainingBatteryTime()
+        
+        // update the button to display the remaining time
+        let imageFinal = NSImage(size: NSSize(width: 32, height: 32))
+        imageFinal.lockFocus()
+        
+        let batteryIcon = NSImage(named: NSImage.Name(batteryIconString!))
+        batteryIcon?.draw(at: NSPoint(x: 0, y: 0), from: NSZeroRect, operation: NSCompositingOperation.sourceOver, fraction: 1.0)
+        
+        var timeValue: String?
+        let batteryTime: Battery.RemainingBatteryTime = remainingTime!
+        if batteryTime.timeInSeconds > 0.0 {
+            timeValue = String(format: "%02d", batteryTime.hours) + ":" + String(format: "%02d", batteryTime.minutes)
+        } else if batteryTime.timeInSeconds == -1.0 {
+            timeValue = "calc."
+        } else if batteryTime.timeInSeconds == -2.0 {
+            timeValue = "AC"
+        }
+        
+        let font = NSFont(name: "Apple SD Gothic Neo Bold", size: 9.0)
+        let attrString = NSMutableAttributedString(string: timeValue! )
+        attrString.addAttribute(.font, value: font as Any, range: NSMakeRange(0, attrString.length))
+        attrString.addAttribute(.foregroundColor, value: fontColor as Any, range: NSMakeRange(0, attrString.length))
+        let size = attrString.size()
+        attrString.draw(at: NSPoint(x: 16-size.width/2, y: 16-size.height/2))
+        
+        imageFinal.unlockFocus()
+        
+        btnBattery?.image = imageFinal
     }
     
     static func changeInterval() -> Bool
