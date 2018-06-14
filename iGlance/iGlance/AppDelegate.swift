@@ -493,6 +493,7 @@ class AppDelegate: NSObject, NSApplicationDelegate {
         AppDelegate.sItemBandwidth.menu = menuBandwidth
         
         menuBattery = NSMenu()
+        menuBattery?.addItem(NSMenuItem(title: "Capacity: ", action: nil, keyEquivalent: ""))
         menuBattery?.addItem(NSMenuItem(title: "Remaining time: ", action: nil, keyEquivalent: ""))
         menuBattery?.addItem(NSMenuItem.separator())
         menuBattery?.addItem(NSMenuItem(title: "Settings", action: #selector(settings_clicked), keyEquivalent: "s"))
@@ -718,8 +719,12 @@ class AppDelegate: NSObject, NSApplicationDelegate {
         btnBattery?.image = imageFinal
         
         // update the menu entry with the current remaining time
-        let timeEntry = menuBattery?.item(withTag: 0)
+        let timeEntry = menuBattery?.item(at: 1)
         timeEntry?.title = "Remaining time: " + timeValue!
+        
+        // update the menu entry with the current capacity
+        let capacityEntry = menuBattery?.item(at: 0)
+        capacityEntry?.title = "Capacity: " + String(format: "%02d", Int(batteryCapacity!)) + "%"
     }
     
     static func changeInterval() -> Bool
