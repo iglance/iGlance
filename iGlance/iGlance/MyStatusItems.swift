@@ -11,7 +11,6 @@ import Cocoa
 class MyStatusItems: NSObject {
 
     enum StatusItems {
-        
         case cpuUtil
         case cpuTemp
         case memUtil
@@ -20,12 +19,10 @@ class MyStatusItems: NSObject {
         case battery
         case INVALID
     }
-    
     // Default settings
-    public static var StatusItemPos = [StatusItems.INVALID, StatusItems.INVALID, StatusItems.INVALID, StatusItems.INVALID, StatusItems.INVALID] as [StatusItems]
+    public static var StatusItemPos = [StatusItems.INVALID, StatusItems.INVALID,
+                                       StatusItems.INVALID, StatusItems.INVALID, StatusItems.INVALID] as [StatusItems]
     public static var validToIndex = 0
-    
-    
     public static func insertItem(item: StatusItems)
     {
         if (validToIndex >= (StatusItemPos.count - 1))
@@ -44,7 +41,6 @@ class MyStatusItems: NSObject {
         UserDefaults.standard.set(validToIndex, forKey: "validToIndex")
         savePosArray()
     }
-    
     public static func removeItem(item: StatusItems)
     {
         if (StatusItemPos.index(of: item) == nil)
@@ -58,7 +54,6 @@ class MyStatusItems: NSObject {
             savePosArray()
         }
     }
-    
     private static func removeItemHelper(at: Int)
     {
         if (at > validToIndex)
@@ -86,7 +81,6 @@ class MyStatusItems: NSObject {
         loadIndex()
         loadPosArray()
     }
-    
     private static func loadIndex()
     {
         let idx = UserDefaults.standard.integer(forKey: "validToIndex")
@@ -103,7 +97,6 @@ class MyStatusItems: NSObject {
             validToIndex = idx
         }
     }
-    
     private static func saveIndex()
     {
         if (validToIndex == 0)
@@ -119,7 +112,6 @@ class MyStatusItems: NSObject {
             UserDefaults.standard.set(validToIndex, forKey: "validToIndex")
         }
     }
-    
     private static func loadPosArray()
     {
         for index in 0...StatusItemPos.count - 1
@@ -162,7 +154,6 @@ class MyStatusItems: NSObject {
         }
         printNow()
     }
-    
     private static func savePosArray()
     {
         /*
@@ -209,7 +200,6 @@ class MyStatusItems: NSObject {
         }
         printNow()
     }
-    
     private static func printNow()
     {
         for index in 0...StatusItemPos.count - 1
@@ -219,6 +209,4 @@ class MyStatusItems: NSObject {
         print(validToIndex)
         print("---------")
     }
-    
-    
 }

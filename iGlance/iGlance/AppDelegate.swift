@@ -37,7 +37,7 @@ extension NSColor {
 @NSApplicationMain
 class AppDelegate: NSObject, NSApplicationDelegate {
 
-    public static var VERSION = "1.0"
+    public static var VERSION = "1.1"
     /**
     * StatusBarItems, Buttons and Menus declaration
     */
@@ -51,13 +51,13 @@ class AppDelegate: NSObject, NSApplicationDelegate {
     
     static let sItemMemUsage = NSStatusBar.system.statusItem(withLength: 27.0)
     let myMemMenuView = MemMenuView(frame: NSRect(x: 0, y: 0, width: 170, height: 110))
-    let niceitem2 = NSMenuItem(title: "", action: nil, keyEquivalent: "")
+    let menuItemMem = NSMenuItem(title: "", action: nil, keyEquivalent: "")
     var btnMemUsage: NSStatusBarButton?
     var menuMemUsage: NSMenu?
     
     static let sItemCPUUtil = NSStatusBar.system.statusItem(withLength: 27.0)
     let myCPUMenuView = CPUMenuView(frame: NSRect(x: 0, y: 0, width: 170, height: 90))
-    let niceitem = NSMenuItem(title: "", action: nil, keyEquivalent: "")
+    let menuItemCPU = NSMenuItem(title: "", action: nil, keyEquivalent: "")
     var btnCPUUtil: NSStatusBarButton?
     var menuCPUUtil: NSMenu?
     
@@ -68,8 +68,6 @@ class AppDelegate: NSObject, NSApplicationDelegate {
     static let sItemBattery = NSStatusBar.system.statusItem(withLength: NSStatusItem.variableLength)
     var btnBattery: NSStatusBarButton?
     var menuBattery: NSMenu?
-    
-    //var command: AsyncCommand?
     
     var myWindowController: MyMainWindow?
     
@@ -98,9 +96,6 @@ class AppDelegate: NSObject, NSApplicationDelegate {
         static var upperBatteryNotificationValue = 80
     }
     
-    
-    // Todo: Delete
-    
     var mySystem: System?
     var myBattery: Battery?
     
@@ -118,8 +113,8 @@ class AppDelegate: NSObject, NSApplicationDelegate {
     var finalDown: String?
     var finalUp: String?
     var pbFillRectBandwidth: NSRect?
-    var len1: Int?
-    var len2: Int?
+    var dLength: Int?
+    var uLength: Int?
     var firstBandwidth = true
     
     /**
@@ -149,11 +144,6 @@ class AppDelegate: NSObject, NSApplicationDelegate {
     var pixelWidth: Double?
     var pbIMG: String?
     var pbMax: Double?
-    
-    //var myWindow: MyMainWindow?
-    //var myWin: MyMainWin?
-    
-    //let popover = NSPopover()
 
     var intervalTimer: Timer?
     static var currTimeInterval = AppDelegate.UserSettings.updateInterval
@@ -231,10 +221,6 @@ class AppDelegate: NSObject, NSApplicationDelegate {
         
         // Launch the task
         bandwidthTask?.launch()
- 
-
-        // ------------ MISSING LOAD SESSION SETTINGS ------------------
-        // -------------------------------------------------------------
         
         
         var startedAtLogin = false
@@ -451,11 +437,11 @@ class AppDelegate: NSObject, NSApplicationDelegate {
     
     func constructMenu() {
         
-        niceitem.view = myCPUMenuView
-        niceitem2.view = myMemMenuView
+        menuItemCPU.view = myCPUMenuView
+        menuItemMem.view = myMemMenuView
         
         menuCPUUtil = NSMenu()
-        menuCPUUtil?.addItem(niceitem)
+        menuCPUUtil?.addItem(menuItemCPU)
         menuCPUUtil?.addItem(NSMenuItem.separator())
         menuCPUUtil?.addItem(NSMenuItem(title: "Settings", action: #selector(settings_clicked), keyEquivalent: "s"))
         menuCPUUtil?.addItem(NSMenuItem.separator())
@@ -469,7 +455,7 @@ class AppDelegate: NSObject, NSApplicationDelegate {
         AppDelegate.sItemFanSpeed.menu = menuFanSpeed
         
         menuMemUsage = NSMenu()
-        menuMemUsage?.addItem(niceitem2)
+        menuMemUsage?.addItem(menuItemMem)
         menuMemUsage?.addItem(NSMenuItem.separator())
         menuMemUsage?.addItem(NSMenuItem(title: "Settings", action: #selector(settings_clicked), keyEquivalent: "s"))
         menuMemUsage?.addItem(NSMenuItem.separator())
@@ -661,6 +647,7 @@ class AppDelegate: NSObject, NSApplicationDelegate {
             print(UserSettings.updateInterval)
             intervalTimer = Timer.scheduledTimer(timeInterval: UserSettings.updateInterval, target: self, selector: #selector(updateAll), userInfo: nil, repeats: true)
             AppDelegate.currTimeInterval = AppDelegate.UserSettings.updateInterval
+            RunLoop.current.add(intervalTimer!, forMode: RunLoopMode.commonModes)
         }
     }
     
@@ -701,6 +688,10 @@ class AppDelegate: NSObject, NSApplicationDelegate {
             if (currentMinus50 < 0)
             {
                 btnFanSpeed?.title = "0"
+            }
+            else if (currentSpeed >= fan.maxSpeed)
+            {
+                btnFanSpeed?.title = String(fan.maxSpeed - fan.minSpeed)
             }
             else
             {
@@ -752,8 +743,8 @@ class AppDelegate: NSObject, NSApplicationDelegate {
         let paragraphStyle = NSMutableParagraphStyle()
         paragraphStyle.lineSpacing = 0.00000001
         
-        len1 = finalDown?.count
-        len2 = finalUp?.count
+        dLength = finalDown?.count
+        uLength = finalUp?.count
         
         
         
@@ -851,8 +842,8 @@ class AppDelegate: NSObject, NSApplicationDelegate {
     {
         btnBandwidth = AppDelegate.sItemBandwidth.button
         
-        len1 = 6
-        len2 = 6
+        dLength = 6
+        uLength = 6
         bandText = ""
     }
     

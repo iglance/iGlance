@@ -10,8 +10,6 @@ import Cocoa
 
 class CPUMenuView: NSView {
 
-    
-    
     @IBOutlet var contentView: NSView!
     @IBOutlet weak var percentUser: NSTextField! {
         didSet {
@@ -45,13 +43,11 @@ class CPUMenuView: NSView {
         }
     }
     @IBOutlet weak var lNice: NSTextField!
-    
     override func draw(_ dirtyRect: NSRect) {
         super.draw(dirtyRect)
 
         // Drawing code here.
     }
-    
     override init(frame frameRect: NSRect) {
         super.init(frame: frameRect)
         Bundle.main.loadNibNamed(NSNib.Name(rawValue: "CPUMenuView"), owner: self, topLevelObjects: nil)
@@ -59,13 +55,11 @@ class CPUMenuView: NSView {
         self.contentView.frame = contentFrame
         self.addSubview(self.contentView)
     }
-    
     required init?(coder decoder: NSCoder) {
         super.init(coder: decoder)
         //fatalError("init(coder:) has not been implemented")
         //commonInit()
     }
-    
     /*
     private func commonInit()
     {
