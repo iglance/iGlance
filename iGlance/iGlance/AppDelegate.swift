@@ -652,13 +652,18 @@ class AppDelegate: NSObject, NSApplicationDelegate {
         {
             AppDelegate.sItemBandwidth.isVisible = false
         }
-        if (AppDelegate.UserSettings.userWantsBatteryNotification) {
+        if(AppDelegate.UserSettings.userWantsBatteryUtil) {
             AppDelegate.sItemBattery.isVisible = true
             updateBattery()
         }
         else
         {
             AppDelegate.sItemBattery.isVisible = false
+        }
+        if (AppDelegate.UserSettings.userWantsBatteryNotification) {
+            // update the current capacity and notify the user if needed
+            myBattery.notifyUser()
+            batteryCapacity = myBattery.getBatteryCapacity()
         }
         if (AppDelegate.changeInterval())
         {
@@ -683,8 +688,6 @@ class AppDelegate: NSObject, NSApplicationDelegate {
             fontColor = NSColor.black
         }
         
-        // update the current capacity and notify the user if needed
-        myBattery.notifyUser()
         batteryCapacity = myBattery.getBatteryCapacity()
         
         // get the remaining time

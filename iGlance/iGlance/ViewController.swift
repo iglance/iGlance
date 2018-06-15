@@ -145,6 +145,11 @@ class ViewController: NSViewController {
             cbMemBorder.state = AppDelegate.UserSettings.userWantsMemBorder ? NSButton.StateValue.on : NSButton.StateValue.off
         }
     }
+    @IBOutlet weak var cbBatteryUtil: NSButton! {
+        didSet {
+            cbBatteryUtil.state = AppDelegate.UserSettings.userWantsBatteryUtil ? NSButton.StateValue.on : NSButton.StateValue.off
+        }
+    }
     @IBOutlet weak var cbBatteryNotification: NSButton! {
         didSet {
             cbBatteryNotification.state = AppDelegate.UserSettings.userWantsBatteryNotification ? NSButton.StateValue.on : NSButton.StateValue.off
@@ -164,12 +169,17 @@ class ViewController: NSViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
     }
+    @IBAction func cbBatteryUtil_clicked(_ sender: NSButton) {
+        let checked = (cbBatteryUtil.state == NSButton.StateValue.on)
+        AppDelegate.UserSettings.userWantsBatteryUtil = checked
+        UserDefaults.standard.set(checked, forKey: "userWantsBatteryUtil")
+        AppDelegate.sItemBattery.isVisible = checked
+        checked ? MyStatusItems.insertItem(item: MyStatusItems.StatusItems.battery) : MyStatusItems.removeItem(item: MyStatusItems.StatusItems.battery)
+    }
     @IBAction func cbBatterNotification_clicked(_ sender: NSButton) {
         let checked = (cbBatteryNotification.state == NSButton.StateValue.on)
         AppDelegate.UserSettings.userWantsBatteryNotification = checked
-        AppDelegate.sItemBattery.isVisible = checked
         UserDefaults.standard.set(checked, forKey: "userWantsBatteryNotification")
-        checked ? MyStatusItems.insertItem(item: MyStatusItems.StatusItems.battery) : MyStatusItems.removeItem(item: MyStatusItems.StatusItems.battery)
     }
     @IBAction func tfLowerBatteryValue_changed(_ sender: NSTextField) {
         let value: Int = Int(tfLowerBatteryValue.intValue)
