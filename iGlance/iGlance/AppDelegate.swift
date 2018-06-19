@@ -168,9 +168,11 @@ class AppDelegate: NSObject, NSApplicationDelegate {
         AppDelegate.sItemBandwidth.isVisible = false
         AppDelegate.sItemBattery.isVisible = false
         
+        loadSessionSettings()
+        
         myWindowController = NSStoryboard(name: NSStoryboard.Name(rawValue: "Main"), bundle: nil).instantiateController(withIdentifier: NSStoryboard.SceneIdentifier(rawValue: "abcd")) as! MyMainWindow
         
-        loadSessionSettings()
+        
         displayStatusItems()
         
         // Create a Task instance
@@ -243,14 +245,6 @@ class AppDelegate: NSObject, NSApplicationDelegate {
             DistributedNotificationCenter.default().postNotificationName(NCConstants.KILLME, object: Bundle.main.bundleIdentifier, userInfo: nil, options: DistributedNotificationCenter.Options.deliverImmediately)
         }
         
-        constructMenu()
-        initCPUUtil()
-        initCPUTemp()
-        initMemUsage()
-        initFanSpeed()
-        initBandwidth()
-        initBattery()
-        
         
         do
         {
@@ -261,6 +255,14 @@ class AppDelegate: NSObject, NSApplicationDelegate {
             AppDelegate.dialogOK(question: "Fatal Error", text: "Couldn't open SMCKit")
             NSApp.terminate(nil)
         }
+        
+        constructMenu()
+        initCPUUtil()
+        initCPUTemp()
+        initMemUsage()
+        initFanSpeed()
+        initBandwidth()
+        initBattery()
         
         intervalTimer = Timer.scheduledTimer(timeInterval: UserSettings.updateInterval, target: self, selector: #selector(updateAll), userInfo: nil, repeats: true)
         RunLoop.current.add(intervalTimer!, forMode: RunLoopMode.commonModes)
@@ -478,7 +480,32 @@ class AppDelegate: NSObject, NSApplicationDelegate {
         
         menuCPUTemp = NSMenu()
         let myTempMenu = NSMenuItem(title: "", action: nil, keyEquivalent: "")
-        myTempMenu.view = CPUTempMenuView(frame: NSRect(x: 0, y: 0, width: 355, height: 195))
+        let myCPUTempView = CPUTempMenuView(frame: NSRect(x: 0, y: 0, width: 355, height: 195))
+        
+        do
+        {
+            print("xd")
+            let ts = try SMCKit.allUnknownTemperatureSensors()
+            for single in ts
+            {
+                do
+                {
+                    try print(single.code.toString())
+                }
+                catch
+                {
+                    print("lul2")
+                }
+            }
+            print(":D")
+        }
+        catch
+        {
+            print("lul")
+        }
+        
+        myCPUTempView.temp0.stringValue = ""
+        myTempMenu.view = myCPUTempView
         menuCPUTemp?.addItem(myTempMenu)
         menuCPUTemp?.addItem(NSMenuItem.separator())
         menuCPUTemp?.addItem(NSMenuItem(title: "Settings", action: #selector(settings_clicked), keyEquivalent: "s"))
@@ -700,7 +727,7 @@ class AppDelegate: NSObject, NSApplicationDelegate {
         var timeValue: String?
         let batteryTime: Battery.RemainingBatteryTime = remainingTime!
         if batteryTime.timeInSeconds > 0.0 {
-            timeValue = String(format: "%02d", batteryTime.hours) + ":" + String(format: "%02d", batteryTime.minutes)
+            timeValue = String(batteryTime.hours) + ":" + String(format: "%02d", batteryTime.minutes)
         } else if batteryTime.timeInSeconds == -1.0 {
             timeValue = "calc."
         } else if batteryTime.timeInSeconds == -2.0 {
