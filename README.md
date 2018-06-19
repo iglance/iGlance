@@ -29,3 +29,5 @@ iGlance is a small System Monitor that displays current stats about your Mac on 
 
 ## License
 This software is published under the <b>MIT License</b>.
+
+[![HitCount](http://hits.dwyl.io/Moneypulation/iGlance.svg)](http://hits.dwyl.io/Moneypulation/iGlance)
