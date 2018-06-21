@@ -2,11 +2,11 @@
   "images" : [
     {
       "idiom" : "universal",
-      "filename" : "battery-icon-black.png",
       "scale" : "1x"
     },
     {
       "idiom" : "universal",
+      "filename" : "battery-icon-black.png",
       "scale" : "2x"
     },
     {
