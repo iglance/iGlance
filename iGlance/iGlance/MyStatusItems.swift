@@ -153,7 +153,7 @@ class MyStatusItems: NSObject {
                 StatusItemPos[index] = item
             }
         }
-        printNow()
+        //printNow()
     }
     private static func savePosArray()
     {
@@ -200,7 +200,7 @@ class MyStatusItems: NSObject {
             let strKey = "posArray" + String(index)
             UserDefaults.standard.set(idx, forKey: strKey)
         }
-        printNow()
+        //printNow()
     }
     private static func printNow()
     {

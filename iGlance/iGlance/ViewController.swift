@@ -92,9 +92,6 @@ class ViewController: NSViewController {
     @IBOutlet weak var cbAutostart: NSButton! {
         didSet {
             cbAutostart.state = (AppDelegate.UserSettings.userWantsAutostart) ? NSButton.StateValue.on : NSButton.StateValue.off
-            print("---a")
-            print(AppDelegate.UserSettings.userWantsAutostart)
-            print("---a")
         }
     }
     @IBOutlet weak var ddUpdateInterval: NSPopUpButton! {
