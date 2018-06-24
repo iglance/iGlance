@@ -37,7 +37,7 @@ extension NSColor {
 @NSApplicationMain
 class AppDelegate: NSObject, NSApplicationDelegate {
 
-    public static var VERSION = "1.1"
+    public static var VERSION = "1.2"
     /**
     * StatusBarItems, Buttons and Menus declaration
     */
@@ -101,10 +101,10 @@ class AppDelegate: NSObject, NSApplicationDelegate {
     /**
     * Bandwidth variables
     */
-    var dSpeed: Int64?
-    var uSpeed: Int64?
-    var dSpeedLast: Int64?
-    var uSpeedLast: Int64?
+    var dSpeed: UInt64?
+    var uSpeed: UInt64?
+    var dSpeedLast: UInt64?
+    var uSpeedLast: UInt64?
     
     var bandIMG: String?
     var bandColor: NSColor?
@@ -114,7 +114,14 @@ class AppDelegate: NSObject, NSApplicationDelegate {
     var pbFillRectBandwidth: NSRect?
     var dLength: Int?
     var uLength: Int?
-    var firstBandwidth = true
+    
+    var bandwidthDUsageItem = NSMenuItem(title: "Download Last Hour:\t\t NA", action: nil, keyEquivalent: "")
+    var bandwidthDUsageArray = Array(repeating: UInt64(0), count: 3600)
+    var bandwidthDUsageArrayIndex = 0
+    
+    var bandwidthUUsageItem = NSMenuItem(title: "Upload Last Hour:\t\t NA", action: nil, keyEquivalent: "")
+    var bandwidthUUsageArray = Array(repeating: UInt64(0), count: 3600)
+    var bandwidthUUsageArrayIndex = 0
     
     /**
     * CPU Button Image variables
@@ -175,6 +182,8 @@ class AppDelegate: NSObject, NSApplicationDelegate {
         
         displayStatusItems()
         
+        
+        
         // Create a Task instance
         bandwidthTask = Process()
         
@@ -188,7 +197,9 @@ class AppDelegate: NSObject, NSApplicationDelegate {
         bandwidthTask?.standardOutput = pipe
         
         let outputHandle = pipe.fileHandleForReading
-        outputHandle.waitForDataInBackgroundAndNotify()
+
+        //outputHandle.waitForDataInBackgroundAndNotify()
+        outputHandle.waitForDataInBackgroundAndNotify(forModes: [RunLoopMode.commonModes])
         
         // When new data is available
         var dataAvailable : NSObjectProtocol!
@@ -210,8 +221,8 @@ class AppDelegate: NSObject, NSApplicationDelegate {
                             }
                             else
                             {
-                                self.dSpeed = Int64(self.curr![2])
-                                self.uSpeed = Int64(self.curr![5])
+                                self.dSpeed = UInt64(self.curr![2])
+                                self.uSpeed = UInt64(self.curr![5])
                             }
                         }
                         
@@ -266,6 +277,27 @@ class AppDelegate: NSObject, NSApplicationDelegate {
         
         intervalTimer = Timer.scheduledTimer(timeInterval: UserSettings.updateInterval, target: self, selector: #selector(updateAll), userInfo: nil, repeats: true)
         RunLoop.current.add(intervalTimer!, forMode: RunLoopMode.commonModes)
+        
+    }
+    
+    func getDBandwidthUsage() -> UInt64
+    {
+        var total = UInt64(0)
+        for num in bandwidthDUsageArray
+        {
+            total += num
+        }
+        return total
+    }
+    
+    func getUBandwidthUsage() -> UInt64
+    {
+        var total = UInt64(0)
+        for num in bandwidthUUsageArray
+        {
+            total += num
+        }
+        return total
     }
     
     
@@ -439,6 +471,7 @@ class AppDelegate: NSObject, NSApplicationDelegate {
         pixelHeightCPU = 0
         mySystem = System()
         btnCPUUtil = AppDelegate.sItemCPUUtil.button
+        btnCPUUtil?.image?.isTemplate = true
     }
     
     @objc func settings_clicked()
@@ -482,31 +515,9 @@ class AppDelegate: NSObject, NSApplicationDelegate {
         let myTempMenu = NSMenuItem(title: "", action: nil, keyEquivalent: "")
         let myCPUTempView = CPUTempMenuView(frame: NSRect(x: 0, y: 0, width: 355, height: 195))
         
-        do
-        {
-            print("xd")
-            let ts = try SMCKit.allUnknownTemperatureSensors()
-            for single in ts
-            {
-                do
-                {
-                    try print(single.code.toString())
-                }
-                catch
-                {
-                    print("lul2")
-                }
-            }
-            print(":D")
-        }
-        catch
-        {
-            print("lul")
-        }
-        
-        myCPUTempView.temp0.stringValue = ""
+        myCPUTempView.temp0.stringValue = "144°F"
         myTempMenu.view = myCPUTempView
-        menuCPUTemp?.addItem(myTempMenu)
+        //menuCPUTemp?.addItem(myTempMenu)
         menuCPUTemp?.addItem(NSMenuItem.separator())
         menuCPUTemp?.addItem(NSMenuItem(title: "Settings", action: #selector(settings_clicked), keyEquivalent: "s"))
         menuCPUTemp?.addItem(NSMenuItem.separator())
@@ -514,6 +525,9 @@ class AppDelegate: NSObject, NSApplicationDelegate {
         AppDelegate.sItemCPUTemp.menu = menuCPUTemp
         
         menuBandwidth = NSMenu()
+        menuBandwidth?.addItem(bandwidthDUsageItem)
+        menuBandwidth?.addItem(bandwidthUUsageItem)
+        menuBandwidth?.addItem(NSMenuItem.separator())
         menuBandwidth?.addItem(NSMenuItem(title: "Settings", action: #selector(settings_clicked), keyEquivalent: "s"))
         menuBandwidth?.addItem(NSMenuItem.separator())
         menuBandwidth?.addItem(NSMenuItem(title: "Quit iGlance", action: #selector(NSApplication.terminate(_:)), keyEquivalent: "q"))
@@ -560,6 +574,7 @@ class AppDelegate: NSObject, NSApplicationDelegate {
         let imgFinal = NSImage(size: NSSize(width: 20, height: 18))
         imgFinal.lockFocus()
         let img1 = NSImage(named:NSImage.Name(cpuIMG!))
+        //img1?.isTemplate = true
         img1?.draw(at: NSPoint(x: 1, y: 0), from: NSZeroRect, operation: NSCompositingOperation.sourceOver, fraction: 1.0)
         if (AppDelegate.UserSettings.userWantsCPUBorder)
         {
@@ -572,7 +587,9 @@ class AppDelegate: NSObject, NSApplicationDelegate {
         NSColor.clear.setFill()
         imgFinal.unlockFocus()
         
+        //imgFinal.isTemplate = true
         btnCPUUtil?.image = imgFinal
+        //btnCPUUtil?.image?.isTemplate = true
     }
     
     @objc func updateMemUsage()
@@ -668,11 +685,6 @@ class AppDelegate: NSObject, NSApplicationDelegate {
         if (AppDelegate.UserSettings.userWantsBandwidth)
         {
             AppDelegate.sItemBandwidth.isVisible = true
-            if (firstBandwidth)
-            {
-                //updateBandwidth()
-                firstBandwidth = false
-            }
             reallyUpdateBandwidth()
         }
         else
@@ -701,6 +713,8 @@ class AppDelegate: NSObject, NSApplicationDelegate {
             RunLoop.current.add(intervalTimer!, forMode: RunLoopMode.commonModes)
         }
     }
+    
+    
     
     
     func updateBattery()
@@ -815,8 +829,8 @@ class AppDelegate: NSObject, NSApplicationDelegate {
     
     @objc func reallyUpdateBandwidth()
     {
-        var needUpdate: Bool?
-        needUpdate = false
+        var needUpdate = false
+
         if (dSpeed != dSpeedLast)
         {
             needUpdate = true
@@ -827,11 +841,32 @@ class AppDelegate: NSObject, NSApplicationDelegate {
             needUpdate = true
         }
         
-        if (needUpdate)!
+        if (needUpdate)
         {
             updateBandText(down: dSpeed!, up: uSpeed!)
             dSpeedLast = dSpeed
             uSpeedLast = uSpeed
+            
+            bandwidthDUsageArray[bandwidthDUsageArrayIndex] = dSpeedLast!
+            bandwidthDUsageArrayIndex += 1
+            
+            if (bandwidthDUsageArrayIndex == bandwidthDUsageArray.count - 1)
+            {
+                bandwidthDUsageArrayIndex = 0
+            }
+            
+            bandwidthUUsageArray[bandwidthUUsageArrayIndex] = uSpeedLast!
+            bandwidthUUsageArrayIndex += 1
+            
+            if (bandwidthUUsageArrayIndex == bandwidthUUsageArray.count)
+            {
+                bandwidthUUsageArrayIndex = 0
+            }
+            
+            updateBandwidthMenuText(down: getDBandwidthUsage(), up: getUBandwidthUsage())
+            print("updated")
+            getDBandwidthUsage()
+            getUBandwidthUsage()
         }
         
         if (InterfaceStyle() == InterfaceStyle.Dark)
@@ -878,7 +913,61 @@ class AppDelegate: NSObject, NSApplicationDelegate {
         btnBandwidth?.image = imgFinal
     }
     
-    func updateBandText(down: Int64, up: Int64)
+    
+    func updateBandwidthMenuText(down: UInt64, up: UInt64)
+    {
+        var mFinalDown = ""
+        var mFinalUp = ""
+        if (down < 1024)
+        {
+            // B
+            mFinalDown = "0 KB"
+        }
+        else if (down < 1048576)
+        {
+            // KB
+            mFinalDown = String((Int(down / 1024) / 4) * 4) + " KB"
+        }
+        else if (down < 1073741824)
+        {
+            // MB
+            mFinalDown = String(format: "%.1f", Double(down) / 1048576.0) + " MB"
+        }
+        else
+        {
+            // GB
+            mFinalDown = String(format: "%.1f", Double(down) / 1073741824.0) + " GB"
+        }
+        
+        
+        if (up < 1024)
+        {
+            // B
+            mFinalUp = "0 KB"
+        }
+        else if (up < 1048576)
+        {
+            // KB
+            mFinalUp = String((Int(up / 1024) / 4) * 4) + " KB"
+        }
+        else if (up < 1073741824)
+        {
+            // MB
+            mFinalUp = String(format: "%.1f", Double(up) / 1048576.0) + " MB"
+        }
+        else
+        {
+            // GB
+            mFinalUp = String(format: "%.1f", Double(up) / 1073741824.0) + " GB"
+        }
+        
+        
+        //bandText = finalDown! + "\n" + finalUp!
+        bandwidthDUsageItem.title = "Download Last Hour:\t\t " + mFinalDown
+        bandwidthUUsageItem.title = "Upload Last Hour:\t\t " + mFinalUp
+    }
+    
+    func updateBandText(down: UInt64, up: UInt64)
     {
         if (down < 1024)
         {
