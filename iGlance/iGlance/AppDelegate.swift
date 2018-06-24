@@ -317,18 +317,6 @@ class AppDelegate: NSObject, NSApplicationDelegate {
                         }
                     }
                 }
-                else
-                {
-                    let alert = NSAlert()
-                    alert.messageText = ""
-                    alert.informativeText = "Running latest version (" + onlyversion + ")"
-                    alert.alertStyle = .informational
-                    let btnvisit = NSButtonCell(textCell: "Visit website")
-                    btnvisit.bezelStyle = .rounded
-                    btnvisit.isHighlighted = true
-                    alert.addButton(withTitle: "OK")
-                    alert.runModal()
-                }
             }
         }
     }
