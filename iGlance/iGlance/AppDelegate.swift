@@ -383,7 +383,6 @@ class AppDelegate: NSObject, NSApplicationDelegate {
                 if (AppDelegate.UserSettings.userWantsCPUUtil)
                 {
                     AppDelegate.sItemCPUUtil.isVisible = true
-                    print("1")
                     once = true
                 }
                 break
@@ -391,7 +390,6 @@ class AppDelegate: NSObject, NSApplicationDelegate {
                 if (AppDelegate.UserSettings.userWantsCPUTemp)
                 {
                     AppDelegate.sItemCPUTemp.isVisible = true
-                    print("2")
                     once = true
                 }
                 break
@@ -399,7 +397,6 @@ class AppDelegate: NSObject, NSApplicationDelegate {
                 if (AppDelegate.UserSettings.userWantsMemUsage)
                 {
                     AppDelegate.sItemMemUsage.isVisible = true
-                    print("3")
                     once = true
                 }
                 break
@@ -407,7 +404,6 @@ class AppDelegate: NSObject, NSApplicationDelegate {
                 if (AppDelegate.UserSettings.userWantsBandwidth)
                 {
                     AppDelegate.sItemBandwidth.isVisible = true
-                    print("4")
                     once = true
                 }
                 break
@@ -415,14 +411,12 @@ class AppDelegate: NSObject, NSApplicationDelegate {
                 if (AppDelegate.UserSettings.userWantsFanSpeed)
                 {
                     AppDelegate.sItemFanSpeed.isVisible = true
-                    print("5")
                     once = true
                 }
                 break
             case MyStatusItems.StatusItems.battery:
                 if(AppDelegate.UserSettings.userWantsBatteryUtil) {
                     AppDelegate.sItemBattery.isVisible = true
-                    print("6")
                     once = true
                 }
             default:
@@ -775,7 +769,6 @@ class AppDelegate: NSObject, NSApplicationDelegate {
         if (AppDelegate.changeInterval())
         {
             intervalTimer?.invalidate()
-            print(UserSettings.updateInterval)
             intervalTimer = Timer.scheduledTimer(timeInterval: UserSettings.updateInterval, target: self, selector: #selector(updateAll), userInfo: nil, repeats: true)
             AppDelegate.currTimeInterval = AppDelegate.UserSettings.updateInterval
             RunLoop.current.add(intervalTimer!, forMode: RunLoopMode.commonModes)
@@ -932,7 +925,6 @@ class AppDelegate: NSObject, NSApplicationDelegate {
             }
             
             updateBandwidthMenuText(down: getDBandwidthUsage(), up: getUBandwidthUsage())
-            print("updated")
             getDBandwidthUsage()
             getUBandwidthUsage()
         }
