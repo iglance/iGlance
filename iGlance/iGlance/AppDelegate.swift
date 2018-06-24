@@ -37,7 +37,7 @@ extension NSColor {
 @NSApplicationMain
 class AppDelegate: NSObject, NSApplicationDelegate {
 
-    public static var VERSION = "1.2"
+    public static var VERSION = "1.1"
     /**
     * StatusBarItems, Buttons and Menus declaration
     */
@@ -168,6 +168,9 @@ class AppDelegate: NSObject, NSApplicationDelegate {
     
     func applicationDidFinishLaunching(_ aNotification: Notification) {
         
+        
+        checkForUpdate()
+        
         AppDelegate.sItemCPUTemp.isVisible = false
         AppDelegate.sItemCPUUtil.isVisible = false
         AppDelegate.sItemFanSpeed.isVisible = false
@@ -278,6 +281,71 @@ class AppDelegate: NSObject, NSApplicationDelegate {
         intervalTimer = Timer.scheduledTimer(timeInterval: UserSettings.updateInterval, target: self, selector: #selector(updateAll), userInfo: nil, repeats: true)
         RunLoop.current.add(intervalTimer!, forMode: RunLoopMode.commonModes)
         
+    }
+    
+    func checkForUpdate()
+    {
+        var request = URLRequest(url: URL(string: "https://raw.githubusercontent.com/Moneypulation/iGlance/master/Version.txt")!)
+        request.httpMethod = "GET"
+        let (htmltext, _, error) = URLSession.shared.synchronousDataTask(urlrequest: request)
+        if let error = error {
+            // Do nothing
+        }
+        else
+        {
+            let pat = "\\[version\\](.*)\\[\\/version\\]"
+            let res = matches(for: pat, in: String(data: htmltext!, encoding: String.Encoding.utf8)!)
+            if res.count != 1
+            {
+                // Do nothing again
+            }
+            else
+            {
+                let onlyversion = res[0].replacingOccurrences(of: "[version]", with: "").replacingOccurrences(of: "[/version]", with: "")
+                if (onlyversion != AppDelegate.VERSION)
+                {
+                    let alert = NSAlert()
+                    alert.messageText = ""
+                    alert.informativeText = "A new version (" + onlyversion + ") is available at: \n\n https://github.com/Moneypulation/iGlance"
+                    alert.alertStyle = .informational
+                    alert.addButton(withTitle: "Visit Website")
+                    alert.addButton(withTitle: "OK")
+                    if (alert.runModal() == .alertFirstButtonReturn)
+                    {
+                        if let url = URL(string: "https://github.com/Moneypulation/iGlance"), NSWorkspace.shared.open(url) {
+                            
+                        }
+                    }
+                }
+                else
+                {
+                    let alert = NSAlert()
+                    alert.messageText = ""
+                    alert.informativeText = "Running latest version (" + onlyversion + ")"
+                    alert.alertStyle = .informational
+                    let btnvisit = NSButtonCell(textCell: "Visit website")
+                    btnvisit.bezelStyle = .rounded
+                    btnvisit.isHighlighted = true
+                    alert.addButton(withTitle: "OK")
+                    alert.runModal()
+                }
+            }
+        }
+    }
+    
+    func matches(for regex: String, in text: String) -> [String] {
+        
+        do {
+            let regex = try NSRegularExpression(pattern: regex)
+            let results = regex.matches(in: text,
+                                        range: NSRange(text.startIndex..., in: text))
+            return results.map {
+                String(text[Range($0.range, in: text)!])
+            }
+        } catch let error {
+            print("invalid regex: \(error.localizedDescription)")
+            return []
+        }
     }
     
     func getDBandwidthUsage() -> UInt64
