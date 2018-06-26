@@ -12,7 +12,6 @@ class MemMenuView: NSView {
 
     @IBOutlet var contentView: NSView!
     
-    
     @IBOutlet weak var lActive: NSTextField! {
         didSet {
             lActive.textColor = NSColor.orange
@@ -63,15 +62,11 @@ class MemMenuView: NSView {
             percentInactive.textColor = NSColor(calibratedRed: 0.0, green: 190.0/255.0, blue: 0.0, alpha: 1.0)
         }
     }
-    
-    
-    
     override func draw(_ dirtyRect: NSRect) {
         super.draw(dirtyRect)
 
         // Drawing code here.
     }
-    
     override init(frame frameRect: NSRect) {
         super.init(frame: frameRect)
         Bundle.main.loadNibNamed(NSNib.Name(rawValue: "MemMenuView"), owner: self, topLevelObjects: nil)
@@ -79,7 +74,6 @@ class MemMenuView: NSView {
         self.contentView.frame = contentFrame
         self.addSubview(self.contentView)
     }
-    
     required init?(coder decoder: NSCoder) {
         super.init(coder: decoder)
         //fatalError("init(coder:) has not been implemented")
