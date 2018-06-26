@@ -709,8 +709,19 @@
                         <rect key="frame" x="0.0" y="0.0" width="450" height="300"/>
                         <autoresizingMask key="autoresizingMask"/>
                         <subviews>
+                            <button verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="H2k-mQ-8Qz">
+                                <rect key="frame" x="18" y="264" width="225" height="18"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                                <buttonCell key="cell" type="check" title="Show battery symbol in menu bar" bezelStyle="regularSquare" imagePosition="left" state="on" inset="2" id="ckg-uH-4rs">
+                                    <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
+                                    <font key="font" metaFont="system"/>
+                                </buttonCell>
+                                <connections>
+                                    <action selector="cbBatteryUtil_clicked:" target="Rtx-4o-PWo" id="bnI-5W-BBs"/>
+                                </connections>
+                            </button>
                             <button verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="8Qf-yg-6dv">
-                                <rect key="frame" x="18" y="264" width="231" height="18"/>
+                                <rect key="frame" x="18" y="242" width="231" height="18"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                 <buttonCell key="cell" type="check" title="Notify me about the battery status" bezelStyle="regularSquare" imagePosition="left" state="on" inset="2" id="uhQ-T1-NPZ">
                                     <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
@@ -721,7 +732,7 @@
                                 </connections>
                             </button>
                             <textField verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="3z8-uV-Rrz">
-                                <rect key="frame" x="177" y="228" width="35" height="22"/>
+                                <rect key="frame" x="177" y="206" width="35" height="22"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                 <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" selectable="YES" editable="YES" sendsActionOnEndEditing="YES" state="on" borderStyle="bezel" alignment="center" placeholderString="20" drawsBackground="YES" id="zq4-5M-zDg">
                                     <numberFormatter key="formatter" formatterBehavior="default10_4" numberStyle="decimal" minimumIntegerDigits="1" maximumIntegerDigits="2000000000" maximumFractionDigits="3" id="L3L-kq-Xkq"/>
@@ -734,7 +745,7 @@
                                 </connections>
                             </textField>
                             <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="ETp-4L-u6h">
-                                <rect key="frame" x="18" y="231" width="151" height="17"/>
+                                <rect key="frame" x="18" y="209" width="151" height="17"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                 <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="Lower notification value:" id="f7i-Bv-SdJ">
                                     <font key="font" metaFont="system"/>
@@ -743,7 +754,7 @@
                                 </textFieldCell>
                             </textField>
                             <textField verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Ro3-eS-ojw">
-                                <rect key="frame" x="177" y="188" width="35" height="22"/>
+                                <rect key="frame" x="177" y="166" width="35" height="22"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                 <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" selectable="YES" editable="YES" sendsActionOnEndEditing="YES" state="on" borderStyle="bezel" alignment="center" placeholderString="80" drawsBackground="YES" id="10T-Qo-1Kv">
                                     <numberFormatter key="formatter" formatterBehavior="default10_4" numberStyle="decimal" minimumIntegerDigits="1" maximumIntegerDigits="2000000000" maximumFractionDigits="3" id="m3Z-0w-khd"/>
@@ -756,7 +767,7 @@
                                 </connections>
                             </textField>
                             <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="wTd-AE-Bl0">
-                                <rect key="frame" x="18" y="191" width="153" height="17"/>
+                                <rect key="frame" x="18" y="169" width="153" height="17"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                 <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="Upper notification value:" id="n6f-d3-Rw3">
                                     <font key="font" metaFont="system"/>
@@ -765,7 +776,7 @@
                                 </textFieldCell>
                             </textField>
                             <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="OEh-sY-bKJ">
-                                <rect key="frame" x="213" y="231" width="15" height="17"/>
+                                <rect key="frame" x="213" y="209" width="15" height="17"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                 <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="%" id="YOa-n8-6sx">
                                     <font key="font" metaFont="system"/>
@@ -774,7 +785,7 @@
                                 </textFieldCell>
                             </textField>
                             <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="q8O-dp-gvR">
-                                <rect key="frame" x="213" y="191" width="15" height="17"/>
+                                <rect key="frame" x="213" y="169" width="15" height="17"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                 <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="%" id="XY5-j5-now">
                                     <font key="font" metaFont="system"/>
@@ -786,6 +797,7 @@
                     </view>
                     <connections>
                         <outlet property="cbBatteryNotification" destination="8Qf-yg-6dv" id="vkE-bl-CmQ"/>
+                        <outlet property="cbBatteryUtil" destination="H2k-mQ-8Qz" id="Pl5-xi-otj"/>
                         <outlet property="tfLowerBatteryValue" destination="3z8-uV-Rrz" id="TFN-M7-SK2"/>
                         <outlet property="tfUpperBatteryValue" destination="Ro3-eS-ojw" id="eSb-VJ-BZc"/>
                     </connections>

@@ -11,31 +11,30 @@ import Cocoa
 class MyStatusItems: NSObject {
 
     enum StatusItems {
-        
-        case CPUUtil
-        case CPUTemp
-        case MemUtil
-        case Bandwidth
-        case FanSpeed
+        case cpuUtil
+        case cpuTemp
+        case memUtil
+        case bandwidth
+        case fanSpeed
+        case battery
         case INVALID
     }
-    
     // Default settings
-    public static var StatusItemPos = [StatusItems.INVALID, StatusItems.INVALID, StatusItems.INVALID, StatusItems.INVALID, StatusItems.INVALID] as [StatusItems]
+    public static var StatusItemPos = [StatusItems.INVALID, StatusItems.INVALID,
+                                       StatusItems.INVALID, StatusItems.INVALID,
+                                       StatusItems.INVALID, StatusItems.INVALID] as [StatusItems]
     public static var validToIndex = 0
-    
-    
     public static func insertItem(item: StatusItems)
     {
-        if (validToIndex >= (StatusItemPos.count - 1))
+        if validToIndex >= (StatusItemPos.count - 1)
         {
             return
         }
         else
         {
-            for i in stride(from: validToIndex, to: -1, by: -1)
+            for index in stride(from: validToIndex, to: -1, by: -1)
             {
-                StatusItemPos[i+1] = StatusItemPos[i]
+                StatusItemPos[index+1] = StatusItemPos[index]
             }
             StatusItemPos[0] = item
             validToIndex += 1
@@ -43,7 +42,6 @@ class MyStatusItems: NSObject {
         UserDefaults.standard.set(validToIndex, forKey: "validToIndex")
         savePosArray()
     }
-    
     public static func removeItem(item: StatusItems)
     {
         if (StatusItemPos.index(of: item) == nil)
@@ -57,7 +55,6 @@ class MyStatusItems: NSObject {
             savePosArray()
         }
     }
-    
     private static func removeItemHelper(at: Int)
     {
         if (at > validToIndex)
@@ -71,9 +68,9 @@ class MyStatusItems: NSObject {
         }
         else
         {
-            for i in at...(StatusItemPos.count - 2)
+            for index in at...(StatusItemPos.count - 2)
             {
-                StatusItemPos[i] = StatusItemPos[i+1]
+                StatusItemPos[index] = StatusItemPos[index+1]
             }
             StatusItemPos[StatusItemPos.count - 1] = StatusItems.INVALID
             validToIndex -= 1
@@ -85,7 +82,6 @@ class MyStatusItems: NSObject {
         loadIndex()
         loadPosArray()
     }
-    
     private static func loadIndex()
     {
         let idx = UserDefaults.standard.integer(forKey: "validToIndex")
@@ -102,7 +98,6 @@ class MyStatusItems: NSObject {
             validToIndex = idx
         }
     }
-    
     private static func saveIndex()
     {
         if (validToIndex == 0)
@@ -118,12 +113,11 @@ class MyStatusItems: NSObject {
             UserDefaults.standard.set(validToIndex, forKey: "validToIndex")
         }
     }
-    
     private static func loadPosArray()
     {
-        for i in 0...StatusItemPos.count - 1
+        for index in 0...StatusItemPos.count - 1
         {
-            let strKey = "posArray" + String(i)
+            let strKey = "posArray" + String(index)
             var item: StatusItems
             if (UserDefaults.standard.integer(forKey: strKey) == 0)
             {
@@ -134,31 +128,33 @@ class MyStatusItems: NSObject {
                 switch(UserDefaults.standard.integer(forKey: strKey))
                 {
                 case 1:
-                    item = StatusItems.CPUUtil
+                    item = StatusItems.cpuUtil
                     break
                 case 2:
-                    item = StatusItems.CPUTemp
+                    item = StatusItems.cpuTemp
                     break
                 case 3:
-                    item = StatusItems.MemUtil
+                    item = StatusItems.memUtil
                     break
                 case 4:
-                    item = StatusItems.Bandwidth
+                    item = StatusItems.bandwidth
                     break
                 case 5:
-                    item = StatusItems.FanSpeed
+                    item = StatusItems.fanSpeed
                     break
                 case 6:
+                    item = StatusItems.battery
+                    break
+                case 7:
                     item = StatusItems.INVALID
                 default:
                     return
                 }
-                StatusItemPos[i] = item
+                StatusItemPos[index] = item
             }
         }
-        printNow()
+        //printNow()
     }
-    
     private static func savePosArray()
     {
         /*
@@ -167,51 +163,52 @@ class MyStatusItems: NSObject {
          2: MemUtil
          3: Bandwidth
          4: FanSpeed
-         5: INVALID
+         5: Battery
+         6: INVALID
          
          Incremented every index on purpose by 1 because userdefault.standard.data(..) returns 0 if no value found
          */
-        for i in 0...StatusItemPos.count - 1
+        for index in 0...StatusItemPos.count - 1
         {
             var idx: Int?
-            switch(StatusItemPos[i])
+            switch(StatusItemPos[index])
             {
-            case StatusItems.CPUUtil:
+            case StatusItems.cpuUtil:
                 idx = 1
                 break
-            case StatusItems.CPUTemp:
+            case StatusItems.cpuTemp:
                 idx = 2
                 break
-            case StatusItems.MemUtil:
+            case StatusItems.memUtil:
                 idx = 3
                 break
-            case StatusItems.Bandwidth:
+            case StatusItems.bandwidth:
                 idx = 4
                 break
-            case StatusItems.FanSpeed:
+            case StatusItems.fanSpeed:
                 idx = 5
                 break
-            case StatusItems.INVALID:
+            case StatusItems.battery:
                 idx = 6
+                break
+            case StatusItems.INVALID:
+                idx = 7
                 break
             default:
                 idx = 0
             }
-            let strKey = "posArray" + String(i)
+            let strKey = "posArray" + String(index)
             UserDefaults.standard.set(idx, forKey: strKey)
         }
-        printNow()
+        //printNow()
     }
-    
     private static func printNow()
     {
-        for i in 0...StatusItemPos.count - 1
+        for index in 0...StatusItemPos.count - 1
         {
-            print(StatusItemPos[i])
+            print(StatusItemPos[index])
         }
         print(validToIndex)
         print("---------")
     }
-    
-    
 }

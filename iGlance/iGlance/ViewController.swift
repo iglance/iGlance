@@ -145,6 +145,11 @@ class ViewController: NSViewController {
             cbMemBorder.state = AppDelegate.UserSettings.userWantsMemBorder ? NSButton.StateValue.on : NSButton.StateValue.off
         }
     }
+    @IBOutlet weak var cbBatteryUtil: NSButton! {
+        didSet {
+            cbBatteryUtil.state = AppDelegate.UserSettings.userWantsBatteryUtil ? NSButton.StateValue.on : NSButton.StateValue.off
+        }
+    }
     @IBOutlet weak var cbBatteryNotification: NSButton! {
         didSet {
             cbBatteryNotification.state = AppDelegate.UserSettings.userWantsBatteryNotification ? NSButton.StateValue.on : NSButton.StateValue.off
@@ -160,15 +165,17 @@ class ViewController: NSViewController {
             tfUpperBatteryValue.intValue = Int32(AppDelegate.UserSettings.upperBatteryNotificationValue)
         }
     }
-    
-    
-    
-    //MARK: Properties
-    
+    // MARK: Properties
     override func viewDidLoad() {
         super.viewDidLoad()
     }
-    
+    @IBAction func cbBatteryUtil_clicked(_ sender: NSButton) {
+        let checked = (cbBatteryUtil.state == NSButton.StateValue.on)
+        AppDelegate.UserSettings.userWantsBatteryUtil = checked
+        UserDefaults.standard.set(checked, forKey: "userWantsBatteryUtil")
+        AppDelegate.sItemBattery.isVisible = checked
+        checked ? MyStatusItems.insertItem(item: MyStatusItems.StatusItems.battery) : MyStatusItems.removeItem(item: MyStatusItems.StatusItems.battery)
+    }
     @IBAction func cbBatterNotification_clicked(_ sender: NSButton) {
         let checked = (cbBatteryNotification.state == NSButton.StateValue.on)
         AppDelegate.UserSettings.userWantsBatteryNotification = checked
@@ -184,13 +191,12 @@ class ViewController: NSViewController {
         AppDelegate.UserSettings.upperBatteryNotificationValue = value
         UserDefaults.standard.set(value, forKey: "upperBatteryNotificationValue")
     }
-    
     @IBAction func cbCPUTemp_clicked(_ sender: NSButton) {
         let checked = (cbCPUTemp.state == NSButton.StateValue.on)
         AppDelegate.UserSettings.userWantsCPUTemp = checked
         AppDelegate.sItemCPUTemp.isVisible = checked
         UserDefaults.standard.set(checked, forKey: "userWantsCPUTemp")
-        checked ? MyStatusItems.insertItem(item: MyStatusItems.StatusItems.CPUTemp) : MyStatusItems.removeItem(item: MyStatusItems.StatusItems.CPUTemp)
+        checked ? MyStatusItems.insertItem(item: MyStatusItems.StatusItems.cpuTemp) : MyStatusItems.removeItem(item: MyStatusItems.StatusItems.cpuTemp)
     }
     
     @IBAction func cbCPUUtil_clicked(_ sender: NSButton) {
@@ -198,7 +204,7 @@ class ViewController: NSViewController {
         AppDelegate.UserSettings.userWantsCPUUtil = checked
         AppDelegate.sItemCPUUtil.isVisible = checked
         UserDefaults.standard.set(checked, forKey: "userWantsCPUUtil")
-        checked ? MyStatusItems.insertItem(item: MyStatusItems.StatusItems.CPUUtil) : MyStatusItems.removeItem(item: MyStatusItems.StatusItems.CPUUtil)
+        checked ? MyStatusItems.insertItem(item: MyStatusItems.StatusItems.cpuUtil) : MyStatusItems.removeItem(item: MyStatusItems.StatusItems.cpuUtil)
     }
     @IBAction func cpCPU_clicked(_ sender: NSColorWell) {
         AppDelegate.UserSettings.cpuColor = sender.color
@@ -417,7 +423,7 @@ class ViewController: NSViewController {
         AppDelegate.UserSettings.userWantsMemUsage = checked
         AppDelegate.sItemMemUsage.isVisible = checked
         UserDefaults.standard.set(checked, forKey: "userWantsMemUsage")
-        checked ? MyStatusItems.insertItem(item: MyStatusItems.StatusItems.MemUtil) : MyStatusItems.removeItem(item: MyStatusItems.StatusItems.MemUtil)
+        checked ? MyStatusItems.insertItem(item: MyStatusItems.StatusItems.memUtil) : MyStatusItems.removeItem(item: MyStatusItems.StatusItems.memUtil)
     }
     
     @IBAction func cpMem_clicked(_ sender: NSColorWell) {
@@ -434,7 +440,7 @@ class ViewController: NSViewController {
         AppDelegate.UserSettings.userWantsBandwidth = checked
         AppDelegate.sItemBandwidth.isVisible = checked
         UserDefaults.standard.set(checked, forKey: "userWantsBandwidth")
-        checked ? MyStatusItems.insertItem(item: MyStatusItems.StatusItems.Bandwidth) : MyStatusItems.removeItem(item: MyStatusItems.StatusItems.Bandwidth)
+        checked ? MyStatusItems.insertItem(item: MyStatusItems.StatusItems.bandwidth) : MyStatusItems.removeItem(item: MyStatusItems.StatusItems.bandwidth)
     }
     
     @IBAction func cbFanSpeed_clicked(_ sender: NSButton) {
@@ -442,7 +448,7 @@ class ViewController: NSViewController {
         AppDelegate.UserSettings.userWantsFanSpeed = checked
         AppDelegate.sItemFanSpeed.isVisible = checked
         UserDefaults.standard.set(checked, forKey: "userWantsFanSpeed")
-        checked ? MyStatusItems.insertItem(item: MyStatusItems.StatusItems.FanSpeed) : MyStatusItems.removeItem(item: MyStatusItems.StatusItems.FanSpeed)
+        checked ? MyStatusItems.insertItem(item: MyStatusItems.StatusItems.fanSpeed) : MyStatusItems.removeItem(item: MyStatusItems.StatusItems.fanSpeed)
     }
     @IBAction func cbCPUBorder_clicked(_ sender: NSButton) {
         AppDelegate.UserSettings.userWantsCPUBorder = (cbCPUBorder.state == NSButton.StateValue.on)

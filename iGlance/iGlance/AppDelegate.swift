@@ -37,7 +37,7 @@ extension NSColor {
 @NSApplicationMain
 class AppDelegate: NSObject, NSApplicationDelegate {
 
-    public static var VERSION = "1.0"
+    public static var VERSION = "1.1"
     /**
     * StatusBarItems, Buttons and Menus declaration
     */
@@ -51,13 +51,13 @@ class AppDelegate: NSObject, NSApplicationDelegate {
     
     static let sItemMemUsage = NSStatusBar.system.statusItem(withLength: 27.0)
     let myMemMenuView = MemMenuView(frame: NSRect(x: 0, y: 0, width: 170, height: 110))
-    let niceitem2 = NSMenuItem(title: "", action: nil, keyEquivalent: "")
+    let menuItemMem = NSMenuItem(title: "", action: nil, keyEquivalent: "")
     var btnMemUsage: NSStatusBarButton?
     var menuMemUsage: NSMenu?
     
     static let sItemCPUUtil = NSStatusBar.system.statusItem(withLength: 27.0)
     let myCPUMenuView = CPUMenuView(frame: NSRect(x: 0, y: 0, width: 170, height: 90))
-    let niceitem = NSMenuItem(title: "", action: nil, keyEquivalent: "")
+    let menuItemCPU = NSMenuItem(title: "", action: nil, keyEquivalent: "")
     var btnCPUUtil: NSStatusBarButton?
     var menuCPUUtil: NSMenu?
     
@@ -65,7 +65,9 @@ class AppDelegate: NSObject, NSApplicationDelegate {
     var btnCPUTemp: NSStatusBarButton?
     var menuCPUTemp: NSMenu?
     
-    //var command: AsyncCommand?
+    static let sItemBattery = NSStatusBar.system.statusItem(withLength: NSStatusItem.variableLength)
+    var btnBattery: NSStatusBarButton?
+    var menuBattery: NSMenu?
     
     var myWindowController: MyMainWindow?
     
@@ -88,29 +90,21 @@ class AppDelegate: NSObject, NSApplicationDelegate {
         static var tempUnit = TempUnit.Celcius
         static var userWantsCPUBorder = true
         static var userWantsMemBorder = true
+        static var userWantsBatteryUtil = true
         static var userWantsBatteryNotification = true
         static var lowerBatteryNotificationValue = 20
         static var upperBatteryNotificationValue = 80
     }
     
-    
-    // Todo: Delete
-    
     var mySystem: System?
-    var myBattery: Battery?
-    /*
-    var myCPUView: CPUUsageView?
-    var myMemView: MemUsageView?
-    var myBandwidthView: BandwidthView?
-    */
     
     /**
     * Bandwidth variables
     */
-    var dSpeed: Int64?
-    var uSpeed: Int64?
-    var dSpeedLast: Int64?
-    var uSpeedLast: Int64?
+    var dSpeed: UInt64?
+    var uSpeed: UInt64?
+    var dSpeedLast: UInt64?
+    var uSpeedLast: UInt64?
     
     var bandIMG: String?
     var bandColor: NSColor?
@@ -118,9 +112,16 @@ class AppDelegate: NSObject, NSApplicationDelegate {
     var finalDown: String?
     var finalUp: String?
     var pbFillRectBandwidth: NSRect?
-    var len1: Int?
-    var len2: Int?
-    var firstBandwidth = true
+    var dLength: Int?
+    var uLength: Int?
+    
+    var bandwidthDUsageItem = NSMenuItem(title: "Download Last Hour:\t\t NA", action: nil, keyEquivalent: "")
+    var bandwidthDUsageArray = Array(repeating: UInt64(0), count: 3600)
+    var bandwidthDUsageArrayIndex = 0
+    
+    var bandwidthUUsageItem = NSMenuItem(title: "Upload Last Hour:\t\t NA", action: nil, keyEquivalent: "")
+    var bandwidthUUsageArray = Array(repeating: UInt64(0), count: 3600)
+    var bandwidthUUsageArrayIndex = 0
     
     /**
     * CPU Button Image variables
@@ -138,10 +139,19 @@ class AppDelegate: NSObject, NSApplicationDelegate {
     var memIMG: String?
     
     /**
-     * Battery variables
+     *  Battery variables
      */
-    var previousChargeValue: Double = 0
-    var alreadyNotified: Bool = false
+    var remainingTime: Battery.RemainingBatteryTime?
+    var batteryCapacity: Double?
+    let myBattery = Battery()
+    
+    /**
+     * FAN variables
+     */
+    
+    var minMenuFan = NSMenuItem(title: "Min:\t\t NA", action: nil, keyEquivalent: "")
+    var maxMenuFan = NSMenuItem(title: "Max:\t NA", action: nil, keyEquivalent: "")
+    var currMenuFan = NSMenuItem(title: "Current:\t NA", action: nil, keyEquivalent: "")
     
     /**
     * Shared variables
@@ -149,11 +159,6 @@ class AppDelegate: NSObject, NSApplicationDelegate {
     var pixelWidth: Double?
     var pbIMG: String?
     var pbMax: Double?
-    
-    //var myWindow: MyMainWindow?
-    //var myWin: MyMainWin?
-    
-    //let popover = NSPopover()
 
     var intervalTimer: Timer?
     static var currTimeInterval = AppDelegate.UserSettings.updateInterval
@@ -161,56 +166,26 @@ class AppDelegate: NSObject, NSApplicationDelegate {
     var bandwidthTask: Process?
     var curr: Array<Substring>?
     
-    /*
-     0: CPUUtil
-     1: CPUTemp
-     2: MemUtil
-     3: Bandwidth
-     4: FanSpeed
- 
-    enum StatusItems {
-        case CPUUtil
-        case CPUTemp
-        case MemUtil
-        case Bandwidth
-        case FanSpeed
-    }
- 
-    public static var StatusItemPos = [StatusItems.CPUTemp, StatusItems.CPUUtil, StatusItems.MemUtil, StatusItems.Bandwidth, StatusItems.FanSpeed]
-    public static var validToIndex = 0
-     */
-
-    
     func applicationDidFinishLaunching(_ aNotification: Notification) {
+        
+        
+        checkForUpdate()
         
         AppDelegate.sItemCPUTemp.isVisible = false
         AppDelegate.sItemCPUUtil.isVisible = false
         AppDelegate.sItemFanSpeed.isVisible = false
         AppDelegate.sItemMemUsage.isVisible = false
         AppDelegate.sItemBandwidth.isVisible = false
-        
-        myWindowController = NSStoryboard(name: NSStoryboard.Name(rawValue: "Main"), bundle: nil).instantiateController(withIdentifier: NSStoryboard.SceneIdentifier(rawValue: "abcd")) as! MyMainWindow
-        //UserDefaults.standard.set(4, forKey: "validToIndex")
-        //NSApp.terminate(nil)
-        
-        
-        /*
-        UserDefaults.standard.set(false, forKey: "userWantsCPUUtil")
-        UserDefaults.standard.set(false, forKey: "userWantsCPUTemp")
-        UserDefaults.standard.set(false, forKey: "userWantsMemUsage")
-        UserDefaults.standard.set(false, forKey: "userWantsBandwidth")
-        UserDefaults.standard.set(false, forKey: "userWantsFanSpeed")
-        UserDefaults.standard.set(6, forKey: "posArray0")
-        UserDefaults.standard.set(6, forKey: "posArray1")
-        UserDefaults.standard.set(6, forKey: "posArray2")
-        UserDefaults.standard.set(6, forKey: "posArray3")
-        UserDefaults.standard.set(6, forKey: "posArray4")
-        UserDefaults.standard.set(0, forKey: "validToIndex")
-        NSApp.terminate(nil)
-        */
+        AppDelegate.sItemBattery.isVisible = false
         
         loadSessionSettings()
+        
+        myWindowController = NSStoryboard(name: NSStoryboard.Name(rawValue: "Main"), bundle: nil).instantiateController(withIdentifier: NSStoryboard.SceneIdentifier(rawValue: "abcd")) as! MyMainWindow
+        
+        
         displayStatusItems()
+        
+        
         
         // Create a Task instance
         bandwidthTask = Process()
@@ -225,7 +200,9 @@ class AppDelegate: NSObject, NSApplicationDelegate {
         bandwidthTask?.standardOutput = pipe
         
         let outputHandle = pipe.fileHandleForReading
-        outputHandle.waitForDataInBackgroundAndNotify()
+
+        //outputHandle.waitForDataInBackgroundAndNotify()
+        outputHandle.waitForDataInBackgroundAndNotify(forModes: [RunLoopMode.commonModes])
         
         // When new data is available
         var dataAvailable : NSObjectProtocol!
@@ -247,8 +224,8 @@ class AppDelegate: NSObject, NSApplicationDelegate {
                             }
                             else
                             {
-                                self.dSpeed = Int64(self.curr![2])
-                                self.uSpeed = Int64(self.curr![5])
+                                self.dSpeed = UInt64(self.curr![2])
+                                self.uSpeed = UInt64(self.curr![5])
                             }
                         }
                         
@@ -268,10 +245,6 @@ class AppDelegate: NSObject, NSApplicationDelegate {
         
         // Launch the task
         bandwidthTask?.launch()
- 
-
-        // ------------ MISSING LOAD SESSION SETTINGS ------------------
-        // -------------------------------------------------------------
         
         
         var startedAtLogin = false
@@ -286,18 +259,6 @@ class AppDelegate: NSObject, NSApplicationDelegate {
             DistributedNotificationCenter.default().postNotificationName(NCConstants.KILLME, object: Bundle.main.bundleIdentifier, userInfo: nil, options: DistributedNotificationCenter.Options.deliverImmediately)
         }
         
-        //myWindowController?.showWindow(self)
-        //NSApp.activate(ignoringOtherApps: true)
-        
-        
-        //popover.behavior = NSPopover.Behavior.transient;
-        constructMenu()
-        initCPUUtil()
-        initCPUTemp()
-        initMemUsage()
-        initFanSpeed()
-        initBandwidth()
-        
         
         do
         {
@@ -309,48 +270,92 @@ class AppDelegate: NSObject, NSApplicationDelegate {
             NSApp.terminate(nil)
         }
         
+        constructMenu()
+        initCPUUtil()
+        initCPUTemp()
+        initMemUsage()
+        initFanSpeed()
+        initBandwidth()
+        initBattery()
+        
         intervalTimer = Timer.scheduledTimer(timeInterval: UserSettings.updateInterval, target: self, selector: #selector(updateAll), userInfo: nil, repeats: true)
         RunLoop.current.add(intervalTimer!, forMode: RunLoopMode.commonModes)
+        
     }
     
-    /*
-    func getPosArray()
+    func checkForUpdate()
     {
-        for i in 0...AppDelegate.StatusItemPos.count - 1
+        var request = URLRequest(url: URL(string: "https://raw.githubusercontent.com/Moneypulation/iGlance/master/Version.txt")!)
+        request.httpMethod = "GET"
+        let (htmltext, _, error) = URLSession.shared.synchronousDataTask(urlrequest: request)
+        if let error = error {
+            // Do nothing
+        }
+        else
         {
-            let strKey = "posArray" + String(i)
-            var item: AppDelegate.StatusItems
-            if (UserDefaults.standard.integer(forKey: strKey) == 0)
+            let pat = "\\[version\\](.*)\\[\\/version\\]"
+            let res = matches(for: pat, in: String(data: htmltext!, encoding: String.Encoding.utf8)!)
+            if res.count != 1
             {
-                break
+                // Do nothing again
             }
             else
             {
-                switch(UserDefaults.standard.integer(forKey: strKey))
+                let onlyversion = res[0].replacingOccurrences(of: "[version]", with: "").replacingOccurrences(of: "[/version]", with: "")
+                if (onlyversion != AppDelegate.VERSION)
                 {
-                case 1:
-                    item = AppDelegate.StatusItems.CPUUtil
-                    break
-                case 2:
-                    item = AppDelegate.StatusItems.CPUTemp
-                    break
-                case 3:
-                    item = AppDelegate.StatusItems.MemUtil
-                    break
-                case 4:
-                    item = AppDelegate.StatusItems.Bandwidth
-                    break
-                case 5:
-                    item = AppDelegate.StatusItems.FanSpeed
-                    break
-                default:
-                    return
+                    let alert = NSAlert()
+                    alert.messageText = ""
+                    alert.informativeText = "A new version (" + onlyversion + ") is available at: \n\n https://github.com/Moneypulation/iGlance"
+                    alert.alertStyle = .informational
+                    alert.addButton(withTitle: "Visit Website")
+                    alert.addButton(withTitle: "OK")
+                    if (alert.runModal() == .alertFirstButtonReturn)
+                    {
+                        if let url = URL(string: "https://github.com/Moneypulation/iGlance"), NSWorkspace.shared.open(url) {
+                            
+                        }
+                    }
                 }
-                AppDelegate.StatusItemPos[i] = item
             }
         }
     }
-    */
+    
+    func matches(for regex: String, in text: String) -> [String] {
+        
+        do {
+            let regex = try NSRegularExpression(pattern: regex)
+            let results = regex.matches(in: text,
+                                        range: NSRange(text.startIndex..., in: text))
+            return results.map {
+                String(text[Range($0.range, in: text)!])
+            }
+        } catch let error {
+            print("invalid regex: \(error.localizedDescription)")
+            return []
+        }
+    }
+    
+    func getDBandwidthUsage() -> UInt64
+    {
+        var total = UInt64(0)
+        for num in bandwidthDUsageArray
+        {
+            total += num
+        }
+        return total
+    }
+    
+    func getUBandwidthUsage() -> UInt64
+    {
+        var total = UInt64(0)
+        for num in bandwidthUUsageArray
+        {
+            total += num
+        }
+        return total
+    }
+    
     
     func displayStatusItems()
     {
@@ -362,45 +367,46 @@ class AppDelegate: NSObject, NSApplicationDelegate {
         {
             switch (MyStatusItems.StatusItemPos[i])
             {
-            case MyStatusItems.StatusItems.CPUUtil:
+            case MyStatusItems.StatusItems.cpuUtil:
                 if (AppDelegate.UserSettings.userWantsCPUUtil)
                 {
                     AppDelegate.sItemCPUUtil.isVisible = true
                     once = true
                 }
                 break
-            case MyStatusItems.StatusItems.CPUTemp:
+            case MyStatusItems.StatusItems.cpuTemp:
                 if (AppDelegate.UserSettings.userWantsCPUTemp)
                 {
                     AppDelegate.sItemCPUTemp.isVisible = true
-                    print("1")
                     once = true
                 }
                 break
-            case MyStatusItems.StatusItems.MemUtil:
+            case MyStatusItems.StatusItems.memUtil:
                 if (AppDelegate.UserSettings.userWantsMemUsage)
                 {
                     AppDelegate.sItemMemUsage.isVisible = true
-                    print("2")
                     once = true
                 }
                 break
-            case MyStatusItems.StatusItems.Bandwidth:
+            case MyStatusItems.StatusItems.bandwidth:
                 if (AppDelegate.UserSettings.userWantsBandwidth)
                 {
                     AppDelegate.sItemBandwidth.isVisible = true
-                    print("3")
                     once = true
                 }
                 break
-            case MyStatusItems.StatusItems.FanSpeed:
+            case MyStatusItems.StatusItems.fanSpeed:
                 if (AppDelegate.UserSettings.userWantsFanSpeed)
                 {
                     AppDelegate.sItemFanSpeed.isVisible = true
-                    print("4")
                     once = true
                 }
                 break
+            case MyStatusItems.StatusItems.battery:
+                if(AppDelegate.UserSettings.userWantsBatteryUtil) {
+                    AppDelegate.sItemBattery.isVisible = true
+                    once = true
+                }
             default:
                 continue
             }
@@ -408,7 +414,6 @@ class AppDelegate: NSObject, NSApplicationDelegate {
         if (once == false)
         {
             // bring window to front, otherwise the user can't access it
-            print("lol")
             settings_clicked()
         }
     }
@@ -435,7 +440,6 @@ class AppDelegate: NSObject, NSApplicationDelegate {
         
         if (UserDefaults.standard.value(forKey: "colRedCPU") != nil)
         {
-            print("jop")
             colRedCPU = UserDefaults.standard.value(forKey: "colRedCPU") as! CGFloat
             colGreenCPU = UserDefaults.standard.value(forKey: "colGreenCPU") as! CGFloat
             colBlueCPU = UserDefaults.standard.value(forKey: "colBlueCPU") as! CGFloat
@@ -485,6 +489,9 @@ class AppDelegate: NSObject, NSApplicationDelegate {
         {
             UserSettings.userWantsMemBorder = UserDefaults.standard.value(forKey: "userWantsMemBorder") as! Bool
         }
+        if(UserDefaults.standard.value(forKey: "userWantsBatteryUtil") != nil) {
+            UserSettings.userWantsBatteryUtil = UserDefaults.standard.value(forKey: "userWantsBatteryUtil") as! Bool
+        }
         if(UserDefaults.standard.value(forKey: "userWantsBatteryNotification") != nil) {
             UserSettings.userWantsBatteryNotification = UserDefaults.standard.value(forKey: "userWantsBatteryNotification") as! Bool
         }
@@ -502,7 +509,6 @@ class AppDelegate: NSObject, NSApplicationDelegate {
         alert.informativeText = text
         alert.alertStyle = .critical
         alert.addButton(withTitle: "OK")
-        //alert.addButton(withTitle: "Cancel")
         return alert.runModal() == .alertFirstButtonReturn
     }
     
@@ -515,57 +521,7 @@ class AppDelegate: NSObject, NSApplicationDelegate {
         pixelHeightCPU = 0
         mySystem = System()
         btnCPUUtil = AppDelegate.sItemCPUUtil.button
-        myBattery = Battery()
-        myBattery!.open()
-        /*
- 
-        //myCPUView = CPUUsageView()
-        //myCPUView?.giveContext(contextNew: self)
-        //myCPUView?.frame = (AppDelegate.btnCPUUtil?.frame)!
-        //popover.contentViewController = CPUUsageViewController.freshController()
-        //AppDelegate.btnCPUUtil?.addSubview(myCPUView!)
-        btnCPUUtil?.target = self
-        sItemCPUUtil.target = self;
-        //sItemCPUUtil.action = #selector(mouseDown(_:));
-        //sItemCPUUtil.sendAction(on: NSEvent.EventTypeMask.leftMouseDown)
-        
-        if (InterfaceStyle() == InterfaceStyle.Dark)
-        {
-            cpuIMG = "menubar-label-cpu-white"
-            pbIMG = "progressbar-white"
-            
-        }
-        else
-        {
-            cpuIMG = "menubar-label-cpu-black"
-            pbIMG = "progressbar-black"
-            
-        }
-        let img4 = NSImage(size: NSSize(width: 20, height: 18))
-        img4.lockFocus()
-        let img1 = NSImage(named:NSImage.Name(cpuIMG!))
-        img1?.draw(at: NSPoint(x: 0, y: 0), from: NSZeroRect, operation: NSCompositingOperation.sourceOver, fraction: 1.0)
-        let img2 = NSImage(named:NSImage.Name(pbIMG!))
-        img2?.draw(at: NSPoint(x: 10, y: 0), from: NSZeroRect, operation: NSCompositingOperation.sourceOver, fraction: 1.0)
-        pbFillRectCPU = NSRect(x: 13.0, y: 4.0, width: pixelWidth!, height: pixelHeightCPU!)
-        AppDelegate.UserSettings.cpuColor.setFill()
-        pbFillRectCPU?.fill()
-        NSColor.clear.setFill()
-        img4.unlockFocus()
-        
-        //btnCPUUtil?.image = img4
-        
-        /*
-        let str = Bundle.main.executableURL!.absoluteString
-        let components = str.split(separator: "/")
-        let head = "/" + components.dropLast(1).dropFirst(1).map(String.init).joined(separator: "/") + "/cpu_mem_util"
-        print(head)
-        */
- 
-    */
-        
-        
-        
+        btnCPUUtil?.image?.isTemplate = true
     }
     
     @objc func settings_clicked()
@@ -576,39 +532,29 @@ class AppDelegate: NSObject, NSApplicationDelegate {
     
     func constructMenu() {
         
-        /*
-        let niceattr = NSMutableAttributedString(string: "haharechts")
-        let font = NSFont(name: "Apple SD Gothic Neo Bold", size: 11.0)
-        let fontSmall = NSFont(name: "Apple SD Gothic Neo Bold", size: 8.0)
-        niceattr.addAttribute(.font, value: font as Any, range: NSMakeRange(0,4))
-        let myParagraphStyle2 = NSMutableParagraphStyle()
-        myParagraphStyle2.alignment = .left
-        niceattr.addAttribute(.paragraphStyle, value: myParagraphStyle2, range: NSMakeRange(0, 4))
-        let myParagraphStyle = NSMutableParagraphStyle()
-        myParagraphStyle.alignment = .right
-        niceattr.addAttribute(.paragraphStyle, value: myParagraphStyle, range: NSMakeRange(4, 6))
-        niceitem.attributedTitle = niceattr*/
-        
-        niceitem.view = myCPUMenuView
-        niceitem2.view = myMemMenuView
+        menuItemCPU.view = myCPUMenuView
+        menuItemMem.view = myMemMenuView
         
         menuCPUUtil = NSMenu()
-        menuCPUUtil?.addItem(niceitem)
+        menuCPUUtil?.addItem(menuItemCPU)
         menuCPUUtil?.addItem(NSMenuItem.separator())
         menuCPUUtil?.addItem(NSMenuItem(title: "Settings", action: #selector(settings_clicked), keyEquivalent: "s"))
         menuCPUUtil?.addItem(NSMenuItem.separator())
         menuCPUUtil?.addItem(NSMenuItem(title: "Quit iGlance", action: #selector(NSApplication.terminate(_:)), keyEquivalent: "q"))
-        //menuCPUUtil?.addItem(NSMenuItem.separator())
         AppDelegate.sItemCPUUtil.menu = menuCPUUtil
         
         menuFanSpeed = NSMenu()
+        menuFanSpeed?.addItem(minMenuFan)
+        menuFanSpeed?.addItem(maxMenuFan)
+        menuFanSpeed?.addItem(currMenuFan)
+        menuFanSpeed?.addItem(NSMenuItem.separator())
         menuFanSpeed?.addItem(NSMenuItem(title: "Settings", action: #selector(settings_clicked), keyEquivalent: "s"))
         menuFanSpeed?.addItem(NSMenuItem.separator())
         menuFanSpeed?.addItem(NSMenuItem(title: "Quit iGlance", action: #selector(NSApplication.terminate(_:)), keyEquivalent: "q"))
         AppDelegate.sItemFanSpeed.menu = menuFanSpeed
         
         menuMemUsage = NSMenu()
-        menuMemUsage?.addItem(niceitem2)
+        menuMemUsage?.addItem(menuItemMem)
         menuMemUsage?.addItem(NSMenuItem.separator())
         menuMemUsage?.addItem(NSMenuItem(title: "Settings", action: #selector(settings_clicked), keyEquivalent: "s"))
         menuMemUsage?.addItem(NSMenuItem.separator())
@@ -616,16 +562,35 @@ class AppDelegate: NSObject, NSApplicationDelegate {
         AppDelegate.sItemMemUsage.menu = menuMemUsage
         
         menuCPUTemp = NSMenu()
+        let myTempMenu = NSMenuItem(title: "", action: nil, keyEquivalent: "")
+        let myCPUTempView = CPUTempMenuView(frame: NSRect(x: 0, y: 0, width: 355, height: 195))
+        
+        myCPUTempView.temp0.stringValue = "144°F"
+        myTempMenu.view = myCPUTempView
+        //menuCPUTemp?.addItem(myTempMenu)
+        menuCPUTemp?.addItem(NSMenuItem.separator())
         menuCPUTemp?.addItem(NSMenuItem(title: "Settings", action: #selector(settings_clicked), keyEquivalent: "s"))
         menuCPUTemp?.addItem(NSMenuItem.separator())
         menuCPUTemp?.addItem(NSMenuItem(title: "Quit iGlance", action: #selector(NSApplication.terminate(_:)), keyEquivalent: "q"))
         AppDelegate.sItemCPUTemp.menu = menuCPUTemp
         
         menuBandwidth = NSMenu()
+        menuBandwidth?.addItem(bandwidthDUsageItem)
+        menuBandwidth?.addItem(bandwidthUUsageItem)
+        menuBandwidth?.addItem(NSMenuItem.separator())
         menuBandwidth?.addItem(NSMenuItem(title: "Settings", action: #selector(settings_clicked), keyEquivalent: "s"))
         menuBandwidth?.addItem(NSMenuItem.separator())
         menuBandwidth?.addItem(NSMenuItem(title: "Quit iGlance", action: #selector(NSApplication.terminate(_:)), keyEquivalent: "q"))
         AppDelegate.sItemBandwidth.menu = menuBandwidth
+        
+        menuBattery = NSMenu()
+        menuBattery?.addItem(NSMenuItem(title: "Capacity: ", action: nil, keyEquivalent: ""))
+        menuBattery?.addItem(NSMenuItem(title: "Remaining time: ", action: nil, keyEquivalent: ""))
+        menuBattery?.addItem(NSMenuItem.separator())
+        menuBattery?.addItem(NSMenuItem(title: "Settings", action: #selector(settings_clicked), keyEquivalent: "s"))
+        menuBattery?.addItem(NSMenuItem.separator())
+        menuBattery?.addItem(NSMenuItem(title: "Quite iGlance", action: #selector(NSApplication.terminate(_:)), keyEquivalent: "q"))
+        AppDelegate.sItemBattery.menu = menuBattery
     }
     
     @objc func updateCPUUsage()
@@ -636,16 +601,11 @@ class AppDelegate: NSObject, NSApplicationDelegate {
         let cpuIdle = Double(round(100*cpuStats.idle)/100)
         let cpuNice = Double(round(100*cpuStats.nice)/100)
         let cpuUsageTotal = cpuUser + cpuSystem
-        //self.myCPUView?.setPercent(percent: cpuUsageTotal)
         
         myCPUMenuView.percentSystem.stringValue = String(Int(cpuSystem)) + "%"
         myCPUMenuView.percentUser.stringValue = String(Int(cpuUser)) + "%"
         myCPUMenuView.percentIdle.stringValue = String(Int(cpuIdle)) + "%"
-        //myCPUMenuView.percentNice.stringValue = String(cpuNice)
-        //myCPUMenuView.setPercentNice(val: String(Int(cpuNice)) + "%")
         myCPUMenuView.percentNice.stringValue = String(Int(cpuNice)) + "%"
-        //RunLoop.current.add(Timer(timeInterval: 1.0, repeats: true, block: { (timer) in print("")}), forMode: RunLoopMode.commonModes)
-        
         
         pixelHeightCPU = Double((pbMax! / 100.0) * cpuUsageTotal)
         
@@ -664,6 +624,7 @@ class AppDelegate: NSObject, NSApplicationDelegate {
         let imgFinal = NSImage(size: NSSize(width: 20, height: 18))
         imgFinal.lockFocus()
         let img1 = NSImage(named:NSImage.Name(cpuIMG!))
+        //img1?.isTemplate = true
         img1?.draw(at: NSPoint(x: 1, y: 0), from: NSZeroRect, operation: NSCompositingOperation.sourceOver, fraction: 1.0)
         if (AppDelegate.UserSettings.userWantsCPUBorder)
         {
@@ -676,7 +637,9 @@ class AppDelegate: NSObject, NSApplicationDelegate {
         NSColor.clear.setFill()
         imgFinal.unlockFocus()
         
+        //imgFinal.isTemplate = true
         btnCPUUtil?.image = imgFinal
+        //btnCPUUtil?.image?.isTemplate = true
     }
     
     @objc func updateMemUsage()
@@ -693,24 +656,9 @@ class AppDelegate: NSObject, NSApplicationDelegate {
         myMemMenuView.percentFree.stringValue = String(memFree) + " GB"
         myMemMenuView.percentInactive.stringValue = String(memInactive) + " GB"
         myMemMenuView.percentWired.stringValue = String(memWired) + " GB"
-        
-        /*
-        print("active")
-        print(memActive)
-        print("compressed")
-        print(memCompressed)
-        print("free")
-        print(memFree)
-        print("inactive")
-        print(memInactive)
-        print("wired")
-        print(memWired)
-        print("")
-         */
+      
         let memTaken = memActive + memCompressed + memWired
-        //print(System.physicalMemory())
         let memUtil = Double(memTaken / System.physicalMemory()) * 100
-        //self.myMemView?.setPercent(percent: memUtil)
         
         pixelHeightMEM = Double((pbMax! / 100.0) * memUtil)
 
@@ -744,37 +692,6 @@ class AppDelegate: NSObject, NSApplicationDelegate {
         imgFinal.unlockFocus()
         
         btnMemUsage?.image = imgFinal
-    }
-    
-    @objc func updateBatteryStatus() {
-        // TODO: the current charged percentage of the battery is not very accurate
-        let charge = self.myBattery!.charge()
-        let lower = Double(AppDelegate.UserSettings.lowerBatteryNotificationValue)
-        let upper = Double(AppDelegate.UserSettings.upperBatteryNotificationValue)
-        print(lower, upper)
-        
-        if(previousChargeValue <= upper && charge >= upper && alreadyNotified == false) {
-            deliverBatteryNotification(message: "Battery is almost fully charged")
-        } else if(previousChargeValue >= lower && charge <= lower && alreadyNotified == false) {
-            deliverBatteryNotification(message: "Battery is low")
-        } else if(charge < upper && charge > lower){
-            alreadyNotified = false
-            NSUserNotificationCenter.default.removeAllDeliveredNotifications()
-        }
-        
-        if(abs(previousChargeValue-charge) >= 3) {
-            previousChargeValue = charge
-        }
-    }
-    
-    func deliverBatteryNotification(message: String) {
-        let notification = NSUserNotification()
-        notification.identifier = "batteryFullNotification"
-        notification.title = "Battery Info"
-        notification.subtitle = message
-        notification.soundName = NSUserNotificationDefaultSoundName
-        NSUserNotificationCenter.default.deliver(notification)
-        alreadyNotified = true
     }
     
     @objc func updateAll()
@@ -818,37 +735,89 @@ class AppDelegate: NSObject, NSApplicationDelegate {
         if (AppDelegate.UserSettings.userWantsBandwidth)
         {
             AppDelegate.sItemBandwidth.isVisible = true
-            if (firstBandwidth)
-            {
-                //updateBandwidth()
-                firstBandwidth = false
-            }
-            else
-            {
-                /*
-                if (command?.isRunning)!
-                {
-                    //print(command?.suspend())
-                }
-                */
-            }
             reallyUpdateBandwidth()
         }
         else
         {
             AppDelegate.sItemBandwidth.isVisible = false
         }
-        if(AppDelegate.UserSettings.userWantsBatteryNotification) {
-            updateBatteryStatus();
+        if(AppDelegate.UserSettings.userWantsBatteryUtil) {
+            AppDelegate.sItemBattery.isVisible = true
+            updateBattery()
+        }
+        else
+        {
+            AppDelegate.sItemBattery.isVisible = false
+        }
+        if (AppDelegate.UserSettings.userWantsBatteryNotification) {
+            // update the current capacity and notify the user if needed
+            myBattery.notifyUser()
+            batteryCapacity = myBattery.getBatteryCapacity()
         }
         if (AppDelegate.changeInterval())
         {
             intervalTimer?.invalidate()
-            print(UserSettings.updateInterval)
             intervalTimer = Timer.scheduledTimer(timeInterval: UserSettings.updateInterval, target: self, selector: #selector(updateAll), userInfo: nil, repeats: true)
-            //RunLoop.current.add(intervalTimer!, forMode: RunLoopMode.commonModes)
             AppDelegate.currTimeInterval = AppDelegate.UserSettings.updateInterval
+            RunLoop.current.add(intervalTimer!, forMode: RunLoopMode.commonModes)
         }
+    }
+    
+    
+    
+    
+    func updateBattery()
+    {
+        var batteryIconString: String?
+        var fontColor: NSColor?
+        if(InterfaceStyle() == InterfaceStyle.Dark) {
+            batteryIconString = "battery-icon-white"
+            fontColor = NSColor.white
+        } else {
+            batteryIconString = "battery-icon-black"
+            fontColor = NSColor.black
+        }
+        
+        batteryCapacity = myBattery.getBatteryCapacity()
+        
+        // get the remaining time
+        remainingTime = myBattery.getRemainingBatteryTime()
+        
+        // update the button to display the remaining time
+        let imageFinal = NSImage(size: NSSize(width: 32, height: 32))
+        imageFinal.lockFocus()
+        
+        let batteryIcon = NSImage(named: NSImage.Name(batteryIconString!))
+        batteryIcon?.draw(at: NSPoint(x: 0, y: 0), from: NSZeroRect, operation: NSCompositingOperation.sourceOver, fraction: 1.0)
+        
+        var timeValue: String?
+        let batteryTime: Battery.RemainingBatteryTime = remainingTime!
+        if batteryTime.timeInSeconds > 0.0 {
+            timeValue = String(batteryTime.hours) + ":" + String(format: "%02d", batteryTime.minutes)
+        } else if batteryTime.timeInSeconds == -1.0 {
+            timeValue = "calc."
+        } else if batteryTime.timeInSeconds == -2.0 {
+            timeValue = "AC"
+        }
+        
+        let font = NSFont(name: "Apple SD Gothic Neo Bold", size: 9.0)
+        let attrString = NSMutableAttributedString(string: timeValue! )
+        attrString.addAttribute(.font, value: font as Any, range: NSMakeRange(0, attrString.length))
+        attrString.addAttribute(.foregroundColor, value: fontColor as Any, range: NSMakeRange(0, attrString.length))
+        let size = attrString.size()
+        attrString.draw(at: NSPoint(x: 16-size.width/2, y: 16-size.height/2))
+        
+        imageFinal.unlockFocus()
+        
+        btnBattery?.image = imageFinal
+        
+        // update the menu entry with the current remaining time
+        let timeEntry = menuBattery?.item(at: 1)
+        timeEntry?.title = "Remaining time: " + timeValue!
+        
+        // update the menu entry with the current capacity
+        let capacityEntry = menuBattery?.item(at: 0)
+        capacityEntry?.title = "Capacity: " + String(format: "%02d", Int(batteryCapacity!)) + "%"
     }
     
     static func changeInterval() -> Bool
@@ -884,14 +853,23 @@ class AppDelegate: NSObject, NSApplicationDelegate {
                 print("\tCurrent:  NA")
                 return
             }
+            minMenuFan.title = "Min:\t\t " + String(fan.minSpeed) + " RPM"
+            maxMenuFan.title = "Max:\t " + String(fan.maxSpeed) + " RPM"
             let currentMinus50 = currentSpeed - fan.minSpeed - 50
             if (currentMinus50 < 0)
             {
                 btnFanSpeed?.title = "0"
+                currMenuFan.title = "Current:\t 0 RPM"
+            }
+            else if (currentSpeed >= fan.maxSpeed)
+            {
+                btnFanSpeed?.title = String(fan.maxSpeed - fan.minSpeed)
+                currMenuFan.title = "Current:\t " + String(fan.maxSpeed - fan.minSpeed) + " RPM"
             }
             else
             {
                 btnFanSpeed?.title = String(((currentMinus50+50) / 5)*5)
+                currMenuFan.title = "Current:\t " + String(((currentMinus50+50) / 5)*5) + " RPM"
             }
             break;
             
@@ -900,8 +878,8 @@ class AppDelegate: NSObject, NSApplicationDelegate {
     
     @objc func reallyUpdateBandwidth()
     {
-        var needUpdate: Bool?
-        needUpdate = false
+        var needUpdate = false
+
         if (dSpeed != dSpeedLast)
         {
             needUpdate = true
@@ -912,11 +890,31 @@ class AppDelegate: NSObject, NSApplicationDelegate {
             needUpdate = true
         }
         
-        if (needUpdate)!
+        if (needUpdate)
         {
             updateBandText(down: dSpeed!, up: uSpeed!)
             dSpeedLast = dSpeed
             uSpeedLast = uSpeed
+            
+            bandwidthDUsageArray[bandwidthDUsageArrayIndex] = dSpeedLast!
+            bandwidthDUsageArrayIndex += 1
+            
+            if (bandwidthDUsageArrayIndex == bandwidthDUsageArray.count - 1)
+            {
+                bandwidthDUsageArrayIndex = 0
+            }
+            
+            bandwidthUUsageArray[bandwidthUUsageArrayIndex] = uSpeedLast!
+            bandwidthUUsageArrayIndex += 1
+            
+            if (bandwidthUUsageArrayIndex == bandwidthUUsageArray.count)
+            {
+                bandwidthUUsageArrayIndex = 0
+            }
+            
+            updateBandwidthMenuText(down: getDBandwidthUsage(), up: getUBandwidthUsage())
+            getDBandwidthUsage()
+            getUBandwidthUsage()
         }
         
         if (InterfaceStyle() == InterfaceStyle.Dark)
@@ -939,8 +937,8 @@ class AppDelegate: NSObject, NSApplicationDelegate {
         let paragraphStyle = NSMutableParagraphStyle()
         paragraphStyle.lineSpacing = 0.00000001
         
-        len1 = finalDown?.count
-        len2 = finalUp?.count
+        dLength = finalDown?.count
+        uLength = finalUp?.count
         
         
         
@@ -963,7 +961,61 @@ class AppDelegate: NSObject, NSApplicationDelegate {
         btnBandwidth?.image = imgFinal
     }
     
-    func updateBandText(down: Int64, up: Int64)
+    
+    func updateBandwidthMenuText(down: UInt64, up: UInt64)
+    {
+        var mFinalDown = ""
+        var mFinalUp = ""
+        if (down < 1024)
+        {
+            // B
+            mFinalDown = "0 KB"
+        }
+        else if (down < 1048576)
+        {
+            // KB
+            mFinalDown = String((Int(down / 1024) / 4) * 4) + " KB"
+        }
+        else if (down < 1073741824)
+        {
+            // MB
+            mFinalDown = String(format: "%.1f", Double(down) / 1048576.0) + " MB"
+        }
+        else
+        {
+            // GB
+            mFinalDown = String(format: "%.1f", Double(down) / 1073741824.0) + " GB"
+        }
+        
+        
+        if (up < 1024)
+        {
+            // B
+            mFinalUp = "0 KB"
+        }
+        else if (up < 1048576)
+        {
+            // KB
+            mFinalUp = String((Int(up / 1024) / 4) * 4) + " KB"
+        }
+        else if (up < 1073741824)
+        {
+            // MB
+            mFinalUp = String(format: "%.1f", Double(up) / 1048576.0) + " MB"
+        }
+        else
+        {
+            // GB
+            mFinalUp = String(format: "%.1f", Double(up) / 1073741824.0) + " GB"
+        }
+        
+        
+        //bandText = finalDown! + "\n" + finalUp!
+        bandwidthDUsageItem.title = "Download Last Hour:\t\t " + mFinalDown
+        bandwidthUUsageItem.title = "Upload Last Hour:\t\t " + mFinalUp
+    }
+    
+    func updateBandText(down: UInt64, up: UInt64)
     {
         if (down < 1024)
         {
@@ -999,47 +1051,6 @@ class AppDelegate: NSObject, NSApplicationDelegate {
         bandText = finalDown! + "\n" + finalUp!
     }
     
-    @objc func updateBandwidth()
-    {
-        return
-        //print("UPDATE CALLED")
-        //command = runAsync("netstat","-w1 -l en0").onCompletion { command in
-        /*
-        command = runAsync("netstat","-w1 -l en0&\nt=$!\nsleep 3\nkill $t").onCompletion { command in
-            print("fin")
-        }
-        var curr: Array<Substring>?
-        
-        curr = [""]
-        //var str1: String?
-        //var str2: String?
-        
-        command?.stdout.onOutput { stdout in
-            for line in (self.command?.stdout.lines())!
-            {
-                print("aha")
-                curr = line.replacingOccurrences(of: "  ", with: " ").replacingOccurrences(of: "  ", with: " ").replacingOccurrences(of: "  ", with: " ").replacingOccurrences(of: "  ", with: " ").split(separator: " ")
-                if (curr == nil || (curr?.count)! < 6)
-                {
-                    continue
-                }
-                if (Int64(curr![2]) == nil)
-                {
-                    continue
-                }
-                else
-                {
-                    self.dSpeed = Int64(curr![2])
-                    self.uSpeed = Int64(curr![5])
-                }
-                //print("-------")
-            }
-            
-        }
-        */
-        
-    }
-    
     @objc func updateCPUTemp() {
         
         let core0 = TemperatureSensor(name: "CPU_0_DIE", code: FourCharCode(fromStaticString: "TC0F"))
@@ -1063,50 +1074,6 @@ class AppDelegate: NSObject, NSApplicationDelegate {
     {
         btnMemUsage = AppDelegate.sItemMemUsage.button
         pixelHeightMEM = 0
-        
-        //myMemView = MemUsageView()
-        //myMemView?.frame = (btnMemUsage?.frame)!
-        //btnMemUsage?.addSubview(myMemView!)
-        /*
-        let img1 = NSImage(named:NSImage.Name("menubar-label-mem-white"))
-        let img2 = NSImage(named:NSImage.Name("progressbar-white"))
-        let img3 = NSImage(size: NSSize(width: 20, height: 18))
-        img3.lockFocus()
-        img1?.draw(at: NSPoint(x: 0, y: 0), from: NSZeroRect, operation: NSCompositingOperation.sourceOver, fraction: 1.0)
-        img2?.draw(at: NSPoint(x: 10, y: 0), from: NSZeroRect, operation: NSCompositingOperation.sourceOver, fraction: 1.0)
-        img3.unlockFocus()
-        btnMemUsage?.image = img3
-         */
-        
-        
-        /*
-        if (InterfaceStyle() == InterfaceStyle.Dark)
-        {
-            memIMG = "menubar-label-mem-white"
-            pbIMG = "progressbar-white"
-            
-        }
-        else
-        {
-            memIMG = "menubar-label-mem-black"
-            pbIMG = "progressbar-black"
-            
-        }
-        
-        let imgFinal = NSImage(size: NSSize(width: 20, height: 18))
-        imgFinal.lockFocus()
-        let img1 = NSImage(named:NSImage.Name(memIMG!))
-        img1?.draw(at: NSPoint(x: 0, y: 0), from: NSZeroRect, operation: NSCompositingOperation.sourceOver, fraction: 1.0)
-        let img2 = NSImage(named:NSImage.Name(pbIMG!))
-        img2?.draw(at: NSPoint(x: 10, y: 0), from: NSZeroRect, operation: NSCompositingOperation.sourceOver, fraction: 1.0)
-        pbFillRectCPU = NSRect(x: 11.0, y: 1.0, width: pixelWidth!, height: pixelHeightMEM!)
-        AppDelegate.UserSettings.memColor.setFill()
-        pbFillRectCPU?.fill()
-        NSColor.clear.setFill()
-        imgFinal.unlockFocus()
-        
-        //btnMemUsage?.image = imgFinal
-        */
     }
     
     func initCPUTemp()
@@ -1122,19 +1089,18 @@ class AppDelegate: NSObject, NSApplicationDelegate {
     func initBandwidth()
     {
         btnBandwidth = AppDelegate.sItemBandwidth.button
-        //btnBandwidth?.image = NSImage(named:NSImage.Name("menubar-label-network"))
-        //myBandwidthView = BandwidthView()
-        //myBandwidthView?.frame = (btnBandwidth?.frame)!
-        //btnBandwidth?.addSubview(myBandwidthView!)
         
-        len1 = 6
-        len2 = 6
+        dLength = 6
+        uLength = 6
         bandText = ""
+    }
+    
+    func initBattery() {
+        btnBattery = AppDelegate.sItemBattery.button
     }
     
     func applicationWillTerminate(_ aNotification: Notification) {
         // Insert code here to tear down your application
-        self.myBattery!.close()
     }
 
 
