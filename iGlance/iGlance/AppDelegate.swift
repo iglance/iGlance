@@ -1046,7 +1046,7 @@ class AppDelegate: NSObject, NSApplicationDelegate {
         else
         {
             // MB
-            finalUp = String(format: "%.1f", Double(down) / 1048576.0) + " MB/s"
+            finalUp = String(format: "%.1f", Double(up) / 1048576.0) + " MB/s"
         }
         bandText = finalDown! + "\n" + finalUp!
     }
