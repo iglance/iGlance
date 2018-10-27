@@ -53,14 +53,10 @@ class ViewController: NSViewController {
     var colAlphaMem: CGFloat = 0
     
     
+    // checkbox items
     @IBOutlet weak var cbCPUUtil: NSButton! {
         didSet {
             cbCPUUtil.state = AppDelegate.UserSettings.userWantsCPUUtil ? NSButton.StateValue.on : NSButton.StateValue.off
-        }
-    }
-    @IBOutlet weak var imgLogo: NSImageView! {
-        didSet {
-            imgLogo.image = NSImage(named:NSImage.Name("logo"))
         }
     }
     @IBOutlet weak var cbCPUTemp: NSButton! {
@@ -68,6 +64,20 @@ class ViewController: NSViewController {
             cbCPUTemp.state = AppDelegate.UserSettings.userWantsCPUTemp ? NSButton.StateValue.on : NSButton.StateValue.off
         }
     }
+    @IBOutlet weak var cbAutostart: NSButton! {
+        didSet {
+            cbAutostart.state = (AppDelegate.UserSettings.userWantsAutostart) ? NSButton.StateValue.on : NSButton.StateValue.off
+        }
+    }
+    
+    // the logo
+    @IBOutlet weak var imgLogo: NSImageView! {
+        didSet {
+            imgLogo.image = NSImage(named:NSImage.Name("logo"))
+        }
+    }
+    
+    // drop down elements
     @IBOutlet weak var ddTempUnit: NSPopUpButton! {
         didSet {
             switch(AppDelegate.UserSettings.tempUnit)
@@ -84,16 +94,14 @@ class ViewController: NSViewController {
             
         }
     }
+    
+    // color selector
     @IBOutlet weak var cpCPU: NSColorWell! {
         didSet {
             cpCPU.color = AppDelegate.UserSettings.cpuColor
         }
     }
-    @IBOutlet weak var cbAutostart: NSButton! {
-        didSet {
-            cbAutostart.state = (AppDelegate.UserSettings.userWantsAutostart) ? NSButton.StateValue.on : NSButton.StateValue.off
-        }
-    }
+    
     @IBOutlet weak var ddUpdateInterval: NSPopUpButton! {
         didSet {
             switch (AppDelegate.UserSettings.updateInterval)
@@ -332,91 +340,6 @@ class ViewController: NSViewController {
             return []
         }
     }
-    
-    /*
-    func updateStatusItemPos(toggled: AppDelegate.StatusItems, setState: Bool)
-    {
-        let currIndex =  AppDelegate.StatusItemPos.index(of: toggled) ?? 99
-        if (setState)
-        {
-            for i in stride(from: AppDelegate.StatusItemPos.count - 2, to: -1, by: -1)
-            {
-                    AppDelegate.StatusItemPos[i+1] = AppDelegate.StatusItemPos[i]
-            }
-            AppDelegate.StatusItemPos[0] = toggled
-            AppDelegate.validToIndex += 1
-        }
-        else
-        {
-            if (currIndex >= AppDelegate.StatusItemPos.count - 1)
-            {
-                
-            }
-            else
-            {
-                for i in (currIndex)...(AppDelegate.StatusItemPos.count - 2)
-                {
-                    AppDelegate.StatusItemPos[i] = AppDelegate.StatusItemPos[i+1]
-                }
-                AppDelegate.StatusItemPos[AppDelegate.StatusItemPos.count - 1] = toggled
-            }
-                AppDelegate.validToIndex -= 1
-        }
-        printNow()
-        UserDefaults.standard.set(AppDelegate.validToIndex, forKey: "validToIndex")
-        savePosArray()
-        
-    }
-    */
-    
-    /*
-    func savePosArray()
-    {
-        /*
-         0: CPUUtil
-         1: CPUTemp
-         2: MemUtil
-         3: Bandwidth
-         4: FanSpeed
-         */
-        for i in 0...AppDelegate.StatusItemPos.count - 1
-        {
-            var idx: Int?
-            switch(AppDelegate.StatusItemPos[i])
-            {
-            case AppDelegate.StatusItems.CPUUtil:
-                idx = 1
-                break
-            case AppDelegate.StatusItems.CPUTemp:
-                idx = 2
-                break
-            case AppDelegate.StatusItems.MemUtil:
-                idx = 3
-                break
-            case AppDelegate.StatusItems.Bandwidth:
-                idx = 4
-                break
-            case AppDelegate.StatusItems.FanSpeed:
-                idx = 5
-                break
-            default:
-                idx = 0
-            }
-            let strKey = "posArray" + String(i)
-            UserDefaults.standard.set(idx, forKey: strKey)
-        }
-    }
-    
-    func printNow()
-    {
-        for i in 0...AppDelegate.StatusItemPos.count - 1
-        {
-            print(AppDelegate.StatusItemPos[i])
-        }
-        print(AppDelegate.validToIndex)
-        print("---------")
-    }
-    */
     
     @IBAction func cbMemUtil_clicked(_ sender: NSButton) {
         let checked = (cbMemUtil.state == NSButton.StateValue.on)

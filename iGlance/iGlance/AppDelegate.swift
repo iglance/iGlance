@@ -38,9 +38,10 @@ extension NSColor {
 class AppDelegate: NSObject, NSApplicationDelegate {
 
     public static var VERSION = "1.1"
+    
     /**
-    * StatusBarItems, Buttons and Menus declaration
-    */
+     * StatusBarItems, Buttons and Menus declaration
+     */
     static let sItemFanSpeed = NSStatusBar.system.statusItem(withLength: NSStatusItem.variableLength)
     var btnFanSpeed: NSStatusBarButton?
     var menuFanSpeed: NSMenu?
@@ -99,8 +100,8 @@ class AppDelegate: NSObject, NSApplicationDelegate {
     var mySystem: System?
     
     /**
-    * Bandwidth variables
-    */
+     * Bandwidth variables
+     */
     var dSpeed: UInt64?
     var uSpeed: UInt64?
     var dSpeedLast: UInt64?
@@ -124,8 +125,8 @@ class AppDelegate: NSObject, NSApplicationDelegate {
     var bandwidthUUsageArrayIndex = 0
     
     /**
-    * CPU Button Image variables
-    */
+     * CPU Button Image variables
+     */
     var pbFillRectCPU: NSRect?
     var pixelHeightCPU: Double?
     var cpuIMG: String?

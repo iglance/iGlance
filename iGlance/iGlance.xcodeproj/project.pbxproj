@@ -14,7 +14,7 @@
 		025AC38D20C0AFDD000E0837 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 025AC38C20C0AFDD000E0837 /* ViewController.swift */; };
 		025AC38F20C0AFE0000E0837 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 025AC38E20C0AFE0000E0837 /* Assets.xcassets */; };
 		025AC39220C0AFE0000E0837 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 025AC39020C0AFE0000E0837 /* Main.storyboard */; };
-		029DC1AD20CDCA9800F7A30D /* MyStatusItems.swift in Sources */ = {isa = PBXBuildFile; fileRef = 029DC1AC20CDCA9800F7A30D /* MyStatusItems.swift */; };
+		029DC1AD20CDCA9800F7A30D /* StatusItems.swift in Sources */ = {isa = PBXBuildFile; fileRef = 029DC1AC20CDCA9800F7A30D /* StatusItems.swift */; };
 		02B8120720C95CAC00C98F0D /* CPUMenuView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 02B8120620C95CAC00C98F0D /* CPUMenuView.xib */; };
 		02B8120920C95D6600C98F0D /* CPUMenuView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02B8120820C95D6600C98F0D /* CPUMenuView.swift */; };
 		02B8120B20C9871000C98F0D /* MemMenuView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 02B8120A20C9871000C98F0D /* MemMenuView.xib */; };
@@ -28,6 +28,7 @@
 		02ECFC8120C80CBA00E0A1D7 /* iGlanceLauncher.app in CopyFiles */ = {isa = PBXBuildFile; fileRef = 02ECFC7120C80A9300E0A1D7 /* iGlanceLauncher.app */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
 		02ECFC8420C80CF800E0A1D7 /* ServiceManagement.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 02ECFC8320C80CF800E0A1D7 /* ServiceManagement.framework */; };
 		B4B6137520CD16600068A789 /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B4B6137420CD16600068A789 /* Cocoa.framework */; };
+		B4EF0F352184C54800A28F5E /* CPU.swift in Sources */ = {isa = PBXBuildFile; fileRef = B4EF0F342184C54800A28F5E /* CPU.swift */; };
 		B4FF095120D02270006BE560 /* Battery.swift in Sources */ = {isa = PBXBuildFile; fileRef = B4FF095020D02270006BE560 /* Battery.swift */; };
 /* End PBXBuildFile section */
 
@@ -56,7 +57,7 @@
 		025AC39120C0AFE0000E0837 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		025AC39320C0AFE0000E0837 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		025AC39420C0AFE0000E0837 /* iGlance.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = iGlance.entitlements; sourceTree = "<group>"; };
-		029DC1AC20CDCA9800F7A30D /* MyStatusItems.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyStatusItems.swift; sourceTree = "<group>"; };
+		029DC1AC20CDCA9800F7A30D /* StatusItems.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StatusItems.swift; sourceTree = "<group>"; };
 		02B8120620C95CAC00C98F0D /* CPUMenuView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = CPUMenuView.xib; sourceTree = "<group>"; };
 		02B8120820C95D6600C98F0D /* CPUMenuView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CPUMenuView.swift; sourceTree = "<group>"; };
 		02B8120A20C9871000C98F0D /* MemMenuView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MemMenuView.xib; sourceTree = "<group>"; };
@@ -72,6 +73,7 @@
 		02ECFC7D20C80A9500E0A1D7 /* iGlanceLauncher.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = iGlanceLauncher.entitlements; sourceTree = "<group>"; };
 		02ECFC8320C80CF800E0A1D7 /* ServiceManagement.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = ServiceManagement.framework; path = System/Library/Frameworks/ServiceManagement.framework; sourceTree = SDKROOT; };
 		B4B6137420CD16600068A789 /* Cocoa.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Cocoa.framework; path = System/Library/Frameworks/Cocoa.framework; sourceTree = SDKROOT; };
+		B4EF0F342184C54800A28F5E /* CPU.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CPU.swift; sourceTree = "<group>"; };
 		B4FF095020D02270006BE560 /* Battery.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Battery.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -117,22 +119,17 @@
 		025AC38920C0AFDD000E0837 /* iGlance */ = {
 			isa = PBXGroup;
 			children = (
+				B4EF0F302184C46B00A28F5E /* MenuViews */,
 				B4AE1F5220D17DD50055C1C9 /* lib */,
 				B4FF094F20D02248006BE560 /* Components */,
 				025AC38A20C0AFDD000E0837 /* AppDelegate.swift */,
 				025AC38C20C0AFDD000E0837 /* ViewController.swift */,
 				02E9CE2F20C526BE00879EB1 /* MyMainWindow.swift */,
-				029DC1AC20CDCA9800F7A30D /* MyStatusItems.swift */,
+				029DC1AC20CDCA9800F7A30D /* StatusItems.swift */,
 				025AC38E20C0AFE0000E0837 /* Assets.xcassets */,
 				025AC39020C0AFE0000E0837 /* Main.storyboard */,
 				025AC39320C0AFE0000E0837 /* Info.plist */,
 				025AC39420C0AFE0000E0837 /* iGlance.entitlements */,
-				02B8120620C95CAC00C98F0D /* CPUMenuView.xib */,
-				02B8120820C95D6600C98F0D /* CPUMenuView.swift */,
-				02B8120A20C9871000C98F0D /* MemMenuView.xib */,
-				02B8120C20C9874D00C98F0D /* MemMenuView.swift */,
-				02B9B3C920D2B77E0068B53F /* CPUTempMenuView.xib */,
-				02B9B3CB20D2B7940068B53F /* CPUTempMenuView.swift */,
 			);
 			path = iGlance;
 			sourceTree = "<group>";
@@ -169,10 +166,40 @@
 			path = lib;
 			sourceTree = "<group>";
 		};
+		B4EF0F302184C46B00A28F5E /* MenuViews */ = {
+			isa = PBXGroup;
+			children = (
+				B4EF0F332184C4AB00A28F5E /* Memory */,
+				B4EF0F312184C47B00A28F5E /* CPU */,
+			);
+			path = MenuViews;
+			sourceTree = "<group>";
+		};
+		B4EF0F312184C47B00A28F5E /* CPU */ = {
+			isa = PBXGroup;
+			children = (
+				02B9B3C920D2B77E0068B53F /* CPUTempMenuView.xib */,
+				02B9B3CB20D2B7940068B53F /* CPUTempMenuView.swift */,
+				02B8120620C95CAC00C98F0D /* CPUMenuView.xib */,
+				02B8120820C95D6600C98F0D /* CPUMenuView.swift */,
+			);
+			path = CPU;
+			sourceTree = "<group>";
+		};
+		B4EF0F332184C4AB00A28F5E /* Memory */ = {
+			isa = PBXGroup;
+			children = (
+				02B8120A20C9871000C98F0D /* MemMenuView.xib */,
+				02B8120C20C9874D00C98F0D /* MemMenuView.swift */,
+			);
+			path = Memory;
+			sourceTree = "<group>";
+		};
 		B4FF094F20D02248006BE560 /* Components */ = {
 			isa = PBXGroup;
 			children = (
 				B4FF095020D02270006BE560 /* Battery.swift */,
+				B4EF0F342184C54800A28F5E /* CPU.swift */,
 			);
 			path = Components;
 			sourceTree = "<group>";
@@ -296,10 +323,11 @@
 				02E9CE3020C526BE00879EB1 /* MyMainWindow.swift in Sources */,
 				023642E820CAD73B00CDB17D /* Process.swift in Sources */,
 				02B8120D20C9874D00C98F0D /* MemMenuView.swift in Sources */,
-				029DC1AD20CDCA9800F7A30D /* MyStatusItems.swift in Sources */,
+				029DC1AD20CDCA9800F7A30D /* StatusItems.swift in Sources */,
 				02B9B3CC20D2B7940068B53F /* CPUTempMenuView.swift in Sources */,
 				B4FF095120D02270006BE560 /* Battery.swift in Sources */,
 				025AC38D20C0AFDD000E0837 /* ViewController.swift in Sources */,
+				B4EF0F352184C54800A28F5E /* CPU.swift in Sources */,
 				023642F120CAD81D00CDB17D /* SMC.swift in Sources */,
 				02B8120920C95D6600C98F0D /* CPUMenuView.swift in Sources */,
 				025AC38B20C0AFDD000E0837 /* AppDelegate.swift in Sources */,
