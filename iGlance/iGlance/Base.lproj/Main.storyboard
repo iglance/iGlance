@@ -705,7 +705,7 @@
         <!--Battery-->
         <scene sceneID="hHh-Dx-1Vr">
             <objects>
-                <viewController title="Battery" id="Rtx-4o-PWo" customClass="ViewController" customModule="iGlance" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController title="Battery" id="Rtx-4o-PWo" customClass="BatteryView" customModule="iGlance" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" id="yVW-nm-VQc">
                         <rect key="frame" x="0.0" y="0.0" width="450" height="300"/>
                         <autoresizingMask key="autoresizingMask"/>
