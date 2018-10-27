@@ -946,7 +946,7 @@
         <!--CPU-->
         <scene sceneID="YzJ-34-hl0">
             <objects>
-                <viewController title="CPU" id="MQx-3P-zDy" customClass="ViewController" customModule="iGlance" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController title="CPU" id="MQx-3P-zDy" customClass="CpuView" customModule="iGlance" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" id="GNc-S1-j00">
                         <rect key="frame" x="0.0" y="0.0" width="450" height="159"/>
                         <autoresizingMask key="autoresizingMask"/>
