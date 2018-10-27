@@ -42,28 +42,13 @@ extension URLSession {
 
 class ViewController: NSViewController {
 
-    
-    var colRedCPU: CGFloat = 0
-    var colBlueCPU: CGFloat = 0
-    var colGreenCPU: CGFloat = 0
-    var colAlphaCPU: CGFloat = 0
     var colRedMem: CGFloat = 0
     var colBlueMem: CGFloat = 0
     var colGreenMem: CGFloat = 0
     var colAlphaMem: CGFloat = 0
     
-    
     // checkbox items
-    @IBOutlet weak var cbCPUUtil: NSButton! {
-        didSet {
-            cbCPUUtil.state = AppDelegate.UserSettings.userWantsCPUUtil ? NSButton.StateValue.on : NSButton.StateValue.off
-        }
-    }
-    @IBOutlet weak var cbCPUTemp: NSButton! {
-        didSet {
-            cbCPUTemp.state = AppDelegate.UserSettings.userWantsCPUTemp ? NSButton.StateValue.on : NSButton.StateValue.off
-        }
-    }
+    
     @IBOutlet weak var cbAutostart: NSButton! {
         didSet {
             cbAutostart.state = (AppDelegate.UserSettings.userWantsAutostart) ? NSButton.StateValue.on : NSButton.StateValue.off
@@ -74,31 +59,6 @@ class ViewController: NSViewController {
     @IBOutlet weak var imgLogo: NSImageView! {
         didSet {
             imgLogo.image = NSImage(named:NSImage.Name("logo"))
-        }
-    }
-    
-    // drop down elements
-    @IBOutlet weak var ddTempUnit: NSPopUpButton! {
-        didSet {
-            switch(AppDelegate.UserSettings.tempUnit)
-            {
-            case AppDelegate.TempUnit.Celcius:
-                ddTempUnit.selectItem(at: 0)
-                break;
-            case AppDelegate.TempUnit.Fahrenheit:
-                ddTempUnit.selectItem(at: 1)
-                break;
-            default:
-                ddTempUnit.selectItem(at: 0)
-            }
-            
-        }
-    }
-    
-    // color selector
-    @IBOutlet weak var cpCPU: NSColorWell! {
-        didSet {
-            cpCPU.color = AppDelegate.UserSettings.cpuColor
         }
     }
     
@@ -143,11 +103,7 @@ class ViewController: NSViewController {
             cbFanSpeed.state = AppDelegate.UserSettings.userWantsFanSpeed ? NSButton.StateValue.on : NSButton.StateValue.off
         }
     }
-    @IBOutlet weak var cbCPUBorder: NSButton! {
-        didSet {
-            cbCPUBorder.state = AppDelegate.UserSettings.userWantsCPUBorder ? NSButton.StateValue.on : NSButton.StateValue.off
-        }
-    }
+
     @IBOutlet weak var cbMemBorder: NSButton! {
         didSet {
             cbMemBorder.state = AppDelegate.UserSettings.userWantsMemBorder ? NSButton.StateValue.on : NSButton.StateValue.off
@@ -160,33 +116,7 @@ class ViewController: NSViewController {
         super.viewDidLoad()
     }
     
-    @IBAction func cbCPUTemp_clicked(_ sender: NSButton) {
-        let checked = (cbCPUTemp.state == NSButton.StateValue.on)
-        AppDelegate.UserSettings.userWantsCPUTemp = checked
-        AppDelegate.sItemCPUTemp.isVisible = checked
-        UserDefaults.standard.set(checked, forKey: "userWantsCPUTemp")
-        checked ? MyStatusItems.insertItem(item: MyStatusItems.StatusItems.cpuTemp) : MyStatusItems.removeItem(item: MyStatusItems.StatusItems.cpuTemp)
-    }
     
-    @IBAction func cbCPUUtil_clicked(_ sender: NSButton) {
-        let checked = (cbCPUUtil.state == NSButton.StateValue.on)
-        AppDelegate.UserSettings.userWantsCPUUtil = checked
-        AppDelegate.sItemCPUUtil.isVisible = checked
-        UserDefaults.standard.set(checked, forKey: "userWantsCPUUtil")
-        checked ? MyStatusItems.insertItem(item: MyStatusItems.StatusItems.cpuUtil) : MyStatusItems.removeItem(item: MyStatusItems.StatusItems.cpuUtil)
-    }
-    @IBAction func cpCPU_clicked(_ sender: NSColorWell) {
-        AppDelegate.UserSettings.cpuColor = sender.color
-        sender.color.usingColorSpace(NSColorSpace.genericRGB)?.getRed(&colRedCPU, green: &colGreenCPU, blue: &colBlueCPU, alpha: &colAlphaCPU)
-        UserDefaults.standard.set(CGFloat(round(colRedCPU * 10000)/10000), forKey: "colRedCPU")
-        UserDefaults.standard.set(CGFloat(round(colGreenCPU * 10000)/10000), forKey: "colGreenCPU")
-        UserDefaults.standard.set(CGFloat(round(colBlueCPU * 10000)/10000), forKey: "colBlueCPU")
-        UserDefaults.standard.set(CGFloat(round(colAlphaCPU * 10000)/10000), forKey: "colAlphaCPU")
-    }
-    @IBAction func ddTempUnit_clicked(_ sender: Any) {
-        AppDelegate.UserSettings.tempUnit = ddTempUnit.indexOfSelectedItem == 0 ? AppDelegate.TempUnit.Celcius : AppDelegate.TempUnit.Fahrenheit
-        UserDefaults.standard.set((ddTempUnit.indexOfSelectedItem == 0) ? 0 : 1, forKey: "tempUnit")
-    }
     
     @IBAction func cbAutostart_clicked(_ sender: NSButton) {
         AppDelegate.UserSettings.userWantsAutostart = (cbAutostart.state == NSButton.StateValue.on)
@@ -334,10 +264,7 @@ class ViewController: NSViewController {
         UserDefaults.standard.set(checked, forKey: "userWantsFanSpeed")
         checked ? MyStatusItems.insertItem(item: MyStatusItems.StatusItems.fanSpeed) : MyStatusItems.removeItem(item: MyStatusItems.StatusItems.fanSpeed)
     }
-    @IBAction func cbCPUBorder_clicked(_ sender: NSButton) {
-        AppDelegate.UserSettings.userWantsCPUBorder = (cbCPUBorder.state == NSButton.StateValue.on)
-        UserDefaults.standard.set((cbCPUBorder.state == NSButton.StateValue.on), forKey: "userWantsCPUBorder")
-    }
+    
     @IBAction func cbMemBorder_clicked(_ sender: NSButton) {
         AppDelegate.UserSettings.userWantsMemBorder = (cbMemBorder.state == NSButton.StateValue.on)
         UserDefaults.standard.set((cbMemBorder.state == NSButton.StateValue.on), forKey: "userWantsMemBorder")

@@ -30,6 +30,7 @@
 		B4B6137520CD16600068A789 /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B4B6137420CD16600068A789 /* Cocoa.framework */; };
 		B4EF0F352184C54800A28F5E /* CPU.swift in Sources */ = {isa = PBXBuildFile; fileRef = B4EF0F342184C54800A28F5E /* CPU.swift */; };
 		B4EF0F382184C7B400A28F5E /* BatteryView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B4EF0F372184C7B400A28F5E /* BatteryView.swift */; };
+		B4EF0F3A2184C99A00A28F5E /* CpuView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B4EF0F392184C99A00A28F5E /* CpuView.swift */; };
 		B4FF095120D02270006BE560 /* Battery.swift in Sources */ = {isa = PBXBuildFile; fileRef = B4FF095020D02270006BE560 /* Battery.swift */; };
 /* End PBXBuildFile section */
 
@@ -76,6 +77,7 @@
 		B4B6137420CD16600068A789 /* Cocoa.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Cocoa.framework; path = System/Library/Frameworks/Cocoa.framework; sourceTree = SDKROOT; };
 		B4EF0F342184C54800A28F5E /* CPU.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CPU.swift; sourceTree = "<group>"; };
 		B4EF0F372184C7B400A28F5E /* BatteryView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BatteryView.swift; sourceTree = "<group>"; };
+		B4EF0F392184C99A00A28F5E /* CpuView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CpuView.swift; sourceTree = "<group>"; };
 		B4FF095020D02270006BE560 /* Battery.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Battery.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -202,6 +204,7 @@
 			isa = PBXGroup;
 			children = (
 				B4EF0F372184C7B400A28F5E /* BatteryView.swift */,
+				B4EF0F392184C99A00A28F5E /* CpuView.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -341,6 +344,7 @@
 				B4EF0F382184C7B400A28F5E /* BatteryView.swift in Sources */,
 				B4EF0F352184C54800A28F5E /* CPU.swift in Sources */,
 				023642F120CAD81D00CDB17D /* SMC.swift in Sources */,
+				B4EF0F3A2184C99A00A28F5E /* CpuView.swift in Sources */,
 				02B8120920C95D6600C98F0D /* CPUMenuView.swift in Sources */,
 				025AC38B20C0AFDD000E0837 /* AppDelegate.swift in Sources */,
 			);
