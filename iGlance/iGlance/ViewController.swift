@@ -41,83 +41,17 @@ extension URLSession {
 }
 
 class ViewController: NSViewController {
-
-    var colRedMem: CGFloat = 0
-    var colBlueMem: CGFloat = 0
-    var colGreenMem: CGFloat = 0
-    var colAlphaMem: CGFloat = 0
     
-    // checkbox items
+    override func viewDidLoad() {
+        super.viewDidLoad()
+    }
     
+    // define the outlet and action of the checkbox which activates and deactivates autostart
     @IBOutlet weak var cbAutostart: NSButton! {
         didSet {
             cbAutostart.state = (AppDelegate.UserSettings.userWantsAutostart) ? NSButton.StateValue.on : NSButton.StateValue.off
         }
     }
-    
-    // the logo
-    @IBOutlet weak var imgLogo: NSImageView! {
-        didSet {
-            imgLogo.image = NSImage(named:NSImage.Name("logo"))
-        }
-    }
-    
-    @IBOutlet weak var ddUpdateInterval: NSPopUpButton! {
-        didSet {
-            switch (AppDelegate.UserSettings.updateInterval)
-            {
-            case 1.0:
-                ddUpdateInterval.selectItem(at: 0)
-                break;
-            case 2.0:
-                ddUpdateInterval.selectItem(at: 1)
-                break;
-            case 3.0:
-                ddUpdateInterval.selectItem(at: 2)
-                break;
-            default:
-                ddUpdateInterval.selectItem(at: 1)
-            }
-            
-        }
-    }
-    @IBOutlet weak var btnCheckUpdate: NSButton!
-    @IBOutlet weak var cbMemUtil: NSButton! {
-        didSet {
-            cbMemUtil.state = AppDelegate.UserSettings.userWantsMemUsage ? NSButton.StateValue.on : NSButton.StateValue.off
-        }
-    }
-    @IBOutlet weak var cpMemUtil: NSColorWell! {
-        didSet {
-            cpMemUtil.color = AppDelegate.UserSettings.memColor
-            AppDelegate.UserSettings.memColor.getRed(&colRedMem, green: &colGreenMem, blue: &colBlueMem, alpha: &colAlphaMem)
-        }
-    }
-    @IBOutlet weak var cbNetUsage: NSButton! {
-        didSet {
-            cbNetUsage.state = AppDelegate.UserSettings.userWantsBandwidth ? NSButton.StateValue.on : NSButton.StateValue.off
-        }
-    }
-    @IBOutlet weak var cbFanSpeed: NSButton! {
-        didSet {
-            cbFanSpeed.state = AppDelegate.UserSettings.userWantsFanSpeed ? NSButton.StateValue.on : NSButton.StateValue.off
-        }
-    }
-
-    @IBOutlet weak var cbMemBorder: NSButton! {
-        didSet {
-            cbMemBorder.state = AppDelegate.UserSettings.userWantsMemBorder ? NSButton.StateValue.on : NSButton.StateValue.off
-        }
-    }
-    
-    
-    // MARK: Properties
-    override func viewDidLoad() {
-        super.viewDidLoad()
-    }
-    
-    
-    
     @IBAction func cbAutostart_clicked(_ sender: NSButton) {
         AppDelegate.UserSettings.userWantsAutostart = (cbAutostart.state == NSButton.StateValue.on)
         if (cbAutostart.state == NSButton.StateValue.on) {
@@ -136,6 +70,34 @@ class ViewController: NSViewController {
             else {
                 UserDefaults.standard.set(false, forKey: "userWantsAutostart")
             }
+        }
+    }
+    
+    // define the outlet to the logo
+    @IBOutlet weak var imgLogo: NSImageView! {
+        didSet {
+            imgLogo.image = NSImage(named:NSImage.Name("logo"))
+        }
+    }
+    
+    // define the outlet and the action of the drop down menu to specify the update interval
+    @IBOutlet weak var ddUpdateInterval: NSPopUpButton! {
+        didSet {
+            switch (AppDelegate.UserSettings.updateInterval)
+            {
+            case 1.0:
+                ddUpdateInterval.selectItem(at: 0)
+                break;
+            case 2.0:
+                ddUpdateInterval.selectItem(at: 1)
+                break;
+            case 3.0:
+                ddUpdateInterval.selectItem(at: 2)
+                break;
+            default:
+                ddUpdateInterval.selectItem(at: 1)
+            }
+            
         }
     }
     @IBAction func ddUpdateInterval_clicked(_ sender: NSPopUpButton) {
@@ -158,6 +120,9 @@ class ViewController: NSViewController {
             AppDelegate.UserSettings.updateInterval = 2.0
         }
     }
+    
+    // define the outlet and the action of the update button
+    @IBOutlet weak var btnCheckUpdate: NSButton!
     @IBAction func btnCheckUpdate_clicked(_ sender: NSButton) {
         var request = URLRequest(url: URL(string: "https://raw.githubusercontent.com/Moneypulation/iGlance/master/Version.txt")!)
         request.httpMethod = "GET"
@@ -217,6 +182,9 @@ class ViewController: NSViewController {
         }
     }
     
+    /**
+     * Searches for a string in a given text.
+     */
     func matches(for regex: String, in text: String) -> [String] {
         
         do {
@@ -231,43 +199,4 @@ class ViewController: NSViewController {
             return []
         }
     }
-    
-    @IBAction func cbMemUtil_clicked(_ sender: NSButton) {
-        let checked = (cbMemUtil.state == NSButton.StateValue.on)
-        AppDelegate.UserSettings.userWantsMemUsage = checked
-        AppDelegate.sItemMemUsage.isVisible = checked
-        UserDefaults.standard.set(checked, forKey: "userWantsMemUsage")
-        checked ? MyStatusItems.insertItem(item: MyStatusItems.StatusItems.memUtil) : MyStatusItems.removeItem(item: MyStatusItems.StatusItems.memUtil)
-    }
-    
-    @IBAction func cpMem_clicked(_ sender: NSColorWell) {
-        AppDelegate.UserSettings.memColor = sender.color
-        sender.color.usingColorSpace(NSColorSpace.genericRGB)?.getRed(&colRedMem, green: &colGreenMem, blue: &colBlueMem, alpha: &colAlphaMem)
-        UserDefaults.standard.set(CGFloat(round(colRedMem * 10000)/10000), forKey: "colRedMem")
-        UserDefaults.standard.set(CGFloat(round(colGreenMem * 10000)/10000), forKey: "colGreenMem")
-        UserDefaults.standard.set(CGFloat(round(colBlueMem * 10000)/10000), forKey: "colBlueMem")
-        UserDefaults.standard.set(CGFloat(round(colAlphaMem * 10000)/10000), forKey: "colAlphaMem")
-    }
-    
-    @IBAction func cbNetUsage_clicked(_ sender: NSButton) {
-        let checked = (cbNetUsage.state == NSButton.StateValue.on)
-        AppDelegate.UserSettings.userWantsBandwidth = checked
-        AppDelegate.sItemBandwidth.isVisible = checked
-        UserDefaults.standard.set(checked, forKey: "userWantsBandwidth")
-        checked ? MyStatusItems.insertItem(item: MyStatusItems.StatusItems.bandwidth) : MyStatusItems.removeItem(item: MyStatusItems.StatusItems.bandwidth)
-    }
-    
-    @IBAction func cbFanSpeed_clicked(_ sender: NSButton) {
-        let checked = (cbFanSpeed.state == NSButton.StateValue.on)
-        AppDelegate.UserSettings.userWantsFanSpeed = checked
-        AppDelegate.sItemFanSpeed.isVisible = checked
-        UserDefaults.standard.set(checked, forKey: "userWantsFanSpeed")
-        checked ? MyStatusItems.insertItem(item: MyStatusItems.StatusItems.fanSpeed) : MyStatusItems.removeItem(item: MyStatusItems.StatusItems.fanSpeed)
-    }
-    
-    @IBAction func cbMemBorder_clicked(_ sender: NSButton) {
-        AppDelegate.UserSettings.userWantsMemBorder = (cbMemBorder.state == NSButton.StateValue.on)
-        UserDefaults.standard.set((cbMemBorder.state == NSButton.StateValue.on), forKey: "userWantsMemBorder")
-    }
-    //MARK: Actions
 }

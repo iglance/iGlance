@@ -1035,7 +1035,7 @@
         <!--Memory-->
         <scene sceneID="0lC-Lo-bY8">
             <objects>
-                <viewController title="Memory" id="rub-dP-mB3" customClass="ViewController" customModule="iGlance" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController title="Memory" id="rub-dP-mB3" customClass="MemoryView" customModule="iGlance" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" id="bhi-UL-h7p">
                         <rect key="frame" x="0.0" y="0.0" width="450" height="300"/>
                         <autoresizingMask key="autoresizingMask"/>
@@ -1094,7 +1094,7 @@
         <!--Network-->
         <scene sceneID="m6R-gd-lEs">
             <objects>
-                <viewController title="Network" id="kQk-rd-Ybg" customClass="ViewController" customModule="iGlance" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController title="Network" id="kQk-rd-Ybg" customClass="NetworkView" customModule="iGlance" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" id="C9t-j1-iwP">
                         <rect key="frame" x="0.0" y="0.0" width="450" height="300"/>
                         <autoresizingMask key="autoresizingMask"/>
@@ -1123,7 +1123,7 @@
         <!--Fan-->
         <scene sceneID="hls-JT-XGd">
             <objects>
-                <viewController title="Fan" id="sbb-f9-Hi2" customClass="ViewController" customModule="iGlance" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController title="Fan" id="sbb-f9-Hi2" customClass="FanView" customModule="iGlance" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" id="gU1-tg-Ih3">
                         <rect key="frame" x="0.0" y="0.0" width="450" height="300"/>
                         <autoresizingMask key="autoresizingMask"/>
