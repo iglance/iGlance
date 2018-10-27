@@ -18,9 +18,9 @@ class Battery {
     private var alreadyNotified: Bool = false
 
     /**
-     *  timeInSeconds > 0 means a valid time is given
-     *  timeInSeconds = -1 means the reamaining time is calculated
-     *  timeInSeconds = -2 means AC power is being used
+     *  - timeInSeconds > 0:    means a valid time is given
+     *  - timeInSeconds = -1:   means the reamaining time is calculated
+     *  - timeInSeconds = -2:   means AC power is being used
      */
     struct RemainingBatteryTime {
         var timeInSeconds: Double
@@ -34,6 +34,9 @@ class Battery {
         alreadyNotified = false
     }
 
+    /**
+     *  Notifies the user if the Battery is higher or lower than the upper and lower bounds.
+     */
     @objc func notifyUser() {
         currentCapacity = getBatteryCapacity()
         let lower = Double(AppDelegate.UserSettings.lowerBatteryNotificationValue)
@@ -51,6 +54,12 @@ class Battery {
         previousChargeValue = currentCapacity
     }
 
+    /**
+     *  Triggers a notification with the given message.
+     *
+     *  - Parameters:
+     *      - message:  The message which is displayed in the notification.
+     */
     func deliverBatteryNotification(message: String) {
         let notification = NSUserNotification()
         notification.identifier = "batteryFullNotification"
@@ -61,6 +70,11 @@ class Battery {
         alreadyNotified = true
     }
 
+    /**
+     *  Returns the remaining time of the battery.
+     *
+     *  - Returns:  The remaining time as a RemainingBatterTime structure.
+     */
     func getRemainingBatteryTime() -> RemainingBatteryTime {
         let remainingSeconds: CFTimeInterval = IOPSGetTimeRemainingEstimate()
         if remainingSeconds > 0.0 {
@@ -75,6 +89,12 @@ class Battery {
         }
     }
 
+    /**
+     *  Returns the remaining capacity of the battery.
+     *
+     *  - Returns:
+     *      - Capacity: The remaining capacity in percentage.
+     */
     func getBatteryCapacity() -> Double {
         let snapshot = IOPSCopyPowerSourcesInfo().takeRetainedValue()
         let sources = IOPSCopyPowerSourcesList(snapshot).takeRetainedValue() as Array
