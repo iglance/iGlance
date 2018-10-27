@@ -66,10 +66,6 @@ class AppDelegate: NSObject, NSApplicationDelegate {
     var btnCPUTemp: NSStatusBarButton?
     var menuCPUTemp: NSMenu?
     
-    static let sItemBattery = NSStatusBar.system.statusItem(withLength: NSStatusItem.variableLength)
-    var btnBattery: NSStatusBarButton?
-    var menuBattery: NSMenu?
-    
     var myWindowController: MyMainWindow?
     
     public enum TempUnit {
@@ -139,17 +135,12 @@ class AppDelegate: NSObject, NSApplicationDelegate {
     var pixelHeightMEM: Double?
     var memIMG: String?
     
-    /**
-     *  Battery variables
-     */
-    var remainingTime: Battery.RemainingBatteryTime?
-    var batteryCapacity: Double?
-    let myBattery = Battery()
+    /// The battery instance.
+    static let myBattery = Battery()
     
     /**
      * FAN variables
      */
-    
     var minMenuFan = NSMenuItem(title: "Min:\t\t NA", action: nil, keyEquivalent: "")
     var maxMenuFan = NSMenuItem(title: "Max:\t NA", action: nil, keyEquivalent: "")
     var currMenuFan = NSMenuItem(title: "Current:\t NA", action: nil, keyEquivalent: "")
@@ -177,7 +168,7 @@ class AppDelegate: NSObject, NSApplicationDelegate {
         AppDelegate.sItemFanSpeed.isVisible = false
         AppDelegate.sItemMemUsage.isVisible = false
         AppDelegate.sItemBandwidth.isVisible = false
-        AppDelegate.sItemBattery.isVisible = false
+        Battery.sItemBattery.isVisible = false
         
         loadSessionSettings()
         
@@ -277,7 +268,7 @@ class AppDelegate: NSObject, NSApplicationDelegate {
         initMemUsage()
         initFanSpeed()
         initBandwidth()
-        initBattery()
+        AppDelegate.myBattery.initButton()
         
         intervalTimer = Timer.scheduledTimer(timeInterval: UserSettings.updateInterval, target: self, selector: #selector(updateAll), userInfo: nil, repeats: true)
         RunLoop.current.add(intervalTimer!, forMode: RunLoopMode.commonModes)
@@ -405,7 +396,7 @@ class AppDelegate: NSObject, NSApplicationDelegate {
                 break
             case MyStatusItems.StatusItems.battery:
                 if(AppDelegate.UserSettings.userWantsBatteryUtil) {
-                    AppDelegate.sItemBattery.isVisible = true
+                    Battery.sItemBattery.isVisible = true
                     once = true
                 }
             default:
@@ -583,15 +574,6 @@ class AppDelegate: NSObject, NSApplicationDelegate {
         menuBandwidth?.addItem(NSMenuItem.separator())
         menuBandwidth?.addItem(NSMenuItem(title: "Quit iGlance", action: #selector(NSApplication.terminate(_:)), keyEquivalent: "q"))
         AppDelegate.sItemBandwidth.menu = menuBandwidth
-        
-        menuBattery = NSMenu()
-        menuBattery?.addItem(NSMenuItem(title: "Capacity: ", action: nil, keyEquivalent: ""))
-        menuBattery?.addItem(NSMenuItem(title: "Remaining time: ", action: nil, keyEquivalent: ""))
-        menuBattery?.addItem(NSMenuItem.separator())
-        menuBattery?.addItem(NSMenuItem(title: "Settings", action: #selector(settings_clicked), keyEquivalent: "s"))
-        menuBattery?.addItem(NSMenuItem.separator())
-        menuBattery?.addItem(NSMenuItem(title: "Quite iGlance", action: #selector(NSApplication.terminate(_:)), keyEquivalent: "q"))
-        AppDelegate.sItemBattery.menu = menuBattery
     }
     
     @objc func updateCPUUsage()
@@ -743,17 +725,16 @@ class AppDelegate: NSObject, NSApplicationDelegate {
             AppDelegate.sItemBandwidth.isVisible = false
         }
         if(AppDelegate.UserSettings.userWantsBatteryUtil) {
-            AppDelegate.sItemBattery.isVisible = true
-            updateBattery()
+            Battery.sItemBattery.isVisible = true
+            AppDelegate.myBattery.updateBatteryItem()
         }
         else
         {
-            AppDelegate.sItemBattery.isVisible = false
+            Battery.sItemBattery.isVisible = false
         }
         if (AppDelegate.UserSettings.userWantsBatteryNotification) {
-            // update the current capacity and notify the user if needed
-            myBattery.notifyUser()
-            batteryCapacity = myBattery.getBatteryCapacity()
+            // notify the user if needed
+            AppDelegate.myBattery.notifyUser()
         }
         if (AppDelegate.changeInterval())
         {
@@ -762,63 +743,6 @@ class AppDelegate: NSObject, NSApplicationDelegate {
             AppDelegate.currTimeInterval = AppDelegate.UserSettings.updateInterval
             RunLoop.current.add(intervalTimer!, forMode: RunLoopMode.commonModes)
         }
-    }
-    
-    
-    
-    
-    func updateBattery()
-    {
-        var batteryIconString: String?
-        var fontColor: NSColor?
-        if(InterfaceStyle() == InterfaceStyle.Dark) {
-            batteryIconString = "battery-icon-white"
-            fontColor = NSColor.white
-        } else {
-            batteryIconString = "battery-icon-black"
-            fontColor = NSColor.black
-        }
-        
-        batteryCapacity = myBattery.getBatteryCapacity()
-        
-        // get the remaining time
-        remainingTime = myBattery.getRemainingBatteryTime()
-        
-        // update the button to display the remaining time
-        let imageFinal = NSImage(size: NSSize(width: 32, height: 32))
-        imageFinal.lockFocus()
-        
-        let batteryIcon = NSImage(named: NSImage.Name(batteryIconString!))
-        batteryIcon?.draw(at: NSPoint(x: 0, y: 0), from: NSZeroRect, operation: NSCompositingOperation.sourceOver, fraction: 1.0)
-        
-        var timeValue: String?
-        let batteryTime: Battery.RemainingBatteryTime = remainingTime!
-        if batteryTime.timeInSeconds > 0.0 {
-            timeValue = String(batteryTime.hours) + ":" + String(format: "%02d", batteryTime.minutes)
-        } else if batteryTime.timeInSeconds == -1.0 {
-            timeValue = "calc."
-        } else if batteryTime.timeInSeconds == -2.0 {
-            timeValue = "AC"
-        }
-        
-        let font = NSFont(name: "Apple SD Gothic Neo Bold", size: 9.0)
-        let attrString = NSMutableAttributedString(string: timeValue! )
-        attrString.addAttribute(.font, value: font as Any, range: NSMakeRange(0, attrString.length))
-        attrString.addAttribute(.foregroundColor, value: fontColor as Any, range: NSMakeRange(0, attrString.length))
-        let size = attrString.size()
-        attrString.draw(at: NSPoint(x: 16-size.width/2, y: 16-size.height/2))
-        
-        imageFinal.unlockFocus()
-        
-        btnBattery?.image = imageFinal
-        
-        // update the menu entry with the current remaining time
-        let timeEntry = menuBattery?.item(at: 1)
-        timeEntry?.title = "Remaining time: " + timeValue!
-        
-        // update the menu entry with the current capacity
-        let capacityEntry = menuBattery?.item(at: 0)
-        capacityEntry?.title = "Capacity: " + String(format: "%02d", Int(batteryCapacity!)) + "%"
     }
     
     static func changeInterval() -> Bool
@@ -1094,10 +1018,6 @@ class AppDelegate: NSObject, NSApplicationDelegate {
         dLength = 6
         uLength = 6
         bandText = ""
-    }
-    
-    func initBattery() {
-        btnBattery = AppDelegate.sItemBattery.button
     }
     
     func applicationWillTerminate(_ aNotification: Notification) {
