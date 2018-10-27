@@ -10,7 +10,7 @@ import Cocoa
 
 class CpuView: NSViewController {
     
-    // define the values for the colors of the cpu icon
+    // define the color values of the cpu icon
     var colRedCPU: CGFloat = 0
     var colBlueCPU: CGFloat = 0
     var colGreenCPU: CGFloat = 0
