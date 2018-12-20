@@ -76,7 +76,7 @@ class ViewController: NSViewController {
     // define the outlet to the logo
     @IBOutlet weak var imgLogo: NSImageView! {
         didSet {
-            imgLogo.image = NSImage(named:NSImage.Name("logo"))
+            imgLogo.image = NSImage(named:"logo")
         }
     }
     
