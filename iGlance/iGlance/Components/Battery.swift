@@ -161,7 +161,7 @@ class Battery {
         let imageFinal = NSImage(size: NSSize(width: 32, height: 32))
         imageFinal.lockFocus()
         // get the battery icon and draw the image
-        let batteryIcon = NSImage(named: NSImage.Name(batteryIconString!))
+        let batteryIcon = NSImage(named: batteryIconString!)
         batteryIcon?.draw(at: NSPoint(x: 0, y: 0), from: NSZeroRect, operation: NSCompositingOperation.sourceOver, fraction: 1.0)
         
         // display the current status of the remaining time.

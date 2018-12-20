@@ -172,7 +172,7 @@ class AppDelegate: NSObject, NSApplicationDelegate {
         
         loadSessionSettings()
         
-        myWindowController = NSStoryboard(name: NSStoryboard.Name(rawValue: "Main"), bundle: nil).instantiateController(withIdentifier: NSStoryboard.SceneIdentifier(rawValue: "abcd")) as! MyMainWindow
+        myWindowController = NSStoryboard(name: "Main", bundle: nil).instantiateController(withIdentifier: "abcd") as! MyMainWindow
         
         
         displayStatusItems()
@@ -194,7 +194,7 @@ class AppDelegate: NSObject, NSApplicationDelegate {
         let outputHandle = pipe.fileHandleForReading
 
         //outputHandle.waitForDataInBackgroundAndNotify()
-        outputHandle.waitForDataInBackgroundAndNotify(forModes: [RunLoopMode.commonModes])
+        outputHandle.waitForDataInBackgroundAndNotify(forModes: [RunLoop.Mode.common])
         
         // When new data is available
         var dataAvailable : NSObjectProtocol!
@@ -271,7 +271,7 @@ class AppDelegate: NSObject, NSApplicationDelegate {
         AppDelegate.myBattery.initButton()
         
         intervalTimer = Timer.scheduledTimer(timeInterval: UserSettings.updateInterval, target: self, selector: #selector(updateAll), userInfo: nil, repeats: true)
-        RunLoop.current.add(intervalTimer!, forMode: RunLoopMode.commonModes)
+        RunLoop.current.add(intervalTimer!, forMode: RunLoop.Mode.common)
         
     }
     
@@ -606,12 +606,12 @@ class AppDelegate: NSObject, NSApplicationDelegate {
         }
         let imgFinal = NSImage(size: NSSize(width: 20, height: 18))
         imgFinal.lockFocus()
-        let img1 = NSImage(named:NSImage.Name(cpuIMG!))
+        let img1 = NSImage(named:cpuIMG!)
         //img1?.isTemplate = true
         img1?.draw(at: NSPoint(x: 1, y: 0), from: NSZeroRect, operation: NSCompositingOperation.sourceOver, fraction: 1.0)
         if (AppDelegate.UserSettings.userWantsCPUBorder)
         {
-            let img2 = NSImage(named:NSImage.Name(pbIMG!))
+            let img2 = NSImage(named:pbIMG!)
             img2?.draw(at: NSPoint(x: 11, y: 0), from: NSZeroRect, operation: NSCompositingOperation.sourceOver, fraction: 1.0)
         }
         pbFillRectCPU = NSRect(x: 12.0, y: 1.0, width: pixelWidth!, height: pixelHeightCPU!)
@@ -660,11 +660,11 @@ class AppDelegate: NSObject, NSApplicationDelegate {
         }
         let imgFinal = NSImage(size: NSSize(width: 20, height: 18))
         imgFinal.lockFocus()
-        let img1 = NSImage(named:NSImage.Name(memIMG!))
+        let img1 = NSImage(named:memIMG!)
         img1?.draw(at: NSPoint(x: 1, y: 0), from: NSZeroRect, operation: NSCompositingOperation.sourceOver, fraction: 1.0)
         if (AppDelegate.UserSettings.userWantsMemBorder)
         {
-            let img2 = NSImage(named:NSImage.Name(pbIMG!))
+            let img2 = NSImage(named:pbIMG!)
             img2?.draw(at: NSPoint(x: 11, y: 0), from: NSZeroRect, operation: NSCompositingOperation.sourceOver, fraction: 1.0)
             
         }
@@ -741,7 +741,7 @@ class AppDelegate: NSObject, NSApplicationDelegate {
             intervalTimer?.invalidate()
             intervalTimer = Timer.scheduledTimer(timeInterval: UserSettings.updateInterval, target: self, selector: #selector(updateAll), userInfo: nil, repeats: true)
             AppDelegate.currTimeInterval = AppDelegate.UserSettings.updateInterval
-            RunLoop.current.add(intervalTimer!, forMode: RunLoopMode.commonModes)
+            RunLoop.current.add(intervalTimer!, forMode: RunLoop.Mode.common)
         }
     }
     
@@ -855,7 +855,7 @@ class AppDelegate: NSObject, NSApplicationDelegate {
         
         let imgFinal = NSImage(size: NSSize(width: 60, height: 18))
         imgFinal.lockFocus()
-        let img1 = NSImage(named:NSImage.Name(bandIMG!))
+        let img1 = NSImage(named:bandIMG!)
         
         img1?.draw(at: NSPoint(x: 2, y: 3), from: NSZeroRect, operation: NSCompositingOperation.sourceOver, fraction: 1.0)
         

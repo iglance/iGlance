@@ -51,7 +51,7 @@ class CPUTempMenuView: NSView {
     
     override init(frame frameRect: NSRect) {
         super.init(frame: frameRect)
-        Bundle.main.loadNibNamed(NSNib.Name(rawValue: "CPUTempMenuView"), owner: self, topLevelObjects: nil)
+        Bundle.main.loadNibNamed("CPUTempMenuView", owner: self, topLevelObjects: nil)
         let contentFrame = NSMakeRect(0, 0, frame.size.width, frame.size.height)
         self.contentFrame.frame = contentFrame
         self.addSubview(self.contentFrame)
