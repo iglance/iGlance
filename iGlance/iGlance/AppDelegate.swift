@@ -37,7 +37,7 @@ extension NSColor {
 @NSApplicationMain
 class AppDelegate: NSObject, NSApplicationDelegate {
 
-    public static var VERSION = "1.1"
+    public static var VERSION = "1.2"
     
     /**
      * StatusBarItems, Buttons and Menus declaration
