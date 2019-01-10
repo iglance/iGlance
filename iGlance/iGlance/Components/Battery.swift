@@ -50,7 +50,7 @@ class Battery {
         menuBattery?.addItem(NSMenuItem.separator())
         menuBattery?.addItem(NSMenuItem(title: "Settings", action: #selector(AppDelegate.settings_clicked), keyEquivalent: "s"))
         menuBattery?.addItem(NSMenuItem.separator())
-        menuBattery?.addItem(NSMenuItem(title: "Quite iGlance", action: #selector(NSApplication.terminate(_:)), keyEquivalent: "q"))
+        menuBattery?.addItem(NSMenuItem(title: "Quit iGlance", action: #selector(NSApplication.terminate(_:)), keyEquivalent: "q"))
         Battery.sItemBattery.menu = menuBattery
     }
     
