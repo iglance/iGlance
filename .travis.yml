@@ -1,5 +1,5 @@
-install: true
 os: osx
 osx_image: xcode 9.3
 language: objective-c
 xcode-project: iGlance/iGlance.xcodeproj
+xcode_scheme: iGlance.xcscheme
