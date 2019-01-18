@@ -4,6 +4,7 @@ osx_image: xcode10.1
 script: cd iGlance
         && xcodebuild -project 'iGlance.xcodeproj' -config Release -scheme iGlance -archivePath ./iGlance archive
         && xcodebuild -archivePath iGlance.xcarchive -exportArchive -exportPath iGlanceExport/iGlance -exportOptionsPlist exportOptions.plist
+        && cd iGlanceExport/iGlance
         && zip -r -y iGlance-mac.zip iGlance.app
 
 deploy:
