@@ -7,7 +7,6 @@ script: cd iGlance
         && cd iGlanceExport/iGlance
         && zip -r -y iGlance-mac.zip iGlance.app
 
-before_deploy: pwd
 deploy:
   provider: releases
   api_key:
