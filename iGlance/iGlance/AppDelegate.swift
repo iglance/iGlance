@@ -606,12 +606,12 @@ class AppDelegate: NSObject, NSApplicationDelegate {
         }
         let imgFinal = NSImage(size: NSSize(width: 20, height: 18))
         imgFinal.lockFocus()
-        let img1 = NSImage(named:cpuIMG!)
+        let img1 = NSImage(named: NSImage.Name(cpuIMG!));
         //img1?.isTemplate = true
         img1?.draw(at: NSPoint(x: 1, y: 0), from: NSZeroRect, operation: NSCompositingOperation.sourceOver, fraction: 1.0)
         if (AppDelegate.UserSettings.userWantsCPUBorder)
         {
-            let img2 = NSImage(named:pbIMG!)
+            let img2 = NSImage(named:NSImage.Name(pbIMG!))
             img2?.draw(at: NSPoint(x: 11, y: 0), from: NSZeroRect, operation: NSCompositingOperation.sourceOver, fraction: 1.0)
         }
         pbFillRectCPU = NSRect(x: 12.0, y: 1.0, width: pixelWidth!, height: pixelHeightCPU!)
@@ -660,11 +660,11 @@ class AppDelegate: NSObject, NSApplicationDelegate {
         }
         let imgFinal = NSImage(size: NSSize(width: 20, height: 18))
         imgFinal.lockFocus()
-        let img1 = NSImage(named:memIMG!)
+        let img1 = NSImage(named:NSImage.Name(memIMG!))
         img1?.draw(at: NSPoint(x: 1, y: 0), from: NSZeroRect, operation: NSCompositingOperation.sourceOver, fraction: 1.0)
         if (AppDelegate.UserSettings.userWantsMemBorder)
         {
-            let img2 = NSImage(named:pbIMG!)
+            let img2 = NSImage(named:NSImage.Name(pbIMG!))
             img2?.draw(at: NSPoint(x: 11, y: 0), from: NSZeroRect, operation: NSCompositingOperation.sourceOver, fraction: 1.0)
             
         }
@@ -855,7 +855,7 @@ class AppDelegate: NSObject, NSApplicationDelegate {
         
         let imgFinal = NSImage(size: NSSize(width: 60, height: 18))
         imgFinal.lockFocus()
-        let img1 = NSImage(named:bandIMG!)
+        let img1 = NSImage(named:NSImage.Name(bandIMG!))
         
         img1?.draw(at: NSPoint(x: 2, y: 3), from: NSZeroRect, operation: NSCompositingOperation.sourceOver, fraction: 1.0)
         
