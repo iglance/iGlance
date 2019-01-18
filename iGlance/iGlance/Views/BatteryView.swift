@@ -20,7 +20,7 @@ class BatteryView: NSViewController {
         let checked = (cbBatteryUtil.state == NSButton.StateValue.on)
         AppDelegate.UserSettings.userWantsBatteryUtil = checked
         UserDefaults.standard.set(checked, forKey: "userWantsBatteryUtil")
-        Battery.sItemBattery.isVisible = checked
+        BatteryComponent.sItemBattery.isVisible = checked
         checked ? MyStatusItems.insertItem(item: MyStatusItems.StatusItems.battery) : MyStatusItems.removeItem(item: MyStatusItems.StatusItems.battery)
     }
     

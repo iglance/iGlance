@@ -19,7 +19,7 @@ class FanView: NSViewController {
     @IBAction func cbFanSpeed_clicked(_ sender: NSButton) {
         let checked = (cbFanSpeed.state == NSButton.StateValue.on)
         AppDelegate.UserSettings.userWantsFanSpeed = checked
-        AppDelegate.sItemFanSpeed.isVisible = checked
+        FanComponent.sItemFanSpeed.isVisible = checked
         UserDefaults.standard.set(checked, forKey: "userWantsFanSpeed")
         checked ? MyStatusItems.insertItem(item: MyStatusItems.StatusItems.fanSpeed) : MyStatusItems.removeItem(item: MyStatusItems.StatusItems.fanSpeed)
     }
