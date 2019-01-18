@@ -12,4 +12,5 @@ deploy:
   file: "./iGlanceExport/iGlance.app"
   skip_cleanup: true
   on:
+    tags: true
     repo: Moneypulation/iGlance
