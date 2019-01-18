@@ -8,7 +8,7 @@
 import Cocoa
 import IOKit.ps
 
-class Battery {
+class BatteryComponent {
     
     /// The status item of the battery.
     static let sItemBattery = NSStatusBar.system.statusItem(withLength: NSStatusItem.variableLength)
@@ -16,8 +16,6 @@ class Battery {
     var btnBattery: NSStatusBarButton?
     /// The menu of the status item.
     var menuBattery: NSMenu?
-    
-    
     
     /// The current capacity of the battery.
     var currentCapacity: Double = 0.0
@@ -51,14 +49,14 @@ class Battery {
         menuBattery?.addItem(NSMenuItem(title: "Settings", action: #selector(AppDelegate.settings_clicked), keyEquivalent: "s"))
         menuBattery?.addItem(NSMenuItem.separator())
         menuBattery?.addItem(NSMenuItem(title: "Quit iGlance", action: #selector(NSApplication.terminate(_:)), keyEquivalent: "q"))
-        Battery.sItemBattery.menu = menuBattery
+        BatteryComponent.sItemBattery.menu = menuBattery
     }
     
     /**
      *  Initializes the status item button of the battery. This function has to be called after the application did finished launching
      */
     func initButton() {
-        btnBattery = Battery.sItemBattery.button
+        btnBattery = BatteryComponent.sItemBattery.button
     }
 
     /**
@@ -166,7 +164,7 @@ class Battery {
         
         // display the current status of the remaining time.
         var timeValue: String?
-        let batteryTime: Battery.RemainingBatteryTime = remainingTime
+        let batteryTime: BatteryComponent.RemainingBatteryTime = remainingTime
         if batteryTime.timeInSeconds > 0.0 {
             // if th remaining time is greater than zero display the time
             timeValue = String(batteryTime.hours) + ":" + String(format: "%02d", batteryTime.minutes)

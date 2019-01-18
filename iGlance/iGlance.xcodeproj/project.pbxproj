@@ -27,6 +27,7 @@
 		02ECFC7B20C80A9500E0A1D7 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 02ECFC7920C80A9500E0A1D7 /* Main.storyboard */; };
 		02ECFC8120C80CBA00E0A1D7 /* iGlanceLauncher.app in CopyFiles */ = {isa = PBXBuildFile; fileRef = 02ECFC7120C80A9300E0A1D7 /* iGlanceLauncher.app */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
 		02ECFC8420C80CF800E0A1D7 /* ServiceManagement.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 02ECFC8320C80CF800E0A1D7 /* ServiceManagement.framework */; };
+		B494383A21F246B000F80E03 /* FanComponent.swift in Sources */ = {isa = PBXBuildFile; fileRef = B494383921F246B000F80E03 /* FanComponent.swift */; };
 		B4B6137520CD16600068A789 /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B4B6137420CD16600068A789 /* Cocoa.framework */; };
 		B4EF0F352184C54800A28F5E /* CpuTempComponent.swift in Sources */ = {isa = PBXBuildFile; fileRef = B4EF0F342184C54800A28F5E /* CpuTempComponent.swift */; };
 		B4EF0F382184C7B400A28F5E /* BatteryView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B4EF0F372184C7B400A28F5E /* BatteryView.swift */; };
@@ -34,7 +35,7 @@
 		B4EF0F3C2184CC9B00A28F5E /* MemoryView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B4EF0F3B2184CC9B00A28F5E /* MemoryView.swift */; };
 		B4EF0F3E2184CE3D00A28F5E /* FanView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B4EF0F3D2184CE3D00A28F5E /* FanView.swift */; };
 		B4EF0F402184CEA800A28F5E /* NetworkView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B4EF0F3F2184CEA800A28F5E /* NetworkView.swift */; };
-		B4FF095120D02270006BE560 /* Battery.swift in Sources */ = {isa = PBXBuildFile; fileRef = B4FF095020D02270006BE560 /* Battery.swift */; };
+		B4FF095120D02270006BE560 /* BatteryComponent.swift in Sources */ = {isa = PBXBuildFile; fileRef = B4FF095020D02270006BE560 /* BatteryComponent.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -75,8 +76,8 @@
 		02ECFC7720C80A9500E0A1D7 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		02ECFC7A20C80A9500E0A1D7 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		02ECFC7C20C80A9500E0A1D7 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		02ECFC7D20C80A9500E0A1D7 /* iGlanceLauncher.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = iGlanceLauncher.entitlements; sourceTree = "<group>"; };
 		02ECFC8320C80CF800E0A1D7 /* ServiceManagement.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = ServiceManagement.framework; path = System/Library/Frameworks/ServiceManagement.framework; sourceTree = SDKROOT; };
+		B494383921F246B000F80E03 /* FanComponent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FanComponent.swift; sourceTree = "<group>"; };
 		B4B6137420CD16600068A789 /* Cocoa.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Cocoa.framework; path = System/Library/Frameworks/Cocoa.framework; sourceTree = SDKROOT; };
 		B4EF0F342184C54800A28F5E /* CpuTempComponent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CpuTempComponent.swift; sourceTree = "<group>"; };
 		B4EF0F372184C7B400A28F5E /* BatteryView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BatteryView.swift; sourceTree = "<group>"; };
@@ -84,7 +85,7 @@
 		B4EF0F3B2184CC9B00A28F5E /* MemoryView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MemoryView.swift; sourceTree = "<group>"; };
 		B4EF0F3D2184CE3D00A28F5E /* FanView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FanView.swift; sourceTree = "<group>"; };
 		B4EF0F3F2184CEA800A28F5E /* NetworkView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkView.swift; sourceTree = "<group>"; };
-		B4FF095020D02270006BE560 /* Battery.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Battery.swift; sourceTree = "<group>"; };
+		B4FF095020D02270006BE560 /* BatteryComponent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BatteryComponent.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -221,8 +222,9 @@
 		B4FF094F20D02248006BE560 /* Components */ = {
 			isa = PBXGroup;
 			children = (
-				B4FF095020D02270006BE560 /* Battery.swift */,
+				B4FF095020D02270006BE560 /* BatteryComponent.swift */,
 				B4EF0F342184C54800A28F5E /* CpuTempComponent.swift */,
+				B494383921F246B000F80E03 /* FanComponent.swift */,
 			);
 			path = Components;
 			sourceTree = "<group>";
@@ -344,13 +346,14 @@
 			buildActionMask = 2147483647;
 			files = (
 				023642F320CAD86B00CDB17D /* System.swift in Sources */,
+				B494383A21F246B000F80E03 /* FanComponent.swift in Sources */,
 				02E9CE3020C526BE00879EB1 /* MyMainWindow.swift in Sources */,
 				023642E820CAD73B00CDB17D /* Process.swift in Sources */,
 				02B8120D20C9874D00C98F0D /* MemMenuView.swift in Sources */,
 				029DC1AD20CDCA9800F7A30D /* StatusItems.swift in Sources */,
 				B4EF0F402184CEA800A28F5E /* NetworkView.swift in Sources */,
 				02B9B3CC20D2B7940068B53F /* CPUTempMenuView.swift in Sources */,
-				B4FF095120D02270006BE560 /* Battery.swift in Sources */,
+				B4FF095120D02270006BE560 /* BatteryComponent.swift in Sources */,
 				025AC38D20C0AFDD000E0837 /* ViewController.swift in Sources */,
 				B4EF0F3E2184CE3D00A28F5E /* FanView.swift in Sources */,
 				B4EF0F382184C7B400A28F5E /* BatteryView.swift in Sources */,

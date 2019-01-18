@@ -42,10 +42,6 @@ class AppDelegate: NSObject, NSApplicationDelegate {
     /**
      * StatusBarItems, Buttons and Menus declaration
      */
-    static let sItemFanSpeed = NSStatusBar.system.statusItem(withLength: NSStatusItem.variableLength)
-    var btnFanSpeed: NSStatusBarButton?
-    var menuFanSpeed: NSMenu?
-    
     static let sItemBandwidth = NSStatusBar.system.statusItem(withLength: 62.0)
     var btnBandwidth: NSStatusBarButton?
     var menuBandwidth: NSMenu?
@@ -126,15 +122,14 @@ class AppDelegate: NSObject, NSApplicationDelegate {
     var pixelHeightMEM: Double?
     var memIMG: String?
     
-    /// The battery instance.
-    static let myBattery = Battery()
-    
     /**
-     * FAN variables
+     *  Instantiate the components
      */
-    var minMenuFan = NSMenuItem(title: "Min:\t\t NA", action: nil, keyEquivalent: "")
-    var maxMenuFan = NSMenuItem(title: "Max:\t NA", action: nil, keyEquivalent: "")
-    var currMenuFan = NSMenuItem(title: "Current:\t NA", action: nil, keyEquivalent: "")
+    /// The battery instance.
+    static let myBattery = BatteryComponent()
+    /// The fan instance
+    static let myFan = FanComponent()
+    /// the cpu temperatur instance
     static let myCpuTemp = CpuTempComponent()
     
     /**
@@ -157,10 +152,10 @@ class AppDelegate: NSObject, NSApplicationDelegate {
         
         CpuTempComponent.sItemCPUTemp.isVisible = false
         AppDelegate.sItemCPUUtil.isVisible = false
-        AppDelegate.sItemFanSpeed.isVisible = false
         AppDelegate.sItemMemUsage.isVisible = false
         AppDelegate.sItemBandwidth.isVisible = false
-        Battery.sItemBattery.isVisible = false
+        FanComponent.sItemFanSpeed.isVisible = false
+        BatteryComponent.sItemBattery.isVisible = false
         
         loadSessionSettings()
         
@@ -258,8 +253,8 @@ class AppDelegate: NSObject, NSApplicationDelegate {
         initCPUUtil()
         AppDelegate.myCpuTemp.initButton()
         initMemUsage()
-        initFanSpeed()
         initBandwidth()
+        AppDelegate.myFan.initButton();
         AppDelegate.myBattery.initButton()
         
         intervalTimer = Timer.scheduledTimer(timeInterval: UserSettings.updateInterval, target: self, selector: #selector(updateAll), userInfo: nil, repeats: true)
@@ -382,13 +377,13 @@ class AppDelegate: NSObject, NSApplicationDelegate {
             case MyStatusItems.StatusItems.fanSpeed:
                 if (AppDelegate.UserSettings.userWantsFanSpeed)
                 {
-                    AppDelegate.sItemFanSpeed.isVisible = true
+                    FanComponent.sItemFanSpeed.isVisible = true
                     once = true
                 }
                 break
             case MyStatusItems.StatusItems.battery:
                 if(AppDelegate.UserSettings.userWantsBatteryUtil) {
-                    Battery.sItemBattery.isVisible = true
+                    BatteryComponent.sItemBattery.isVisible = true
                     once = true
                 }
             default:
@@ -526,16 +521,6 @@ class AppDelegate: NSObject, NSApplicationDelegate {
         menuCPUUtil?.addItem(NSMenuItem.separator())
         menuCPUUtil?.addItem(NSMenuItem(title: "Quit iGlance", action: #selector(NSApplication.terminate(_:)), keyEquivalent: "q"))
         AppDelegate.sItemCPUUtil.menu = menuCPUUtil
-        
-        menuFanSpeed = NSMenu()
-        menuFanSpeed?.addItem(minMenuFan)
-        menuFanSpeed?.addItem(maxMenuFan)
-        menuFanSpeed?.addItem(currMenuFan)
-        menuFanSpeed?.addItem(NSMenuItem.separator())
-        menuFanSpeed?.addItem(NSMenuItem(title: "Settings", action: #selector(settings_clicked), keyEquivalent: "s"))
-        menuFanSpeed?.addItem(NSMenuItem.separator())
-        menuFanSpeed?.addItem(NSMenuItem(title: "Quit iGlance", action: #selector(NSApplication.terminate(_:)), keyEquivalent: "q"))
-        AppDelegate.sItemFanSpeed.menu = menuFanSpeed
         
         menuMemUsage = NSMenu()
         menuMemUsage?.addItem(menuItemMem)
@@ -687,12 +672,12 @@ class AppDelegate: NSObject, NSApplicationDelegate {
         }
         if (AppDelegate.UserSettings.userWantsFanSpeed)
         {
-            AppDelegate.sItemFanSpeed.isVisible = true
-            updateFanSpeed()
+            FanComponent.sItemFanSpeed.isVisible = true
+            AppDelegate.myFan.updateFanSpeed()
         }
         else
         {
-            AppDelegate.sItemFanSpeed.isVisible = false
+            FanComponent.sItemFanSpeed.isVisible = false
         }
         if (AppDelegate.UserSettings.userWantsBandwidth)
         {
@@ -704,12 +689,12 @@ class AppDelegate: NSObject, NSApplicationDelegate {
             AppDelegate.sItemBandwidth.isVisible = false
         }
         if(AppDelegate.UserSettings.userWantsBatteryUtil) {
-            Battery.sItemBattery.isVisible = true
+            BatteryComponent.sItemBattery.isVisible = true
             AppDelegate.myBattery.updateBatteryItem()
         }
         else
         {
-            Battery.sItemBattery.isVisible = false
+            BatteryComponent.sItemBattery.isVisible = false
         }
         if (AppDelegate.UserSettings.userWantsBatteryNotification) {
             // notify the user if needed
@@ -733,50 +718,6 @@ class AppDelegate: NSObject, NSApplicationDelegate {
         else
         {
             return false;
-        }
-    }
-    
-    @objc func updateFanSpeed()
-    {
-        let allFans: [Fan]
-        do {
-            allFans = try SMCKit.allFans()
-        } catch {
-            print(error)
-            return
-        }
-        
-        if allFans.count == 0
-        {
-            print("No fans found")
-            return;
-        }
-        
-        for fan in allFans {
-            guard let currentSpeed = try? SMCKit.fanCurrentSpeed(fan.id) else {
-                print("\tCurrent:  NA")
-                return
-            }
-            minMenuFan.title = "Min:\t\t " + String(fan.minSpeed) + " RPM"
-            maxMenuFan.title = "Max:\t " + String(fan.maxSpeed) + " RPM"
-            let currentMinus50 = currentSpeed - fan.minSpeed - 50
-            if (currentMinus50 < 0)
-            {
-                btnFanSpeed?.title = "0"
-                currMenuFan.title = "Current:\t 0 RPM"
-            }
-            else if (currentSpeed >= fan.maxSpeed)
-            {
-                btnFanSpeed?.title = String(fan.maxSpeed - fan.minSpeed)
-                currMenuFan.title = "Current:\t " + String(fan.maxSpeed - fan.minSpeed) + " RPM"
-            }
-            else
-            {
-                btnFanSpeed?.title = String(((currentMinus50+50) / 5)*5)
-                currMenuFan.title = "Current:\t " + String(((currentMinus50+50) / 5)*5) + " RPM"
-            }
-            break;
-            
         }
     }
     
@@ -959,11 +900,6 @@ class AppDelegate: NSObject, NSApplicationDelegate {
     {
         btnMemUsage = AppDelegate.sItemMemUsage.button
         pixelHeightMEM = 0
-    }
-    
-    func initFanSpeed()
-    {
-        btnFanSpeed = AppDelegate.sItemFanSpeed.button
     }
     
     func initBandwidth()
