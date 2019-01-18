@@ -1,6 +1,3 @@
 os: osx
-osx_image: xcode 10.1
 language: objective-c
-xcode-project: iGlance/iGlance.xcodeproj
-xcode_scheme: iGlance
 script: cd iGlance && xcodebuild -scheme iGlance -configuration Release
