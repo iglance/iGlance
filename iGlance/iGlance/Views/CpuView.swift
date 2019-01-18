@@ -39,7 +39,7 @@ class CpuView: NSViewController {
     @IBAction func cbCPUTemp_clicked(_ sender: NSButton) {
         let checked = (cbCPUTemp.state == NSButton.StateValue.on)
         AppDelegate.UserSettings.userWantsCPUTemp = checked
-        AppDelegate.sItemCPUTemp.isVisible = checked
+        CpuTempComponent.sItemCPUTemp.isVisible = checked
         UserDefaults.standard.set(checked, forKey: "userWantsCPUTemp")
         checked ? MyStatusItems.insertItem(item: MyStatusItems.StatusItems.cpuTemp) : MyStatusItems.removeItem(item: MyStatusItems.StatusItems.cpuTemp)
     }
@@ -49,10 +49,10 @@ class CpuView: NSViewController {
         didSet {
             switch(AppDelegate.UserSettings.tempUnit)
             {
-            case AppDelegate.TempUnit.Celcius:
+            case CpuTempComponent.TempUnit.Celcius:
                 ddTempUnit.selectItem(at: 0)
                 break;
-            case AppDelegate.TempUnit.Fahrenheit:
+            case CpuTempComponent.TempUnit.Fahrenheit:
                 ddTempUnit.selectItem(at: 1)
                 break;
             default:
@@ -62,7 +62,7 @@ class CpuView: NSViewController {
         }
     }
     @IBAction func ddTempUnit_clicked(_ sender: Any) {
-        AppDelegate.UserSettings.tempUnit = ddTempUnit.indexOfSelectedItem == 0 ? AppDelegate.TempUnit.Celcius : AppDelegate.TempUnit.Fahrenheit
+        AppDelegate.UserSettings.tempUnit = ddTempUnit.indexOfSelectedItem == 0 ? CpuTempComponent.TempUnit.Celcius : CpuTempComponent.TempUnit.Fahrenheit
         UserDefaults.standard.set((ddTempUnit.indexOfSelectedItem == 0) ? 0 : 1, forKey: "tempUnit")
     }
     

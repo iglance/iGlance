@@ -62,16 +62,7 @@ class AppDelegate: NSObject, NSApplicationDelegate {
     var btnCPUUtil: NSStatusBarButton?
     var menuCPUUtil: NSMenu?
     
-    static let sItemCPUTemp = NSStatusBar.system.statusItem(withLength: NSStatusItem.variableLength)
-    var btnCPUTemp: NSStatusBarButton?
-    var menuCPUTemp: NSMenu?
-    
     var myWindowController: MyMainWindow?
-    
-    public enum TempUnit {
-        case Celcius
-        case Fahrenheit
-    }
     
     struct UserSettings
     {
@@ -84,7 +75,7 @@ class AppDelegate: NSObject, NSApplicationDelegate {
         static var cpuColor = NSColor.red
         static var memColor = NSColor.green
         static var updateInterval = 1.0
-        static var tempUnit = TempUnit.Celcius
+        static var tempUnit = CpuTempComponent.TempUnit.Celcius
         static var userWantsCPUBorder = true
         static var userWantsMemBorder = true
         static var userWantsBatteryUtil = true
@@ -144,6 +135,7 @@ class AppDelegate: NSObject, NSApplicationDelegate {
     var minMenuFan = NSMenuItem(title: "Min:\t\t NA", action: nil, keyEquivalent: "")
     var maxMenuFan = NSMenuItem(title: "Max:\t NA", action: nil, keyEquivalent: "")
     var currMenuFan = NSMenuItem(title: "Current:\t NA", action: nil, keyEquivalent: "")
+    static let myCpuTemp = CpuTempComponent()
     
     /**
     * Shared variables
@@ -163,7 +155,7 @@ class AppDelegate: NSObject, NSApplicationDelegate {
         
         checkForUpdate()
         
-        AppDelegate.sItemCPUTemp.isVisible = false
+        CpuTempComponent.sItemCPUTemp.isVisible = false
         AppDelegate.sItemCPUUtil.isVisible = false
         AppDelegate.sItemFanSpeed.isVisible = false
         AppDelegate.sItemMemUsage.isVisible = false
@@ -264,7 +256,7 @@ class AppDelegate: NSObject, NSApplicationDelegate {
         
         constructMenu()
         initCPUUtil()
-        initCPUTemp()
+        AppDelegate.myCpuTemp.initButton()
         initMemUsage()
         initFanSpeed()
         initBandwidth()
@@ -369,7 +361,7 @@ class AppDelegate: NSObject, NSApplicationDelegate {
             case MyStatusItems.StatusItems.cpuTemp:
                 if (AppDelegate.UserSettings.userWantsCPUTemp)
                 {
-                    AppDelegate.sItemCPUTemp.isVisible = true
+                    CpuTempComponent.sItemCPUTemp.isVisible = true
                     once = true
                 }
                 break
@@ -471,7 +463,7 @@ class AppDelegate: NSObject, NSApplicationDelegate {
         {
             // 0 = Celsius
             // 1 = Fahrenheit
-            UserSettings.tempUnit = (UserDefaults.standard.value(forKey: "tempUnit") as! Int == 0) ? TempUnit.Celcius : TempUnit.Fahrenheit
+            UserSettings.tempUnit = (UserDefaults.standard.value(forKey: "tempUnit") as! Int == 0) ? CpuTempComponent.TempUnit.Celcius : CpuTempComponent.TempUnit.Fahrenheit
         }
         if (UserDefaults.standard.value(forKey: "userWantsCPUBorder") != nil)
         {
@@ -552,19 +544,6 @@ class AppDelegate: NSObject, NSApplicationDelegate {
         menuMemUsage?.addItem(NSMenuItem.separator())
         menuMemUsage?.addItem(NSMenuItem(title: "Quit iGlance", action: #selector(NSApplication.terminate(_:)), keyEquivalent: "q"))
         AppDelegate.sItemMemUsage.menu = menuMemUsage
-        
-        menuCPUTemp = NSMenu()
-        let myTempMenu = NSMenuItem(title: "", action: nil, keyEquivalent: "")
-        let myCPUTempView = CPUTempMenuView(frame: NSRect(x: 0, y: 0, width: 355, height: 195))
-        
-        myCPUTempView.temp0.stringValue = "144°F"
-        myTempMenu.view = myCPUTempView
-        //menuCPUTemp?.addItem(myTempMenu)
-        menuCPUTemp?.addItem(NSMenuItem.separator())
-        menuCPUTemp?.addItem(NSMenuItem(title: "Settings", action: #selector(settings_clicked), keyEquivalent: "s"))
-        menuCPUTemp?.addItem(NSMenuItem.separator())
-        menuCPUTemp?.addItem(NSMenuItem(title: "Quit iGlance", action: #selector(NSApplication.terminate(_:)), keyEquivalent: "q"))
-        AppDelegate.sItemCPUTemp.menu = menuCPUTemp
         
         menuBandwidth = NSMenu()
         menuBandwidth?.addItem(bandwidthDUsageItem)
@@ -681,12 +660,12 @@ class AppDelegate: NSObject, NSApplicationDelegate {
     {
         if (AppDelegate.UserSettings.userWantsCPUTemp)
         {
-            AppDelegate.sItemCPUTemp.isVisible = true
-            updateCPUTemp()
+            CpuTempComponent.sItemCPUTemp.isVisible = true
+            AppDelegate.myCpuTemp.updateCPUTemp()
         }
         else
         {
-            AppDelegate.sItemCPUTemp.isVisible = false
+            CpuTempComponent.sItemCPUTemp.isVisible = false
         }
         if (AppDelegate.UserSettings.userWantsCPUUtil)
         {
@@ -976,34 +955,10 @@ class AppDelegate: NSObject, NSApplicationDelegate {
         bandText = finalDown! + "\n" + finalUp!
     }
     
-    @objc func updateCPUTemp() {
-        
-        let core0 = TemperatureSensor(name: "CPU_0_DIE", code: FourCharCode(fromStaticString: "TC0F"))
-
-        guard let temperature = try? SMCKit.temperature(core0.code) else {
-            btnCPUTemp?.title = "NA"
-            return
-        }
-        if (AppDelegate.UserSettings.tempUnit == AppDelegate.TempUnit.Fahrenheit)
-        {
-            let temperatureF = (temperature * 1.8) + 32
-            btnCPUTemp?.title = String(Int(temperatureF)) + "°F"
-        }
-        else
-        {
-            btnCPUTemp?.title = String(Int(temperature)) + "°C"
-        }
-        }
-    
     func initMemUsage()
     {
         btnMemUsage = AppDelegate.sItemMemUsage.button
         pixelHeightMEM = 0
-    }
-    
-    func initCPUTemp()
-    {
-        btnCPUTemp = AppDelegate.sItemCPUTemp.button
     }
     
     func initFanSpeed()
