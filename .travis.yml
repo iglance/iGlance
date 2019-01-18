@@ -9,7 +9,7 @@ deploy:
   provider: releases
   api_key:
     secure: l9EjUx7UQixEo5gpObIRjHc0qucflBo1+BCByLjjBBb29QgW9Oj47ngXL7UuMI7MGiJ6PbBjavhj/xEUbtout92YUZ6XkHJ3LJ/sG9EicMFCw9Cn+z7NAud0xLLBWgdHMGegepCWwpIFVU2dOkdxC4Qi2j+uB5bTf/cn81x4pptJ+jjNU8YHqWXmbW0PcL3wy7yZwNPeKFBpogPFEuR75Ta9C058vKM8CG7fiffrV/htf33JZ1dJ6mIHqXyJaWJx+oZ9PansCG5oYKScgbzdOox2rWrFioxLYm9fCX83WO1Sp3XKbHwZGLSxmMWCdf22lxRtVOFTRDXDTuC9uFq/O0mw6xxPmi5CMXnJ9GiVOA5h1/OIoArmOygOvscLHeNvoRPHLvgCAqvzqGj89Q2qyC5gD/KqtHwjftOswhOw3YCqr/4F6z02U8o2yO+LJZvVLvE+6Ny98UOlz9aSa994thqB0FUbXQYXS6G/jb+kjaAWrqPK6v07xUyrxabeXN47GaVilUnMuwcVROIj7Y4aKxLX6EbycrQgDq+wTe6rsZtPU4xZ583jGhkhSDrnaWew0In98/1C86ilrdNqUsw+2EsQA2U3hN38NwSU0sUn+2oJUe29mteGlMCaPBdNX0UOFT9otd0VyVwWbdxOC2FE1OjDh/GN/G/HpnqIkF5rtFA=
-  file: "./iGlanceExport/iGlance"
+  file: "./iGlance/iGlanceExport/iGlance"
   skip_cleanup: true
   on:
     tags: true
