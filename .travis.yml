@@ -1,8 +1,8 @@
 os: osx
 language: objective-c
 osx_image: xcode10.1
-script: cd iGlance \
-        && xcodebuild -project 'iGlance.xcodeproj' -config Release -scheme iGlance -archivePath ./iGlance archive \
+script: cd iGlance
+        && xcodebuild -project 'iGlance.xcodeproj' -config Release -scheme iGlance -archivePath ./iGlance archive 
         && xcodebuild -archivePath iGlance.xcarchive -exportArchive -exportPath iGlanceExport -exportOptionsPlist exportOptions.plist
 
 deploy:
