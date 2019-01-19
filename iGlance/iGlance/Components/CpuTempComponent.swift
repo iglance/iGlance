@@ -36,7 +36,7 @@ class CpuTempComponent {
         CpuTempComponent.sItemCPUTemp.menu = menuCPUTemp
     }
 
-    func initButton() {
+    func initialize() {
         // initialize the button for the menu bar
         btnCPUTemp = CpuTempComponent.sItemCPUTemp.button
     }

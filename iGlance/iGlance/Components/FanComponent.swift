@@ -36,7 +36,7 @@ class FanComponent {
         FanComponent.sItemFanSpeed.menu = menuFanSpeed
     }
 
-    func initButton() {
+    func initialize() {
         btnFanSpeed = FanComponent.sItemFanSpeed.button
     }
 
