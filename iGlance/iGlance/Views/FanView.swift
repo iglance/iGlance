@@ -9,14 +9,14 @@
 import Cocoa
 
 class FanView: NSViewController {
-    
     // define the outlet and the action to enable and disable the fan speed icon
-    @IBOutlet weak var cbFanSpeed: NSButton! {
+    @IBOutlet var cbFanSpeed: NSButton! {
         didSet {
             cbFanSpeed.state = AppDelegate.UserSettings.userWantsFanSpeed ? NSButton.StateValue.on : NSButton.StateValue.off
         }
     }
-    @IBAction func cbFanSpeed_clicked(_ sender: NSButton) {
+
+    @IBAction func cbFanSpeed_clicked(_: NSButton) {
         let checked = (cbFanSpeed.state == NSButton.StateValue.on)
         AppDelegate.UserSettings.userWantsFanSpeed = checked
         FanComponent.sItemFanSpeed.isVisible = checked
