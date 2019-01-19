@@ -153,7 +153,6 @@
 				02ECFC7720C80A9500E0A1D7 /* Assets.xcassets */,
 				02ECFC7920C80A9500E0A1D7 /* Main.storyboard */,
 				02ECFC7C20C80A9500E0A1D7 /* Info.plist */,
-				02ECFC7D20C80A9500E0A1D7 /* iGlanceLauncher.entitlements */,
 			);
 			path = iGlanceLauncher;
 			sourceTree = "<group>";
@@ -566,7 +565,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				CODE_SIGN_ENTITLEMENTS = iGlanceLauncher/iGlanceLauncher.entitlements;
+				CODE_SIGN_ENTITLEMENTS = "";
 				CODE_SIGN_IDENTITY = "";
 				CODE_SIGN_STYLE = Automatic;
 				COMBINE_HIDPI_IMAGES = YES;
@@ -588,7 +587,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				CODE_SIGN_ENTITLEMENTS = iGlanceLauncher/iGlanceLauncher.entitlements;
+				CODE_SIGN_ENTITLEMENTS = "";
 				CODE_SIGN_IDENTITY = "";
 				CODE_SIGN_STYLE = Automatic;
 				COMBINE_HIDPI_IMAGES = YES;
