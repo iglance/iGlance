@@ -3,9 +3,9 @@ language: objective-c
 osx_image: xcode10.1
 script: cd iGlance && xcodebuild -project 'iGlance.xcodeproj' -config Release -scheme iGlance
 
-before_deplay: xcodebuild -archivePath ./iGlance -scheme iGlance archive
-    && xcodebuild -archivePath iGlance.xcarchive -exportArchive -exportPath iGlanceExport/iGlance -exportOptionsPlist exportOptions.plist
-    && cd iGlanceExport/iGlance
+before_deploy: xcodebuild -archivePath ./iGlance -scheme iGlance archive
+    && xcodebuild -archivePath iGlance.xcarchive -exportArchive -exportPath iGlanceExport -exportOptionsPlist exportOptions.plist
+    && cd iGlanceExport
     && zip -r -y iGlance-mac.zip iGlance.app
 deploy:
     provider: releases
