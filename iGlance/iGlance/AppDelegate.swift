@@ -50,12 +50,6 @@ class AppDelegate: NSObject, NSApplicationDelegate {
     var btnMemUsage: NSStatusBarButton?
     var menuMemUsage: NSMenu?
 
-    static let sItemCPUUtil = NSStatusBar.system.statusItem(withLength: 27.0)
-    let myCPUMenuView = CPUMenuView(frame: NSRect(x: 0, y: 0, width: 170, height: 90))
-    let menuItemCPU = NSMenuItem(title: "", action: nil, keyEquivalent: "")
-    var btnCPUUtil: NSStatusBarButton?
-    var menuCPUUtil: NSMenu?
-
     var myWindowController: MyMainWindow?
 
     struct UserSettings {
@@ -76,8 +70,6 @@ class AppDelegate: NSObject, NSApplicationDelegate {
         static var lowerBatteryNotificationValue = 20
         static var upperBatteryNotificationValue = 80
     }
-
-    var mySystem: System?
 
     /**
      * Bandwidth variables
@@ -105,13 +97,6 @@ class AppDelegate: NSObject, NSApplicationDelegate {
     var bandwidthUUsageArrayIndex = 0
 
     /**
-     * CPU Button Image variables
-     */
-    var pbFillRectCPU: NSRect?
-    var pixelHeightCPU: Double?
-    var cpuIMG: String?
-
-    /**
      * MEM Button Image variables
      */
     var pbFillRectMEM: NSRect?
@@ -126,8 +111,10 @@ class AppDelegate: NSObject, NSApplicationDelegate {
     static let myBattery = BatteryComponent()
     /// The fan instance
     static let myFan = FanComponent()
-    /// the cpu temperatur instance
+    /// The cpu temperatur instance
     static let myCpuTemp = CpuTempComponent()
+    /// The cpu usage instance
+    static let myCpuUsage = CpuUsageComponent()
 
     /**
      * Shared variables
@@ -146,7 +133,7 @@ class AppDelegate: NSObject, NSApplicationDelegate {
         checkForUpdate()
 
         CpuTempComponent.sItemCPUTemp.isVisible = false
-        AppDelegate.sItemCPUUtil.isVisible = false
+        CpuUsageComponent.sItemCpuUtil.isVisible = false
         AppDelegate.sItemMemUsage.isVisible = false
         AppDelegate.sItemBandwidth.isVisible = false
         FanComponent.sItemFanSpeed.isVisible = false
@@ -226,12 +213,12 @@ class AppDelegate: NSObject, NSApplicationDelegate {
         }
 
         constructMenu()
-        initCPUUtil()
-        AppDelegate.myCpuTemp.initButton()
+        AppDelegate.myCpuUsage.initialize()
+        AppDelegate.myCpuTemp.initialize()
         initMemUsage()
         initBandwidth()
-        AppDelegate.myFan.initButton()
-        AppDelegate.myBattery.initButton()
+        AppDelegate.myFan.initialize()
+        AppDelegate.myBattery.initialize()
 
         intervalTimer = Timer.scheduledTimer(timeInterval: UserSettings.updateInterval, target: self, selector: #selector(updateAll), userInfo: nil, repeats: true)
         RunLoop.current.add(intervalTimer!, forMode: RunLoop.Mode.common)
@@ -306,7 +293,7 @@ class AppDelegate: NSObject, NSApplicationDelegate {
             {
             case MyStatusItems.StatusItems.cpuUtil:
                 if AppDelegate.UserSettings.userWantsCPUUtil {
-                    AppDelegate.sItemCPUUtil.isVisible = true
+                    CpuUsageComponent.sItemCpuUtil.isVisible = true
                     once = true
                 }
                 break
@@ -430,31 +417,13 @@ class AppDelegate: NSObject, NSApplicationDelegate {
         return alert.runModal() == .alertFirstButtonReturn
     }
 
-    func initCPUUtil() {
-        pbMax = 16.0 // 32*0.5
-        pixelWidth = 7 // 14*0.5
-        pixelHeightCPU = 0
-        mySystem = System()
-        btnCPUUtil = AppDelegate.sItemCPUUtil.button
-        btnCPUUtil?.image?.isTemplate = true
-    }
-
     @objc func settings_clicked() {
         myWindowController?.showWindow(nil)
         NSApp.activate(ignoringOtherApps: true)
     }
 
     func constructMenu() {
-        menuItemCPU.view = myCPUMenuView
         menuItemMem.view = myMemMenuView
-
-        menuCPUUtil = NSMenu()
-        menuCPUUtil?.addItem(menuItemCPU)
-        menuCPUUtil?.addItem(NSMenuItem.separator())
-        menuCPUUtil?.addItem(NSMenuItem(title: "Settings", action: #selector(settings_clicked), keyEquivalent: "s"))
-        menuCPUUtil?.addItem(NSMenuItem.separator())
-        menuCPUUtil?.addItem(NSMenuItem(title: "Quit iGlance", action: #selector(NSApplication.terminate(_:)), keyEquivalent: "q"))
-        AppDelegate.sItemCPUUtil.menu = menuCPUUtil
 
         menuMemUsage = NSMenu()
         menuMemUsage?.addItem(menuItemMem)
@@ -472,47 +441,6 @@ class AppDelegate: NSObject, NSApplicationDelegate {
         menuBandwidth?.addItem(NSMenuItem.separator())
         menuBandwidth?.addItem(NSMenuItem(title: "Quit iGlance", action: #selector(NSApplication.terminate(_:)), keyEquivalent: "q"))
         AppDelegate.sItemBandwidth.menu = menuBandwidth
-    }
-
-    @objc func updateCPUUsage() {
-        let cpuStats = mySystem!.usageCPU()
-        let cpuUser = Double(round(100 * cpuStats.user) / 100)
-        let cpuSystem = Double(round(100 * cpuStats.system) / 100)
-        let cpuIdle = Double(round(100 * cpuStats.idle) / 100)
-        let cpuNice = Double(round(100 * cpuStats.nice) / 100)
-        let cpuUsageTotal = cpuUser + cpuSystem
-
-        myCPUMenuView.percentSystem.stringValue = String(Int(cpuSystem)) + "%"
-        myCPUMenuView.percentUser.stringValue = String(Int(cpuUser)) + "%"
-        myCPUMenuView.percentIdle.stringValue = String(Int(cpuIdle)) + "%"
-
-        pixelHeightCPU = Double((pbMax! / 100.0) * cpuUsageTotal)
-
-        if InterfaceStyle() == InterfaceStyle.Dark {
-            cpuIMG = "menubar-label-cpu-white"
-            pbIMG = "progressbar-white"
-        } else {
-            cpuIMG = "menubar-label-cpu-black"
-            pbIMG = "progressbar-black"
-        }
-        let imgFinal = NSImage(size: NSSize(width: 20, height: 18))
-        imgFinal.lockFocus()
-        let img1 = NSImage(named: NSImage.Name(cpuIMG!))
-        // img1?.isTemplate = true
-        img1?.draw(at: NSPoint(x: 1, y: 0), from: NSZeroRect, operation: NSCompositingOperation.sourceOver, fraction: 1.0)
-        if AppDelegate.UserSettings.userWantsCPUBorder {
-            let img2 = NSImage(named: NSImage.Name(pbIMG!))
-            img2?.draw(at: NSPoint(x: 11, y: 0), from: NSZeroRect, operation: NSCompositingOperation.sourceOver, fraction: 1.0)
-        }
-        pbFillRectCPU = NSRect(x: 12.0, y: 1.0, width: pixelWidth!, height: pixelHeightCPU!)
-        AppDelegate.UserSettings.cpuColor.setFill()
-        pbFillRectCPU?.fill()
-        NSColor.clear.setFill()
-        imgFinal.unlockFocus()
-
-        // imgFinal.isTemplate = true
-        btnCPUUtil?.image = imgFinal
-        // btnCPUUtil?.image?.isTemplate = true
     }
 
     @objc func updateMemUsage() {
@@ -549,9 +477,9 @@ class AppDelegate: NSObject, NSApplicationDelegate {
             let img2 = NSImage(named: NSImage.Name(pbIMG!))
             img2?.draw(at: NSPoint(x: 11, y: 0), from: NSZeroRect, operation: NSCompositingOperation.sourceOver, fraction: 1.0)
         }
-        pbFillRectCPU = NSRect(x: 12.0, y: 1.0, width: pixelWidth!, height: pixelHeightMEM!)
+        pbFillRectMEM = NSRect(x: 12.0, y: 1.0, width: pixelWidth!, height: pixelHeightMEM!)
         AppDelegate.UserSettings.memColor.setFill()
-        pbFillRectCPU?.fill()
+        pbFillRectMEM?.fill()
         NSColor.clear.setFill()
         imgFinal.unlockFocus()
 
@@ -566,10 +494,10 @@ class AppDelegate: NSObject, NSApplicationDelegate {
             CpuTempComponent.sItemCPUTemp.isVisible = false
         }
         if AppDelegate.UserSettings.userWantsCPUUtil {
-            AppDelegate.sItemCPUUtil.isVisible = true
-            updateCPUUsage()
+            CpuUsageComponent.sItemCpuUtil.isVisible = true
+            AppDelegate.myCpuUsage.updateCPUUsage()
         } else {
-            AppDelegate.sItemCPUUtil.isVisible = false
+            CpuUsageComponent.sItemCpuUtil.isVisible = false
         }
         if AppDelegate.UserSettings.userWantsMemUsage {
             AppDelegate.sItemMemUsage.isVisible = true
@@ -749,6 +677,8 @@ class AppDelegate: NSObject, NSApplicationDelegate {
     }
 
     func initMemUsage() {
+        pbMax = 16.0
+        pixelWidth = 7
         btnMemUsage = AppDelegate.sItemMemUsage.button
         pixelHeightMEM = 0
     }

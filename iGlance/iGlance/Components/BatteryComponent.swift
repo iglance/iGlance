@@ -54,7 +54,7 @@ class BatteryComponent {
     /**
      *  Initializes the status item button of the battery. This function has to be called after the application did finished launching
      */
-    func initButton() {
+    func initialize() {
         btnBattery = BatteryComponent.sItemBattery.button
     }
 

@@ -25,7 +25,7 @@ class CpuView: NSViewController {
     @IBAction func cbCPUUtil_clicked(_: NSButton) {
         let checked = (cbCPUUtil.state == NSButton.StateValue.on)
         AppDelegate.UserSettings.userWantsCPUUtil = checked
-        AppDelegate.sItemCPUUtil.isVisible = checked
+        CpuUsageComponent.sItemCpuUtil.isVisible = checked
         UserDefaults.standard.set(checked, forKey: "userWantsCPUUtil")
         checked ? MyStatusItems.insertItem(item: MyStatusItems.StatusItems.cpuUtil) : MyStatusItems.removeItem(item: MyStatusItems.StatusItems.cpuUtil)
     }
