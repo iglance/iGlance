@@ -25,7 +25,7 @@ class MemoryView: NSViewController {
     @IBAction func cbMemUtil_clicked(_: NSButton) {
         let checked = (cbMemUtil.state == NSButton.StateValue.on)
         AppDelegate.UserSettings.userWantsMemUsage = checked
-        AppDelegate.sItemMemUsage.isVisible = checked
+        MemUsageComponent.sItemMemUsage.isVisible = checked
         UserDefaults.standard.set(checked, forKey: "userWantsMemUsage")
         checked ? MyStatusItems.insertItem(item: MyStatusItems.StatusItems.memUtil) : MyStatusItems.removeItem(item: MyStatusItems.StatusItems.memUtil)
     }
