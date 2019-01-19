@@ -28,7 +28,6 @@ class CPUMenuView: NSView {
         }
     }
 
-    @IBOutlet var percentNice: NSTextField!
     @IBOutlet var lUser: NSTextField! {
         didSet {
             lUser.textColor = NSColor.orange
@@ -47,7 +46,6 @@ class CPUMenuView: NSView {
         }
     }
 
-    @IBOutlet var lNice: NSTextField!
     override func draw(_ dirtyRect: NSRect) {
         super.draw(dirtyRect)
 
@@ -67,15 +65,4 @@ class CPUMenuView: NSView {
         // fatalError("init(coder:) has not been implemented")
         // commonInit()
     }
-
-    /*
-     private func commonInit()
-     {
-     Bundle.main.loadNibNamed(NSNib.Name(rawValue: "CPUMenuView"), owner: self, topLevelObjects: nil)
-     addSubview(contentView)
-     contentView.frame = self.bounds
-     contentView.autoresizingMask = [.maxXMargin, .maxYMargin]
-
-     }
-     */
 }

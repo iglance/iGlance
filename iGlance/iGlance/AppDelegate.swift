@@ -485,7 +485,6 @@ class AppDelegate: NSObject, NSApplicationDelegate {
         myCPUMenuView.percentSystem.stringValue = String(Int(cpuSystem)) + "%"
         myCPUMenuView.percentUser.stringValue = String(Int(cpuUser)) + "%"
         myCPUMenuView.percentIdle.stringValue = String(Int(cpuIdle)) + "%"
-        myCPUMenuView.percentNice.stringValue = String(Int(cpuNice)) + "%"
 
         pixelHeightCPU = Double((pbMax! / 100.0) * cpuUsageTotal)
 
