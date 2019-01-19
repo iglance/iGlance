@@ -134,8 +134,8 @@
 		025AC38920C0AFDD000E0837 /* iGlance */ = {
 			isa = PBXGroup;
 			children = (
-				B4EF0F362184C79800A28F5E /* Views */,
-				B4EF0F302184C46B00A28F5E /* MenuViews */,
+				B4EF0F362184C79800A28F5E /* SettingsWindowViews */,
+				B4EF0F302184C46B00A28F5E /* MenuBarViews */,
 				B4AE1F5220D17DD50055C1C9 /* lib */,
 				B4FF094F20D02248006BE560 /* Components */,
 				025AC38A20C0AFDD000E0837 /* AppDelegate.swift */,
@@ -181,13 +181,13 @@
 			path = lib;
 			sourceTree = "<group>";
 		};
-		B4EF0F302184C46B00A28F5E /* MenuViews */ = {
+		B4EF0F302184C46B00A28F5E /* MenuBarViews */ = {
 			isa = PBXGroup;
 			children = (
 				B4EF0F332184C4AB00A28F5E /* Memory */,
 				B4EF0F312184C47B00A28F5E /* CPU */,
 			);
-			path = MenuViews;
+			path = MenuBarViews;
 			sourceTree = "<group>";
 		};
 		B4EF0F312184C47B00A28F5E /* CPU */ = {
@@ -210,7 +210,7 @@
 			path = Memory;
 			sourceTree = "<group>";
 		};
-		B4EF0F362184C79800A28F5E /* Views */ = {
+		B4EF0F362184C79800A28F5E /* SettingsWindowViews */ = {
 			isa = PBXGroup;
 			children = (
 				B4EF0F372184C7B400A28F5E /* BatteryView.swift */,
@@ -219,7 +219,7 @@
 				B4EF0F3D2184CE3D00A28F5E /* FanView.swift */,
 				B4EF0F3F2184CEA800A28F5E /* NetworkView.swift */,
 			);
-			path = Views;
+			path = SettingsWindowViews;
 			sourceTree = "<group>";
 		};
 		B4FF094F20D02248006BE560 /* Components */ = {
