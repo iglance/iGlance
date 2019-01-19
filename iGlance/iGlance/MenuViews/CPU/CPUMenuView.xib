@@ -1,7 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.Cocoa.XIB" version="3.0" toolsVersion="14113" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES" customObjectInstantitationMethod="direct">
+<document type="com.apple.InterfaceBuilder3.Cocoa.XIB" version="3.0" toolsVersion="14460.31" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES" customObjectInstantitationMethod="direct">
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="14113"/>
+        <deployment identifier="macosx"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="14460.31"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <objects>
@@ -9,11 +10,9 @@
             <connections>
                 <outlet property="contentView" destination="c22-O7-iKe" id="Oeg-YK-1B9"/>
                 <outlet property="lIdle" destination="PXh-3z-lPq" id="1X6-1w-M3E"/>
-                <outlet property="lNice" destination="TAr-Xy-Q4O" id="Yer-5e-a7M"/>
                 <outlet property="lSystem" destination="fKm-hx-OqW" id="qku-RA-Mht"/>
                 <outlet property="lUser" destination="W3d-2L-ic5" id="3RQ-nb-77x"/>
                 <outlet property="percentIdle" destination="fj5-Dw-q4Q" id="tT7-on-skD"/>
-                <outlet property="percentNice" destination="oPP-yP-5JA" id="W3b-TP-MOJ"/>
                 <outlet property="percentSystem" destination="QFH-li-yNB" id="MCU-hl-d5k"/>
                 <outlet property="percentUser" destination="odl-Av-9na" id="1pD-RQ-J6z"/>
             </connections>
@@ -25,7 +24,7 @@
             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
             <subviews>
                 <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="W3d-2L-ic5">
-                    <rect key="frame" x="18" y="80" width="37" height="17"/>
+                    <rect key="frame" x="13" y="83" width="37" height="17"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                     <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="User:" id="fAw-cy-3uV">
                         <font key="font" metaFont="system"/>
@@ -34,7 +33,7 @@
                     </textFieldCell>
                 </textField>
                 <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="fKm-hx-OqW">
-                    <rect key="frame" x="18" y="60" width="53" height="17"/>
+                    <rect key="frame" x="13" y="58" width="53" height="17"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                     <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="System:" id="31P-qX-oFV">
                         <font key="font" metaFont="system"/>
@@ -43,7 +42,7 @@
                     </textFieldCell>
                 </textField>
                 <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="PXh-3z-lPq">
-                    <rect key="frame" x="18" y="40" width="30" height="17"/>
+                    <rect key="frame" x="13" y="33" width="30" height="17"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                     <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="Idle:" id="JLG-0R-u1K">
                         <font key="font" metaFont="system"/>
@@ -51,17 +50,8 @@
                         <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
                     </textFieldCell>
                 </textField>
-                <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="TAr-Xy-Q4O">
-                    <rect key="frame" x="18" y="20" width="36" height="17"/>
-                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                    <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="Nice:" id="qlv-tr-HOD">
-                        <font key="font" metaFont="system"/>
-                        <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
-                        <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
-                    </textFieldCell>
-                </textField>
                 <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="odl-Av-9na">
-                    <rect key="frame" x="112" y="80" width="52" height="17"/>
+                    <rect key="frame" x="107" y="83" width="52" height="17"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                     <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" alignment="right" title="00%" id="RF6-Nu-cpA">
                         <font key="font" metaFont="system"/>
@@ -70,7 +60,7 @@
                     </textFieldCell>
                 </textField>
                 <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="QFH-li-yNB">
-                    <rect key="frame" x="112" y="60" width="52" height="17"/>
+                    <rect key="frame" x="107" y="58" width="52" height="17"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                     <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" alignment="right" title="00%" id="AYZ-oO-SmQ">
                         <font key="font" metaFont="system"/>
@@ -79,18 +69,9 @@
                     </textFieldCell>
                 </textField>
                 <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="fj5-Dw-q4Q">
-                    <rect key="frame" x="112" y="40" width="52" height="17"/>
+                    <rect key="frame" x="107" y="33" width="52" height="17"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                     <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" alignment="right" title="00%" id="aMh-5V-aVc">
-                        <font key="font" metaFont="system"/>
-                        <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
-                        <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
-                    </textFieldCell>
-                </textField>
-                <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="oPP-yP-5JA">
-                    <rect key="frame" x="124" y="20" width="40" height="17"/>
-                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                    <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" alignment="right" title="00%" id="rOJ-Bf-5h5">
                         <font key="font" metaFont="system"/>
                         <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
                         <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
