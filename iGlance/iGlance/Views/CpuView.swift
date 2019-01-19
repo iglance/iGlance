@@ -51,12 +51,10 @@ class CpuView: NSViewController {
             {
             case CpuTempComponent.TempUnit.Celcius:
                 ddTempUnit.selectItem(at: 0)
-                break;
+                break
             case CpuTempComponent.TempUnit.Fahrenheit:
                 ddTempUnit.selectItem(at: 1)
-                break;
-            default:
-                ddTempUnit.selectItem(at: 0)
+                break
             }
             
         }

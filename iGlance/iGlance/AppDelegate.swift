@@ -159,7 +159,7 @@ class AppDelegate: NSObject, NSApplicationDelegate {
         
         loadSessionSettings()
         
-        myWindowController = NSStoryboard(name: "Main", bundle: nil).instantiateController(withIdentifier: "abcd") as! MyMainWindow
+        myWindowController = (NSStoryboard(name: "Main", bundle: nil).instantiateController(withIdentifier: "abcd") as! MyMainWindow)
         
         
         displayStatusItems()
@@ -245,7 +245,7 @@ class AppDelegate: NSObject, NSApplicationDelegate {
         }
         catch
         {
-            AppDelegate.dialogOK(question: "Fatal Error", text: "Couldn't open SMCKit")
+            _ = AppDelegate.dialogOK(question: "Fatal Error", text: "Couldn't open SMCKit")
             NSApp.terminate(nil)
         }
         
@@ -254,7 +254,7 @@ class AppDelegate: NSObject, NSApplicationDelegate {
         AppDelegate.myCpuTemp.initButton()
         initMemUsage()
         initBandwidth()
-        AppDelegate.myFan.initButton();
+        AppDelegate.myFan.initButton()
         AppDelegate.myBattery.initButton()
         
         intervalTimer = Timer.scheduledTimer(timeInterval: UserSettings.updateInterval, target: self, selector: #selector(updateAll), userInfo: nil, repeats: true)
@@ -269,6 +269,7 @@ class AppDelegate: NSObject, NSApplicationDelegate {
         let (htmltext, _, error) = URLSession.shared.synchronousDataTask(urlrequest: request)
         if let error = error {
             // Do nothing
+            print(error)
         }
         else
         {
@@ -570,7 +571,7 @@ class AppDelegate: NSObject, NSApplicationDelegate {
         }
         let imgFinal = NSImage(size: NSSize(width: 20, height: 18))
         imgFinal.lockFocus()
-        let img1 = NSImage(named: NSImage.Name(cpuIMG!));
+        let img1 = NSImage(named: NSImage.Name(cpuIMG!))
         //img1?.isTemplate = true
         img1?.draw(at: NSPoint(x: 1, y: 0), from: NSZeroRect, operation: NSCompositingOperation.sourceOver, fraction: 1.0)
         if (AppDelegate.UserSettings.userWantsCPUBorder)
@@ -713,11 +714,11 @@ class AppDelegate: NSObject, NSApplicationDelegate {
     {
         if (AppDelegate.currTimeInterval != AppDelegate.UserSettings.updateInterval)
         {
-            return true;
+            return true
         }
         else
         {
-            return false;
+            return false
         }
     }
     
@@ -758,8 +759,6 @@ class AppDelegate: NSObject, NSApplicationDelegate {
             }
             
             updateBandwidthMenuText(down: getDBandwidthUsage(), up: getUBandwidthUsage())
-            getDBandwidthUsage()
-            getUBandwidthUsage()
         }
         
         if (InterfaceStyle() == InterfaceStyle.Dark)

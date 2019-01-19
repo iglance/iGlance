@@ -56,7 +56,7 @@ class ViewController: NSViewController {
         AppDelegate.UserSettings.userWantsAutostart = (cbAutostart.state == NSButton.StateValue.on)
         if (cbAutostart.state == NSButton.StateValue.on) {
             if !SMLoginItemSetEnabled(NCConstants.launcherApplicationIdentifier as CFString, true) {
-                AppDelegate.dialogOK(question: "Error", text: "Something went wrong, sorry")
+                _ = AppDelegate.dialogOK(question: "Error", text: "Something went wrong, sorry")
                 cbAutostart.state = NSButton.StateValue.off
             }
             else {
@@ -65,7 +65,7 @@ class ViewController: NSViewController {
         }
         else {
             if !SMLoginItemSetEnabled(NCConstants.launcherApplicationIdentifier as CFString, false) {
-                AppDelegate.dialogOK(question: "Error", text: "Something went wrong, sorry")
+                _ = AppDelegate.dialogOK(question: "Error", text: "Something went wrong, sorry")
             }
             else {
                 UserDefaults.standard.set(false, forKey: "userWantsAutostart")
@@ -87,13 +87,13 @@ class ViewController: NSViewController {
             {
             case 1.0:
                 ddUpdateInterval.selectItem(at: 0)
-                break;
+                break
             case 2.0:
                 ddUpdateInterval.selectItem(at: 1)
-                break;
+                break
             case 3.0:
                 ddUpdateInterval.selectItem(at: 2)
-                break;
+                break
             default:
                 ddUpdateInterval.selectItem(at: 1)
             }

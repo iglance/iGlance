@@ -194,8 +194,6 @@ class MyStatusItems: NSObject {
             case StatusItems.INVALID:
                 idx = 7
                 break
-            default:
-                idx = 0
             }
             let strKey = "posArray" + String(index)
             UserDefaults.standard.set(idx, forKey: strKey)
