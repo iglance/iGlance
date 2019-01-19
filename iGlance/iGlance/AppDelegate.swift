@@ -44,12 +44,6 @@ class AppDelegate: NSObject, NSApplicationDelegate {
     var btnBandwidth: NSStatusBarButton?
     var menuBandwidth: NSMenu?
 
-    static let sItemMemUsage = NSStatusBar.system.statusItem(withLength: 27.0)
-    let myMemMenuView = MemMenuView(frame: NSRect(x: 0, y: 0, width: 170, height: 110))
-    let menuItemMem = NSMenuItem(title: "", action: nil, keyEquivalent: "")
-    var btnMemUsage: NSStatusBarButton?
-    var menuMemUsage: NSMenu?
-
     var myWindowController: MyMainWindow?
 
     struct UserSettings {
@@ -97,14 +91,6 @@ class AppDelegate: NSObject, NSApplicationDelegate {
     var bandwidthUUsageArrayIndex = 0
 
     /**
-     * MEM Button Image variables
-     */
-    var pbFillRectMEM: NSRect?
-    var pbMaxMEM: Double?
-    var pixelHeightMEM: Double?
-    var memIMG: String?
-
-    /**
      *  Instantiate the components
      */
     /// The battery instance.
@@ -115,13 +101,8 @@ class AppDelegate: NSObject, NSApplicationDelegate {
     static let myCpuTemp = CpuTempComponent()
     /// The cpu usage instance
     static let myCpuUsage = CpuUsageComponent()
-
-    /**
-     * Shared variables
-     */
-    var pixelWidth: Double?
-    var pbIMG: String?
-    var pbMax: Double?
+    /// The memory usage instance
+    static let myMemUsage = MemUsageComponent()
 
     var intervalTimer: Timer?
     static var currTimeInterval = AppDelegate.UserSettings.updateInterval
@@ -134,7 +115,7 @@ class AppDelegate: NSObject, NSApplicationDelegate {
 
         CpuTempComponent.sItemCPUTemp.isVisible = false
         CpuUsageComponent.sItemCpuUtil.isVisible = false
-        AppDelegate.sItemMemUsage.isVisible = false
+        MemUsageComponent.sItemMemUsage.isVisible = false
         AppDelegate.sItemBandwidth.isVisible = false
         FanComponent.sItemFanSpeed.isVisible = false
         BatteryComponent.sItemBattery.isVisible = false
@@ -215,7 +196,7 @@ class AppDelegate: NSObject, NSApplicationDelegate {
         constructMenu()
         AppDelegate.myCpuUsage.initialize()
         AppDelegate.myCpuTemp.initialize()
-        initMemUsage()
+        AppDelegate.myMemUsage.initialize()
         initBandwidth()
         AppDelegate.myFan.initialize()
         AppDelegate.myBattery.initialize()
@@ -305,7 +286,7 @@ class AppDelegate: NSObject, NSApplicationDelegate {
                 break
             case MyStatusItems.StatusItems.memUtil:
                 if AppDelegate.UserSettings.userWantsMemUsage {
-                    AppDelegate.sItemMemUsage.isVisible = true
+                    MemUsageComponent.sItemMemUsage.isVisible = true
                     once = true
                 }
                 break
@@ -423,16 +404,6 @@ class AppDelegate: NSObject, NSApplicationDelegate {
     }
 
     func constructMenu() {
-        menuItemMem.view = myMemMenuView
-
-        menuMemUsage = NSMenu()
-        menuMemUsage?.addItem(menuItemMem)
-        menuMemUsage?.addItem(NSMenuItem.separator())
-        menuMemUsage?.addItem(NSMenuItem(title: "Settings", action: #selector(settings_clicked), keyEquivalent: "s"))
-        menuMemUsage?.addItem(NSMenuItem.separator())
-        menuMemUsage?.addItem(NSMenuItem(title: "Quit iGlance", action: #selector(NSApplication.terminate(_:)), keyEquivalent: "q"))
-        AppDelegate.sItemMemUsage.menu = menuMemUsage
-
         menuBandwidth = NSMenu()
         menuBandwidth?.addItem(bandwidthDUsageItem)
         menuBandwidth?.addItem(bandwidthUUsageItem)
@@ -441,49 +412,6 @@ class AppDelegate: NSObject, NSApplicationDelegate {
         menuBandwidth?.addItem(NSMenuItem.separator())
         menuBandwidth?.addItem(NSMenuItem(title: "Quit iGlance", action: #selector(NSApplication.terminate(_:)), keyEquivalent: "q"))
         AppDelegate.sItemBandwidth.menu = menuBandwidth
-    }
-
-    @objc func updateMemUsage() {
-        let memStats = System.memoryUsage()
-        let memActive = Double(round(100 * memStats.active) / 100)
-        let memCompressed = Double(round(100 * memStats.compressed) / 100)
-        let memFree = Double(round(100 * memStats.free) / 100)
-        let memInactive = Double(round(100 * memStats.inactive) / 100)
-        let memWired = Double(round(100 * memStats.wired) / 100)
-
-        myMemMenuView.percentActive.stringValue = String(memActive) + " GB"
-        myMemMenuView.percentCompressed.stringValue = String(memCompressed) + " GB"
-        myMemMenuView.percentFree.stringValue = String(memFree) + " GB"
-        myMemMenuView.percentInactive.stringValue = String(memInactive) + " GB"
-        myMemMenuView.percentWired.stringValue = String(memWired) + " GB"
-
-        let memTaken = memActive + memCompressed + memWired
-        let memUtil = Double(memTaken / System.physicalMemory()) * 100
-
-        pixelHeightMEM = Double((pbMax! / 100.0) * memUtil)
-
-        if InterfaceStyle() == InterfaceStyle.Dark {
-            memIMG = "menubar-label-mem-white"
-            pbIMG = "progressbar-white"
-        } else {
-            memIMG = "menubar-label-mem-black"
-            pbIMG = "progressbar-black"
-        }
-        let imgFinal = NSImage(size: NSSize(width: 20, height: 18))
-        imgFinal.lockFocus()
-        let img1 = NSImage(named: NSImage.Name(memIMG!))
-        img1?.draw(at: NSPoint(x: 1, y: 0), from: NSZeroRect, operation: NSCompositingOperation.sourceOver, fraction: 1.0)
-        if AppDelegate.UserSettings.userWantsMemBorder {
-            let img2 = NSImage(named: NSImage.Name(pbIMG!))
-            img2?.draw(at: NSPoint(x: 11, y: 0), from: NSZeroRect, operation: NSCompositingOperation.sourceOver, fraction: 1.0)
-        }
-        pbFillRectMEM = NSRect(x: 12.0, y: 1.0, width: pixelWidth!, height: pixelHeightMEM!)
-        AppDelegate.UserSettings.memColor.setFill()
-        pbFillRectMEM?.fill()
-        NSColor.clear.setFill()
-        imgFinal.unlockFocus()
-
-        btnMemUsage?.image = imgFinal
     }
 
     @objc func updateAll() {
@@ -500,10 +428,10 @@ class AppDelegate: NSObject, NSApplicationDelegate {
             CpuUsageComponent.sItemCpuUtil.isVisible = false
         }
         if AppDelegate.UserSettings.userWantsMemUsage {
-            AppDelegate.sItemMemUsage.isVisible = true
-            updateMemUsage()
+            MemUsageComponent.sItemMemUsage.isVisible = true
+            AppDelegate.myMemUsage.updateMemUsage()
         } else {
-            AppDelegate.sItemMemUsage.isVisible = false
+            MemUsageComponent.sItemMemUsage.isVisible = false
         }
         if AppDelegate.UserSettings.userWantsFanSpeed {
             FanComponent.sItemFanSpeed.isVisible = true
@@ -674,13 +602,6 @@ class AppDelegate: NSObject, NSApplicationDelegate {
             finalUp = String(format: "%.1f", Double(up) / 1_048_576.0) + " MB/s"
         }
         bandText = finalDown! + "\n" + finalUp!
-    }
-
-    func initMemUsage() {
-        pbMax = 16.0
-        pixelWidth = 7
-        btnMemUsage = AppDelegate.sItemMemUsage.button
-        pixelHeightMEM = 0
     }
 
     func initBandwidth() {
