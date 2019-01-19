@@ -9,65 +9,73 @@
 import Cocoa
 
 class CPUMenuView: NSView {
-
     @IBOutlet var contentView: NSView!
-    @IBOutlet weak var percentUser: NSTextField! {
+    @IBOutlet var percentUser: NSTextField! {
         didSet {
             percentUser.textColor = NSColor.orange
         }
     }
-    @IBOutlet weak var percentSystem: NSTextField! {
+
+    @IBOutlet var percentSystem: NSTextField! {
         didSet {
             percentSystem.textColor = NSColor.red
         }
     }
-    @IBOutlet weak var percentIdle: NSTextField! {
+
+    @IBOutlet var percentIdle: NSTextField! {
         didSet {
-            percentIdle.textColor = NSColor(calibratedRed: 0.0, green: 190.0/255.0, blue: 0.0, alpha: 1.0)
+            percentIdle.textColor = NSColor(calibratedRed: 0.0, green: 190.0 / 255.0, blue: 0.0, alpha: 1.0)
         }
     }
-    @IBOutlet weak var percentNice: NSTextField!
-    @IBOutlet weak var lUser: NSTextField! {
+
+    @IBOutlet var percentNice: NSTextField!
+    @IBOutlet var lUser: NSTextField! {
         didSet {
             lUser.textColor = NSColor.orange
         }
     }
-    @IBOutlet weak var lSystem: NSTextField! {
+
+    @IBOutlet var lSystem: NSTextField! {
         didSet {
             lSystem.textColor = NSColor.red
         }
     }
-    @IBOutlet weak var lIdle: NSTextField! {
+
+    @IBOutlet var lIdle: NSTextField! {
         didSet {
-            lIdle.textColor = NSColor(calibratedRed: 0.0, green: 190.0/255.0, blue: 0.0, alpha: 1.0)
+            lIdle.textColor = NSColor(calibratedRed: 0.0, green: 190.0 / 255.0, blue: 0.0, alpha: 1.0)
         }
     }
-    @IBOutlet weak var lNice: NSTextField!
+
+    @IBOutlet var lNice: NSTextField!
     override func draw(_ dirtyRect: NSRect) {
         super.draw(dirtyRect)
 
         // Drawing code here.
     }
+
     override init(frame frameRect: NSRect) {
         super.init(frame: frameRect)
         Bundle.main.loadNibNamed("CPUMenuView", owner: self, topLevelObjects: nil)
         let contentFrame = NSMakeRect(0, 0, frame.size.width, frame.size.height)
-        self.contentView.frame = contentFrame
-        self.addSubview(self.contentView)
+        contentView.frame = contentFrame
+        addSubview(contentView)
     }
+
     required init?(coder decoder: NSCoder) {
         super.init(coder: decoder)
-        //fatalError("init(coder:) has not been implemented")
-        //commonInit()
+        // fatalError("init(coder:) has not been implemented")
+        // commonInit()
     }
+
     /*
-    private func commonInit()
-    {
-        Bundle.main.loadNibNamed(NSNib.Name(rawValue: "CPUMenuView"), owner: self, topLevelObjects: nil)
-        addSubview(contentView)
-        contentView.frame = self.bounds
-        contentView.autoresizingMask = [.maxXMargin, .maxYMargin]
-        
-    }
-    */
+     private func commonInit()
+     {
+     Bundle.main.loadNibNamed(NSNib.Name(rawValue: "CPUMenuView"), owner: self, topLevelObjects: nil)
+     addSubview(contentView)
+     contentView.frame = self.bounds
+     contentView.autoresizingMask = [.maxXMargin, .maxYMargin]
+
+     }
+     */
 }

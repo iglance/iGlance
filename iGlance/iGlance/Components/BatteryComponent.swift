@@ -9,14 +9,13 @@ import Cocoa
 import IOKit.ps
 
 class BatteryComponent {
-    
     /// The status item of the battery.
     static let sItemBattery = NSStatusBar.system.statusItem(withLength: NSStatusItem.variableLength)
     /// The button of the battery in the status bar.
     var btnBattery: NSStatusBarButton?
     /// The menu of the status item.
     var menuBattery: NSMenu?
-    
+
     /// The current capacity of the battery.
     var currentCapacity: Double = 0.0
     /// The charge value before the last update.
@@ -40,7 +39,7 @@ class BatteryComponent {
         currentCapacity = getBatteryCapacity()
         previousChargeValue = currentCapacity
         alreadyNotified = false
-        
+
         // initialize the menu of the status item
         menuBattery = NSMenu()
         menuBattery?.addItem(NSMenuItem(title: "Capacity: ", action: nil, keyEquivalent: ""))
@@ -51,7 +50,7 @@ class BatteryComponent {
         menuBattery?.addItem(NSMenuItem(title: "Quit iGlance", action: #selector(NSApplication.terminate(_:)), keyEquivalent: "q"))
         BatteryComponent.sItemBattery.menu = menuBattery
     }
-    
+
     /**
      *  Initializes the status item button of the battery. This function has to be called after the application did finished launching
      */
@@ -67,11 +66,11 @@ class BatteryComponent {
         let lower = Double(AppDelegate.UserSettings.lowerBatteryNotificationValue)
         let upper = Double(AppDelegate.UserSettings.upperBatteryNotificationValue)
 
-        if previousChargeValue < upper && currentCapacity >= upper && alreadyNotified == false {
+        if previousChargeValue < upper, currentCapacity >= upper, alreadyNotified == false {
             deliverBatteryNotification(message: "Battery is almost fully charged")
-        } else if previousChargeValue > lower && currentCapacity <= lower && alreadyNotified == false {
+        } else if previousChargeValue > lower, currentCapacity <= lower, alreadyNotified == false {
             deliverBatteryNotification(message: "Battery is low")
-        } else if currentCapacity < upper && currentCapacity > lower {
+        } else if currentCapacity < upper, currentCapacity > lower {
             alreadyNotified = false
             NSUserNotificationCenter.default.removeAllDeliveredNotifications()
         }
@@ -103,8 +102,8 @@ class BatteryComponent {
     func getRemainingBatteryTime() -> RemainingBatteryTime {
         let remainingSeconds: CFTimeInterval = IOPSGetTimeRemainingEstimate()
         if remainingSeconds > 0.0 {
-            let timeInMinutes = remainingSeconds/60
-            let hours = Int(floor(timeInMinutes/60))
+            let timeInMinutes = remainingSeconds / 60
+            let hours = Int(floor(timeInMinutes / 60))
             let minutes = Int(timeInMinutes) % 60
             return RemainingBatteryTime(timeInSeconds: remainingSeconds, hours: hours, minutes: minutes)
         } else if remainingSeconds == -1.0 {
@@ -127,14 +126,14 @@ class BatteryComponent {
             if let info = IOPSGetPowerSourceDescription(snapshot, powerSource).takeUnretainedValue() as? [String: AnyObject] {
                 let name = info[kIOPSNameKey] as? String
                 let currentCapacity = info[kIOPSCurrentCapacityKey] as? Int
-                if name != nil && name == "InternalBattery-0" && currentCapacity != nil {
+                if name != nil, name == "InternalBattery-0", currentCapacity != nil {
                     return Double(currentCapacity!)
                 }
             }
         }
         return -1.0
     }
-    
+
     /**
      *  This function updates the displayed time in the status item and the menu entries of the battery status item. The update is called every update interval.
      */
@@ -142,26 +141,26 @@ class BatteryComponent {
         // determine the color scheme and set the font color accordingly
         var batteryIconString: String?
         var fontColor: NSColor?
-        if(InterfaceStyle() == InterfaceStyle.Dark) {
+        if InterfaceStyle() == InterfaceStyle.Dark {
             batteryIconString = "battery-icon-white"
             fontColor = NSColor.white
         } else {
             batteryIconString = "battery-icon-black"
             fontColor = NSColor.black
         }
-        
+
         // get the remaining capacity of the battery
         let batteryCapacity = AppDelegate.myBattery.getBatteryCapacity()
         // get the remaining time
         let remainingTime = AppDelegate.myBattery.getRemainingBatteryTime()
-        
+
         // update the button to display the remaining time
         let imageFinal = NSImage(size: NSSize(width: 32, height: 32))
         imageFinal.lockFocus()
         // get the battery icon and draw the image
         let batteryIcon = NSImage(named: batteryIconString!)
         batteryIcon?.draw(at: NSPoint(x: 0, y: 0), from: NSZeroRect, operation: NSCompositingOperation.sourceOver, fraction: 1.0)
-        
+
         // display the current status of the remaining time.
         var timeValue: String?
         let batteryTime: BatteryComponent.RemainingBatteryTime = remainingTime
@@ -175,23 +174,23 @@ class BatteryComponent {
             // if the remaining time is -2 the laptop is plugged into a power source
             timeValue = "AC"
         }
-        
+
         // draw th remaining time in front of the icon
         let font = NSFont(name: "Apple SD Gothic Neo Bold", size: 9.0)
-        let attrString = NSMutableAttributedString(string: timeValue! )
+        let attrString = NSMutableAttributedString(string: timeValue!)
         attrString.addAttribute(.font, value: font as Any, range: NSMakeRange(0, attrString.length))
         attrString.addAttribute(.foregroundColor, value: fontColor as Any, range: NSMakeRange(0, attrString.length))
         let size = attrString.size()
-        attrString.draw(at: NSPoint(x: 16-size.width/2, y: 16-size.height/2))
-        
+        attrString.draw(at: NSPoint(x: 16 - size.width / 2, y: 16 - size.height / 2))
+
         // unlock the focus and update the image of the button
         imageFinal.unlockFocus()
         btnBattery?.image = imageFinal
-        
+
         // update the menu entry with the current remaining time
         let timeEntry = menuBattery?.item(at: 1)
         timeEntry?.title = "Remaining time: " + timeValue!
-        
+
         // update the menu entry with the current capacity
         let capacityEntry = menuBattery?.item(at: 0)
         capacityEntry?.title = "Capacity: " + String(format: "%02d", Int(batteryCapacity)) + "%"
