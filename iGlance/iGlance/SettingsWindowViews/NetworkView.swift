@@ -19,7 +19,7 @@ class NetworkView: NSViewController {
     @IBAction func cbNetUsage_clicked(_: NSButton) {
         let checked = (cbNetUsage.state == NSButton.StateValue.on)
         AppDelegate.UserSettings.userWantsBandwidth = checked
-        AppDelegate.sItemBandwidth.isVisible = checked
+        NetUsageComponent.sItemBandwidth.isVisible = checked
         UserDefaults.standard.set(checked, forKey: "userWantsBandwidth")
         checked ? MyStatusItems.insertItem(item: MyStatusItems.StatusItems.bandwidth) : MyStatusItems.removeItem(item: MyStatusItems.StatusItems.bandwidth)
     }
