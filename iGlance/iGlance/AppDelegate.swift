@@ -37,13 +37,6 @@ extension NSColor {
 class AppDelegate: NSObject, NSApplicationDelegate {
     public static var VERSION = "1.2"
 
-    /**
-     * StatusBarItems, Buttons and Menus declaration
-     */
-    static let sItemBandwidth = NSStatusBar.system.statusItem(withLength: 62.0)
-    var btnBandwidth: NSStatusBarButton?
-    var menuBandwidth: NSMenu?
-
     var myWindowController: MyMainWindow?
 
     struct UserSettings {
@@ -66,31 +59,6 @@ class AppDelegate: NSObject, NSApplicationDelegate {
     }
 
     /**
-     * Bandwidth variables
-     */
-    var dSpeed: UInt64?
-    var uSpeed: UInt64?
-    var dSpeedLast: UInt64?
-    var uSpeedLast: UInt64?
-
-    var bandIMG: String?
-    var bandColor: NSColor?
-    var bandText: String?
-    var finalDown: String?
-    var finalUp: String?
-    var pbFillRectBandwidth: NSRect?
-    var dLength: Int?
-    var uLength: Int?
-
-    var bandwidthDUsageItem = NSMenuItem(title: "Download Last Hour:\t\t NA", action: nil, keyEquivalent: "")
-    var bandwidthDUsageArray = Array(repeating: UInt64(0), count: 3600)
-    var bandwidthDUsageArrayIndex = 0
-
-    var bandwidthUUsageItem = NSMenuItem(title: "Upload Last Hour:\t\t NA", action: nil, keyEquivalent: "")
-    var bandwidthUUsageArray = Array(repeating: UInt64(0), count: 3600)
-    var bandwidthUUsageArrayIndex = 0
-
-    /**
      *  Instantiate the components
      */
     /// The battery instance.
@@ -103,12 +71,11 @@ class AppDelegate: NSObject, NSApplicationDelegate {
     static let myCpuUsage = CpuUsageComponent()
     /// The memory usage instance
     static let myMemUsage = MemUsageComponent()
+    /// The bandwith instance
+    static let myNetUsage = NetUsageComponent()
 
     var intervalTimer: Timer?
     static var currTimeInterval = AppDelegate.UserSettings.updateInterval
-
-    var bandwidthTask: Process?
-    var curr: Array<Substring>?
 
     func applicationDidFinishLaunching(_: Notification) {
         checkForUpdate()
@@ -116,7 +83,7 @@ class AppDelegate: NSObject, NSApplicationDelegate {
         CpuTempComponent.sItemCPUTemp.isVisible = false
         CpuUsageComponent.sItemCpuUtil.isVisible = false
         MemUsageComponent.sItemMemUsage.isVisible = false
-        AppDelegate.sItemBandwidth.isVisible = false
+        NetUsageComponent.sItemBandwidth.isVisible = false
         FanComponent.sItemFanSpeed.isVisible = false
         BatteryComponent.sItemBattery.isVisible = false
 
@@ -125,54 +92,6 @@ class AppDelegate: NSObject, NSApplicationDelegate {
         myWindowController = (NSStoryboard(name: "Main", bundle: nil).instantiateController(withIdentifier: "abcd") as! MyMainWindow)
 
         displayStatusItems()
-
-        // Create a Task instance
-        bandwidthTask = Process()
-
-        // Set the task parameters
-        bandwidthTask?.launchPath = "/usr/bin/env"
-        bandwidthTask?.arguments = ["netstat", "-w1", "-l", "en0"]
-
-        // Create a Pipe and make the task
-        // put all the output there
-        let pipe = Pipe()
-        bandwidthTask?.standardOutput = pipe
-
-        let outputHandle = pipe.fileHandleForReading
-
-        // outputHandle.waitForDataInBackgroundAndNotify()
-        outputHandle.waitForDataInBackgroundAndNotify(forModes: [RunLoop.Mode.common])
-
-        // When new data is available
-        var dataAvailable: NSObjectProtocol!
-        dataAvailable = NotificationCenter.default.addObserver(forName: NSNotification.Name.NSFileHandleDataAvailable, object: outputHandle, queue: nil) { _ -> Void in
-            let data = pipe.fileHandleForReading.availableData
-            if data.count > 0 {
-                if let str = NSString(data: data, encoding: String.Encoding.utf8.rawValue) {
-                    self.curr = [""]
-                    self.curr = str.replacingOccurrences(of: "  ", with: " ").replacingOccurrences(of: "  ", with: " ").replacingOccurrences(of: "  ", with: " ").replacingOccurrences(of: "  ", with: " ").split(separator: " ")
-                    if self.curr == nil || (self.curr?.count)! < 6 {} else {
-                        if Int64(self.curr![2]) == nil {} else {
-                            self.dSpeed = UInt64(self.curr![2])
-                            self.uSpeed = UInt64(self.curr![5])
-                        }
-                    }
-                }
-                outputHandle.waitForDataInBackgroundAndNotify()
-            } else {
-                NotificationCenter.default.removeObserver(dataAvailable)
-            }
-        }
-
-        // When task has finished
-        var dataReady: NSObjectProtocol!
-        dataReady = NotificationCenter.default.addObserver(forName: Process.didTerminateNotification, object: pipe.fileHandleForReading, queue: nil) { _ -> Void in
-            print("Task terminated!")
-            NotificationCenter.default.removeObserver(dataReady)
-        }
-
-        // Launch the task
-        bandwidthTask?.launch()
 
         var startedAtLogin = false
         for app in NSWorkspace.shared.runningApplications {
@@ -193,11 +112,11 @@ class AppDelegate: NSObject, NSApplicationDelegate {
             NSApp.terminate(nil)
         }
 
-        constructMenu()
+        // initialize the components
         AppDelegate.myCpuUsage.initialize()
         AppDelegate.myCpuTemp.initialize()
         AppDelegate.myMemUsage.initialize()
-        initBandwidth()
+        AppDelegate.myNetUsage.initialize()
         AppDelegate.myFan.initialize()
         AppDelegate.myBattery.initialize()
 
@@ -248,22 +167,6 @@ class AppDelegate: NSObject, NSApplicationDelegate {
         }
     }
 
-    func getDBandwidthUsage() -> UInt64 {
-        var total = UInt64(0)
-        for num in bandwidthDUsageArray {
-            total += num
-        }
-        return total
-    }
-
-    func getUBandwidthUsage() -> UInt64 {
-        var total = UInt64(0)
-        for num in bandwidthUUsageArray {
-            total += num
-        }
-        return total
-    }
-
     func displayStatusItems() {
         var once = false
 
@@ -292,7 +195,7 @@ class AppDelegate: NSObject, NSApplicationDelegate {
                 break
             case MyStatusItems.StatusItems.bandwidth:
                 if AppDelegate.UserSettings.userWantsBandwidth {
-                    AppDelegate.sItemBandwidth.isVisible = true
+                    NetUsageComponent.sItemBandwidth.isVisible = true
                     once = true
                 }
                 break
@@ -403,17 +306,6 @@ class AppDelegate: NSObject, NSApplicationDelegate {
         NSApp.activate(ignoringOtherApps: true)
     }
 
-    func constructMenu() {
-        menuBandwidth = NSMenu()
-        menuBandwidth?.addItem(bandwidthDUsageItem)
-        menuBandwidth?.addItem(bandwidthUUsageItem)
-        menuBandwidth?.addItem(NSMenuItem.separator())
-        menuBandwidth?.addItem(NSMenuItem(title: "Settings", action: #selector(settings_clicked), keyEquivalent: "s"))
-        menuBandwidth?.addItem(NSMenuItem.separator())
-        menuBandwidth?.addItem(NSMenuItem(title: "Quit iGlance", action: #selector(NSApplication.terminate(_:)), keyEquivalent: "q"))
-        AppDelegate.sItemBandwidth.menu = menuBandwidth
-    }
-
     @objc func updateAll() {
         if AppDelegate.UserSettings.userWantsCPUTemp {
             CpuTempComponent.sItemCPUTemp.isVisible = true
@@ -440,10 +332,10 @@ class AppDelegate: NSObject, NSApplicationDelegate {
             FanComponent.sItemFanSpeed.isVisible = false
         }
         if AppDelegate.UserSettings.userWantsBandwidth {
-            AppDelegate.sItemBandwidth.isVisible = true
-            reallyUpdateBandwidth()
+            NetUsageComponent.sItemBandwidth.isVisible = true
+            AppDelegate.myNetUsage.updateNetUsage()
         } else {
-            AppDelegate.sItemBandwidth.isVisible = false
+            NetUsageComponent.sItemBandwidth.isVisible = false
         }
         if AppDelegate.UserSettings.userWantsBatteryUtil {
             BatteryComponent.sItemBattery.isVisible = true
@@ -469,147 +361,6 @@ class AppDelegate: NSObject, NSApplicationDelegate {
         } else {
             return false
         }
-    }
-
-    @objc func reallyUpdateBandwidth() {
-        var needUpdate = false
-
-        if dSpeed != dSpeedLast {
-            needUpdate = true
-        }
-
-        if uSpeed != uSpeedLast {
-            needUpdate = true
-        }
-
-        if needUpdate {
-            updateBandText(down: dSpeed!, up: uSpeed!)
-            dSpeedLast = dSpeed
-            uSpeedLast = uSpeed
-
-            bandwidthDUsageArray[bandwidthDUsageArrayIndex] = dSpeedLast!
-            bandwidthDUsageArrayIndex += 1
-
-            if bandwidthDUsageArrayIndex == bandwidthDUsageArray.count - 1 {
-                bandwidthDUsageArrayIndex = 0
-            }
-
-            bandwidthUUsageArray[bandwidthUUsageArrayIndex] = uSpeedLast!
-            bandwidthUUsageArrayIndex += 1
-
-            if bandwidthUUsageArrayIndex == bandwidthUUsageArray.count {
-                bandwidthUUsageArrayIndex = 0
-            }
-
-            updateBandwidthMenuText(down: getDBandwidthUsage(), up: getUBandwidthUsage())
-        }
-
-        if InterfaceStyle() == InterfaceStyle.Dark {
-            bandIMG = "bandwidth-white"
-            bandColor = NSColor.white
-        } else {
-            bandIMG = "bandwidth-black"
-            bandColor = NSColor.black
-        }
-
-        let imgFinal = NSImage(size: NSSize(width: 60, height: 18))
-        imgFinal.lockFocus()
-        let img1 = NSImage(named: NSImage.Name(bandIMG!))
-
-        img1?.draw(at: NSPoint(x: 2, y: 3), from: NSZeroRect, operation: NSCompositingOperation.sourceOver, fraction: 1.0)
-
-        let paragraphStyle = NSMutableParagraphStyle()
-        paragraphStyle.lineSpacing = 0.00000001
-
-        dLength = finalDown?.count
-        uLength = finalUp?.count
-
-        let font = NSFont(name: "Apple SD Gothic Neo Bold", size: 11.0)
-        let fontSmall = NSFont(name: "Apple SD Gothic Neo Bold", size: 8.0)
-        let attrString = NSMutableAttributedString(string: finalDown ?? "0 KB/s")
-        attrString.addAttribute(.paragraphStyle, value: paragraphStyle, range: NSMakeRange(0, attrString.length))
-        attrString.addAttribute(.font, value: font as Any, range: NSMakeRange(0, attrString.length - 4))
-        attrString.addAttribute(.font, value: fontSmall as Any, range: NSMakeRange(attrString.length - 4, 4))
-        attrString.addAttribute(.foregroundColor, value: bandColor ?? NSColor.white, range: NSMakeRange(0, attrString.length))
-        attrString.draw(at: NSPoint(x: 16, y: 6))
-
-        let attrString2 = NSMutableAttributedString(string: finalUp ?? "0 KB/s")
-        attrString2.addAttribute(.paragraphStyle, value: paragraphStyle, range: NSMakeRange(0, attrString2.length))
-        attrString2.addAttribute(.font, value: font as Any, range: NSMakeRange(0, attrString2.length - 4))
-        attrString2.addAttribute(.font, value: fontSmall as Any, range: NSMakeRange(attrString2.length - 4, 4))
-        attrString2.addAttribute(.foregroundColor, value: bandColor ?? NSColor.white, range: NSMakeRange(0, attrString2.length))
-        attrString2.draw(at: NSPoint(x: 16, y: -4))
-        imgFinal.unlockFocus()
-        btnBandwidth?.image = imgFinal
-    }
-
-    func updateBandwidthMenuText(down: UInt64, up: UInt64) {
-        var mFinalDown = ""
-        var mFinalUp = ""
-        if down < 1024 {
-            // B
-            mFinalDown = "0 KB"
-        } else if down < 1_048_576 {
-            // KB
-            mFinalDown = String((Int(down / 1024) / 4) * 4) + " KB"
-        } else if down < 1_073_741_824 {
-            // MB
-            mFinalDown = String(format: "%.1f", Double(down) / 1_048_576.0) + " MB"
-        } else {
-            // GB
-            mFinalDown = String(format: "%.1f", Double(down) / 1_073_741_824.0) + " GB"
-        }
-
-        if up < 1024 {
-            // B
-            mFinalUp = "0 KB"
-        } else if up < 1_048_576 {
-            // KB
-            mFinalUp = String((Int(up / 1024) / 4) * 4) + " KB"
-        } else if up < 1_073_741_824 {
-            // MB
-            mFinalUp = String(format: "%.1f", Double(up) / 1_048_576.0) + " MB"
-        } else {
-            // GB
-            mFinalUp = String(format: "%.1f", Double(up) / 1_073_741_824.0) + " GB"
-        }
-
-        // bandText = finalDown! + "\n" + finalUp!
-        bandwidthDUsageItem.title = "Download Last Hour:\t\t " + mFinalDown
-        bandwidthUUsageItem.title = "Upload Last Hour:\t\t " + mFinalUp
-    }
-
-    func updateBandText(down: UInt64, up: UInt64) {
-        if down < 1024 {
-            // B
-            finalDown = "0 KB/s"
-        } else if down < 1_048_576 {
-            // KB
-            finalDown = String((Int(down / 1024) / 4) * 4) + " KB/s"
-        } else {
-            // MB
-            finalDown = String(format: "%.1f", Double(down) / 1_048_576.0) + " MB/s"
-        }
-
-        if up < 1024 {
-            // B
-            finalUp = "0 KB/s"
-        } else if up < 1_048_576 {
-            // KB
-            finalUp = String((Int(up / 1024) / 4) * 4) + " KB/s"
-        } else {
-            // MB
-            finalUp = String(format: "%.1f", Double(up) / 1_048_576.0) + " MB/s"
-        }
-        bandText = finalDown! + "\n" + finalUp!
-    }
-
-    func initBandwidth() {
-        btnBandwidth = AppDelegate.sItemBandwidth.button
-
-        dLength = 6
-        uLength = 6
-        bandText = ""
     }
 
     func applicationWillTerminate(_: Notification) {

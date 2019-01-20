@@ -27,6 +27,7 @@
 		02ECFC7B20C80A9500E0A1D7 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 02ECFC7920C80A9500E0A1D7 /* Main.storyboard */; };
 		02ECFC8120C80CBA00E0A1D7 /* iGlanceLauncher.app in CopyFiles */ = {isa = PBXBuildFile; fileRef = 02ECFC7120C80A9300E0A1D7 /* iGlanceLauncher.app */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
 		02ECFC8420C80CF800E0A1D7 /* ServiceManagement.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 02ECFC8320C80CF800E0A1D7 /* ServiceManagement.framework */; };
+		B471FE4321F4D9B900DAC679 /* NetUsageComponent.swift in Sources */ = {isa = PBXBuildFile; fileRef = B471FE4221F4D9B900DAC679 /* NetUsageComponent.swift */; };
 		B494383A21F246B000F80E03 /* FanComponent.swift in Sources */ = {isa = PBXBuildFile; fileRef = B494383921F246B000F80E03 /* FanComponent.swift */; };
 		B4B6137520CD16600068A789 /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B4B6137420CD16600068A789 /* Cocoa.framework */; };
 		B4DD136821F3BC6D00652861 /* CpuUsageComponent.swift in Sources */ = {isa = PBXBuildFile; fileRef = B4DD136721F3BC6D00652861 /* CpuUsageComponent.swift */; };
@@ -79,6 +80,7 @@
 		02ECFC7A20C80A9500E0A1D7 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		02ECFC7C20C80A9500E0A1D7 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		02ECFC8320C80CF800E0A1D7 /* ServiceManagement.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = ServiceManagement.framework; path = System/Library/Frameworks/ServiceManagement.framework; sourceTree = SDKROOT; };
+		B471FE4221F4D9B900DAC679 /* NetUsageComponent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetUsageComponent.swift; sourceTree = "<group>"; };
 		B494383921F246B000F80E03 /* FanComponent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FanComponent.swift; sourceTree = "<group>"; };
 		B4B6137420CD16600068A789 /* Cocoa.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Cocoa.framework; path = System/Library/Frameworks/Cocoa.framework; sourceTree = SDKROOT; };
 		B4DD136721F3BC6D00652861 /* CpuUsageComponent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CpuUsageComponent.swift; sourceTree = "<group>"; };
@@ -230,6 +232,7 @@
 				B494383921F246B000F80E03 /* FanComponent.swift */,
 				B4DD136721F3BC6D00652861 /* CpuUsageComponent.swift */,
 				B4DD136921F3C59C00652861 /* MemUsageComponent.swift */,
+				B471FE4221F4D9B900DAC679 /* NetUsageComponent.swift */,
 			);
 			path = Components;
 			sourceTree = "<group>";
@@ -351,6 +354,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				023642F320CAD86B00CDB17D /* System.swift in Sources */,
+				B471FE4321F4D9B900DAC679 /* NetUsageComponent.swift in Sources */,
 				B494383A21F246B000F80E03 /* FanComponent.swift in Sources */,
 				02E9CE3020C526BE00879EB1 /* MyMainWindow.swift in Sources */,
 				023642E820CAD73B00CDB17D /* Process.swift in Sources */,
