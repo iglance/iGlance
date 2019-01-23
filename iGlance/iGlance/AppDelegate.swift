@@ -35,7 +35,7 @@ extension NSColor {
 
 @NSApplicationMain
 class AppDelegate: NSObject, NSApplicationDelegate {
-    public static var VERSION = "1.2"
+    public static var VERSION = "1.2.2"
 
     var myWindowController: MyMainWindow?
 
