@@ -22,6 +22,7 @@ class FanComponent {
     var minMenuFan = NSMenuItem(title: "Min:\t\t NA", action: nil, keyEquivalent: "")
     var maxMenuFan = NSMenuItem(title: "Max:\t NA", action: nil, keyEquivalent: "")
     var currMenuFan = NSMenuItem(title: "Current:\t NA", action: nil, keyEquivalent: "")
+    var fanCount: Int = 0
 
     init() {
         // initialize the menu of the status item
@@ -38,41 +39,68 @@ class FanComponent {
 
     func initialize() {
         btnFanSpeed = FanComponent.sItemFanSpeed.button
-    }
-
-    func updateFanSpeed() {
-        let allFans: [Fan]
+        
+        // get the fan count
+        do { fanCount = try SMCKit.fanCount() } catch { print(error) }
+        
         do {
-            allFans = try SMCKit.allFans()
+            minMenuFan.title = try "Min:\t\t " + String(getMinFanSpeed()) + " RPM"
+            maxMenuFan.title = try "Max:\t " + String(getMaxFanSpeed()) + " RPM"
         } catch {
             print(error)
-            return
         }
-
-        if allFans.count == 0 {
-            print("No fans found")
-            return
-        }
-
-        for fan in allFans {
-            guard let currentSpeed = try? SMCKit.fanCurrentSpeed(fan.id) else {
-                print("\tCurrent:  NA")
-                return
+        
+    }
+    
+    /**
+     *  Returns the maximum minimal fan speed of all fans.
+     */
+    func getMinFanSpeed() throws -> Int {
+        var minFanSpeed: Int = 0
+        for i in 0...fanCount-1 {
+            let minSpeed = try SMCKit.fanMinSpeed(i)
+            if minSpeed > minFanSpeed {
+                minFanSpeed = minSpeed
             }
-            minMenuFan.title = "Min:\t\t " + String(fan.minSpeed) + " RPM"
-            maxMenuFan.title = "Max:\t " + String(fan.maxSpeed) + " RPM"
-            let currentMinus50 = currentSpeed - fan.minSpeed - 50
-            if currentMinus50 < 0 {
-                btnFanSpeed?.title = "0"
-                currMenuFan.title = "Current:\t 0 RPM"
-            } else if currentSpeed >= fan.maxSpeed {
-                btnFanSpeed?.title = String(fan.maxSpeed - fan.minSpeed)
-                currMenuFan.title = "Current:\t " + String(fan.maxSpeed - fan.minSpeed) + " RPM"
-            } else {
-                btnFanSpeed?.title = String(((currentMinus50 + 50) / 5) * 5)
-                currMenuFan.title = "Current:\t " + String(((currentMinus50 + 50) / 5) * 5) + " RPM"
-            }
-            break
         }
+        return minFanSpeed
+    }
+    
+    /**
+     *  Returns the maximum fan speed of all fans.
+     */
+    func getMaxFanSpeed() throws -> Int {
+        var maxFanSpeed: Int = 0
+        for i in 0...fanCount-1 {
+            let maxSpeed = try SMCKit.fanMaxSpeed(i)
+            if maxSpeed > maxFanSpeed {
+                maxFanSpeed = maxSpeed
+            }
+        }
+        return maxFanSpeed
+    }
+    
+    /**
+     *  Returns the maximum current fan speed of all fans.
+     */
+    func getCurrentFanSpeed() throws -> Int {
+        var currentFanSpeed: Int = 0
+        for i in 0...fanCount-1 {
+            let currentSpeed = try SMCKit.fanCurrentSpeed(i)
+            if currentSpeed > currentFanSpeed {
+                currentFanSpeed = currentSpeed
+            }
+        }
+        return currentFanSpeed
+    }
+
+    /*
+     *  Updates the menu bar button and its menu with the greatest current fan speed of all fans.
+     */
+    func updateFanSpeed() throws {
+        // set the current fan speed in the menu
+        currMenuFan.title = try "Current:\t " + String(getCurrentFanSpeed()) + " RPM"
+        // set the current fan speed as button title
+        btnFanSpeed?.title = try String(getCurrentFanSpeed()) + " RPM"
     }
 }
