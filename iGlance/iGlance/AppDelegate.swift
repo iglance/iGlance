@@ -327,7 +327,11 @@ class AppDelegate: NSObject, NSApplicationDelegate {
         }
         if AppDelegate.UserSettings.userWantsFanSpeed {
             FanComponent.sItemFanSpeed.isVisible = true
-            AppDelegate.myFan.updateFanSpeed()
+            do {
+                try AppDelegate.myFan.updateFanSpeed()
+            } catch {
+                print(error)
+            }
         } else {
             FanComponent.sItemFanSpeed.isVisible = false
         }
