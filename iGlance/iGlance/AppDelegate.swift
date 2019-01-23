@@ -35,7 +35,7 @@ extension NSColor {
 
 @NSApplicationMain
 class AppDelegate: NSObject, NSApplicationDelegate {
-    public static var VERSION = "1.2"
+    public static var VERSION = "1.2.2"
 
     var myWindowController: MyMainWindow?
 
@@ -327,7 +327,11 @@ class AppDelegate: NSObject, NSApplicationDelegate {
         }
         if AppDelegate.UserSettings.userWantsFanSpeed {
             FanComponent.sItemFanSpeed.isVisible = true
-            AppDelegate.myFan.updateFanSpeed()
+            do {
+                try AppDelegate.myFan.updateFanSpeed()
+            } catch {
+                print(error)
+            }
         } else {
             FanComponent.sItemFanSpeed.isVisible = false
         }
