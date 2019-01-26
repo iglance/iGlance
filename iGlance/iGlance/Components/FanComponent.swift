@@ -101,6 +101,6 @@ class FanComponent {
         // set the current fan speed in the menu
         currMenuFan.title = try "Current:\t " + String(getCurrentFanSpeed()) + " RPM"
         // set the current fan speed as button title
-        btnFanSpeed?.title = try String(getCurrentFanSpeed()) + " RPM"
+        btnFanSpeed?.title = try String(getCurrentFanSpeed()) + (AppDelegate.UserSettings.userWantsUnitFanSpeed ? " RPM" : "")
     }
 }

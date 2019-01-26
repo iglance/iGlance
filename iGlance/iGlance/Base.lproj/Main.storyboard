@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.Cocoa.Storyboard.XIB" version="3.0" toolsVersion="14460.31" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES">
+<document type="com.apple.InterfaceBuilder3.Cocoa.Storyboard.XIB" version="3.0" toolsVersion="14313.18" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES">
     <dependencies>
         <deployment identifier="macosx"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="14460.31"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="14313.18"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
@@ -1143,10 +1143,22 @@
                                     <action selector="cbFanSpeed_clicked:" target="sbb-f9-Hi2" id="s9w-24-GDo"/>
                                 </connections>
                             </button>
+                            <button verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Ztr-Kh-GGt" userLabel="Cb Show Unit">
+                                <rect key="frame" x="18" y="224" width="202" height="28"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                                <buttonCell key="cell" type="check" title="Show Unit" bezelStyle="regularSquare" imagePosition="left" inset="2" id="ejh-2Q-foE">
+                                    <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
+                                    <font key="font" metaFont="system"/>
+                                </buttonCell>
+                                <connections>
+                                    <action selector="cbUnitFanSpeed_clicked:" target="sbb-f9-Hi2" id="aBl-MW-jVz"/>
+                                </connections>
+                            </button>
                         </subviews>
                     </view>
                     <connections>
                         <outlet property="cbFanSpeed" destination="dj8-oI-SnN" id="DZz-aP-gCl"/>
+                        <outlet property="cbUnitFanSpeed" destination="Ztr-Kh-GGt" id="4dh-mU-vBN"/>
                     </connections>
                 </viewController>
                 <customObject id="vBj-P5-w3G" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
