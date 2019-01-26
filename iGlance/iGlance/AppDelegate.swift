@@ -41,6 +41,7 @@ class AppDelegate: NSObject, NSApplicationDelegate {
 
     struct UserSettings {
         static var userWantsFanSpeed = false
+        static var userWantsUnitFanSpeed = false
         static var userWantsBandwidth = false
         static var userWantsMemUsage = false
         static var userWantsCPUUtil = false
