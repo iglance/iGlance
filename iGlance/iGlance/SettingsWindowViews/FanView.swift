@@ -16,11 +16,23 @@ class FanView: NSViewController {
         }
     }
 
+    @IBOutlet var cbUnitFanSpeed: NSButton! {
+        didSet {
+            cbUnitFanSpeed.state = AppDelegate.UserSettings.userWantsUnitFanSpeed ? NSButton.StateValue.on : NSButton.StateValue.off
+        }
+    }
+
     @IBAction func cbFanSpeed_clicked(_: NSButton) {
         let checked = (cbFanSpeed.state == NSButton.StateValue.on)
         AppDelegate.UserSettings.userWantsFanSpeed = checked
         FanComponent.sItemFanSpeed.isVisible = checked
         UserDefaults.standard.set(checked, forKey: "userWantsFanSpeed")
         checked ? MyStatusItems.insertItem(item: MyStatusItems.StatusItems.fanSpeed) : MyStatusItems.removeItem(item: MyStatusItems.StatusItems.fanSpeed)
+    }
+
+    @IBAction func cbUnitFanSpeed_clicked(_: NSButton) {
+        let checked = (cbUnitFanSpeed.state == NSButton.StateValue.on)
+        AppDelegate.UserSettings.userWantsUnitFanSpeed = checked
+        UserDefaults.standard.set(checked, forKey: "userWantsUnitFanSpeed")
     }
 }

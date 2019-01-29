@@ -25,7 +25,7 @@ iGlance is a small System Monitor that displays current stats about your Mac on 
 
 ## Credits
 - <a href="https://github.com/D0miH">D0miH</a> - Co-Developer
-- <a href="https://github.com/beltex">beltex</a> - for providing the SMCKit Library
+- <a href="https://github.com/beltex">beltex</a> - for providing the SMCKit and SystemKit Library
 
 ## License
 This software is published under the <b>MIT License</b>.
