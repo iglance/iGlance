@@ -8,7 +8,6 @@ before_deploy: xcodebuild -archivePath ./iGlance -scheme iGlance archive
     && cd iGlanceExport
     && npm install --global https://github.com/D0miH/create-dmg.git
     && create-dmg iGlance.app
-    && mv iGlance*.dmg iGlance.dmg
 deploy:
     provider: releases
     api_key:
