@@ -41,13 +41,13 @@ class FanComponent {
         btnFanSpeed = FanComponent.sItemFanSpeed.button
         
         // get the fan count
-        do { fanCount = try SMCKit.fanCount() } catch { print(error) }
+        do { fanCount = try SMCKit.fanCount() } catch { NSLog("Error: ", error.localizedDescription) }
         
         do {
             minMenuFan.title = try "Min:\t\t " + String(getMinFanSpeed()) + " RPM"
             maxMenuFan.title = try "Max:\t " + String(getMaxFanSpeed()) + " RPM"
         } catch {
-            print(error)
+            NSLog("Error: ", error.localizedDescription)
         }
         
     }

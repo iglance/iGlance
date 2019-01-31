@@ -131,7 +131,7 @@ class AppDelegate: NSObject, NSApplicationDelegate {
         let (htmltext, _, error) = URLSession.shared.synchronousDataTask(urlrequest: request)
         if let error = error {
             // Do nothing
-            print(error)
+            NSLog("Error: ", error.localizedDescription)
         } else {
             let pat = "\\[version\\](.*)\\[\\/version\\]"
             let res = matches(for: pat, in: String(data: htmltext!, encoding: String.Encoding.utf8)!)
@@ -163,7 +163,7 @@ class AppDelegate: NSObject, NSApplicationDelegate {
                 String(text[Range($0.range, in: text)!])
             }
         } catch {
-            print("invalid regex: \(error.localizedDescription)")
+            NSLog("Error invalid regex: ", error.localizedDescription)
             return []
         }
     }
@@ -331,7 +331,7 @@ class AppDelegate: NSObject, NSApplicationDelegate {
             do {
                 try AppDelegate.myFan.updateFanSpeed()
             } catch {
-                print(error)
+                NSLog("Error: ", error.localizedDescription)
             }
         } else {
             FanComponent.sItemFanSpeed.isVisible = false

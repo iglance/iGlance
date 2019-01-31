@@ -178,7 +178,7 @@ class ViewController: NSViewController {
                 String(text[Range($0.range, in: text)!])
             }
         } catch {
-            print("invalid regex: \(error.localizedDescription)")
+            NSLog("Error invalid regex: ", error.localizedDescription)
             return []
         }
     }
