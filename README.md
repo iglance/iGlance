@@ -1,4 +1,4 @@
-# iGlance &ensp;&ensp;[![Build Status](https://travis-ci.org/Moneypulation/iGlance.svg?branch=master)](https://travis-ci.org/Moneypulation/iGlance)
+# iGlance &ensp;&ensp;[![Build Status](https://travis-ci.org/Moneypulation/iGlance.svg?branch=master)](https://travis-ci.org/Moneypulation/iGlance) [![Github All Releases](https://img.shields.io/github/downloads/Moneypulation/iGlance/total.svg?colorB=orange)]()
 > macOS System Monitor for the Status Bar
 
 
@@ -26,8 +26,6 @@ iGlance is a small System Monitor that displays current stats about your Mac on 
 ## Credits
 - <a href="https://github.com/D0miH">D0miH</a> - Co-Developer
 - <a href="https://github.com/beltex">beltex</a> - for providing the SMCKit and SystemKit Library
-
+- <a href="https://github.com/m-oscartong">m-oscartong</a> and <a href="https://github.com/sindresorhus">sindresorhus</a> for providing the <a href="https://github.com/sindresorhus/create-dmg">create-dmg</a> script.
 ## License
 This software is published under the <b>MIT License</b>.
-
-[![HitCount](http://hits.dwyl.io/Moneypulation/iGlance.svg)](http://hits.dwyl.io/Moneypulation/iGlance)
