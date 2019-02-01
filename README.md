@@ -1,4 +1,4 @@
-# iGlance &ensp;&ensp;[![Build Status](https://travis-ci.org/Moneypulation/iGlance.svg?branch=master)](https://travis-ci.org/Moneypulation/iGlance) [![Github All Releases](https://img.shields.io/github/downloads/Moneypulation/iGlance/total.svg?colorB=orange)]()
+# iGlance &ensp;&ensp;[![Build Status](https://travis-ci.org/Moneypulation/iGlance.svg?branch=master)](https://travis-ci.org/Moneypulation/iGlance) [![Github All Releases](https://img.shields.io/github/downloads/Moneypulation/iGlance/total.svg?colorB=orange)](https://github.com/Moneypulation/iGlance/releases)
 > macOS System Monitor for the Status Bar
 
 
