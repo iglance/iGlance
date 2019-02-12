@@ -24,7 +24,6 @@ iGlance is a small System Monitor that displays current stats about your Mac on 
 - Unzip it and put the Application into your Application folder
 
 ## Credits
-- <a href="https://github.com/Moneypulation">Moneypulation</a>, <a href="https://github.com/D0miH">D0miH</a> Developer
 - <a href="https://github.com/beltex">beltex</a> - for providing the SMCKit and SystemKit Library
 - <a href="https://github.com/m-oscartong">m-oscartong</a> and <a href="https://github.com/sindresorhus">sindresorhus</a> for providing the <a href="https://github.com/sindresorhus/create-dmg">create-dmg</a> script.
 - And of course all the other <a href="https://github.com/iglance/iGlance/graphs/contributors">contributors</a>.
