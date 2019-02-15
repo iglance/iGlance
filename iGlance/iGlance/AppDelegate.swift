@@ -126,7 +126,7 @@ class AppDelegate: NSObject, NSApplicationDelegate {
     }
 
     func checkForUpdate() {
-        var request = URLRequest(url: URL(string: "https://raw.githubusercontent.com/Moneypulation/iGlance/master/Version.txt")!)
+        var request = URLRequest(url: URL(string: "https://raw.githubusercontent.com/iglance/iGlance/master/Version.txt")!)
         request.httpMethod = "GET"
         let (htmltext, _, error) = URLSession.shared.synchronousDataTask(urlrequest: request)
         if let error = error {
@@ -142,12 +142,12 @@ class AppDelegate: NSObject, NSApplicationDelegate {
                 if onlyversion != AppDelegate.VERSION {
                     let alert = NSAlert()
                     alert.messageText = ""
-                    alert.informativeText = "A new version (" + onlyversion + ") is available at: \n\n https://github.com/Moneypulation/iGlance"
+                    alert.informativeText = "A new version (" + onlyversion + ") is available at: \n\n https://github.com/iglance/iGlance"
                     alert.alertStyle = .informational
                     alert.addButton(withTitle: "Visit Website")
                     alert.addButton(withTitle: "OK")
                     if alert.runModal() == .alertFirstButtonReturn {
-                        if let url = URL(string: "https://github.com/Moneypulation/iGlance"), NSWorkspace.shared.open(url) {}
+                        if let url = URL(string: "https://github.com/iglance/iGlance"), NSWorkspace.shared.open(url) {}
                     }
                 }
             }
