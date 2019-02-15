@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.Cocoa.Storyboard.XIB" version="3.0" toolsVersion="14313.18" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES">
+<document type="com.apple.InterfaceBuilder3.Cocoa.Storyboard.XIB" version="3.0" toolsVersion="14460.31" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES">
     <dependencies>
         <deployment identifier="macosx"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="14313.18"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="14460.31"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
@@ -952,11 +952,11 @@
             <objects>
                 <viewController title="CPU" id="MQx-3P-zDy" customClass="CpuView" customModule="iGlance" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" id="GNc-S1-j00">
-                        <rect key="frame" x="0.0" y="0.0" width="450" height="159"/>
+                        <rect key="frame" x="0.0" y="0.0" width="450" height="253"/>
                         <autoresizingMask key="autoresizingMask"/>
                         <subviews>
                             <button verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="gpa-qj-kWb">
-                                <rect key="frame" x="18" y="113" width="202" height="28"/>
+                                <rect key="frame" x="18" y="207" width="202" height="28"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                 <buttonCell key="cell" type="check" title="CPU Utilization" bezelStyle="regularSquare" imagePosition="left" inset="2" id="45J-jx-M3f">
                                     <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
@@ -967,7 +967,7 @@
                                 </connections>
                             </button>
                             <button verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="TfC-J4-Qzk">
-                                <rect key="frame" x="18" y="81" width="146" height="28"/>
+                                <rect key="frame" x="18" y="146" width="146" height="28"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                 <buttonCell key="cell" type="check" title="CPU Temperature" bezelStyle="regularSquare" imagePosition="left" inset="2" id="T4w-K8-qUh">
                                     <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
@@ -978,7 +978,7 @@
                                 </connections>
                             </button>
                             <popUpButton verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="28T-ir-Zeo">
-                                <rect key="frame" x="158" y="81" width="53" height="26"/>
+                                <rect key="frame" x="158" y="146" width="53" height="26"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                 <popUpButtonCell key="cell" type="push" title="°C" bezelStyle="rounded" alignment="left" lineBreakMode="truncatingTail" state="on" borderStyle="borderAndBezel" imageScaling="proportionallyDown" inset="2" selectedItem="eom-aU-fJu" id="g02-hl-v6J">
                                     <behavior key="behavior" lightByBackground="YES" lightByGray="YES"/>
@@ -995,7 +995,7 @@
                                 </connections>
                             </popUpButton>
                             <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="eWF-H4-Y17">
-                                <rect key="frame" x="20" y="52" width="118" height="17"/>
+                                <rect key="frame" x="20" y="117" width="118" height="17"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                 <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="Progressbar Color:" id="KRY-WL-Nxx">
                                     <font key="font" metaFont="system"/>
@@ -1003,18 +1003,44 @@
                                     <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
                                 </textFieldCell>
                             </textField>
+                            <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="0cR-G6-EQV">
+                                <rect key="frame" x="18" y="184" width="89" height="17"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                                <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="Show CPU as:" id="ENb-Av-HEp">
+                                    <font key="font" metaFont="system"/>
+                                    <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
+                                    <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
+                                </textFieldCell>
+                            </textField>
                             <colorWell fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="W9N-7k-Xkt">
-                                <rect key="frame" x="160" y="49" width="48" height="23"/>
+                                <rect key="frame" x="160" y="114" width="48" height="23"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                 <color key="color" red="0.05813049898" green="0.055541899059999997" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                 <connections>
                                     <action selector="cpCPU_clicked:" target="MQx-3P-zDy" id="Ys9-Jz-cEt"/>
                                 </connections>
                             </colorWell>
-                            <button verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="9PU-LC-0gS">
-                                <rect key="frame" x="18" y="15" width="202" height="28"/>
+                            <popUpButton verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="v9K-rV-SwD">
+                                <rect key="frame" x="111" y="177" width="77" height="25"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                                <buttonCell key="cell" type="check" title="Progressbar Border" bezelStyle="regularSquare" imagePosition="left" state="on" inset="2" id="vIT-GG-dAQ">
+                                <popUpButtonCell key="cell" type="push" title="Bar" bezelStyle="rounded" alignment="left" lineBreakMode="truncatingTail" state="on" borderStyle="borderAndBezel" imageScaling="proportionallyDown" inset="2" selectedItem="NqA-Cb-ocL" id="iMY-ta-Xmt">
+                                    <behavior key="behavior" lightByBackground="YES" lightByGray="YES"/>
+                                    <font key="font" metaFont="menu"/>
+                                    <menu key="menu" id="Shn-Fv-3Sh">
+                                        <items>
+                                            <menuItem title="Bar" state="on" id="NqA-Cb-ocL"/>
+                                            <menuItem title="Graph" id="xm3-Xf-ilO"/>
+                                        </items>
+                                    </menu>
+                                </popUpButtonCell>
+                                <connections>
+                                    <action selector="popUpCPUGraphType:" target="MQx-3P-zDy" id="VRb-qP-j7b"/>
+                                </connections>
+                            </popUpButton>
+                            <button verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="9PU-LC-0gS">
+                                <rect key="frame" x="18" y="80" width="202" height="28"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                                <buttonCell key="cell" type="check" title="Show Border" bezelStyle="regularSquare" imagePosition="left" state="on" inset="2" id="vIT-GG-dAQ">
                                     <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
                                     <font key="font" metaFont="system"/>
                                 </buttonCell>
@@ -1030,11 +1056,12 @@
                         <outlet property="cbCPUUtil" destination="gpa-qj-kWb" id="uJJ-Qs-xPL"/>
                         <outlet property="cpCPU" destination="W9N-7k-Xkt" id="O3a-jZ-g0I"/>
                         <outlet property="ddTempUnit" destination="28T-ir-Zeo" id="ZfR-04-r5c"/>
+                        <outlet property="popUpCPUGraphType" destination="v9K-rV-SwD" id="LC9-gL-f3o"/>
                     </connections>
                 </viewController>
                 <customObject id="gG7-L0-jME" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1305" y="116"/>
+            <point key="canvasLocation" x="1311" y="135.5"/>
         </scene>
         <!--Memory-->
         <scene sceneID="0lC-Lo-bY8">
