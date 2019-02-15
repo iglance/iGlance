@@ -92,4 +92,26 @@ class CpuView: NSViewController {
         AppDelegate.UserSettings.userWantsCPUBorder = (cbCPUBorder.state == NSButton.StateValue.on)
         UserDefaults.standard.set((cbCPUBorder.state == NSButton.StateValue.on), forKey: "userWantsCPUBorder")
     }
+    
+    // define the outlet and the action of the pop up button for choosing how to visualize the cpu usage
+    @IBOutlet weak var popUpCPUGraphType: NSPopUpButton! {
+        didSet {
+            switch AppDelegate.UserSettings.cpuUsageVisualization {
+                case CpuUsageComponent.VisualizationType.Bar:
+                    popUpCPUGraphType.selectItem(at: 0)
+                    break
+                case CpuUsageComponent.VisualizationType.Graph:
+                    popUpCPUGraphType.selectItem(at: 1)
+                    break
+            }
+        }
+    }
+    
+    @IBAction func popUpCPUGraphType(_ sender: Any) {
+        AppDelegate.UserSettings.cpuUsageVisualization = popUpCPUGraphType.indexOfSelectedItem == 0 ? CpuUsageComponent.VisualizationType.Bar : CpuUsageComponent.VisualizationType.Graph
+        // adjust the length of the status item according to the visualization type
+        CpuUsageComponent.sItemCpuUtil.length = popUpCPUGraphType.indexOfSelectedItem == 0 ? 27 : 53
+        UserDefaults.standard.set((popUpCPUGraphType.indexOfSelectedItem == 0) ? 0 : 1, forKey: "cpuUsageVisualization")
+    }
+    
 }

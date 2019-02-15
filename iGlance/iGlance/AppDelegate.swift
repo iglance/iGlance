@@ -48,6 +48,7 @@ class AppDelegate: NSObject, NSApplicationDelegate {
         static var userWantsCPUTemp = false
         static var userWantsAutostart = false
         static var cpuColor = NSColor.red
+        static var cpuUsageVisualization = CpuUsageComponent.VisualizationType.Bar
         static var memColor = NSColor.green
         static var updateInterval = 1.0
         static var tempUnit = CpuTempComponent.TempUnit.Celcius
@@ -249,6 +250,9 @@ class AppDelegate: NSObject, NSApplicationDelegate {
 
         if UserDefaults.standard.value(forKey: "userWantsCPUUtil") != nil {
             UserSettings.userWantsCPUUtil = UserDefaults.standard.value(forKey: "userWantsCPUUtil") as! Bool
+        }
+        if UserDefaults.standard.value(forKey: "cpuUsageVisualization") != nil {
+            UserSettings.cpuUsageVisualization = (UserDefaults.standard.value(forKey: "cpuUsageVisualization") as! Int == 0) ? CpuUsageComponent.VisualizationType.Bar : CpuUsageComponent.VisualizationType.Graph
         }
         if UserDefaults.standard.value(forKey: "userWantsCPUTemp") != nil {
             UserSettings.userWantsCPUTemp = UserDefaults.standard.value(forKey: "userWantsCPUTemp") as! Bool
