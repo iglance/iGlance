@@ -10,11 +10,6 @@ import Cocoa
 
 class CpuUsageComponent {
     
-    public enum VisualizationType {
-        case Graph
-        case Bar
-    }
-    
     // the status item of the cpu utilization
     static var sItemCpuUtil = NSStatusBar.system.statusItem(withLength: 27.0)
     // the custom menu view of the cpu utilization
@@ -41,8 +36,8 @@ class CpuUsageComponent {
         btnCpuUtil = CpuUsageComponent.sItemCpuUtil.button
         btnCpuUtil?.image?.isTemplate = true
         
-        // adjust the length of the status item according to the visualization type
-        CpuUsageComponent.sItemCpuUtil.length = AppDelegate.UserSettings.cpuUsageVisualization == VisualizationType.Bar ? 27 : CGFloat(AppDelegate.UserSettings.cpuGraphWidth)
+        // adjust the length of the status item according to the visualization type. Add 5 pixels to add some space to other status items.
+        CpuUsageComponent.sItemCpuUtil.length = AppDelegate.UserSettings.cpuUsageVisualization == AppDelegate.VisualizationType.Bar ? 27 : CGFloat(AppDelegate.UserSettings.cpuGraphWidth + 5)
         menuBarGraph.width = Int(CpuUsageComponent.sItemCpuUtil.length)
     }
     
@@ -78,12 +73,12 @@ class CpuUsageComponent {
             pbImg = "progressbar-black"
         }
         
-        if AppDelegate.UserSettings.cpuUsageVisualization == VisualizationType.Graph {
+        if AppDelegate.UserSettings.cpuUsageVisualization == AppDelegate.VisualizationType.Graph {
             // if the width has changed update the width of the graph
-            if menuBarGraph.width != Int(CpuUsageComponent.sItemCpuUtil.length) {
-                menuBarGraph.width = Int(CpuUsageComponent.sItemCpuUtil.length)
+            if menuBarGraph.width != Int(CpuUsageComponent.sItemCpuUtil.length-5) {
+                menuBarGraph.width = Int(CpuUsageComponent.sItemCpuUtil.length-5)
             }
-            btnCpuUtil?.image = menuBarGraph.drawUsageGraph(totalCpuUsage: cpuUsageTotal)
+            btnCpuUtil?.image = menuBarGraph.drawUsageGraph(totalCpuUsage: cpuUsageTotal, drawBorder: AppDelegate.UserSettings.userWantsCPUBorder)
         } else {
             drawUsageBar(totalCpuUsage: cpuUsageTotal)
         }

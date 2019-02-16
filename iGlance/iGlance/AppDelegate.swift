@@ -38,6 +38,11 @@ class AppDelegate: NSObject, NSApplicationDelegate {
     public static var VERSION = "1.2.3"
 
     var myWindowController: MyMainWindow?
+    
+    public enum VisualizationType {
+        case Graph
+        case Bar
+    }
 
     struct UserSettings {
         static var userWantsFanSpeed = false
@@ -48,9 +53,11 @@ class AppDelegate: NSObject, NSApplicationDelegate {
         static var userWantsCPUTemp = false
         static var userWantsAutostart = false
         static var cpuColor = NSColor.red
-        static var cpuUsageVisualization = CpuUsageComponent.VisualizationType.Bar
+        static var cpuUsageVisualization = VisualizationType.Bar
         static var cpuGraphWidth = 27
         static var memColor = NSColor.green
+        static var memUsageVisualization = VisualizationType.Bar
+        static var memGraphWidth = 27
         static var updateInterval = 1.0
         static var tempUnit = CpuTempComponent.TempUnit.Celcius
         static var userWantsCPUBorder = true
@@ -253,7 +260,7 @@ class AppDelegate: NSObject, NSApplicationDelegate {
             UserSettings.userWantsCPUUtil = UserDefaults.standard.value(forKey: "userWantsCPUUtil") as! Bool
         }
         if UserDefaults.standard.value(forKey: "cpuUsageVisualization") != nil {
-            UserSettings.cpuUsageVisualization = (UserDefaults.standard.value(forKey: "cpuUsageVisualization") as! Int == 0) ? CpuUsageComponent.VisualizationType.Bar : CpuUsageComponent.VisualizationType.Graph
+            UserSettings.cpuUsageVisualization = (UserDefaults.standard.value(forKey: "cpuUsageVisualization") as! Int == 0) ? VisualizationType.Bar : VisualizationType.Graph
         }
         if UserDefaults.standard.value(forKey: "cpuGraphWidth") != nil {
             UserSettings.cpuGraphWidth = UserDefaults.standard.value(forKey: "cpuGraphWidth") as! Int
@@ -269,6 +276,12 @@ class AppDelegate: NSObject, NSApplicationDelegate {
         }
         if UserDefaults.standard.value(forKey: "userWantsMemUsage") != nil {
             UserSettings.userWantsMemUsage = UserDefaults.standard.value(forKey: "userWantsMemUsage") as! Bool
+        }
+        if UserDefaults.standard.value(forKey: "memUsageVisualization") != nil {
+             UserSettings.memUsageVisualization = (UserDefaults.standard.value(forKey: "memUsageVisualization") as! Int == 0) ? VisualizationType.Bar : VisualizationType.Graph
+        }
+        if UserDefaults.standard.value(forKey: "memGraphWidth") != nil {
+            UserSettings.memGraphWidth = UserDefaults.standard.value(forKey: "memGraphWidth") as! Int
         }
         if UserDefaults.standard.value(forKey: "userWantsAutostart") != nil {
             UserSettings.userWantsAutostart = UserDefaults.standard.value(forKey: "userWantsAutostart") as! Bool

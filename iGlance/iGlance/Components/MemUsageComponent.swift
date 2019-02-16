@@ -24,8 +24,6 @@ class MemUsageComponent {
      * MEM Button Image variables
      */
     var pbFillRectMEM: NSRect?
-    var pbMaxMEM: Double?
-    var pixelHeightMEM: Double?
     var memIMG: String?
 
     /**
@@ -34,6 +32,8 @@ class MemUsageComponent {
     var pixelWidth: Double?
     var pbIMG: String?
     var pbMax: Double?
+    
+    var menuBarGraph = MenuBarGraph()
 
     func initialize() {
         menuItemMem.view = myMemMenuView
@@ -46,10 +46,12 @@ class MemUsageComponent {
         menuMemUsage?.addItem(NSMenuItem(title: "Quit iGlance", action: #selector(NSApplication.terminate(_:)), keyEquivalent: "q"))
         MemUsageComponent.sItemMemUsage.menu = menuMemUsage
 
-        pbMax = 16.0
         pixelWidth = 7
         btnMemUsage = MemUsageComponent.sItemMemUsage.button
-        pixelHeightMEM = 0
+        
+        // adjust the length of the status item according to the visualization type
+        MemUsageComponent.sItemMemUsage.length = AppDelegate.UserSettings.memUsageVisualization == AppDelegate.VisualizationType.Bar ? 27 : CGFloat(AppDelegate.UserSettings.memGraphWidth+5)
+        menuBarGraph.width = Int(MemUsageComponent.sItemMemUsage.length)
     }
 
     func updateMemUsage() {
@@ -67,9 +69,7 @@ class MemUsageComponent {
         myMemMenuView.percentWired.stringValue = String(memWired) + " GB"
 
         let memTaken = memActive + memCompressed + memWired
-        let memUtil = Double(memTaken / System.physicalMemory()) * 100
-
-        pixelHeightMEM = Double((pbMax! / 100.0) * memUtil)
+        let totalMemUsage = Double(memTaken / System.physicalMemory()) * 100
 
         if InterfaceStyle() == InterfaceStyle.Dark {
             memIMG = "menubar-label-mem-white"
@@ -78,6 +78,22 @@ class MemUsageComponent {
             memIMG = "menubar-label-mem-black"
             pbIMG = "progressbar-black"
         }
+        
+        if AppDelegate.UserSettings.memUsageVisualization == AppDelegate.VisualizationType.Graph {
+            // if the width has changed update the width of the graph
+            if menuBarGraph.width != Int(MemUsageComponent.sItemMemUsage.length-5) {
+                menuBarGraph.width = Int(MemUsageComponent.sItemMemUsage.length-5)
+            }
+            btnMemUsage?.image = menuBarGraph.drawUsageGraph(totalCpuUsage: totalMemUsage, drawBorder: AppDelegate.UserSettings.userWantsMemBorder)
+        } else {
+            drawUsageBar(totalCpuUsage: totalMemUsage)
+        }
+    }
+    
+    private func drawUsageBar(totalCpuUsage: Double) {
+        
+        let normalizedMemUsage = Double(16 / 100) * totalCpuUsage
+        
         let imgFinal = NSImage(size: NSSize(width: 20, height: 18))
         imgFinal.lockFocus()
         let img1 = NSImage(named: NSImage.Name(memIMG!))
@@ -86,12 +102,12 @@ class MemUsageComponent {
             let img2 = NSImage(named: NSImage.Name(pbIMG!))
             img2?.draw(at: NSPoint(x: 11, y: 0), from: NSZeroRect, operation: NSCompositingOperation.sourceOver, fraction: 1.0)
         }
-        pbFillRectMEM = NSRect(x: 12.0, y: 1.0, width: pixelWidth!, height: pixelHeightMEM!)
+        pbFillRectMEM = NSRect(x: 12.0, y: 1.0, width: pixelWidth!, height: normalizedMemUsage)
         AppDelegate.UserSettings.memColor.setFill()
         pbFillRectMEM?.fill()
         NSColor.clear.setFill()
         imgFinal.unlockFocus()
-
+        
         btnMemUsage?.image = imgFinal
     }
 }
