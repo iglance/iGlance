@@ -102,16 +102,39 @@ class CpuView: NSViewController {
                     break
                 case CpuUsageComponent.VisualizationType.Graph:
                     popUpCPUGraphType.selectItem(at: 1)
+                    // if the graph was selected make the width textfield visible
+                    cpuGraphwidth.isHidden = popUpCPUGraphType.indexOfSelectedItem == 0;
+                    graphPixelLabel.isHidden = cpuGraphwidth.isHidden
+                    graphWidthLabel.isHidden = cpuGraphwidth.isHidden
                     break
             }
         }
     }
-    
     @IBAction func popUpCPUGraphType(_ sender: Any) {
         AppDelegate.UserSettings.cpuUsageVisualization = popUpCPUGraphType.indexOfSelectedItem == 0 ? CpuUsageComponent.VisualizationType.Bar : CpuUsageComponent.VisualizationType.Graph
         // adjust the length of the status item according to the visualization type
-        CpuUsageComponent.sItemCpuUtil.length = popUpCPUGraphType.indexOfSelectedItem == 0 ? 27 : 53
+        CpuUsageComponent.sItemCpuUtil.length = popUpCPUGraphType.indexOfSelectedItem == 0 ? 27 : CGFloat(AppDelegate.UserSettings.cpuGraphWidth)
         UserDefaults.standard.set((popUpCPUGraphType.indexOfSelectedItem == 0) ? 0 : 1, forKey: "cpuUsageVisualization")
+        
+        // if the graph was selected make the width textfield visible
+        cpuGraphwidth.isHidden = popUpCPUGraphType.indexOfSelectedItem == 0;
+        graphPixelLabel.isHidden = cpuGraphwidth.isHidden
+        graphWidthLabel.isHidden = cpuGraphwidth.isHidden
     }
     
+    // outlets and actions of the labels and textfield to define the width of the menu bar graph
+    @IBOutlet weak var cpuGraphwidth: NSTextField! {
+        didSet {
+            // subtract 3 pixel because of the border of the graph
+            cpuGraphwidth.intValue = Int32(CpuUsageComponent.sItemCpuUtil.length-3)
+        }
+    }
+    @IBAction func cpuGraphWidth(_ sender: Any) {
+        // set the length of the status item. We have to add 3 pixel because of the border of the graph
+        CpuUsageComponent.sItemCpuUtil.length = CGFloat(cpuGraphwidth.intValue+3)
+        // save it to the user settings
+        UserDefaults.standard.set(cpuGraphwidth.intValue, forKey: "cpuGraphWidth")
+    }
+    @IBOutlet weak var graphPixelLabel: NSTextField!
+    @IBOutlet weak var graphWidthLabel: NSTextField!
 }

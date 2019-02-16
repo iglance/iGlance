@@ -952,7 +952,7 @@
             <objects>
                 <viewController title="CPU" id="MQx-3P-zDy" customClass="CpuView" customModule="iGlance" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" id="GNc-S1-j00">
-                        <rect key="frame" x="0.0" y="0.0" width="450" height="253"/>
+                        <rect key="frame" x="0.0" y="0.0" width="405" height="253"/>
                         <autoresizingMask key="autoresizingMask"/>
                         <subviews>
                             <button verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="gpa-qj-kWb">
@@ -1012,6 +1012,15 @@
                                     <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
                                 </textFieldCell>
                             </textField>
+                            <textField hidden="YES" horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="xb0-K8-gTX">
+                                <rect key="frame" x="220" y="182" width="82" height="17"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                                <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="Graph width:" id="r1P-Yg-fxR">
+                                    <font key="font" metaFont="system"/>
+                                    <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
+                                    <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
+                                </textFieldCell>
+                            </textField>
                             <colorWell fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="W9N-7k-Xkt">
                                 <rect key="frame" x="160" y="114" width="48" height="23"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
@@ -1048,6 +1057,28 @@
                                     <action selector="cbCPUBorder_clicked:" target="MQx-3P-zDy" id="xc2-xz-Ls2"/>
                                 </connections>
                             </button>
+                            <textField hidden="YES" horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Ad9-eq-aFz">
+                                <rect key="frame" x="349" y="184" width="19" height="17"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                                <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="px" id="9OM-GC-MJv">
+                                    <font key="font" metaFont="system"/>
+                                    <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
+                                    <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
+                                </textFieldCell>
+                            </textField>
+                            <textField hidden="YES" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="hUK-V9-6cd">
+                                <rect key="frame" x="308" y="181" width="35" height="22"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                                <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" selectable="YES" editable="YES" sendsActionOnEndEditing="YES" state="on" borderStyle="bezel" alignment="center" placeholderString="50" id="AwA-vI-BkR">
+                                    <numberFormatter key="formatter" formatterBehavior="default10_4" numberStyle="decimal" minimumIntegerDigits="1" maximumIntegerDigits="2000000000" maximumFractionDigits="3" id="Cjt-FA-fnN"/>
+                                    <font key="font" metaFont="system"/>
+                                    <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
+                                    <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
+                                </textFieldCell>
+                                <connections>
+                                    <action selector="cpuGraphWidth:" target="MQx-3P-zDy" id="HBD-Xr-9od"/>
+                                </connections>
+                            </textField>
                         </subviews>
                     </view>
                     <connections>
@@ -1055,13 +1086,16 @@
                         <outlet property="cbCPUTemp" destination="TfC-J4-Qzk" id="CFQ-fy-GHR"/>
                         <outlet property="cbCPUUtil" destination="gpa-qj-kWb" id="uJJ-Qs-xPL"/>
                         <outlet property="cpCPU" destination="W9N-7k-Xkt" id="O3a-jZ-g0I"/>
+                        <outlet property="cpuGraphwidth" destination="hUK-V9-6cd" id="dyb-Yp-lSo"/>
                         <outlet property="ddTempUnit" destination="28T-ir-Zeo" id="ZfR-04-r5c"/>
+                        <outlet property="graphPixelLabel" destination="Ad9-eq-aFz" id="ool-Tg-q0t"/>
+                        <outlet property="graphWidthLabel" destination="xb0-K8-gTX" id="qBV-Dz-pka"/>
                         <outlet property="popUpCPUGraphType" destination="v9K-rV-SwD" id="LC9-gL-f3o"/>
                     </connections>
                 </viewController>
                 <customObject id="gG7-L0-jME" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1311" y="135.5"/>
+            <point key="canvasLocation" x="1379" y="110"/>
         </scene>
         <!--Memory-->
         <scene sceneID="0lC-Lo-bY8">
