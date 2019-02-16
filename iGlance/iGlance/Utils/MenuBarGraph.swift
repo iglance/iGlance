@@ -29,7 +29,7 @@ class MenuBarGraph {
     // the maximum value points of the graph
     var maxValueCount: Int = 0
     
-    func drawUsageGraph(totalCpuUsage: Double) -> NSImage {
+    func drawUsageGraph(totalCpuUsage: Double, drawBorder: Bool) -> NSImage {
         updateHorizontalPos()
         // normalize the value to fit in the graph
         let normalizedValue: Double = round((totalCpuUsage/100) * 16)
