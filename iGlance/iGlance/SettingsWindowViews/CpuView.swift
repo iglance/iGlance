@@ -130,6 +130,11 @@ class CpuView: NSViewController {
         }
     }
     @IBAction func cpuGraphWidth(_ sender: Any) {
+        // if the graph option is not selected just return and do nothing
+        if popUpCPUGraphType.indexOfSelectedItem == 0 {
+            return
+        }
+        
         // set the length of the status item. We have to add 3 pixel because of the border of the graph
         CpuUsageComponent.sItemCpuUtil.length = CGFloat(cpuGraphwidth.intValue+3)
         // save it to the user settings
