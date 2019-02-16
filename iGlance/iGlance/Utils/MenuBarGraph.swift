@@ -39,7 +39,7 @@ class MenuBarGraph {
         let finalImg = NSImage(size: NSSize(width: maxValueCount+3, height: 18))
         finalImg.lockFocus()
         
-        if AppDelegate.UserSettings.userWantsCPUBorder {
+        if drawBorder {
             // draw the border around the graph area
             let borderRect = NSRect(x: 0, y: 0, width: maxValueCount+3, height: 18)
             if InterfaceStyle() == InterfaceStyle.Dark {
