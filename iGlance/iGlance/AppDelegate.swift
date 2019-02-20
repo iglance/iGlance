@@ -35,9 +35,14 @@ extension NSColor {
 
 @NSApplicationMain
 class AppDelegate: NSObject, NSApplicationDelegate {
-    public static var VERSION = "1.2.3"
+    public static var VERSION = "1.3"
 
     var myWindowController: MyMainWindow?
+    
+    public enum VisualizationType {
+        case Graph
+        case Bar
+    }
 
     struct UserSettings {
         static var userWantsFanSpeed = false
@@ -48,7 +53,11 @@ class AppDelegate: NSObject, NSApplicationDelegate {
         static var userWantsCPUTemp = false
         static var userWantsAutostart = false
         static var cpuColor = NSColor.red
+        static var cpuUsageVisualization = VisualizationType.Bar
+        static var cpuGraphWidth = 27
         static var memColor = NSColor.green
+        static var memUsageVisualization = VisualizationType.Bar
+        static var memGraphWidth = 27
         static var updateInterval = 1.0
         static var tempUnit = CpuTempComponent.TempUnit.Celcius
         static var userWantsCPUBorder = true
@@ -126,12 +135,12 @@ class AppDelegate: NSObject, NSApplicationDelegate {
     }
 
     func checkForUpdate() {
-        var request = URLRequest(url: URL(string: "https://raw.githubusercontent.com/Moneypulation/iGlance/master/Version.txt")!)
+        var request = URLRequest(url: URL(string: "https://raw.githubusercontent.com/iglance/iGlance/master/Version.txt")!)
         request.httpMethod = "GET"
         let (htmltext, _, error) = URLSession.shared.synchronousDataTask(urlrequest: request)
         if let error = error {
             // Do nothing
-            print(error)
+            NSLog("Error: ", error.localizedDescription)
         } else {
             let pat = "\\[version\\](.*)\\[\\/version\\]"
             let res = matches(for: pat, in: String(data: htmltext!, encoding: String.Encoding.utf8)!)
@@ -142,12 +151,12 @@ class AppDelegate: NSObject, NSApplicationDelegate {
                 if onlyversion != AppDelegate.VERSION {
                     let alert = NSAlert()
                     alert.messageText = ""
-                    alert.informativeText = "A new version (" + onlyversion + ") is available at: \n\n https://github.com/Moneypulation/iGlance"
+                    alert.informativeText = "A new version (" + onlyversion + ") is available at: \n\n https://github.com/iglance/iGlance"
                     alert.alertStyle = .informational
                     alert.addButton(withTitle: "Visit Website")
                     alert.addButton(withTitle: "OK")
                     if alert.runModal() == .alertFirstButtonReturn {
-                        if let url = URL(string: "https://github.com/Moneypulation/iGlance"), NSWorkspace.shared.open(url) {}
+                        if let url = URL(string: "https://github.com/iglance/iGlance"), NSWorkspace.shared.open(url) {}
                     }
                 }
             }
@@ -163,7 +172,7 @@ class AppDelegate: NSObject, NSApplicationDelegate {
                 String(text[Range($0.range, in: text)!])
             }
         } catch {
-            print("invalid regex: \(error.localizedDescription)")
+            NSLog("Error invalid regex: ", error.localizedDescription)
             return []
         }
     }
@@ -250,6 +259,12 @@ class AppDelegate: NSObject, NSApplicationDelegate {
         if UserDefaults.standard.value(forKey: "userWantsCPUUtil") != nil {
             UserSettings.userWantsCPUUtil = UserDefaults.standard.value(forKey: "userWantsCPUUtil") as! Bool
         }
+        if UserDefaults.standard.value(forKey: "cpuUsageVisualization") != nil {
+            UserSettings.cpuUsageVisualization = (UserDefaults.standard.value(forKey: "cpuUsageVisualization") as! Int == 0) ? VisualizationType.Bar : VisualizationType.Graph
+        }
+        if UserDefaults.standard.value(forKey: "cpuGraphWidth") != nil {
+            UserSettings.cpuGraphWidth = UserDefaults.standard.value(forKey: "cpuGraphWidth") as! Int
+        }
         if UserDefaults.standard.value(forKey: "userWantsCPUTemp") != nil {
             UserSettings.userWantsCPUTemp = UserDefaults.standard.value(forKey: "userWantsCPUTemp") as! Bool
         }
@@ -261,6 +276,12 @@ class AppDelegate: NSObject, NSApplicationDelegate {
         }
         if UserDefaults.standard.value(forKey: "userWantsMemUsage") != nil {
             UserSettings.userWantsMemUsage = UserDefaults.standard.value(forKey: "userWantsMemUsage") as! Bool
+        }
+        if UserDefaults.standard.value(forKey: "memUsageVisualization") != nil {
+             UserSettings.memUsageVisualization = (UserDefaults.standard.value(forKey: "memUsageVisualization") as! Int == 0) ? VisualizationType.Bar : VisualizationType.Graph
+        }
+        if UserDefaults.standard.value(forKey: "memGraphWidth") != nil {
+            UserSettings.memGraphWidth = UserDefaults.standard.value(forKey: "memGraphWidth") as! Int
         }
         if UserDefaults.standard.value(forKey: "userWantsAutostart") != nil {
             UserSettings.userWantsAutostart = UserDefaults.standard.value(forKey: "userWantsAutostart") as! Bool
@@ -331,7 +352,7 @@ class AppDelegate: NSObject, NSApplicationDelegate {
             do {
                 try AppDelegate.myFan.updateFanSpeed()
             } catch {
-                print(error)
+                NSLog("Error: ", error.localizedDescription)
             }
         } else {
             FanComponent.sItemFanSpeed.isVisible = false
