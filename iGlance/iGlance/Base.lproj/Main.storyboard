@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.Cocoa.Storyboard.XIB" version="3.0" toolsVersion="14313.18" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES">
+<document type="com.apple.InterfaceBuilder3.Cocoa.Storyboard.XIB" version="3.0" toolsVersion="14460.31" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES">
     <dependencies>
         <deployment identifier="macosx"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="14313.18"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="14460.31"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
@@ -952,11 +952,11 @@
             <objects>
                 <viewController title="CPU" id="MQx-3P-zDy" customClass="CpuView" customModule="iGlance" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" id="GNc-S1-j00">
-                        <rect key="frame" x="0.0" y="0.0" width="450" height="159"/>
+                        <rect key="frame" x="0.0" y="0.0" width="405" height="253"/>
                         <autoresizingMask key="autoresizingMask"/>
                         <subviews>
                             <button verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="gpa-qj-kWb">
-                                <rect key="frame" x="18" y="113" width="202" height="28"/>
+                                <rect key="frame" x="18" y="207" width="202" height="28"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                 <buttonCell key="cell" type="check" title="CPU Utilization" bezelStyle="regularSquare" imagePosition="left" inset="2" id="45J-jx-M3f">
                                     <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
@@ -967,7 +967,7 @@
                                 </connections>
                             </button>
                             <button verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="TfC-J4-Qzk">
-                                <rect key="frame" x="18" y="81" width="146" height="28"/>
+                                <rect key="frame" x="18" y="146" width="146" height="28"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                 <buttonCell key="cell" type="check" title="CPU Temperature" bezelStyle="regularSquare" imagePosition="left" inset="2" id="T4w-K8-qUh">
                                     <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
@@ -978,7 +978,7 @@
                                 </connections>
                             </button>
                             <popUpButton verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="28T-ir-Zeo">
-                                <rect key="frame" x="158" y="81" width="53" height="26"/>
+                                <rect key="frame" x="158" y="146" width="53" height="26"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                 <popUpButtonCell key="cell" type="push" title="°C" bezelStyle="rounded" alignment="left" lineBreakMode="truncatingTail" state="on" borderStyle="borderAndBezel" imageScaling="proportionallyDown" inset="2" selectedItem="eom-aU-fJu" id="g02-hl-v6J">
                                     <behavior key="behavior" lightByBackground="YES" lightByGray="YES"/>
@@ -995,7 +995,7 @@
                                 </connections>
                             </popUpButton>
                             <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="eWF-H4-Y17">
-                                <rect key="frame" x="20" y="52" width="118" height="17"/>
+                                <rect key="frame" x="20" y="117" width="118" height="17"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                 <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="Progressbar Color:" id="KRY-WL-Nxx">
                                     <font key="font" metaFont="system"/>
@@ -1003,18 +1003,45 @@
                                     <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
                                 </textFieldCell>
                             </textField>
-                            <colorWell fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="W9N-7k-Xkt">
-                                <rect key="frame" x="160" y="49" width="48" height="23"/>
+                            <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="0cR-G6-EQV">
+                                <rect key="frame" x="18" y="184" width="89" height="17"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                                <color key="color" red="0.05813049898" green="0.055541899059999997" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="Show CPU as:" id="ENb-Av-HEp">
+                                    <font key="font" metaFont="system"/>
+                                    <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
+                                    <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
+                                </textFieldCell>
+                            </textField>
+                            <textField hidden="YES" horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="xb0-K8-gTX">
+                                <rect key="frame" x="220" y="182" width="82" height="17"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                                <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="Graph width:" id="r1P-Yg-fxR">
+                                    <font key="font" metaFont="system"/>
+                                    <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
+                                    <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
+                                </textFieldCell>
+                            </textField>
+                            <popUpButton verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="v9K-rV-SwD">
+                                <rect key="frame" x="111" y="177" width="77" height="25"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                                <popUpButtonCell key="cell" type="push" title="Bar" bezelStyle="rounded" alignment="left" lineBreakMode="truncatingTail" state="on" borderStyle="borderAndBezel" imageScaling="proportionallyDown" inset="2" selectedItem="NqA-Cb-ocL" id="iMY-ta-Xmt">
+                                    <behavior key="behavior" lightByBackground="YES" lightByGray="YES"/>
+                                    <font key="font" metaFont="menu"/>
+                                    <menu key="menu" id="Shn-Fv-3Sh">
+                                        <items>
+                                            <menuItem title="Bar" state="on" id="NqA-Cb-ocL"/>
+                                            <menuItem title="Graph" id="xm3-Xf-ilO"/>
+                                        </items>
+                                    </menu>
+                                </popUpButtonCell>
                                 <connections>
-                                    <action selector="cpCPU_clicked:" target="MQx-3P-zDy" id="Ys9-Jz-cEt"/>
+                                    <action selector="popUpCPUGraphType:" target="MQx-3P-zDy" id="VRb-qP-j7b"/>
                                 </connections>
-                            </colorWell>
+                            </popUpButton>
                             <button verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="9PU-LC-0gS">
-                                <rect key="frame" x="18" y="15" width="202" height="28"/>
+                                <rect key="frame" x="18" y="80" width="202" height="28"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                                <buttonCell key="cell" type="check" title="Progressbar Border" bezelStyle="regularSquare" imagePosition="left" state="on" inset="2" id="vIT-GG-dAQ">
+                                <buttonCell key="cell" type="check" title="Show Border" bezelStyle="regularSquare" imagePosition="left" state="on" inset="2" id="vIT-GG-dAQ">
                                     <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
                                     <font key="font" metaFont="system"/>
                                 </buttonCell>
@@ -1022,6 +1049,36 @@
                                     <action selector="cbCPUBorder_clicked:" target="MQx-3P-zDy" id="xc2-xz-Ls2"/>
                                 </connections>
                             </button>
+                            <textField hidden="YES" horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Ad9-eq-aFz">
+                                <rect key="frame" x="349" y="184" width="19" height="17"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                                <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="px" id="9OM-GC-MJv">
+                                    <font key="font" metaFont="system"/>
+                                    <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
+                                    <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
+                                </textFieldCell>
+                            </textField>
+                            <textField hidden="YES" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="hUK-V9-6cd">
+                                <rect key="frame" x="308" y="181" width="35" height="22"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                                <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" selectable="YES" editable="YES" sendsActionOnEndEditing="YES" state="on" borderStyle="bezel" alignment="center" id="AwA-vI-BkR">
+                                    <numberFormatter key="formatter" formatterBehavior="default10_4" numberStyle="decimal" minimumIntegerDigits="1" maximumIntegerDigits="2000000000" maximumFractionDigits="3" id="Cjt-FA-fnN"/>
+                                    <font key="font" metaFont="system"/>
+                                    <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
+                                    <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
+                                </textFieldCell>
+                                <connections>
+                                    <action selector="cpuGraphwidth:" target="MQx-3P-zDy" id="zTi-ML-Tj2"/>
+                                </connections>
+                            </textField>
+                            <colorWell fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="W9N-7k-Xkt">
+                                <rect key="frame" x="160" y="114" width="48" height="23"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                                <color key="color" red="0.05813049898" green="0.055541899059999997" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                <connections>
+                                    <action selector="cpCPU_clicked:" target="MQx-3P-zDy" id="Ys9-Jz-cEt"/>
+                                </connections>
+                            </colorWell>
                         </subviews>
                     </view>
                     <connections>
@@ -1029,12 +1086,16 @@
                         <outlet property="cbCPUTemp" destination="TfC-J4-Qzk" id="CFQ-fy-GHR"/>
                         <outlet property="cbCPUUtil" destination="gpa-qj-kWb" id="uJJ-Qs-xPL"/>
                         <outlet property="cpCPU" destination="W9N-7k-Xkt" id="O3a-jZ-g0I"/>
+                        <outlet property="cpuGraphwidth" destination="hUK-V9-6cd" id="dyb-Yp-lSo"/>
                         <outlet property="ddTempUnit" destination="28T-ir-Zeo" id="ZfR-04-r5c"/>
+                        <outlet property="graphPixelLabel" destination="Ad9-eq-aFz" id="ool-Tg-q0t"/>
+                        <outlet property="graphWidthLabel" destination="xb0-K8-gTX" id="qBV-Dz-pka"/>
+                        <outlet property="popUpCPUGraphType" destination="v9K-rV-SwD" id="LC9-gL-f3o"/>
                     </connections>
                 </viewController>
                 <customObject id="gG7-L0-jME" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1305" y="116"/>
+            <point key="canvasLocation" x="1379" y="110"/>
         </scene>
         <!--Memory-->
         <scene sceneID="0lC-Lo-bY8">
@@ -1055,16 +1116,8 @@
                                     <action selector="cbMemUtil_clicked:" target="rub-dP-mB3" id="Lel-Ra-m2I"/>
                                 </connections>
                             </button>
-                            <colorWell fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="mgz-kS-K4o">
-                                <rect key="frame" x="158" y="225" width="48" height="23"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                                <color key="color" red="0.05813049898" green="0.055541899059999997" blue="1" alpha="1" colorSpace="calibratedRGB"/>
-                                <connections>
-                                    <action selector="cpMem_clicked:" target="rub-dP-mB3" id="q9z-Ir-WXq"/>
-                                </connections>
-                            </colorWell>
                             <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="JXx-OU-pkU">
-                                <rect key="frame" x="18" y="228" width="118" height="17"/>
+                                <rect key="frame" x="18" y="197" width="118" height="17"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                 <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="Progressbar Color:" id="WyU-WB-8S9">
                                     <font key="font" metaFont="system"/>
@@ -1073,7 +1126,7 @@
                                 </textFieldCell>
                             </textField>
                             <button verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="MDb-0Z-pJj">
-                                <rect key="frame" x="18" y="191" width="202" height="28"/>
+                                <rect key="frame" x="18" y="160" width="202" height="28"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                 <buttonCell key="cell" type="check" title="Progressbar Border" bezelStyle="regularSquare" imagePosition="left" state="on" inset="2" id="apg-U4-hbH">
                                     <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
@@ -1083,12 +1136,81 @@
                                     <action selector="cbMemBorder_clicked:" target="rub-dP-mB3" id="LvL-qZ-Duw"/>
                                 </connections>
                             </button>
+                            <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="UaO-I0-saq">
+                                <rect key="frame" x="18" y="229" width="112" height="17"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                                <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="Show Memory as:" id="OH9-Ij-SWK">
+                                    <font key="font" metaFont="system"/>
+                                    <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
+                                    <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
+                                </textFieldCell>
+                            </textField>
+                            <colorWell fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="mgz-kS-K4o">
+                                <rect key="frame" x="142" y="194" width="48" height="23"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                                <color key="color" red="0.05813049898" green="0.055541899059999997" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                <connections>
+                                    <action selector="cpMem_clicked:" target="rub-dP-mB3" id="q9z-Ir-WXq"/>
+                                </connections>
+                            </colorWell>
+                            <textField hidden="YES" horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="nU2-Ne-Jy4">
+                                <rect key="frame" x="249" y="229" width="82" height="17"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                                <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="Graph width:" id="caC-In-KuS">
+                                    <font key="font" metaFont="system"/>
+                                    <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
+                                    <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
+                                </textFieldCell>
+                            </textField>
+                            <popUpButton verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="up5-am-q4S">
+                                <rect key="frame" x="140" y="224" width="77" height="25"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                                <popUpButtonCell key="cell" type="push" title="Bar" bezelStyle="rounded" alignment="left" lineBreakMode="truncatingTail" state="on" borderStyle="borderAndBezel" imageScaling="proportionallyDown" inset="2" selectedItem="sZ8-GO-rxG" id="EhL-C0-l1L">
+                                    <behavior key="behavior" lightByBackground="YES" lightByGray="YES"/>
+                                    <font key="font" metaFont="menu"/>
+                                    <menu key="menu" id="LNE-oV-aPb">
+                                        <items>
+                                            <menuItem title="Bar" state="on" id="sZ8-GO-rxG"/>
+                                            <menuItem title="Graph" id="M38-op-UGa"/>
+                                        </items>
+                                    </menu>
+                                </popUpButtonCell>
+                                <connections>
+                                    <action selector="popUpMemoryVisualization:" target="rub-dP-mB3" id="A5x-KN-VGH"/>
+                                </connections>
+                            </popUpButton>
+                            <textField hidden="YES" horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="hsA-Yi-6fk">
+                                <rect key="frame" x="378" y="231" width="19" height="17"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                                <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="px" id="0ua-hN-KIq">
+                                    <font key="font" metaFont="system"/>
+                                    <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
+                                    <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
+                                </textFieldCell>
+                            </textField>
+                            <textField hidden="YES" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="rZF-fk-xVj">
+                                <rect key="frame" x="337" y="228" width="35" height="22"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                                <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" selectable="YES" editable="YES" sendsActionOnEndEditing="YES" state="on" borderStyle="bezel" alignment="center" id="pyR-7Q-2Aw">
+                                    <numberFormatter key="formatter" formatterBehavior="default10_4" numberStyle="decimal" minimumIntegerDigits="1" maximumIntegerDigits="2000000000" maximumFractionDigits="3" id="gBh-os-fcp"/>
+                                    <font key="font" metaFont="system"/>
+                                    <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
+                                    <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
+                                </textFieldCell>
+                                <connections>
+                                    <action selector="memGraphWidth:" target="rub-dP-mB3" id="E3h-l0-wEF"/>
+                                </connections>
+                            </textField>
                         </subviews>
                     </view>
                     <connections>
                         <outlet property="cbMemBorder" destination="MDb-0Z-pJj" id="AzB-sH-VTt"/>
                         <outlet property="cbMemUtil" destination="v1t-v1-O2M" id="0Vi-Hy-f6e"/>
                         <outlet property="cpMemUtil" destination="mgz-kS-K4o" id="ykX-lu-Z88"/>
+                        <outlet property="memGraphPixelLabel" destination="hsA-Yi-6fk" id="wot-cP-bKr"/>
+                        <outlet property="memGraphWidth" destination="rZF-fk-xVj" id="F36-4w-auD"/>
+                        <outlet property="memGraphWidthLabel" destination="nU2-Ne-Jy4" id="U5B-DG-vQi"/>
+                        <outlet property="popUpMemoryVisualization" destination="up5-am-q4S" id="If7-GB-c7Q"/>
                     </connections>
                 </viewController>
                 <customObject id="5NP-Qv-Hqp" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>

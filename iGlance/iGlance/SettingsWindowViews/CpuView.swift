@@ -92,4 +92,54 @@ class CpuView: NSViewController {
         AppDelegate.UserSettings.userWantsCPUBorder = (cbCPUBorder.state == NSButton.StateValue.on)
         UserDefaults.standard.set((cbCPUBorder.state == NSButton.StateValue.on), forKey: "userWantsCPUBorder")
     }
+    
+    // define the outlet and the action of the pop up button for choosing how to visualize the cpu usage
+    @IBOutlet weak var popUpCPUGraphType: NSPopUpButton! {
+        didSet {
+            switch AppDelegate.UserSettings.cpuUsageVisualization {
+                case AppDelegate.VisualizationType.Bar:
+                    popUpCPUGraphType.selectItem(at: 0)
+                    break
+                case AppDelegate.VisualizationType.Graph:
+                    popUpCPUGraphType.selectItem(at: 1)
+                    // if the graph was selected make the width textfield visible
+                    cpuGraphwidth.isHidden = popUpCPUGraphType.indexOfSelectedItem == 0;
+                    graphPixelLabel.isHidden = cpuGraphwidth.isHidden
+                    graphWidthLabel.isHidden = cpuGraphwidth.isHidden
+                    break
+            }
+        }
+    }
+    @IBAction func popUpCPUGraphType(_ sender: Any) {
+        AppDelegate.UserSettings.cpuUsageVisualization = popUpCPUGraphType.indexOfSelectedItem == 0 ? AppDelegate.VisualizationType.Bar : AppDelegate.VisualizationType.Graph
+        // adjust the length of the status item according to the visualization type
+        CpuUsageComponent.sItemCpuUtil.length = popUpCPUGraphType.indexOfSelectedItem == 0 ? 27 : CGFloat(AppDelegate.UserSettings.cpuGraphWidth)
+        UserDefaults.standard.set((popUpCPUGraphType.indexOfSelectedItem == 0) ? 0 : 1, forKey: "cpuUsageVisualization")
+        
+        // if the graph was selected make the width textfield visible
+        cpuGraphwidth.isHidden = popUpCPUGraphType.indexOfSelectedItem == 0
+        graphPixelLabel.isHidden = cpuGraphwidth.isHidden
+        graphWidthLabel.isHidden = cpuGraphwidth.isHidden
+    }
+    
+    // outlets and actions of the labels and textfield to define the width of the menu bar graph
+    @IBOutlet weak var cpuGraphwidth: NSTextField! {
+        didSet {
+            // subtract 3 pixel because of the border of the graph
+            cpuGraphwidth.intValue = Int32(CpuUsageComponent.sItemCpuUtil.length)
+        }
+    }
+    @IBAction func cpuGraphwidth(_ sender: Any) {
+        // if the graph option is not selected just return and do nothing
+        if popUpCPUGraphType.indexOfSelectedItem == 0 {
+            return
+        }
+        
+        // set the length of the status item. We have to add 3 pixel because of the border of the graph and the label
+        CpuUsageComponent.sItemCpuUtil.length = CGFloat(cpuGraphwidth.intValue)
+        // save it to the user settings
+        UserDefaults.standard.set(cpuGraphwidth.intValue, forKey: "cpuGraphWidth")
+    }
+    @IBOutlet weak var graphPixelLabel: NSTextField!
+    @IBOutlet weak var graphWidthLabel: NSTextField!
 }
