@@ -1137,16 +1137,24 @@
                                 </connections>
                             </button>
                             <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="UaO-I0-saq">
-                                <rect key="frame" x="18" y="229" width="89" height="17"/>
+                                <rect key="frame" x="18" y="229" width="112" height="17"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                                <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="Show CPU as:" id="OH9-Ij-SWK">
+                                <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="Show Memory as:" id="OH9-Ij-SWK">
                                     <font key="font" metaFont="system"/>
                                     <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
                                     <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
                                 </textFieldCell>
                             </textField>
+                            <colorWell fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="mgz-kS-K4o">
+                                <rect key="frame" x="142" y="194" width="48" height="23"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                                <color key="color" red="0.05813049898" green="0.055541899059999997" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                <connections>
+                                    <action selector="cpMem_clicked:" target="rub-dP-mB3" id="q9z-Ir-WXq"/>
+                                </connections>
+                            </colorWell>
                             <textField hidden="YES" horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="nU2-Ne-Jy4">
-                                <rect key="frame" x="220" y="227" width="82" height="17"/>
+                                <rect key="frame" x="249" y="229" width="82" height="17"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                 <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="Graph width:" id="caC-In-KuS">
                                     <font key="font" metaFont="system"/>
@@ -1155,7 +1163,7 @@
                                 </textFieldCell>
                             </textField>
                             <popUpButton verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="up5-am-q4S">
-                                <rect key="frame" x="111" y="222" width="77" height="25"/>
+                                <rect key="frame" x="140" y="224" width="77" height="25"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                 <popUpButtonCell key="cell" type="push" title="Bar" bezelStyle="rounded" alignment="left" lineBreakMode="truncatingTail" state="on" borderStyle="borderAndBezel" imageScaling="proportionallyDown" inset="2" selectedItem="sZ8-GO-rxG" id="EhL-C0-l1L">
                                     <behavior key="behavior" lightByBackground="YES" lightByGray="YES"/>
@@ -1172,7 +1180,7 @@
                                 </connections>
                             </popUpButton>
                             <textField hidden="YES" horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="hsA-Yi-6fk">
-                                <rect key="frame" x="349" y="229" width="19" height="17"/>
+                                <rect key="frame" x="378" y="231" width="19" height="17"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                 <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="px" id="0ua-hN-KIq">
                                     <font key="font" metaFont="system"/>
@@ -1181,7 +1189,7 @@
                                 </textFieldCell>
                             </textField>
                             <textField hidden="YES" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="rZF-fk-xVj">
-                                <rect key="frame" x="308" y="226" width="35" height="22"/>
+                                <rect key="frame" x="337" y="228" width="35" height="22"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                 <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" selectable="YES" editable="YES" sendsActionOnEndEditing="YES" state="on" borderStyle="bezel" alignment="center" id="pyR-7Q-2Aw">
                                     <numberFormatter key="formatter" formatterBehavior="default10_4" numberStyle="decimal" minimumIntegerDigits="1" maximumIntegerDigits="2000000000" maximumFractionDigits="3" id="gBh-os-fcp"/>
@@ -1193,14 +1201,6 @@
                                     <action selector="memGraphWidth:" target="rub-dP-mB3" id="E3h-l0-wEF"/>
                                 </connections>
                             </textField>
-                            <colorWell fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="mgz-kS-K4o">
-                                <rect key="frame" x="142" y="194" width="48" height="23"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                                <color key="color" red="0.05813049898" green="0.055541899059999997" blue="1" alpha="1" colorSpace="calibratedRGB"/>
-                                <connections>
-                                    <action selector="cpMem_clicked:" target="rub-dP-mB3" id="q9z-Ir-WXq"/>
-                                </connections>
-                            </colorWell>
                         </subviews>
                     </view>
                     <connections>

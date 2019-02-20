@@ -24,7 +24,7 @@ class MemUsageComponent {
      * MEM Button Image variables
      */
     var pbFillRectMEM: NSRect?
-    var memIMG: String?
+    var memImg: String?
 
     /**
      * Shared variables
@@ -50,7 +50,7 @@ class MemUsageComponent {
         btnMemUsage = MemUsageComponent.sItemMemUsage.button
         
         // adjust the length of the status item according to the visualization type
-        MemUsageComponent.sItemMemUsage.length = AppDelegate.UserSettings.memUsageVisualization == AppDelegate.VisualizationType.Bar ? 27 : CGFloat(AppDelegate.UserSettings.memGraphWidth+5)
+        MemUsageComponent.sItemMemUsage.length = AppDelegate.UserSettings.memUsageVisualization == AppDelegate.VisualizationType.Bar ? 27 : CGFloat(AppDelegate.UserSettings.memGraphWidth)
         menuBarGraph.width = Int(MemUsageComponent.sItemMemUsage.length)
     }
 
@@ -72,31 +72,31 @@ class MemUsageComponent {
         let totalMemUsage = Double(memTaken / System.physicalMemory()) * 100
 
         if InterfaceStyle() == InterfaceStyle.Dark {
-            memIMG = "menubar-label-mem-white"
+            memImg = "menubar-label-mem-white"
             pbIMG = "progressbar-white"
         } else {
-            memIMG = "menubar-label-mem-black"
+            memImg = "menubar-label-mem-black"
             pbIMG = "progressbar-black"
         }
         
         if AppDelegate.UserSettings.memUsageVisualization == AppDelegate.VisualizationType.Graph {
             // if the width has changed update the width of the graph
-            if menuBarGraph.width != Int(MemUsageComponent.sItemMemUsage.length-5) {
-                menuBarGraph.width = Int(MemUsageComponent.sItemMemUsage.length-5)
+            if menuBarGraph.width != Int(MemUsageComponent.sItemMemUsage.length) {
+                menuBarGraph.width = Int(MemUsageComponent.sItemMemUsage.length)
             }
-            btnMemUsage?.image = menuBarGraph.drawUsageGraph(totalCpuUsage: totalMemUsage, drawBorder: AppDelegate.UserSettings.userWantsMemBorder)
+            btnMemUsage?.image = menuBarGraph.drawUsageGraph(value: totalMemUsage, drawBorder: AppDelegate.UserSettings.userWantsMemBorder, givenImage: NSImage(named: NSImage.Name(memImg!)))
         } else {
-            drawUsageBar(totalCpuUsage: totalMemUsage)
+            drawUsageBar(totalMemUsage: totalMemUsage)
         }
     }
     
-    private func drawUsageBar(totalCpuUsage: Double) {
+    private func drawUsageBar(totalMemUsage: Double) {
         
-        let normalizedMemUsage = Double(16 / 100) * totalCpuUsage
+        let normalizedMemUsage = Double(totalMemUsage / 100) * 16
         
         let imgFinal = NSImage(size: NSSize(width: 20, height: 18))
         imgFinal.lockFocus()
-        let img1 = NSImage(named: NSImage.Name(memIMG!))
+        let img1 = NSImage(named: NSImage.Name(memImg!))
         img1?.draw(at: NSPoint(x: 1, y: 0), from: NSZeroRect, operation: NSCompositingOperation.sourceOver, fraction: 1.0)
         if AppDelegate.UserSettings.userWantsMemBorder {
             let img2 = NSImage(named: NSImage.Name(pbIMG!))
