@@ -23,25 +23,29 @@ class MenuBarGraph {
     var width: Int = 0 {
         didSet {
             // if the width changed change the max value count accordingly
-            maxValueCount = width-3
+            // subtract 8 to get some space for the label and the graph box
+            maxValueCount = width-5
         }
     }
     // the maximum value points of the graph
     var maxValueCount: Int = 0
     
-    func drawUsageGraph(totalCpuUsage: Double, drawBorder: Bool) -> NSImage {
+    func drawUsageGraph(value: Double, drawBorder: Bool, givenImage: NSImage? = nil) -> NSImage {
         updateHorizontalPos()
         // normalize the value to fit in the graph
-        let normalizedValue: Double = round((totalCpuUsage/100) * 16)
+        let normalizedValue: Double = round((value/100) * 16)
         addValueToArray(valuePixelPair: ValuePixelPair(value: normalizedValue, horizontalPos: maxValueCount))
         
         // create and lock the image
-        let finalImg = NSImage(size: NSSize(width: maxValueCount+3, height: 18))
+        let finalImg = NSImage(size: NSSize(width: width, height: 18))
         finalImg.lockFocus()
+        
+        // draw the given image
+        givenImage?.draw(at: NSPoint(x:0, y:0), from: NSZeroRect, operation: NSCompositingOperation.sourceOver, fraction: 1.0)
         
         if drawBorder {
             // draw the border around the graph area
-            let borderRect = NSRect(x: 0, y: 0, width: maxValueCount+3, height: 18)
+            let borderRect = NSRect(x: 6, y: 0, width: width-8, height: 18)
             if InterfaceStyle() == InterfaceStyle.Dark {
                 NSColor.white.set()
             } else {
@@ -53,6 +57,11 @@ class MenuBarGraph {
         // set the draw color
         AppDelegate.UserSettings.cpuColor.setFill()
         for pair in graphValueArray {
+            // if the data point of the graph would be outside of the box don't draw the point
+            if pair.horizontalPos <= 6 || pair.horizontalPos >= width-3{
+                continue
+            }
+            
             let rect = NSRect(x: pair.horizontalPos, y: 1, width: 2, height: Int(pair.value))
             rect.fill()
         }

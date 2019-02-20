@@ -113,7 +113,7 @@ class CpuView: NSViewController {
     @IBAction func popUpCPUGraphType(_ sender: Any) {
         AppDelegate.UserSettings.cpuUsageVisualization = popUpCPUGraphType.indexOfSelectedItem == 0 ? AppDelegate.VisualizationType.Bar : AppDelegate.VisualizationType.Graph
         // adjust the length of the status item according to the visualization type
-        CpuUsageComponent.sItemCpuUtil.length = popUpCPUGraphType.indexOfSelectedItem == 0 ? 27 : CGFloat(AppDelegate.UserSettings.cpuGraphWidth+5)
+        CpuUsageComponent.sItemCpuUtil.length = popUpCPUGraphType.indexOfSelectedItem == 0 ? 27 : CGFloat(AppDelegate.UserSettings.cpuGraphWidth)
         UserDefaults.standard.set((popUpCPUGraphType.indexOfSelectedItem == 0) ? 0 : 1, forKey: "cpuUsageVisualization")
         
         // if the graph was selected make the width textfield visible
@@ -126,7 +126,7 @@ class CpuView: NSViewController {
     @IBOutlet weak var cpuGraphwidth: NSTextField! {
         didSet {
             // subtract 3 pixel because of the border of the graph
-            cpuGraphwidth.intValue = Int32(CpuUsageComponent.sItemCpuUtil.length-5)
+            cpuGraphwidth.intValue = Int32(CpuUsageComponent.sItemCpuUtil.length)
         }
     }
     @IBAction func cpuGraphwidth(_ sender: Any) {
@@ -135,8 +135,8 @@ class CpuView: NSViewController {
             return
         }
         
-        // set the length of the status item. We have to add 3 pixel because of the border of the graph and to make some space
-        CpuUsageComponent.sItemCpuUtil.length = CGFloat(cpuGraphwidth.intValue+5)
+        // set the length of the status item. We have to add 3 pixel because of the border of the graph and the label
+        CpuUsageComponent.sItemCpuUtil.length = CGFloat(cpuGraphwidth.intValue)
         // save it to the user settings
         UserDefaults.standard.set(cpuGraphwidth.intValue, forKey: "cpuGraphWidth")
     }

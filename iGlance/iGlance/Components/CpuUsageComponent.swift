@@ -36,8 +36,8 @@ class CpuUsageComponent {
         btnCpuUtil = CpuUsageComponent.sItemCpuUtil.button
         btnCpuUtil?.image?.isTemplate = true
         
-        // adjust the length of the status item according to the visualization type. Add 5 pixels to add some space to other status items.
-        CpuUsageComponent.sItemCpuUtil.length = AppDelegate.UserSettings.cpuUsageVisualization == AppDelegate.VisualizationType.Bar ? 27 : CGFloat(AppDelegate.UserSettings.cpuGraphWidth + 5)
+        // adjust the length of the status item according to the visualization type.
+        CpuUsageComponent.sItemCpuUtil.length = AppDelegate.UserSettings.cpuUsageVisualization == AppDelegate.VisualizationType.Bar ? 27 : CGFloat(AppDelegate.UserSettings.cpuGraphWidth)
         menuBarGraph.width = Int(CpuUsageComponent.sItemCpuUtil.length)
     }
     
@@ -75,10 +75,10 @@ class CpuUsageComponent {
         
         if AppDelegate.UserSettings.cpuUsageVisualization == AppDelegate.VisualizationType.Graph {
             // if the width has changed update the width of the graph
-            if menuBarGraph.width != Int(CpuUsageComponent.sItemCpuUtil.length-5) {
-                menuBarGraph.width = Int(CpuUsageComponent.sItemCpuUtil.length-5)
+            if menuBarGraph.width != Int(CpuUsageComponent.sItemCpuUtil.length) {
+                menuBarGraph.width = Int(CpuUsageComponent.sItemCpuUtil.length)
             }
-            btnCpuUtil?.image = menuBarGraph.drawUsageGraph(totalCpuUsage: cpuUsageTotal, drawBorder: AppDelegate.UserSettings.userWantsCPUBorder)
+            btnCpuUtil?.image = menuBarGraph.drawUsageGraph(value: cpuUsageTotal, drawBorder: AppDelegate.UserSettings.userWantsCPUBorder, givenImage: NSImage(named: NSImage.Name(cpuImg!)))
         } else {
             drawUsageBar(totalCpuUsage: cpuUsageTotal)
         }

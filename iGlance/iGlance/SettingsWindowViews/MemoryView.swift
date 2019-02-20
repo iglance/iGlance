@@ -80,7 +80,7 @@ class MemoryView: NSViewController {
     @IBAction func popUpMemoryVisualization(_ sender: Any) {
         AppDelegate.UserSettings.memUsageVisualization = popUpMemoryVisualization.indexOfSelectedItem == 0 ? AppDelegate.VisualizationType.Bar : AppDelegate.VisualizationType.Graph
         // adjust the length of the status item according to the visualization type
-        MemUsageComponent.sItemMemUsage.length = popUpMemoryVisualization.indexOfSelectedItem == 0 ? 27 : CGFloat(AppDelegate.UserSettings.memGraphWidth+5)
+        MemUsageComponent.sItemMemUsage.length = popUpMemoryVisualization.indexOfSelectedItem == 0 ? 27 : CGFloat(AppDelegate.UserSettings.memGraphWidth)
         UserDefaults.standard.set((popUpMemoryVisualization.indexOfSelectedItem == 0) ? 0 : 1, forKey: "memUsageVisualization")
         
         // if the graph was selected make the width textfield visible
@@ -94,7 +94,7 @@ class MemoryView: NSViewController {
     @IBOutlet weak var memGraphWidth: NSTextField! {
         didSet {
             // subtract 3 pixel because of the border of the graph
-            memGraphWidth.intValue = Int32(MemUsageComponent.sItemMemUsage.length-5)
+            memGraphWidth.intValue = Int32(MemUsageComponent.sItemMemUsage.length)
         }
     }
     @IBAction func memGraphWidth(_ sender: Any) {
@@ -103,8 +103,8 @@ class MemoryView: NSViewController {
             return
         }
         
-        // set the length of the status item. We have to add 3 pixel because of the border of the graph and to make some space
-        MemUsageComponent.sItemMemUsage.length = CGFloat(memGraphWidth.intValue+5)
+        // set the length of the status item. We have to add 20 pixel because of the border of the graph and the label
+        MemUsageComponent.sItemMemUsage.length = CGFloat(memGraphWidth.intValue)
         // save it to the user settings
         UserDefaults.standard.set(memGraphWidth.intValue, forKey: "memGraphWidth")
     }
