@@ -3,7 +3,7 @@
 
 ## Introduction
 
-iGlance is a small System Monitor that displays current stats about your Mac on the Status Bar. It is built to be highly customizable so that everyone can adjust it to his/her needs. A full list of features is listed below. If you encounter any bugs or have suggestions for new features, feel free to write them down in the Issue tab.
+iGlance is a small System Monitor that displays current stats about your Mac on the status bar. It is built to be highly customizable so that everyone can adjust it to his/her needs. A full list of all the features is below. If you encounter any bugs or have suggestions for new features, feel free to write them down in the Issues tab.
 
 <img src="https://raw.githubusercontent.com/iglance/iGlance/master/gifs/iGlance1.gif" title="Status Bar" alt="Status Bar">
 <img src="https://raw.githubusercontent.com/iglance/iGlance/master/gifs/iGlance3.gif" title="Status Bar Graphs" alt="Status Bar with graphs">
