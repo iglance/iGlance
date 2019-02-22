@@ -84,7 +84,7 @@ class MemUsageComponent {
             if menuBarGraph.width != Int(MemUsageComponent.sItemMemUsage.length) {
                 menuBarGraph.width = Int(MemUsageComponent.sItemMemUsage.length)
             }
-            btnMemUsage?.image = menuBarGraph.drawUsageGraph(value: totalMemUsage, drawBorder: AppDelegate.UserSettings.userWantsMemBorder, givenImage: NSImage(named: NSImage.Name(memImg!)))
+            btnMemUsage?.image = menuBarGraph.drawUsageGraph(value: totalMemUsage, drawBorder: AppDelegate.UserSettings.userWantsMemBorder, givenImage: NSImage(named: NSImage.Name(memImg!))!, givenColor: AppDelegate.UserSettings.memColor)
         } else {
             drawUsageBar(totalMemUsage: totalMemUsage)
         }
