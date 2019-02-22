@@ -78,7 +78,7 @@ class CpuUsageComponent {
             if menuBarGraph.width != Int(CpuUsageComponent.sItemCpuUtil.length) {
                 menuBarGraph.width = Int(CpuUsageComponent.sItemCpuUtil.length)
             }
-            btnCpuUtil?.image = menuBarGraph.drawUsageGraph(value: cpuUsageTotal, drawBorder: AppDelegate.UserSettings.userWantsCPUBorder, givenImage: NSImage(named: NSImage.Name(cpuImg!)))
+            btnCpuUtil?.image = menuBarGraph.drawUsageGraph(value: cpuUsageTotal, drawBorder: AppDelegate.UserSettings.userWantsCPUBorder, givenImage: NSImage(named: NSImage.Name(cpuImg!))!, givenColor: AppDelegate.UserSettings.cpuColor)
         } else {
             drawUsageBar(totalCpuUsage: cpuUsageTotal)
         }

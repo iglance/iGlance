@@ -30,7 +30,7 @@ class MenuBarGraph {
     // the maximum value points of the graph
     var maxValueCount: Int = 0
     
-    func drawUsageGraph(value: Double, drawBorder: Bool, givenImage: NSImage? = nil) -> NSImage {
+    func drawUsageGraph(value: Double, drawBorder: Bool, givenImage: NSImage, givenColor: NSColor) -> NSImage {
         updateHorizontalPos()
         // normalize the value to fit in the graph
         let normalizedValue: Double = round((value/100) * 16)
@@ -41,7 +41,7 @@ class MenuBarGraph {
         finalImg.lockFocus()
         
         // draw the given image
-        givenImage?.draw(at: NSPoint(x:0, y:0), from: NSZeroRect, operation: NSCompositingOperation.sourceOver, fraction: 1.0)
+        givenImage.draw(at: NSPoint(x:0, y:0), from: NSZeroRect, operation: NSCompositingOperation.sourceOver, fraction: 1.0)
         
         if drawBorder {
             // draw the border around the graph area
@@ -55,7 +55,7 @@ class MenuBarGraph {
         }
         
         // set the draw color
-        AppDelegate.UserSettings.cpuColor.setFill()
+        givenColor.setFill()
         for pair in graphValueArray {
             // if the data point of the graph would be outside of the box don't draw the point
             if pair.horizontalPos <= 6 || pair.horizontalPos >= width-3{
