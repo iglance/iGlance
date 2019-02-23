@@ -95,6 +95,7 @@ class MemoryView: NSViewController {
         didSet {
             // subtract 3 pixel because of the border of the graph
             memGraphWidth.intValue = Int32(MemUsageComponent.sItemMemUsage.length)
+            UserDefaults.standard.set(memGraphWidth.intValue, forKey: "memGraphWidth")
         }
     }
     @IBAction func memGraphWidth(_ sender: Any) {
@@ -104,8 +105,17 @@ class MemoryView: NSViewController {
         }
         
         // set the length of the status item. We have to add 20 pixel because of the border of the graph and the label
-        MemUsageComponent.sItemMemUsage.length = CGFloat(memGraphWidth.intValue)
-        // save it to the user settings
-        UserDefaults.standard.set(memGraphWidth.intValue, forKey: "memGraphWidth")
+        if memGraphWidth.stringValue.isNumber
+        {
+            MemUsageComponent.sItemMemUsage.length = CGFloat(memGraphWidth.intValue)
+            // save it to the user settings
+            UserDefaults.standard.set(memGraphWidth.intValue, forKey: "memGraphWidth")
+        }
+        else
+        {
+            // reset if it is not a positive number
+            memGraphWidth.intValue = UserDefaults.standard.value(forKey: "memGraphWidth") as! Int32
+        }
+        
     }
 }
