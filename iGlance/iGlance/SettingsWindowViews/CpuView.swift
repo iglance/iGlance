@@ -6,6 +6,12 @@
 //  Copyright © 2018 iGlance Corp. All rights reserved.
 //
 
+extension String  {
+    var isNumber: Bool {
+        return !isEmpty && rangeOfCharacter(from: CharacterSet.decimalDigits.inverted) == nil
+    }
+}
+
 import Cocoa
 
 class CpuView: NSViewController {
@@ -127,6 +133,7 @@ class CpuView: NSViewController {
         didSet {
             // subtract 3 pixel because of the border of the graph
             cpuGraphwidth.intValue = Int32(CpuUsageComponent.sItemCpuUtil.length)
+            UserDefaults.standard.set(cpuGraphwidth.intValue, forKey: "cpuGraphWidth")
         }
     }
     @IBAction func cpuGraphwidth(_ sender: Any) {
@@ -136,9 +143,17 @@ class CpuView: NSViewController {
         }
         
         // set the length of the status item. We have to add 3 pixel because of the border of the graph and the label
-        CpuUsageComponent.sItemCpuUtil.length = CGFloat(cpuGraphwidth.intValue)
-        // save it to the user settings
-        UserDefaults.standard.set(cpuGraphwidth.intValue, forKey: "cpuGraphWidth")
+        if cpuGraphwidth.stringValue.isNumber
+        {
+            CpuUsageComponent.sItemCpuUtil.length = CGFloat(cpuGraphwidth.intValue)
+            // save it to the user settings
+            UserDefaults.standard.set(cpuGraphwidth.intValue, forKey: "cpuGraphWidth")
+        }
+        else
+        {
+            // reset if it is not a positive number
+            cpuGraphwidth.intValue = Int32(UserDefaults.standard.value(forKey: "cpuGraphWidth") as! Int)
+        }
     }
     @IBOutlet weak var graphPixelLabel: NSTextField!
     @IBOutlet weak var graphWidthLabel: NSTextField!

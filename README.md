@@ -1,11 +1,9 @@
 # iGlance &ensp;&ensp;[![Build Status](https://travis-ci.org/iglance/iGlance.svg?branch=master)](https://travis-ci.org/iglance/iGlance) [![Github All Releases](https://img.shields.io/github/downloads/iglance/iGlance/total.svg?colorB=orange)](https://github.com/iglance/iGlance/releases)
 > macOS System Monitor for the Status Bar
 
-> macOS System Monitor for the Status Bar
-
 ## Introduction
 
-iGlance is a small System Monitor that displays current stats about your Mac on the Status Bar. It is built to be highly customizable so that everyone can adjust it to his/her needs. A full list of features is listed below. If you encounter any bugs or have suggestions for new features, feel free to write them down in the Issue tab.
+iGlance is a small System Monitor that displays current stats about your Mac on the status bar. It is built to be highly customizable so that everyone can adjust it to his/her needs. A full list of all the features is below. If you encounter any bugs or have suggestions for new features, feel free to write them down in the Issues tab.
 
 <img src="https://raw.githubusercontent.com/iglance/iGlance/master/gifs/iGlance1.gif" title="Status Bar" alt="Status Bar">
 <img src="https://raw.githubusercontent.com/iglance/iGlance/master/gifs/iGlance3.gif" title="Status Bar Graphs" alt="Status Bar with graphs">
@@ -25,7 +23,6 @@ iGlance is a small System Monitor that displays current stats about your Mac on 
 ## Installation
 
 - Download the iGlance.zip from https://github.com/iglance/iGlance/releases
-- Unzip it and put the Application into your Application folder
 
 ## Credits
 - <a href="https://github.com/beltex">beltex</a> - for providing the SMCKit and SystemKit Library

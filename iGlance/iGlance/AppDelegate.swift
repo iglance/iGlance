@@ -89,6 +89,9 @@ class AppDelegate: NSObject, NSApplicationDelegate {
 
     func applicationDidFinishLaunching(_: Notification) {
         checkForUpdate()
+        
+        let notificationCenter = NSWorkspace.shared.notificationCenter
+        notificationCenter.addObserver(self, selector: #selector(AppDelegate.wakeUpListener), name: NSWorkspace.didWakeNotification, object: nil)
 
         CpuTempComponent.sItemCPUTemp.isVisible = false
         CpuUsageComponent.sItemCpuUtil.isVisible = false
@@ -161,6 +164,11 @@ class AppDelegate: NSObject, NSApplicationDelegate {
                 }
             }
         }
+    }
+    
+    @objc func wakeUpListener(note: NSNotification)
+    {
+        checkForUpdate()
     }
 
     func matches(for regex: String, in text: String) -> [String] {
