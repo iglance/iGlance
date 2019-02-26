@@ -24,7 +24,7 @@ iGlance is a small System Monitor that displays current stats about your Mac on 
 
 There are two possible ways to install iGlance: 
 
-1. Download the iGlance.dmg from https://github.com/iglance/iGlance/releases, and manually move the app into the applications folder.
+1. Download the iGlance.dmg from https://github.com/iglance/iGlance/releases and manually move the app into the applications folder.
 2. Install iGlance using [brew](https://brew.sh):
 
     `brew cask install iglance`
