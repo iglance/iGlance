@@ -422,5 +422,5 @@ class AppDelegate: NSObject, NSApplicationDelegate {
 
 class NCConstants { // Notify constant
     static let KILLME = Notification.Name("killme")
-    static let launcherApplicationIdentifier = "noorganization.iGlanceLauncher"
+    static let launcherApplicationIdentifier = "io.iglance.iGlanceLauncher"
 }

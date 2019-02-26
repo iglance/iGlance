@@ -33,7 +33,7 @@ extension Notification.Name {
 @NSApplicationMain
 class AppDelegate: NSObject, NSApplicationDelegate {
     func applicationDidFinishLaunching(_: Notification) {
-        let mainAppIdentifier = "noorganization.iGlance"
+        let mainAppIdentifier = "io.iglance.iGlance"
         let running = NSWorkspace.shared.runningApplications
         var alreadyRunning = false
 
