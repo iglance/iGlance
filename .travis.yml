@@ -6,7 +6,7 @@ script: cd iGlance && xcodebuild -project 'iGlance.xcodeproj' -config Release -s
 before_deploy: xcodebuild -archivePath ./iGlance -scheme iGlance archive
     && xcodebuild -archivePath iGlance.xcarchive -exportArchive -exportPath iGlanceExport -exportOptionsPlist exportOptions.plist
     && cd iGlanceExport
-    && npm install --global https://github.com/D0miH/create-dmg.git
+    && npm install --global https://github.com/iglance/create-dmg.git
     && create-dmg iGlance.app
 deploy:
     provider: releases
