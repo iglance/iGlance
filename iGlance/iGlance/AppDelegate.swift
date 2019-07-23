@@ -172,12 +172,12 @@ class AppDelegate: NSObject, NSApplicationDelegate {
                 if onlyversion != AppDelegate.VERSION {
                     let alert = NSAlert()
                     alert.messageText = ""
-                    alert.informativeText = "A new version (" + onlyversion + ") is available at: \n\n https://github.com/iglance/iGlance"
+                    alert.informativeText = "A new version (" + onlyversion + ") is available at: \n\n https://github.com/iglance/iGlance/releases \n\n If you installed iGlance via Homebrew run:\n brew update && brew cask upgrade"
                     alert.alertStyle = .informational
                     alert.addButton(withTitle: "Visit Website")
                     alert.addButton(withTitle: "OK")
                     if alert.runModal() == .alertFirstButtonReturn {
-                        if let url = URL(string: "https://github.com/iglance/iGlance"), NSWorkspace.shared.open(url) {}
+                        if let url = URL(string: "https://github.com/iglance/iGlance/releases"), NSWorkspace.shared.open(url) {}
                     }
                 }
             }

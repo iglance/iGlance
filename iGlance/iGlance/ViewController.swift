@@ -143,7 +143,7 @@ class ViewController: NSViewController {
         if let error = error {
             let alert = NSAlert()
             alert.messageText = "Error"
-            alert.informativeText = "Unable to check for updates. Please check yourself on https://github.com/iglance/iGlance\n\n\(error)"
+            alert.informativeText = "Unable to check for updates. Please check yourself on https://github.com/iglance/iGlance/releases\n\n\(error)"
             alert.alertStyle = .warning
             alert.addButton(withTitle: "OK")
             alert.runModal()
@@ -153,7 +153,7 @@ class ViewController: NSViewController {
             if res.count != 1 {
                 let alert = NSAlert()
                 alert.messageText = "Error"
-                alert.informativeText = "Unable to check for updates. Please check yourself on https://github.com/iglance/iGlance\n\nError: Version.txt incompatible"
+                alert.informativeText = "Unable to check for updates. Please check yourself on https://github.com/iglance/iGlance/releases\n\nError: Version.txt incompatible"
                 alert.alertStyle = .warning
                 alert.addButton(withTitle: "OK")
                 alert.runModal()
@@ -162,12 +162,12 @@ class ViewController: NSViewController {
                 if onlyversion != AppDelegate.VERSION {
                     let alert = NSAlert()
                     alert.messageText = ""
-                    alert.informativeText = "A new version (" + onlyversion + ") is available at: \n\n https://github.com/iglance/iGlance"
+                    alert.informativeText = "A new version (" + onlyversion + ") is available at: \n\n https://github.com/iglance/iGlance/releases \n\n If you installed iGlance via Homebrew run:\n brew update && brew cask upgrade"
                     alert.alertStyle = .informational
                     alert.addButton(withTitle: "Visit Website")
                     alert.addButton(withTitle: "OK")
                     if alert.runModal() == .alertFirstButtonReturn {
-                        if let url = URL(string: "https://github.com/iglance/iGlance"), NSWorkspace.shared.open(url) {}
+                        if let url = URL(string: "https://github.com/iglance/iGlance/releases"), NSWorkspace.shared.open(url) {}
                     }
                 } else {
                     let alert = NSAlert()
