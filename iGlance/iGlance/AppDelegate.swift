@@ -84,6 +84,7 @@ class AppDelegate: NSObject, NSApplicationDelegate {
         static var userWantsBatteryNotification = true
         static var lowerBatteryNotificationValue = 20
         static var upperBatteryNotificationValue = 80
+        static var networkOrder = NetUsageComponent.NetworkOrder.uploadTop
     }
 
     /**
@@ -337,6 +338,12 @@ class AppDelegate: NSObject, NSApplicationDelegate {
         }
         if UserDefaults.standard.value(forKey: "upperBatteryNotificationValue") != nil {
             UserSettings.upperBatteryNotificationValue = UserDefaults.standard.value(forKey: "upperBatteryNotificationValue") as! Int
+        }
+        
+        if UserDefaults.standard.value(forKey: "networkOrder") != nil {
+            // 0 = uploadTop
+            // 1 = uploadBottom
+            UserSettings.networkOrder = (UserDefaults.standard.value(forKey: "networkOrder") as! Int == 0) ? NetUsageComponent.NetworkOrder.uploadTop : NetUsageComponent.NetworkOrder.uploadBottom
         }
     }
 
