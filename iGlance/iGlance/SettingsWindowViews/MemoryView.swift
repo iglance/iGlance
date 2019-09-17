@@ -105,6 +105,11 @@ class MemoryView: NSViewController {
         memGraphWidth.isHidden = popUpMemoryVisualization.indexOfSelectedItem == 0
         memGraphPixelLabel.isHidden = memGraphWidth.isHidden
         memGraphWidthLabel.isHidden = memGraphWidth.isHidden
+
+        // hide/show second color related controls
+        cbMemEnableColorGradient.isHidden = (AppDelegate.UserSettings.memUsageVisualization == AppDelegate.VisualizationType.Graph)
+        secondColorLabel.isHidden = !shouldShowSecondColorControls()
+        cpMem2.isHidden = !shouldShowSecondColorControls()
     }
     
     @IBOutlet weak var memGraphWidthLabel: NSTextField!
@@ -135,5 +140,48 @@ class MemoryView: NSViewController {
             memGraphWidth.intValue = UserDefaults.standard.value(forKey: "memGraphWidth") as! Int32
         }
         
+    }
+
+    @IBOutlet var cbMemEnableColorGradient: NSButton! {
+        didSet {
+            cbMemEnableColorGradient.isHidden = (AppDelegate.UserSettings.memUsageVisualization == AppDelegate.VisualizationType.Graph)
+            cbMemEnableColorGradient.state = AppDelegate.UserSettings.userWantsMemGradientColor ? NSButton.StateValue.on : NSButton.StateValue.off
+        }
+    }
+
+    @IBAction func cbMemEnableColorGradient_clicked(_: NSButton) {
+        AppDelegate.UserSettings.userWantsMemGradientColor = (cbMemEnableColorGradient.state == NSButton.StateValue.on)
+        UserDefaults.standard.set(AppDelegate.UserSettings.userWantsMemGradientColor, forKey: "userWantsMemGradientColor")
+        secondColorLabel.isHidden = !shouldShowSecondColorControls()
+        cpMem2.isHidden = !shouldShowSecondColorControls()
+    }
+
+    @IBOutlet weak var secondColorLabel: NSTextField! {
+        didSet {
+            secondColorLabel.isHidden = !shouldShowSecondColorControls()
+        }
+    }
+
+    // define the outlet and the action of the color well to choose second color
+    @IBOutlet var cpMem2: NSColorWell! {
+        didSet {
+            cpMem2.color = AppDelegate.UserSettings.memColor2
+            cpMem2.isHidden = !shouldShowSecondColorControls()
+        }
+    }
+
+    @IBAction func cpMem2_clicked(_ sender: NSColorWell) {
+        AppDelegate.UserSettings.memColor2 = sender.color
+        var red: CGFloat = 0, blue: CGFloat = 0, green: CGFloat = 0, alpha: CGFloat = 0
+        sender.color.usingColorSpace(NSColorSpace.genericRGB)?.getRed(&red, green: &green, blue: &blue, alpha: &alpha)
+        UserDefaults.standard.set(CGFloat(round(red * 10000) / 10000), forKey: "colRedMem2")
+        UserDefaults.standard.set(CGFloat(round(green * 10000) / 10000), forKey: "colGreenMem2")
+        UserDefaults.standard.set(CGFloat(round(blue * 10000) / 10000), forKey: "colBlueMem2")
+        UserDefaults.standard.set(CGFloat(round(alpha * 10000) / 10000), forKey: "colAlphaMem2")
+    }
+
+    private func shouldShowSecondColorControls() -> Bool {
+        return (AppDelegate.UserSettings.userWantsMemGradientColor
+                && AppDelegate.UserSettings.memUsageVisualization == AppDelegate.VisualizationType.Bar)
     }
 }
