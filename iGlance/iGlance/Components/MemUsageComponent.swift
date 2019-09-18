@@ -27,12 +27,17 @@
 import Cocoa
 
 class MemUsageComponent {
+    static let usageBarMaxHeight: Double = 16.0
+    static let usageBarWidth: Double = 7.0
+
     // the status item of the memory usage
     static let sItemMemUsage = NSStatusBar.system.statusItem(withLength: 27.0)
     // the custom view of the memory usage
     let myMemMenuView = MemMenuView(frame: NSRect(x: 0, y: 0, width: 170, height: 110))
     // the menu item for the custom menu view
     let menuItemMem = NSMenuItem(title: "", action: nil, keyEquivalent: "")
+    // gradient image helper
+    let gradientImage = GradientImage(height: usageBarMaxHeight, width: usageBarWidth)
     // the button of the menu bar icon
     var btnMemUsage: NSStatusBarButton?
     // the menu of the icon
@@ -41,16 +46,13 @@ class MemUsageComponent {
     /**
      * MEM Button Image variables
      */
-    var pbFillRectMEM: NSRect?
     var memImg: String?
 
     /**
      * Shared variables
      */
-    var pixelWidth: Double?
     var pbIMG: String?
-    var pbMax: Double?
-    
+
     var menuBarGraph = MenuBarGraph()
 
     func initialize() {
@@ -64,7 +66,6 @@ class MemUsageComponent {
         menuMemUsage?.addItem(NSMenuItem(title: "Quit iGlance", action: #selector(NSApplication.terminate(_:)), keyEquivalent: "q"))
         MemUsageComponent.sItemMemUsage.menu = menuMemUsage
 
-        pixelWidth = 7
         btnMemUsage = MemUsageComponent.sItemMemUsage.button
         
         // adjust the length of the status item according to the visualization type
@@ -110,7 +111,7 @@ class MemUsageComponent {
     
     private func drawUsageBar(totalMemUsage: Double) {
         
-        let normalizedMemUsage = Double(totalMemUsage / 100) * 16
+        let normalizedMemUsage = Double(totalMemUsage / 100) * MemUsageComponent.usageBarMaxHeight
         
         let imgFinal = NSImage(size: NSSize(width: 20, height: 18))
         imgFinal.lockFocus()
@@ -120,10 +121,24 @@ class MemUsageComponent {
             let img2 = NSImage(named: NSImage.Name(pbIMG!))
             img2?.draw(at: NSPoint(x: 11, y: 0), from: NSZeroRect, operation: NSCompositingOperation.sourceOver, fraction: 1.0)
         }
-        pbFillRectMEM = NSRect(x: 12.0, y: 1.0, width: pixelWidth!, height: normalizedMemUsage)
-        AppDelegate.UserSettings.memColor.setFill()
-        pbFillRectMEM?.fill()
-        NSColor.clear.setFill()
+        let barColor = AppDelegate.UserSettings.memColor
+        if AppDelegate.UserSettings.userWantsMemGradientColor { // draw two color gradient version of the bar
+            // create image of a gradient using colors according to the user settings
+            let gradImg = gradientImage.create(fromColor: barColor, toColor: AppDelegate.UserSettings.memColor2)
+            // draw a part of the gradient image with height capped by `normalizedMemUsage`
+            gradImg.draw(
+                    at: NSPoint(x: 12.0, y: 1.0),
+                    from: NSRect(x: 0.0, y: 0.0, width: MemUsageComponent.usageBarWidth, height: normalizedMemUsage),
+                    operation: NSCompositingOperation.sourceOver,
+                    fraction: 1.0
+            )
+        } else { // draw simple monocolored version of the bar
+            let pbFillRectMEM = NSRect(x: 12.0, y: 1.0, width: MemUsageComponent.usageBarWidth, height: normalizedMemUsage)
+            barColor.setFill()
+            pbFillRectMEM.fill()
+            NSColor.clear.setFill()
+        }
+
         imgFinal.unlockFocus()
         
         btnMemUsage?.image = imgFinal

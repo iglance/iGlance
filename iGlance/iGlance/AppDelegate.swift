@@ -70,10 +70,12 @@ class AppDelegate: NSObject, NSApplicationDelegate {
         static var userWantsCPUUtil = false
         static var userWantsCPUTemp = false
         static var userWantsAutostart = false
-        static var cpuColor = NSColor.red
+        static var cpuColor = NSColor.green
+        static var cpuColor2 = NSColor.red
         static var cpuUsageVisualization = VisualizationType.Bar
         static var cpuGraphWidth = 27
         static var memColor = NSColor.green
+        static var memColor2 = NSColor.red
         static var memUsageVisualization = VisualizationType.Bar
         static var memGraphWidth = 27
         static var updateInterval = 1.0
@@ -84,6 +86,8 @@ class AppDelegate: NSObject, NSApplicationDelegate {
         static var userWantsBatteryNotification = true
         static var lowerBatteryNotificationValue = 20
         static var upperBatteryNotificationValue = 80
+        static var userWantsCPUGradientColor = false
+        static var userWantsMemGradientColor = false
     }
 
     /**
@@ -274,12 +278,28 @@ class AppDelegate: NSObject, NSApplicationDelegate {
             UserSettings.memColor = NSColor(calibratedRed: colRedMem, green: colGreenMem, blue: colBlueMem, alpha: colAlphaMem)
         }
 
+        if UserDefaults.standard.value(forKey: "colRedMem2") != nil {
+            let red = UserDefaults.standard.value(forKey: "colRedMem2") as! CGFloat
+            let green = UserDefaults.standard.value(forKey: "colGreenMem2") as! CGFloat
+            let blue = UserDefaults.standard.value(forKey: "colBlueMem2") as! CGFloat
+            let alpha = UserDefaults.standard.value(forKey: "colAlphaMem2") as! CGFloat
+            UserSettings.memColor2 = NSColor(calibratedRed: red, green: green, blue: blue, alpha: alpha)
+        }
+
         if UserDefaults.standard.value(forKey: "colRedCPU") != nil {
             colRedCPU = UserDefaults.standard.value(forKey: "colRedCPU") as! CGFloat
             colGreenCPU = UserDefaults.standard.value(forKey: "colGreenCPU") as! CGFloat
             colBlueCPU = UserDefaults.standard.value(forKey: "colBlueCPU") as! CGFloat
             colAlphaCPU = UserDefaults.standard.value(forKey: "colAlphaCPU") as! CGFloat
             UserSettings.cpuColor = NSColor(calibratedRed: colRedCPU, green: colGreenCPU, blue: colBlueCPU, alpha: colAlphaCPU)
+        }
+
+        if UserDefaults.standard.value(forKey: "colRedCPU2") != nil {
+            let red = UserDefaults.standard.value(forKey: "colRedCPU2") as! CGFloat
+            let green = UserDefaults.standard.value(forKey: "colGreenCPU2") as! CGFloat
+            let blue = UserDefaults.standard.value(forKey: "colBlueCPU2") as! CGFloat
+            let alpha = UserDefaults.standard.value(forKey: "colAlphaCPU2") as! CGFloat
+            UserSettings.cpuColor2 = NSColor(calibratedRed: red, green: green, blue: blue, alpha: alpha)
         }
 
         if UserDefaults.standard.value(forKey: "userWantsCPUUtil") != nil {
@@ -323,8 +343,14 @@ class AppDelegate: NSObject, NSApplicationDelegate {
         if UserDefaults.standard.value(forKey: "userWantsCPUBorder") != nil {
             UserSettings.userWantsCPUBorder = UserDefaults.standard.value(forKey: "userWantsCPUBorder") as! Bool
         }
+        if UserDefaults.standard.value(forKey: "userWantsCPUGradientColor") != nil {
+            UserSettings.userWantsCPUGradientColor = UserDefaults.standard.value(forKey: "userWantsCPUGradientColor") as! Bool
+        }
         if UserDefaults.standard.value(forKey: "userWantsMemBorder") != nil {
             UserSettings.userWantsMemBorder = UserDefaults.standard.value(forKey: "userWantsMemBorder") as! Bool
+        }
+        if UserDefaults.standard.value(forKey: "userWantsMemGradientColor") != nil {
+            UserSettings.userWantsMemGradientColor = UserDefaults.standard.value(forKey: "userWantsMemGradientColor") as! Bool
         }
         if UserDefaults.standard.value(forKey: "userWantsBatteryUtil") != nil {
             UserSettings.userWantsBatteryUtil = UserDefaults.standard.value(forKey: "userWantsBatteryUtil") as! Bool
