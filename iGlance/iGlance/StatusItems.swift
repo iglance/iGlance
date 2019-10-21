@@ -57,10 +57,10 @@ class MyStatusItems: NSObject {
     }
 
     public static func removeItem(item: StatusItems) {
-        if StatusItemPos.index(of: item) == nil {
+        if StatusItemPos.firstIndex(of: item) == nil {
             return
         } else {
-            removeItemHelper(at: StatusItemPos.index(of: item)!)
+            removeItemHelper(at: StatusItemPos.firstIndex(of: item)!)
             UserDefaults.standard.set(validToIndex, forKey: "validToIndex")
             savePosArray()
         }
