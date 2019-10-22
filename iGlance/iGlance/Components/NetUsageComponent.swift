@@ -118,9 +118,10 @@ class NetUsageComponent {
         
         var upSpeed = UInt64(0)
         var downSpeed = UInt64(0)
+        // divide the net speed by the update interval to get the average of one update duration
         if lastDownBytes != nil && lastUpBytes != nil {
-            upSpeed = upBytes - lastUpBytes!
-            downSpeed = downBytes - lastDownBytes!
+            upSpeed = (upBytes - lastUpBytes!) / UInt64(AppDelegate.UserSettings.updateInterval)
+            downSpeed = (downBytes - lastDownBytes!) / UInt64(AppDelegate.UserSettings.updateInterval)
         }
         
         lastDownBytes = downBytes
