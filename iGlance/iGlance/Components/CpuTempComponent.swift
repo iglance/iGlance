@@ -61,7 +61,7 @@ class CpuTempComponent {
 
     func updateCPUTemp() {
         // get the temperatur sensor of the cpu
-        let core0 = TemperatureSensor(name: "CPU_0_DIE", code: FourCharCode(fromStaticString: "TC0F"))
+        let core0 = TemperatureSensor(name: "CPU_0_PROXIMITY", code: FourCharCode(fromStaticString: "TC0P"))
 
         // try to get the temperature of the sensor
         guard let temperature = try? SMCKit.temperature(core0.code) else {

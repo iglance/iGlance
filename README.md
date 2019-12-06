@@ -28,6 +28,8 @@ There are two possible ways to install iGlance:
 2. Install iGlance using [brew](https://brew.sh):
 
     `brew cask install iglance`
+    
+<b>INFO:</b> If you get a warning that iGlance can't be opened due to an unidentified developer you have to make sure that under "System Preferences" > "Security & Privacy" > "General" it is allowed to open apps from the "Mac App Store and identified developers". Then try to open iGlance and under "System Preferences" > "Security & Privacy" > "General" click on "Open Anyway". 
 
 ## Credits
 - <a href="https://github.com/beltex">beltex</a> - for providing the SMCKit and SystemKit Library

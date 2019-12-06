@@ -1079,18 +1079,49 @@
                                     <action selector="cpCPU_clicked:" target="MQx-3P-zDy" id="Ys9-Jz-cEt"/>
                                 </connections>
                             </colorWell>
+                            <button hidden="YES" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="MJc-tX-5GW" userLabel="Cb CPU Enable ColorGradient">
+                                <rect key="frame" x="18" y="44" width="202" height="28"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                                <buttonCell key="cell" type="check" title="Enable Color Gradient" bezelStyle="regularSquare" imagePosition="left" inset="2" id="qhp-Bv-TAE">
+                                    <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
+                                    <font key="font" metaFont="system"/>
+                                </buttonCell>
+                                <connections>
+                                    <action selector="cbCPUEnableColorGradient_clicked:" target="MQx-3P-zDy" id="Wjq-Ss-baN"/>
+                                </connections>
+                            </button>
+                            <textField hidden="YES" horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="F5G-9s-e7t" userLabel="Second Color Label">
+                                <rect key="frame" x="18" y="18" width="90" height="17"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                                <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="Second Color:" id="QwU-jx-yac">
+                                    <font key="font" metaFont="system"/>
+                                    <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
+                                    <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
+                                </textFieldCell>
+                            </textField>
+                            <colorWell hidden="YES" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="IuU-qN-G20" userLabel="cpCPU2">
+                                <rect key="frame" x="158" y="15" width="48" height="23"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                                <color key="color" name="systemRedColor" catalog="System" colorSpace="catalog"/>
+                                <connections>
+                                    <action selector="cpCPU2_clicked:" target="MQx-3P-zDy" id="NLz-Gt-f9p"/>
+                                </connections>
+                            </colorWell>
                         </subviews>
                     </view>
                     <connections>
                         <outlet property="cbCPUBorder" destination="9PU-LC-0gS" id="9Yt-hE-cby"/>
+                        <outlet property="cbCPUEnableColorGradient" destination="MJc-tX-5GW" id="OUl-1A-zlc"/>
                         <outlet property="cbCPUTemp" destination="TfC-J4-Qzk" id="CFQ-fy-GHR"/>
                         <outlet property="cbCPUUtil" destination="gpa-qj-kWb" id="uJJ-Qs-xPL"/>
                         <outlet property="cpCPU" destination="W9N-7k-Xkt" id="O3a-jZ-g0I"/>
+                        <outlet property="cpCPU2" destination="IuU-qN-G20" id="WyU-fm-3Nc"/>
                         <outlet property="cpuGraphwidth" destination="hUK-V9-6cd" id="dyb-Yp-lSo"/>
                         <outlet property="ddTempUnit" destination="28T-ir-Zeo" id="ZfR-04-r5c"/>
                         <outlet property="graphPixelLabel" destination="Ad9-eq-aFz" id="ool-Tg-q0t"/>
                         <outlet property="graphWidthLabel" destination="xb0-K8-gTX" id="qBV-Dz-pka"/>
                         <outlet property="popUpCPUGraphType" destination="v9K-rV-SwD" id="LC9-gL-f3o"/>
+                        <outlet property="secondColorLabel" destination="F5G-9s-e7t" id="nud-hG-I6h"/>
                     </connections>
                 </viewController>
                 <customObject id="gG7-L0-jME" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
@@ -1201,16 +1232,47 @@
                                     <action selector="memGraphWidth:" target="rub-dP-mB3" id="E3h-l0-wEF"/>
                                 </connections>
                             </textField>
+                            <button hidden="YES" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="1lW-Gc-zro" userLabel="Cb Mem Enable Color Gradient">
+                                <rect key="frame" x="18" y="128" width="202" height="28"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                                <buttonCell key="cell" type="check" title="Enable Color Gradient" bezelStyle="regularSquare" imagePosition="left" inset="2" id="1mi-Cr-IHn">
+                                    <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
+                                    <font key="font" metaFont="system"/>
+                                </buttonCell>
+                                <connections>
+                                    <action selector="cbMemEnableColorGradient_clicked:" target="rub-dP-mB3" id="clq-w0-ShX"/>
+                                </connections>
+                            </button>
+                            <textField hidden="YES" horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="TUm-N4-2vE" userLabel="Second Color Label">
+                                <rect key="frame" x="18" y="102" width="90" height="17"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                                <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="Second Color:" id="ar7-fs-lY9">
+                                    <font key="font" metaFont="system"/>
+                                    <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
+                                    <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
+                                </textFieldCell>
+                            </textField>
+                            <colorWell hidden="YES" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="mm7-Ol-rWO" userLabel="Cp Mem2">
+                                <rect key="frame" x="142" y="99" width="48" height="23"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                                <color key="color" name="systemRedColor" catalog="System" colorSpace="catalog"/>
+                                <connections>
+                                    <action selector="cpMem2_clicked:" target="rub-dP-mB3" id="Pje-Df-OPo"/>
+                                </connections>
+                            </colorWell>
                         </subviews>
                     </view>
                     <connections>
                         <outlet property="cbMemBorder" destination="MDb-0Z-pJj" id="AzB-sH-VTt"/>
+                        <outlet property="cbMemEnableColorGradient" destination="1lW-Gc-zro" id="pe5-Wj-jWR"/>
                         <outlet property="cbMemUtil" destination="v1t-v1-O2M" id="0Vi-Hy-f6e"/>
+                        <outlet property="cpMem2" destination="mm7-Ol-rWO" id="pQ4-Yc-NHI"/>
                         <outlet property="cpMemUtil" destination="mgz-kS-K4o" id="ykX-lu-Z88"/>
                         <outlet property="memGraphPixelLabel" destination="hsA-Yi-6fk" id="wot-cP-bKr"/>
                         <outlet property="memGraphWidth" destination="rZF-fk-xVj" id="F36-4w-auD"/>
                         <outlet property="memGraphWidthLabel" destination="nU2-Ne-Jy4" id="U5B-DG-vQi"/>
                         <outlet property="popUpMemoryVisualization" destination="up5-am-q4S" id="If7-GB-c7Q"/>
+                        <outlet property="secondColorLabel" destination="TUm-N4-2vE" id="qDp-NR-NfU"/>
                     </connections>
                 </viewController>
                 <customObject id="5NP-Qv-Hqp" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>

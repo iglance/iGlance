@@ -27,14 +27,19 @@
 import Cocoa
 
 class CpuUsageComponent {
-    
+
+    static let usageBarMaxHeight: Double = 16.0 // 32*0.5
+    static let usageBarWidth: Double = 7.0      // 14*0.5
+
     // the status item of the cpu utilization
     static var sItemCpuUtil = NSStatusBar.system.statusItem(withLength: 27.0)
     // the custom menu view of the cpu utilization
     let myCpuMenuView = CPUMenuView(frame: NSRect(x: 0, y: 0, width: 170, height: 90))
     // the menu item for the custom view
     let menuItemCpu = NSMenuItem(title: "", action: nil, keyEquivalent: "")
-    // the buton of the cpu utilization icon
+    // gradient image helper
+    let gradientImage = GradientImage(height: usageBarMaxHeight, width: usageBarWidth)
+    // the button of the cpu utilization icon
     var btnCpuUtil: NSStatusBarButton?
     // the menu for the button
     var menuCpuUtil: NSMenu?
@@ -112,17 +117,28 @@ class CpuUsageComponent {
             img2?.draw(at: NSPoint(x: 11, y: 0), from: NSZeroRect, operation: NSCompositingOperation.sourceOver, fraction: 1.0)
         }
         
-        // define the width and height of the rectangle which is going to be drawn
-        let rectWidth = 7 // 14*0.5
-        let maxRectHeight = 16.0 // 32*0.5
-        let pixelHeightCpu = Double((maxRectHeight / 100.0) * totalCpuUsage)
-        // create the rectangle
-        let pbFillRectCpu = NSRect(x: 12.0, y: 1.0, width: Double(rectWidth), height: pixelHeightCpu)
-        // set the fill color according to the user settings and fill the rectangle
-        AppDelegate.UserSettings.cpuColor.setFill()
-        pbFillRectCpu.fill()
-        // clear the fill color
-        NSColor.clear.setFill()
+        // define the height of the rectangle which is going to be drawn
+        let pixelHeightCpu = Double((CpuUsageComponent.usageBarMaxHeight / 100.0) * totalCpuUsage)
+        let barColor = AppDelegate.UserSettings.cpuColor
+        if AppDelegate.UserSettings.userWantsCPUGradientColor { // draw two color gradient version of the bar
+            // create image of a gradient using colors according to the user settings
+            let gradImg = gradientImage.create(fromColor: barColor, toColor: AppDelegate.UserSettings.cpuColor2)
+            // draw a part of the gradient image with height capped by `pixelHeightCpu`
+            gradImg.draw(
+                    at: NSPoint(x: 12.0, y: 1.0),
+                    from: NSRect(x: 0.0, y: 0.0, width: CpuUsageComponent.usageBarWidth, height: pixelHeightCpu),
+                    operation: NSCompositingOperation.sourceOver,
+                    fraction: 1.0
+            )
+        } else { // draw simple monocolored version of the bar
+            let pbFillRectCpu = NSRect(x: 12.0, y: 1.0, width: CpuUsageComponent.usageBarWidth, height: pixelHeightCpu)
+            // set the fill color according to the user settings and fill the rectangle
+            barColor.setFill()
+            pbFillRectCpu.fill()
+            // clear the fill color
+            NSColor.clear.setFill()
+        }
+
         imgFinal.unlockFocus()
         
         btnCpuUtil?.image = imgFinal

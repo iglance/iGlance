@@ -40,6 +40,7 @@
 		B4EF0F3E2184CE3D00A28F5E /* FanView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B4EF0F3D2184CE3D00A28F5E /* FanView.swift */; };
 		B4EF0F402184CEA800A28F5E /* NetworkView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B4EF0F3F2184CEA800A28F5E /* NetworkView.swift */; };
 		B4FF095120D02270006BE560 /* BatteryComponent.swift in Sources */ = {isa = PBXBuildFile; fileRef = B4FF095020D02270006BE560 /* BatteryComponent.swift */; };
+		D574CB478F9CB8632C3F5178 /* GradientImage.swift in Sources */ = {isa = PBXBuildFile; fileRef = D574CD590FABD2E739D0B44C /* GradientImage.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -94,6 +95,7 @@
 		B4EF0F3D2184CE3D00A28F5E /* FanView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FanView.swift; sourceTree = "<group>"; };
 		B4EF0F3F2184CEA800A28F5E /* NetworkView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkView.swift; sourceTree = "<group>"; };
 		B4FF095020D02270006BE560 /* BatteryComponent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BatteryComponent.swift; sourceTree = "<group>"; };
+		D574CD590FABD2E739D0B44C /* GradientImage.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GradientImage.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -179,6 +181,7 @@
 			isa = PBXGroup;
 			children = (
 				B4A54A902218723200957E17 /* MenuBarGraph.swift */,
+				D574CD590FABD2E739D0B44C /* GradientImage.swift */,
 			);
 			path = Utils;
 			sourceTree = "<group>";
@@ -293,12 +296,12 @@
 			isa = PBXProject;
 			attributes = {
 				LastSwiftUpdateCheck = 0940;
-				LastUpgradeCheck = 0940;
+				LastUpgradeCheck = 1110;
 				ORGANIZATIONNAME = "iGlance Corp";
 				TargetAttributes = {
 					025AC38620C0AFDD000E0837 = {
 						CreatedOnToolsVersion = 9.4;
-						LastSwiftMigration = 1010;
+						LastSwiftMigration = 1110;
 						SystemCapabilities = {
 							com.apple.Sandbox = {
 								enabled = 1;
@@ -307,7 +310,7 @@
 					};
 					02ECFC7020C80A9300E0A1D7 = {
 						CreatedOnToolsVersion = 9.4;
-						LastSwiftMigration = 1010;
+						LastSwiftMigration = 1110;
 						SystemCapabilities = {
 							com.apple.Sandbox = {
 								enabled = 1;
@@ -386,6 +389,7 @@
 				B4DD136A21F3C59C00652861 /* MemUsageComponent.swift in Sources */,
 				02B8120920C95D6600C98F0D /* CPUMenuView.swift in Sources */,
 				025AC38B20C0AFDD000E0837 /* AppDelegate.swift in Sources */,
+				D574CB478F9CB8632C3F5178 /* GradientImage.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -544,7 +548,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_ENTITLEMENTS = "";
-				CODE_SIGN_IDENTITY = "";
+				CODE_SIGN_IDENTITY = "-";
 				CODE_SIGN_STYLE = Manual;
 				COMBINE_HIDPI_IMAGES = YES;
 				DEVELOPMENT_TEAM = "";
@@ -553,12 +557,13 @@
 					"$(inherited)",
 					"@executable_path/../Frameworks",
 				);
+				MARKETING_VERSION = 1.4.1;
 				PRODUCT_BUNDLE_IDENTIFIER = io.iglance.iglance;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_OBJC_BRIDGING_HEADER = "";
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
-				SWIFT_VERSION = 4.2;
+				SWIFT_VERSION = 5.0;
 			};
 			name = Debug;
 		};
@@ -568,7 +573,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_ENTITLEMENTS = "";
-				CODE_SIGN_IDENTITY = "";
+				CODE_SIGN_IDENTITY = "-";
 				CODE_SIGN_STYLE = Manual;
 				COMBINE_HIDPI_IMAGES = YES;
 				DEVELOPMENT_TEAM = "";
@@ -577,11 +582,12 @@
 					"$(inherited)",
 					"@executable_path/../Frameworks",
 				);
+				MARKETING_VERSION = 1.4.1;
 				PRODUCT_BUNDLE_IDENTIFIER = io.iglance.iglance;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_OBJC_BRIDGING_HEADER = "";
-				SWIFT_VERSION = 4.2;
+				SWIFT_VERSION = 5.0;
 			};
 			name = Release;
 		};
@@ -590,8 +596,8 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_ENTITLEMENTS = "";
-				CODE_SIGN_IDENTITY = "";
-				CODE_SIGN_STYLE = Automatic;
+				CODE_SIGN_IDENTITY = "-";
+				CODE_SIGN_STYLE = Manual;
 				COMBINE_HIDPI_IMAGES = YES;
 				DEVELOPMENT_TEAM = "";
 				INFOPLIST_FILE = iGlanceLauncher/Info.plist;
@@ -603,7 +609,7 @@
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
 				SKIP_INSTALL = YES;
-				SWIFT_VERSION = 4.2;
+				SWIFT_VERSION = 5.0;
 			};
 			name = Debug;
 		};
@@ -612,8 +618,8 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_ENTITLEMENTS = "";
-				CODE_SIGN_IDENTITY = "";
-				CODE_SIGN_STYLE = Automatic;
+				CODE_SIGN_IDENTITY = "-";
+				CODE_SIGN_STYLE = Manual;
 				COMBINE_HIDPI_IMAGES = YES;
 				DEVELOPMENT_TEAM = "";
 				INFOPLIST_FILE = iGlanceLauncher/Info.plist;
@@ -625,7 +631,7 @@
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
 				SKIP_INSTALL = YES;
-				SWIFT_VERSION = 4.2;
+				SWIFT_VERSION = 5.0;
 			};
 			name = Release;
 		};

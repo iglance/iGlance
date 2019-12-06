@@ -144,6 +144,10 @@ class CpuView: NSViewController {
         cpuGraphwidth.isHidden = popUpCPUGraphType.indexOfSelectedItem == 0
         graphPixelLabel.isHidden = cpuGraphwidth.isHidden
         graphWidthLabel.isHidden = cpuGraphwidth.isHidden
+        // hide/show second color related controls
+        cbCPUEnableColorGradient.isHidden = (AppDelegate.UserSettings.cpuUsageVisualization == AppDelegate.VisualizationType.Graph)
+        secondColorLabel.isHidden = !shouldShowSecondColorControls()
+        cpCPU2.isHidden = !shouldShowSecondColorControls()
     }
     
     // outlets and actions of the labels and textfield to define the width of the menu bar graph
@@ -175,4 +179,47 @@ class CpuView: NSViewController {
     }
     @IBOutlet weak var graphPixelLabel: NSTextField!
     @IBOutlet weak var graphWidthLabel: NSTextField!
+
+    // define the outlet and the action of the color well to choose second color
+    @IBOutlet var cpCPU2: NSColorWell! {
+        didSet {
+            cpCPU2.color = AppDelegate.UserSettings.cpuColor2
+            cpCPU2.isHidden = !shouldShowSecondColorControls()
+        }
+    }
+
+    @IBAction func cpCPU2_clicked(_ sender: NSColorWell) {
+        AppDelegate.UserSettings.cpuColor2 = sender.color
+        var red: CGFloat = 0, blue: CGFloat = 0, green: CGFloat = 0, alpha: CGFloat = 0
+        sender.color.usingColorSpace(NSColorSpace.genericRGB)?.getRed(&red, green: &green, blue: &blue, alpha: &alpha)
+        UserDefaults.standard.set(CGFloat(round(red * 10000) / 10000), forKey: "colRedCPU2")
+        UserDefaults.standard.set(CGFloat(round(green * 10000) / 10000), forKey: "colGreenCPU2")
+        UserDefaults.standard.set(CGFloat(round(blue * 10000) / 10000), forKey: "colBlueCPU2")
+        UserDefaults.standard.set(CGFloat(round(alpha * 10000) / 10000), forKey: "colAlphaCPU2")
+    }
+
+    @IBOutlet var cbCPUEnableColorGradient: NSButton! {
+        didSet {
+            cbCPUEnableColorGradient.isHidden = (AppDelegate.UserSettings.cpuUsageVisualization == AppDelegate.VisualizationType.Graph)
+            cbCPUEnableColorGradient.state = AppDelegate.UserSettings.userWantsCPUGradientColor ? NSButton.StateValue.on : NSButton.StateValue.off
+        }
+    }
+
+    @IBAction func cbCPUEnableColorGradient_clicked(_: NSButton) {
+        AppDelegate.UserSettings.userWantsCPUGradientColor = (cbCPUEnableColorGradient.state == NSButton.StateValue.on)
+        UserDefaults.standard.set((cbCPUEnableColorGradient.state == NSButton.StateValue.on), forKey: "userWantsCPUGradientColor")
+        secondColorLabel.isHidden = !shouldShowSecondColorControls()
+        cpCPU2.isHidden = !shouldShowSecondColorControls()
+    }
+
+    @IBOutlet weak var secondColorLabel: NSTextField! {
+        didSet {
+            secondColorLabel.isHidden = !shouldShowSecondColorControls()
+        }
+    }
+
+    private func shouldShowSecondColorControls() -> Bool {
+        return (AppDelegate.UserSettings.userWantsCPUGradientColor
+                && AppDelegate.UserSettings.cpuUsageVisualization == AppDelegate.VisualizationType.Bar)
+    }
 }

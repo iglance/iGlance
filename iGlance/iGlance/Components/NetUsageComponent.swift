@@ -46,6 +46,8 @@ class NetUsageComponent {
     var uSpeed: UInt64?
     var dSpeedLast: UInt64?
     var uSpeedLast: UInt64?
+    var lastUpBytes: UInt64?
+    var lastDownBytes: UInt64?
 
     /**
      * Image variables for the menu bar icon
@@ -70,15 +72,9 @@ class NetUsageComponent {
     var bandwidthUUsageArray = Array(repeating: UInt64(0), count: 3600)
     var bandwidthUUsageArrayIndex = 0
 
-    // the seperate process to monitor the bandwidth usage
-    var bandwidthProcess: Process?
-
     var curr: Array<Substring>?
 
     func initialize() {
-        // start the seperate process to monitor the bandwidth
-        startMonitoringProcess()
-
         // create the menu
         createMenu()
 
@@ -99,58 +95,44 @@ class NetUsageComponent {
         menuBandwidth?.addItem(NSMenuItem(title: "Quit iGlance", action: #selector(NSApplication.terminate(_:)), keyEquivalent: "q"))
         NetUsageComponent.sItemBandwidth.menu = menuBandwidth
     }
-
+    
     /**
-     *  Creates a new process to monitor the network usage.
+     * Returns a tuple with the upload and download speed in bytes.
+     * (DownSpeed, UpSpeed)
      */
-    func startMonitoringProcess() {
-        // Create a Task instance
-        bandwidthProcess = Process()
-
-        // Set the task parameters
-        bandwidthProcess?.launchPath = "/usr/bin/env"
-        bandwidthProcess?.arguments = ["netstat", "-w1", "-l", "en0"]
-
-        // Create a Pipe and make the task
-        // put all the output there
+    func readNetUsage() -> (UInt64, UInt64) {
+        let process = Process()
+        process.launchPath = "/usr/bin/env"
+        process.arguments = ["netstat", "-bdI", "en0"]
+        
         let pipe = Pipe()
-        bandwidthProcess?.standardOutput = pipe
-
-        let outputHandle = pipe.fileHandleForReading
-
-        // outputHandle.waitForDataInBackgroundAndNotify()
-        outputHandle.waitForDataInBackgroundAndNotify(forModes: [RunLoop.Mode.common])
-
-        // When new data is available execute the function of the observer
-        var dataAvailable: NSObjectProtocol!
-        dataAvailable = NotificationCenter.default.addObserver(forName: NSNotification.Name.NSFileHandleDataAvailable, object: outputHandle, queue: nil) { _ -> Void in
-            let data = pipe.fileHandleForReading.availableData
-            if data.count > 0 {
-                if let str = NSString(data: data, encoding: String.Encoding.utf8.rawValue) {
-                    self.curr = [""]
-                    self.curr = str.replacingOccurrences(of: "  ", with: " ").replacingOccurrences(of: "  ", with: " ").replacingOccurrences(of: "  ", with: " ").replacingOccurrences(of: "  ", with: " ").split(separator: " ")
-                    if self.curr == nil || (self.curr?.count)! < 6 {} else {
-                        if Int64(self.curr![2]) == nil {} else {
-                            self.dSpeed = UInt64(self.curr![2])
-                            self.uSpeed = UInt64(self.curr![5])
-                        }
-                    }
-                }
-                outputHandle.waitForDataInBackgroundAndNotify()
-            } else {
-                NotificationCenter.default.removeObserver(dataAvailable)
-            }
+        process.standardOutput = pipe
+        process.launch()
+        
+        let data = pipe.fileHandleForReading.readDataToEndOfFile()
+        var commandOutput = String(data: data, encoding: String.Encoding.utf8)
+        
+        // parse the command output and extract the up and downloaded bytes
+        commandOutput = commandOutput?.lowercased()
+        let lines = commandOutput?.split(separator: "\n")
+        let regex = try? NSRegularExpression(pattern: "/ +/g")
+        let stats = regex?.stringByReplacingMatches(in: String((lines?[1])!), options: [], range: NSRange(location: 0, length: String((lines?[1])!).count), withTemplate: " ").split(separator: " ")
+        
+        let downBytes = UInt64(String((stats?[6])!))!
+        let upBytes = UInt64(String((stats?[9])!))!
+        
+        var upSpeed = UInt64(0)
+        var downSpeed = UInt64(0)
+        // divide the net speed by the update interval to get the average of one update duration
+        if lastDownBytes != nil && lastUpBytes != nil {
+            upSpeed = (upBytes - lastUpBytes!) / UInt64(AppDelegate.UserSettings.updateInterval)
+            downSpeed = (downBytes - lastDownBytes!) / UInt64(AppDelegate.UserSettings.updateInterval)
         }
-
-        // When task has finished execute the function of the observer
-        var dataReady: NSObjectProtocol!
-        dataReady = NotificationCenter.default.addObserver(forName: Process.didTerminateNotification, object: pipe.fileHandleForReading, queue: nil) { _ -> Void in
-            print("Task terminated!")
-            NotificationCenter.default.removeObserver(dataReady)
-        }
-
-        // launch the process
-        bandwidthProcess?.launch()
+        
+        lastDownBytes = downBytes
+        lastUpBytes = upBytes
+        
+        return (downSpeed, upSpeed)
     }
 
     /**
@@ -178,6 +160,10 @@ class NetUsageComponent {
     }
 
     func updateNetUsage() {
+        let netUsage = readNetUsage()
+        dSpeed = netUsage.0
+        uSpeed = netUsage.1
+        
         var needUpdate = false
 
         // checks if the download or upload speed changed
