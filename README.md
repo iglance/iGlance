@@ -36,7 +36,7 @@ There are two possible ways to install iGlance:
 There are two ways you can contribute to this project:
 
 1. You can star this repository and tell all your friends about our cool app ;)
-2. You can work on one of the open issues. Please read our [contribution guide](https://github.com/iglance/iGlance/blob/master/CONTRIBUTING.md) before you start.
+2. You can work on one of the open issues. Please read our [Contribution Guide](https://github.com/iglance/iGlance/blob/master/.github/CONTRIBUTING.md) and our [Code of Conduct](https://github.com/iglance/iGlance/blob/master/.github/CODE_OF_CONDUCT.md) before you start.
 
 ## Credits
 - <a href="https://github.com/beltex">beltex</a> - for providing the SMCKit and SystemKit Library
