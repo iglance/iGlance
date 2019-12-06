@@ -31,6 +31,13 @@ There are two possible ways to install iGlance:
     
 <b>INFO:</b> If you get a warning that iGlance can't be opened due to an unidentified developer you have to make sure that under "System Preferences" > "Security & Privacy" > "General" it is allowed to open apps from the "Mac App Store and identified developers". Then try to open iGlance and under "System Preferences" > "Security & Privacy" > "General" click on "Open Anyway". 
 
+## Contribute
+
+There are two ways you can contribute to this project:
+
+1. You can star this repository and tell all your friends about our cool app ;)
+2. You can work on one of the open issues. Please read our [contribution guide](https://github.com/iglance/iGlance/blob/master/CONTRIBUTING.md) before you start.
+
 ## Credits
 - <a href="https://github.com/beltex">beltex</a> - for providing the SMCKit and SystemKit Library
 - <a href="https://github.com/m-oscartong">m-oscartong</a> and <a href="https://github.com/sindresorhus">sindresorhus</a> for providing the <a href="https://github.com/sindresorhus/create-dmg">create-dmg</a> script.
