@@ -83,7 +83,8 @@ class AppDelegate: NSObject, NSApplicationDelegate {
         static var userWantsCPUBorder = true
         static var userWantsMemBorder = true
         static var userWantsBatteryUtil = true
-        static var userWantsBatteryNotification = true
+        static var userWantsLowBatteryNotification = true
+        static var userWantsHighBatteryNotification = true
         static var lowerBatteryNotificationValue = 20
         static var upperBatteryNotificationValue = 80
         static var networkOrder = NetUsageComponent.NetworkOrder.uploadTop
@@ -356,8 +357,11 @@ class AppDelegate: NSObject, NSApplicationDelegate {
         if UserDefaults.standard.value(forKey: "userWantsBatteryUtil") != nil {
             UserSettings.userWantsBatteryUtil = UserDefaults.standard.value(forKey: "userWantsBatteryUtil") as! Bool
         }
-        if UserDefaults.standard.value(forKey: "userWantsBatteryNotification") != nil {
-            UserSettings.userWantsBatteryNotification = UserDefaults.standard.value(forKey: "userWantsBatteryNotification") as! Bool
+        if UserDefaults.standard.value(forKey: "userWantsLowBatteryNotification") != nil {
+            UserSettings.userWantsLowBatteryNotification = UserDefaults.standard.value(forKey: "userWantsLowBatteryNotification") as! Bool
+        }
+        if UserDefaults.standard.value(forKey: "userWantsHighBatteryNotification") != nil {
+            UserSettings.userWantsHighBatteryNotification = UserDefaults.standard.value(forKey: "userWantsHighBatteryNotification") as! Bool
         }
         if UserDefaults.standard.value(forKey: "lowerBatteryNotificationValue") != nil {
             UserSettings.lowerBatteryNotificationValue = UserDefaults.standard.value(forKey: "lowerBatteryNotificationValue") as! Int
@@ -428,7 +432,11 @@ class AppDelegate: NSObject, NSApplicationDelegate {
         } else {
             BatteryComponent.sItemBattery.isVisible = false
         }
-        if AppDelegate.UserSettings.userWantsBatteryNotification {
+        if AppDelegate.UserSettings.userWantsLowBatteryNotification {
+            // notify the user if needed
+            AppDelegate.myBattery.notifyUser()
+        }
+        if AppDelegate.UserSettings.userWantsHighBatteryNotification {
             // notify the user if needed
             AppDelegate.myBattery.notifyUser()
         }

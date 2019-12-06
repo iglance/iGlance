@@ -42,19 +42,32 @@ class BatteryView: NSViewController {
         checked ? MyStatusItems.insertItem(item: MyStatusItems.StatusItems.battery) : MyStatusItems.removeItem(item: MyStatusItems.StatusItems.battery)
     }
 
-    // define the outlet and the action of the checkbox to enable and disable the battery notifications
-    @IBOutlet var cbBatteryNotification: NSButton! {
+    // define the outlet and the action of the checbox to enable and disable the low battery notifications
+    @IBOutlet weak var cbShowLowBatteryNotification: NSButton! {
         didSet {
-            cbBatteryNotification.state = AppDelegate.UserSettings.userWantsBatteryNotification ? NSButton.StateValue.on : NSButton.StateValue.off
+            cbShowLowBatteryNotification.state = AppDelegate.UserSettings.userWantsLowBatteryNotification ? NSButton.StateValue.on : NSButton.StateValue.off
         }
     }
-
-    @IBAction func cbBatterNotification_clicked(_: NSButton) {
-        let checked = (cbBatteryNotification.state == NSButton.StateValue.on)
-        AppDelegate.UserSettings.userWantsBatteryNotification = checked
-        UserDefaults.standard.set(checked, forKey: "userWantsBatteryNotification")
+    
+    @IBAction func cbShowLowBatteryNotification(_ sender: Any) {
+        let checked = (cbShowLowBatteryNotification.state == NSButton.StateValue.on)
+        AppDelegate.UserSettings.userWantsLowBatteryNotification = checked
+        UserDefaults.standard.set(checked, forKey: "userWantsLowBatteryNotification")
     }
-
+    
+    // define the outlet and the action of the checbox to enable and disable the high battery notifications
+    @IBOutlet weak var cbShowHighBatteryNotification: NSButton! {
+        didSet {
+            cbShowHighBatteryNotification.state = AppDelegate.UserSettings.userWantsHighBatteryNotification ? NSButton.StateValue.on : NSButton.StateValue.off
+        }
+    }
+    
+    @IBAction func cbShowHighBatteryNotification(_ sender: Any) {
+        let checked = (cbShowHighBatteryNotification.state == NSButton.StateValue.on)
+        AppDelegate.UserSettings.userWantsHighBatteryNotification = checked
+        UserDefaults.standard.set(checked, forKey: "userWantsHighBatteryNotification")
+    }
+    
     // define the outlet and the action of the textfield which sets the lower battery notification value
     @IBOutlet var tfLowerBatteryValue: NSTextField! {
         didSet {
