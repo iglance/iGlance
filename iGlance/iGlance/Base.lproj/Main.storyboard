@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.Cocoa.Storyboard.XIB" version="3.0" toolsVersion="14490.70" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES">
+<document type="com.apple.InterfaceBuilder3.Cocoa.Storyboard.XIB" version="3.0" toolsVersion="15505" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES">
     <dependencies>
         <deployment identifier="macosx"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="14490.70"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="15505"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
@@ -721,19 +721,8 @@
                                     <action selector="cbBatteryUtil_clicked:" target="Rtx-4o-PWo" id="bnI-5W-BBs"/>
                                 </connections>
                             </button>
-                            <button verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="8Qf-yg-6dv">
-                                <rect key="frame" x="18" y="242" width="231" height="18"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                                <buttonCell key="cell" type="check" title="Notify me about the battery status" bezelStyle="regularSquare" imagePosition="left" state="on" inset="2" id="uhQ-T1-NPZ">
-                                    <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
-                                    <font key="font" metaFont="system"/>
-                                </buttonCell>
-                                <connections>
-                                    <action selector="cbBatterNotification_clicked:" target="Rtx-4o-PWo" id="MEd-Sq-bP6"/>
-                                </connections>
-                            </button>
                             <textField verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="3z8-uV-Rrz">
-                                <rect key="frame" x="177" y="206" width="35" height="22"/>
+                                <rect key="frame" x="241" y="236" width="35" height="22"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                 <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" selectable="YES" editable="YES" sendsActionOnEndEditing="YES" state="on" borderStyle="bezel" alignment="center" placeholderString="20" drawsBackground="YES" id="zq4-5M-zDg">
                                     <numberFormatter key="formatter" formatterBehavior="default10_4" numberStyle="decimal" minimumIntegerDigits="1" maximumIntegerDigits="2000000000" maximumFractionDigits="3" id="L3L-kq-Xkq"/>
@@ -745,17 +734,28 @@
                                     <action selector="tfLowerBatteryValue_changed:" target="Rtx-4o-PWo" id="Noe-TC-WLc"/>
                                 </connections>
                             </textField>
-                            <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="ETp-4L-u6h">
-                                <rect key="frame" x="18" y="209" width="151" height="17"/>
+                            <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="OEh-sY-bKJ">
+                                <rect key="frame" x="277" y="239" width="15" height="17"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                                <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="Lower notification value:" id="f7i-Bv-SdJ">
+                                <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="%" id="YOa-n8-6sx">
                                     <font key="font" metaFont="system"/>
                                     <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
                                     <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
                                 </textFieldCell>
                             </textField>
+                            <button verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="QHo-Ze-Whz">
+                                <rect key="frame" x="18" y="234" width="217" height="26"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                                <buttonCell key="cell" type="check" title="Show low battery notification at:" bezelStyle="regularSquare" imagePosition="left" state="on" inset="2" id="lc3-fG-si4">
+                                    <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
+                                    <font key="font" metaFont="system"/>
+                                </buttonCell>
+                                <connections>
+                                    <action selector="cbShowLowBatteryNotification:" target="Rtx-4o-PWo" id="bk1-Bx-Ygg"/>
+                                </connections>
+                            </button>
                             <textField verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Ro3-eS-ojw">
-                                <rect key="frame" x="177" y="166" width="35" height="22"/>
+                                <rect key="frame" x="241" y="206" width="35" height="22"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                 <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" selectable="YES" editable="YES" sendsActionOnEndEditing="YES" state="on" borderStyle="bezel" alignment="center" placeholderString="80" drawsBackground="YES" id="10T-Qo-1Kv">
                                     <numberFormatter key="formatter" formatterBehavior="default10_4" numberStyle="decimal" minimumIntegerDigits="1" maximumIntegerDigits="2000000000" maximumFractionDigits="3" id="m3Z-0w-khd"/>
@@ -767,26 +767,8 @@
                                     <action selector="tfUpperBatteryValue_changed:" target="Rtx-4o-PWo" id="eyD-wa-YKC"/>
                                 </connections>
                             </textField>
-                            <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="wTd-AE-Bl0">
-                                <rect key="frame" x="18" y="169" width="153" height="17"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                                <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="Upper notification value:" id="n6f-d3-Rw3">
-                                    <font key="font" metaFont="system"/>
-                                    <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
-                                    <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
-                                </textFieldCell>
-                            </textField>
-                            <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="OEh-sY-bKJ">
-                                <rect key="frame" x="213" y="209" width="15" height="17"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                                <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="%" id="YOa-n8-6sx">
-                                    <font key="font" metaFont="system"/>
-                                    <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
-                                    <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
-                                </textFieldCell>
-                            </textField>
                             <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="q8O-dp-gvR">
-                                <rect key="frame" x="213" y="169" width="15" height="17"/>
+                                <rect key="frame" x="277" y="209" width="15" height="17"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                 <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="%" id="XY5-j5-now">
                                     <font key="font" metaFont="system"/>
@@ -794,11 +776,23 @@
                                     <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
                                 </textFieldCell>
                             </textField>
+                            <button verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="n4k-uQ-rON">
+                                <rect key="frame" x="18" y="204" width="213" height="26"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                                <buttonCell key="cell" type="check" title="Show low battery notification at:" bezelStyle="regularSquare" imagePosition="left" state="on" inset="2" id="6CZ-os-L65">
+                                    <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
+                                    <font key="font" metaFont="system"/>
+                                </buttonCell>
+                                <connections>
+                                    <action selector="cbShowHighBatteryNotification:" target="Rtx-4o-PWo" id="qEt-S9-nvp"/>
+                                </connections>
+                            </button>
                         </subviews>
                     </view>
                     <connections>
-                        <outlet property="cbBatteryNotification" destination="8Qf-yg-6dv" id="vkE-bl-CmQ"/>
                         <outlet property="cbBatteryUtil" destination="H2k-mQ-8Qz" id="Pl5-xi-otj"/>
+                        <outlet property="cbShowHighBatteryNotification" destination="n4k-uQ-rON" id="Y7c-os-EbD"/>
+                        <outlet property="cbShowLowBatteryNotification" destination="QHo-Ze-Whz" id="etJ-Y7-SnH"/>
                         <outlet property="tfLowerBatteryValue" destination="3z8-uV-Rrz" id="TFN-M7-SK2"/>
                         <outlet property="tfUpperBatteryValue" destination="Ro3-eS-ojw" id="eSb-VJ-BZc"/>
                     </connections>
@@ -848,7 +842,7 @@
                     <tabView key="tabView" identifier="tabXD" type="noTabsNoBorder" id="yZB-z7-73Z">
                         <rect key="frame" x="-11" y="0.0" width="419" height="300"/>
                         <autoresizingMask key="autoresizingMask"/>
-                        <font key="font" metaFont="message"/>
+                        <font key="font" metaFont="system"/>
                         <connections>
                             <outlet property="delegate" destination="AKF-fH-GG9" id="goX-Kk-2Yc"/>
                         </connections>
@@ -905,7 +899,7 @@
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                 <popUpButtonCell key="cell" type="push" title="2 sec" bezelStyle="rounded" alignment="left" lineBreakMode="truncatingTail" state="on" borderStyle="borderAndBezel" imageScaling="proportionallyDown" inset="2" selectedItem="UBg-YY-DxO" id="Vcw-tb-IiQ">
                                     <behavior key="behavior" lightByBackground="YES" lightByGray="YES"/>
-                                    <font key="font" metaFont="menu"/>
+                                    <font key="font" metaFont="system"/>
                                     <menu key="menu" id="o3y-o9-p0Z">
                                         <items>
                                             <menuItem title="1 sec" id="VRS-TR-9YA"/>
@@ -982,7 +976,7 @@
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                 <popUpButtonCell key="cell" type="push" title="°C" bezelStyle="rounded" alignment="left" lineBreakMode="truncatingTail" state="on" borderStyle="borderAndBezel" imageScaling="proportionallyDown" inset="2" selectedItem="eom-aU-fJu" id="g02-hl-v6J">
                                     <behavior key="behavior" lightByBackground="YES" lightByGray="YES"/>
-                                    <font key="font" metaFont="menu"/>
+                                    <font key="font" metaFont="system"/>
                                     <menu key="menu" id="cSw-Zj-d4f">
                                         <items>
                                             <menuItem title="°C" state="on" id="eom-aU-fJu"/>
@@ -1026,7 +1020,7 @@
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                 <popUpButtonCell key="cell" type="push" title="Bar" bezelStyle="rounded" alignment="left" lineBreakMode="truncatingTail" state="on" borderStyle="borderAndBezel" imageScaling="proportionallyDown" inset="2" selectedItem="NqA-Cb-ocL" id="iMY-ta-Xmt">
                                     <behavior key="behavior" lightByBackground="YES" lightByGray="YES"/>
-                                    <font key="font" metaFont="menu"/>
+                                    <font key="font" metaFont="system"/>
                                     <menu key="menu" id="Shn-Fv-3Sh">
                                         <items>
                                             <menuItem title="Bar" state="on" id="NqA-Cb-ocL"/>
@@ -1198,7 +1192,7 @@
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                 <popUpButtonCell key="cell" type="push" title="Bar" bezelStyle="rounded" alignment="left" lineBreakMode="truncatingTail" state="on" borderStyle="borderAndBezel" imageScaling="proportionallyDown" inset="2" selectedItem="sZ8-GO-rxG" id="EhL-C0-l1L">
                                     <behavior key="behavior" lightByBackground="YES" lightByGray="YES"/>
-                                    <font key="font" metaFont="menu"/>
+                                    <font key="font" metaFont="system"/>
                                     <menu key="menu" id="LNE-oV-aPb">
                                         <items>
                                             <menuItem title="Bar" state="on" id="sZ8-GO-rxG"/>
@@ -1312,7 +1306,7 @@
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                 <popUpButtonCell key="cell" type="push" title="Upload/Download" bezelStyle="rounded" alignment="left" lineBreakMode="truncatingTail" state="on" borderStyle="borderAndBezel" imageScaling="proportionallyDown" inset="2" selectedItem="rFX-fB-5JS" id="Uf5-A1-OGw">
                                     <behavior key="behavior" lightByBackground="YES" lightByGray="YES"/>
-                                    <font key="font" metaFont="menu"/>
+                                    <font key="font" metaFont="system"/>
                                     <menu key="menu" id="50a-io-HFR">
                                         <items>
                                             <menuItem title="Upload/Download" state="on" id="rFX-fB-5JS"/>
