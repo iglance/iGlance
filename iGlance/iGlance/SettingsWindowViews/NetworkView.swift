@@ -27,6 +27,19 @@
 import Cocoa
 
 class NetworkView: NSViewController {
+    @IBOutlet var dropNetworkOrder: NSPopUpButton! {
+        didSet {
+            switch AppDelegate.UserSettings.networkOrder
+            {
+            case NetUsageComponent.NetworkOrder.uploadTop:
+                dropNetworkOrder.selectItem(at: 0)
+                break
+            case NetUsageComponent.NetworkOrder.uploadBottom:
+                dropNetworkOrder.selectItem(at: 1)
+                break
+            }
+        }
+    }
     // define the outlet and the action of the checkbox which is enabling the network statistic icon
     @IBOutlet var cbNetUsage: NSButton! {
         didSet {
@@ -34,6 +47,12 @@ class NetworkView: NSViewController {
         }
     }
 
+    @IBAction func dropNetworkOrder_clicked(_ sender: NSPopUpButton) {
+        AppDelegate.UserSettings.networkOrder = dropNetworkOrder.indexOfSelectedItem == 0 ? NetUsageComponent.NetworkOrder.uploadTop : NetUsageComponent.NetworkOrder.uploadBottom
+        UserDefaults.standard.set((dropNetworkOrder.indexOfSelectedItem == 0) ? 0 : 1, forKey: "networkOrder")
+    }
+    
+    
     @IBAction func cbNetUsage_clicked(_: NSButton) {
         let checked = (cbNetUsage.state == NSButton.StateValue.on)
         AppDelegate.UserSettings.userWantsBandwidth = checked

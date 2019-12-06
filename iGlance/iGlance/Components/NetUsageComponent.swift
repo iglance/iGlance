@@ -27,6 +27,11 @@
 import Cocoa
 
 class NetUsageComponent {
+    
+    public enum NetworkOrder {
+        case uploadTop
+        case uploadBottom
+    }
     // the menu bar item
     static let sItemBandwidth = NSStatusBar.system.statusItem(withLength: 62.0)
     // the button of the menu bar icon
@@ -212,16 +217,18 @@ class NetUsageComponent {
         dLength = finalDown?.count
         uLength = finalUp?.count
 
+        // Top String
         let font = NSFont(name: "Apple SD Gothic Neo Bold", size: 11.0)
         let fontSmall = NSFont(name: "Apple SD Gothic Neo Bold", size: 8.0)
-        let attrString = NSMutableAttributedString(string: finalUp ?? "0 KB/s")
+        let attrString = NSMutableAttributedString(string: (AppDelegate.UserSettings.networkOrder == NetworkOrder.uploadTop ? finalUp : finalDown) ?? "0 KB/s")
         attrString.addAttribute(.paragraphStyle, value: paragraphStyle, range: NSMakeRange(0, attrString.length))
         attrString.addAttribute(.font, value: font as Any, range: NSMakeRange(0, attrString.length - 4))
         attrString.addAttribute(.font, value: fontSmall as Any, range: NSMakeRange(attrString.length - 4, 4))
         attrString.addAttribute(.foregroundColor, value: bandColor ?? NSColor.white, range: NSMakeRange(0, attrString.length))
         attrString.draw(at: NSPoint(x: 16, y: 6))
 
-        let attrString2 = NSMutableAttributedString(string: finalDown ?? "0 KB/s")
+        // Bottom String
+        let attrString2 = NSMutableAttributedString(string: (AppDelegate.UserSettings.networkOrder == NetworkOrder.uploadTop ? finalDown : finalUp) ?? "0 KB/s")
         attrString2.addAttribute(.paragraphStyle, value: paragraphStyle, range: NSMakeRange(0, attrString2.length))
         attrString2.addAttribute(.font, value: font as Any, range: NSMakeRange(0, attrString2.length - 4))
         attrString2.addAttribute(.font, value: fontSmall as Any, range: NSMakeRange(attrString2.length - 4, 4))
