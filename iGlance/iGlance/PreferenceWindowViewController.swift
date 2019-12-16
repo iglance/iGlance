@@ -8,10 +8,12 @@
 
 import Cocoa
 
-class ViewController: NSViewController {
+class PreferenceWindowViewController: NSViewController {
 
     @IBOutlet weak var sidebar: Sidebar!
     let sidebarItems: [String] = ["Dashboard", "CPU", "Memory", "Network"]
+    
+    @IBOutlet weak var mainView: NSView!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -33,7 +35,7 @@ class ViewController: NSViewController {
     }
 }
 
-extension ViewController: NSTableViewDataSource {
+extension PreferenceWindowViewController: NSTableViewDataSource {
     /**
      * Returns the number of rows/items in the sidebar.
      */
@@ -42,7 +44,7 @@ extension ViewController: NSTableViewDataSource {
     }
 }
 
-extension ViewController: NSTableViewDelegate {
+extension PreferenceWindowViewController: NSTableViewDelegate {
     
     func tableView(_ tableView: NSTableView, viewFor tableColumn: NSTableColumn?, row: Int) -> NSView? {
         

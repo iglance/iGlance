@@ -701,23 +701,22 @@
             </objects>
             <point key="canvasLocation" x="75" y="414"/>
         </scene>
-        <!--View Controller-->
+        <!--Preference Window View Controller-->
         <scene sceneID="hIz-AP-VOD">
             <objects>
-                <viewController id="XfG-lQ-9wD" customClass="ViewController" customModule="iGlance" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="XfG-lQ-9wD" customClass="PreferenceWindowViewController" customModule="iGlance" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" id="m2S-Jp-Qdl">
-                        <rect key="frame" x="0.0" y="0.0" width="801" height="500"/>
+                        <rect key="frame" x="0.0" y="0.0" width="800" height="500"/>
                         <autoresizingMask key="autoresizingMask" flexibleMinX="YES" widthSizable="YES" flexibleMaxX="YES" flexibleMinY="YES" heightSizable="YES" flexibleMaxY="YES"/>
                         <subviews>
-                            <stackView distribution="fill" orientation="horizontal" alignment="centerY" spacing="0.0" horizontalStackHuggingPriority="249.99998474121094" verticalStackHuggingPriority="249.99998474121094" detachesHiddenViews="YES" translatesAutoresizingMaskIntoConstraints="NO" id="gkP-n5-8T1">
-                                <rect key="frame" x="0.0" y="0.0" width="801" height="500"/>
+                            <stackView distribution="fill" orientation="horizontal" alignment="top" spacing="0.0" horizontalStackHuggingPriority="249.99998474121094" verticalStackHuggingPriority="249.99998474121094" detachesHiddenViews="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Obm-li-tfe">
+                                <rect key="frame" x="0.0" y="0.0" width="800" height="500"/>
                                 <subviews>
                                     <customView translatesAutoresizingMaskIntoConstraints="NO" id="jcu-wp-9co" userLabel="SidebarView" customClass="SidebarView" customModule="iGlance" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="0.0" width="200" height="500"/>
                                         <subviews>
-                                            <visualEffectView fixedFrame="YES" blendingMode="behindWindow" material="sidebar" state="followsWindowActiveState" translatesAutoresizingMaskIntoConstraints="NO" id="mb8-ZX-I8r">
+                                            <visualEffectView blendingMode="behindWindow" material="sidebar" state="followsWindowActiveState" translatesAutoresizingMaskIntoConstraints="NO" id="mb8-ZX-I8r">
                                                 <rect key="frame" x="0.0" y="0.0" width="200" height="500"/>
-                                                <autoresizingMask key="autoresizingMask"/>
                                             </visualEffectView>
                                             <scrollView borderType="none" autohidesScrollers="YES" horizontalLineScroll="52" horizontalPageScroll="10" verticalLineScroll="52" verticalPageScroll="10" usesPredominantAxisScrolling="NO" translatesAutoresizingMaskIntoConstraints="NO" id="eeK-Le-v8o">
                                                 <rect key="frame" x="0.0" y="0.0" width="200" height="424"/>
@@ -807,25 +806,27 @@
                                         </subviews>
                                         <constraints>
                                             <constraint firstItem="eeK-Le-v8o" firstAttribute="top" secondItem="OeT-fd-jRm" secondAttribute="bottom" id="0S5-ri-HsY"/>
-                                            <constraint firstItem="OeT-fd-jRm" firstAttribute="top" secondItem="jcu-wp-9co" secondAttribute="top" id="HHC-vB-Qhi"/>
-                                            <constraint firstAttribute="bottom" secondItem="eeK-Le-v8o" secondAttribute="bottom" id="Ys2-W0-VQm"/>
+                                            <constraint firstItem="OeT-fd-jRm" firstAttribute="top" secondItem="jcu-wp-9co" secondAttribute="top" id="95b-VT-4va"/>
+                                            <constraint firstItem="OeT-fd-jRm" firstAttribute="top" secondItem="mb8-ZX-I8r" secondAttribute="top" id="KLC-F6-K3k"/>
+                                            <constraint firstItem="OeT-fd-jRm" firstAttribute="leading" secondItem="mb8-ZX-I8r" secondAttribute="leading" id="Orj-kf-sd4"/>
+                                            <constraint firstAttribute="bottom" secondItem="eeK-Le-v8o" secondAttribute="bottom" id="Qm9-0S-agt"/>
                                             <constraint firstItem="OeT-fd-jRm" firstAttribute="trailing" secondItem="eeK-Le-v8o" secondAttribute="trailing" id="k9q-zh-qju"/>
-                                            <constraint firstItem="OeT-fd-jRm" firstAttribute="leading" secondItem="jcu-wp-9co" secondAttribute="leading" id="kUK-dA-dMa"/>
                                             <constraint firstItem="OeT-fd-jRm" firstAttribute="leading" secondItem="eeK-Le-v8o" secondAttribute="leading" id="lgI-8C-q3d"/>
+                                            <constraint firstItem="OeT-fd-jRm" firstAttribute="leading" secondItem="jcu-wp-9co" secondAttribute="leading" id="mBX-ad-1P6"/>
+                                            <constraint firstItem="OeT-fd-jRm" firstAttribute="trailing" secondItem="mb8-ZX-I8r" secondAttribute="trailing" id="nmc-CB-gry"/>
+                                            <constraint firstItem="eeK-Le-v8o" firstAttribute="bottom" secondItem="mb8-ZX-I8r" secondAttribute="bottom" id="xQD-Et-KHW"/>
                                         </constraints>
                                     </customView>
-                                    <customView translatesAutoresizingMaskIntoConstraints="NO" id="BHE-Ot-LLF">
-                                        <rect key="frame" x="200" y="0.0" width="601" height="500"/>
-                                        <subviews>
-                                            <visualEffectView fixedFrame="YES" blendingMode="behindWindow" material="contentBackground" state="followsWindowActiveState" translatesAutoresizingMaskIntoConstraints="NO" id="Lzf-Wl-KXG">
-                                                <rect key="frame" x="0.0" y="0.0" width="601" height="500"/>
-                                                <autoresizingMask key="autoresizingMask"/>
-                                            </visualEffectView>
-                                        </subviews>
-                                    </customView>
+                                    <containerView translatesAutoresizingMaskIntoConstraints="NO" id="59Y-Zf-R46">
+                                        <rect key="frame" x="200" y="0.0" width="600" height="500"/>
+                                        <connections>
+                                            <segue destination="zU9-is-Ney" kind="embed" id="tjU-FY-7Bj"/>
+                                        </connections>
+                                    </containerView>
                                 </subviews>
                                 <constraints>
-                                    <constraint firstItem="BHE-Ot-LLF" firstAttribute="leading" secondItem="gkP-n5-8T1" secondAttribute="leading" constant="200" id="JZ2-eg-Mob"/>
+                                    <constraint firstItem="59Y-Zf-R46" firstAttribute="leading" secondItem="Obm-li-tfe" secondAttribute="leading" constant="200" id="MMl-Ak-dEN"/>
+                                    <constraint firstItem="59Y-Zf-R46" firstAttribute="leading" secondItem="jcu-wp-9co" secondAttribute="trailing" id="yNT-MY-JS7"/>
                                 </constraints>
                                 <visibilityPriorities>
                                     <integer value="1000"/>
@@ -838,19 +839,51 @@
                             </stackView>
                         </subviews>
                         <constraints>
-                            <constraint firstAttribute="bottom" secondItem="gkP-n5-8T1" secondAttribute="bottom" id="9dm-a0-Lxq"/>
-                            <constraint firstItem="gkP-n5-8T1" firstAttribute="centerX" secondItem="m2S-Jp-Qdl" secondAttribute="centerX" id="Dbd-sb-tTY"/>
-                            <constraint firstItem="gkP-n5-8T1" firstAttribute="top" secondItem="m2S-Jp-Qdl" secondAttribute="top" id="Ngx-eJ-oEi"/>
-                            <constraint firstItem="gkP-n5-8T1" firstAttribute="leading" secondItem="m2S-Jp-Qdl" secondAttribute="leading" id="rsb-pL-NGI"/>
+                            <constraint firstAttribute="bottom" secondItem="Obm-li-tfe" secondAttribute="bottom" id="5M6-vE-50e"/>
+                            <constraint firstItem="Obm-li-tfe" firstAttribute="leading" secondItem="m2S-Jp-Qdl" secondAttribute="leading" id="ED0-q9-O7U"/>
+                            <constraint firstAttribute="trailing" secondItem="Obm-li-tfe" secondAttribute="trailing" id="PRe-6N-8wn"/>
+                            <constraint firstItem="Obm-li-tfe" firstAttribute="top" secondItem="m2S-Jp-Qdl" secondAttribute="top" id="kZ4-Ab-5yf"/>
                         </constraints>
                     </view>
                     <connections>
+                        <outlet property="mainView" destination="59Y-Zf-R46" id="A1e-tN-eZU"/>
                         <outlet property="sidebar" destination="D0B-pK-nhx" id="S0P-cm-vfA"/>
                     </connections>
                 </viewController>
                 <customObject id="rPt-NT-nkU" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="74.5" y="1114"/>
+        </scene>
+        <!--View Controller-->
+        <scene sceneID="WQ0-TI-BrL">
+            <objects>
+                <viewController id="zU9-is-Ney" sceneMemberID="viewController">
+                    <view key="view" id="F8R-ww-qK3">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="500"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                        <subviews>
+                            <visualEffectView fixedFrame="YES" blendingMode="behindWindow" material="windowBackground" state="followsWindowActiveState" translatesAutoresizingMaskIntoConstraints="NO" id="lgy-Ev-Hsx">
+                                <rect key="frame" x="0.0" y="0.0" width="600" height="500"/>
+                                <autoresizingMask key="autoresizingMask"/>
+                            </visualEffectView>
+                            <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="jq6-5p-ZRa">
+                                <rect key="frame" x="18" y="464" width="71" height="16"/>
+                                <textFieldCell key="cell" lineBreakMode="clipping" title="Dashboard" id="7HB-Vh-wGp">
+                                    <font key="font" usesAppearanceFont="YES"/>
+                                    <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
+                                    <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
+                                </textFieldCell>
+                            </textField>
+                        </subviews>
+                        <constraints>
+                            <constraint firstItem="jq6-5p-ZRa" firstAttribute="top" secondItem="F8R-ww-qK3" secondAttribute="top" constant="20" symbolic="YES" id="Ssb-nt-GGk"/>
+                            <constraint firstItem="jq6-5p-ZRa" firstAttribute="leading" secondItem="F8R-ww-qK3" secondAttribute="leading" constant="20" symbolic="YES" id="iWc-yC-IPq"/>
+                        </constraints>
+                    </view>
+                </viewController>
+                <customObject id="SaP-pA-DIp" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="919" y="1114"/>
         </scene>
     </scenes>
     <resources>
