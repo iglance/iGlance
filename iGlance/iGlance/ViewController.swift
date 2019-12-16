@@ -15,6 +15,10 @@ class ViewController: NSViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        // make window transparent
+        view.window?.isOpaque = false
+        view.window?.backgroundColor = NSColor(red: 45/255, green: 45/255, blue: 45/255, alpha: 0)
 
         // add the current ViewController as the delegate and data source of the sidebar
         sidebar.delegate = self
