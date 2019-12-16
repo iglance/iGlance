@@ -13,6 +13,9 @@
 		B46789BD23A69ECB00CE572D /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B46789BB23A69ECB00CE572D /* Main.storyboard */; };
 		B46789C923A69ECB00CE572D /* iGlanceTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = B46789C823A69ECB00CE572D /* iGlanceTests.swift */; };
 		B46789D423A69ECB00CE572D /* iGlanceUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = B46789D323A69ECB00CE572D /* iGlanceUITests.swift */; };
+		B4C37E5E23A78D58008C7FC0 /* Sidebar.swift in Sources */ = {isa = PBXBuildFile; fileRef = B4C37E5D23A78D58008C7FC0 /* Sidebar.swift */; };
+		B4C37E6123A78F74008C7FC0 /* SidebarItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = B4C37E6023A78F74008C7FC0 /* SidebarItem.swift */; };
+		B4C37E6323A7946B008C7FC0 /* SidebarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B4C37E6223A7946B008C7FC0 /* SidebarView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -46,6 +49,9 @@
 		B46789CF23A69ECB00CE572D /* iGlanceUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = iGlanceUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		B46789D323A69ECB00CE572D /* iGlanceUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = iGlanceUITests.swift; sourceTree = "<group>"; };
 		B46789D523A69ECB00CE572D /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		B4C37E5D23A78D58008C7FC0 /* Sidebar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Sidebar.swift; sourceTree = "<group>"; };
+		B4C37E6023A78F74008C7FC0 /* SidebarItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SidebarItem.swift; sourceTree = "<group>"; };
+		B4C37E6223A7946B008C7FC0 /* SidebarView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SidebarView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -96,6 +102,7 @@
 		B46789B423A69ECA00CE572D /* iGlance */ = {
 			isa = PBXGroup;
 			children = (
+				B4C37E5F23A78F4C008C7FC0 /* Sidebar */,
 				B46789B523A69ECA00CE572D /* AppDelegate.swift */,
 				B46789B723A69ECA00CE572D /* ViewController.swift */,
 				B46789B923A69ECB00CE572D /* Assets.xcassets */,
@@ -122,6 +129,16 @@
 				B46789D523A69ECB00CE572D /* Info.plist */,
 			);
 			path = iGlanceUITests;
+			sourceTree = "<group>";
+		};
+		B4C37E5F23A78F4C008C7FC0 /* Sidebar */ = {
+			isa = PBXGroup;
+			children = (
+				B4C37E5D23A78D58008C7FC0 /* Sidebar.swift */,
+				B4C37E6023A78F74008C7FC0 /* SidebarItem.swift */,
+				B4C37E6223A7946B008C7FC0 /* SidebarView.swift */,
+			);
+			path = Sidebar;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -255,6 +272,9 @@
 			buildActionMask = 2147483647;
 			files = (
 				B46789B823A69ECA00CE572D /* ViewController.swift in Sources */,
+				B4C37E6123A78F74008C7FC0 /* SidebarItem.swift in Sources */,
+				B4C37E6323A7946B008C7FC0 /* SidebarView.swift in Sources */,
+				B4C37E5E23A78D58008C7FC0 /* Sidebar.swift in Sources */,
 				B46789B623A69ECA00CE572D /* AppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

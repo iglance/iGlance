@@ -10,7 +10,7 @@ import Cocoa
 
 class ViewController: NSViewController {
 
-    @IBOutlet weak var sidebar: NSTableView!
+    @IBOutlet weak var sidebar: Sidebar!
     let sidebarItems: [String] = ["Dashboard", "CPU", "Memory", "Network"]
     
     override func viewDidLoad() {
@@ -19,16 +19,13 @@ class ViewController: NSViewController {
         // add the current ViewController as the delegate and data source of the sidebar
         sidebar.delegate = self
         sidebar.dataSource = self
-    }
-
-    override var representedObject: Any? {
-        didSet {
-        // Update the view, if already loaded.
-        }
+        
+        // by default select the dashboard
+        sidebar.selectRowIndexes(NSIndexSet(index: 0) as IndexSet, byExtendingSelection: false)
     }
     
-    func onSidebarItemClick() {
-        
+    func onSidebarItemClick(itemIndex: Int) {
+        print(sidebarItems[itemIndex])
     }
 }
 
@@ -37,7 +34,6 @@ extension ViewController: NSTableViewDataSource {
      * Returns the number of rows/items in the sidebar.
      */
     func numberOfRows(in tableView: NSTableView) -> Int {
-        print(sidebarItems.count)
         return sidebarItems.count
     }
 }
@@ -63,7 +59,7 @@ extension ViewController: NSTableViewDelegate {
     }
     
     func tableViewSelectionDidChange(_ notification: Notification) {
-        print(sidebarItems[sidebar.selectedRow])
+        self.onSidebarItemClick(itemIndex: sidebar.selectedRow)
     }
 }
 
