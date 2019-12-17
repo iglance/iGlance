@@ -684,8 +684,8 @@
         <scene sceneID="R2V-B0-nI4">
             <objects>
                 <windowController id="B8D-0N-5wS" sceneMemberID="viewController">
-                    <window key="window" title="iGlance" allowsToolTipsWhenApplicationIsInactive="NO" autorecalculatesKeyViewLoop="NO" hasShadow="NO" releasedWhenClosed="NO" visibleAtLaunch="NO" animationBehavior="default" titlebarAppearsTransparent="YES" id="IQv-IB-iLA">
-                        <windowStyleMask key="styleMask" titled="YES" closable="YES" miniaturizable="YES"/>
+                    <window key="window" title="iGlance" allowsToolTipsWhenApplicationIsInactive="NO" autorecalculatesKeyViewLoop="NO" hasShadow="NO" releasedWhenClosed="NO" visibleAtLaunch="NO" animationBehavior="default" titlebarAppearsTransparent="YES" titleVisibility="hidden" id="IQv-IB-iLA">
+                        <windowStyleMask key="styleMask" titled="YES" closable="YES" miniaturizable="YES" fullSizeContentView="YES"/>
                         <windowPositionMask key="initialPositionMask" leftStrut="YES" rightStrut="YES" topStrut="YES" bottomStrut="YES"/>
                         <rect key="contentRect" x="196" y="240" width="800" height="500"/>
                         <rect key="screenRect" x="0.0" y="0.0" width="1680" height="1027"/>
@@ -716,13 +716,13 @@
                                         <rect key="frame" x="0.0" y="0.0" width="200" height="500"/>
                                         <subviews>
                                             <scrollView borderType="none" autohidesScrollers="YES" horizontalLineScroll="52" horizontalPageScroll="10" verticalLineScroll="52" verticalPageScroll="10" hasHorizontalScroller="NO" hasVerticalScroller="NO" usesPredominantAxisScrolling="NO" translatesAutoresizingMaskIntoConstraints="NO" id="eeK-Le-v8o">
-                                                <rect key="frame" x="0.0" y="0.0" width="200" height="424"/>
+                                                <rect key="frame" x="0.0" y="0.0" width="200" height="404"/>
                                                 <clipView key="contentView" drawsBackground="NO" copiesOnScroll="NO" id="bjv-gB-6E5">
-                                                    <rect key="frame" x="0.0" y="0.0" width="200" height="424"/>
+                                                    <rect key="frame" x="0.0" y="0.0" width="200" height="404"/>
                                                     <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                                     <subviews>
                                                         <tableView verticalHuggingPriority="750" allowsExpansionToolTips="YES" columnAutoresizingStyle="lastColumnOnly" columnReordering="NO" columnSelection="YES" columnResizing="NO" multipleSelection="NO" autosaveColumns="NO" rowHeight="50" viewBased="YES" id="D0B-pK-nhx" customClass="Sidebar" customModule="iGlance" customModuleProvider="target">
-                                                            <rect key="frame" x="0.0" y="0.0" width="200" height="424"/>
+                                                            <rect key="frame" x="0.0" y="0.0" width="200" height="404"/>
                                                             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                                             <size key="intercellSpacing" width="3" height="2"/>
                                                             <color key="backgroundColor" red="0.1176470588" green="0.1176470588" blue="0.1176470588" alpha="0.0" colorSpace="custom" customColorSpace="sRGB"/>
@@ -795,7 +795,7 @@
                                                 </scroller>
                                             </scrollView>
                                             <imageView horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="OeT-fd-jRm">
-                                                <rect key="frame" x="0.0" y="424" width="200" height="76"/>
+                                                <rect key="frame" x="0.0" y="404" width="200" height="76"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="76" id="qKl-3q-hwW"/>
                                                 </constraints>
@@ -804,7 +804,7 @@
                                         </subviews>
                                         <constraints>
                                             <constraint firstItem="eeK-Le-v8o" firstAttribute="top" secondItem="OeT-fd-jRm" secondAttribute="bottom" id="0S5-ri-HsY"/>
-                                            <constraint firstItem="OeT-fd-jRm" firstAttribute="top" secondItem="jcu-wp-9co" secondAttribute="top" id="95b-VT-4va"/>
+                                            <constraint firstItem="OeT-fd-jRm" firstAttribute="top" secondItem="jcu-wp-9co" secondAttribute="top" constant="20" id="95b-VT-4va"/>
                                             <constraint firstAttribute="bottom" secondItem="eeK-Le-v8o" secondAttribute="bottom" id="Qm9-0S-agt"/>
                                             <constraint firstItem="OeT-fd-jRm" firstAttribute="trailing" secondItem="eeK-Le-v8o" secondAttribute="trailing" id="k9q-zh-qju"/>
                                             <constraint firstItem="OeT-fd-jRm" firstAttribute="leading" secondItem="eeK-Le-v8o" secondAttribute="leading" id="lgI-8C-q3d"/>
