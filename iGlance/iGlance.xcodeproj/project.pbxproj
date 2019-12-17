@@ -20,6 +20,7 @@
 		B4C37E6923A8D6BB008C7FC0 /* SegueBetweenEmbedded.swift in Sources */ = {isa = PBXBuildFile; fileRef = B4C37E6823A8D6BB008C7FC0 /* SegueBetweenEmbedded.swift */; };
 		B4C37E6B23A8D715008C7FC0 /* SegueAnimator.swift in Sources */ = {isa = PBXBuildFile; fileRef = B4C37E6A23A8D715008C7FC0 /* SegueAnimator.swift */; };
 		B4C37E6D23A8D811008C7FC0 /* ContentManagerViewControllerHolder.swift in Sources */ = {isa = PBXBuildFile; fileRef = B4C37E6C23A8D811008C7FC0 /* ContentManagerViewControllerHolder.swift */; };
+		B4C37E7023A91F3C008C7FC0 /* ThemeManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = B4C37E6F23A91F3C008C7FC0 /* ThemeManager.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -60,6 +61,7 @@
 		B4C37E6823A8D6BB008C7FC0 /* SegueBetweenEmbedded.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SegueBetweenEmbedded.swift; sourceTree = "<group>"; };
 		B4C37E6A23A8D715008C7FC0 /* SegueAnimator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SegueAnimator.swift; sourceTree = "<group>"; };
 		B4C37E6C23A8D811008C7FC0 /* ContentManagerViewControllerHolder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentManagerViewControllerHolder.swift; sourceTree = "<group>"; };
+		B4C37E6F23A91F3C008C7FC0 /* ThemeManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ThemeManager.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -110,6 +112,7 @@
 		B46789B423A69ECA00CE572D /* iGlance */ = {
 			isa = PBXGroup;
 			children = (
+				B4C37E6E23A91F2F008C7FC0 /* Theme */,
 				B4C37E5F23A78F4C008C7FC0 /* Sidebar */,
 				B46789B523A69ECA00CE572D /* AppDelegate.swift */,
 				B46789B723A69ECA00CE572D /* PreferenceWindowViewController.swift */,
@@ -151,6 +154,14 @@
 				B4C37E6223A7946B008C7FC0 /* SidebarView.swift */,
 			);
 			path = Sidebar;
+			sourceTree = "<group>";
+		};
+		B4C37E6E23A91F2F008C7FC0 /* Theme */ = {
+			isa = PBXGroup;
+			children = (
+				B4C37E6F23A91F3C008C7FC0 /* ThemeManager.swift */,
+			);
+			path = Theme;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -290,6 +301,7 @@
 				B4C37E6123A78F74008C7FC0 /* SidebarItem.swift in Sources */,
 				B4C37E6D23A8D811008C7FC0 /* ContentManagerViewControllerHolder.swift in Sources */,
 				B4C37E6323A7946B008C7FC0 /* SidebarView.swift in Sources */,
+				B4C37E7023A91F3C008C7FC0 /* ThemeManager.swift in Sources */,
 				B4C37E5E23A78D58008C7FC0 /* Sidebar.swift in Sources */,
 				B46789B623A69ECA00CE572D /* AppDelegate.swift in Sources */,
 			);

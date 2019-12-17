@@ -684,7 +684,7 @@
         <scene sceneID="R2V-B0-nI4">
             <objects>
                 <windowController id="B8D-0N-5wS" sceneMemberID="viewController">
-                    <window key="window" title="Window" allowsToolTipsWhenApplicationIsInactive="NO" autorecalculatesKeyViewLoop="NO" releasedWhenClosed="NO" visibleAtLaunch="NO" animationBehavior="default" id="IQv-IB-iLA">
+                    <window key="window" title="iGlance" allowsToolTipsWhenApplicationIsInactive="NO" autorecalculatesKeyViewLoop="NO" hasShadow="NO" releasedWhenClosed="NO" visibleAtLaunch="NO" animationBehavior="default" titlebarAppearsTransparent="YES" id="IQv-IB-iLA">
                         <windowStyleMask key="styleMask" titled="YES" closable="YES" miniaturizable="YES"/>
                         <windowPositionMask key="initialPositionMask" leftStrut="YES" rightStrut="YES" topStrut="YES" bottomStrut="YES"/>
                         <rect key="contentRect" x="196" y="240" width="800" height="500"/>
@@ -715,10 +715,7 @@
                                     <customView translatesAutoresizingMaskIntoConstraints="NO" id="jcu-wp-9co" userLabel="SidebarView" customClass="SidebarView" customModule="iGlance" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="0.0" width="200" height="500"/>
                                         <subviews>
-                                            <visualEffectView blendingMode="behindWindow" material="sidebar" state="followsWindowActiveState" translatesAutoresizingMaskIntoConstraints="NO" id="mb8-ZX-I8r">
-                                                <rect key="frame" x="0.0" y="0.0" width="200" height="500"/>
-                                            </visualEffectView>
-                                            <scrollView borderType="none" autohidesScrollers="YES" horizontalLineScroll="52" horizontalPageScroll="10" verticalLineScroll="52" verticalPageScroll="10" usesPredominantAxisScrolling="NO" translatesAutoresizingMaskIntoConstraints="NO" id="eeK-Le-v8o">
+                                            <scrollView borderType="none" autohidesScrollers="YES" horizontalLineScroll="52" horizontalPageScroll="10" verticalLineScroll="52" verticalPageScroll="10" hasHorizontalScroller="NO" hasVerticalScroller="NO" usesPredominantAxisScrolling="NO" translatesAutoresizingMaskIntoConstraints="NO" id="eeK-Le-v8o">
                                                 <rect key="frame" x="0.0" y="0.0" width="200" height="424"/>
                                                 <clipView key="contentView" drawsBackground="NO" copiesOnScroll="NO" id="bjv-gB-6E5">
                                                     <rect key="frame" x="0.0" y="0.0" width="200" height="424"/>
@@ -729,7 +726,7 @@
                                                             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                                             <size key="intercellSpacing" width="3" height="2"/>
                                                             <color key="backgroundColor" red="0.1176470588" green="0.1176470588" blue="0.1176470588" alpha="0.0" colorSpace="custom" customColorSpace="sRGB"/>
-                                                            <color key="gridColor" name="gridColor" catalog="System" colorSpace="catalog"/>
+                                                            <color key="gridColor" red="0.1176470588" green="0.1176470588" blue="0.1176470588" alpha="0.0" colorSpace="custom" customColorSpace="sRGB"/>
                                                             <tableColumns>
                                                                 <tableColumn width="197" minWidth="40" maxWidth="1000" id="TaX-33-I8y">
                                                                     <tableHeaderCell key="headerCell" lineBreakMode="truncatingTail" borderStyle="border" title="Sidebar">
@@ -761,7 +758,7 @@
                                                                                     <textFieldCell key="cell" lineBreakMode="truncatingTail" sendsActionOnEndEditing="YES" alignment="left" title="Table View Cell" id="U1H-yz-O55">
                                                                                         <font key="font" metaFont="system" size="17"/>
                                                                                         <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
-                                                                                        <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
+                                                                                        <color key="backgroundColor" red="0.1176470588" green="0.1176470588" blue="0.1176470588" alpha="0.0" colorSpace="custom" customColorSpace="sRGB"/>
                                                                                     </textFieldCell>
                                                                                 </textField>
                                                                             </subviews>
@@ -782,17 +779,18 @@
                                                             </tableColumns>
                                                         </tableView>
                                                     </subviews>
+                                                    <color key="backgroundColor" red="0.11764705882352941" green="0.11764705882352941" blue="0.11764705882352941" alpha="0.0" colorSpace="custom" customColorSpace="sRGB"/>
                                                 </clipView>
                                                 <constraints>
                                                     <constraint firstAttribute="width" constant="200" id="mXu-ea-YhN"/>
                                                 </constraints>
                                                 <edgeInsets key="contentInsets" left="0.0" right="0.0" top="0.0" bottom="0.0"/>
                                                 <scroller key="horizontalScroller" hidden="YES" wantsLayer="YES" verticalHuggingPriority="750" doubleValue="0.024390243902439025" horizontal="YES" id="pkg-Yw-V0k">
-                                                    <rect key="frame" x="1" y="483" width="198" height="16"/>
+                                                    <rect key="frame" x="-100" y="-100" width="198" height="16"/>
                                                     <autoresizingMask key="autoresizingMask"/>
                                                 </scroller>
                                                 <scroller key="verticalScroller" hidden="YES" wantsLayer="YES" verticalHuggingPriority="750" horizontal="NO" id="a2Y-AD-SiR">
-                                                    <rect key="frame" x="224" y="17" width="15" height="102"/>
+                                                    <rect key="frame" x="-100" y="-100" width="15" height="102"/>
                                                     <autoresizingMask key="autoresizingMask"/>
                                                 </scroller>
                                             </scrollView>
@@ -807,14 +805,10 @@
                                         <constraints>
                                             <constraint firstItem="eeK-Le-v8o" firstAttribute="top" secondItem="OeT-fd-jRm" secondAttribute="bottom" id="0S5-ri-HsY"/>
                                             <constraint firstItem="OeT-fd-jRm" firstAttribute="top" secondItem="jcu-wp-9co" secondAttribute="top" id="95b-VT-4va"/>
-                                            <constraint firstItem="OeT-fd-jRm" firstAttribute="top" secondItem="mb8-ZX-I8r" secondAttribute="top" id="KLC-F6-K3k"/>
-                                            <constraint firstItem="OeT-fd-jRm" firstAttribute="leading" secondItem="mb8-ZX-I8r" secondAttribute="leading" id="Orj-kf-sd4"/>
                                             <constraint firstAttribute="bottom" secondItem="eeK-Le-v8o" secondAttribute="bottom" id="Qm9-0S-agt"/>
                                             <constraint firstItem="OeT-fd-jRm" firstAttribute="trailing" secondItem="eeK-Le-v8o" secondAttribute="trailing" id="k9q-zh-qju"/>
                                             <constraint firstItem="OeT-fd-jRm" firstAttribute="leading" secondItem="eeK-Le-v8o" secondAttribute="leading" id="lgI-8C-q3d"/>
                                             <constraint firstItem="OeT-fd-jRm" firstAttribute="leading" secondItem="jcu-wp-9co" secondAttribute="leading" id="mBX-ad-1P6"/>
-                                            <constraint firstItem="OeT-fd-jRm" firstAttribute="trailing" secondItem="mb8-ZX-I8r" secondAttribute="trailing" id="nmc-CB-gry"/>
-                                            <constraint firstItem="eeK-Le-v8o" firstAttribute="bottom" secondItem="mb8-ZX-I8r" secondAttribute="bottom" id="xQD-Et-KHW"/>
                                         </constraints>
                                     </customView>
                                     <containerView translatesAutoresizingMaskIntoConstraints="NO" id="59Y-Zf-R46">
@@ -851,7 +845,7 @@
                 </viewController>
                 <customObject id="rPt-NT-nkU" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="74.5" y="1114"/>
+            <point key="canvasLocation" x="74" y="1114"/>
         </scene>
         <!--Content Sub View Controller-->
         <scene sceneID="WQ0-TI-BrL">
@@ -886,7 +880,7 @@
                         <rect key="frame" x="0.0" y="0.0" width="600" height="500"/>
                         <autoresizingMask key="autoresizingMask"/>
                         <subviews>
-                            <visualEffectView fixedFrame="YES" blendingMode="behindWindow" material="windowBackground" state="followsWindowActiveState" translatesAutoresizingMaskIntoConstraints="NO" id="QOg-iP-kJR">
+                            <visualEffectView fixedFrame="YES" blendingMode="behindWindow" material="menu" state="followsWindowActiveState" translatesAutoresizingMaskIntoConstraints="NO" id="QOg-iP-kJR">
                                 <rect key="frame" x="0.0" y="0.0" width="600" height="500"/>
                                 <autoresizingMask key="autoresizingMask"/>
                             </visualEffectView>
@@ -921,7 +915,7 @@
                         <rect key="frame" x="0.0" y="0.0" width="600" height="500"/>
                         <autoresizingMask key="autoresizingMask"/>
                         <subviews>
-                            <visualEffectView fixedFrame="YES" blendingMode="behindWindow" material="windowBackground" state="followsWindowActiveState" translatesAutoresizingMaskIntoConstraints="NO" id="zdQ-Lz-dfT">
+                            <visualEffectView fixedFrame="YES" blendingMode="behindWindow" material="menu" state="followsWindowActiveState" translatesAutoresizingMaskIntoConstraints="NO" id="zdQ-Lz-dfT">
                                 <rect key="frame" x="0.0" y="0.0" width="600" height="500"/>
                                 <autoresizingMask key="autoresizingMask"/>
                             </visualEffectView>
@@ -956,7 +950,7 @@
                         <rect key="frame" x="0.0" y="0.0" width="600" height="500"/>
                         <autoresizingMask key="autoresizingMask"/>
                         <subviews>
-                            <visualEffectView fixedFrame="YES" blendingMode="behindWindow" material="windowBackground" state="followsWindowActiveState" translatesAutoresizingMaskIntoConstraints="NO" id="Qgc-JM-ljv">
+                            <visualEffectView fixedFrame="YES" blendingMode="behindWindow" material="menu" state="followsWindowActiveState" translatesAutoresizingMaskIntoConstraints="NO" id="Qgc-JM-ljv">
                                 <rect key="frame" x="0.0" y="0.0" width="600" height="500"/>
                                 <autoresizingMask key="autoresizingMask"/>
                             </visualEffectView>
@@ -991,7 +985,7 @@
                         <rect key="frame" x="0.0" y="0.0" width="601" height="500"/>
                         <autoresizingMask key="autoresizingMask"/>
                         <subviews>
-                            <visualEffectView fixedFrame="YES" blendingMode="behindWindow" material="windowBackground" state="followsWindowActiveState" translatesAutoresizingMaskIntoConstraints="NO" id="FTX-CZ-vC0">
+                            <visualEffectView fixedFrame="YES" blendingMode="behindWindow" material="menu" state="followsWindowActiveState" translatesAutoresizingMaskIntoConstraints="NO" id="FTX-CZ-vC0">
                                 <rect key="frame" x="0.0" y="0.0" width="600" height="500"/>
                                 <autoresizingMask key="autoresizingMask"/>
                             </visualEffectView>
@@ -1026,7 +1020,7 @@
                         <rect key="frame" x="0.0" y="0.0" width="601" height="500"/>
                         <autoresizingMask key="autoresizingMask"/>
                         <subviews>
-                            <visualEffectView fixedFrame="YES" blendingMode="behindWindow" material="windowBackground" state="followsWindowActiveState" translatesAutoresizingMaskIntoConstraints="NO" id="yxj-mk-AnL">
+                            <visualEffectView fixedFrame="YES" blendingMode="behindWindow" material="menu" state="followsWindowActiveState" translatesAutoresizingMaskIntoConstraints="NO" id="yxj-mk-AnL">
                                 <rect key="frame" x="0.0" y="0.0" width="600" height="500"/>
                                 <autoresizingMask key="autoresizingMask"/>
                             </visualEffectView>
@@ -1061,7 +1055,7 @@
                         <rect key="frame" x="0.0" y="0.0" width="601" height="500"/>
                         <autoresizingMask key="autoresizingMask"/>
                         <subviews>
-                            <visualEffectView fixedFrame="YES" blendingMode="behindWindow" material="windowBackground" state="followsWindowActiveState" translatesAutoresizingMaskIntoConstraints="NO" id="WJY-2B-nN8">
+                            <visualEffectView fixedFrame="YES" blendingMode="behindWindow" material="menu" state="followsWindowActiveState" translatesAutoresizingMaskIntoConstraints="NO" id="WJY-2B-nN8">
                                 <rect key="frame" x="0.0" y="0.0" width="600" height="500"/>
                                 <autoresizingMask key="autoresizingMask"/>
                             </visualEffectView>
