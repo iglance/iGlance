@@ -16,6 +16,10 @@
 		B4C37E5E23A78D58008C7FC0 /* Sidebar.swift in Sources */ = {isa = PBXBuildFile; fileRef = B4C37E5D23A78D58008C7FC0 /* Sidebar.swift */; };
 		B4C37E6123A78F74008C7FC0 /* SidebarItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = B4C37E6023A78F74008C7FC0 /* SidebarItem.swift */; };
 		B4C37E6323A7946B008C7FC0 /* SidebarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B4C37E6223A7946B008C7FC0 /* SidebarView.swift */; };
+		B4C37E6723A8CF89008C7FC0 /* ContentManagerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B4C37E6623A8CF89008C7FC0 /* ContentManagerViewController.swift */; };
+		B4C37E6923A8D6BB008C7FC0 /* SegueBetweenEmbedded.swift in Sources */ = {isa = PBXBuildFile; fileRef = B4C37E6823A8D6BB008C7FC0 /* SegueBetweenEmbedded.swift */; };
+		B4C37E6B23A8D715008C7FC0 /* SegueAnimator.swift in Sources */ = {isa = PBXBuildFile; fileRef = B4C37E6A23A8D715008C7FC0 /* SegueAnimator.swift */; };
+		B4C37E6D23A8D811008C7FC0 /* ContentManagerViewControllerHolder.swift in Sources */ = {isa = PBXBuildFile; fileRef = B4C37E6C23A8D811008C7FC0 /* ContentManagerViewControllerHolder.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -52,6 +56,10 @@
 		B4C37E5D23A78D58008C7FC0 /* Sidebar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Sidebar.swift; sourceTree = "<group>"; };
 		B4C37E6023A78F74008C7FC0 /* SidebarItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SidebarItem.swift; sourceTree = "<group>"; };
 		B4C37E6223A7946B008C7FC0 /* SidebarView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SidebarView.swift; sourceTree = "<group>"; };
+		B4C37E6623A8CF89008C7FC0 /* ContentManagerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentManagerViewController.swift; sourceTree = "<group>"; };
+		B4C37E6823A8D6BB008C7FC0 /* SegueBetweenEmbedded.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SegueBetweenEmbedded.swift; sourceTree = "<group>"; };
+		B4C37E6A23A8D715008C7FC0 /* SegueAnimator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SegueAnimator.swift; sourceTree = "<group>"; };
+		B4C37E6C23A8D811008C7FC0 /* ContentManagerViewControllerHolder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentManagerViewControllerHolder.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -109,6 +117,10 @@
 				B46789BB23A69ECB00CE572D /* Main.storyboard */,
 				B46789BE23A69ECB00CE572D /* Info.plist */,
 				B46789BF23A69ECB00CE572D /* iGlance.entitlements */,
+				B4C37E6623A8CF89008C7FC0 /* ContentManagerViewController.swift */,
+				B4C37E6823A8D6BB008C7FC0 /* SegueBetweenEmbedded.swift */,
+				B4C37E6A23A8D715008C7FC0 /* SegueAnimator.swift */,
+				B4C37E6C23A8D811008C7FC0 /* ContentManagerViewControllerHolder.swift */,
 			);
 			path = iGlance;
 			sourceTree = "<group>";
@@ -271,8 +283,12 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				B4C37E6723A8CF89008C7FC0 /* ContentManagerViewController.swift in Sources */,
 				B46789B823A69ECA00CE572D /* PreferenceWindowViewController.swift in Sources */,
+				B4C37E6B23A8D715008C7FC0 /* SegueAnimator.swift in Sources */,
+				B4C37E6923A8D6BB008C7FC0 /* SegueBetweenEmbedded.swift in Sources */,
 				B4C37E6123A78F74008C7FC0 /* SidebarItem.swift in Sources */,
+				B4C37E6D23A8D811008C7FC0 /* ContentManagerViewControllerHolder.swift in Sources */,
 				B4C37E6323A7946B008C7FC0 /* SidebarView.swift in Sources */,
 				B4C37E5E23A78D58008C7FC0 /* Sidebar.swift in Sources */,
 				B46789B623A69ECA00CE572D /* AppDelegate.swift in Sources */,

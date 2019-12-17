@@ -846,7 +846,6 @@
                         </constraints>
                     </view>
                     <connections>
-                        <outlet property="mainView" destination="59Y-Zf-R46" id="A1e-tN-eZU"/>
                         <outlet property="sidebar" destination="D0B-pK-nhx" id="S0P-cm-vfA"/>
                     </connections>
                 </viewController>
@@ -854,21 +853,46 @@
             </objects>
             <point key="canvasLocation" x="74.5" y="1114"/>
         </scene>
-        <!--View Controller-->
+        <!--Content Sub View Controller-->
         <scene sceneID="WQ0-TI-BrL">
             <objects>
-                <viewController id="zU9-is-Ney" sceneMemberID="viewController">
+                <viewController title="Content Sub View Controller" id="zU9-is-Ney" customClass="ContentManagerViewController" customModule="iGlance" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" id="F8R-ww-qK3">
                         <rect key="frame" x="0.0" y="0.0" width="600" height="500"/>
                         <autoresizingMask key="autoresizingMask"/>
                         <subviews>
-                            <visualEffectView fixedFrame="YES" blendingMode="behindWindow" material="windowBackground" state="followsWindowActiveState" translatesAutoresizingMaskIntoConstraints="NO" id="lgy-Ev-Hsx">
+                            <containerView fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="dh8-lx-L5L">
+                                <rect key="frame" x="0.0" y="0.0" width="600" height="500"/>
+                                <autoresizingMask key="autoresizingMask"/>
+                                <connections>
+                                    <segue destination="jr8-g7-uLJ" kind="embed" id="QvS-5f-cn8"/>
+                                </connections>
+                            </containerView>
+                        </subviews>
+                    </view>
+                    <connections>
+                        <outlet property="subViewControllerManager" destination="F8R-ww-qK3" id="r99-oJ-Fuq"/>
+                    </connections>
+                </viewController>
+                <customObject id="SaP-pA-DIp" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="915" y="1114"/>
+        </scene>
+        <!--View Controller-->
+        <scene sceneID="rBU-qB-hiS">
+            <objects>
+                <viewController storyboardIdentifier="DashboardStoryboardID" id="jr8-g7-uLJ" sceneMemberID="viewController">
+                    <view key="view" id="2gR-n0-wZE">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="500"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                        <subviews>
+                            <visualEffectView fixedFrame="YES" blendingMode="behindWindow" material="windowBackground" state="followsWindowActiveState" translatesAutoresizingMaskIntoConstraints="NO" id="QOg-iP-kJR">
                                 <rect key="frame" x="0.0" y="0.0" width="600" height="500"/>
                                 <autoresizingMask key="autoresizingMask"/>
                             </visualEffectView>
-                            <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="jq6-5p-ZRa">
+                            <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="fQT-qs-MoL">
                                 <rect key="frame" x="18" y="464" width="71" height="16"/>
-                                <textFieldCell key="cell" lineBreakMode="clipping" title="Dashboard" id="7HB-Vh-wGp">
+                                <textFieldCell key="cell" lineBreakMode="clipping" title="Dashboard" id="7lW-PG-Vnk">
                                     <font key="font" usesAppearanceFont="YES"/>
                                     <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
                                     <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
@@ -876,14 +900,48 @@
                             </textField>
                         </subviews>
                         <constraints>
-                            <constraint firstItem="jq6-5p-ZRa" firstAttribute="top" secondItem="F8R-ww-qK3" secondAttribute="top" constant="20" symbolic="YES" id="Ssb-nt-GGk"/>
-                            <constraint firstItem="jq6-5p-ZRa" firstAttribute="leading" secondItem="F8R-ww-qK3" secondAttribute="leading" constant="20" symbolic="YES" id="iWc-yC-IPq"/>
+                            <constraint firstItem="fQT-qs-MoL" firstAttribute="leading" secondItem="2gR-n0-wZE" secondAttribute="leading" constant="20" symbolic="YES" id="BPG-IT-Pdp"/>
+                            <constraint firstItem="fQT-qs-MoL" firstAttribute="top" secondItem="2gR-n0-wZE" secondAttribute="top" constant="20" symbolic="YES" id="Sy2-s7-P7c"/>
+                        </constraints>
+                    </view>
+                    <connections>
+                        <segue destination="uGw-Yr-sBC" kind="custom" id="fcK-vQ-0F0"/>
+                    </connections>
+                </viewController>
+                <customObject id="zxy-ab-O7J" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="915" y="1775"/>
+        </scene>
+        <!--View Controller-->
+        <scene sceneID="uUd-va-qL0">
+            <objects>
+                <viewController storyboardIdentifier="CpuStoryboardID" id="uGw-Yr-sBC" sceneMemberID="viewController">
+                    <view key="view" id="q0i-aM-agG">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="500"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                        <subviews>
+                            <visualEffectView fixedFrame="YES" blendingMode="behindWindow" material="windowBackground" state="followsWindowActiveState" translatesAutoresizingMaskIntoConstraints="NO" id="zdQ-Lz-dfT">
+                                <rect key="frame" x="0.0" y="0.0" width="600" height="500"/>
+                                <autoresizingMask key="autoresizingMask"/>
+                            </visualEffectView>
+                            <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="XON-Ou-7aN">
+                                <rect key="frame" x="18" y="464" width="31" height="16"/>
+                                <textFieldCell key="cell" lineBreakMode="clipping" title="CPU" id="0aO-pH-o5v">
+                                    <font key="font" usesAppearanceFont="YES"/>
+                                    <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
+                                    <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
+                                </textFieldCell>
+                            </textField>
+                        </subviews>
+                        <constraints>
+                            <constraint firstItem="XON-Ou-7aN" firstAttribute="leading" secondItem="q0i-aM-agG" secondAttribute="leading" constant="20" symbolic="YES" id="Dt8-kp-yUg"/>
+                            <constraint firstItem="XON-Ou-7aN" firstAttribute="top" secondItem="q0i-aM-agG" secondAttribute="top" constant="20" symbolic="YES" id="KxG-eP-NZB"/>
                         </constraints>
                     </view>
                 </viewController>
-                <customObject id="SaP-pA-DIp" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
+                <customObject id="9RJ-Pi-a35" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="919" y="1114"/>
+            <point key="canvasLocation" x="165" y="1775"/>
         </scene>
     </scenes>
     <resources>

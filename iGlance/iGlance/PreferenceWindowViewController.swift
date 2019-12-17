@@ -9,11 +9,19 @@
 import Cocoa
 
 class PreferenceWindowViewController: NSViewController {
+    
+    struct SidebarItem {
+        let label: String
+        let storyboardID: String
+    }
 
     @IBOutlet weak var sidebar: Sidebar!
-    let sidebarItems: [String] = ["Dashboard", "CPU", "Memory", "Network"]
+    let sidebarItems: [SidebarItem] = [
+        SidebarItem(label: "Dashboard", storyboardID: "DashboardStoryboardID"),
+        SidebarItem(label: "CPU", storyboardID: "CpuStoryboardID")
+    ]
     
-    @IBOutlet weak var mainView: NSView!
+    var contentManagerViewController: ContentManagerViewController?
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -26,12 +34,29 @@ class PreferenceWindowViewController: NSViewController {
         sidebar.delegate = self
         sidebar.dataSource = self
         
-        // by default select the dashboard
-        sidebar.selectRowIndexes(NSIndexSet(index: 0) as IndexSet, byExtendingSelection: false)
     }
     
     func onSidebarItemClick(itemIndex: Int) {
-        print(sidebarItems[itemIndex])
+        let sidebarItem = sidebarItems[itemIndex]
+        
+        // show the view of the sidebar item
+        displayViewOf(sidebarItem: sidebarItem)
+    }
+    
+    private func displayViewOf(sidebarItem: SidebarItem) {
+       if let viewController = storyboard?.instantiateController(withIdentifier: sidebarItem.storyboardID){
+           contentManagerViewController?.addNewViewController(viewController: viewController as! NSViewController)
+       }
+    }
+    
+    override func prepare(for segue: NSStoryboardSegue, sender: Any?) {
+        if segue.destinationController is ContentManagerViewController {
+            contentManagerViewController = (segue.destinationController as! ContentManagerViewController)
+        }
+    }
+    
+    func retrieveContentManagerController() -> ContentManagerViewController? {
+        return self.contentManagerViewController
     }
 }
 
@@ -53,7 +78,7 @@ extension PreferenceWindowViewController: NSTableViewDelegate {
         // create the cell view
         if let cellView = tableView.makeView(withIdentifier: NSUserInterfaceItemIdentifier(rawValue: "SidebarItemID"), owner: nil) as? NSTableCellView {
             // set the label and the image
-            cellView.textField?.stringValue = selectedSidebarItem
+            cellView.textField?.stringValue = selectedSidebarItem.label
             
             cellView.imageView?.image = NSImage(named: NSImage.actionTemplateName)
             
