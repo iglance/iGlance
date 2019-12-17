@@ -878,10 +878,10 @@
             </objects>
             <point key="canvasLocation" x="915" y="1114"/>
         </scene>
-        <!--View Controller-->
+        <!--Dashboard View Controller-->
         <scene sceneID="rBU-qB-hiS">
             <objects>
-                <viewController storyboardIdentifier="DashboardStoryboardID" id="jr8-g7-uLJ" sceneMemberID="viewController">
+                <viewController title="Dashboard View Controller" storyboardIdentifier="DashboardStoryboardID" id="jr8-g7-uLJ" sceneMemberID="viewController">
                     <view key="view" id="2gR-n0-wZE">
                         <rect key="frame" x="0.0" y="0.0" width="600" height="500"/>
                         <autoresizingMask key="autoresizingMask"/>
@@ -902,20 +902,21 @@
                         <constraints>
                             <constraint firstItem="fQT-qs-MoL" firstAttribute="leading" secondItem="2gR-n0-wZE" secondAttribute="leading" constant="20" symbolic="YES" id="BPG-IT-Pdp"/>
                             <constraint firstItem="fQT-qs-MoL" firstAttribute="top" secondItem="2gR-n0-wZE" secondAttribute="top" constant="20" symbolic="YES" id="Sy2-s7-P7c"/>
+                            <constraint firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="fQT-qs-MoL" secondAttribute="trailing" constant="513" id="zCY-Uf-iHB"/>
                         </constraints>
                     </view>
                     <connections>
-                        <segue destination="uGw-Yr-sBC" kind="custom" id="fcK-vQ-0F0"/>
+                        <segue destination="uGw-Yr-sBC" kind="custom" identifier="DashboardToCpu" customClass="SegueBetweenEmbedded" customModule="iGlance" customModuleProvider="target" id="fcK-vQ-0F0"/>
                     </connections>
                 </viewController>
                 <customObject id="zxy-ab-O7J" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="915" y="1775"/>
         </scene>
-        <!--View Controller-->
+        <!--CPU View Controller-->
         <scene sceneID="uUd-va-qL0">
             <objects>
-                <viewController storyboardIdentifier="CpuStoryboardID" id="uGw-Yr-sBC" sceneMemberID="viewController">
+                <viewController title="CPU View Controller" storyboardIdentifier="CpuStoryboardID" id="uGw-Yr-sBC" sceneMemberID="viewController">
                     <view key="view" id="q0i-aM-agG">
                         <rect key="frame" x="0.0" y="0.0" width="600" height="500"/>
                         <autoresizingMask key="autoresizingMask"/>
@@ -936,12 +937,153 @@
                         <constraints>
                             <constraint firstItem="XON-Ou-7aN" firstAttribute="leading" secondItem="q0i-aM-agG" secondAttribute="leading" constant="20" symbolic="YES" id="Dt8-kp-yUg"/>
                             <constraint firstItem="XON-Ou-7aN" firstAttribute="top" secondItem="q0i-aM-agG" secondAttribute="top" constant="20" symbolic="YES" id="KxG-eP-NZB"/>
+                            <constraint firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="XON-Ou-7aN" secondAttribute="trailing" constant="553" id="TOq-HV-CcB"/>
                         </constraints>
                     </view>
+                    <connections>
+                        <segue destination="Pbp-jU-Jl9" kind="custom" identifier="CpuToMemory" customClass="SegueBetweenEmbedded" customModule="iGlance" customModuleProvider="target" id="yJ3-ZM-qyr"/>
+                    </connections>
                 </viewController>
                 <customObject id="9RJ-Pi-a35" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="165" y="1775"/>
+        </scene>
+        <!--Memory View Controller-->
+        <scene sceneID="voU-QA-JXU">
+            <objects>
+                <viewController title="Memory View Controller" storyboardIdentifier="MemoryStoryboardID" id="Pbp-jU-Jl9" sceneMemberID="viewController">
+                    <view key="view" id="XsI-br-NL6">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="500"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                        <subviews>
+                            <visualEffectView fixedFrame="YES" blendingMode="behindWindow" material="windowBackground" state="followsWindowActiveState" translatesAutoresizingMaskIntoConstraints="NO" id="Qgc-JM-ljv">
+                                <rect key="frame" x="0.0" y="0.0" width="600" height="500"/>
+                                <autoresizingMask key="autoresizingMask"/>
+                            </visualEffectView>
+                            <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="qnN-q0-bd2">
+                                <rect key="frame" x="18" y="464" width="54" height="16"/>
+                                <textFieldCell key="cell" lineBreakMode="clipping" title="Memory" id="I8n-ft-BJf">
+                                    <font key="font" usesAppearanceFont="YES"/>
+                                    <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
+                                    <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
+                                </textFieldCell>
+                            </textField>
+                        </subviews>
+                        <constraints>
+                            <constraint firstItem="qnN-q0-bd2" firstAttribute="top" secondItem="XsI-br-NL6" secondAttribute="top" constant="20" symbolic="YES" id="03T-KP-jAr"/>
+                            <constraint firstItem="qnN-q0-bd2" firstAttribute="leading" secondItem="XsI-br-NL6" secondAttribute="leading" constant="20" symbolic="YES" id="cMC-ea-IsF"/>
+                            <constraint firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="qnN-q0-bd2" secondAttribute="trailing" constant="530" id="f6j-aC-V3D"/>
+                        </constraints>
+                    </view>
+                    <connections>
+                        <segue destination="16f-vh-LVT" kind="custom" identifier="MemoryToNetwork" customClass="SegueBetweenEmbedded" customModule="iGlance" customModuleProvider="target" id="4qV-iA-ERA"/>
+                    </connections>
+                </viewController>
+                <customObject id="Ob9-FD-q7U" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="165" y="2413"/>
+        </scene>
+        <!--Network View Controller-->
+        <scene sceneID="kEF-TN-Jqj">
+            <objects>
+                <viewController title="Network View Controller" storyboardIdentifier="NetworkStoryboardID" id="16f-vh-LVT" sceneMemberID="viewController">
+                    <view key="view" id="gLt-Uu-NnI">
+                        <rect key="frame" x="0.0" y="0.0" width="601" height="500"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                        <subviews>
+                            <visualEffectView fixedFrame="YES" blendingMode="behindWindow" material="windowBackground" state="followsWindowActiveState" translatesAutoresizingMaskIntoConstraints="NO" id="FTX-CZ-vC0">
+                                <rect key="frame" x="0.0" y="0.0" width="600" height="500"/>
+                                <autoresizingMask key="autoresizingMask"/>
+                            </visualEffectView>
+                            <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="wQa-W7-Rt8">
+                                <rect key="frame" x="18" y="464" width="55" height="16"/>
+                                <textFieldCell key="cell" lineBreakMode="clipping" title="Network" id="ps8-Xf-w9Y">
+                                    <font key="font" usesAppearanceFont="YES"/>
+                                    <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
+                                    <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
+                                </textFieldCell>
+                            </textField>
+                        </subviews>
+                        <constraints>
+                            <constraint firstItem="wQa-W7-Rt8" firstAttribute="leading" secondItem="gLt-Uu-NnI" secondAttribute="leading" constant="20" symbolic="YES" id="YqD-yA-dek"/>
+                            <constraint firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="wQa-W7-Rt8" secondAttribute="trailing" constant="530" id="vRa-ZH-4ZA"/>
+                            <constraint firstItem="wQa-W7-Rt8" firstAttribute="top" secondItem="gLt-Uu-NnI" secondAttribute="top" constant="20" symbolic="YES" id="ybU-XT-BaG"/>
+                        </constraints>
+                    </view>
+                    <connections>
+                        <segue destination="76f-do-Hko" kind="custom" identifier="NetworkToFan" id="LxJ-gm-2D4"/>
+                    </connections>
+                </viewController>
+                <customObject id="JFc-yO-TNx" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="915" y="2413"/>
+        </scene>
+        <!--Fan View Controller-->
+        <scene sceneID="pAg-29-Upi">
+            <objects>
+                <viewController title="Fan View Controller" storyboardIdentifier="FanStoryboardID" id="76f-do-Hko" sceneMemberID="viewController">
+                    <view key="view" id="X4Z-EU-k4i">
+                        <rect key="frame" x="0.0" y="0.0" width="601" height="500"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                        <subviews>
+                            <visualEffectView fixedFrame="YES" blendingMode="behindWindow" material="windowBackground" state="followsWindowActiveState" translatesAutoresizingMaskIntoConstraints="NO" id="yxj-mk-AnL">
+                                <rect key="frame" x="0.0" y="0.0" width="600" height="500"/>
+                                <autoresizingMask key="autoresizingMask"/>
+                            </visualEffectView>
+                            <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="k8t-6m-qhK">
+                                <rect key="frame" x="18" y="464" width="26" height="16"/>
+                                <textFieldCell key="cell" lineBreakMode="clipping" title="Fan" id="Ip8-2b-Kbc">
+                                    <font key="font" usesAppearanceFont="YES"/>
+                                    <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
+                                    <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
+                                </textFieldCell>
+                            </textField>
+                        </subviews>
+                        <constraints>
+                            <constraint firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="k8t-6m-qhK" secondAttribute="trailing" constant="530" id="9Rw-CP-UBQ"/>
+                            <constraint firstItem="k8t-6m-qhK" firstAttribute="top" secondItem="X4Z-EU-k4i" secondAttribute="top" constant="20" symbolic="YES" id="jMr-RV-Yfd"/>
+                            <constraint firstItem="k8t-6m-qhK" firstAttribute="leading" secondItem="X4Z-EU-k4i" secondAttribute="leading" constant="20" symbolic="YES" id="lWK-ri-tvu"/>
+                        </constraints>
+                    </view>
+                    <connections>
+                        <segue destination="jU5-ml-SBe" kind="custom" identifier="FanToBattery" customClass="SegueBetweenEmbedded" customModule="iGlance" customModuleProvider="target" id="dch-Y9-xBD"/>
+                    </connections>
+                </viewController>
+                <customObject id="Ig9-SE-AqP" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="916" y="3056"/>
+        </scene>
+        <!--Battery View Controller-->
+        <scene sceneID="RUx-H1-VqW">
+            <objects>
+                <viewController title="Battery View Controller" storyboardIdentifier="BatteryStoryboardID" id="jU5-ml-SBe" sceneMemberID="viewController">
+                    <view key="view" id="q13-1a-uFQ">
+                        <rect key="frame" x="0.0" y="0.0" width="601" height="500"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                        <subviews>
+                            <visualEffectView fixedFrame="YES" blendingMode="behindWindow" material="windowBackground" state="followsWindowActiveState" translatesAutoresizingMaskIntoConstraints="NO" id="WJY-2B-nN8">
+                                <rect key="frame" x="0.0" y="0.0" width="600" height="500"/>
+                                <autoresizingMask key="autoresizingMask"/>
+                            </visualEffectView>
+                            <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="rKB-nF-Lce">
+                                <rect key="frame" x="18" y="464" width="48" height="16"/>
+                                <textFieldCell key="cell" lineBreakMode="clipping" title="Battery" id="NRR-Su-OUT">
+                                    <font key="font" usesAppearanceFont="YES"/>
+                                    <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
+                                    <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
+                                </textFieldCell>
+                            </textField>
+                        </subviews>
+                        <constraints>
+                            <constraint firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="rKB-nF-Lce" secondAttribute="trailing" constant="530" id="PwS-K6-OCn"/>
+                            <constraint firstItem="rKB-nF-Lce" firstAttribute="leading" secondItem="q13-1a-uFQ" secondAttribute="leading" constant="20" symbolic="YES" id="PxW-WI-IvE"/>
+                            <constraint firstItem="rKB-nF-Lce" firstAttribute="top" secondItem="q13-1a-uFQ" secondAttribute="top" constant="20" symbolic="YES" id="XKe-64-odM"/>
+                        </constraints>
+                    </view>
+                </viewController>
+                <customObject id="kg2-nN-wZv" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="165" y="3056"/>
         </scene>
     </scenes>
     <resources>

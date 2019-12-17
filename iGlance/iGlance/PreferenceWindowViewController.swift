@@ -18,7 +18,11 @@ class PreferenceWindowViewController: NSViewController {
     @IBOutlet weak var sidebar: Sidebar!
     let sidebarItems: [SidebarItem] = [
         SidebarItem(label: "Dashboard", storyboardID: "DashboardStoryboardID"),
-        SidebarItem(label: "CPU", storyboardID: "CpuStoryboardID")
+        SidebarItem(label: "CPU", storyboardID: "CpuStoryboardID"),
+        SidebarItem(label: "Memory", storyboardID: "MemoryStoryboardID"),
+        SidebarItem(label: "Network", storyboardID: "NetworkStoryboardID"),
+        SidebarItem(label: "Fan", storyboardID: "FanStoryboardID"),
+        SidebarItem(label: "Battery", storyboardID: "BatteryStoryboardID")
     ]
     
     var contentManagerViewController: ContentManagerViewController?
@@ -33,7 +37,11 @@ class PreferenceWindowViewController: NSViewController {
         // add the current ViewController as the delegate and data source of the sidebar
         sidebar.delegate = self
         sidebar.dataSource = self
-        
+    }
+    
+    override func viewWillAppear() {
+        // by default select the dashboard
+        sidebar.selectRowIndexes(NSIndexSet(index: 0) as IndexSet, byExtendingSelection: false)
     }
     
     func onSidebarItemClick(itemIndex: Int) {
