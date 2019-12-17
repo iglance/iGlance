@@ -9,11 +9,11 @@
 import Cocoa
 
 class ContentManagerViewController: NSViewController {
-    
+
     @IBOutlet weak var subViewControllerManager: NSView!
-    
+
     var currentViewController: NSViewController!
-    
+
     /**
      * Displays the given view
      */
@@ -27,7 +27,7 @@ class ContentManagerViewController: NSViewController {
         // set the current view controller
         currentViewController = viewController
     }
-    
+
     /**
      * Removes the current view controller
      */
@@ -35,15 +35,15 @@ class ContentManagerViewController: NSViewController {
         currentViewController?.view.removeFromSuperview()
         currentViewController?.removeFromParent()
     }
-    
+
     func display(viewController: NSViewController) {
         // first remove the currently dispalyed view controller
         removeCurrentViewController()
         // add the new view controller to be displayed
         addNewViewController(viewController: viewController)
     }
-    
+
     override func prepare(for segue: NSStoryboardSegue, sender: Any?) {
-        currentViewController = (segue.destinationController as! NSViewController)
+        currentViewController = (segue.destinationController as? NSViewController)
     }
 }

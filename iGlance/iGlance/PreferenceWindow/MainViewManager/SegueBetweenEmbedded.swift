@@ -11,7 +11,7 @@ import Cocoa
 class SegueBetweenEmbedded: NSStoryboardSegue {
     override func perform() {
         if let viewController = sourceController as? NSViewController {
-            viewController.present(destinationController as! NSViewController, animator: SegueAnimator())
+            viewController.present((destinationController as? NSViewController)!, animator: SegueAnimator())
         }
     }
 }

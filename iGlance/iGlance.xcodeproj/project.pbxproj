@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		14E5D7E108D48F9542E9824A /* Pods_iGlance_iGlanceUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CFF878BB589337AA1613A3DE /* Pods_iGlance_iGlanceUITests.framework */; };
+		158527EED93E69C906DD21E3 /* Pods_iGlance.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9C2A6D96DB6779E95FBDB238 /* Pods_iGlance.framework */; };
 		B46789B623A69ECA00CE572D /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = B46789B523A69ECA00CE572D /* AppDelegate.swift */; };
 		B46789B823A69ECA00CE572D /* PreferenceWindowViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B46789B723A69ECA00CE572D /* PreferenceWindowViewController.swift */; };
 		B46789BA23A69ECB00CE572D /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = B46789B923A69ECB00CE572D /* Assets.xcassets */; };
@@ -20,6 +22,7 @@
 		B4C37E6B23A8D715008C7FC0 /* SegueAnimator.swift in Sources */ = {isa = PBXBuildFile; fileRef = B4C37E6A23A8D715008C7FC0 /* SegueAnimator.swift */; };
 		B4C37E6D23A8D811008C7FC0 /* ContentManagerViewControllerHolder.swift in Sources */ = {isa = PBXBuildFile; fileRef = B4C37E6C23A8D811008C7FC0 /* ContentManagerViewControllerHolder.swift */; };
 		B4C37E7023A91F3C008C7FC0 /* ThemeManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = B4C37E6F23A91F3C008C7FC0 /* ThemeManager.swift */; };
+		B707CD62778C3F6F1EE510C8 /* Pods_iGlanceTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4BC098BF6D2EC6F24256747E /* Pods_iGlanceTests.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -40,6 +43,14 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		1534A20EFFE95D5266464726 /* Pods-iGlance.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-iGlance.debug.xcconfig"; path = "Target Support Files/Pods-iGlance/Pods-iGlance.debug.xcconfig"; sourceTree = "<group>"; };
+		171AB134CB59FBA416D34FAF /* Pods-iGlance-iGlanceUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-iGlance-iGlanceUITests.debug.xcconfig"; path = "Target Support Files/Pods-iGlance-iGlanceUITests/Pods-iGlance-iGlanceUITests.debug.xcconfig"; sourceTree = "<group>"; };
+		4BC098BF6D2EC6F24256747E /* Pods_iGlanceTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_iGlanceTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		6361D7B564F7AAE188E62D32 /* Pods-iGlance.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-iGlance.release.xcconfig"; path = "Target Support Files/Pods-iGlance/Pods-iGlance.release.xcconfig"; sourceTree = "<group>"; };
+		6EAA7A6C4369581948235ABD /* Pods-iGlanceTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-iGlanceTests.debug.xcconfig"; path = "Target Support Files/Pods-iGlanceTests/Pods-iGlanceTests.debug.xcconfig"; sourceTree = "<group>"; };
+		7418909044D8747C9BE8B0BA /* Pods-iGlanceTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-iGlanceTests.release.xcconfig"; path = "Target Support Files/Pods-iGlanceTests/Pods-iGlanceTests.release.xcconfig"; sourceTree = "<group>"; };
+		935470C2452473A26C4D9B29 /* Pods-iGlance-iGlanceUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-iGlance-iGlanceUITests.release.xcconfig"; path = "Target Support Files/Pods-iGlance-iGlanceUITests/Pods-iGlance-iGlanceUITests.release.xcconfig"; sourceTree = "<group>"; };
+		9C2A6D96DB6779E95FBDB238 /* Pods_iGlance.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_iGlance.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		B46789B223A69ECA00CE572D /* iGlance.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = iGlance.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		B46789B523A69ECA00CE572D /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		B46789B723A69ECA00CE572D /* PreferenceWindowViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PreferenceWindowViewController.swift; sourceTree = "<group>"; };
@@ -60,6 +71,7 @@
 		B4C37E6A23A8D715008C7FC0 /* SegueAnimator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SegueAnimator.swift; sourceTree = "<group>"; };
 		B4C37E6C23A8D811008C7FC0 /* ContentManagerViewControllerHolder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentManagerViewControllerHolder.swift; sourceTree = "<group>"; };
 		B4C37E6F23A91F3C008C7FC0 /* ThemeManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ThemeManager.swift; sourceTree = "<group>"; };
+		CFF878BB589337AA1613A3DE /* Pods_iGlance_iGlanceUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_iGlance_iGlanceUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -67,6 +79,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				158527EED93E69C906DD21E3 /* Pods_iGlance.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -74,6 +87,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				B707CD62778C3F6F1EE510C8 /* Pods_iGlanceTests.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -81,12 +95,23 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				14E5D7E108D48F9542E9824A /* Pods_iGlance_iGlanceUITests.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		AAAB1F73870D1085E1944A64 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				9C2A6D96DB6779E95FBDB238 /* Pods_iGlance.framework */,
+				CFF878BB589337AA1613A3DE /* Pods_iGlance_iGlanceUITests.framework */,
+				4BC098BF6D2EC6F24256747E /* Pods_iGlanceTests.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 		B40E946023A9435200D63D17 /* PreferenceWindow */ = {
 			isa = PBXGroup;
 			children = (
@@ -115,6 +140,8 @@
 				B46789C723A69ECB00CE572D /* iGlanceTests */,
 				B46789D223A69ECB00CE572D /* iGlanceUITests */,
 				B46789B323A69ECA00CE572D /* Products */,
+				DC5547E60A2C6317C874630B /* Pods */,
+				AAAB1F73870D1085E1944A64 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -177,6 +204,19 @@
 			path = Theme;
 			sourceTree = "<group>";
 		};
+		DC5547E60A2C6317C874630B /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				1534A20EFFE95D5266464726 /* Pods-iGlance.debug.xcconfig */,
+				6361D7B564F7AAE188E62D32 /* Pods-iGlance.release.xcconfig */,
+				171AB134CB59FBA416D34FAF /* Pods-iGlance-iGlanceUITests.debug.xcconfig */,
+				935470C2452473A26C4D9B29 /* Pods-iGlance-iGlanceUITests.release.xcconfig */,
+				6EAA7A6C4369581948235ABD /* Pods-iGlanceTests.debug.xcconfig */,
+				7418909044D8747C9BE8B0BA /* Pods-iGlanceTests.release.xcconfig */,
+			);
+			path = Pods;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -184,6 +224,8 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = B46789D823A69ECB00CE572D /* Build configuration list for PBXNativeTarget "iGlance" */;
 			buildPhases = (
+				B4E000F523A94D9100BF5AE0 /* ShellScript */,
+				45DAEF2282E9517D5DB4753F /* [CP] Check Pods Manifest.lock */,
 				B46789AE23A69ECA00CE572D /* Sources */,
 				B46789AF23A69ECA00CE572D /* Frameworks */,
 				B46789B023A69ECA00CE572D /* Resources */,
@@ -201,6 +243,7 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = B46789DB23A69ECB00CE572D /* Build configuration list for PBXNativeTarget "iGlanceTests" */;
 			buildPhases = (
+				8FADDCC1D3EEECD815344A24 /* [CP] Check Pods Manifest.lock */,
 				B46789C023A69ECB00CE572D /* Sources */,
 				B46789C123A69ECB00CE572D /* Frameworks */,
 				B46789C223A69ECB00CE572D /* Resources */,
@@ -219,6 +262,7 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = B46789DE23A69ECB00CE572D /* Build configuration list for PBXNativeTarget "iGlanceUITests" */;
 			buildPhases = (
+				9D4BB39CEF180A6417E4EF2B /* [CP] Check Pods Manifest.lock */,
 				B46789CB23A69ECB00CE572D /* Sources */,
 				B46789CC23A69ECB00CE572D /* Frameworks */,
 				B46789CD23A69ECB00CE572D /* Resources */,
@@ -301,6 +345,92 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		45DAEF2282E9517D5DB4753F /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-iGlance-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		8FADDCC1D3EEECD815344A24 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-iGlanceTests-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		9D4BB39CEF180A6417E4EF2B /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-iGlance-iGlanceUITests-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		B4E000F523A94D9100BF5AE0 /* ShellScript */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+			);
+			outputFileListPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "# Type a script or drag a script file from your workspace to insert its path.\nif test -f \"${PODS_ROOT}/SwiftLint/swiftlint\"; then\n    \"${PODS_ROOT}/SwiftLint/swiftlint\" autocorrect \n    \"${PODS_ROOT}/SwiftLint/swiftlint\"\nelse\n    echo \"warning: SwiftLint not installed, please install the dependencies of this project using CocoaPods\"\nfi\n";
+		};
+/* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		B46789AE23A69ECA00CE572D /* Sources */ = {
@@ -477,6 +607,7 @@
 		};
 		B46789D923A69ECB00CE572D /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 1534A20EFFE95D5266464726 /* Pods-iGlance.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_ENTITLEMENTS = iGlance/iGlance.entitlements;
@@ -497,6 +628,7 @@
 		};
 		B46789DA23A69ECB00CE572D /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 6361D7B564F7AAE188E62D32 /* Pods-iGlance.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_ENTITLEMENTS = iGlance/iGlance.entitlements;
@@ -517,6 +649,7 @@
 		};
 		B46789DC23A69ECB00CE572D /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 6EAA7A6C4369581948235ABD /* Pods-iGlanceTests.debug.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				BUNDLE_LOADER = "$(TEST_HOST)";
@@ -539,6 +672,7 @@
 		};
 		B46789DD23A69ECB00CE572D /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 7418909044D8747C9BE8B0BA /* Pods-iGlanceTests.release.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				BUNDLE_LOADER = "$(TEST_HOST)";
@@ -561,6 +695,7 @@
 		};
 		B46789DF23A69ECB00CE572D /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 171AB134CB59FBA416D34FAF /* Pods-iGlance-iGlanceUITests.debug.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				CODE_SIGN_STYLE = Automatic;
@@ -581,6 +716,7 @@
 		};
 		B46789E023A69ECB00CE572D /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 935470C2452473A26C4D9B29 /* Pods-iGlance-iGlanceUITests.release.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				CODE_SIGN_STYLE = Automatic;

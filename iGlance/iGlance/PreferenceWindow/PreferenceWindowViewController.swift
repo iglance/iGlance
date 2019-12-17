@@ -9,7 +9,7 @@
 import Cocoa
 
 class PreferenceWindowViewController: NSViewController {
-    
+
     struct SidebarItem {
         let label: String
         let storyboardID: String
@@ -24,45 +24,41 @@ class PreferenceWindowViewController: NSViewController {
         SidebarItem(label: "Fan", storyboardID: "FanStoryboardID"),
         SidebarItem(label: "Battery", storyboardID: "BatteryStoryboardID")
     ]
-    
+
     var contentManagerViewController: ContentManagerViewController?
-    
+
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-        // make window transparent
-        view.window?.isOpaque = false
-        view.window?.backgroundColor = NSColor(red: 45/255, green: 45/255, blue: 45/255, alpha: 0)
 
         // add the current ViewController as the delegate and data source of the sidebar
         sidebar.delegate = self
         sidebar.dataSource = self
     }
-    
+
     override func viewWillAppear() {
         // by default select the dashboard
         sidebar.selectRowIndexes(NSIndexSet(index: 0) as IndexSet, byExtendingSelection: false)
     }
-    
+
     func onSidebarItemClick(itemIndex: Int) {
         let sidebarItem = sidebarItems[itemIndex]
-        
+
         // show the view of the sidebar item
         displayViewOf(sidebarItem: sidebarItem)
     }
-    
+
     private func displayViewOf(sidebarItem: SidebarItem) {
-       if let viewController = storyboard?.instantiateController(withIdentifier: sidebarItem.storyboardID){
-           contentManagerViewController?.addNewViewController(viewController: viewController as! NSViewController)
-       }
-    }
-    
-    override func prepare(for segue: NSStoryboardSegue, sender: Any?) {
-        if segue.destinationController is ContentManagerViewController {
-            contentManagerViewController = (segue.destinationController as! ContentManagerViewController)
+        if let viewController = storyboard?.instantiateController(withIdentifier: sidebarItem.storyboardID) {
+            contentManagerViewController?.addNewViewController(viewController: (viewController as? NSViewController)!)
         }
     }
-    
+
+    override func prepare(for segue: NSStoryboardSegue, sender: Any?) {
+        if segue.destinationController is ContentManagerViewController {
+            contentManagerViewController = (segue.destinationController as? ContentManagerViewController)
+        }
+    }
+
     func retrieveContentManagerController() -> ContentManagerViewController? {
         return self.contentManagerViewController
     }
@@ -78,27 +74,29 @@ extension PreferenceWindowViewController: NSTableViewDataSource {
 }
 
 extension PreferenceWindowViewController: NSTableViewDelegate {
-    
+
     func tableView(_ tableView: NSTableView, viewFor tableColumn: NSTableColumn?, row: Int) -> NSView? {
-        
+
         let selectedSidebarItem = sidebarItems[row]
-        
+
         // create the cell view
-        if let cellView = tableView.makeView(withIdentifier: NSUserInterfaceItemIdentifier(rawValue: "SidebarItemID"), owner: nil) as? NSTableCellView {
+        if let cellView = tableView.makeView(
+            withIdentifier: NSUserInterfaceItemIdentifier(rawValue: "SidebarItemID"),
+            owner: nil) as? NSTableCellView {
+
             // set the label and the image
             cellView.textField?.stringValue = selectedSidebarItem.label
-            
+
             cellView.imageView?.image = NSImage(named: NSImage.actionTemplateName)
-            
+
             // return the created cell view
             return cellView
         } else {
             return nil
         }
     }
-    
+
     func tableViewSelectionDidChange(_ notification: Notification) {
         self.onSidebarItemClick(itemIndex: sidebar.selectedRow)
     }
 }
-

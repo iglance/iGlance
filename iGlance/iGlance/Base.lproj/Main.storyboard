@@ -1005,7 +1005,7 @@
                         </constraints>
                     </view>
                     <connections>
-                        <segue destination="76f-do-Hko" kind="custom" identifier="NetworkToFan" id="LxJ-gm-2D4"/>
+                        <segue destination="76f-do-Hko" kind="custom" identifier="NetworkToFan" customClass="SegueBetweenEmbedded" customModule="iGlance" customModuleProvider="target" id="LxJ-gm-2D4"/>
                     </connections>
                 </viewController>
                 <customObject id="JFc-yO-TNx" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
@@ -1045,7 +1045,7 @@
                 </viewController>
                 <customObject id="Ig9-SE-AqP" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="916" y="3056"/>
+            <point key="canvasLocation" x="915" y="3056"/>
         </scene>
         <!--Battery View Controller-->
         <scene sceneID="RUx-H1-VqW">

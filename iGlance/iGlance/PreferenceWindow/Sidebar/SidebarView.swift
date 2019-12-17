@@ -9,10 +9,10 @@
 import Cocoa
 
 class SidebarView: NSView {
-    
+
     override func draw(_ dirtyRect: NSRect) {
         super.draw(dirtyRect)
-        
+
         // set the background color of the sidebar
         ThemeManager.currentTheme().sidebarColor.setFill()
         dirtyRect.fill()

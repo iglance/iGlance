@@ -1,0 +1,6 @@
+framework module Pods_iGlance_iGlanceUITests {
+  umbrella header "Pods-iGlance-iGlanceUITests-umbrella.h"
+
+  export *
+  module * { export * }
+}
