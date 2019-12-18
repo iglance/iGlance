@@ -713,17 +713,17 @@
                                 <rect key="frame" x="0.0" y="0.0" width="800" height="500"/>
                                 <subviews>
                                     <stackView distribution="fill" orientation="vertical" alignment="centerX" spacing="0.0" horizontalStackHuggingPriority="249.99998474121094" verticalStackHuggingPriority="249.99998474121094" detachesHiddenViews="YES" translatesAutoresizingMaskIntoConstraints="NO" id="BtF-JP-uDT" userLabel="SidebarView">
-                                        <rect key="frame" x="0.0" y="311" width="200" height="189"/>
+                                        <rect key="frame" x="0.0" y="121" width="200" height="379"/>
                                         <subviews>
                                             <imageView horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="us5-Zn-Xk0">
-                                                <rect key="frame" x="0.0" y="100" width="200" height="69"/>
+                                                <rect key="frame" x="0.0" y="290" width="200" height="69"/>
                                                 <imageCell key="cell" refusesFirstResponder="YES" alignment="left" imageScaling="proportionallyDown" image="imageCell:YV0-XS-geG:image" id="YV0-XS-geG"/>
                                             </imageView>
-                                            <stackView distribution="fill" orientation="vertical" alignment="centerX" spacing="0.0" horizontalStackHuggingPriority="249.99998474121094" verticalStackHuggingPriority="249.99998474121094" detachesHiddenViews="YES" translatesAutoresizingMaskIntoConstraints="NO" id="COa-u2-5Zb" userLabel="SidebarItemView">
-                                                <rect key="frame" x="0.0" y="0.0" width="200" height="100"/>
+                                            <stackView distribution="fill" orientation="vertical" alignment="centerX" spacing="-2" horizontalStackHuggingPriority="249.99998474121094" verticalStackHuggingPriority="249.99998474121094" detachesHiddenViews="YES" translatesAutoresizingMaskIntoConstraints="NO" id="COa-u2-5Zb" userLabel="SidebarItemView">
+                                                <rect key="frame" x="0.0" y="0.0" width="200" height="290"/>
                                                 <subviews>
                                                     <customView translatesAutoresizingMaskIntoConstraints="NO" id="LVr-ff-6fY" customClass="SidebarButtonView" customModule="iGlance" customModuleProvider="target">
-                                                        <rect key="frame" x="0.0" y="50" width="200" height="50"/>
+                                                        <rect key="frame" x="0.0" y="240" width="200" height="50"/>
                                                         <subviews>
                                                             <stackView distribution="fill" orientation="horizontal" alignment="centerY" spacing="20" horizontalStackHuggingPriority="249.99998474121094" verticalStackHuggingPriority="249.99998474121094" fixedFrame="YES" detachesHiddenViews="YES" translatesAutoresizingMaskIntoConstraints="NO" id="rIf-cR-jEJ">
                                                                 <rect key="frame" x="0.0" y="13.5" width="140" height="23"/>
@@ -758,7 +758,7 @@
                                                         </constraints>
                                                     </customView>
                                                     <customView translatesAutoresizingMaskIntoConstraints="NO" id="0Nm-lM-NHk" customClass="SidebarButtonView" customModule="iGlance" customModuleProvider="target">
-                                                        <rect key="frame" x="0.0" y="0.0" width="200" height="50"/>
+                                                        <rect key="frame" x="0.0" y="192" width="200" height="50"/>
                                                         <subviews>
                                                             <stackView distribution="fill" orientation="horizontal" alignment="centerY" spacing="20" horizontalStackHuggingPriority="249.99998474121094" verticalStackHuggingPriority="249.99998474121094" fixedFrame="YES" detachesHiddenViews="YES" translatesAutoresizingMaskIntoConstraints="NO" id="M1R-37-HWC">
                                                                 <rect key="frame" x="0.0" y="13" width="85" height="23"/>
@@ -792,12 +792,160 @@
                                                             <constraint firstAttribute="width" constant="200" id="Bhq-AJ-KaR"/>
                                                         </constraints>
                                                     </customView>
+                                                    <customView translatesAutoresizingMaskIntoConstraints="NO" id="EqK-RT-CzE" userLabel="Memory Button View" customClass="SidebarButtonView" customModule="iGlance" customModuleProvider="target">
+                                                        <rect key="frame" x="0.0" y="144" width="200" height="50"/>
+                                                        <subviews>
+                                                            <stackView distribution="fill" orientation="horizontal" alignment="centerY" spacing="20" horizontalStackHuggingPriority="249.99998474121094" verticalStackHuggingPriority="249.99998474121094" fixedFrame="YES" detachesHiddenViews="YES" translatesAutoresizingMaskIntoConstraints="NO" id="fjj-xe-YWf">
+                                                                <rect key="frame" x="0.0" y="13" width="116" height="23"/>
+                                                                <subviews>
+                                                                    <imageView horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="nqW-7D-UfP">
+                                                                        <rect key="frame" x="10" y="5" width="14" height="14"/>
+                                                                        <imageCell key="cell" refusesFirstResponder="YES" alignment="left" imageScaling="proportionallyDown" image="NSActionTemplate" id="Eap-vY-dsE"/>
+                                                                    </imageView>
+                                                                    <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="8fO-Ur-aLS">
+                                                                        <rect key="frame" x="42" y="0.0" width="76" height="23"/>
+                                                                        <textFieldCell key="cell" lineBreakMode="clipping" title="Memory" id="QFm-60-853">
+                                                                            <font key="font" metaFont="system" size="20"/>
+                                                                            <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
+                                                                            <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
+                                                                        </textFieldCell>
+                                                                    </textField>
+                                                                </subviews>
+                                                                <edgeInsets key="edgeInsets" left="10" right="0.0" top="0.0" bottom="0.0"/>
+                                                                <visibilityPriorities>
+                                                                    <integer value="1000"/>
+                                                                    <integer value="1000"/>
+                                                                </visibilityPriorities>
+                                                                <customSpacing>
+                                                                    <real value="3.4028234663852886e+38"/>
+                                                                    <real value="3.4028234663852886e+38"/>
+                                                                </customSpacing>
+                                                            </stackView>
+                                                        </subviews>
+                                                        <constraints>
+                                                            <constraint firstAttribute="height" constant="50" id="2pq-A5-ijT"/>
+                                                            <constraint firstAttribute="width" constant="200" id="bXx-ER-c4R"/>
+                                                        </constraints>
+                                                    </customView>
+                                                    <customView translatesAutoresizingMaskIntoConstraints="NO" id="n1M-B3-Pvc" userLabel="Network Button View" customClass="SidebarButtonView" customModule="iGlance" customModuleProvider="target">
+                                                        <rect key="frame" x="0.0" y="96" width="200" height="50"/>
+                                                        <subviews>
+                                                            <stackView distribution="fill" orientation="horizontal" alignment="centerY" spacing="20" horizontalStackHuggingPriority="249.99998474121094" verticalStackHuggingPriority="249.99998474121094" fixedFrame="YES" detachesHiddenViews="YES" translatesAutoresizingMaskIntoConstraints="NO" id="aZP-9I-O6S">
+                                                                <rect key="frame" x="0.0" y="13" width="118" height="23"/>
+                                                                <subviews>
+                                                                    <imageView horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="SQH-Me-gpQ">
+                                                                        <rect key="frame" x="10" y="5" width="14" height="14"/>
+                                                                        <imageCell key="cell" refusesFirstResponder="YES" alignment="left" imageScaling="proportionallyDown" image="NSActionTemplate" id="SKI-BU-gf2"/>
+                                                                    </imageView>
+                                                                    <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="2Uq-Nz-z0n">
+                                                                        <rect key="frame" x="42" y="0.0" width="78" height="23"/>
+                                                                        <textFieldCell key="cell" lineBreakMode="clipping" title="Network" id="fw7-gc-1eP">
+                                                                            <font key="font" metaFont="system" size="20"/>
+                                                                            <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
+                                                                            <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
+                                                                        </textFieldCell>
+                                                                    </textField>
+                                                                </subviews>
+                                                                <edgeInsets key="edgeInsets" left="10" right="0.0" top="0.0" bottom="0.0"/>
+                                                                <visibilityPriorities>
+                                                                    <integer value="1000"/>
+                                                                    <integer value="1000"/>
+                                                                </visibilityPriorities>
+                                                                <customSpacing>
+                                                                    <real value="3.4028234663852886e+38"/>
+                                                                    <real value="3.4028234663852886e+38"/>
+                                                                </customSpacing>
+                                                            </stackView>
+                                                        </subviews>
+                                                        <constraints>
+                                                            <constraint firstAttribute="height" constant="50" id="h7h-r2-29H"/>
+                                                            <constraint firstAttribute="width" constant="200" id="ukP-y2-EvT"/>
+                                                        </constraints>
+                                                    </customView>
+                                                    <customView translatesAutoresizingMaskIntoConstraints="NO" id="K2f-Ca-two" userLabel="Fan Button View" customClass="SidebarButtonView" customModule="iGlance" customModuleProvider="target">
+                                                        <rect key="frame" x="0.0" y="48" width="200" height="50"/>
+                                                        <subviews>
+                                                            <stackView distribution="fill" orientation="horizontal" alignment="centerY" spacing="20" horizontalStackHuggingPriority="249.99998474121094" verticalStackHuggingPriority="249.99998474121094" fixedFrame="YES" detachesHiddenViews="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Aud-KN-hOh">
+                                                                <rect key="frame" x="0.0" y="13" width="76" height="23"/>
+                                                                <subviews>
+                                                                    <imageView horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="I22-9v-Ezy">
+                                                                        <rect key="frame" x="10" y="5" width="14" height="14"/>
+                                                                        <imageCell key="cell" refusesFirstResponder="YES" alignment="left" imageScaling="proportionallyDown" image="NSActionTemplate" id="lvW-8d-Je2"/>
+                                                                    </imageView>
+                                                                    <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="nOQ-Ev-Ri8">
+                                                                        <rect key="frame" x="42" y="0.0" width="36" height="23"/>
+                                                                        <textFieldCell key="cell" lineBreakMode="clipping" title="Fan" id="7el-SE-fPU">
+                                                                            <font key="font" metaFont="system" size="20"/>
+                                                                            <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
+                                                                            <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
+                                                                        </textFieldCell>
+                                                                    </textField>
+                                                                </subviews>
+                                                                <edgeInsets key="edgeInsets" left="10" right="0.0" top="0.0" bottom="0.0"/>
+                                                                <visibilityPriorities>
+                                                                    <integer value="1000"/>
+                                                                    <integer value="1000"/>
+                                                                </visibilityPriorities>
+                                                                <customSpacing>
+                                                                    <real value="3.4028234663852886e+38"/>
+                                                                    <real value="3.4028234663852886e+38"/>
+                                                                </customSpacing>
+                                                            </stackView>
+                                                        </subviews>
+                                                        <constraints>
+                                                            <constraint firstAttribute="width" constant="200" id="c9m-Aj-P8a"/>
+                                                            <constraint firstAttribute="height" constant="50" id="eLu-kQ-z6H"/>
+                                                        </constraints>
+                                                    </customView>
+                                                    <customView translatesAutoresizingMaskIntoConstraints="NO" id="1wk-3I-aim" userLabel="Battery Button View" customClass="SidebarButtonView" customModule="iGlance" customModuleProvider="target">
+                                                        <rect key="frame" x="0.0" y="0.0" width="200" height="50"/>
+                                                        <subviews>
+                                                            <stackView distribution="fill" orientation="horizontal" alignment="centerY" spacing="20" horizontalStackHuggingPriority="249.99998474121094" verticalStackHuggingPriority="249.99998474121094" fixedFrame="YES" detachesHiddenViews="YES" translatesAutoresizingMaskIntoConstraints="NO" id="eO2-iN-ZcZ">
+                                                                <rect key="frame" x="0.0" y="13" width="107" height="23"/>
+                                                                <subviews>
+                                                                    <imageView horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="dyD-2o-g0X">
+                                                                        <rect key="frame" x="10" y="5" width="14" height="14"/>
+                                                                        <imageCell key="cell" refusesFirstResponder="YES" alignment="left" imageScaling="proportionallyDown" image="NSActionTemplate" id="iMn-ZX-9au"/>
+                                                                    </imageView>
+                                                                    <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="Z3a-A7-hQ9">
+                                                                        <rect key="frame" x="42" y="0.0" width="67" height="23"/>
+                                                                        <textFieldCell key="cell" lineBreakMode="clipping" title="Battery" id="4vR-fA-gwx">
+                                                                            <font key="font" metaFont="system" size="20"/>
+                                                                            <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
+                                                                            <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
+                                                                        </textFieldCell>
+                                                                    </textField>
+                                                                </subviews>
+                                                                <edgeInsets key="edgeInsets" left="10" right="0.0" top="0.0" bottom="0.0"/>
+                                                                <visibilityPriorities>
+                                                                    <integer value="1000"/>
+                                                                    <integer value="1000"/>
+                                                                </visibilityPriorities>
+                                                                <customSpacing>
+                                                                    <real value="3.4028234663852886e+38"/>
+                                                                    <real value="3.4028234663852886e+38"/>
+                                                                </customSpacing>
+                                                            </stackView>
+                                                        </subviews>
+                                                        <constraints>
+                                                            <constraint firstAttribute="height" constant="50" id="L3C-Ow-bZg"/>
+                                                            <constraint firstAttribute="width" constant="200" id="lI8-AK-DJx"/>
+                                                        </constraints>
+                                                    </customView>
                                                 </subviews>
                                                 <visibilityPriorities>
                                                     <integer value="1000"/>
                                                     <integer value="1000"/>
+                                                    <integer value="1000"/>
+                                                    <integer value="1000"/>
+                                                    <integer value="1000"/>
+                                                    <integer value="1000"/>
                                                 </visibilityPriorities>
                                                 <customSpacing>
+                                                    <real value="3.4028234663852886e+38"/>
+                                                    <real value="3.4028234663852886e+38"/>
+                                                    <real value="3.4028234663852886e+38"/>
+                                                    <real value="3.4028234663852886e+38"/>
                                                     <real value="3.4028234663852886e+38"/>
                                                     <real value="3.4028234663852886e+38"/>
                                                 </customSpacing>
@@ -841,8 +989,12 @@
                         </constraints>
                     </view>
                     <connections>
+                        <outlet property="batteryButtonView" destination="1wk-3I-aim" id="L7s-5d-9Qd"/>
                         <outlet property="cpuButtonView" destination="0Nm-lM-NHk" id="b8d-Uu-Yhj"/>
                         <outlet property="dashboardButtonView" destination="LVr-ff-6fY" id="CT1-fp-BTG"/>
+                        <outlet property="fanButtonView" destination="K2f-Ca-two" id="haJ-Fw-hV8"/>
+                        <outlet property="memoryButtonView" destination="EqK-RT-CzE" id="Aa6-4a-MdL"/>
+                        <outlet property="networkButtonView" destination="n1M-B3-Pvc" id="2wT-0f-ZRR"/>
                     </connections>
                 </viewController>
                 <customObject id="rPt-NT-nkU" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
