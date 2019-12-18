@@ -8,7 +8,7 @@
 
 import Cocoa
 
-class PreferenceWindowViewController: NSViewController {
+class PreferenceViewController: NSViewController {
 
     var contentManagerViewController: ContentManagerViewController?
     var sidebarViewController: SidebarViewController?

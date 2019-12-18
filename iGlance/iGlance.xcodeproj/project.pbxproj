@@ -11,6 +11,7 @@
 		158527EED93E69C906DD21E3 /* Pods_iGlance.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9C2A6D96DB6779E95FBDB238 /* Pods_iGlance.framework */; };
 		B43ABF2823AA1E99007F93BA /* SidebarButtonView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B43ABF2723AA1E99007F93BA /* SidebarButtonView.swift */; };
 		B43ABF2A23AA32FA007F93BA /* SidebarViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B43ABF2923AA32FA007F93BA /* SidebarViewController.swift */; };
+		B43ABF2C23AA3729007F93BA /* PreferenceWindowController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B43ABF2B23AA3729007F93BA /* PreferenceWindowController.swift */; };
 		B46789B623A69ECA00CE572D /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = B46789B523A69ECA00CE572D /* AppDelegate.swift */; };
 		B46789B823A69ECA00CE572D /* PreferenceWindowViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B46789B723A69ECA00CE572D /* PreferenceWindowViewController.swift */; };
 		B46789BA23A69ECB00CE572D /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = B46789B923A69ECB00CE572D /* Assets.xcassets */; };
@@ -23,6 +24,7 @@
 		B4C37E6B23A8D715008C7FC0 /* SegueAnimator.swift in Sources */ = {isa = PBXBuildFile; fileRef = B4C37E6A23A8D715008C7FC0 /* SegueAnimator.swift */; };
 		B4C37E6D23A8D811008C7FC0 /* ContentManagerViewControllerHolder.swift in Sources */ = {isa = PBXBuildFile; fileRef = B4C37E6C23A8D811008C7FC0 /* ContentManagerViewControllerHolder.swift */; };
 		B4C37E7023A91F3C008C7FC0 /* ThemeManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = B4C37E6F23A91F3C008C7FC0 /* ThemeManager.swift */; };
+		B4C8DD2523AA3DB8008DAE45 /* ContentManagerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B4C8DD2423AA3DB8008DAE45 /* ContentManagerView.swift */; };
 		B707CD62778C3F6F1EE510C8 /* Pods_iGlanceTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4BC098BF6D2EC6F24256747E /* Pods_iGlanceTests.framework */; };
 /* End PBXBuildFile section */
 
@@ -54,6 +56,7 @@
 		9C2A6D96DB6779E95FBDB238 /* Pods_iGlance.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_iGlance.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		B43ABF2723AA1E99007F93BA /* SidebarButtonView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SidebarButtonView.swift; sourceTree = "<group>"; };
 		B43ABF2923AA32FA007F93BA /* SidebarViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SidebarViewController.swift; sourceTree = "<group>"; };
+		B43ABF2B23AA3729007F93BA /* PreferenceWindowController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PreferenceWindowController.swift; sourceTree = "<group>"; };
 		B46789B223A69ECA00CE572D /* iGlance.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = iGlance.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		B46789B523A69ECA00CE572D /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		B46789B723A69ECA00CE572D /* PreferenceWindowViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PreferenceWindowViewController.swift; sourceTree = "<group>"; };
@@ -73,6 +76,7 @@
 		B4C37E6A23A8D715008C7FC0 /* SegueAnimator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SegueAnimator.swift; sourceTree = "<group>"; };
 		B4C37E6C23A8D811008C7FC0 /* ContentManagerViewControllerHolder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentManagerViewControllerHolder.swift; sourceTree = "<group>"; };
 		B4C37E6F23A91F3C008C7FC0 /* ThemeManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ThemeManager.swift; sourceTree = "<group>"; };
+		B4C8DD2423AA3DB8008DAE45 /* ContentManagerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentManagerView.swift; sourceTree = "<group>"; };
 		CFF878BB589337AA1613A3DE /* Pods_iGlance_iGlanceUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_iGlance_iGlanceUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
@@ -118,6 +122,7 @@
 			isa = PBXGroup;
 			children = (
 				B46789B723A69ECA00CE572D /* PreferenceWindowViewController.swift */,
+				B43ABF2B23AA3729007F93BA /* PreferenceWindowController.swift */,
 				B40E946123A9436B00D63D17 /* MainViewManager */,
 				B4C37E5F23A78F4C008C7FC0 /* Sidebar */,
 			);
@@ -127,10 +132,11 @@
 		B40E946123A9436B00D63D17 /* MainViewManager */ = {
 			isa = PBXGroup;
 			children = (
+				B4C8DD2423AA3DB8008DAE45 /* ContentManagerView.swift */,
 				B4C37E6623A8CF89008C7FC0 /* ContentManagerViewController.swift */,
+				B4C37E6C23A8D811008C7FC0 /* ContentManagerViewControllerHolder.swift */,
 				B4C37E6823A8D6BB008C7FC0 /* SegueBetweenEmbedded.swift */,
 				B4C37E6A23A8D715008C7FC0 /* SegueAnimator.swift */,
-				B4C37E6C23A8D811008C7FC0 /* ContentManagerViewControllerHolder.swift */,
 			);
 			path = MainViewManager;
 			sourceTree = "<group>";
@@ -443,6 +449,8 @@
 				B4C37E6723A8CF89008C7FC0 /* ContentManagerViewController.swift in Sources */,
 				B46789B823A69ECA00CE572D /* PreferenceWindowViewController.swift in Sources */,
 				B4C37E6B23A8D715008C7FC0 /* SegueAnimator.swift in Sources */,
+				B43ABF2C23AA3729007F93BA /* PreferenceWindowController.swift in Sources */,
+				B4C8DD2523AA3DB8008DAE45 /* ContentManagerView.swift in Sources */,
 				B4C37E6923A8D6BB008C7FC0 /* SegueBetweenEmbedded.swift in Sources */,
 				B4C37E6D23A8D811008C7FC0 /* ContentManagerViewControllerHolder.swift in Sources */,
 				B43ABF2A23AA32FA007F93BA /* SidebarViewController.swift in Sources */,

@@ -9,6 +9,12 @@
 import Cocoa
 
 class SidebarView: NSView {
+
+    // prevent dragging of the window
+    override var mouseDownCanMoveWindow: Bool {
+        return false
+    }
+
     override func draw(_ dirtyRect: NSRect) {
         super.draw(dirtyRect)
 
