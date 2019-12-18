@@ -25,6 +25,7 @@
 		B4C37E6D23A8D811008C7FC0 /* ContentManagerViewControllerHolder.swift in Sources */ = {isa = PBXBuildFile; fileRef = B4C37E6C23A8D811008C7FC0 /* ContentManagerViewControllerHolder.swift */; };
 		B4C37E7023A91F3C008C7FC0 /* ThemeManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = B4C37E6F23A91F3C008C7FC0 /* ThemeManager.swift */; };
 		B4C8DD2523AA3DB8008DAE45 /* ContentManagerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B4C8DD2423AA3DB8008DAE45 /* ContentManagerView.swift */; };
+		B4D86E1B23AA710B00671B52 /* MainViewViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B4D86E1A23AA710B00671B52 /* MainViewViewController.swift */; };
 		B707CD62778C3F6F1EE510C8 /* Pods_iGlanceTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4BC098BF6D2EC6F24256747E /* Pods_iGlanceTests.framework */; };
 /* End PBXBuildFile section */
 
@@ -77,6 +78,7 @@
 		B4C37E6C23A8D811008C7FC0 /* ContentManagerViewControllerHolder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentManagerViewControllerHolder.swift; sourceTree = "<group>"; };
 		B4C37E6F23A91F3C008C7FC0 /* ThemeManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ThemeManager.swift; sourceTree = "<group>"; };
 		B4C8DD2423AA3DB8008DAE45 /* ContentManagerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentManagerView.swift; sourceTree = "<group>"; };
+		B4D86E1A23AA710B00671B52 /* MainViewViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainViewViewController.swift; sourceTree = "<group>"; };
 		CFF878BB589337AA1613A3DE /* Pods_iGlance_iGlanceUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_iGlance_iGlanceUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
@@ -123,6 +125,7 @@
 			children = (
 				B46789B723A69ECA00CE572D /* PreferenceWindowViewController.swift */,
 				B43ABF2B23AA3729007F93BA /* PreferenceWindowController.swift */,
+				B4D86E1923AA70FD00671B52 /* MainViews */,
 				B40E946123A9436B00D63D17 /* MainViewManager */,
 				B4C37E5F23A78F4C008C7FC0 /* Sidebar */,
 			);
@@ -211,6 +214,14 @@
 				B4C37E6F23A91F3C008C7FC0 /* ThemeManager.swift */,
 			);
 			path = Theme;
+			sourceTree = "<group>";
+		};
+		B4D86E1923AA70FD00671B52 /* MainViews */ = {
+			isa = PBXGroup;
+			children = (
+				B4D86E1A23AA710B00671B52 /* MainViewViewController.swift */,
+			);
+			path = MainViews;
 			sourceTree = "<group>";
 		};
 		DC5547E60A2C6317C874630B /* Pods */ = {
@@ -447,6 +458,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				B4C37E6723A8CF89008C7FC0 /* ContentManagerViewController.swift in Sources */,
+				B4D86E1B23AA710B00671B52 /* MainViewViewController.swift in Sources */,
 				B46789B823A69ECA00CE572D /* PreferenceWindowViewController.swift in Sources */,
 				B4C37E6B23A8D715008C7FC0 /* SegueAnimator.swift in Sources */,
 				B43ABF2C23AA3729007F93BA /* PreferenceWindowController.swift in Sources */,

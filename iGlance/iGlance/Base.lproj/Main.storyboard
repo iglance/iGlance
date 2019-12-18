@@ -779,15 +779,11 @@
         <!--Dashboard View Controller-->
         <scene sceneID="rBU-qB-hiS">
             <objects>
-                <viewController title="Dashboard View Controller" storyboardIdentifier="DashboardStoryboardID" id="jr8-g7-uLJ" sceneMemberID="viewController">
+                <viewController title="Dashboard View Controller" storyboardIdentifier="DashboardStoryboardID" id="jr8-g7-uLJ" customClass="MainViewViewController" customModule="iGlance" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" id="2gR-n0-wZE">
                         <rect key="frame" x="0.0" y="0.0" width="600" height="500"/>
                         <autoresizingMask key="autoresizingMask"/>
                         <subviews>
-                            <visualEffectView fixedFrame="YES" blendingMode="behindWindow" material="menu" state="followsWindowActiveState" translatesAutoresizingMaskIntoConstraints="NO" id="QOg-iP-kJR">
-                                <rect key="frame" x="0.0" y="0.0" width="600" height="500"/>
-                                <autoresizingMask key="autoresizingMask"/>
-                            </visualEffectView>
                             <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="fQT-qs-MoL">
                                 <rect key="frame" x="18" y="464" width="71" height="16"/>
                                 <textFieldCell key="cell" lineBreakMode="clipping" title="Dashboard" id="7lW-PG-Vnk">
@@ -814,15 +810,11 @@
         <!--CPU View Controller-->
         <scene sceneID="uUd-va-qL0">
             <objects>
-                <viewController title="CPU View Controller" storyboardIdentifier="CpuStoryboardID" id="uGw-Yr-sBC" sceneMemberID="viewController">
+                <viewController title="CPU View Controller" storyboardIdentifier="CpuStoryboardID" id="uGw-Yr-sBC" customClass="MainViewViewController" customModule="iGlance" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" id="q0i-aM-agG">
                         <rect key="frame" x="0.0" y="0.0" width="600" height="500"/>
                         <autoresizingMask key="autoresizingMask"/>
                         <subviews>
-                            <visualEffectView fixedFrame="YES" blendingMode="behindWindow" material="menu" state="followsWindowActiveState" translatesAutoresizingMaskIntoConstraints="NO" id="zdQ-Lz-dfT">
-                                <rect key="frame" x="0.0" y="0.0" width="600" height="500"/>
-                                <autoresizingMask key="autoresizingMask"/>
-                            </visualEffectView>
                             <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="XON-Ou-7aN">
                                 <rect key="frame" x="18" y="464" width="31" height="16"/>
                                 <textFieldCell key="cell" lineBreakMode="clipping" title="CPU" id="0aO-pH-o5v">
@@ -849,15 +841,11 @@
         <!--Memory View Controller-->
         <scene sceneID="voU-QA-JXU">
             <objects>
-                <viewController title="Memory View Controller" storyboardIdentifier="MemoryStoryboardID" id="Pbp-jU-Jl9" sceneMemberID="viewController">
+                <viewController title="Memory View Controller" storyboardIdentifier="MemoryStoryboardID" id="Pbp-jU-Jl9" customClass="MainViewViewController" customModule="iGlance" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" id="XsI-br-NL6">
                         <rect key="frame" x="0.0" y="0.0" width="600" height="500"/>
                         <autoresizingMask key="autoresizingMask"/>
                         <subviews>
-                            <visualEffectView fixedFrame="YES" blendingMode="behindWindow" material="menu" state="followsWindowActiveState" translatesAutoresizingMaskIntoConstraints="NO" id="Qgc-JM-ljv">
-                                <rect key="frame" x="0.0" y="0.0" width="600" height="500"/>
-                                <autoresizingMask key="autoresizingMask"/>
-                            </visualEffectView>
                             <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="qnN-q0-bd2">
                                 <rect key="frame" x="18" y="464" width="54" height="16"/>
                                 <textFieldCell key="cell" lineBreakMode="clipping" title="Memory" id="I8n-ft-BJf">
@@ -884,15 +872,11 @@
         <!--Network View Controller-->
         <scene sceneID="kEF-TN-Jqj">
             <objects>
-                <viewController title="Network View Controller" storyboardIdentifier="NetworkStoryboardID" id="16f-vh-LVT" sceneMemberID="viewController">
+                <viewController title="Network View Controller" storyboardIdentifier="NetworkStoryboardID" id="16f-vh-LVT" customClass="MainViewViewController" customModule="iGlance" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" id="gLt-Uu-NnI">
                         <rect key="frame" x="0.0" y="0.0" width="601" height="500"/>
                         <autoresizingMask key="autoresizingMask"/>
                         <subviews>
-                            <visualEffectView fixedFrame="YES" blendingMode="behindWindow" material="menu" state="followsWindowActiveState" translatesAutoresizingMaskIntoConstraints="NO" id="FTX-CZ-vC0">
-                                <rect key="frame" x="0.0" y="0.0" width="600" height="500"/>
-                                <autoresizingMask key="autoresizingMask"/>
-                            </visualEffectView>
                             <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="wQa-W7-Rt8">
                                 <rect key="frame" x="18" y="464" width="55" height="16"/>
                                 <textFieldCell key="cell" lineBreakMode="clipping" title="Network" id="ps8-Xf-w9Y">
@@ -919,15 +903,11 @@
         <!--Fan View Controller-->
         <scene sceneID="pAg-29-Upi">
             <objects>
-                <viewController title="Fan View Controller" storyboardIdentifier="FanStoryboardID" id="76f-do-Hko" sceneMemberID="viewController">
+                <viewController title="Fan View Controller" storyboardIdentifier="FanStoryboardID" id="76f-do-Hko" customClass="MainViewViewController" customModule="iGlance" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" id="X4Z-EU-k4i">
                         <rect key="frame" x="0.0" y="0.0" width="601" height="500"/>
                         <autoresizingMask key="autoresizingMask"/>
                         <subviews>
-                            <visualEffectView fixedFrame="YES" blendingMode="behindWindow" material="menu" state="followsWindowActiveState" translatesAutoresizingMaskIntoConstraints="NO" id="yxj-mk-AnL">
-                                <rect key="frame" x="0.0" y="0.0" width="600" height="500"/>
-                                <autoresizingMask key="autoresizingMask"/>
-                            </visualEffectView>
                             <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="k8t-6m-qhK">
                                 <rect key="frame" x="18" y="464" width="26" height="16"/>
                                 <textFieldCell key="cell" lineBreakMode="clipping" title="Fan" id="Ip8-2b-Kbc">
@@ -954,15 +934,11 @@
         <!--Battery View Controller-->
         <scene sceneID="RUx-H1-VqW">
             <objects>
-                <viewController title="Battery View Controller" storyboardIdentifier="BatteryStoryboardID" id="jU5-ml-SBe" sceneMemberID="viewController">
+                <viewController title="Battery View Controller" storyboardIdentifier="BatteryStoryboardID" id="jU5-ml-SBe" customClass="MainViewViewController" customModule="iGlance" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" id="q13-1a-uFQ">
                         <rect key="frame" x="0.0" y="0.0" width="601" height="500"/>
                         <autoresizingMask key="autoresizingMask"/>
                         <subviews>
-                            <visualEffectView fixedFrame="YES" blendingMode="behindWindow" material="menu" state="followsWindowActiveState" translatesAutoresizingMaskIntoConstraints="NO" id="WJY-2B-nN8">
-                                <rect key="frame" x="0.0" y="0.0" width="600" height="500"/>
-                                <autoresizingMask key="autoresizingMask"/>
-                            </visualEffectView>
                             <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="rKB-nF-Lce">
                                 <rect key="frame" x="18" y="464" width="48" height="16"/>
                                 <textFieldCell key="cell" lineBreakMode="clipping" title="Battery" id="NRR-Su-OUT">

@@ -15,7 +15,8 @@ class ContentManagerViewController: NSViewController {
     var currentViewController: NSViewController!
 
     /**
-     * Displays the given view
+     * Add the given view controller as a sub-view.
+     * - Parameter viewController: The given view controller to display.
      */
     func addNewViewController(viewController: NSViewController) {
         // add the view controller as child
@@ -29,13 +30,16 @@ class ContentManagerViewController: NSViewController {
     }
 
     /**
-     * Removes the current view controller
+     * Removes the current view controller.
      */
     func removeCurrentViewController() {
         currentViewController?.view.removeFromSuperview()
         currentViewController?.removeFromParent()
     }
 
+    /**
+     * Displays the given view controller as a sub-view.
+     */
     func display(viewController: NSViewController) {
         // first remove the currently dispalyed view controller
         removeCurrentViewController()
