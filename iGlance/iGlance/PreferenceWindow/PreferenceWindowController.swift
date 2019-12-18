@@ -14,5 +14,22 @@ class PreferenceWindowController: NSWindowController {
 
     override func windowDidLoad() {
         mainWindow.backgroundColor = ThemeManager.currentTheme().titlebarColor
+
+        // set a callback to adjust the background color of the window if the theme changes
+        DistributedNotificationCenter.default.addObserver(
+            self,
+            selector: #selector(updateMainWindow),
+            name: .AppleInterfaceThemeChangedNotification,
+            object: nil
+        )
     }
+
+    @objc func updateMainWindow() {
+        mainWindow.backgroundColor = ThemeManager.currentTheme().titlebarColor
+        mainWindow.update()
+    }
+}
+
+extension Notification.Name {
+    static let AppleInterfaceThemeChangedNotification = Notification.Name("AppleInterfaceThemeChangedNotification")
 }
