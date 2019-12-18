@@ -9,7 +9,6 @@
 import Cocoa
 
 class SidebarView: NSView {
-
     override func draw(_ dirtyRect: NSRect) {
         super.draw(dirtyRect)
 
