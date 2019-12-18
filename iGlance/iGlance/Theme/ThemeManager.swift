@@ -66,6 +66,15 @@ enum Theme: Int {
         }
     }
 
+    var sidebarButtonHighlightColor: NSColor {
+        switch self {
+        case.darkTheme:
+            return NSColor.colorFrom(hex: "#3D4766")
+        case .lightTheme:
+            return NSColor.colorFrom(hex: "#A3B0D9")
+        }
+    }
+
 }
 
 class ThemeManager {

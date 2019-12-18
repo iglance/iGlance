@@ -10,47 +10,37 @@ import Cocoa
 
 class PreferenceWindowViewController: NSViewController {
 
-    struct SidebarItem {
-        let label: String
-        let storyboardID: String
-    }
-
-    @IBOutlet weak var sidebar: Sidebar!
-    let sidebarItems: [SidebarItem] = [
-        SidebarItem(label: "Dashboard", storyboardID: "DashboardStoryboardID"),
-        SidebarItem(label: "CPU", storyboardID: "CpuStoryboardID"),
-        SidebarItem(label: "Memory", storyboardID: "MemoryStoryboardID"),
-        SidebarItem(label: "Network", storyboardID: "NetworkStoryboardID"),
-        SidebarItem(label: "Fan", storyboardID: "FanStoryboardID"),
-        SidebarItem(label: "Battery", storyboardID: "BatteryStoryboardID")
-    ]
-
     var contentManagerViewController: ContentManagerViewController?
+
+    @IBOutlet weak var dashboardButtonView: SidebarButtonView!
+    @IBOutlet weak var cpuButtonView: SidebarButtonView!
 
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        // add the current ViewController as the delegate and data source of the sidebar
-        sidebar.delegate = self
-        sidebar.dataSource = self
+        // set the storyboard ids of the main views of the buttons
+        dashboardButtonView.mainViewStoryboardID = "DashboardStoryboardID"
+        cpuButtonView.mainViewStoryboardID = "CpuStoryboardID"
+
+        // set the on click events
+        dashboardButtonView.onButtonClick(callback: displayViewOf(sender:))
+        cpuButtonView.onButtonClick(callback: displayViewOf(sender:))
     }
 
-    override func viewWillAppear() {
-        // by default select the dashboard
-        sidebar.selectRowIndexes(NSIndexSet(index: 0) as IndexSet, byExtendingSelection: false)
-    }
-
-    func onSidebarItemClick(itemIndex: Int) {
-        let sidebarItem = sidebarItems[itemIndex]
-
-        // show the view of the sidebar item
-        displayViewOf(sidebarItem: sidebarItem)
-    }
-
-    private func displayViewOf(sidebarItem: SidebarItem) {
-        if let viewController = storyboard?.instantiateController(withIdentifier: sidebarItem.storyboardID) {
-            contentManagerViewController?.addNewViewController(viewController: (viewController as? NSViewController)!)
+    /**
+     * Displays the main view of the given sidebar button view
+     */
+    private func displayViewOf(sender: SidebarButtonView) {
+        if let viewController = storyboard?.instantiateController(withIdentifier: sender.mainViewStoryboardID!) {
+            contentManagerViewController?.addNewViewController(viewController: ((viewController as? NSViewController)!))
         }
+    }
+
+    /**
+     * Returns the content manager view controller which manages the main views of the preference window
+     */
+    func retrieveContentManagerController() -> ContentManagerViewController? {
+        return self.contentManagerViewController
     }
 
     override func prepare(for segue: NSStoryboardSegue, sender: Any?) {
@@ -58,12 +48,9 @@ class PreferenceWindowViewController: NSViewController {
             contentManagerViewController = (segue.destinationController as? ContentManagerViewController)
         }
     }
-
-    func retrieveContentManagerController() -> ContentManagerViewController? {
-        return self.contentManagerViewController
-    }
 }
 
+/**
 extension PreferenceWindowViewController: NSTableViewDataSource {
     /**
      * Returns the number of rows/items in the sidebar.
@@ -100,3 +87,4 @@ extension PreferenceWindowViewController: NSTableViewDelegate {
         self.onSidebarItemClick(itemIndex: sidebar.selectedRow)
     }
 }
+*/
