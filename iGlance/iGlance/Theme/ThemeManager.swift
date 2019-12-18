@@ -75,12 +75,21 @@ enum Theme: Int {
         }
     }
 
-    var sidebarButtonHighlightColor: NSColor {
+    var sidebarButtonHoverColor: NSColor {
         switch self {
-        case.darkTheme:
+        case .darkTheme:
             return NSColor.colorFrom(hex: "#3D4766")
         case .lightTheme:
             return NSColor.colorFrom(hex: "#A3B0D9")
+        }
+    }
+
+    var sidebarButtonHighlightColor: NSColor {
+        switch self {
+        case .darkTheme:
+            return NSColor.colorFrom(hex: "#3D5499")
+        case .lightTheme:
+            return NSColor.colorFrom(hex: "#6B7DB3")
         }
     }
 

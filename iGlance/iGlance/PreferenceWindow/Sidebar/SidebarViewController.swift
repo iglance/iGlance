@@ -10,32 +10,65 @@ import Cocoa
 
 class SidebarViewController: NSViewController {
 
-    @IBOutlet weak var dashboardButtonView: SidebarButtonView!
-    @IBOutlet weak var cpuButtonView: SidebarButtonView!
-    @IBOutlet weak var memoryButtonView: SidebarButtonView!
-    @IBOutlet weak var networkButtonView: SidebarButtonView!
-    @IBOutlet weak var fanButtonView: SidebarButtonView!
-    @IBOutlet weak var batteryButtonView: SidebarButtonView!
+    struct SidebarButtonIDs {
+        let buttonViewID: String
+        let mainViewStoryboardID: String
+    }
+
+    @IBOutlet weak var sidebarButtonStackView: NSStackView!
+
+    private var sidebarButtonViewIDs: [SidebarButtonIDs] = [
+        SidebarButtonIDs(buttonViewID: "DashboardButtonView", mainViewStoryboardID: "DashboardStoryboardID"),
+        SidebarButtonIDs(buttonViewID: "CpuButtonView", mainViewStoryboardID: "CpuStoryboardID"),
+        SidebarButtonIDs(buttonViewID: "MemoryButtonView", mainViewStoryboardID: "MemoryStoryboardID"),
+        SidebarButtonIDs(buttonViewID: "NetworkButtonView", mainViewStoryboardID: "NetworkStoryboardID"),
+        SidebarButtonIDs(buttonViewID: "FanButtonView", mainViewStoryboardID: "FanStoryboardID"),
+        SidebarButtonIDs(buttonViewID: "BatteryButtonView", mainViewStoryboardID: "BatteryStoryboardID")
+    ]
 
     public var displayViewOf: ((_ sender: SidebarButtonView) -> Void)?
 
     override func viewDidLoad() {
         // set the storyboard ids of the main views of the buttons
-        dashboardButtonView.mainViewStoryboardID = "DashboardStoryboardID"
-        cpuButtonView.mainViewStoryboardID = "CpuStoryboardID"
-        memoryButtonView.mainViewStoryboardID = "MemoryStoryboardID"
-        networkButtonView.mainViewStoryboardID = "NetworkStoryboardID"
-        fanButtonView.mainViewStoryboardID = "FanStoryboardID"
-        batteryButtonView.mainViewStoryboardID = "BatteryStoryboardID"
+        for identifier in sidebarButtonViewIDs {
+            let buttonView = getSidebarButtonWith(identifier: identifier.buttonViewID)!
+
+            buttonView.mainViewStoryboardID = identifier.mainViewStoryboardID
+        }
+
+        getSidebarButtonWith(identifier: sidebarButtonViewIDs[0].buttonViewID)?.highlighted = true
     }
 
     func addOnClickEventHandler(eventHandler: @escaping (_ sender: SidebarButtonView) -> Void) {
+        // create a proxy event handler to trigger the onButtonClick function in this class
+        let proxyEventHandler = { (_ sender: SidebarButtonView) -> Void in
+            self.onButtonClick(sender)
+            eventHandler(sender)
+        }
+
         // set the on click events
-        dashboardButtonView.onButtonClick(callback: eventHandler)
-        cpuButtonView.onButtonClick(callback: eventHandler)
-        memoryButtonView.onButtonClick(callback: eventHandler)
-        networkButtonView.onButtonClick(callback: eventHandler)
-        fanButtonView.onButtonClick(callback: eventHandler)
-        batteryButtonView.onButtonClick(callback: eventHandler)
+        for identifier in sidebarButtonViewIDs {
+            getSidebarButtonWith(identifier: identifier.buttonViewID)?.onButtonClick(callback: proxyEventHandler)
+        }
+    }
+
+    func onButtonClick(_ sender: SidebarButtonView) {
+        for identifier in sidebarButtonViewIDs {
+            let buttonView = getSidebarButtonWith(identifier: identifier.buttonViewID)
+
+            if buttonView?.identifier == sender.identifier {
+                buttonView?.highlighted = true
+            } else {
+                buttonView?.highlighted = false
+            }
+        }
+    }
+
+    private func getSidebarButtonWith(identifier: String) -> SidebarButtonView? {
+        for subView in sidebarButtonStackView.subviews where subView.identifier?.rawValue == identifier {
+            return (subView as? SidebarButtonView)!
+        }
+
+        return nil
     }
 }

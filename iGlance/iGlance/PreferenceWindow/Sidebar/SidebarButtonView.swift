@@ -11,8 +11,13 @@ import Cocoa
 class SidebarButtonView: NSView {
 
     public var mainViewStoryboardID: String?
+    public var highlighted: Bool = false {
+        didSet {
+            self.needsDisplay = true
+        }
+    }
 
-    private var shouldBeHighlighted: Bool = false
+    private var hovered: Bool = false
     private var onClickCallback: ((_ sender: SidebarButtonView) -> Void)?
 
     override func updateTrackingAreas() {
@@ -37,20 +42,24 @@ class SidebarButtonView: NSView {
     }
 
     override func mouseEntered(with event: NSEvent) {
-        self.shouldBeHighlighted = true
+        self.hovered = true
         self.needsDisplay = true
     }
 
     override func mouseExited(with event: NSEvent) {
-        self.shouldBeHighlighted = false
+        self.hovered = false
         self.needsDisplay = true
     }
     override func draw(_ dirtyRect: NSRect) {
         super.draw(dirtyRect)
 
-        // highlight the button on hover
-        if shouldBeHighlighted {
+        if highlighted {
+            // highlight the button when selected
             ThemeManager.currentTheme().sidebarButtonHighlightColor.setFill()
+            dirtyRect.fill()
+        } else if hovered {
+            // change the color of the button on hover
+            ThemeManager.currentTheme().sidebarButtonHoverColor.setFill()
             dirtyRect.fill()
         }
     }

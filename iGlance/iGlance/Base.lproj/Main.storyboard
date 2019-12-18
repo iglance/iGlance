@@ -970,7 +970,7 @@
                             <customView translatesAutoresizingMaskIntoConstraints="NO" id="ADV-Ef-jdA" userLabel="SidebarView" customClass="SidebarView" customModule="iGlance" customModuleProvider="target">
                                 <rect key="frame" x="0.0" y="0.0" width="200" height="500"/>
                                 <subviews>
-                                    <stackView distribution="fill" orientation="vertical" alignment="leading" spacing="0.0" horizontalStackHuggingPriority="249.99998474121094" verticalStackHuggingPriority="249.99998474121094" fixedFrame="YES" detachesHiddenViews="YES" translatesAutoresizingMaskIntoConstraints="NO" id="nip-rU-eMF" userLabel="SidebarView">
+                                    <stackView distribution="fill" orientation="vertical" alignment="leading" spacing="0.0" horizontalStackHuggingPriority="249.99998474121094" verticalStackHuggingPriority="249.99998474121094" fixedFrame="YES" detachesHiddenViews="YES" translatesAutoresizingMaskIntoConstraints="NO" id="nip-rU-eMF">
                                         <rect key="frame" x="0.0" y="141" width="200" height="359"/>
                                         <subviews>
                                             <imageView horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="taj-99-r9F">
@@ -980,10 +980,10 @@
                                                 </constraints>
                                                 <imageCell key="cell" refusesFirstResponder="YES" alignment="left" imageScaling="proportionallyDown" image="logo" id="ZKe-tJ-yT9"/>
                                             </imageView>
-                                            <stackView distribution="fill" orientation="vertical" alignment="centerX" spacing="-2" horizontalStackHuggingPriority="249.99998474121094" verticalStackHuggingPriority="249.99998474121094" detachesHiddenViews="YES" translatesAutoresizingMaskIntoConstraints="NO" id="EiX-L0-7OK" userLabel="SidebarItemView">
+                                            <stackView distribution="fill" orientation="vertical" alignment="centerX" spacing="-2" horizontalStackHuggingPriority="249.99998474121094" verticalStackHuggingPriority="249.99998474121094" detachesHiddenViews="YES" translatesAutoresizingMaskIntoConstraints="NO" id="EiX-L0-7OK">
                                                 <rect key="frame" x="0.0" y="0.0" width="200" height="290"/>
                                                 <subviews>
-                                                    <customView translatesAutoresizingMaskIntoConstraints="NO" id="YMG-9v-Bi1" customClass="SidebarButtonView" customModule="iGlance" customModuleProvider="target">
+                                                    <customView identifier="DashboardButtonView" translatesAutoresizingMaskIntoConstraints="NO" id="YMG-9v-Bi1" customClass="SidebarButtonView" customModule="iGlance" customModuleProvider="target">
                                                         <rect key="frame" x="0.0" y="240" width="200" height="50"/>
                                                         <subviews>
                                                             <stackView distribution="fill" orientation="horizontal" alignment="centerY" spacing="20" horizontalStackHuggingPriority="249.99998474121094" verticalStackHuggingPriority="249.99998474121094" fixedFrame="YES" detachesHiddenViews="YES" translatesAutoresizingMaskIntoConstraints="NO" id="7Jv-GP-2PH">
@@ -1018,7 +1018,7 @@
                                                             <constraint firstAttribute="height" constant="50" id="cLB-ct-Q6u"/>
                                                         </constraints>
                                                     </customView>
-                                                    <customView translatesAutoresizingMaskIntoConstraints="NO" id="OP2-O2-OCg" userLabel="Cpu Button View" customClass="SidebarButtonView" customModule="iGlance" customModuleProvider="target">
+                                                    <customView identifier="CpuButtonView" translatesAutoresizingMaskIntoConstraints="NO" id="OP2-O2-OCg" userLabel="Cpu Button View" customClass="SidebarButtonView" customModule="iGlance" customModuleProvider="target">
                                                         <rect key="frame" x="0.0" y="192" width="200" height="50"/>
                                                         <subviews>
                                                             <stackView distribution="fill" orientation="horizontal" alignment="centerY" spacing="20" horizontalStackHuggingPriority="249.99998474121094" verticalStackHuggingPriority="249.99998474121094" fixedFrame="YES" detachesHiddenViews="YES" translatesAutoresizingMaskIntoConstraints="NO" id="MHn-wb-Jyt">
@@ -1053,7 +1053,7 @@
                                                             <constraint firstAttribute="height" constant="50" id="hMf-Dt-RTc"/>
                                                         </constraints>
                                                     </customView>
-                                                    <customView translatesAutoresizingMaskIntoConstraints="NO" id="Wve-Ay-nHh" userLabel="Memory Button View" customClass="SidebarButtonView" customModule="iGlance" customModuleProvider="target">
+                                                    <customView identifier="MemoryButtonView" translatesAutoresizingMaskIntoConstraints="NO" id="Wve-Ay-nHh" userLabel="Memory Button View" customClass="SidebarButtonView" customModule="iGlance" customModuleProvider="target">
                                                         <rect key="frame" x="0.0" y="144" width="200" height="50"/>
                                                         <subviews>
                                                             <stackView distribution="fill" orientation="horizontal" alignment="centerY" spacing="20" horizontalStackHuggingPriority="249.99998474121094" verticalStackHuggingPriority="249.99998474121094" fixedFrame="YES" detachesHiddenViews="YES" translatesAutoresizingMaskIntoConstraints="NO" id="AHi-wJ-Om5">
@@ -1088,7 +1088,7 @@
                                                             <constraint firstAttribute="width" constant="200" id="sfe-hv-asp"/>
                                                         </constraints>
                                                     </customView>
-                                                    <customView translatesAutoresizingMaskIntoConstraints="NO" id="23y-oU-wVB" userLabel="Network Button View" customClass="SidebarButtonView" customModule="iGlance" customModuleProvider="target">
+                                                    <customView identifier="NetworkButtonView" translatesAutoresizingMaskIntoConstraints="NO" id="23y-oU-wVB" userLabel="Network Button View" customClass="SidebarButtonView" customModule="iGlance" customModuleProvider="target">
                                                         <rect key="frame" x="0.0" y="96" width="200" height="50"/>
                                                         <subviews>
                                                             <stackView distribution="fill" orientation="horizontal" alignment="centerY" spacing="20" horizontalStackHuggingPriority="249.99998474121094" verticalStackHuggingPriority="249.99998474121094" fixedFrame="YES" detachesHiddenViews="YES" translatesAutoresizingMaskIntoConstraints="NO" id="QaW-Ag-tPc">
@@ -1123,7 +1123,7 @@
                                                             <constraint firstAttribute="width" constant="200" id="hbX-NG-ND0"/>
                                                         </constraints>
                                                     </customView>
-                                                    <customView translatesAutoresizingMaskIntoConstraints="NO" id="Bat-cd-Dzk" userLabel="Fan Button View" customClass="SidebarButtonView" customModule="iGlance" customModuleProvider="target">
+                                                    <customView identifier="FanButtonView" translatesAutoresizingMaskIntoConstraints="NO" id="Bat-cd-Dzk" userLabel="Fan Button View" customClass="SidebarButtonView" customModule="iGlance" customModuleProvider="target">
                                                         <rect key="frame" x="0.0" y="48" width="200" height="50"/>
                                                         <subviews>
                                                             <stackView distribution="fill" orientation="horizontal" alignment="centerY" spacing="20" horizontalStackHuggingPriority="249.99998474121094" verticalStackHuggingPriority="249.99998474121094" fixedFrame="YES" detachesHiddenViews="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Oem-uJ-8dv">
@@ -1158,7 +1158,7 @@
                                                             <constraint firstAttribute="height" constant="50" id="8RL-Yt-fPX"/>
                                                         </constraints>
                                                     </customView>
-                                                    <customView translatesAutoresizingMaskIntoConstraints="NO" id="foz-Uh-7R0" userLabel="Battery Button View" customClass="SidebarButtonView" customModule="iGlance" customModuleProvider="target">
+                                                    <customView identifier="BatteryButtonView" translatesAutoresizingMaskIntoConstraints="NO" id="foz-Uh-7R0" userLabel="Battery Button View" customClass="SidebarButtonView" customModule="iGlance" customModuleProvider="target">
                                                         <rect key="frame" x="0.0" y="0.0" width="200" height="50"/>
                                                         <subviews>
                                                             <stackView distribution="fill" orientation="horizontal" alignment="centerY" spacing="20" horizontalStackHuggingPriority="249.99998474121094" verticalStackHuggingPriority="249.99998474121094" fixedFrame="YES" detachesHiddenViews="YES" translatesAutoresizingMaskIntoConstraints="NO" id="2QJ-bu-s2m">
@@ -1234,12 +1234,13 @@
                         </constraints>
                     </view>
                     <connections>
-                        <outlet property="batteryButtonView" destination="foz-Uh-7R0" id="Jik-Hz-W7H"/>
-                        <outlet property="cpuButtonView" destination="OP2-O2-OCg" id="XNq-x3-blj"/>
-                        <outlet property="dashboardButtonView" destination="YMG-9v-Bi1" id="Ujm-zl-Kf7"/>
-                        <outlet property="fanButtonView" destination="Bat-cd-Dzk" id="CEB-mb-u3S"/>
-                        <outlet property="memoryButtonView" destination="Wve-Ay-nHh" id="PWF-DD-Izp"/>
-                        <outlet property="networkButtonView" destination="23y-oU-wVB" id="eKh-QG-dcl"/>
+                        <outlet property="batteryButtonView" destination="foz-Uh-7R0" id="piY-LT-0se"/>
+                        <outlet property="cpuButtonView" destination="OP2-O2-OCg" id="Q4g-SN-cr7"/>
+                        <outlet property="dashboardButtonView" destination="YMG-9v-Bi1" id="Y3h-CX-ZhJ"/>
+                        <outlet property="fanButtonView" destination="Bat-cd-Dzk" id="S0I-o3-7rR"/>
+                        <outlet property="memoryButtonView" destination="Wve-Ay-nHh" id="nET-xC-gKg"/>
+                        <outlet property="networkButtonView" destination="23y-oU-wVB" id="bCH-BC-G1Q"/>
+                        <outlet property="sidebarButtonStackView" destination="EiX-L0-7OK" id="JZs-DZ-ms0"/>
                     </connections>
                 </viewController>
                 <customObject id="5FS-Iv-FT4" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
