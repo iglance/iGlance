@@ -784,20 +784,15 @@
                         <rect key="frame" x="0.0" y="0.0" width="600" height="500"/>
                         <autoresizingMask key="autoresizingMask"/>
                         <subviews>
-                            <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="fQT-qs-MoL">
-                                <rect key="frame" x="18" y="464" width="71" height="16"/>
-                                <textFieldCell key="cell" lineBreakMode="clipping" title="Dashboard" id="7lW-PG-Vnk">
-                                    <font key="font" usesAppearanceFont="YES"/>
-                                    <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
-                                    <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
-                                </textFieldCell>
-                            </textField>
+                            <box fixedFrame="YES" boxType="custom" cornerRadius="4" title="Box" translatesAutoresizingMaskIntoConstraints="NO" id="LYC-jd-L4Z" customClass="CustomDashboardBox" customModule="iGlance" customModuleProvider="target">
+                                <rect key="frame" x="20" y="366" width="177" height="114"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                                <view key="contentView" ambiguous="YES" id="jPN-HP-HZ9">
+                                    <rect key="frame" x="1" y="1" width="175" height="112"/>
+                                    <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                                </view>
+                            </box>
                         </subviews>
-                        <constraints>
-                            <constraint firstItem="fQT-qs-MoL" firstAttribute="leading" secondItem="2gR-n0-wZE" secondAttribute="leading" constant="20" symbolic="YES" id="BPG-IT-Pdp"/>
-                            <constraint firstItem="fQT-qs-MoL" firstAttribute="top" secondItem="2gR-n0-wZE" secondAttribute="top" constant="20" symbolic="YES" id="Sy2-s7-P7c"/>
-                            <constraint firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="fQT-qs-MoL" secondAttribute="trailing" constant="513" id="zCY-Uf-iHB"/>
-                        </constraints>
                     </view>
                     <connections>
                         <segue destination="uGw-Yr-sBC" kind="custom" identifier="DashboardToCpu" customClass="SegueBetweenEmbedded" customModule="iGlance" customModuleProvider="target" id="fcK-vQ-0F0"/>
@@ -1234,12 +1229,6 @@
                         </constraints>
                     </view>
                     <connections>
-                        <outlet property="batteryButtonView" destination="foz-Uh-7R0" id="piY-LT-0se"/>
-                        <outlet property="cpuButtonView" destination="OP2-O2-OCg" id="Q4g-SN-cr7"/>
-                        <outlet property="dashboardButtonView" destination="YMG-9v-Bi1" id="Y3h-CX-ZhJ"/>
-                        <outlet property="fanButtonView" destination="Bat-cd-Dzk" id="S0I-o3-7rR"/>
-                        <outlet property="memoryButtonView" destination="Wve-Ay-nHh" id="nET-xC-gKg"/>
-                        <outlet property="networkButtonView" destination="23y-oU-wVB" id="bCH-BC-G1Q"/>
                         <outlet property="sidebarButtonStackView" destination="EiX-L0-7OK" id="JZs-DZ-ms0"/>
                     </connections>
                 </viewController>

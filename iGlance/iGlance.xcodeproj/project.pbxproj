@@ -18,6 +18,7 @@
 		B46789BD23A69ECB00CE572D /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B46789BB23A69ECB00CE572D /* Main.storyboard */; };
 		B46789C923A69ECB00CE572D /* iGlanceTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = B46789C823A69ECB00CE572D /* iGlanceTests.swift */; };
 		B46789D423A69ECB00CE572D /* iGlanceUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = B46789D323A69ECB00CE572D /* iGlanceUITests.swift */; };
+		B47D3C8D23ABEDF100DE911F /* CustomDashboardBox.swift in Sources */ = {isa = PBXBuildFile; fileRef = B47D3C8C23ABEDF100DE911F /* CustomDashboardBox.swift */; };
 		B4C37E6323A7946B008C7FC0 /* SidebarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B4C37E6223A7946B008C7FC0 /* SidebarView.swift */; };
 		B4C37E6723A8CF89008C7FC0 /* ContentManagerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B4C37E6623A8CF89008C7FC0 /* ContentManagerViewController.swift */; };
 		B4C37E6923A8D6BB008C7FC0 /* SegueBetweenEmbedded.swift in Sources */ = {isa = PBXBuildFile; fileRef = B4C37E6823A8D6BB008C7FC0 /* SegueBetweenEmbedded.swift */; };
@@ -71,6 +72,7 @@
 		B46789CF23A69ECB00CE572D /* iGlanceUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = iGlanceUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		B46789D323A69ECB00CE572D /* iGlanceUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = iGlanceUITests.swift; sourceTree = "<group>"; };
 		B46789D523A69ECB00CE572D /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		B47D3C8C23ABEDF100DE911F /* CustomDashboardBox.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomDashboardBox.swift; sourceTree = "<group>"; };
 		B4C37E6223A7946B008C7FC0 /* SidebarView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SidebarView.swift; sourceTree = "<group>"; };
 		B4C37E6623A8CF89008C7FC0 /* ContentManagerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentManagerViewController.swift; sourceTree = "<group>"; };
 		B4C37E6823A8D6BB008C7FC0 /* SegueBetweenEmbedded.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SegueBetweenEmbedded.swift; sourceTree = "<group>"; };
@@ -198,6 +200,14 @@
 			path = iGlanceUITests;
 			sourceTree = "<group>";
 		};
+		B47D3C8B23ABEDCC00DE911F /* DashboardView */ = {
+			isa = PBXGroup;
+			children = (
+				B47D3C8C23ABEDF100DE911F /* CustomDashboardBox.swift */,
+			);
+			path = DashboardView;
+			sourceTree = "<group>";
+		};
 		B4C37E5F23A78F4C008C7FC0 /* Sidebar */ = {
 			isa = PBXGroup;
 			children = (
@@ -219,6 +229,7 @@
 		B4D86E1923AA70FD00671B52 /* MainViews */ = {
 			isa = PBXGroup;
 			children = (
+				B47D3C8B23ABEDCC00DE911F /* DashboardView */,
 				B4D86E1A23AA710B00671B52 /* MainViewViewController.swift */,
 			);
 			path = MainViews;
@@ -468,6 +479,7 @@
 				B43ABF2A23AA32FA007F93BA /* SidebarViewController.swift in Sources */,
 				B4C37E6323A7946B008C7FC0 /* SidebarView.swift in Sources */,
 				B4C37E7023A91F3C008C7FC0 /* ThemeManager.swift in Sources */,
+				B47D3C8D23ABEDF100DE911F /* CustomDashboardBox.swift in Sources */,
 				B46789B623A69ECA00CE572D /* AppDelegate.swift in Sources */,
 				B43ABF2823AA1E99007F93BA /* SidebarButtonView.swift in Sources */,
 			);
