@@ -779,22 +779,67 @@
         <!--Dashboard View Controller-->
         <scene sceneID="rBU-qB-hiS">
             <objects>
-                <viewController title="Dashboard View Controller" storyboardIdentifier="DashboardStoryboardID" id="jr8-g7-uLJ" customClass="MainViewViewController" customModule="iGlance" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController title="Dashboard View Controller" storyboardIdentifier="DashboardStoryboardID" id="jr8-g7-uLJ" customClass="DashboardViewController" customModule="iGlance" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" id="2gR-n0-wZE">
-                        <rect key="frame" x="0.0" y="0.0" width="600" height="500"/>
+                        <rect key="frame" x="0.0" y="0.0" width="610" height="500"/>
                         <autoresizingMask key="autoresizingMask"/>
                         <subviews>
-                            <box fixedFrame="YES" boxType="custom" cornerRadius="4" title="Box" translatesAutoresizingMaskIntoConstraints="NO" id="LYC-jd-L4Z" customClass="CustomDashboardBox" customModule="iGlance" customModuleProvider="target">
-                                <rect key="frame" x="20" y="366" width="177" height="114"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                                <view key="contentView" ambiguous="YES" id="jPN-HP-HZ9">
-                                    <rect key="frame" x="1" y="1" width="175" height="112"/>
+                            <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="JWf-aU-Sjt">
+                                <rect key="frame" x="8" y="462" width="128" height="28"/>
+                                <textFieldCell key="cell" lineBreakMode="clipping" title="Dashboard" id="Yx2-TO-YkW">
+                                    <font key="font" metaFont="systemBold" size="24"/>
+                                    <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
+                                    <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
+                                </textFieldCell>
+                            </textField>
+                            <box boxType="custom" borderWidth="0.0" cornerRadius="10" title="Box" translatesAutoresizingMaskIntoConstraints="NO" id="UU9-KS-eiq" customClass="CustomDashboardBox" customModule="iGlance" customModuleProvider="target">
+                                <rect key="frame" x="10" y="374" width="100" height="80"/>
+                                <view key="contentView" id="cJj-8T-fQi">
+                                    <rect key="frame" x="0.0" y="0.0" width="100" height="80"/>
                                     <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                                    <subviews>
+                                        <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="s6s-AL-M7m">
+                                            <rect key="frame" x="20" y="57" width="62" height="19"/>
+                                            <textFieldCell key="cell" lineBreakMode="clipping" alignment="center" title="Uptime" id="3Zz-J2-eQw">
+                                                <font key="font" metaFont="systemBold" size="15"/>
+                                                <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
+                                                <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
+                                            </textFieldCell>
+                                        </textField>
+                                        <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="T5D-ND-OZQ">
+                                            <rect key="frame" x="33" y="41" width="37" height="16"/>
+                                            <textFieldCell key="cell" lineBreakMode="clipping" title="Label" id="Aim-jE-EWr">
+                                                <font key="font" metaFont="system"/>
+                                                <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
+                                                <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
+                                            </textFieldCell>
+                                        </textField>
+                                    </subviews>
+                                    <constraints>
+                                        <constraint firstItem="T5D-ND-OZQ" firstAttribute="top" secondItem="s6s-AL-M7m" secondAttribute="bottom" id="0ma-ax-Jt8"/>
+                                        <constraint firstItem="s6s-AL-M7m" firstAttribute="leading" secondItem="cJj-8T-fQi" secondAttribute="leading" constant="22" id="5Lp-ZH-0nZ"/>
+                                        <constraint firstItem="s6s-AL-M7m" firstAttribute="centerX" secondItem="cJj-8T-fQi" secondAttribute="centerX" constant="1" id="8Ib-Eh-pfq"/>
+                                        <constraint firstItem="s6s-AL-M7m" firstAttribute="top" secondItem="cJj-8T-fQi" secondAttribute="top" constant="4" id="jtA-ZJ-5lN"/>
+                                        <constraint firstItem="T5D-ND-OZQ" firstAttribute="centerX" secondItem="cJj-8T-fQi" secondAttribute="centerX" constant="1.5" id="kk2-4z-b0y"/>
+                                    </constraints>
                                 </view>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="100" id="QGI-Hd-nF4"/>
+                                    <constraint firstAttribute="height" constant="80" id="hlz-Ss-viy"/>
+                                </constraints>
+                                <color key="fillColor" red="0.18823529410000001" green="0.20392156859999999" blue="0.25098039220000001" alpha="1" colorSpace="calibratedRGB"/>
                             </box>
                         </subviews>
+                        <constraints>
+                            <constraint firstItem="UU9-KS-eiq" firstAttribute="top" secondItem="JWf-aU-Sjt" secondAttribute="bottom" constant="8" symbolic="YES" id="Jtb-CP-2tz"/>
+                            <constraint firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="JWf-aU-Sjt" secondAttribute="trailing" constant="20" symbolic="YES" id="Jvw-8C-AM0"/>
+                            <constraint firstItem="JWf-aU-Sjt" firstAttribute="leading" secondItem="2gR-n0-wZE" secondAttribute="leading" constant="10" id="bS7-Gz-qIf"/>
+                            <constraint firstItem="UU9-KS-eiq" firstAttribute="leading" secondItem="JWf-aU-Sjt" secondAttribute="leading" id="qGX-Sl-wYL"/>
+                            <constraint firstItem="JWf-aU-Sjt" firstAttribute="top" secondItem="2gR-n0-wZE" secondAttribute="top" constant="10" id="zQq-rv-FAv"/>
+                        </constraints>
                     </view>
                     <connections>
+                        <outlet property="uptimeLabel" destination="T5D-ND-OZQ" id="opv-jU-fz2"/>
                         <segue destination="uGw-Yr-sBC" kind="custom" identifier="DashboardToCpu" customClass="SegueBetweenEmbedded" customModule="iGlance" customModuleProvider="target" id="fcK-vQ-0F0"/>
                     </connections>
                 </viewController>
@@ -965,15 +1010,16 @@
                             <customView translatesAutoresizingMaskIntoConstraints="NO" id="ADV-Ef-jdA" userLabel="SidebarView" customClass="SidebarView" customModule="iGlance" customModuleProvider="target">
                                 <rect key="frame" x="0.0" y="0.0" width="200" height="500"/>
                                 <subviews>
-                                    <stackView distribution="fill" orientation="vertical" alignment="leading" spacing="0.0" horizontalStackHuggingPriority="249.99998474121094" verticalStackHuggingPriority="249.99998474121094" fixedFrame="YES" detachesHiddenViews="YES" translatesAutoresizingMaskIntoConstraints="NO" id="nip-rU-eMF">
-                                        <rect key="frame" x="0.0" y="141" width="200" height="359"/>
+                                    <stackView distribution="fill" orientation="vertical" alignment="leading" spacing="0.0" horizontalStackHuggingPriority="249.99998474121094" verticalStackHuggingPriority="249.99998474121094" detachesHiddenViews="YES" translatesAutoresizingMaskIntoConstraints="NO" id="nip-rU-eMF">
+                                        <rect key="frame" x="0.0" y="124" width="200" height="376"/>
                                         <subviews>
                                             <imageView horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="taj-99-r9F">
-                                                <rect key="frame" x="0.0" y="290" width="200" height="69"/>
+                                                <rect key="frame" x="5" y="290" width="190" height="86"/>
                                                 <constraints>
-                                                    <constraint firstAttribute="width" constant="200" id="dtr-gq-dJf"/>
+                                                    <constraint firstAttribute="width" constant="190" id="OZm-2W-bg8"/>
+                                                    <constraint firstAttribute="height" constant="86" id="ZHh-R3-kTD"/>
                                                 </constraints>
-                                                <imageCell key="cell" refusesFirstResponder="YES" alignment="left" imageScaling="proportionallyDown" image="logo" id="ZKe-tJ-yT9"/>
+                                                <imageCell key="cell" refusesFirstResponder="YES" alignment="left" imageScaling="proportionallyUpOrDown" id="ZKe-tJ-yT9"/>
                                             </imageView>
                                             <stackView distribution="fill" orientation="vertical" alignment="centerX" spacing="-2" horizontalStackHuggingPriority="249.99998474121094" verticalStackHuggingPriority="249.99998474121094" detachesHiddenViews="YES" translatesAutoresizingMaskIntoConstraints="NO" id="EiX-L0-7OK">
                                                 <rect key="frame" x="0.0" y="0.0" width="200" height="290"/>
@@ -1207,6 +1253,10 @@
                                                 </customSpacing>
                                             </stackView>
                                         </subviews>
+                                        <constraints>
+                                            <constraint firstItem="taj-99-r9F" firstAttribute="leading" secondItem="nip-rU-eMF" secondAttribute="leading" constant="5" id="9uh-vB-9p5"/>
+                                            <constraint firstAttribute="trailing" secondItem="taj-99-r9F" secondAttribute="trailing" constant="5" id="wZw-ES-xS9"/>
+                                        </constraints>
                                         <visibilityPriorities>
                                             <integer value="1000"/>
                                             <integer value="1000"/>
@@ -1219,6 +1269,8 @@
                                 </subviews>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="200" id="7YL-Li-d1p"/>
+                                    <constraint firstItem="nip-rU-eMF" firstAttribute="leading" secondItem="ADV-Ef-jdA" secondAttribute="leading" id="GWo-4a-lc3"/>
+                                    <constraint firstItem="nip-rU-eMF" firstAttribute="top" secondItem="ADV-Ef-jdA" secondAttribute="top" id="Gc3-9S-1aQ"/>
                                     <constraint firstAttribute="height" constant="500" id="Saj-up-8ac"/>
                                 </constraints>
                             </customView>
@@ -1229,6 +1281,7 @@
                         </constraints>
                     </view>
                     <connections>
+                        <outlet property="logoImage" destination="taj-99-r9F" id="vQJ-vo-JI4"/>
                         <outlet property="sidebarButtonStackView" destination="EiX-L0-7OK" id="JZs-DZ-ms0"/>
                     </connections>
                 </viewController>
@@ -1239,6 +1292,5 @@
     </scenes>
     <resources>
         <image name="NSActionTemplate" width="14" height="14"/>
-        <image name="logo" width="229" height="69"/>
     </resources>
 </document>

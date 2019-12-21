@@ -10,6 +10,9 @@ import Cocoa
 
 class SidebarViewController: NSViewController {
 
+    /** Outlet of the logo image at the top of the sidebar */
+    @IBOutlet weak var logoImage: NSImageView!
+
     struct SidebarButtonIDs {
         let buttonViewID: String
         let mainViewStoryboardID: String
@@ -36,7 +39,18 @@ class SidebarViewController: NSViewController {
             buttonView.mainViewStoryboardID = identifier.mainViewStoryboardID
         }
 
+        // on startup select the dashboard
         getSidebarButtonWith(identifier: sidebarButtonViewIDs[0].buttonViewID)?.highlighted = true
+
+        // add a callback to change the logo depending on the current theme
+        DistributedNotificationCenter.default.addObserver(
+            self,
+            selector: #selector(changeSidebarLogo),
+            name: .AppleInterfaceThemeChangedNotification,
+            object: nil
+        )
+        // add the correct logo image at startup
+        changeSidebarLogo()
     }
 
     func addOnClickEventHandler(eventHandler: @escaping (_ sender: SidebarButtonView) -> Void) {
@@ -70,5 +84,13 @@ class SidebarViewController: NSViewController {
         }
 
         return nil
+    }
+
+    @objc private func changeSidebarLogo() {
+        if ThemeManager.isDarkTheme() {
+            self.logoImage.image = NSImage(named: "iGlance_logo_white")
+        } else {
+            self.logoImage.image = NSImage(named: "iGlance_logo_black")
+        }
     }
 }

@@ -97,7 +97,7 @@ enum Theme: Int {
 
 class ThemeManager {
 
-    private static func isDarkTheme() -> Bool {
+    public static func isDarkTheme() -> Bool {
         return UserDefaults.standard.string(forKey: "AppleInterfaceStyle") != nil
     }
 

@@ -9,6 +9,8 @@
 /* Begin PBXBuildFile section */
 		14E5D7E108D48F9542E9824A /* Pods_iGlance_iGlanceUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CFF878BB589337AA1613A3DE /* Pods_iGlance_iGlanceUITests.framework */; };
 		158527EED93E69C906DD21E3 /* Pods_iGlance.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9C2A6D96DB6779E95FBDB238 /* Pods_iGlance.framework */; };
+		B42BCE6023ABF73100A13601 /* DashboardViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B42BCE5F23ABF73100A13601 /* DashboardViewController.swift */; };
+		B42BCE6323AC01CC00A13601 /* SystemInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = B42BCE6223AC01CC00A13601 /* SystemInfo.swift */; };
 		B43ABF2823AA1E99007F93BA /* SidebarButtonView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B43ABF2723AA1E99007F93BA /* SidebarButtonView.swift */; };
 		B43ABF2A23AA32FA007F93BA /* SidebarViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B43ABF2923AA32FA007F93BA /* SidebarViewController.swift */; };
 		B43ABF2C23AA3729007F93BA /* PreferenceWindowController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B43ABF2B23AA3729007F93BA /* PreferenceWindowController.swift */; };
@@ -56,6 +58,8 @@
 		7418909044D8747C9BE8B0BA /* Pods-iGlanceTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-iGlanceTests.release.xcconfig"; path = "Target Support Files/Pods-iGlanceTests/Pods-iGlanceTests.release.xcconfig"; sourceTree = "<group>"; };
 		935470C2452473A26C4D9B29 /* Pods-iGlance-iGlanceUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-iGlance-iGlanceUITests.release.xcconfig"; path = "Target Support Files/Pods-iGlance-iGlanceUITests/Pods-iGlance-iGlanceUITests.release.xcconfig"; sourceTree = "<group>"; };
 		9C2A6D96DB6779E95FBDB238 /* Pods_iGlance.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_iGlance.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		B42BCE5F23ABF73100A13601 /* DashboardViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DashboardViewController.swift; sourceTree = "<group>"; };
+		B42BCE6223AC01CC00A13601 /* SystemInfo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SystemInfo.swift; sourceTree = "<group>"; };
 		B43ABF2723AA1E99007F93BA /* SidebarButtonView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SidebarButtonView.swift; sourceTree = "<group>"; };
 		B43ABF2923AA32FA007F93BA /* SidebarViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SidebarViewController.swift; sourceTree = "<group>"; };
 		B43ABF2B23AA3729007F93BA /* PreferenceWindowController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PreferenceWindowController.swift; sourceTree = "<group>"; };
@@ -146,6 +150,14 @@
 			path = MainViewManager;
 			sourceTree = "<group>";
 		};
+		B42BCE6123AC01A200A13601 /* SystemInfo */ = {
+			isa = PBXGroup;
+			children = (
+				B42BCE6223AC01CC00A13601 /* SystemInfo.swift */,
+			);
+			path = SystemInfo;
+			sourceTree = "<group>";
+		};
 		B46789A923A69ECA00CE572D = {
 			isa = PBXGroup;
 			children = (
@@ -171,6 +183,7 @@
 		B46789B423A69ECA00CE572D /* iGlance */ = {
 			isa = PBXGroup;
 			children = (
+				B42BCE6123AC01A200A13601 /* SystemInfo */,
 				B40E946023A9435200D63D17 /* PreferenceWindow */,
 				B4C37E6E23A91F2F008C7FC0 /* Theme */,
 				B46789B523A69ECA00CE572D /* AppDelegate.swift */,
@@ -204,6 +217,7 @@
 			isa = PBXGroup;
 			children = (
 				B47D3C8C23ABEDF100DE911F /* CustomDashboardBox.swift */,
+				B42BCE5F23ABF73100A13601 /* DashboardViewController.swift */,
 			);
 			path = DashboardView;
 			sourceTree = "<group>";
@@ -475,10 +489,12 @@
 				B43ABF2C23AA3729007F93BA /* PreferenceWindowController.swift in Sources */,
 				B4C8DD2523AA3DB8008DAE45 /* ContentManagerView.swift in Sources */,
 				B4C37E6923A8D6BB008C7FC0 /* SegueBetweenEmbedded.swift in Sources */,
+				B42BCE6023ABF73100A13601 /* DashboardViewController.swift in Sources */,
 				B4C37E6D23A8D811008C7FC0 /* ContentManagerViewControllerHolder.swift in Sources */,
 				B43ABF2A23AA32FA007F93BA /* SidebarViewController.swift in Sources */,
 				B4C37E6323A7946B008C7FC0 /* SidebarView.swift in Sources */,
 				B4C37E7023A91F3C008C7FC0 /* ThemeManager.swift in Sources */,
+				B42BCE6323AC01CC00A13601 /* SystemInfo.swift in Sources */,
 				B47D3C8D23ABEDF100DE911F /* CustomDashboardBox.swift in Sources */,
 				B46789B623A69ECA00CE572D /* AppDelegate.swift in Sources */,
 				B43ABF2823AA1E99007F93BA /* SidebarButtonView.swift in Sources */,
