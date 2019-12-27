@@ -70,6 +70,7 @@ class AppDelegate: NSObject, NSApplicationDelegate {
         static var userWantsCPUUtil = false
         static var userWantsCPUTemp = false
         static var userWantsAutostart = false
+        static var userWantsCheckForUpdateOnWake = true
         static var cpuColor = NSColor.green
         static var cpuColor2 = NSColor.red
         static var cpuUsageVisualization = VisualizationType.Bar
@@ -192,7 +193,9 @@ class AppDelegate: NSObject, NSApplicationDelegate {
     
     @objc func wakeUpListener(note: NSNotification)
     {
-        checkForUpdate()
+        if UserSettings.userWantsCheckForUpdateOnWake {
+            checkForUpdate()
+        }
     }
 
     func matches(for regex: String, in text: String) -> [String] {
@@ -333,6 +336,9 @@ class AppDelegate: NSObject, NSApplicationDelegate {
         }
         if UserDefaults.standard.value(forKey: "userWantsAutostart") != nil {
             UserSettings.userWantsAutostart = UserDefaults.standard.value(forKey: "userWantsAutostart") as! Bool
+        }
+        if UserDefaults.standard.value(forKey: "userWantsCheckForUpdateOnWake") != nil {
+            UserSettings.userWantsCheckForUpdateOnWake = UserDefaults.standard.value(forKey: "userWantsCheckForUpdateOnWake") as! Bool
         }
         if UserDefaults.standard.value(forKey: "updateInterval") != nil {
             UserSettings.updateInterval = UserDefaults.standard.value(forKey: "updateInterval") as! Double

@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.Cocoa.Storyboard.XIB" version="3.0" toolsVersion="15505" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES">
+<document type="com.apple.InterfaceBuilder3.Cocoa.Storyboard.XIB" version="3.0" toolsVersion="15702" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES">
     <dependencies>
         <deployment identifier="macosx"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="15505"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="15702"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
@@ -874,15 +874,15 @@
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                 <imageCell key="cell" refusesFirstResponder="YES" alignment="left" imageScaling="proportionallyDown" id="som-k2-a7S"/>
                             </imageView>
-                            <button verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="6Os-fs-yO4">
-                                <rect key="frame" x="18" y="106" width="183" height="28"/>
+                            <button verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="EaO-dI-zsX">
+                                <rect key="frame" x="17" y="94" width="235" height="28"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                                <buttonCell key="cell" type="check" title="Autostart on Boot" bezelStyle="regularSquare" imagePosition="left" inset="2" id="ANI-7M-y7r">
+                                <buttonCell key="cell" type="check" title="Check for updates when waking up" bezelStyle="regularSquare" imagePosition="left" inset="2" id="qmn-jk-q1l">
                                     <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
                                     <font key="font" metaFont="system"/>
                                 </buttonCell>
                                 <connections>
-                                    <action selector="cbAutostart_clicked:" target="LmA-Zk-Axh" id="k94-mw-sEN"/>
+                                    <action selector="cbCheckForUpdatesOnWake_clicked:" target="LmA-Zk-Axh" id="SwX-Hy-Lmx"/>
                                 </connections>
                             </button>
                             <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="k3z-0j-Nsz">
@@ -928,11 +928,23 @@
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                 <imageCell key="cell" refusesFirstResponder="YES" alignment="left" imageScaling="proportionallyDown" id="T9P-eV-wfG"/>
                             </imageView>
+                            <button verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="6Os-fs-yO4">
+                                <rect key="frame" x="17" y="124" width="183" height="28"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                                <buttonCell key="cell" type="check" title="Autostart on Boot" bezelStyle="regularSquare" imagePosition="left" inset="2" id="ANI-7M-y7r">
+                                    <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
+                                    <font key="font" metaFont="system"/>
+                                </buttonCell>
+                                <connections>
+                                    <action selector="cbAutostart_clicked:" target="LmA-Zk-Axh" id="k94-mw-sEN"/>
+                                </connections>
+                            </button>
                         </subviews>
                     </view>
                     <connections>
                         <outlet property="btnCheckUpdate" destination="d11-es-ZyP" id="MfG-9t-qOK"/>
                         <outlet property="cbAutostart" destination="6Os-fs-yO4" id="RVC-xw-FKl"/>
+                        <outlet property="cbCheckForUpdatesOnWake" destination="EaO-dI-zsX" id="YRb-0l-8oJ"/>
                         <outlet property="ddUpdateInterval" destination="jWj-II-jS5" id="7GB-eF-8Ii"/>
                         <outlet property="imgLogo" destination="65M-BJ-jj2" id="qMX-hC-ghl"/>
                     </connections>

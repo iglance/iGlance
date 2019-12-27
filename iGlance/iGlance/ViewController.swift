@@ -85,6 +85,30 @@ class ViewController: NSViewController {
             }
         }
     }
+    
+    @IBOutlet var cbCheckForUpdatesOnWake: NSButton! {
+        didSet {
+            cbCheckForUpdatesOnWake.state = (AppDelegate.UserSettings.userWantsCheckForUpdateOnWake) ? NSButton.StateValue.on : NSButton.StateValue.off
+        }
+    }
+    
+    @IBAction func cbCheckForUpdatesOnWake_clicked(_ sender: Any) {
+        AppDelegate.UserSettings.userWantsCheckForUpdateOnWake = (cbCheckForUpdatesOnWake.state == NSButton.StateValue.on)
+        if cbCheckForUpdatesOnWake.state == NSButton.StateValue.on {
+            if !SMLoginItemSetEnabled(NCConstants.launcherApplicationIdentifier as CFString, true) {
+                _ = AppDelegate.dialogOK(question: "Error", text: "Something went wrong, sorry")
+                cbCheckForUpdatesOnWake.state = NSButton.StateValue.off
+            } else {
+                UserDefaults.standard.set(true, forKey: "userWantsCheckForUpdateOnWake")
+            }
+        } else {
+            if !SMLoginItemSetEnabled(NCConstants.launcherApplicationIdentifier as CFString, false) {
+                _ = AppDelegate.dialogOK(question: "Error", text: "Something went wrong, sorry")
+            } else {
+                UserDefaults.standard.set(false, forKey: "userWantsCheckForUpdateOnWake")
+            }
+        }
+    }
 
     // define the outlet to the logo
     @IBOutlet var imgLogo: NSImageView! {
