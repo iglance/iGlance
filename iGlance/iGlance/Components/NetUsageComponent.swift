@@ -100,10 +100,10 @@ class NetUsageComponent {
      * Returns a tuple with the upload and download speed in bytes.
      * (DownSpeed, UpSpeed)
      */
-    func readNetUsage() -> (UInt64, UInt64) {
+    func readNetUsage(interface: String) -> (UInt64, UInt64) {
         let process = Process()
         process.launchPath = "/usr/bin/env"
-        process.arguments = ["netstat", "-bdI", "en0"]
+        process.arguments = ["netstat", "-bdnI", interface]
         
         let pipe = Pipe()
         process.standardOutput = pipe
@@ -134,6 +134,24 @@ class NetUsageComponent {
         
         return (downSpeed, upSpeed)
     }
+    
+    /**
+     * Returns the name of the currently used network interface as a string.
+     */
+    func getCurrentlyUsedNetInterface() -> String {
+        let process = Process()
+        process.launchPath = "/bin/bash"
+        process.arguments = ["-c", "route get 0.0.0.0 2>/dev/null | grep interface: | awk '{print $2}'"]
+        
+        let pipe = Pipe()
+        process.standardOutput = pipe
+        process.launch()
+        
+        let data = pipe.fileHandleForReading.readDataToEndOfFile()
+        let interface = String(data: data, encoding: String.Encoding.utf8)?.trimmingCharacters(in: .whitespacesAndNewlines)
+        print(interface)
+        return interface ?? "en0"
+    }
 
     /**
      *  Returns the total amount of downloaded bytes.
@@ -160,7 +178,8 @@ class NetUsageComponent {
     }
 
     func updateNetUsage() {
-        let netUsage = readNetUsage()
+        let currentInterface = getCurrentlyUsedNetInterface()
+        let netUsage = readNetUsage(interface: currentInterface)
         dSpeed = netUsage.0
         uSpeed = netUsage.1
         
