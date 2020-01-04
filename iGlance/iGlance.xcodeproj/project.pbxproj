@@ -30,6 +30,7 @@
 		B4C37E6D23A8D811008C7FC0 /* ContentManagerViewControllerHolder.swift in Sources */ = {isa = PBXBuildFile; fileRef = B4C37E6C23A8D811008C7FC0 /* ContentManagerViewControllerHolder.swift */; };
 		B4C37E7023A91F3C008C7FC0 /* ThemeManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = B4C37E6F23A91F3C008C7FC0 /* ThemeManager.swift */; };
 		B4C8DD2523AA3DB8008DAE45 /* ContentManagerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B4C8DD2423AA3DB8008DAE45 /* ContentManagerView.swift */; };
+		B4D82FDC23C1031800D502FF /* DiskInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = B4D82FDB23C1031800D502FF /* DiskInfo.swift */; };
 		B4D86E1B23AA710B00671B52 /* MainViewViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B4D86E1A23AA710B00671B52 /* MainViewViewController.swift */; };
 		B707CD62778C3F6F1EE510C8 /* Pods_iGlanceTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4BC098BF6D2EC6F24256747E /* Pods_iGlanceTests.framework */; };
 /* End PBXBuildFile section */
@@ -88,6 +89,7 @@
 		B4C37E6C23A8D811008C7FC0 /* ContentManagerViewControllerHolder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentManagerViewControllerHolder.swift; sourceTree = "<group>"; };
 		B4C37E6F23A91F3C008C7FC0 /* ThemeManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ThemeManager.swift; sourceTree = "<group>"; };
 		B4C8DD2423AA3DB8008DAE45 /* ContentManagerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentManagerView.swift; sourceTree = "<group>"; };
+		B4D82FDB23C1031800D502FF /* DiskInfo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DiskInfo.swift; sourceTree = "<group>"; };
 		B4D86E1A23AA710B00671B52 /* MainViewViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainViewViewController.swift; sourceTree = "<group>"; };
 		CFF878BB589337AA1613A3DE /* Pods_iGlance_iGlanceUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_iGlance_iGlanceUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
@@ -160,6 +162,7 @@
 				B42BCE6223AC01CC00A13601 /* SystemInfo.swift */,
 				B46F25D323B22DEC00E0A3F4 /* CpuInfo.swift */,
 				B46F25D523B22E4500E0A3F4 /* GpuInfo.swift */,
+				B4D82FDB23C1031800D502FF /* DiskInfo.swift */,
 			);
 			path = SystemInfo;
 			sourceTree = "<group>";
@@ -494,6 +497,7 @@
 				B46789B823A69ECA00CE572D /* PreferenceWindowViewController.swift in Sources */,
 				B4C37E6B23A8D715008C7FC0 /* SegueAnimator.swift in Sources */,
 				B43ABF2C23AA3729007F93BA /* PreferenceWindowController.swift in Sources */,
+				B4D82FDC23C1031800D502FF /* DiskInfo.swift in Sources */,
 				B4C8DD2523AA3DB8008DAE45 /* ContentManagerView.swift in Sources */,
 				B46F25D423B22DEC00E0A3F4 /* CpuInfo.swift in Sources */,
 				B4C37E6923A8D6BB008C7FC0 /* SegueBetweenEmbedded.swift in Sources */,
@@ -671,16 +675,17 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_ENTITLEMENTS = iGlance/iGlance.entitlements;
-				CODE_SIGN_STYLE = Manual;
+				CODE_SIGN_IDENTITY = "Apple Development";
+				CODE_SIGN_STYLE = Automatic;
 				COMBINE_HIDPI_IMAGES = YES;
-				DEVELOPMENT_TEAM = "";
+				DEVELOPMENT_TEAM = J6GXEPK4NG;
 				ENABLE_HARDENED_RUNTIME = YES;
 				INFOPLIST_FILE = iGlance/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/../Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = D0miH.github.io.iGlance;
+				PRODUCT_BUNDLE_IDENTIFIER = io.github.iglance.app;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_VERSION = 5.0;
@@ -693,16 +698,17 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_ENTITLEMENTS = iGlance/iGlance.entitlements;
-				CODE_SIGN_STYLE = Manual;
+				CODE_SIGN_IDENTITY = "Apple Development";
+				CODE_SIGN_STYLE = Automatic;
 				COMBINE_HIDPI_IMAGES = YES;
-				DEVELOPMENT_TEAM = "";
+				DEVELOPMENT_TEAM = J6GXEPK4NG;
 				ENABLE_HARDENED_RUNTIME = YES;
 				INFOPLIST_FILE = iGlance/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/../Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = D0miH.github.io.iGlance;
+				PRODUCT_BUNDLE_IDENTIFIER = io.github.iglance.app;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_VERSION = 5.0;

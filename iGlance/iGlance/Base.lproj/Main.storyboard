@@ -914,8 +914,8 @@
                                                         <real value="3.4028234663852886e+38"/>
                                                     </customSpacing>
                                                 </stackView>
-                                                <stackView distribution="fill" orientation="horizontal" alignment="top" spacing="12" horizontalStackHuggingPriority="249.99998474121094" verticalStackHuggingPriority="249.99998474121094" detachesHiddenViews="YES" translatesAutoresizingMaskIntoConstraints="NO" id="s8d-cX-qC4">
-                                                    <rect key="frame" x="237" y="31" width="78" height="16"/>
+                                                <stackView distribution="fill" orientation="horizontal" alignment="top" spacing="5" horizontalStackHuggingPriority="249.99998474121094" verticalStackHuggingPriority="249.99998474121094" detachesHiddenViews="YES" translatesAutoresizingMaskIntoConstraints="NO" id="s8d-cX-qC4">
+                                                    <rect key="frame" x="234" y="31" width="71" height="16"/>
                                                     <subviews>
                                                         <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="Ng1-Hc-ahB">
                                                             <rect key="frame" x="-2" y="0.0" width="37" height="16"/>
@@ -926,7 +926,7 @@
                                                             </textFieldCell>
                                                         </textField>
                                                         <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="AH1-Fb-t7F">
-                                                            <rect key="frame" x="43" y="0.0" width="37" height="16"/>
+                                                            <rect key="frame" x="36" y="0.0" width="37" height="16"/>
                                                             <textFieldCell key="cell" lineBreakMode="clipping" title="16GB" id="M8u-FO-YWa">
                                                                 <font key="font" metaFont="system"/>
                                                                 <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
@@ -943,8 +943,8 @@
                                                         <real value="3.4028234663852886e+38"/>
                                                     </customSpacing>
                                                 </stackView>
-                                                <stackView distribution="fill" orientation="horizontal" alignment="top" horizontalStackHuggingPriority="249.99998474121094" verticalStackHuggingPriority="249.99998474121094" detachesHiddenViews="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Qwt-S0-Ru1">
-                                                    <rect key="frame" x="237" y="10" width="78" height="16"/>
+                                                <stackView distribution="fill" orientation="horizontal" alignment="top" spacing="5" horizontalStackHuggingPriority="249.99998474121094" verticalStackHuggingPriority="249.99998474121094" detachesHiddenViews="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Qwt-S0-Ru1">
+                                                    <rect key="frame" x="234" y="10" width="75" height="16"/>
                                                     <subviews>
                                                         <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="4iS-cj-X8a">
                                                             <rect key="frame" x="-2" y="0.0" width="34" height="16"/>
@@ -955,7 +955,7 @@
                                                             </textFieldCell>
                                                         </textField>
                                                         <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="Y4S-gv-5tE">
-                                                            <rect key="frame" x="36" y="0.0" width="44" height="16"/>
+                                                            <rect key="frame" x="33" y="0.0" width="44" height="16"/>
                                                             <textFieldCell key="cell" lineBreakMode="clipping" title="512GB" id="kB4-WI-alT">
                                                                 <font key="font" metaFont="system"/>
                                                                 <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
@@ -974,15 +974,15 @@
                                                 </stackView>
                                             </subviews>
                                             <constraints>
-                                                <constraint firstAttribute="trailing" secondItem="s8d-cX-qC4" secondAttribute="trailing" constant="10" id="4Xj-iy-ak0"/>
                                                 <constraint firstItem="S1q-UD-QKh" firstAttribute="leading" secondItem="ZRS-1U-tGV" secondAttribute="leading" constant="10" id="AcD-0x-WNw"/>
                                                 <constraint firstItem="IM1-Ym-YNt" firstAttribute="top" secondItem="ZRS-1U-tGV" secondAttribute="top" constant="4" id="ByT-VR-fQM"/>
                                                 <constraint firstItem="IM1-Ym-YNt" firstAttribute="centerX" secondItem="ZRS-1U-tGV" secondAttribute="centerX" constant="1" id="Cy2-pD-uDg"/>
                                                 <constraint firstItem="S1q-UD-QKh" firstAttribute="top" secondItem="BZL-pW-A1e" secondAttribute="bottom" constant="5" id="DeX-dZ-2yO"/>
-                                                <constraint firstAttribute="trailing" secondItem="Qwt-S0-Ru1" secondAttribute="trailing" constant="10" id="EDA-Rg-eiV"/>
+                                                <constraint firstItem="s8d-cX-qC4" firstAttribute="leading" secondItem="Qwt-S0-Ru1" secondAttribute="leading" id="Scj-Xw-8ud"/>
                                                 <constraint firstItem="BZL-pW-A1e" firstAttribute="leading" secondItem="ZRS-1U-tGV" secondAttribute="leading" constant="10" id="TP4-Wx-X7b"/>
                                                 <constraint firstItem="Qwt-S0-Ru1" firstAttribute="top" secondItem="s8d-cX-qC4" secondAttribute="bottom" constant="5" id="XOr-X0-4oE"/>
                                                 <constraint firstAttribute="bottom" secondItem="Qwt-S0-Ru1" secondAttribute="bottom" constant="10" id="ao5-ey-Ljg"/>
+                                                <constraint firstAttribute="trailing" secondItem="s8d-cX-qC4" secondAttribute="trailing" constant="20" id="c0f-wd-nLe"/>
                                                 <constraint firstItem="IM1-Ym-YNt" firstAttribute="leading" secondItem="ZRS-1U-tGV" secondAttribute="leading" constant="22" id="qBf-Ex-JSt"/>
                                                 <constraint firstAttribute="bottom" secondItem="S1q-UD-QKh" secondAttribute="bottom" constant="10" id="t6d-YV-QQZ"/>
                                             </constraints>

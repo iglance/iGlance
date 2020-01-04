@@ -67,7 +67,7 @@ class GpuInfo {
             lineIndex += 1
         }
 
-        // return the first built in gpu if there is any
+        // return the first dedicated gpu if there is any
         var gpuName = "No GPU found"
         for gpu in gpuInfo {
             if gpu.bus != "Built-In" {

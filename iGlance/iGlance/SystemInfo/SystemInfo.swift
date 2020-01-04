@@ -20,6 +20,7 @@ class SystemInfo {
 
     static let cpu: CpuInfo = CpuInfo()
     static let gpu: GpuInfo = GpuInfo()
+    static let disk: DiskInfo = DiskInfo()
 
     /**
      * Returns the time the system has been awake since the last time it was started.
@@ -69,35 +70,5 @@ class SystemInfo {
      */
     static func getRamSize() -> Int {
         return Int(ProcessInfo.processInfo.physicalMemory / 10_73_741_824)
-    }
-
-    /**
-     * Returns the size of the internal disk in GB.
-     */
-    static func getDiskSize() -> Int {
-        let task = Process()
-        let outputPipe = Pipe()
-
-        task.launchPath = "/usr/sbin/system_profiler"
-        task.arguments = ["SPSerialATADataType", "SPNVMeDataType"]
-        task.standardOutput = outputPipe
-        task.launch()
-        let outputData = outputPipe.fileHandleForReading.readDataToEndOfFile()
-
-        let output = NSString(data: outputData, encoding: String.Encoding.utf8.rawValue)! as String
-
-        let lines = output.split(separator: "\n")
-
-        var lineIndex = 0
-        while lineIndex < lines.count {
-            if lines[lineIndex].starts(with: "      ") {
-
-                print(lines[lineIndex])
-            }
-
-            lineIndex += 1
-        }
-
-        return 0
     }
 }
