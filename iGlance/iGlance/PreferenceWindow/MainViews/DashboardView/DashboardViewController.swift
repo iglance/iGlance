@@ -18,11 +18,21 @@ class DashboardViewController: MainViewViewController {
     @IBOutlet weak var ramSizeLabel: NSTextField!
     @IBOutlet weak var diskSizeLabel: NSTextField!
 
+    override init(nibName nibNameOrNil: NSNib.Name?, bundle nibBundleOrNil: Bundle?) {
+        super.init(nibName: nibNameOrNil, bundle: nibBundleOrNil)
+
+        // since those values will not change fetch them in the initializer
+        self.setSystemInfo()
+    }
+
+    required init?(coder: NSCoder) {
+        super.init(coder: coder)
+    }
+
     override func viewDidLoad() {
         super.viewDidLoad()
 
         self.updateUptimeInfo()
-        self.setSystemInfo()
     }
 
     /**
@@ -41,12 +51,12 @@ class DashboardViewController: MainViewViewController {
      */
     private func setSystemInfo() {
         // set the cpu name
-        let cpuName = SystemInfo.getCpuName()
+        let cpuName = SystemInfo.cpu.getCpuName()
         // remove the intel core branding
         cpuNameLabel.stringValue = cpuName.replacingOccurrences(of: "Intel(R) Core(TM) ", with: "")
 
         // set the gpu name
-        gpuNameLabel.stringValue = SystemInfo.getGpuName()
+        gpuNameLabel.stringValue = SystemInfo.gpu.getGpuName()
 
         // set the ram size
         ramSizeLabel.stringValue = "\(SystemInfo.getRamSize()) GB"

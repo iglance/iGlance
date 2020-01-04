@@ -14,6 +14,7 @@ class CustomDashboardBox: NSBox {
         get {
             return 0.0
         }
+        // swiftlint:disable:next unused_setter_value
         set {
             super.borderWidth = 0.0
         }
@@ -23,6 +24,7 @@ class CustomDashboardBox: NSBox {
         get {
             return ThemeManager.currentTheme().sidebarColor
         }
+        // swiftlint:disable:next unused_setter_value
         set {
             super.fillColor = ThemeManager.currentTheme().sidebarColor
         }
@@ -32,6 +34,7 @@ class CustomDashboardBox: NSBox {
         get {
             return 10
         }
+        // swiftlint:disable:next unused_setter_value
         set {
             super.cornerRadius = 10
         }
