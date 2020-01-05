@@ -32,6 +32,8 @@
 		B4C8DD2523AA3DB8008DAE45 /* ContentManagerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B4C8DD2423AA3DB8008DAE45 /* ContentManagerView.swift */; };
 		B4D82FDC23C1031800D502FF /* DiskInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = B4D82FDB23C1031800D502FF /* DiskInfo.swift */; };
 		B4D86E1B23AA710B00671B52 /* MainViewViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B4D86E1A23AA710B00671B52 /* MainViewViewController.swift */; };
+		B4DE725F23C257610001CF46 /* Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = B4DE725E23C257610001CF46 /* Extensions.swift */; };
+		B4DE726123C25C6F0001CF46 /* swiftlint.yml in Resources */ = {isa = PBXBuildFile; fileRef = B4DE726023C25C6F0001CF46 /* swiftlint.yml */; };
 		B707CD62778C3F6F1EE510C8 /* Pods_iGlanceTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4BC098BF6D2EC6F24256747E /* Pods_iGlanceTests.framework */; };
 /* End PBXBuildFile section */
 
@@ -91,6 +93,8 @@
 		B4C8DD2423AA3DB8008DAE45 /* ContentManagerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentManagerView.swift; sourceTree = "<group>"; };
 		B4D82FDB23C1031800D502FF /* DiskInfo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DiskInfo.swift; sourceTree = "<group>"; };
 		B4D86E1A23AA710B00671B52 /* MainViewViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainViewViewController.swift; sourceTree = "<group>"; };
+		B4DE725E23C257610001CF46 /* Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Extensions.swift; sourceTree = "<group>"; };
+		B4DE726023C25C6F0001CF46 /* swiftlint.yml */ = {isa = PBXFileReference; lastKnownFileType = text.yaml; path = swiftlint.yml; sourceTree = "<group>"; };
 		CFF878BB589337AA1613A3DE /* Pods_iGlance_iGlanceUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_iGlance_iGlanceUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
@@ -170,6 +174,7 @@
 		B46789A923A69ECA00CE572D = {
 			isa = PBXGroup;
 			children = (
+				B4DE726023C25C6F0001CF46 /* swiftlint.yml */,
 				B46789B423A69ECA00CE572D /* iGlance */,
 				B46789C723A69ECB00CE572D /* iGlanceTests */,
 				B46789D223A69ECB00CE572D /* iGlanceUITests */,
@@ -200,6 +205,7 @@
 				B46789BB23A69ECB00CE572D /* Main.storyboard */,
 				B46789BE23A69ECB00CE572D /* Info.plist */,
 				B46789BF23A69ECB00CE572D /* iGlance.entitlements */,
+				B4DE725E23C257610001CF46 /* Extensions.swift */,
 			);
 			path = iGlance;
 			sourceTree = "<group>";
@@ -380,6 +386,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				B46789BA23A69ECB00CE572D /* Assets.xcassets in Resources */,
+				B4DE726123C25C6F0001CF46 /* swiftlint.yml in Resources */,
 				B46789BD23A69ECB00CE572D /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -506,6 +513,7 @@
 				B43ABF2A23AA32FA007F93BA /* SidebarViewController.swift in Sources */,
 				B4C37E6323A7946B008C7FC0 /* SidebarView.swift in Sources */,
 				B4C37E7023A91F3C008C7FC0 /* ThemeManager.swift in Sources */,
+				B4DE725F23C257610001CF46 /* Extensions.swift in Sources */,
 				B42BCE6323AC01CC00A13601 /* SystemInfo.swift in Sources */,
 				B47D3C8D23ABEDF100DE911F /* CustomDashboardBox.swift in Sources */,
 				B46789B623A69ECA00CE572D /* AppDelegate.swift in Sources */,

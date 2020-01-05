@@ -10,9 +10,24 @@ import Cocoa
 
 class ContentManagerViewController: NSViewController {
 
+    // MARK: -
+    // MARK: Outlets
     @IBOutlet weak var subViewControllerManager: NSView!
 
+    // MARK: -
+    // MARK: Instance Variables
     var currentViewController: NSViewController!
+
+    // MARK: -
+    // MARK: Function Overrides
+
+    override func prepare(for segue: NSStoryboardSegue, sender: Any?) {
+        // get the view controller that is currently displayed
+        currentViewController = (segue.destinationController as? NSViewController)
+    }
+
+    // MARK: -
+    // MARK: Instance Functions
 
     /**
      * Add the given view controller as a sub-view.
@@ -45,9 +60,5 @@ class ContentManagerViewController: NSViewController {
         removeCurrentViewController()
         // add the new view controller to be displayed
         addNewViewController(viewController: viewController)
-    }
-
-    override func prepare(for segue: NSStoryboardSegue, sender: Any?) {
-        currentViewController = (segue.destinationController as? NSViewController)
     }
 }

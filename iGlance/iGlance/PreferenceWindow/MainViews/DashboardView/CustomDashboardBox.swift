@@ -8,8 +8,13 @@
 
 import Cocoa
 
+/**
+ * Custom NSBox class to display info in the dashboard.
+ */
 class CustomDashboardBox: NSBox {
 
+    // MARK: -
+    // MARK: Variable Overrides
     override var borderWidth: CGFloat {
         get {
             return 0.0
@@ -40,6 +45,8 @@ class CustomDashboardBox: NSBox {
         }
     }
 
+    // MARK: -
+    // MARK: Function Overrides
     override func draw(_ dirtyRect: NSRect) {
         // update the color depending on the current theme
         self.fillColor = ThemeManager.currentTheme().sidebarColor

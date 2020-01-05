@@ -10,6 +10,8 @@ import Cocoa
 
 class DashboardViewController: MainViewViewController {
 
+    // MARK: -
+    // MARK: Outlets
     @IBOutlet weak var daysUptimeLabel: NSTextField!
     @IBOutlet weak var hoursUptimeLabel: NSTextField!
 
@@ -18,16 +20,24 @@ class DashboardViewController: MainViewViewController {
     @IBOutlet weak var ramSizeLabel: NSTextField!
     @IBOutlet weak var diskSizeLabel: NSTextField!
 
+    // MARK: -
+    // MARK: Private Variables
+
+    /** Variable that ensures that the system information in the dashboard is set only once on startup. */
     private static var didSetSystemInfo: Bool = false
 
+    // MARK: -
+    // MARK: Function Overrides
     override func viewDidLoad() {
         super.viewDidLoad()
 
         self.updateUptimeInfo()
 
-        // since those values will not change fetch them in the initializer
         self.setSystemInfo()
     }
+
+    // MARK: -
+    // MARK: Private Functions
 
     /**
      * Sets the values in the uptime dashboard box.

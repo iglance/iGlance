@@ -7,6 +7,7 @@
 //
 
 import Foundation
+import os.log
 
 class DiskInfo {
 
@@ -18,13 +19,19 @@ class DiskInfo {
         let task = Process()
         let outputPipe = Pipe()
 
+        // execute the system_profiler command
         task.launchPath = "/usr/sbin/system_profiler"
         task.arguments = ["SPNVMeDataType"]
         task.standardOutput = outputPipe
         task.launch()
         let outputData = outputPipe.fileHandleForReading.readDataToEndOfFile()
-
         let output = NSString(data: outputData, encoding: String.Encoding.utf8.rawValue)! as String
+
+        // check that the command was successful by checking the first line
+        if !output.split(separator: "\n")[0].contains("NVMExpress:") {
+            os_log("Command to retrieve the disk size failed.", type: .error)
+            return (0, "")
+        }
 
         // get all the devices
         var devices = output.components(separatedBy: "\n\n          Capacity:")
@@ -34,8 +41,8 @@ class DiskInfo {
         for device in devices {
             let deviceLines = device.split(separator: "\n")
 
-            let lineParts = deviceLines[0].components(separatedBy: " ")
             // the capacity is the first line the second part of the line
+            let lineParts = deviceLines[0].components(separatedBy: " ")
             let size = Int(Float(lineParts[1].replacingOccurrences(of: ",", with: "."))!)
             // unit is the third part of the line
             let unit = String(lineParts[2])
@@ -48,6 +55,7 @@ class DiskInfo {
             }
         }
 
+        // if no capacity was found return a default value
         return (0, "")
     }
 }

@@ -13,7 +13,7 @@ class SegueAnimator: NSObject, NSViewControllerPresentationAnimator {
     func animatePresentation(of viewController: NSViewController, from fromViewController: NSViewController) {
         let parentViewController = fromViewController.parent
 
-        if(parentViewController != nil) && parentViewController is ContentManagerViewController {
+        if parentViewController != nil && parentViewController is ContentManagerViewController {
             // add the new view controller
             (parentViewController as? ContentManagerViewController)!
                 .addNewViewController(viewController: viewController)

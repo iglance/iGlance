@@ -8,6 +8,9 @@
 
 import Cocoa
 
+/**
+ * Parent class for the main views.
+ */
 class MainViewViewController: NSViewController {
 
     override func viewDidLoad() {

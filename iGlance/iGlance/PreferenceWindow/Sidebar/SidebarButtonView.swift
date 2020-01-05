@@ -10,6 +10,8 @@ import Cocoa
 
 class SidebarButtonView: NSView {
 
+    // MARK: -
+    // MARK: Public Instance Variables
     public var mainViewStoryboardID: String?
     public var highlighted: Bool = false {
         didSet {
@@ -17,9 +19,13 @@ class SidebarButtonView: NSView {
         }
     }
 
+    // MARK: -
+    // MARK: Private Instance Variables
     private var hovered: Bool = false
     private var onClickCallback: ((_ sender: SidebarButtonView) -> Void)?
 
+    // MARK: -
+    // MARK: Function Overrides
     override func updateTrackingAreas() {
         super.updateTrackingAreas()
 
@@ -42,14 +48,19 @@ class SidebarButtonView: NSView {
     }
 
     override func mouseEntered(with event: NSEvent) {
+        // if the mouse entered the button set the hovered variable to true
         self.hovered = true
+        // set the needsDisplay variable to force a re-draw
         self.needsDisplay = true
     }
 
     override func mouseExited(with event: NSEvent) {
+        // if the mouse exited the button set the hovered variable to false
         self.hovered = false
+        // set the needsDisplay variable to force a re-draw
         self.needsDisplay = true
     }
+
     override func draw(_ dirtyRect: NSRect) {
         super.draw(dirtyRect)
 
@@ -64,6 +75,12 @@ class SidebarButtonView: NSView {
         }
     }
 
+    // MARK: -
+    // MARK: Instance Functions
+
+    /**
+     * Sets the function which is called when the button is clicked.
+     */
     public func onButtonClick(callback: @escaping (_ sender: SidebarButtonView) -> Void) {
         self.onClickCallback = callback
     }

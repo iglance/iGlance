@@ -8,9 +8,12 @@
 
 import Foundation
 import IOKit
+import os.log
 
 class SystemInfo {
 
+    // MARK: -
+    // MARK: Structure Definitions
     struct TimeDuration {
         let days: Int
         let hours: Int
@@ -18,12 +21,16 @@ class SystemInfo {
         let seconds: Int
     }
 
+    // MARK: -
+    // MARK: Static Variables
     static let cpu: CpuInfo = CpuInfo()
     static let gpu: GpuInfo = GpuInfo()
     static let disk: DiskInfo = DiskInfo()
 
+    // MARK: -
+    // MARK: Static Functions
     /**
-     * Returns the time the system has been awake since the last time it was started.
+     * Returns uptime of the system since the last boot.
      */
     static func getSystemUptime() -> TimeDuration {
         // taken from https://stackoverflow.com/a/45068046/9717671
@@ -31,7 +38,8 @@ class SystemInfo {
         var uptime = timespec()
 
         if clock_gettime(CLOCK_MONOTONIC_RAW, &uptime) != 0 {
-            fatalError("Could not retrieve system uptime")
+            os_log("Could not retrieve system uptime", type: .error)
+            return TimeDuration(days: 0, hours: 0, minutes: 0, seconds: 0)
         }
 
         let seconds = uptime.tv_sec % 60
@@ -40,29 +48,6 @@ class SystemInfo {
         let days = uptime.tv_sec / (60 * 60 * 24)
 
         return TimeDuration(days: days, hours: hours, minutes: minutes, seconds: seconds)
-    }
-
-    /**
-     * Returns the boot time.
-     */
-    static func getBootTime() -> Date {
-        // taken from https://stackoverflow.com/a/45068046/9717671
-
-        // define the commands
-        var mib = [ CTL_KERN, KERN_BOOTTIME ]
-        // create the variables
-        var bootTime = timeval()
-        var bootTimeSize = MemoryLayout<timeval>.size
-
-        // call sysctl to get the boot time
-        if sysctl(&mib, UInt32(mib.count), &bootTime, &bootTimeSize, nil, 0) != 0 {
-            fatalError("Could not retrieve boot time")
-        }
-
-        // create the time interval object
-        let timeInterval = TimeInterval(bootTime.tv_sec)
-
-        return Date(timeIntervalSince1970: timeInterval)
     }
 
     /**

@@ -8,6 +8,9 @@
 
 import Cocoa
 
+/**
+ * Class that handles the segues between main views.
+ */
 class SegueBetweenEmbedded: NSStoryboardSegue {
     override func perform() {
         if let viewController = sourceController as? NSViewController {

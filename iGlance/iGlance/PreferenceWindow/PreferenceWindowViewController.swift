@@ -8,38 +8,40 @@
 
 import Cocoa
 
-class PreferenceViewController: NSViewController {
+class MainWindowViewController: NSViewController {
 
+    // MARK: -
+    // MARK: Instance Variables
     var contentManagerViewController: ContentManagerViewController?
     var sidebarViewController: SidebarViewController?
 
+    // MARK: -
+    // MARK: Function Overrides
     override func viewDidLoad() {
         super.viewDidLoad()
 
+        // add the on click event handler to the buttons of the sidebar
         sidebarViewController?.addOnClickEventHandler(eventHandler: displayViewOf(sender:))
     }
 
-    /**
-     * Displays the main view of the given sidebar button view
-     */
-    private func displayViewOf(sender: SidebarButtonView) {
-        if let viewController = storyboard?.instantiateController(withIdentifier: sender.mainViewStoryboardID!) {
-            contentManagerViewController?.addNewViewController(viewController: ((viewController as? NSViewController)!))
-        }
-    }
-
-    /**
-     * Returns the content manager view controller which manages the main views of the preference window
-     */
-    func retrieveContentManagerController() -> ContentManagerViewController? {
-        return self.contentManagerViewController
-    }
-
     override func prepare(for segue: NSStoryboardSegue, sender: Any?) {
+        // get the view controller of the main view and the sidebar
         if segue.destinationController is ContentManagerViewController {
             contentManagerViewController = (segue.destinationController as? ContentManagerViewController)
         } else if segue.destinationController is SidebarViewController {
             sidebarViewController = (segue.destinationController as? SidebarViewController)
+        }
+    }
+
+    // MARK: -
+    // MARK: Private Functions
+    /**
+     * Displays the main view of the given sidebar button view.
+     * This function is called when the sidebar button is clicked.
+     */
+    private func displayViewOf(sender: SidebarButtonView) {
+        if let viewController = storyboard?.instantiateController(withIdentifier: sender.mainViewStoryboardID!) {
+            contentManagerViewController?.addNewViewController(viewController: ((viewController as? NSViewController)!))
         }
     }
 }

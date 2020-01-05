@@ -10,16 +10,28 @@ import Cocoa
 
 class SidebarViewController: NSViewController {
 
-    /** Outlet of the logo image at the top of the sidebar */
-    @IBOutlet weak var logoImage: NSImageView!
+    // MARK: -
+    // MARK: Struct Definitions
 
+    /**
+     * Structure to save the ID of a NSView of a sidebar button and its corresponding
+     * main view storyboard ID which is displayed in the container view when the button is clicked.
+     */
     struct SidebarButtonIDs {
         let buttonViewID: String
         let mainViewStoryboardID: String
     }
 
+    // MARK: -
+    // MARK: Outlets
+
+    @IBOutlet weak var logoImage: NSImageView!
     @IBOutlet weak var sidebarButtonStackView: NSStackView!
 
+    // MARK: -
+    // MARK: Private Variables
+
+    /** An array containing the IDs to all the sidebar buttons and their corresponding main view storyboard IDs*/
     private var sidebarButtonViewIDs: [SidebarButtonIDs] = [
         SidebarButtonIDs(buttonViewID: "DashboardButtonView", mainViewStoryboardID: "DashboardStoryboardID"),
         SidebarButtonIDs(buttonViewID: "CpuButtonView", mainViewStoryboardID: "CpuStoryboardID"),
@@ -29,7 +41,8 @@ class SidebarViewController: NSViewController {
         SidebarButtonIDs(buttonViewID: "BatteryButtonView", mainViewStoryboardID: "BatteryStoryboardID")
     ]
 
-    public var displayViewOf: ((_ sender: SidebarButtonView) -> Void)?
+    // MARK: -
+    // MARK: Function Overrides
 
     override func viewDidLoad() {
         // set the storyboard ids of the main views of the buttons
@@ -45,14 +58,24 @@ class SidebarViewController: NSViewController {
         // add a callback to change the logo depending on the current theme
         DistributedNotificationCenter.default.addObserver(
             self,
-            selector: #selector(changeSidebarLogo),
+            selector: #selector(onThemeChange),
             name: .AppleInterfaceThemeChangedNotification,
             object: nil
         )
+
         // add the correct logo image at startup
         changeSidebarLogo()
     }
 
+    // MARK: -
+    // MARK: Instance Functions
+
+    /**
+     * Adds a on click event handler to each sidebar button view.
+     * This event handler is called when one of the buttons is pressed.
+     *
+     * - Parameter eventHandler: The given callback function which is called when the button is clicked.
+     */
     func addOnClickEventHandler(eventHandler: @escaping (_ sender: SidebarButtonView) -> Void) {
         // create a proxy event handler to trigger the onButtonClick function in this class
         let proxyEventHandler = { (_ sender: SidebarButtonView) -> Void in
@@ -66,6 +89,11 @@ class SidebarViewController: NSViewController {
         }
     }
 
+    /**
+     * Called when a button in the sidebar is clicked.
+     *
+     * - Parameter sender: The sidebar button view which was clicked.
+     */
     func onButtonClick(_ sender: SidebarButtonView) {
         for identifier in sidebarButtonViewIDs {
             let buttonView = getSidebarButtonWith(identifier: identifier.buttonViewID)
@@ -78,19 +106,38 @@ class SidebarViewController: NSViewController {
         }
     }
 
+    // MARK: -
+    // MARK: Private Functions
+
+    /**
+     * Callback which is called when the theme is changed.
+     */
+    @objc private func onThemeChange() {
+        // change the sidebar logo
+        changeSidebarLogo()
+    }
+
+    /**
+     * Adds the iGlance logo to the top of the sidebar.
+     * Depending on the current theme the white or black iGlance logo is selected.
+     */
+    private func changeSidebarLogo() {
+        if ThemeManager.isDarkTheme() {
+            self.logoImage.image = NSImage(named: "iGlance_logo_white")
+        } else {
+            self.logoImage.image = NSImage(named: "iGlance_logo_black")
+        }
+    }
+
+    /**
+     * Gets the view instance of the button with the given identifier.
+     * - Returns: The SidebarButtonView instance. If no button with the given identifier was found nil is returned.
+     */
     private func getSidebarButtonWith(identifier: String) -> SidebarButtonView? {
         for subView in sidebarButtonStackView.subviews where subView.identifier?.rawValue == identifier {
             return (subView as? SidebarButtonView)!
         }
 
         return nil
-    }
-
-    @objc private func changeSidebarLogo() {
-        if ThemeManager.isDarkTheme() {
-            self.logoImage.image = NSImage(named: "iGlance_logo_white")
-        } else {
-            self.logoImage.image = NSImage(named: "iGlance_logo_black")
-        }
     }
 }

@@ -10,8 +10,12 @@ import Cocoa
 
 class PreferenceWindowController: NSWindowController {
 
+    // MARK: -
+    // MARK: Outlets
     @IBOutlet weak var mainWindow: NSWindow!
 
+    // MARK: -
+    // MARK: Function Overrides
     override func windowDidLoad() {
         mainWindow.backgroundColor = ThemeManager.currentTheme().titlebarColor
 
@@ -28,8 +32,4 @@ class PreferenceWindowController: NSWindowController {
         mainWindow.backgroundColor = ThemeManager.currentTheme().titlebarColor
         mainWindow.update()
     }
-}
-
-extension Notification.Name {
-    static let AppleInterfaceThemeChangedNotification = Notification.Name("AppleInterfaceThemeChangedNotification")
 }

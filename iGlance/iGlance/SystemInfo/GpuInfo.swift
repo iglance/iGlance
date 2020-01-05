@@ -7,6 +7,7 @@
 //
 
 import Foundation
+import os.log
 
 class GpuInfo {
 
@@ -17,6 +18,8 @@ class GpuInfo {
 
     /**
      * Returns the name of the GPU. If there is no dedicated GPU the name of the internal GPU will be returned.
+     *
+     * - Returns: The name of the GPU (e.g. Radeon Pro 560X)
      */
     func getGpuName() -> String {
         // taken from https://stackoverflow.com/a/32869978/9717671
@@ -24,16 +27,22 @@ class GpuInfo {
         let task = Process()
         let outputPipe = Pipe()
 
+        // execute the system_profiler command
         task.launchPath = "/usr/sbin/system_profiler"
         task.arguments = ["SPDisplaysDataType"]
         task.standardOutput = outputPipe
         task.launch()
         let outputData = outputPipe.fileHandleForReading.readDataToEndOfFile()
-
         let output = NSString(data: outputData, encoding: String.Encoding.utf8.rawValue)! as String
 
         // seperate the lines
         let lines = output.split(separator: "\n")
+
+        // check that the command was successful by checking the first line
+        if !lines[0].contains("Graphics/Displays:") {
+            os_log("Command to retrieve the GPU name failed.", type: .error)
+            return ""
+        }
 
         // create an array for the gpu info
         var gpuInfo: [GpuInfo] = []
@@ -55,6 +64,7 @@ class GpuInfo {
                     } else if trimmedLine.starts(with: "Bus: ") {
                         bus = trimmedLine.replacingOccurrences(of: "Bus: ", with: "")
                     }
+
                     lineIndex += 1
                 }
 
