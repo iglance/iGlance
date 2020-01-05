@@ -40,6 +40,7 @@
 		B4DE727923C25FF10001CF46 /* Process.swift in Sources */ = {isa = PBXBuildFile; fileRef = B4DE727823C25FF10001CF46 /* Process.swift */; };
 		B4DE727B23C2600A0001CF46 /* IOReturn.swift in Sources */ = {isa = PBXBuildFile; fileRef = B4DE727A23C2600A0001CF46 /* IOReturn.swift */; };
 		B4DE727D23C260320001CF46 /* Battery.swift in Sources */ = {isa = PBXBuildFile; fileRef = B4DE727C23C260320001CF46 /* Battery.swift */; };
+		B4DE728023C2644A0001CF46 /* Battery.swift in Sources */ = {isa = PBXBuildFile; fileRef = B4DE727F23C2644A0001CF46 /* Battery.swift */; };
 		B707CD62778C3F6F1EE510C8 /* Pods_iGlanceTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4BC098BF6D2EC6F24256747E /* Pods_iGlanceTests.framework */; };
 /* End PBXBuildFile section */
 
@@ -128,6 +129,7 @@
 		B4DE727823C25FF10001CF46 /* Process.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Process.swift; sourceTree = "<group>"; };
 		B4DE727A23C2600A0001CF46 /* IOReturn.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IOReturn.swift; sourceTree = "<group>"; };
 		B4DE727C23C260320001CF46 /* Battery.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Battery.swift; sourceTree = "<group>"; };
+		B4DE727F23C2644A0001CF46 /* Battery.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Battery.swift; sourceTree = "<group>"; };
 		CFF878BB589337AA1613A3DE /* Pods_iGlance_iGlanceUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_iGlance_iGlanceUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
@@ -208,6 +210,7 @@
 				B46F25D323B22DEC00E0A3F4 /* CpuInfo.swift */,
 				B46F25D523B22E4500E0A3F4 /* GpuInfo.swift */,
 				B4D82FDB23C1031800D502FF /* DiskInfo.swift */,
+				B4DE727F23C2644A0001CF46 /* Battery.swift */,
 			);
 			path = SystemInfo;
 			sourceTree = "<group>";
@@ -595,6 +598,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				B4DE728023C2644A0001CF46 /* Battery.swift in Sources */,
 				B4C37E6723A8CF89008C7FC0 /* ContentManagerViewController.swift in Sources */,
 				B4D86E1B23AA710B00671B52 /* MainViewViewController.swift in Sources */,
 				B46F25D623B22E4500E0A3F4 /* GpuInfo.swift in Sources */,

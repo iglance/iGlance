@@ -1105,6 +1105,8 @@
                         </constraints>
                     </view>
                     <connections>
+                        <outlet property="batteryCyclesLabel" destination="jrq-gy-Gg2" id="eIl-Oj-4LT"/>
+                        <outlet property="batteryHealthLabel" destination="s1C-zu-LHT" id="YEn-hG-y7b"/>
                         <outlet property="cpuNameLabel" destination="IZD-vv-5ch" id="Fjb-pi-k49"/>
                         <outlet property="daysUptimeLabel" destination="T5D-ND-OZQ" id="gCl-uT-iqK"/>
                         <outlet property="diskSizeLabel" destination="Y4S-gv-5tE" id="MXt-bQ-ayw"/>

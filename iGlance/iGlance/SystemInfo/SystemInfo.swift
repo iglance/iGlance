@@ -24,6 +24,7 @@ class SystemInfo {
     static let cpu = CpuInfo()
     static let gpu = GpuInfo()
     static let disk = DiskInfo()
+    static let battery = Battery()
 
     // MARK: -
     // MARK: Static Functions

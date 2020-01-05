@@ -47,7 +47,7 @@ private let HOST_SCHED_INFO_COUNT: mach_msg_type_number_t =
 private let PROCESSOR_SET_LOAD_INFO_COUNT: mach_msg_type_number_t =
               UInt32(MemoryLayout<processor_set_load_info_data_t>.size / MemoryLayout<natural_t>.size)
 
-public struct System {
+public struct SKSystem {
     //--------------------------------------------------------------------------
     // MARK: PUBLIC PROPERTIES
     //--------------------------------------------------------------------------
@@ -130,7 +130,7 @@ public struct System {
                                         user: Double,
                                         idle: Double,
                                         nice: Double) {
-        let load = System.hostCPULoadInfo()
+        let load = SKSystem.hostCPULoadInfo()
 
         let userDiff = Double(load.cpu_ticks.0 - loadPrevious.cpu_ticks.0)
         let sysDiff = Double(load.cpu_ticks.1 - loadPrevious.cpu_ticks.1)
@@ -183,7 +183,7 @@ public struct System {
 
     /// Number of physical cores on this machine.
     public static func physicalCores() -> Int {
-        return Int(System.hostBasicInfo().physical_cpu)
+        return Int(SKSystem.hostBasicInfo().physical_cpu)
     }
 
     /**
@@ -193,7 +193,7 @@ public struct System {
     https://en.wikipedia.org/wiki/Hyper-threading
     */
     public static func logicalCores() -> Int {
-        return Int(System.hostBasicInfo().logical_cpu)
+        return Int(SKSystem.hostBasicInfo().logical_cpu)
     }
 
     /**
@@ -210,7 +210,7 @@ public struct System {
 
         switch type {
             case .short:
-                let result = System.hostLoadInfo().avenrun
+                let result = SKSystem.hostLoadInfo().avenrun
                 avg = [Double(result.0) / Double(LOAD_SCALE),
                        Double(result.1) / Double(LOAD_SCALE),
                        Double(result.2) / Double(LOAD_SCALE)]
@@ -235,7 +235,7 @@ public struct System {
     - via hostinfo manual page
     */
     public static func machFactor() -> [Double] {
-        let result = System.hostLoadInfo().mach_factor
+        let result = SKSystem.hostLoadInfo().mach_factor
 
         return [Double(result.0) / Double(LOAD_SCALE),
                 Double(result.1) / Double(LOAD_SCALE),
@@ -244,13 +244,13 @@ public struct System {
 
     /// Total number of processes & threads
     public static func processCounts() -> (processCount: Int, threadCount: Int) {
-        let data = System.processorLoadInfo()
+        let data = SKSystem.processorLoadInfo()
         return (Int(data.task_count), Int(data.thread_count))
     }
 
     /// Size of physical memory on this machine
     public static func physicalMemory(_ unit: Unit = .gigabyte) -> Double {
-        return Double(System.hostBasicInfo().max_mem) / unit.rawValue
+        return Double(SKSystem.hostBasicInfo().max_mem) / unit.rawValue
     }
 
     /**
@@ -261,7 +261,7 @@ public struct System {
                                          inactive: Double,
                                          wired: Double,
                                          compressed: Double) {
-        let stats = System.VMStatistics64()
+        let stats = SKSystem.VMStatistics64()
 
         let free = Double(stats.free_count) * Double(PAGE_SIZE)
                                                         / Unit.gigabyte.rawValue
@@ -385,13 +385,13 @@ public struct System {
     }
 
     /// Get the thermal level of the system. As seen via 'pmset -g therm'
-    public static func thermalLevel() -> System.ThermalLevel {
+    public static func thermalLevel() -> SKSystem.ThermalLevel {
         var thermalLevel: UInt32 = 0
 
         let result = IOPMGetThermalWarningLevel(&thermalLevel)
 
         if result == kIOReturnNotFound {
-            return System.ThermalLevel.NotPublished
+            return SKSystem.ThermalLevel.NotPublished
         }
 
         #if DEBUG
@@ -409,15 +409,15 @@ public struct System {
         switch thermalLevel {
             case 0:
                 // kIOPMThermalWarningLevelNormal
-                return System.ThermalLevel.Normal
+                return SKSystem.ThermalLevel.Normal
             case 5:
                 // kIOPMThermalWarningLevelDanger
-                return System.ThermalLevel.Danger
+                return SKSystem.ThermalLevel.Danger
             case 10:
                 // kIOPMThermalWarningLevelCrisis
-                return System.ThermalLevel.Crisis
+                return SKSystem.ThermalLevel.Crisis
             default:
-                return System.ThermalLevel.Unknown
+                return SKSystem.ThermalLevel.Unknown
         }
     }
 

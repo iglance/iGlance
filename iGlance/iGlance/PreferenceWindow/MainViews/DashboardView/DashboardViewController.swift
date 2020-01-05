@@ -19,6 +19,9 @@ class DashboardViewController: MainViewViewController {
     @IBOutlet weak var ramSizeLabel: NSTextField!
     @IBOutlet weak var diskSizeLabel: NSTextField!
 
+    @IBOutlet weak var batteryHealthLabel: NSTextField!
+    @IBOutlet weak var batteryCyclesLabel: NSTextField!
+
     // MARK: -
     // MARK: Private Variables
 
@@ -30,9 +33,10 @@ class DashboardViewController: MainViewViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
+        // set the info for all the dashboard boxes
         self.updateUptimeInfo()
-
         self.setSystemInfo()
+        self.setBatteryInfo()
     }
 
     // MARK: -
@@ -74,5 +78,16 @@ class DashboardViewController: MainViewViewController {
 
         let diskSize = SystemInfo.disk.getInternalDiskSize()
         diskSizeLabel.stringValue = "\(diskSize.0) \(diskSize.1)"
+    }
+
+    /**
+     * Sets the battery information on the battery dashboard box.
+     */
+    private func setBatteryInfo() {
+        // set the health of the battery
+        batteryHealthLabel.stringValue = "\(Int(SystemInfo.battery.getBatteryHealth() * 100.0))%"
+
+        // set the cycle count of the battery
+        batteryCyclesLabel.stringValue = "\(SystemInfo.battery.getBatteryCycles())"
     }
 }

@@ -35,7 +35,7 @@ http://www.apple.com/batteries/
 
 TODO: None of this will work for iOS as I/O Kit is a private framework there
 */
-public struct Battery {
+public struct SKBattery {
     //--------------------------------------------------------------------------
     // MARK: PUBLIC ENUMS
     //--------------------------------------------------------------------------
@@ -98,24 +98,31 @@ public struct Battery {
         if service != 0 {
             #if DEBUG
                 print("WARNING - \(#file):\(#function) - " +
-                        "\(Battery.IOSERVICE_BATTERY) connection already open")
+                        "\(SKBattery.IOSERVICE_BATTERY) connection already open")
             #endif
             return kIOReturnStillOpen
         }
 
         // TODO: Could there be more than one service? serveral batteries?
         service = IOServiceGetMatchingService(kIOMasterPortDefault,
-                  IOServiceNameMatching(Battery.IOSERVICE_BATTERY))
+                  IOServiceNameMatching(SKBattery.IOSERVICE_BATTERY))
 
         if service == 0 {
             #if DEBUG
                 print("ERROR - \(#file):\(#function) - " +
-                        "\(Battery.IOSERVICE_BATTERY) service not found")
+                        "\(SKBattery.IOSERVICE_BATTERY) service not found")
             #endif
             return kIOReturnNotFound
         }
 
         return kIOReturnSuccess
+    }
+
+    /**
+     * Returns true when a connection to the battery is open. Otherwise this function returns false.
+     */
+    public func connectionIsOpen() -> Bool {
+        return service != 0
     }
 
     /**
@@ -162,7 +169,9 @@ public struct Battery {
     public func maxCapactiy() -> Int {
         let prop = IORegistryEntryCreateCFProperty(service,
                                                    Key.MaxCapacity.rawValue as CFString,
-                                                   kCFAllocatorDefault, 0)
+                                                   kCFAllocatorDefault,
+                                                   0
+        )
         return prop!.takeUnretainedValue() as! Int
     }
 
@@ -298,9 +307,9 @@ public struct Battery {
                 // Must have complete switch though with executed command
                 break
             case .fahrenheit:
-                temperature = Battery.toFahrenheit(temperature)
+                temperature = SKBattery.toFahrenheit(temperature)
             case .kelvin:
-                temperature = Battery.toKelvin(temperature)
+                temperature = SKBattery.toKelvin(temperature)
         }
 
         return ceil(temperature)
