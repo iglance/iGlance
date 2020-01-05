@@ -9,7 +9,6 @@
 import Cocoa
 
 class ContentManagerView: NSView {
-
     /**
      * Prevent dragging of the window.
      */

@@ -9,7 +9,6 @@
 import Cocoa
 
 class SidebarViewController: NSViewController {
-
     // MARK: -
     // MARK: Struct Definitions
 

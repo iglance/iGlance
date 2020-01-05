@@ -9,7 +9,6 @@
 import Cocoa
 
 class MainWindowViewController: NSViewController {
-
     // MARK: -
     // MARK: Instance Variables
     var contentManagerViewController: ContentManagerViewController?

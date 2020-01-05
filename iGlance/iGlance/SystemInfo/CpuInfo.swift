@@ -10,7 +10,6 @@ import Foundation
 import os.log
 
 class CpuInfo {
-
     /**
      * Gets the name of the cpu.
      *

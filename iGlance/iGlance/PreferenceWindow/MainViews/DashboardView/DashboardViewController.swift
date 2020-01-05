@@ -9,7 +9,6 @@
 import Cocoa
 
 class DashboardViewController: MainViewViewController {
-
     // MARK: -
     // MARK: Outlets
     @IBOutlet weak var daysUptimeLabel: NSTextField!
@@ -54,7 +53,6 @@ class DashboardViewController: MainViewViewController {
      * Sets the system information on the system dashboard box.
      */
     private func setSystemInfo() {
-
         // prevent future executions
         if DashboardViewController.self.didSetSystemInfo {
             return
@@ -77,5 +75,4 @@ class DashboardViewController: MainViewViewController {
         let diskSize = SystemInfo.disk.getInternalDiskSize()
         diskSizeLabel.stringValue = "\(diskSize.0) \(diskSize.1)"
     }
-
 }

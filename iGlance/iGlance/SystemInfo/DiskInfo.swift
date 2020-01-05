@@ -10,7 +10,6 @@ import Foundation
 import os.log
 
 class DiskInfo {
-
     /**
      * Returns a tuple with the first element beeing the size of the
      * disk and the second element beeing the unit (e.g. MB, GB, TB...).

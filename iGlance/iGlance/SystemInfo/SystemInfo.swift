@@ -7,11 +7,9 @@
 //
 
 import Foundation
-import IOKit
 import os.log
 
 class SystemInfo {
-
     // MARK: -
     // MARK: Structure Definitions
     struct TimeDuration {
@@ -23,9 +21,9 @@ class SystemInfo {
 
     // MARK: -
     // MARK: Static Variables
-    static let cpu: CpuInfo = CpuInfo()
-    static let gpu: GpuInfo = GpuInfo()
-    static let disk: DiskInfo = DiskInfo()
+    static let cpu = CpuInfo()
+    static let gpu = GpuInfo()
+    static let disk = DiskInfo()
 
     // MARK: -
     // MARK: Static Functions
@@ -54,6 +52,6 @@ class SystemInfo {
      * Returns the size of the RAM in GB.
      */
     static func getRamSize() -> Int {
-        return Int(ProcessInfo.processInfo.physicalMemory / 10_73_741_824)
+        return Int(ProcessInfo.processInfo.physicalMemory / 1_073_741_824)
     }
 }

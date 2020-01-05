@@ -9,7 +9,6 @@
 import Cocoa
 
 class SidebarButtonView: NSView {
-
     // MARK: -
     // MARK: Public Instance Variables
     public var mainViewStoryboardID: String?

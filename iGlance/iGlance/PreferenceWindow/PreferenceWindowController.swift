@@ -9,7 +9,6 @@
 import Cocoa
 
 class PreferenceWindowController: NSWindowController {
-
     // MARK: -
     // MARK: Outlets
     @IBOutlet weak var mainWindow: NSWindow!

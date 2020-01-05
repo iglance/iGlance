@@ -10,7 +10,6 @@ import Foundation
 import os.log
 
 class GpuInfo {
-
     struct GpuInfo {
         let name: String
         let bus: String
@@ -51,7 +50,6 @@ class GpuInfo {
         while lineIndex < lines.count {
             // the first device infos starts with 6 spaces
             if lines[lineIndex].starts(with: "      ") {
-
                 var deviceName = ""
                 var bus = ""
 
@@ -90,5 +88,4 @@ class GpuInfo {
 
         return gpuName
     }
-
 }

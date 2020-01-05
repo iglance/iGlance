@@ -56,11 +56,9 @@ enum Theme: Int {
             return NSColor.colorFrom(hex: "#6B7DB3")
         }
     }
-
 }
 
 class ThemeManager {
-
     /**
      * Indicates whether the theme of the os is dark.
      *

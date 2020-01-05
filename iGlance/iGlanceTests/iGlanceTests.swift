@@ -10,7 +10,6 @@ import XCTest
 @testable import iGlance
 
 class IGlanceTests: XCTestCase {
-
     override func setUp() {
         // Put setup code here. This method is called before the invocation of each test method in the class.
     }
@@ -30,5 +29,4 @@ class IGlanceTests: XCTestCase {
             // Put the code you want to measure the time of here.
         }
     }
-
 }

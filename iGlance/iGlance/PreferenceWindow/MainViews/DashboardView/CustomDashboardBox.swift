@@ -12,7 +12,6 @@ import Cocoa
  * Custom NSBox class to display info in the dashboard.
  */
 class CustomDashboardBox: NSBox {
-
     // MARK: -
     // MARK: Variable Overrides
     override var borderWidth: CGFloat {

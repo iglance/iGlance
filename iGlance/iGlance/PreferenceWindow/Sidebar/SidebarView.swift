@@ -9,7 +9,6 @@
 import Cocoa
 
 class SidebarView: NSView {
-
     /**
      * Prevent dragging of the window
      */
