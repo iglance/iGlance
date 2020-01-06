@@ -7,7 +7,6 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		14E5D7E108D48F9542E9824A /* Pods_iGlance_iGlanceUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CFF878BB589337AA1613A3DE /* Pods_iGlance_iGlanceUITests.framework */; };
 		158527EED93E69C906DD21E3 /* Pods_iGlance.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9C2A6D96DB6779E95FBDB238 /* Pods_iGlance.framework */; };
 		B42BCE6023ABF73100A13601 /* DashboardViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B42BCE5F23ABF73100A13601 /* DashboardViewController.swift */; };
 		B42BCE6323AC01CC00A13601 /* SystemInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = B42BCE6223AC01CC00A13601 /* SystemInfo.swift */; };
@@ -18,8 +17,6 @@
 		B46789B823A69ECA00CE572D /* PreferenceWindowViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B46789B723A69ECA00CE572D /* PreferenceWindowViewController.swift */; };
 		B46789BA23A69ECB00CE572D /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = B46789B923A69ECB00CE572D /* Assets.xcassets */; };
 		B46789BD23A69ECB00CE572D /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B46789BB23A69ECB00CE572D /* Main.storyboard */; };
-		B46789C923A69ECB00CE572D /* iGlanceTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = B46789C823A69ECB00CE572D /* iGlanceTests.swift */; };
-		B46789D423A69ECB00CE572D /* iGlanceUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = B46789D323A69ECB00CE572D /* iGlanceUITests.swift */; };
 		B46F25D423B22DEC00E0A3F4 /* CpuInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = B46F25D323B22DEC00E0A3F4 /* CpuInfo.swift */; };
 		B46F25D623B22E4500E0A3F4 /* GpuInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = B46F25D523B22E4500E0A3F4 /* GpuInfo.swift */; };
 		B47D3C8D23ABEDF100DE911F /* CustomDashboardBox.swift in Sources */ = {isa = PBXBuildFile; fileRef = B47D3C8C23ABEDF100DE911F /* CustomDashboardBox.swift */; };
@@ -41,24 +38,9 @@
 		B4DE727B23C2600A0001CF46 /* IOReturn.swift in Sources */ = {isa = PBXBuildFile; fileRef = B4DE727A23C2600A0001CF46 /* IOReturn.swift */; };
 		B4DE727D23C260320001CF46 /* Battery.swift in Sources */ = {isa = PBXBuildFile; fileRef = B4DE727C23C260320001CF46 /* Battery.swift */; };
 		B4DE728023C2644A0001CF46 /* Battery.swift in Sources */ = {isa = PBXBuildFile; fileRef = B4DE727F23C2644A0001CF46 /* Battery.swift */; };
-		B707CD62778C3F6F1EE510C8 /* Pods_iGlanceTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4BC098BF6D2EC6F24256747E /* Pods_iGlanceTests.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
-		B46789C523A69ECB00CE572D /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = B46789AA23A69ECA00CE572D /* Project object */;
-			proxyType = 1;
-			remoteGlobalIDString = B46789B123A69ECA00CE572D;
-			remoteInfo = iGlance;
-		};
-		B46789D023A69ECB00CE572D /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = B46789AA23A69ECA00CE572D /* Project object */;
-			proxyType = 1;
-			remoteGlobalIDString = B46789B123A69ECA00CE572D;
-			remoteInfo = iGlance;
-		};
 		B4DE726E23C25F8C0001CF46 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = B46789AA23A69ECA00CE572D /* Project object */;
@@ -103,12 +85,6 @@
 		B46789BC23A69ECB00CE572D /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		B46789BE23A69ECB00CE572D /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		B46789BF23A69ECB00CE572D /* iGlance.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = iGlance.entitlements; sourceTree = "<group>"; };
-		B46789C423A69ECB00CE572D /* iGlanceTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = iGlanceTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
-		B46789C823A69ECB00CE572D /* iGlanceTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = iGlanceTests.swift; sourceTree = "<group>"; };
-		B46789CA23A69ECB00CE572D /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		B46789CF23A69ECB00CE572D /* iGlanceUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = iGlanceUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
-		B46789D323A69ECB00CE572D /* iGlanceUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = iGlanceUITests.swift; sourceTree = "<group>"; };
-		B46789D523A69ECB00CE572D /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		B46F25D323B22DEC00E0A3F4 /* CpuInfo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CpuInfo.swift; sourceTree = "<group>"; };
 		B46F25D523B22E4500E0A3F4 /* GpuInfo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GpuInfo.swift; sourceTree = "<group>"; };
 		B47D3C8C23ABEDF100DE911F /* CustomDashboardBox.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomDashboardBox.swift; sourceTree = "<group>"; };
@@ -140,22 +116,6 @@
 			files = (
 				B4DE727023C25F8C0001CF46 /* SystemKit.framework in Frameworks */,
 				158527EED93E69C906DD21E3 /* Pods_iGlance.framework in Frameworks */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		B46789C123A69ECB00CE572D /* Frameworks */ = {
-			isa = PBXFrameworksBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				B707CD62778C3F6F1EE510C8 /* Pods_iGlanceTests.framework in Frameworks */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		B46789CC23A69ECB00CE572D /* Frameworks */ = {
-			isa = PBXFrameworksBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				14E5D7E108D48F9542E9824A /* Pods_iGlance_iGlanceUITests.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -219,8 +179,6 @@
 			isa = PBXGroup;
 			children = (
 				B46789B423A69ECA00CE572D /* iGlance */,
-				B46789C723A69ECB00CE572D /* iGlanceTests */,
-				B46789D223A69ECB00CE572D /* iGlanceUITests */,
 				B4DE726A23C25F8C0001CF46 /* SystemKit */,
 				B46789B323A69ECA00CE572D /* Products */,
 				DC5547E60A2C6317C874630B /* Pods */,
@@ -232,8 +190,6 @@
 			isa = PBXGroup;
 			children = (
 				B46789B223A69ECA00CE572D /* iGlance.app */,
-				B46789C423A69ECB00CE572D /* iGlanceTests.xctest */,
-				B46789CF23A69ECB00CE572D /* iGlanceUITests.xctest */,
 				B4DE726923C25F8C0001CF46 /* SystemKit.framework */,
 			);
 			name = Products;
@@ -253,24 +209,6 @@
 				B4DE725E23C257610001CF46 /* Extensions.swift */,
 			);
 			path = iGlance;
-			sourceTree = "<group>";
-		};
-		B46789C723A69ECB00CE572D /* iGlanceTests */ = {
-			isa = PBXGroup;
-			children = (
-				B46789C823A69ECB00CE572D /* iGlanceTests.swift */,
-				B46789CA23A69ECB00CE572D /* Info.plist */,
-			);
-			path = iGlanceTests;
-			sourceTree = "<group>";
-		};
-		B46789D223A69ECB00CE572D /* iGlanceUITests */ = {
-			isa = PBXGroup;
-			children = (
-				B46789D323A69ECB00CE572D /* iGlanceUITests.swift */,
-				B46789D523A69ECB00CE572D /* Info.plist */,
-			);
-			path = iGlanceUITests;
 			sourceTree = "<group>";
 		};
 		B47D3C8B23ABEDCC00DE911F /* DashboardView */ = {
@@ -370,44 +308,6 @@
 			productReference = B46789B223A69ECA00CE572D /* iGlance.app */;
 			productType = "com.apple.product-type.application";
 		};
-		B46789C323A69ECB00CE572D /* iGlanceTests */ = {
-			isa = PBXNativeTarget;
-			buildConfigurationList = B46789DB23A69ECB00CE572D /* Build configuration list for PBXNativeTarget "iGlanceTests" */;
-			buildPhases = (
-				8FADDCC1D3EEECD815344A24 /* [CP] Check Pods Manifest.lock */,
-				B46789C023A69ECB00CE572D /* Sources */,
-				B46789C123A69ECB00CE572D /* Frameworks */,
-				B46789C223A69ECB00CE572D /* Resources */,
-			);
-			buildRules = (
-			);
-			dependencies = (
-				B46789C623A69ECB00CE572D /* PBXTargetDependency */,
-			);
-			name = iGlanceTests;
-			productName = iGlanceTests;
-			productReference = B46789C423A69ECB00CE572D /* iGlanceTests.xctest */;
-			productType = "com.apple.product-type.bundle.unit-test";
-		};
-		B46789CE23A69ECB00CE572D /* iGlanceUITests */ = {
-			isa = PBXNativeTarget;
-			buildConfigurationList = B46789DE23A69ECB00CE572D /* Build configuration list for PBXNativeTarget "iGlanceUITests" */;
-			buildPhases = (
-				9D4BB39CEF180A6417E4EF2B /* [CP] Check Pods Manifest.lock */,
-				B46789CB23A69ECB00CE572D /* Sources */,
-				B46789CC23A69ECB00CE572D /* Frameworks */,
-				B46789CD23A69ECB00CE572D /* Resources */,
-			);
-			buildRules = (
-			);
-			dependencies = (
-				B46789D123A69ECB00CE572D /* PBXTargetDependency */,
-			);
-			name = iGlanceUITests;
-			productName = iGlanceUITests;
-			productReference = B46789CF23A69ECB00CE572D /* iGlanceUITests.xctest */;
-			productType = "com.apple.product-type.bundle.ui-testing";
-		};
 		B4DE726823C25F8C0001CF46 /* SystemKit */ = {
 			isa = PBXNativeTarget;
 			buildConfigurationList = B4DE727223C25F8C0001CF46 /* Build configuration list for PBXNativeTarget "SystemKit" */;
@@ -439,14 +339,6 @@
 					B46789B123A69ECA00CE572D = {
 						CreatedOnToolsVersion = 11.3;
 					};
-					B46789C323A69ECB00CE572D = {
-						CreatedOnToolsVersion = 11.3;
-						TestTargetID = B46789B123A69ECA00CE572D;
-					};
-					B46789CE23A69ECB00CE572D = {
-						CreatedOnToolsVersion = 11.3;
-						TestTargetID = B46789B123A69ECA00CE572D;
-					};
 					B4DE726823C25F8C0001CF46 = {
 						CreatedOnToolsVersion = 11.3;
 						LastSwiftMigration = 1130;
@@ -467,8 +359,6 @@
 			projectRoot = "";
 			targets = (
 				B46789B123A69ECA00CE572D /* iGlance */,
-				B46789C323A69ECB00CE572D /* iGlanceTests */,
-				B46789CE23A69ECB00CE572D /* iGlanceUITests */,
 				B4DE726823C25F8C0001CF46 /* SystemKit */,
 			);
 		};
@@ -481,20 +371,6 @@
 			files = (
 				B46789BA23A69ECB00CE572D /* Assets.xcassets in Resources */,
 				B46789BD23A69ECB00CE572D /* Main.storyboard in Resources */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		B46789C223A69ECB00CE572D /* Resources */ = {
-			isa = PBXResourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		B46789CD23A69ECB00CE572D /* Resources */ = {
-			isa = PBXResourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -524,50 +400,6 @@
 			);
 			outputPaths = (
 				"$(DERIVED_FILE_DIR)/Pods-iGlance-checkManifestLockResult.txt",
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
-			showEnvVarsInLog = 0;
-		};
-		8FADDCC1D3EEECD815344A24 /* [CP] Check Pods Manifest.lock */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputFileListPaths = (
-			);
-			inputPaths = (
-				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
-				"${PODS_ROOT}/Manifest.lock",
-			);
-			name = "[CP] Check Pods Manifest.lock";
-			outputFileListPaths = (
-			);
-			outputPaths = (
-				"$(DERIVED_FILE_DIR)/Pods-iGlanceTests-checkManifestLockResult.txt",
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
-			showEnvVarsInLog = 0;
-		};
-		9D4BB39CEF180A6417E4EF2B /* [CP] Check Pods Manifest.lock */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputFileListPaths = (
-			);
-			inputPaths = (
-				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
-				"${PODS_ROOT}/Manifest.lock",
-			);
-			name = "[CP] Check Pods Manifest.lock";
-			outputFileListPaths = (
-			);
-			outputPaths = (
-				"$(DERIVED_FILE_DIR)/Pods-iGlance-iGlanceUITests-checkManifestLockResult.txt",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
@@ -622,22 +454,6 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		B46789C023A69ECB00CE572D /* Sources */ = {
-			isa = PBXSourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				B46789C923A69ECB00CE572D /* iGlanceTests.swift in Sources */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		B46789CB23A69ECB00CE572D /* Sources */ = {
-			isa = PBXSourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				B46789D423A69ECB00CE572D /* iGlanceUITests.swift in Sources */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
 		B4DE726523C25F8C0001CF46 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -652,16 +468,6 @@
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXTargetDependency section */
-		B46789C623A69ECB00CE572D /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			target = B46789B123A69ECA00CE572D /* iGlance */;
-			targetProxy = B46789C523A69ECB00CE572D /* PBXContainerItemProxy */;
-		};
-		B46789D123A69ECB00CE572D /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			target = B46789B123A69ECA00CE572D /* iGlance */;
-			targetProxy = B46789D023A69ECB00CE572D /* PBXContainerItemProxy */;
-		};
 		B4DE726F23C25F8C0001CF46 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
 			target = B4DE726823C25F8C0001CF46 /* SystemKit */;
@@ -842,94 +648,6 @@
 			};
 			name = Release;
 		};
-		B46789DC23A69ECB00CE572D /* Debug */ = {
-			isa = XCBuildConfiguration;
-			baseConfigurationReference = 6EAA7A6C4369581948235ABD /* Pods-iGlanceTests.debug.xcconfig */;
-			buildSettings = {
-				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
-				BUNDLE_LOADER = "$(TEST_HOST)";
-				CODE_SIGN_STYLE = Automatic;
-				COMBINE_HIDPI_IMAGES = YES;
-				DEVELOPMENT_TEAM = J6GXEPK4NG;
-				INFOPLIST_FILE = iGlanceTests/Info.plist;
-				LD_RUNPATH_SEARCH_PATHS = (
-					"$(inherited)",
-					"@executable_path/../Frameworks",
-					"@loader_path/../Frameworks",
-				);
-				MACOSX_DEPLOYMENT_TARGET = 10.15;
-				PRODUCT_BUNDLE_IDENTIFIER = D0miH.github.io.iGlanceTests;
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_VERSION = 5.0;
-				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/iGlance.app/Contents/MacOS/iGlance";
-			};
-			name = Debug;
-		};
-		B46789DD23A69ECB00CE572D /* Release */ = {
-			isa = XCBuildConfiguration;
-			baseConfigurationReference = 7418909044D8747C9BE8B0BA /* Pods-iGlanceTests.release.xcconfig */;
-			buildSettings = {
-				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
-				BUNDLE_LOADER = "$(TEST_HOST)";
-				CODE_SIGN_STYLE = Automatic;
-				COMBINE_HIDPI_IMAGES = YES;
-				DEVELOPMENT_TEAM = J6GXEPK4NG;
-				INFOPLIST_FILE = iGlanceTests/Info.plist;
-				LD_RUNPATH_SEARCH_PATHS = (
-					"$(inherited)",
-					"@executable_path/../Frameworks",
-					"@loader_path/../Frameworks",
-				);
-				MACOSX_DEPLOYMENT_TARGET = 10.15;
-				PRODUCT_BUNDLE_IDENTIFIER = D0miH.github.io.iGlanceTests;
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_VERSION = 5.0;
-				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/iGlance.app/Contents/MacOS/iGlance";
-			};
-			name = Release;
-		};
-		B46789DF23A69ECB00CE572D /* Debug */ = {
-			isa = XCBuildConfiguration;
-			baseConfigurationReference = 171AB134CB59FBA416D34FAF /* Pods-iGlance-iGlanceUITests.debug.xcconfig */;
-			buildSettings = {
-				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
-				CODE_SIGN_STYLE = Automatic;
-				COMBINE_HIDPI_IMAGES = YES;
-				DEVELOPMENT_TEAM = J6GXEPK4NG;
-				INFOPLIST_FILE = iGlanceUITests/Info.plist;
-				LD_RUNPATH_SEARCH_PATHS = (
-					"$(inherited)",
-					"@executable_path/../Frameworks",
-					"@loader_path/../Frameworks",
-				);
-				PRODUCT_BUNDLE_IDENTIFIER = D0miH.github.io.iGlanceUITests;
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_VERSION = 5.0;
-				TEST_TARGET_NAME = iGlance;
-			};
-			name = Debug;
-		};
-		B46789E023A69ECB00CE572D /* Release */ = {
-			isa = XCBuildConfiguration;
-			baseConfigurationReference = 935470C2452473A26C4D9B29 /* Pods-iGlance-iGlanceUITests.release.xcconfig */;
-			buildSettings = {
-				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
-				CODE_SIGN_STYLE = Automatic;
-				COMBINE_HIDPI_IMAGES = YES;
-				DEVELOPMENT_TEAM = J6GXEPK4NG;
-				INFOPLIST_FILE = iGlanceUITests/Info.plist;
-				LD_RUNPATH_SEARCH_PATHS = (
-					"$(inherited)",
-					"@executable_path/../Frameworks",
-					"@loader_path/../Frameworks",
-				);
-				PRODUCT_BUNDLE_IDENTIFIER = D0miH.github.io.iGlanceUITests;
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_VERSION = 5.0;
-				TEST_TARGET_NAME = iGlance;
-			};
-			name = Release;
-		};
 		B4DE727323C25F8C0001CF46 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
@@ -1006,24 +724,6 @@
 			buildConfigurations = (
 				B46789D923A69ECB00CE572D /* Debug */,
 				B46789DA23A69ECB00CE572D /* Release */,
-			);
-			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Release;
-		};
-		B46789DB23A69ECB00CE572D /* Build configuration list for PBXNativeTarget "iGlanceTests" */ = {
-			isa = XCConfigurationList;
-			buildConfigurations = (
-				B46789DC23A69ECB00CE572D /* Debug */,
-				B46789DD23A69ECB00CE572D /* Release */,
-			);
-			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Release;
-		};
-		B46789DE23A69ECB00CE572D /* Build configuration list for PBXNativeTarget "iGlanceUITests" */ = {
-			isa = XCConfigurationList;
-			buildConfigurations = (
-				B46789DF23A69ECB00CE572D /* Debug */,
-				B46789E023A69ECB00CE572D /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
