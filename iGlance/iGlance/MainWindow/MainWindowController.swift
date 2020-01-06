@@ -28,6 +28,9 @@ class MainWindowController: NSWindowController {
 
         // hide the zoom window button
         self.window?.standardWindowButton(.zoomButton)?.isHidden = true
+
+        // center the window
+        self.window?.center()
     }
 
     @objc

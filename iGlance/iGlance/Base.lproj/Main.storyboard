@@ -1608,24 +1608,26 @@
             <objects>
                 <viewController title="Preference Modal View Controller" storyboardIdentifier="PreferenceModalViewController" id="hqq-cw-DLQ" customClass="PreferenceModalViewController" customModule="iGlance" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" id="b2C-CX-ahd" customClass="PreferenceWindowView" customModule="iGlance" customModuleProvider="target">
-                        <rect key="frame" x="0.0" y="0.0" width="300" height="200"/>
+                        <rect key="frame" x="0.0" y="0.0" width="400" height="250"/>
                         <autoresizingMask key="autoresizingMask"/>
                         <subviews>
                             <visualEffectView fixedFrame="YES" blendingMode="behindWindow" material="popover" state="followsWindowActiveState" translatesAutoresizingMaskIntoConstraints="NO" id="laM-jM-zKc">
-                                <rect key="frame" x="0.0" y="0.0" width="300" height="200"/>
+                                <rect key="frame" x="0.0" y="0.0" width="400" height="250"/>
                                 <autoresizingMask key="autoresizingMask"/>
+                                <subviews>
+                                    <imageView horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="esp-rJ-Xwv">
+                                        <rect key="frame" x="125" y="155" width="150" height="75"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                                        <imageCell key="cell" refusesFirstResponder="YES" alignment="left" imageScaling="proportionallyDown" image="iGlance_logo_white" id="BAb-uN-mbT"/>
+                                    </imageView>
+                                </subviews>
                             </visualEffectView>
-                            <imageView horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="esp-rJ-Xwv">
-                                <rect key="frame" x="75" y="105" width="150" height="75"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                                <imageCell key="cell" refusesFirstResponder="YES" alignment="left" imageScaling="proportionallyDown" image="iGlance_logo_white" id="BAb-uN-mbT"/>
-                            </imageView>
                         </subviews>
                     </view>
                 </viewController>
                 <customObject id="3vg-hS-HbH" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-849" y="964"/>
+            <point key="canvasLocation" x="-941" y="1024"/>
         </scene>
     </scenes>
     <resources>
