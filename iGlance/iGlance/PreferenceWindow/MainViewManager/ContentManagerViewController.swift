@@ -11,7 +11,7 @@ import Cocoa
 class ContentManagerViewController: NSViewController {
     // MARK: -
     // MARK: Outlets
-    @IBOutlet weak var subViewControllerManager: NSView!
+    @IBOutlet private var subViewControllerManager: NSView!
 
     // MARK: -
     // MARK: Instance Variables

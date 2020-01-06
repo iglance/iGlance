@@ -139,22 +139,24 @@ public struct SKProcessAPI {
                     String(cString: UnsafeRawPointer($0).assumingMemoryBound(to: CChar.self))
                 }
 
-                list.append(SKProcessInfo(pid: Int(pid),
-                                        ppid: Int(kinfo.kp_eproc.e_ppid),
-                                        pgid: Int(kinfo.kp_eproc.e_pgid),
-                                        uid: Int(kinfo.kp_eproc.e_ucred.cr_uid),
-                                        command: command,
-                                        arch: arch(pid),
-                                        status: Int32(kinfo.kp_proc.p_stat)))
+                list.append(
+                    SKProcessInfo(
+                        pid: Int(pid),
+                        ppid: Int(kinfo.kp_eproc.e_ppid),
+                        pgid: Int(kinfo.kp_eproc.e_pgid),
+                        uid: Int(kinfo.kp_eproc.e_ucred.cr_uid),
+                        command: command,
+                        arch: arch(pid),
+                        status: Int32(kinfo.kp_proc.p_stat)
+                    )
+                )
 
                 mach_port_deallocate(mach_task_self_, task)
             }
 
-            // TODO: Missing deallocate for tasks
+            // TODO: Missing deallocate for tasks. Why do dealloc calls on tasks and psets fail?
             mach_port_deallocate(mach_task_self_, pset)
             mach_port_deallocate(mach_task_self_, psets![cpuSet])
-
-            // TODO: Why do dealloc calls on tasks and psets fail?
         }
 
         return list

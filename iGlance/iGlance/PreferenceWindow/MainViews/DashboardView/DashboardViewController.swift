@@ -11,16 +11,16 @@ import Cocoa
 class DashboardViewController: MainViewViewController {
     // MARK: -
     // MARK: Outlets
-    @IBOutlet weak var daysUptimeLabel: NSTextField!
-    @IBOutlet weak var hoursUptimeLabel: NSTextField!
+    @IBOutlet private var daysUptimeLabel: NSTextField!
+    @IBOutlet private var hoursUptimeLabel: NSTextField!
 
-    @IBOutlet weak var cpuNameLabel: NSTextField!
-    @IBOutlet weak var gpuNameLabel: NSTextField!
-    @IBOutlet weak var ramSizeLabel: NSTextField!
-    @IBOutlet weak var diskSizeLabel: NSTextField!
+    @IBOutlet private var cpuNameLabel: NSTextField!
+    @IBOutlet private var gpuNameLabel: NSTextField!
+    @IBOutlet private var ramSizeLabel: NSTextField!
+    @IBOutlet private var diskSizeLabel: NSTextField!
 
-    @IBOutlet weak var batteryHealthLabel: NSTextField!
-    @IBOutlet weak var batteryCyclesLabel: NSTextField!
+    @IBOutlet private var batteryHealthLabel: NSTextField!
+    @IBOutlet private var batteryCyclesLabel: NSTextField!
 
     // MARK: -
     // MARK: Private Variables

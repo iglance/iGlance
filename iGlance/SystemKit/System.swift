@@ -58,8 +58,6 @@ public struct SKSystem {
     - Can check this via pagesize shell command as well
     - C lib function getpagesize()
     - host_page_size()
-    
-    TODO: This should be static right?
     */
     public static let PAGE_SIZE = vm_kernel_page_size
 
@@ -69,8 +67,6 @@ public struct SKSystem {
 
     /**
     Unit options for method data returns.
-    
-    TODO: Pages?
     */
     public enum Unit: Double {
         // For going from byte to -
@@ -209,13 +205,15 @@ public struct SKSystem {
         var avg = [Double](repeating: 0, count: 3)
 
         switch type {
-            case .short:
-                let result = SKSystem.hostLoadInfo().avenrun
-                avg = [Double(result.0) / Double(LOAD_SCALE),
-                       Double(result.1) / Double(LOAD_SCALE),
-                       Double(result.2) / Double(LOAD_SCALE)]
-            case .long:
-                getloadavg(&avg, 3)
+        case .short:
+            let result = SKSystem.hostLoadInfo().avenrun
+            avg = [
+                Double(result.0) / Double(LOAD_SCALE),
+                Double(result.1) / Double(LOAD_SCALE),
+                Double(result.2) / Double(LOAD_SCALE)
+            ]
+        case .long:
+            getloadavg(&avg, 3)
         }
 
         return avg
@@ -237,9 +235,11 @@ public struct SKSystem {
     public static func machFactor() -> [Double] {
         let result = SKSystem.hostLoadInfo().mach_factor
 
-        return [Double(result.0) / Double(LOAD_SCALE),
-                Double(result.1) / Double(LOAD_SCALE),
-                Double(result.2) / Double(LOAD_SCALE)]
+        return [
+            Double(result.0) / Double(LOAD_SCALE),
+            Double(result.1) / Double(LOAD_SCALE),
+            Double(result.2) / Double(LOAD_SCALE)
+        ]
     }
 
     /// Total number of processes & threads
@@ -407,17 +407,17 @@ public struct SKSystem {
         //       hardcoding values, will move all power related calls to a
         //       separate struct.
         switch thermalLevel {
-            case 0:
-                // kIOPMThermalWarningLevelNormal
-                return SKSystem.ThermalLevel.Normal
-            case 5:
-                // kIOPMThermalWarningLevelDanger
-                return SKSystem.ThermalLevel.Danger
-            case 10:
-                // kIOPMThermalWarningLevelCrisis
-                return SKSystem.ThermalLevel.Crisis
-            default:
-                return SKSystem.ThermalLevel.Unknown
+        case 0:
+            // kIOPMThermalWarningLevelNormal
+            return SKSystem.ThermalLevel.Normal
+        case 5:
+            // kIOPMThermalWarningLevelDanger
+            return SKSystem.ThermalLevel.Danger
+        case 10:
+            // kIOPMThermalWarningLevelCrisis
+            return SKSystem.ThermalLevel.Crisis
+        default:
+            return SKSystem.ThermalLevel.Unknown
         }
     }
 
@@ -453,9 +453,12 @@ public struct SKSystem {
         let hostInfo = host_load_info_t.allocate(capacity: 1)
 
         let result = hostInfo.withMemoryRebound(to: integer_t.self, capacity: Int(size)) {
-            host_statistics(machHost, HOST_LOAD_INFO,
-                                      $0,
-                                      &size)
+            host_statistics(
+                machHost,
+                HOST_LOAD_INFO,
+                $0,
+                &size
+            )
         }
 
         let data = hostInfo.move()
@@ -476,9 +479,12 @@ public struct SKSystem {
         let hostInfo = host_cpu_load_info_t.allocate(capacity: 1)
 
         let result = hostInfo.withMemoryRebound(to: integer_t.self, capacity: Int(size)) {
-            host_statistics(machHost, HOST_CPU_LOAD_INFO,
-                                      $0,
-                                      &size)
+            host_statistics(
+                machHost,
+                HOST_CPU_LOAD_INFO,
+                $0,
+                &size
+            )
         }
 
         let data = hostInfo.move()

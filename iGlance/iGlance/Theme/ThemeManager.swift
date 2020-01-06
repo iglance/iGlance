@@ -64,7 +64,7 @@ class ThemeManager {
      *
      * - Returns: True if dark mode is enabled. Returns false otherwise.
      */
-    public static func isDarkTheme() -> Bool {
+    static func isDarkTheme() -> Bool {
         return UserDefaults.standard.string(forKey: "AppleInterfaceStyle") != nil
     }
 

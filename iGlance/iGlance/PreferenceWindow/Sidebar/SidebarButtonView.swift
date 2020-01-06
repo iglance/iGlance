@@ -11,8 +11,8 @@ import Cocoa
 class SidebarButtonView: NSView {
     // MARK: -
     // MARK: Public Instance Variables
-    public var mainViewStoryboardID: String?
-    public var highlighted: Bool = false {
+    var mainViewStoryboardID: String?
+    var highlighted: Bool = false {
         didSet {
             self.needsDisplay = true
         }
@@ -80,7 +80,7 @@ class SidebarButtonView: NSView {
     /**
      * Sets the function which is called when the button is clicked.
      */
-    public func onButtonClick(callback: @escaping (_ sender: SidebarButtonView) -> Void) {
+    func onButtonClick(callback: @escaping (_ sender: SidebarButtonView) -> Void) {
         self.onClickCallback = callback
     }
 }

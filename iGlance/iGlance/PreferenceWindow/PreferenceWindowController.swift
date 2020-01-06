@@ -11,7 +11,7 @@ import Cocoa
 class PreferenceWindowController: NSWindowController {
     // MARK: -
     // MARK: Outlets
-    @IBOutlet weak var mainWindow: NSWindow!
+    @IBOutlet private var mainWindow: NSWindow!
 
     // MARK: -
     // MARK: Function Overrides
@@ -27,7 +27,8 @@ class PreferenceWindowController: NSWindowController {
         )
     }
 
-    @objc func updateMainWindow() {
+    @objc
+    private func updateMainWindow() {
         mainWindow.backgroundColor = ThemeManager.currentTheme().titlebarColor
         mainWindow.update()
     }

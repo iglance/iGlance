@@ -24,8 +24,8 @@ class SidebarViewController: NSViewController {
     // MARK: -
     // MARK: Outlets
 
-    @IBOutlet weak var logoImage: NSImageView!
-    @IBOutlet weak var sidebarButtonStackView: NSStackView!
+    @IBOutlet private var logoImage: NSImageView!
+    @IBOutlet private var sidebarButtonStackView: NSStackView!
 
     // MARK: -
     // MARK: Private Variables
@@ -44,6 +44,8 @@ class SidebarViewController: NSViewController {
     // MARK: Function Overrides
 
     override func viewDidLoad() {
+        super.viewDidLoad()
+
         // set the storyboard ids of the main views of the buttons
         for identifier in sidebarButtonViewIDs {
             let buttonView = getSidebarButtonWith(identifier: identifier.buttonViewID)!
@@ -111,7 +113,8 @@ class SidebarViewController: NSViewController {
     /**
      * Callback which is called when the theme is changed.
      */
-    @objc private func onThemeChange() {
+    @objc
+    private func onThemeChange() {
         // change the sidebar logo
         changeSidebarLogo()
     }
