@@ -1,5 +1,5 @@
 //
-//  PreferenceWindowController.swift
+//  MainWindowController.swift
 //  iGlance
 //
 //  Created by Dominik on 18.12.19.
@@ -8,7 +8,7 @@
 
 import Cocoa
 
-class PreferenceWindowController: NSWindowController {
+class MainWindowController: NSWindowController {
     // MARK: -
     // MARK: Outlets
     @IBOutlet private var mainWindow: NSWindow!
