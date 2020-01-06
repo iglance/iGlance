@@ -25,6 +25,9 @@ class MainWindowController: NSWindowController {
             name: .AppleInterfaceThemeChangedNotification,
             object: nil
         )
+
+        // hide the zoom window button
+        self.window?.standardWindowButton(.zoomButton)?.isHidden = true
     }
 
     @objc

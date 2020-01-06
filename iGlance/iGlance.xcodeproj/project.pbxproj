@@ -13,6 +13,8 @@
 		B43ABF2823AA1E99007F93BA /* SidebarButtonView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B43ABF2723AA1E99007F93BA /* SidebarButtonView.swift */; };
 		B43ABF2A23AA32FA007F93BA /* SidebarViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B43ABF2923AA32FA007F93BA /* SidebarViewController.swift */; };
 		B43ABF2C23AA3729007F93BA /* MainWindowController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B43ABF2B23AA3729007F93BA /* MainWindowController.swift */; };
+		B43E111323C3AF36000D58CF /* PreferenceModalViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B43E111223C3AF36000D58CF /* PreferenceModalViewController.swift */; };
+		B43E111623C3B1F3000D58CF /* PreferenceWindowView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B43E111523C3B1F3000D58CF /* PreferenceWindowView.swift */; };
 		B46789B623A69ECA00CE572D /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = B46789B523A69ECA00CE572D /* AppDelegate.swift */; };
 		B46789B823A69ECA00CE572D /* MainWindowViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B46789B723A69ECA00CE572D /* MainWindowViewController.swift */; };
 		B46789BA23A69ECB00CE572D /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = B46789B923A69ECB00CE572D /* Assets.xcassets */; };
@@ -78,6 +80,8 @@
 		B43ABF2723AA1E99007F93BA /* SidebarButtonView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SidebarButtonView.swift; sourceTree = "<group>"; };
 		B43ABF2923AA32FA007F93BA /* SidebarViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SidebarViewController.swift; sourceTree = "<group>"; };
 		B43ABF2B23AA3729007F93BA /* MainWindowController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainWindowController.swift; sourceTree = "<group>"; };
+		B43E111223C3AF36000D58CF /* PreferenceModalViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PreferenceModalViewController.swift; sourceTree = "<group>"; };
+		B43E111523C3B1F3000D58CF /* PreferenceWindowView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PreferenceWindowView.swift; sourceTree = "<group>"; };
 		B46789B223A69ECA00CE572D /* iGlance.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = iGlance.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		B46789B523A69ECA00CE572D /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		B46789B723A69ECA00CE572D /* MainWindowViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainWindowViewController.swift; sourceTree = "<group>"; };
@@ -175,6 +179,15 @@
 			path = SystemInfo;
 			sourceTree = "<group>";
 		};
+		B43E111423C3B1D8000D58CF /* PreferenceWindow */ = {
+			isa = PBXGroup;
+			children = (
+				B43E111223C3AF36000D58CF /* PreferenceModalViewController.swift */,
+				B43E111523C3B1F3000D58CF /* PreferenceWindowView.swift */,
+			);
+			path = PreferenceWindow;
+			sourceTree = "<group>";
+		};
 		B46789A923A69ECA00CE572D = {
 			isa = PBXGroup;
 			children = (
@@ -198,6 +211,7 @@
 		B46789B423A69ECA00CE572D /* iGlance */ = {
 			isa = PBXGroup;
 			children = (
+				B43E111423C3B1D8000D58CF /* PreferenceWindow */,
 				B42BCE6123AC01A200A13601 /* SystemInfo */,
 				B40E946023A9435200D63D17 /* MainWindow */,
 				B4C37E6E23A91F2F008C7FC0 /* Theme */,
@@ -431,10 +445,12 @@
 			buildActionMask = 2147483647;
 			files = (
 				B4DE728023C2644A0001CF46 /* Battery.swift in Sources */,
+				B43E111323C3AF36000D58CF /* PreferenceModalViewController.swift in Sources */,
 				B4C37E6723A8CF89008C7FC0 /* ContentManagerViewController.swift in Sources */,
 				B4D86E1B23AA710B00671B52 /* MainViewViewController.swift in Sources */,
 				B46F25D623B22E4500E0A3F4 /* GpuInfo.swift in Sources */,
 				B46789B823A69ECA00CE572D /* MainWindowViewController.swift in Sources */,
+				B43E111623C3B1F3000D58CF /* PreferenceWindowView.swift in Sources */,
 				B4C37E6B23A8D715008C7FC0 /* SegueAnimator.swift in Sources */,
 				B43ABF2C23AA3729007F93BA /* MainWindowController.swift in Sources */,
 				B4D82FDC23C1031800D502FF /* DiskInfo.swift in Sources */,

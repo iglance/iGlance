@@ -705,7 +705,7 @@
         <!--Main Window View Controller-->
         <scene sceneID="hIz-AP-VOD">
             <objects>
-                <viewController title="Main Window View Controller" id="XfG-lQ-9wD" customClass="MainWindowViewController" customModule="iGlance" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController title="Main Window View Controller" storyboardIdentifier="MainWindowViewController" id="XfG-lQ-9wD" customClass="MainWindowViewController" customModule="iGlance" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" id="m2S-Jp-Qdl">
                         <rect key="frame" x="0.0" y="0.0" width="800" height="500"/>
                         <autoresizingMask key="autoresizingMask" flexibleMinX="YES" widthSizable="YES" flexibleMaxX="YES" flexibleMinY="YES" heightSizable="YES" flexibleMaxY="YES"/>
@@ -754,7 +754,7 @@
         <!--Content Sub View Controller-->
         <scene sceneID="WQ0-TI-BrL">
             <objects>
-                <viewController title="Content Sub View Controller" id="zU9-is-Ney" customClass="ContentManagerViewController" customModule="iGlance" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController title="Content Sub View Controller" storyboardIdentifier="ContentManagerViewController" id="zU9-is-Ney" customClass="ContentManagerViewController" customModule="iGlance" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" id="F8R-ww-qK3">
                         <rect key="frame" x="0.0" y="0.0" width="600" height="500"/>
                         <autoresizingMask key="autoresizingMask"/>
@@ -1275,7 +1275,7 @@
         <!--Sidebar View Controller-->
         <scene sceneID="DhV-CZ-Ilx">
             <objects>
-                <viewController id="RxD-FS-69G" customClass="SidebarViewController" customModule="iGlance" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="SidebarViewController" id="RxD-FS-69G" customClass="SidebarViewController" customModule="iGlance" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" id="3gi-0a-GRD">
                         <rect key="frame" x="0.0" y="0.0" width="200" height="500"/>
                         <autoresizingMask key="autoresizingMask"/>
@@ -1287,12 +1287,12 @@
                                         <rect key="frame" x="0.0" y="124" width="200" height="376"/>
                                         <subviews>
                                             <imageView horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="taj-99-r9F">
-                                                <rect key="frame" x="5" y="290" width="190" height="86"/>
+                                                <rect key="frame" x="10" y="290" width="180" height="86"/>
                                                 <constraints>
-                                                    <constraint firstAttribute="width" constant="190" id="OZm-2W-bg8"/>
+                                                    <constraint firstAttribute="width" constant="180" id="OZm-2W-bg8"/>
                                                     <constraint firstAttribute="height" constant="86" id="ZHh-R3-kTD"/>
                                                 </constraints>
-                                                <imageCell key="cell" refusesFirstResponder="YES" alignment="left" imageScaling="proportionallyUpOrDown" id="ZKe-tJ-yT9"/>
+                                                <imageCell key="cell" refusesFirstResponder="YES" alignment="left" imageScaling="proportionallyUpOrDown" image="iGlance_logo_white" id="ZKe-tJ-yT9"/>
                                             </imageView>
                                             <stackView distribution="fill" orientation="vertical" alignment="centerX" spacing="-2" horizontalStackHuggingPriority="249.99998474121094" verticalStackHuggingPriority="249.99998474121094" detachesHiddenViews="YES" translatesAutoresizingMaskIntoConstraints="NO" id="EiX-L0-7OK">
                                                 <rect key="frame" x="0.0" y="0.0" width="200" height="290"/>
@@ -1551,8 +1551,8 @@
                                             </stackView>
                                         </subviews>
                                         <constraints>
-                                            <constraint firstItem="taj-99-r9F" firstAttribute="leading" secondItem="nip-rU-eMF" secondAttribute="leading" constant="5" id="9uh-vB-9p5"/>
-                                            <constraint firstAttribute="trailing" secondItem="taj-99-r9F" secondAttribute="trailing" constant="5" id="wZw-ES-xS9"/>
+                                            <constraint firstItem="taj-99-r9F" firstAttribute="leading" secondItem="nip-rU-eMF" secondAttribute="leading" constant="10" id="9uh-vB-9p5"/>
+                                            <constraint firstAttribute="trailing" secondItem="taj-99-r9F" secondAttribute="trailing" constant="10" id="wZw-ES-xS9"/>
                                         </constraints>
                                         <visibilityPriorities>
                                             <integer value="1000"/>
@@ -1574,7 +1574,7 @@
                                             <font key="font" metaFont="system"/>
                                         </buttonCell>
                                         <connections>
-                                            <action selector="preferenceButtonClick:" target="RxD-FS-69G" id="IB1-FI-57B"/>
+                                            <action selector="preferenceButtonClick:" target="RxD-FS-69G" id="KIW-nj-S3E"/>
                                         </connections>
                                     </button>
                                 </subviews>
@@ -1595,7 +1595,7 @@
                     </view>
                     <connections>
                         <outlet property="logoImage" destination="taj-99-r9F" id="vQJ-vo-JI4"/>
-                        <outlet property="preferenceButton" destination="1Dq-LP-REw" id="Z30-w5-3bh"/>
+                        <outlet property="preferenceButton" destination="1Dq-LP-REw" id="8I7-8P-AOV"/>
                         <outlet property="sidebarButtonStackView" destination="EiX-L0-7OK" id="JZs-DZ-ms0"/>
                     </connections>
                 </viewController>
@@ -1603,8 +1603,33 @@
             </objects>
             <point key="canvasLocation" x="-545" y="1114"/>
         </scene>
+        <!--Preference Modal View Controller-->
+        <scene sceneID="gFk-SS-aul">
+            <objects>
+                <viewController title="Preference Modal View Controller" storyboardIdentifier="PreferenceModalViewController" id="hqq-cw-DLQ" customClass="PreferenceModalViewController" customModule="iGlance" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" id="b2C-CX-ahd" customClass="PreferenceWindowView" customModule="iGlance" customModuleProvider="target">
+                        <rect key="frame" x="0.0" y="0.0" width="300" height="200"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                        <subviews>
+                            <visualEffectView fixedFrame="YES" blendingMode="behindWindow" material="popover" state="followsWindowActiveState" translatesAutoresizingMaskIntoConstraints="NO" id="laM-jM-zKc">
+                                <rect key="frame" x="0.0" y="0.0" width="300" height="200"/>
+                                <autoresizingMask key="autoresizingMask"/>
+                            </visualEffectView>
+                            <imageView horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="esp-rJ-Xwv">
+                                <rect key="frame" x="75" y="105" width="150" height="75"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                                <imageCell key="cell" refusesFirstResponder="YES" alignment="left" imageScaling="proportionallyDown" image="iGlance_logo_white" id="BAb-uN-mbT"/>
+                            </imageView>
+                        </subviews>
+                    </view>
+                </viewController>
+                <customObject id="3vg-hS-HbH" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-849" y="964"/>
+        </scene>
     </scenes>
     <resources>
         <image name="NSActionTemplate" width="14" height="14"/>
+        <image name="iGlance_logo_white" width="1280" height="500"/>
     </resources>
 </document>

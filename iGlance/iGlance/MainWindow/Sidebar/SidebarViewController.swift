@@ -7,6 +7,7 @@
 //
 
 import Cocoa
+import os.log
 
 class SidebarViewController: NSViewController {
     // MARK: -
@@ -26,6 +27,7 @@ class SidebarViewController: NSViewController {
 
     @IBOutlet private var logoImage: NSImageView!
     @IBOutlet private var sidebarButtonStackView: NSStackView!
+    @IBOutlet private var preferenceButton: NSButton!
 
     // MARK: -
     // MARK: Private Variables
@@ -39,6 +41,7 @@ class SidebarViewController: NSViewController {
         SidebarButtonIDs(buttonViewID: "FanButtonView", mainViewStoryboardID: "FanStoryboardID"),
         SidebarButtonIDs(buttonViewID: "BatteryButtonView", mainViewStoryboardID: "BatteryStoryboardID")
     ]
+    private var preferenceModalViewController: PreferenceModalViewController?
 
     // MARK: -
     // MARK: Function Overrides
@@ -66,6 +69,46 @@ class SidebarViewController: NSViewController {
 
         // add the correct logo image at startup
         changeSidebarLogo()
+    }
+
+    // MARK: -
+    // MARK: Actions
+
+    @IBAction private func preferenceButtonClick(_ sender: NSButton) {
+        // instantiate the view controller
+        guard let preferenceModalViewController = self.storyboard?.instantiateController(identifier: "PreferenceModalViewController") as PreferenceModalViewController? else {
+            os_log("Could not instantiate 'PreferenceModalViewController'", type: .error)
+            return
+        }
+
+        // first display the view controller since otherwise its window variable is nil
+        presentAsModalWindow(preferenceModalViewController)
+
+        // get the position of the main window
+        guard let parentWindowFrame: NSRect = self.view.window?.frame else {
+            os_log("Could not retrieve the position of the modal parent window frame", type: .error)
+            return
+        }
+
+        // get the position of the modal window
+        guard let modalWindowFrame: NSRect = preferenceModalViewController.view.window?.frame else {
+            os_log("Could not retrieve the position of the modal window", type: .error)
+            return
+        }
+
+        // get the window of the modal
+        guard let modalWindow = preferenceModalViewController.view.window else {
+            os_log("Could not retrieve the modal window", type: .error)
+            return
+        }
+
+        // position the modal in the center of the main window
+        // (coordinate center of a window is in the left lower corner)
+        let newWindowPosition = NSPoint(
+            x: parentWindowFrame.midX - modalWindowFrame.width / 2,
+            y: parentWindowFrame.midY + modalWindowFrame.height / 2
+        )
+        modalWindow.setFrameTopLeftPoint(newWindowPosition)
     }
 
     // MARK: -
