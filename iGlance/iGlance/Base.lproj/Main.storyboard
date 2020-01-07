@@ -1611,18 +1611,68 @@
                         <rect key="frame" x="0.0" y="0.0" width="400" height="250"/>
                         <autoresizingMask key="autoresizingMask"/>
                         <subviews>
-                            <visualEffectView fixedFrame="YES" blendingMode="behindWindow" material="popover" state="followsWindowActiveState" translatesAutoresizingMaskIntoConstraints="NO" id="laM-jM-zKc">
-                                <rect key="frame" x="0.0" y="0.0" width="400" height="250"/>
-                                <autoresizingMask key="autoresizingMask"/>
+                            <stackView distribution="fill" orientation="horizontal" alignment="top" spacing="5" horizontalStackHuggingPriority="249.99998474121094" verticalStackHuggingPriority="249.99998474121094" detachesHiddenViews="YES" translatesAutoresizingMaskIntoConstraints="NO" id="bD9-hh-nap">
+                                <rect key="frame" x="160" y="126" width="81" height="16"/>
                                 <subviews>
-                                    <imageView horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="esp-rJ-Xwv">
-                                        <rect key="frame" x="125" y="155" width="150" height="75"/>
-                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                                        <imageCell key="cell" refusesFirstResponder="YES" alignment="left" imageScaling="proportionallyDown" image="iGlance_logo_white" id="BAb-uN-mbT"/>
-                                    </imageView>
+                                    <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="jmM-1U-kd7">
+                                        <rect key="frame" x="-2" y="0.0" width="50" height="16"/>
+                                        <textFieldCell key="cell" lineBreakMode="clipping" title="Version" id="Gjp-IE-r9u">
+                                            <font key="font" metaFont="system"/>
+                                            <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
+                                            <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
+                                        </textFieldCell>
+                                    </textField>
+                                    <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="Sbh-ca-W9W">
+                                        <rect key="frame" x="49" y="0.0" width="34" height="16"/>
+                                        <textFieldCell key="cell" lineBreakMode="clipping" title="2.0.0" id="jD6-pB-bkl">
+                                            <font key="font" metaFont="system"/>
+                                            <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
+                                            <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
+                                        </textFieldCell>
+                                    </textField>
                                 </subviews>
-                            </visualEffectView>
+                                <visibilityPriorities>
+                                    <integer value="1000"/>
+                                    <integer value="1000"/>
+                                </visibilityPriorities>
+                                <customSpacing>
+                                    <real value="3.4028234663852886e+38"/>
+                                    <real value="3.4028234663852886e+38"/>
+                                </customSpacing>
+                            </stackView>
+                            <imageView horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="esp-rJ-Xwv">
+                                <rect key="frame" x="100" y="152" width="200" height="78"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="78" id="oUO-uE-T3G"/>
+                                    <constraint firstAttribute="width" constant="200" id="qwz-J4-uVk"/>
+                                </constraints>
+                                <imageCell key="cell" refusesFirstResponder="YES" alignment="left" imageScaling="proportionallyDown" image="iGlance_logo_white" id="BAb-uN-mbT"/>
+                            </imageView>
+                            <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="3Qq-JC-Rt3">
+                                <rect key="frame" x="124" y="13" width="152" height="32"/>
+                                <buttonCell key="cell" type="push" title="Check for updates" bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="7Qm-yQ-Axt">
+                                    <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
+                                    <font key="font" metaFont="system"/>
+                                </buttonCell>
+                            </button>
+                            <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="Ccc-Hv-nkz">
+                                <rect key="frame" x="136" y="59" width="129" height="18"/>
+                                <buttonCell key="cell" type="check" title="Autostart on boot" bezelStyle="regularSquare" imagePosition="left" inset="2" id="fg4-3Q-tWh">
+                                    <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
+                                    <font key="font" metaFont="system"/>
+                                </buttonCell>
+                            </button>
                         </subviews>
+                        <constraints>
+                            <constraint firstAttribute="bottom" secondItem="3Qq-JC-Rt3" secondAttribute="bottom" constant="20" id="5vd-Hf-AUT"/>
+                            <constraint firstItem="bD9-hh-nap" firstAttribute="centerX" secondItem="b2C-CX-ahd" secondAttribute="centerX" id="HnD-VH-osJ"/>
+                            <constraint firstItem="esp-rJ-Xwv" firstAttribute="centerX" secondItem="b2C-CX-ahd" secondAttribute="centerX" id="JNm-Lv-aVW"/>
+                            <constraint firstItem="3Qq-JC-Rt3" firstAttribute="top" secondItem="Ccc-Hv-nkz" secondAttribute="bottom" constant="20" id="XO7-LF-QdG"/>
+                            <constraint firstItem="Ccc-Hv-nkz" firstAttribute="centerX" secondItem="b2C-CX-ahd" secondAttribute="centerX" id="Za0-Ll-cw6"/>
+                            <constraint firstItem="bD9-hh-nap" firstAttribute="top" secondItem="esp-rJ-Xwv" secondAttribute="bottom" constant="10" id="eAs-md-vGJ"/>
+                            <constraint firstItem="esp-rJ-Xwv" firstAttribute="top" secondItem="b2C-CX-ahd" secondAttribute="top" constant="20" id="mej-Bn-Db1"/>
+                            <constraint firstItem="3Qq-JC-Rt3" firstAttribute="centerX" secondItem="b2C-CX-ahd" secondAttribute="centerX" id="wba-cF-W7b"/>
+                        </constraints>
                     </view>
                 </viewController>
                 <customObject id="3vg-hS-HbH" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>

@@ -109,6 +109,14 @@ class SidebarViewController: NSViewController {
             y: parentWindowFrame.midY + modalWindowFrame.height / 2
         )
         modalWindow.setFrameTopLeftPoint(newWindowPosition)
+
+        // make the main window unmovable
+        self.view.window?.isMovable = false
+
+        // set the callback to make the main window movable again after the preference window was closed
+        preferenceModalViewController.onDisappear {
+            self.view.window?.isMovable = true
+        }
     }
 
     // MARK: -
