@@ -1,20 +1,8 @@
 # Uncomment the next line to define a global platform for your project
 platform :osx, '10.6'
 
-def shared_pods
+target 'iGlance' do
   # Pods for iGlance
   pod "SwiftLint"
-end
-
-target 'iGlance' do
-  shared_pods
-end
-
-target 'iGlanceLauncher' do
-  shared_pods
-end
-
-target 'SystemKit' do
-  shared_pods
 end
 
