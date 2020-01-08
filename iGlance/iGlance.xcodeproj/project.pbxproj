@@ -272,12 +272,12 @@
 				B40E946023A9435200D63D17 /* MainWindow */,
 				B4C37E6E23A91F2F008C7FC0 /* Theme */,
 				B46789B523A69ECA00CE572D /* AppDelegate.swift */,
+				B4DE725E23C257610001CF46 /* Extensions.swift */,
+				B49F5D5623C5BCAF009E9BE6 /* UserSettings.swift */,
 				B46789B923A69ECB00CE572D /* Assets.xcassets */,
 				B46789BB23A69ECB00CE572D /* Main.storyboard */,
 				B46789BE23A69ECB00CE572D /* Info.plist */,
 				B46789BF23A69ECB00CE572D /* iGlance.entitlements */,
-				B4DE725E23C257610001CF46 /* Extensions.swift */,
-				B49F5D5623C5BCAF009E9BE6 /* UserSettings.swift */,
 			);
 			path = iGlance;
 			sourceTree = "<group>";

@@ -72,6 +72,37 @@ class SidebarButtonView: NSView {
             ThemeManager.currentTheme().sidebarButtonHoverColor.setFill()
             dirtyRect.fill()
         }
+
+        // update the color of the label
+        updateFontColor()
+    }
+
+    // MARK: -
+    // MARK: Private Functions
+
+    /**
+     * Changes the color of the icon and the label according to the currently selected theme.
+     */
+    private func updateFontColor() {
+        // get the stack view
+        let stackView = self.subviews[0] as! NSStackView
+        // get the icon and the label
+        let icon = stackView.subviews[0] as! NSImageView
+        let label = stackView.subviews[1] as! NSTextField
+
+        if highlighted && ThemeManager.currentTheme() == Theme.lightTheme {
+            // if the light theme is active, set the font and the icon of the highlighted button
+            // to the colors of the dark theme to have more contrast
+
+            label.textColor = Theme.darkTheme.sidebarFontColor
+            icon.image = NSImage(named: "Dashboard_dark")
+            return
+        }
+
+        // change the color of the label
+        label.textColor = ThemeManager.currentTheme().sidebarFontColor
+        // change the image according to the theme
+        icon.image = ThemeManager.currentTheme() == Theme.darkTheme ? NSImage(named: "Dashboard_dark") : NSImage(named: "Dashboard_light")
     }
 
     // MARK: -
