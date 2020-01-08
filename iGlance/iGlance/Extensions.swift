@@ -12,6 +12,9 @@ import Cocoa
 extension Notification.Name {
     /** The notification name for os theme changes. */
     static let AppleInterfaceThemeChangedNotification = Notification.Name("AppleInterfaceThemeChangedNotification")
+
+    /** Notification name to kill the launcher application */
+    static let killLauncher = Notification.Name("killLauncher")
 }
 
 extension NSColor {

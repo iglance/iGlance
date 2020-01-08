@@ -76,7 +76,7 @@ class SidebarViewController: NSViewController {
 
     @IBAction private func preferenceButtonClick(_ sender: NSButton) {
         // instantiate the view controller
-        guard let preferenceModalViewController = self.storyboard?.instantiateController(identifier: "PreferenceModalViewController") as PreferenceModalViewController? else {
+        guard let preferenceModalViewController = self.storyboard?.instantiateController(withIdentifier: "PreferenceModalViewController") as! PreferenceModalViewController? else {
             os_log("Could not instantiate 'PreferenceModalViewController'", type: .error)
             return
         }

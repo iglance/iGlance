@@ -14,10 +14,10 @@
             buildForAnalyzing = "YES">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "B46789B123A69ECA00CE572D"
-               BuildableName = "iGlance.app"
-               BlueprintName = "iGlance"
-               ReferencedContainer = "container:iGlance.xcodeproj">
+               BlueprintIdentifier = "A6A4614AF4C4E85B4D24E458ECAACBE8"
+               BuildableName = "libPods-iGlance.a"
+               BlueprintName = "Pods-iGlance"
+               ReferencedContainer = "container:Pods.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>
       </BuildActionEntries>
@@ -40,16 +40,6 @@
       debugDocumentVersioning = "YES"
       debugServiceExtension = "internal"
       allowLocationSimulation = "YES">
-      <BuildableProductRunnable
-         runnableDebuggingMode = "0">
-         <BuildableReference
-            BuildableIdentifier = "primary"
-            BlueprintIdentifier = "B46789B123A69ECA00CE572D"
-            BuildableName = "iGlance.app"
-            BlueprintName = "iGlance"
-            ReferencedContainer = "container:iGlance.xcodeproj">
-         </BuildableReference>
-      </BuildableProductRunnable>
    </LaunchAction>
    <ProfileAction
       buildConfiguration = "Release"
@@ -57,16 +47,15 @@
       savedToolIdentifier = ""
       useCustomWorkingDirectory = "NO"
       debugDocumentVersioning = "YES">
-      <BuildableProductRunnable
-         runnableDebuggingMode = "0">
+      <MacroExpansion>
          <BuildableReference
             BuildableIdentifier = "primary"
-            BlueprintIdentifier = "B46789B123A69ECA00CE572D"
-            BuildableName = "iGlance.app"
-            BlueprintName = "iGlance"
-            ReferencedContainer = "container:iGlance.xcodeproj">
+            BlueprintIdentifier = "A6A4614AF4C4E85B4D24E458ECAACBE8"
+            BuildableName = "libPods-iGlance.a"
+            BlueprintName = "Pods-iGlance"
+            ReferencedContainer = "container:Pods.xcodeproj">
          </BuildableReference>
-      </BuildableProductRunnable>
+      </MacroExpansion>
    </ProfileAction>
    <AnalyzeAction
       buildConfiguration = "Debug">

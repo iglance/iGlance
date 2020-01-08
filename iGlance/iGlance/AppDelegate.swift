@@ -7,14 +7,44 @@
 //
 
 import Cocoa
+import ServiceManagement
+import os.log
 
 @NSApplicationMain
 class AppDelegate: NSObject, NSApplicationDelegate {
-    func applicationDidFinishLaunching(_ aNotification: Notification) {
-        // Insert code here to initialize your application
+    static let userSettings = UserSettings()
+
+    // MARK: -
+    // MARK: Lifecycle Functions
+
+    func applicationDidFinishLaunching(_ notification: Notification) {
+        // kill the launcher app
+               killLauncherApplication()
     }
 
-    func applicationWillTerminate(_ aNotification: Notification) {
-        // Insert code here to tear down your application
+    // MARK: -
+    // MARK: Private functions
+
+    /**
+     * Kills the iGlanceLauncher application.
+     */
+    private func killLauncherApplication() {
+        // get all currently running apps
+        let runningApps = NSWorkspace.shared.runningApplications
+        // check if the launcher is already running
+        // swiftlint:disable:next contains_over_filter_is_empty
+        let launcherIsRunning = !runningApps.filter {
+            $0.bundleIdentifier == LAUNCHER_BUNDLE_IDENTIFIER
+        }.isEmpty
+
+        if launcherIsRunning {
+            guard let mainAppBundleIdentifier = Bundle.main.bundleIdentifier else {
+                os_log("Could not retrieve the main bundle identifier", type: .error)
+                return
+            }
+
+            // if the launcher application is running terminate it
+            DistributedNotificationCenter.default().post(name: .killLauncher, object: mainAppBundleIdentifier)
+        }
     }
 }

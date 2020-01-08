@@ -15,38 +15,31 @@
 			dependencies = (
 			);
 			name = SwiftLint;
-			productName = SwiftLint;
 		};
 /* End PBXAggregateTarget section */
 
 /* Begin PBXBuildFile section */
-		0504C9F26EC106A1089AC7E3FBD988A2 /* Pods-iGlance-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = 4347850543B0F1C31F5BC1DB49EC97CD /* Pods-iGlance-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		1C2D74BD3B2205CA12593859F21EAD23 /* Pods-iGlance-iGlanceUITests-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = 28463597ED29349C2041039EB8D9209F /* Pods-iGlance-iGlanceUITests-dummy.m */; };
-		2C0289C55C573F1B6B82EEC3F11CA439 /* Pods-iGlance-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = CD1B7960EF400298BF0A1912E3BD109B /* Pods-iGlance-dummy.m */; };
-		4C66216ED88C9893BB2E83742F78ACA8 /* Pods-iGlance-iGlanceUITests-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = B76FCCEA556F0A9B94131D9795772E8F /* Pods-iGlance-iGlanceUITests-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		5C54A2339F18DD597BFA1F7D91CFC342 /* Pods-iGlanceTests-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = 1388562FB11F9D060CBCC4E2E20A36C7 /* Pods-iGlanceTests-dummy.m */; };
-		7BEA0BF6D98FF389B67FF97FA7663B71 /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F940C819049CFF8741C0F5E3E075E607 /* Cocoa.framework */; };
-		820CDCE46301746BD4882B80DFD2979D /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F940C819049CFF8741C0F5E3E075E607 /* Cocoa.framework */; };
-		A4105F9C30290D0CBF3F7B67B98BCCD5 /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F940C819049CFF8741C0F5E3E075E607 /* Cocoa.framework */; };
-		B1CEA981C4AE750A1A21D7DB0C28A828 /* Pods-iGlanceTests-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = AAB7B23C9B9D5E9DEF6BFBBE69EAC876 /* Pods-iGlanceTests-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		BA384593D263F35FC859F3BA1213C14B /* Pods-iGlance-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = A77B488B9E24C51C9AA1240C19BD2293 /* Pods-iGlance-dummy.m */; };
+		D58A02FA077904FAC15116C4021E35C6 /* Pods-iGlanceLauncher-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = D54782BDA6463EC5C8B95C89C5244B42 /* Pods-iGlanceLauncher-dummy.m */; };
+		F410C206917E7E5355E70FBC6D6294FD /* Pods-SystemKit-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = BB625DFDBBA55A3A3B8027D0CF4D00E9 /* Pods-SystemKit-dummy.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
-		2C69A417729C55082F13A9B30F0E62CE /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = BFDFE7DC352907FC980B868725387E98 /* Project object */;
-			proxyType = 1;
-			remoteGlobalIDString = A6A4614AF4C4E85B4D24E458ECAACBE8;
-			remoteInfo = "Pods-iGlance";
-		};
-		642561BC82ED1A0B3415D6E011D06CFC /* PBXContainerItemProxy */ = {
+		63BF3F602EAD81A7B01259ADCBC699F3 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = BFDFE7DC352907FC980B868725387E98 /* Project object */;
 			proxyType = 1;
 			remoteGlobalIDString = 52B60EC2A583F24ACBB69C113F5488B9;
 			remoteInfo = SwiftLint;
 		};
-		B23E34FD0FFDAEC2AD6AD57EDA83FF6B /* PBXContainerItemProxy */ = {
+		E352D1BA17B8CF2702F23CC6F193C7CE /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = BFDFE7DC352907FC980B868725387E98 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 52B60EC2A583F24ACBB69C113F5488B9;
+			remoteInfo = SwiftLint;
+		};
+		FBE44FA17932E911D640CE01EBF53FE1 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = BFDFE7DC352907FC980B868725387E98 /* Project object */;
 			proxyType = 1;
@@ -56,96 +49,97 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
-		08CD9964FC766D6C2165825DE6E6C4DB /* Pods-iGlanceTests-acknowledgements.markdown */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; path = "Pods-iGlanceTests-acknowledgements.markdown"; sourceTree = "<group>"; };
-		122058ECBB5FFAC171181563D7139A2D /* Pods-iGlance.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-iGlance.debug.xcconfig"; sourceTree = "<group>"; };
-		1388562FB11F9D060CBCC4E2E20A36C7 /* Pods-iGlanceTests-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "Pods-iGlanceTests-dummy.m"; sourceTree = "<group>"; };
-		1A9B35750A89A0BF8933AF688E434BBE /* Pods-iGlance-acknowledgements.markdown */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; path = "Pods-iGlance-acknowledgements.markdown"; sourceTree = "<group>"; };
-		2114070EF445CFD225CA798C70B2F403 /* Pods-iGlance-iGlanceUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-iGlance-iGlanceUITests.debug.xcconfig"; sourceTree = "<group>"; };
-		28463597ED29349C2041039EB8D9209F /* Pods-iGlance-iGlanceUITests-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "Pods-iGlance-iGlanceUITests-dummy.m"; sourceTree = "<group>"; };
-		3595F140884C6E8E44A50770BDFE6B95 /* Pods-iGlance-iGlanceUITests-acknowledgements.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "Pods-iGlance-iGlanceUITests-acknowledgements.plist"; sourceTree = "<group>"; };
-		3EDC9DCC594668C7F710719ADA2D97C7 /* Pods-iGlanceTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-iGlanceTests.release.xcconfig"; sourceTree = "<group>"; };
-		4347850543B0F1C31F5BC1DB49EC97CD /* Pods-iGlance-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "Pods-iGlance-umbrella.h"; sourceTree = "<group>"; };
-		4887DD423DC0CAB6FCEA08F4B28D3481 /* Pods-iGlance.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.module; path = "Pods-iGlance.modulemap"; sourceTree = "<group>"; };
-		71455E8EB796084AE65F340B3EBE8B08 /* Pods-iGlance-iGlanceUITests-Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "Pods-iGlance-iGlanceUITests-Info.plist"; sourceTree = "<group>"; };
-		77AAAF5917791729CAD205C831B1176E /* Pods-iGlanceTests-acknowledgements.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "Pods-iGlanceTests-acknowledgements.plist"; sourceTree = "<group>"; };
-		83A4A759427F1A1A65B76703CFD2C184 /* Pods-iGlance-Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "Pods-iGlance-Info.plist"; sourceTree = "<group>"; };
+		1433370210BE8143E798BE00F51FD545 /* libPods-SystemKit.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; name = "libPods-SystemKit.a"; path = "libPods-SystemKit.a"; sourceTree = BUILT_PRODUCTS_DIR; };
+		27FF3CCAE8575F5B930AA2949B132F13 /* Pods-iGlance-acknowledgements.markdown */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; path = "Pods-iGlance-acknowledgements.markdown"; sourceTree = "<group>"; };
+		31499D966A6D3F5C0F43602F366670B5 /* Pods-iGlanceLauncher-acknowledgements.markdown */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; path = "Pods-iGlanceLauncher-acknowledgements.markdown"; sourceTree = "<group>"; };
+		3276A10FD7DBA49EEDF5584B64A9D531 /* Pods-iGlanceLauncher-acknowledgements.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "Pods-iGlanceLauncher-acknowledgements.plist"; sourceTree = "<group>"; };
+		511FAD309737EE01AC666C2449F8B788 /* Pods-iGlanceLauncher.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-iGlanceLauncher.debug.xcconfig"; sourceTree = "<group>"; };
+		5CD80F3C6069349413180D1DBDBAC836 /* Pods-SystemKit-acknowledgements.markdown */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; path = "Pods-SystemKit-acknowledgements.markdown"; sourceTree = "<group>"; };
+		79BEDD88CDB6ABA330D2FF9AB3A4DC9B /* Pods-iGlance-acknowledgements.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "Pods-iGlance-acknowledgements.plist"; sourceTree = "<group>"; };
 		89F85ACF3D78B39506B75103B4694B36 /* SwiftLint.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = SwiftLint.xcconfig; sourceTree = "<group>"; };
-		8D1690F78D5C71F8AFFC29CA6752C185 /* Pods-iGlance-iGlanceUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-iGlance-iGlanceUITests.release.xcconfig"; sourceTree = "<group>"; };
-		8E9CAC78A9F5B05BBD9ACFA923946D55 /* Pods_iGlance_iGlanceUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_iGlance_iGlanceUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		9B818296D83C283AD9AAC9CB63D5CCC7 /* Pods-iGlanceTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-iGlanceTests.debug.xcconfig"; sourceTree = "<group>"; };
-		9D940727FF8FB9C785EB98E56350EF41 /* Podfile */ = {isa = PBXFileReference; explicitFileType = text.script.ruby; includeInIndex = 1; indentWidth = 2; name = Podfile; path = ../Podfile; sourceTree = SOURCE_ROOT; tabWidth = 2; xcLanguageSpecificationIdentifier = xcode.lang.ruby; };
-		A0CD34FB772146F1292FA1376615BE85 /* Pods-iGlance-iGlanceUITests.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.module; path = "Pods-iGlance-iGlanceUITests.modulemap"; sourceTree = "<group>"; };
-		A328B9B67B2D4715CEB73FF6A4BB8B79 /* Pods-iGlance-acknowledgements.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "Pods-iGlance-acknowledgements.plist"; sourceTree = "<group>"; };
-		A5D91F4446419F266DDA89F27484A421 /* Pods_iGlanceTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_iGlanceTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		AAB7B23C9B9D5E9DEF6BFBBE69EAC876 /* Pods-iGlanceTests-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "Pods-iGlanceTests-umbrella.h"; sourceTree = "<group>"; };
-		B76FCCEA556F0A9B94131D9795772E8F /* Pods-iGlance-iGlanceUITests-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "Pods-iGlance-iGlanceUITests-umbrella.h"; sourceTree = "<group>"; };
-		B7882B1CF99394678B651B726E16B7D4 /* Pods_iGlance.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_iGlance.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		CA163C35C1A67E18DFA54F0A2F5318E5 /* Pods-iGlance-iGlanceUITests-acknowledgements.markdown */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; path = "Pods-iGlance-iGlanceUITests-acknowledgements.markdown"; sourceTree = "<group>"; };
-		CD1B7960EF400298BF0A1912E3BD109B /* Pods-iGlance-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "Pods-iGlance-dummy.m"; sourceTree = "<group>"; };
-		CE5698B5A739261279EF6E5F410368F2 /* Pods-iGlanceTests-Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "Pods-iGlanceTests-Info.plist"; sourceTree = "<group>"; };
-		DB38DE7A92762A05FAD22840D9BA215B /* Pods-iGlanceTests.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.module; path = "Pods-iGlanceTests.modulemap"; sourceTree = "<group>"; };
-		DFE7013AED6B9A61C24DBC4EB33FC34F /* Pods-iGlance.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-iGlance.release.xcconfig"; sourceTree = "<group>"; };
-		F940C819049CFF8741C0F5E3E075E607 /* Cocoa.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Cocoa.framework; path = Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.14.sdk/System/Library/Frameworks/Cocoa.framework; sourceTree = DEVELOPER_DIR; };
+		9450642E3DA3070219B9530D0768BBD1 /* Pods-SystemKit.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-SystemKit.debug.xcconfig"; sourceTree = "<group>"; };
+		968585FBB26A3079946AA17BA76F23B1 /* Pods-iGlance.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-iGlance.release.xcconfig"; sourceTree = "<group>"; };
+		9D940727FF8FB9C785EB98E56350EF41 /* Podfile */ = {isa = PBXFileReference; explicitFileType = text.script.ruby; includeInIndex = 1; indentWidth = 2; lastKnownFileType = text; name = Podfile; path = ../Podfile; sourceTree = SOURCE_ROOT; tabWidth = 2; xcLanguageSpecificationIdentifier = xcode.lang.ruby; };
+		A77B488B9E24C51C9AA1240C19BD2293 /* Pods-iGlance-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "Pods-iGlance-dummy.m"; sourceTree = "<group>"; };
+		A8B0421F2FA718BE57B05F51A3B7A463 /* libPods-iGlanceLauncher.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; name = "libPods-iGlanceLauncher.a"; path = "libPods-iGlanceLauncher.a"; sourceTree = BUILT_PRODUCTS_DIR; };
+		B322391EC8299D70F30E3F8F23E33F37 /* Pods-SystemKit-acknowledgements.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "Pods-SystemKit-acknowledgements.plist"; sourceTree = "<group>"; };
+		B7882B1CF99394678B651B726E16B7D4 /* libPods-iGlance.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; name = "libPods-iGlance.a"; path = "libPods-iGlance.a"; sourceTree = BUILT_PRODUCTS_DIR; };
+		BB625DFDBBA55A3A3B8027D0CF4D00E9 /* Pods-SystemKit-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "Pods-SystemKit-dummy.m"; sourceTree = "<group>"; };
+		BDF74FB3893786B85E014B9A4CCE2FBA /* Pods-iGlance.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-iGlance.debug.xcconfig"; sourceTree = "<group>"; };
+		C2619D90BB87385A96485D7B8B2DD3D4 /* Pods-iGlanceLauncher.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-iGlanceLauncher.release.xcconfig"; sourceTree = "<group>"; };
+		D54782BDA6463EC5C8B95C89C5244B42 /* Pods-iGlanceLauncher-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "Pods-iGlanceLauncher-dummy.m"; sourceTree = "<group>"; };
+		F5B47695AF2A3195C9069FB862BCDE53 /* Pods-SystemKit.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-SystemKit.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
-		021B34F5EFF74E7589C5282C5372FAB2 /* Frameworks */ = {
+		763E4646FE3E9620ACE8263C8E06873F /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				A4105F9C30290D0CBF3F7B67B98BCCD5 /* Cocoa.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		6A0777AE24B457AA139DB3E1DD8E52B2 /* Frameworks */ = {
+		A545E332EB0D27286EA3DD718BF78C0E /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				820CDCE46301746BD4882B80DFD2979D /* Cocoa.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		818AC14AEF3E8F9A9F8F8A5DA07DF0AB /* Frameworks */ = {
+		E5FC763796FB5E3CE4CF1FA8F053604D /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				7BEA0BF6D98FF389B67FF97FA7663B71 /* Cocoa.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		64DEC0E68107C1627F7FEDE85C70C2BA /* Pods-iGlance-iGlanceUITests */ = {
+		235975A217659F67E058F2AE1F4F6CBE /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				A0CD34FB772146F1292FA1376615BE85 /* Pods-iGlance-iGlanceUITests.modulemap */,
-				CA163C35C1A67E18DFA54F0A2F5318E5 /* Pods-iGlance-iGlanceUITests-acknowledgements.markdown */,
-				3595F140884C6E8E44A50770BDFE6B95 /* Pods-iGlance-iGlanceUITests-acknowledgements.plist */,
-				28463597ED29349C2041039EB8D9209F /* Pods-iGlance-iGlanceUITests-dummy.m */,
-				71455E8EB796084AE65F340B3EBE8B08 /* Pods-iGlance-iGlanceUITests-Info.plist */,
-				B76FCCEA556F0A9B94131D9795772E8F /* Pods-iGlance-iGlanceUITests-umbrella.h */,
-				2114070EF445CFD225CA798C70B2F403 /* Pods-iGlance-iGlanceUITests.debug.xcconfig */,
-				8D1690F78D5C71F8AFFC29CA6752C185 /* Pods-iGlance-iGlanceUITests.release.xcconfig */,
+				B7882B1CF99394678B651B726E16B7D4 /* libPods-iGlance.a */,
+				A8B0421F2FA718BE57B05F51A3B7A463 /* libPods-iGlanceLauncher.a */,
+				1433370210BE8143E798BE00F51FD545 /* libPods-SystemKit.a */,
 			);
-			name = "Pods-iGlance-iGlanceUITests";
-			path = "Target Support Files/Pods-iGlance-iGlanceUITests";
+			name = Products;
 			sourceTree = "<group>";
 		};
-		926FA1D43FFC19F75FC24DC73C1EE253 /* Pods-iGlanceTests */ = {
+		4126CFAECEB406A024D39315088D9FB6 /* Pods-SystemKit */ = {
 			isa = PBXGroup;
 			children = (
-				DB38DE7A92762A05FAD22840D9BA215B /* Pods-iGlanceTests.modulemap */,
-				08CD9964FC766D6C2165825DE6E6C4DB /* Pods-iGlanceTests-acknowledgements.markdown */,
-				77AAAF5917791729CAD205C831B1176E /* Pods-iGlanceTests-acknowledgements.plist */,
-				1388562FB11F9D060CBCC4E2E20A36C7 /* Pods-iGlanceTests-dummy.m */,
-				CE5698B5A739261279EF6E5F410368F2 /* Pods-iGlanceTests-Info.plist */,
-				AAB7B23C9B9D5E9DEF6BFBBE69EAC876 /* Pods-iGlanceTests-umbrella.h */,
-				9B818296D83C283AD9AAC9CB63D5CCC7 /* Pods-iGlanceTests.debug.xcconfig */,
-				3EDC9DCC594668C7F710719ADA2D97C7 /* Pods-iGlanceTests.release.xcconfig */,
+				5CD80F3C6069349413180D1DBDBAC836 /* Pods-SystemKit-acknowledgements.markdown */,
+				B322391EC8299D70F30E3F8F23E33F37 /* Pods-SystemKit-acknowledgements.plist */,
+				BB625DFDBBA55A3A3B8027D0CF4D00E9 /* Pods-SystemKit-dummy.m */,
+				9450642E3DA3070219B9530D0768BBD1 /* Pods-SystemKit.debug.xcconfig */,
+				F5B47695AF2A3195C9069FB862BCDE53 /* Pods-SystemKit.release.xcconfig */,
 			);
-			name = "Pods-iGlanceTests";
-			path = "Target Support Files/Pods-iGlanceTests";
+			name = "Pods-SystemKit";
+			path = "Target Support Files/Pods-SystemKit";
+			sourceTree = "<group>";
+		};
+		4C7581DA89779A74A187249FE094E18B /* Targets Support Files */ = {
+			isa = PBXGroup;
+			children = (
+				D781FA16E9D39BB3CA8844E8C28CD3FF /* Pods-iGlance */,
+				7955BDD8AEE4B6B79E2E1F4E17F375CF /* Pods-iGlanceLauncher */,
+				4126CFAECEB406A024D39315088D9FB6 /* Pods-SystemKit */,
+			);
+			name = "Targets Support Files";
+			sourceTree = "<group>";
+		};
+		7955BDD8AEE4B6B79E2E1F4E17F375CF /* Pods-iGlanceLauncher */ = {
+			isa = PBXGroup;
+			children = (
+				31499D966A6D3F5C0F43602F366670B5 /* Pods-iGlanceLauncher-acknowledgements.markdown */,
+				3276A10FD7DBA49EEDF5584B64A9D531 /* Pods-iGlanceLauncher-acknowledgements.plist */,
+				D54782BDA6463EC5C8B95C89C5244B42 /* Pods-iGlanceLauncher-dummy.m */,
+				511FAD309737EE01AC666C2449F8B788 /* Pods-iGlanceLauncher.debug.xcconfig */,
+				C2619D90BB87385A96485D7B8B2DD3D4 /* Pods-iGlanceLauncher.release.xcconfig */,
+			);
+			name = "Pods-iGlanceLauncher";
+			path = "Target Support Files/Pods-iGlanceLauncher";
 			sourceTree = "<group>";
 		};
 		965877409E01FB3D85D85E90E6B30185 /* Pods */ = {
@@ -161,68 +155,37 @@
 			children = (
 				EEA599FE5C15138FF0981CCFB01E55AA /* Support Files */,
 			);
+			name = SwiftLint;
 			path = SwiftLint;
-			sourceTree = "<group>";
-		};
-		9D7CC367B16ED811489FFB821F3E3D04 /* Pods-iGlance */ = {
-			isa = PBXGroup;
-			children = (
-				4887DD423DC0CAB6FCEA08F4B28D3481 /* Pods-iGlance.modulemap */,
-				1A9B35750A89A0BF8933AF688E434BBE /* Pods-iGlance-acknowledgements.markdown */,
-				A328B9B67B2D4715CEB73FF6A4BB8B79 /* Pods-iGlance-acknowledgements.plist */,
-				CD1B7960EF400298BF0A1912E3BD109B /* Pods-iGlance-dummy.m */,
-				83A4A759427F1A1A65B76703CFD2C184 /* Pods-iGlance-Info.plist */,
-				4347850543B0F1C31F5BC1DB49EC97CD /* Pods-iGlance-umbrella.h */,
-				122058ECBB5FFAC171181563D7139A2D /* Pods-iGlance.debug.xcconfig */,
-				DFE7013AED6B9A61C24DBC4EB33FC34F /* Pods-iGlance.release.xcconfig */,
-			);
-			name = "Pods-iGlance";
-			path = "Target Support Files/Pods-iGlance";
-			sourceTree = "<group>";
-		};
-		A55ACD0F9EA1ECA174DC9A47C818FC5F /* Targets Support Files */ = {
-			isa = PBXGroup;
-			children = (
-				9D7CC367B16ED811489FFB821F3E3D04 /* Pods-iGlance */,
-				64DEC0E68107C1627F7FEDE85C70C2BA /* Pods-iGlance-iGlanceUITests */,
-				926FA1D43FFC19F75FC24DC73C1EE253 /* Pods-iGlanceTests */,
-			);
-			name = "Targets Support Files";
-			sourceTree = "<group>";
-		};
-		CBD43E0947D94E318A0ED1350CFF29ED /* OS X */ = {
-			isa = PBXGroup;
-			children = (
-				F940C819049CFF8741C0F5E3E075E607 /* Cocoa.framework */,
-			);
-			name = "OS X";
 			sourceTree = "<group>";
 		};
 		CF1408CF629C7361332E53B88F7BD30C = {
 			isa = PBXGroup;
 			children = (
 				9D940727FF8FB9C785EB98E56350EF41 /* Podfile */,
-				E0A1E60606E0BF6E2E10F1F01350DFE8 /* Frameworks */,
+				D89477F20FB1DE18A04690586D7808C4 /* Frameworks */,
 				965877409E01FB3D85D85E90E6B30185 /* Pods */,
-				D1F24388D524C151B51C9FA0EC3B4351 /* Products */,
-				A55ACD0F9EA1ECA174DC9A47C818FC5F /* Targets Support Files */,
+				235975A217659F67E058F2AE1F4F6CBE /* Products */,
+				4C7581DA89779A74A187249FE094E18B /* Targets Support Files */,
 			);
 			sourceTree = "<group>";
 		};
-		D1F24388D524C151B51C9FA0EC3B4351 /* Products */ = {
+		D781FA16E9D39BB3CA8844E8C28CD3FF /* Pods-iGlance */ = {
 			isa = PBXGroup;
 			children = (
-				B7882B1CF99394678B651B726E16B7D4 /* Pods_iGlance.framework */,
-				8E9CAC78A9F5B05BBD9ACFA923946D55 /* Pods_iGlance_iGlanceUITests.framework */,
-				A5D91F4446419F266DDA89F27484A421 /* Pods_iGlanceTests.framework */,
+				27FF3CCAE8575F5B930AA2949B132F13 /* Pods-iGlance-acknowledgements.markdown */,
+				79BEDD88CDB6ABA330D2FF9AB3A4DC9B /* Pods-iGlance-acknowledgements.plist */,
+				A77B488B9E24C51C9AA1240C19BD2293 /* Pods-iGlance-dummy.m */,
+				BDF74FB3893786B85E014B9A4CCE2FBA /* Pods-iGlance.debug.xcconfig */,
+				968585FBB26A3079946AA17BA76F23B1 /* Pods-iGlance.release.xcconfig */,
 			);
-			name = Products;
+			name = "Pods-iGlance";
+			path = "Target Support Files/Pods-iGlance";
 			sourceTree = "<group>";
 		};
-		E0A1E60606E0BF6E2E10F1F01350DFE8 /* Frameworks */ = {
+		D89477F20FB1DE18A04690586D7808C4 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
-				CBD43E0947D94E318A0ED1350CFF29ED /* OS X */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -239,89 +202,83 @@
 /* End PBXGroup section */
 
 /* Begin PBXHeadersBuildPhase section */
-		954EAD371EEE5DDE56661A36046F6EAC /* Headers */ = {
+		1CE2014628F5BAE602B55C7620314361 /* Headers */ = {
 			isa = PBXHeadersBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				0504C9F26EC106A1089AC7E3FBD988A2 /* Pods-iGlance-umbrella.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		B2324F427A38B39995FED89FC2C4C4B8 /* Headers */ = {
+		A73D293383B2B187E70521D416216410 /* Headers */ = {
 			isa = PBXHeadersBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				B1CEA981C4AE750A1A21D7DB0C28A828 /* Pods-iGlanceTests-umbrella.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		F52B32C14682F2FA92E8DE3C5FA339A7 /* Headers */ = {
+		B775AA9FED3A21D939B53891F767210A /* Headers */ = {
 			isa = PBXHeadersBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				4C66216ED88C9893BB2E83742F78ACA8 /* Pods-iGlance-iGlanceUITests-umbrella.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXHeadersBuildPhase section */
 
 /* Begin PBXNativeTarget section */
-		8D1D8270B062898CF82DE3D6CF05305D /* Pods-iGlance-iGlanceUITests */ = {
+		59DAD8720CD6D4082F8B9BB5A4208174 /* Pods-SystemKit */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 10A5DD079B15EF643C54C1E03059468A /* Build configuration list for PBXNativeTarget "Pods-iGlance-iGlanceUITests" */;
+			buildConfigurationList = 1C5ECF6F3CE2D97E391AAB28FFAA53A1 /* Build configuration list for PBXNativeTarget "Pods-SystemKit" */;
 			buildPhases = (
-				F52B32C14682F2FA92E8DE3C5FA339A7 /* Headers */,
-				BD0CE7BEF6D897468430AFB3F3E33FA4 /* Sources */,
-				6A0777AE24B457AA139DB3E1DD8E52B2 /* Frameworks */,
-				D68FD11474B10CD5C766A44CE296D55B /* Resources */,
+				A73D293383B2B187E70521D416216410 /* Headers */,
+				5D6D711BC389AFA443050D57D2E1F4A0 /* Sources */,
+				A545E332EB0D27286EA3DD718BF78C0E /* Frameworks */,
 			);
 			buildRules = (
 			);
 			dependencies = (
-				6614DFBE1F0BC3F5C8DB57E62C170B94 /* PBXTargetDependency */,
+				39E54867E47542B3412A6A4844826949 /* PBXTargetDependency */,
 			);
-			name = "Pods-iGlance-iGlanceUITests";
-			productName = "Pods-iGlance-iGlanceUITests";
-			productReference = 8E9CAC78A9F5B05BBD9ACFA923946D55 /* Pods_iGlance_iGlanceUITests.framework */;
-			productType = "com.apple.product-type.framework";
-		};
-		9828C0B074034430B7D9745C38C1D122 /* Pods-iGlanceTests */ = {
-			isa = PBXNativeTarget;
-			buildConfigurationList = FE43E54319F3DB2E4E2C1BF4E36CEFFE /* Build configuration list for PBXNativeTarget "Pods-iGlanceTests" */;
-			buildPhases = (
-				B2324F427A38B39995FED89FC2C4C4B8 /* Headers */,
-				39C1C6C5765BCC2C25CFE3D60BFFA5FE /* Sources */,
-				021B34F5EFF74E7589C5282C5372FAB2 /* Frameworks */,
-				EB8169470B0511B05AD32E3B28FE5FD3 /* Resources */,
-			);
-			buildRules = (
-			);
-			dependencies = (
-				9A5E35A1F33821BC98941AB334E676A2 /* PBXTargetDependency */,
-			);
-			name = "Pods-iGlanceTests";
-			productName = "Pods-iGlanceTests";
-			productReference = A5D91F4446419F266DDA89F27484A421 /* Pods_iGlanceTests.framework */;
-			productType = "com.apple.product-type.framework";
+			name = "Pods-SystemKit";
+			productName = "Pods-SystemKit";
+			productReference = 1433370210BE8143E798BE00F51FD545 /* libPods-SystemKit.a */;
+			productType = "com.apple.product-type.library.static";
 		};
 		A6A4614AF4C4E85B4D24E458ECAACBE8 /* Pods-iGlance */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = ADA03E1591AC67156FC3EC0CCD1764CD /* Build configuration list for PBXNativeTarget "Pods-iGlance" */;
+			buildConfigurationList = CC656145521975243BB2DB18D85E8439 /* Build configuration list for PBXNativeTarget "Pods-iGlance" */;
 			buildPhases = (
-				954EAD371EEE5DDE56661A36046F6EAC /* Headers */,
-				174951158884EA10125B28026D151B1B /* Sources */,
-				818AC14AEF3E8F9A9F8F8A5DA07DF0AB /* Frameworks */,
-				9084EB1647A39B3D9A65E8DE9828E39B /* Resources */,
+				B775AA9FED3A21D939B53891F767210A /* Headers */,
+				F88EABE1385624F0CA4CCFE80CBC6C00 /* Sources */,
+				763E4646FE3E9620ACE8263C8E06873F /* Frameworks */,
 			);
 			buildRules = (
 			);
 			dependencies = (
-				DC4913D3E73F6C2A441A3E804B2A7601 /* PBXTargetDependency */,
+				5F20E738C7F7F16353D2E5CBA8413B1F /* PBXTargetDependency */,
 			);
 			name = "Pods-iGlance";
 			productName = "Pods-iGlance";
-			productReference = B7882B1CF99394678B651B726E16B7D4 /* Pods_iGlance.framework */;
-			productType = "com.apple.product-type.framework";
+			productReference = B7882B1CF99394678B651B726E16B7D4 /* libPods-iGlance.a */;
+			productType = "com.apple.product-type.library.static";
+		};
+		E606F3A2CCACFB3AE719EDF89E358A10 /* Pods-iGlanceLauncher */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = B2332978EB8AF2D293CFC9BD66782821 /* Build configuration list for PBXNativeTarget "Pods-iGlanceLauncher" */;
+			buildPhases = (
+				1CE2014628F5BAE602B55C7620314361 /* Headers */,
+				9457AC32AB1B0372B9BC7EBB409321BC /* Sources */,
+				E5FC763796FB5E3CE4CF1FA8F053604D /* Frameworks */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				C8007EBFC323B793219E005E0081C5A4 /* PBXTargetDependency */,
+			);
+			name = "Pods-iGlanceLauncher";
+			productName = "Pods-iGlanceLauncher";
+			productReference = A8B0421F2FA718BE57B05F51A3B7A463 /* libPods-iGlanceLauncher.a */;
+			productType = "com.apple.product-type.library.static";
 		};
 /* End PBXNativeTarget section */
 
@@ -330,7 +287,7 @@
 			isa = PBXProject;
 			attributes = {
 				LastSwiftUpdateCheck = 1100;
-				LastUpgradeCheck = 1130;
+				LastUpgradeCheck = 1100;
 			};
 			buildConfigurationList = 4821239608C13582E20E6DA73FD5F1F9 /* Build configuration list for PBXProject "Pods" */;
 			compatibilityVersion = "Xcode 9.3";
@@ -341,205 +298,179 @@
 				Base,
 			);
 			mainGroup = CF1408CF629C7361332E53B88F7BD30C;
-			productRefGroup = D1F24388D524C151B51C9FA0EC3B4351 /* Products */;
+			productRefGroup = 235975A217659F67E058F2AE1F4F6CBE /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
 				A6A4614AF4C4E85B4D24E458ECAACBE8 /* Pods-iGlance */,
-				8D1D8270B062898CF82DE3D6CF05305D /* Pods-iGlance-iGlanceUITests */,
-				9828C0B074034430B7D9745C38C1D122 /* Pods-iGlanceTests */,
+				E606F3A2CCACFB3AE719EDF89E358A10 /* Pods-iGlanceLauncher */,
+				59DAD8720CD6D4082F8B9BB5A4208174 /* Pods-SystemKit */,
 				52B60EC2A583F24ACBB69C113F5488B9 /* SwiftLint */,
 			);
 		};
 /* End PBXProject section */
 
-/* Begin PBXResourcesBuildPhase section */
-		9084EB1647A39B3D9A65E8DE9828E39B /* Resources */ = {
-			isa = PBXResourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		D68FD11474B10CD5C766A44CE296D55B /* Resources */ = {
-			isa = PBXResourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		EB8169470B0511B05AD32E3B28FE5FD3 /* Resources */ = {
-			isa = PBXResourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-/* End PBXResourcesBuildPhase section */
-
 /* Begin PBXSourcesBuildPhase section */
-		174951158884EA10125B28026D151B1B /* Sources */ = {
+		5D6D711BC389AFA443050D57D2E1F4A0 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				2C0289C55C573F1B6B82EEC3F11CA439 /* Pods-iGlance-dummy.m in Sources */,
+				F410C206917E7E5355E70FBC6D6294FD /* Pods-SystemKit-dummy.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		39C1C6C5765BCC2C25CFE3D60BFFA5FE /* Sources */ = {
+		9457AC32AB1B0372B9BC7EBB409321BC /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				5C54A2339F18DD597BFA1F7D91CFC342 /* Pods-iGlanceTests-dummy.m in Sources */,
+				D58A02FA077904FAC15116C4021E35C6 /* Pods-iGlanceLauncher-dummy.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		BD0CE7BEF6D897468430AFB3F3E33FA4 /* Sources */ = {
+		F88EABE1385624F0CA4CCFE80CBC6C00 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				1C2D74BD3B2205CA12593859F21EAD23 /* Pods-iGlance-iGlanceUITests-dummy.m in Sources */,
+				BA384593D263F35FC859F3BA1213C14B /* Pods-iGlance-dummy.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXTargetDependency section */
-		6614DFBE1F0BC3F5C8DB57E62C170B94 /* PBXTargetDependency */ = {
+		39E54867E47542B3412A6A4844826949 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
 			name = SwiftLint;
 			target = 52B60EC2A583F24ACBB69C113F5488B9 /* SwiftLint */;
-			targetProxy = 642561BC82ED1A0B3415D6E011D06CFC /* PBXContainerItemProxy */;
+			targetProxy = E352D1BA17B8CF2702F23CC6F193C7CE /* PBXContainerItemProxy */;
 		};
-		9A5E35A1F33821BC98941AB334E676A2 /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			name = "Pods-iGlance";
-			target = A6A4614AF4C4E85B4D24E458ECAACBE8 /* Pods-iGlance */;
-			targetProxy = 2C69A417729C55082F13A9B30F0E62CE /* PBXContainerItemProxy */;
-		};
-		DC4913D3E73F6C2A441A3E804B2A7601 /* PBXTargetDependency */ = {
+		5F20E738C7F7F16353D2E5CBA8413B1F /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
 			name = SwiftLint;
 			target = 52B60EC2A583F24ACBB69C113F5488B9 /* SwiftLint */;
-			targetProxy = B23E34FD0FFDAEC2AD6AD57EDA83FF6B /* PBXContainerItemProxy */;
+			targetProxy = FBE44FA17932E911D640CE01EBF53FE1 /* PBXContainerItemProxy */;
+		};
+		C8007EBFC323B793219E005E0081C5A4 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			name = SwiftLint;
+			target = 52B60EC2A583F24ACBB69C113F5488B9 /* SwiftLint */;
+			targetProxy = 63BF3F602EAD81A7B01259ADCBC699F3 /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
 
 /* Begin XCBuildConfiguration section */
-		0684197A8A910C93127A6B9DD9A5567C /* Release */ = {
+		1C18722C4603E9311BF31E0FA7B472AC /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = DFE7013AED6B9A61C24DBC4EB33FC34F /* Pods-iGlance.release.xcconfig */;
+			baseConfigurationReference = 9450642E3DA3070219B9530D0768BBD1 /* Pods-SystemKit.debug.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = NO;
+				ARCHS = "$(ARCHS_STANDARD_64_BIT)";
 				CLANG_ENABLE_OBJC_WEAK = NO;
-				CODE_SIGN_IDENTITY = "";
+				CODE_SIGN_IDENTITY = "-";
 				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
 				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
-				COMBINE_HIDPI_IMAGES = YES;
-				CURRENT_PROJECT_VERSION = 1;
-				DEFINES_MODULE = YES;
-				DYLIB_COMPATIBILITY_VERSION = 1;
-				DYLIB_CURRENT_VERSION = 1;
-				DYLIB_INSTALL_NAME_BASE = "@rpath";
-				FRAMEWORK_VERSION = A;
-				INFOPLIST_FILE = "Target Support Files/Pods-iGlance/Pods-iGlance-Info.plist";
-				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
-				LD_RUNPATH_SEARCH_PATHS = (
-					"$(inherited)",
-					"@executable_path/../Frameworks",
-					"@loader_path/Frameworks",
-				);
+				EXECUTABLE_PREFIX = lib;
 				MACH_O_TYPE = staticlib;
 				MACOSX_DEPLOYMENT_TARGET = 10.6;
-				MODULEMAP_FILE = "Target Support Files/Pods-iGlance/Pods-iGlance.modulemap";
 				OTHER_LDFLAGS = "";
 				OTHER_LIBTOOLFLAGS = "";
 				PODS_ROOT = "$(SRCROOT)";
 				PRODUCT_BUNDLE_IDENTIFIER = "org.cocoapods.${PRODUCT_NAME:rfc1034identifier}";
-				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
 				SDKROOT = macosx;
 				SKIP_INSTALL = YES;
-				VERSIONING_SYSTEM = "apple-generic";
-				VERSION_INFO_PREFIX = "";
-			};
-			name = Release;
-		};
-		26A7856499A6D3B22D8EF614B87CAD48 /* Debug */ = {
-			isa = XCBuildConfiguration;
-			baseConfigurationReference = 9B818296D83C283AD9AAC9CB63D5CCC7 /* Pods-iGlanceTests.debug.xcconfig */;
-			buildSettings = {
-				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = NO;
-				CLANG_ENABLE_OBJC_WEAK = NO;
-				CODE_SIGN_IDENTITY = "";
-				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
-				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
-				COMBINE_HIDPI_IMAGES = YES;
-				CURRENT_PROJECT_VERSION = 1;
-				DEFINES_MODULE = YES;
-				DYLIB_COMPATIBILITY_VERSION = 1;
-				DYLIB_CURRENT_VERSION = 1;
-				DYLIB_INSTALL_NAME_BASE = "@rpath";
-				FRAMEWORK_VERSION = A;
-				INFOPLIST_FILE = "Target Support Files/Pods-iGlanceTests/Pods-iGlanceTests-Info.plist";
-				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
-				LD_RUNPATH_SEARCH_PATHS = (
-					"$(inherited)",
-					"@executable_path/../Frameworks",
-					"@loader_path/Frameworks",
-				);
-				MACH_O_TYPE = staticlib;
-				MACOSX_DEPLOYMENT_TARGET = 10.6;
-				MODULEMAP_FILE = "Target Support Files/Pods-iGlanceTests/Pods-iGlanceTests.modulemap";
-				OTHER_LDFLAGS = "";
-				OTHER_LIBTOOLFLAGS = "";
-				PODS_ROOT = "$(SRCROOT)";
-				PRODUCT_BUNDLE_IDENTIFIER = "org.cocoapods.${PRODUCT_NAME:rfc1034identifier}";
-				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
-				SDKROOT = macosx;
-				SKIP_INSTALL = YES;
-				VERSIONING_SYSTEM = "apple-generic";
-				VERSION_INFO_PREFIX = "";
 			};
 			name = Debug;
 		};
-		4E66DBF6F43B289012B91433EFF86C13 /* Release */ = {
+		25567BF706FFC6DD599B21EB8298604A /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 8D1690F78D5C71F8AFFC29CA6752C185 /* Pods-iGlance-iGlanceUITests.release.xcconfig */;
+			baseConfigurationReference = BDF74FB3893786B85E014B9A4CCE2FBA /* Pods-iGlance.debug.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = NO;
+				ARCHS = "$(ARCHS_STANDARD_64_BIT)";
 				CLANG_ENABLE_OBJC_WEAK = NO;
-				CODE_SIGN_IDENTITY = "";
+				CODE_SIGN_IDENTITY = "-";
 				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
 				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
-				COMBINE_HIDPI_IMAGES = YES;
-				CURRENT_PROJECT_VERSION = 1;
-				DEFINES_MODULE = YES;
-				DYLIB_COMPATIBILITY_VERSION = 1;
-				DYLIB_CURRENT_VERSION = 1;
-				DYLIB_INSTALL_NAME_BASE = "@rpath";
-				FRAMEWORK_VERSION = A;
-				INFOPLIST_FILE = "Target Support Files/Pods-iGlance-iGlanceUITests/Pods-iGlance-iGlanceUITests-Info.plist";
-				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
-				LD_RUNPATH_SEARCH_PATHS = (
-					"$(inherited)",
-					"@executable_path/../Frameworks",
-					"@loader_path/Frameworks",
-				);
+				EXECUTABLE_PREFIX = lib;
 				MACH_O_TYPE = staticlib;
 				MACOSX_DEPLOYMENT_TARGET = 10.6;
-				MODULEMAP_FILE = "Target Support Files/Pods-iGlance-iGlanceUITests/Pods-iGlance-iGlanceUITests.modulemap";
 				OTHER_LDFLAGS = "";
 				OTHER_LIBTOOLFLAGS = "";
 				PODS_ROOT = "$(SRCROOT)";
 				PRODUCT_BUNDLE_IDENTIFIER = "org.cocoapods.${PRODUCT_NAME:rfc1034identifier}";
-				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
 				SDKROOT = macosx;
 				SKIP_INSTALL = YES;
-				VERSIONING_SYSTEM = "apple-generic";
-				VERSION_INFO_PREFIX = "";
+			};
+			name = Debug;
+		};
+		29FD2405E8F0E2F5855B39212EA70157 /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = F5B47695AF2A3195C9069FB862BCDE53 /* Pods-SystemKit.release.xcconfig */;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = NO;
+				ARCHS = "$(ARCHS_STANDARD_64_BIT)";
+				CLANG_ENABLE_OBJC_WEAK = NO;
+				CODE_SIGN_IDENTITY = "-";
+				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
+				EXECUTABLE_PREFIX = lib;
+				MACH_O_TYPE = staticlib;
+				MACOSX_DEPLOYMENT_TARGET = 10.6;
+				OTHER_LDFLAGS = "";
+				OTHER_LIBTOOLFLAGS = "";
+				PODS_ROOT = "$(SRCROOT)";
+				PRODUCT_BUNDLE_IDENTIFIER = "org.cocoapods.${PRODUCT_NAME:rfc1034identifier}";
+				SDKROOT = macosx;
+				SKIP_INSTALL = YES;
+			};
+			name = Release;
+		};
+		6644FC3506912087892C6EBB7E8F8421 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 511FAD309737EE01AC666C2449F8B788 /* Pods-iGlanceLauncher.debug.xcconfig */;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = NO;
+				ARCHS = "$(ARCHS_STANDARD_64_BIT)";
+				CLANG_ENABLE_OBJC_WEAK = NO;
+				CODE_SIGN_IDENTITY = "-";
+				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
+				EXECUTABLE_PREFIX = lib;
+				MACH_O_TYPE = staticlib;
+				MACOSX_DEPLOYMENT_TARGET = 10.6;
+				OTHER_LDFLAGS = "";
+				OTHER_LIBTOOLFLAGS = "";
+				PODS_ROOT = "$(SRCROOT)";
+				PRODUCT_BUNDLE_IDENTIFIER = "org.cocoapods.${PRODUCT_NAME:rfc1034identifier}";
+				SDKROOT = macosx;
+				SKIP_INSTALL = YES;
+			};
+			name = Debug;
+		};
+		8222209E666DA46CA7959AA1DEBF04E3 /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = C2619D90BB87385A96485D7B8B2DD3D4 /* Pods-iGlanceLauncher.release.xcconfig */;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = NO;
+				ARCHS = "$(ARCHS_STANDARD_64_BIT)";
+				CLANG_ENABLE_OBJC_WEAK = NO;
+				CODE_SIGN_IDENTITY = "-";
+				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
+				EXECUTABLE_PREFIX = lib;
+				MACH_O_TYPE = staticlib;
+				MACOSX_DEPLOYMENT_TARGET = 10.6;
+				OTHER_LDFLAGS = "";
+				OTHER_LIBTOOLFLAGS = "";
+				PODS_ROOT = "$(SRCROOT)";
+				PRODUCT_BUNDLE_IDENTIFIER = "org.cocoapods.${PRODUCT_NAME:rfc1034identifier}";
+				SDKROOT = macosx;
+				SKIP_INSTALL = YES;
 			};
 			name = Release;
 		};
@@ -547,6 +478,7 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 89F85ACF3D78B39506B75103B4694B36 /* SwiftLint.xcconfig */;
 			buildSettings = {
+				ARCHS = "$(ARCHS_STANDARD_64_BIT)";
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_OBJC_WEAK = NO;
 				CODE_SIGN_IDENTITY = "-";
@@ -560,44 +492,28 @@
 			};
 			name = Release;
 		};
-		A9E92B98816ECAF0038C3B6D8D5AE90D /* Debug */ = {
+		9BEC257BE093EE643270AECA56EAACE4 /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 2114070EF445CFD225CA798C70B2F403 /* Pods-iGlance-iGlanceUITests.debug.xcconfig */;
+			baseConfigurationReference = 968585FBB26A3079946AA17BA76F23B1 /* Pods-iGlance.release.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = NO;
+				ARCHS = "$(ARCHS_STANDARD_64_BIT)";
 				CLANG_ENABLE_OBJC_WEAK = NO;
-				CODE_SIGN_IDENTITY = "";
+				CODE_SIGN_IDENTITY = "-";
 				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
 				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
-				COMBINE_HIDPI_IMAGES = YES;
-				CURRENT_PROJECT_VERSION = 1;
-				DEFINES_MODULE = YES;
-				DYLIB_COMPATIBILITY_VERSION = 1;
-				DYLIB_CURRENT_VERSION = 1;
-				DYLIB_INSTALL_NAME_BASE = "@rpath";
-				FRAMEWORK_VERSION = A;
-				INFOPLIST_FILE = "Target Support Files/Pods-iGlance-iGlanceUITests/Pods-iGlance-iGlanceUITests-Info.plist";
-				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
-				LD_RUNPATH_SEARCH_PATHS = (
-					"$(inherited)",
-					"@executable_path/../Frameworks",
-					"@loader_path/Frameworks",
-				);
+				EXECUTABLE_PREFIX = lib;
 				MACH_O_TYPE = staticlib;
 				MACOSX_DEPLOYMENT_TARGET = 10.6;
-				MODULEMAP_FILE = "Target Support Files/Pods-iGlance-iGlanceUITests/Pods-iGlance-iGlanceUITests.modulemap";
 				OTHER_LDFLAGS = "";
 				OTHER_LIBTOOLFLAGS = "";
 				PODS_ROOT = "$(SRCROOT)";
 				PRODUCT_BUNDLE_IDENTIFIER = "org.cocoapods.${PRODUCT_NAME:rfc1034identifier}";
-				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
 				SDKROOT = macosx;
 				SKIP_INSTALL = YES;
-				VERSIONING_SYSTEM = "apple-generic";
-				VERSION_INFO_PREFIX = "";
 			};
-			name = Debug;
+			name = Release;
 		};
 		C6D7F5E1842D65720C18B1DD4E6D2CE8 /* Debug */ = {
 			isa = XCBuildConfiguration;
@@ -663,88 +579,11 @@
 			};
 			name = Debug;
 		};
-		C8C4439825CCC6B531CE289A4FC6F299 /* Debug */ = {
-			isa = XCBuildConfiguration;
-			baseConfigurationReference = 122058ECBB5FFAC171181563D7139A2D /* Pods-iGlance.debug.xcconfig */;
-			buildSettings = {
-				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = NO;
-				CLANG_ENABLE_OBJC_WEAK = NO;
-				CODE_SIGN_IDENTITY = "";
-				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
-				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
-				COMBINE_HIDPI_IMAGES = YES;
-				CURRENT_PROJECT_VERSION = 1;
-				DEFINES_MODULE = YES;
-				DYLIB_COMPATIBILITY_VERSION = 1;
-				DYLIB_CURRENT_VERSION = 1;
-				DYLIB_INSTALL_NAME_BASE = "@rpath";
-				FRAMEWORK_VERSION = A;
-				INFOPLIST_FILE = "Target Support Files/Pods-iGlance/Pods-iGlance-Info.plist";
-				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
-				LD_RUNPATH_SEARCH_PATHS = (
-					"$(inherited)",
-					"@executable_path/../Frameworks",
-					"@loader_path/Frameworks",
-				);
-				MACH_O_TYPE = staticlib;
-				MACOSX_DEPLOYMENT_TARGET = 10.6;
-				MODULEMAP_FILE = "Target Support Files/Pods-iGlance/Pods-iGlance.modulemap";
-				OTHER_LDFLAGS = "";
-				OTHER_LIBTOOLFLAGS = "";
-				PODS_ROOT = "$(SRCROOT)";
-				PRODUCT_BUNDLE_IDENTIFIER = "org.cocoapods.${PRODUCT_NAME:rfc1034identifier}";
-				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
-				SDKROOT = macosx;
-				SKIP_INSTALL = YES;
-				VERSIONING_SYSTEM = "apple-generic";
-				VERSION_INFO_PREFIX = "";
-			};
-			name = Debug;
-		};
-		D987DED63362263EFF81320034AC4A2C /* Release */ = {
-			isa = XCBuildConfiguration;
-			baseConfigurationReference = 3EDC9DCC594668C7F710719ADA2D97C7 /* Pods-iGlanceTests.release.xcconfig */;
-			buildSettings = {
-				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = NO;
-				CLANG_ENABLE_OBJC_WEAK = NO;
-				CODE_SIGN_IDENTITY = "";
-				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
-				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
-				COMBINE_HIDPI_IMAGES = YES;
-				CURRENT_PROJECT_VERSION = 1;
-				DEFINES_MODULE = YES;
-				DYLIB_COMPATIBILITY_VERSION = 1;
-				DYLIB_CURRENT_VERSION = 1;
-				DYLIB_INSTALL_NAME_BASE = "@rpath";
-				FRAMEWORK_VERSION = A;
-				INFOPLIST_FILE = "Target Support Files/Pods-iGlanceTests/Pods-iGlanceTests-Info.plist";
-				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
-				LD_RUNPATH_SEARCH_PATHS = (
-					"$(inherited)",
-					"@executable_path/../Frameworks",
-					"@loader_path/Frameworks",
-				);
-				MACH_O_TYPE = staticlib;
-				MACOSX_DEPLOYMENT_TARGET = 10.6;
-				MODULEMAP_FILE = "Target Support Files/Pods-iGlanceTests/Pods-iGlanceTests.modulemap";
-				OTHER_LDFLAGS = "";
-				OTHER_LIBTOOLFLAGS = "";
-				PODS_ROOT = "$(SRCROOT)";
-				PRODUCT_BUNDLE_IDENTIFIER = "org.cocoapods.${PRODUCT_NAME:rfc1034identifier}";
-				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
-				SDKROOT = macosx;
-				SKIP_INSTALL = YES;
-				VERSIONING_SYSTEM = "apple-generic";
-				VERSION_INFO_PREFIX = "";
-			};
-			name = Release;
-		};
 		EBA0CC105C99CE8BFDA51C62E70EA605 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 89F85ACF3D78B39506B75103B4694B36 /* SwiftLint.xcconfig */;
 			buildSettings = {
+				ARCHS = "$(ARCHS_STANDARD_64_BIT)";
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_OBJC_WEAK = NO;
 				CODE_SIGN_IDENTITY = "-";
@@ -821,11 +660,11 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		10A5DD079B15EF643C54C1E03059468A /* Build configuration list for PBXNativeTarget "Pods-iGlance-iGlanceUITests" */ = {
+		1C5ECF6F3CE2D97E391AAB28FFAA53A1 /* Build configuration list for PBXNativeTarget "Pods-SystemKit" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
-				A9E92B98816ECAF0038C3B6D8D5AE90D /* Debug */,
-				4E66DBF6F43B289012B91433EFF86C13 /* Release */,
+				1C18722C4603E9311BF31E0FA7B472AC /* Debug */,
+				29FD2405E8F0E2F5855B39212EA70157 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
@@ -839,15 +678,6 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		ADA03E1591AC67156FC3EC0CCD1764CD /* Build configuration list for PBXNativeTarget "Pods-iGlance" */ = {
-			isa = XCConfigurationList;
-			buildConfigurations = (
-				C8C4439825CCC6B531CE289A4FC6F299 /* Debug */,
-				0684197A8A910C93127A6B9DD9A5567C /* Release */,
-			);
-			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Release;
-		};
 		AE7B4FB01588B9E6DF09CB79FC7CE7BD /* Build configuration list for PBXAggregateTarget "SwiftLint" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
@@ -857,11 +687,20 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		FE43E54319F3DB2E4E2C1BF4E36CEFFE /* Build configuration list for PBXNativeTarget "Pods-iGlanceTests" */ = {
+		B2332978EB8AF2D293CFC9BD66782821 /* Build configuration list for PBXNativeTarget "Pods-iGlanceLauncher" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
-				26A7856499A6D3B22D8EF614B87CAD48 /* Debug */,
-				D987DED63362263EFF81320034AC4A2C /* Release */,
+				6644FC3506912087892C6EBB7E8F8421 /* Debug */,
+				8222209E666DA46CA7959AA1DEBF04E3 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		CC656145521975243BB2DB18D85E8439 /* Build configuration list for PBXNativeTarget "Pods-iGlance" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				25567BF706FFC6DD599B21EB8298604A /* Debug */,
+				9BEC257BE093EE643270AECA56EAACE4 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;

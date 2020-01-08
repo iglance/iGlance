@@ -7,12 +7,37 @@
 //
 
 import Cocoa
+import ServiceManagement
+import os.log
 
 class PreferenceModalViewController: NSViewController {
+    // MARK: -
+    // MARK: Outlets
+    @IBOutlet private var versionLabel: NSTextField!
+    @IBOutlet private var autostartOnBootCheckbox: NSButton! {
+        didSet {
+            autostartOnBootCheckbox.state = (AppDelegate.userSettings.settings.autostartOnBoot) ? NSButton.StateValue.on : NSButton.StateValue.off
+        }
+    }
+
+    // MARK: -
+    // MARK: Private Variables
     private var onDisappearCallback: (() -> Void)?
 
     // MARK: -
     // MARK: Function Overrides
+
+    override func viewWillAppear() {
+        super.viewWillAppear()
+
+        // get the version of the app
+        guard let appVersion = Bundle.main.infoDictionary?["CFBundleShortVersionString"] as? String else {
+            os_log("Could not retrieve the version of the app", type: .error)
+            return
+        }
+
+        versionLabel.stringValue = appVersion
+    }
 
     override func viewDidAppear() {
         super.viewDidAppear()
@@ -39,6 +64,21 @@ class PreferenceModalViewController: NSViewController {
         // call the callback
         if let unwrappedCallback = self.onDisappearCallback {
             unwrappedCallback()
+        }
+    }
+
+    // MARK: -
+    // MARK: Actions
+
+    @IBAction private func autoStartCheckboxChanged(_ sender: NSButton) {
+        // set the auto start on boot user setting
+        AppDelegate.userSettings.settings.autostartOnBoot = (sender.state == NSButton.StateValue.on)
+
+        // enable the login item if the checkbox is activated
+        if sender.state == NSButton.StateValue.on && !SMLoginItemSetEnabled(LAUNCHER_BUNDLE_IDENTIFIER as CFString, true) {
+            os_log("Could not enable the iGlanceLauncher as login item", type: .error)
+        } else if !SMLoginItemSetEnabled(LAUNCHER_BUNDLE_IDENTIFIER as CFString, false) {
+            os_log("Could not deactive the iGlanceLauncher as login item", type: .error)
         }
     }
 

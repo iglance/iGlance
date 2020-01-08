@@ -17,7 +17,7 @@ class MainViewViewController: NSViewController {
 
         // create the visual effect view for the background blur
         let visualEffectView = NSVisualEffectView(frame: self.view.frame)
-        visualEffectView.material = NSVisualEffectView.Material.underWindowBackground
+        visualEffectView.material = NSVisualEffectView.Material.menu
         // add the visual effect view
         self.view.addSubview(visualEffectView, positioned: NSWindow.OrderingMode.below, relativeTo: nil)
     }

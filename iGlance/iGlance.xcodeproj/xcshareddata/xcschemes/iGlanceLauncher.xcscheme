@@ -14,9 +14,9 @@
             buildForAnalyzing = "YES">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "B46789B123A69ECA00CE572D"
-               BuildableName = "iGlance.app"
-               BlueprintName = "iGlance"
+               BlueprintIdentifier = "B4CF2F7423C4F5CD00544511"
+               BuildableName = "iGlanceLauncher.app"
+               BlueprintName = "iGlanceLauncher"
                ReferencedContainer = "container:iGlance.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>
@@ -44,9 +44,9 @@
          runnableDebuggingMode = "0">
          <BuildableReference
             BuildableIdentifier = "primary"
-            BlueprintIdentifier = "B46789B123A69ECA00CE572D"
-            BuildableName = "iGlance.app"
-            BlueprintName = "iGlance"
+            BlueprintIdentifier = "B4CF2F7423C4F5CD00544511"
+            BuildableName = "iGlanceLauncher.app"
+            BlueprintName = "iGlanceLauncher"
             ReferencedContainer = "container:iGlance.xcodeproj">
          </BuildableReference>
       </BuildableProductRunnable>
@@ -61,9 +61,9 @@
          runnableDebuggingMode = "0">
          <BuildableReference
             BuildableIdentifier = "primary"
-            BlueprintIdentifier = "B46789B123A69ECA00CE572D"
-            BuildableName = "iGlance.app"
-            BlueprintName = "iGlance"
+            BlueprintIdentifier = "B4CF2F7423C4F5CD00544511"
+            BuildableName = "iGlanceLauncher.app"
+            BlueprintName = "iGlanceLauncher"
             ReferencedContainer = "container:iGlance.xcodeproj">
          </BuildableReference>
       </BuildableProductRunnable>

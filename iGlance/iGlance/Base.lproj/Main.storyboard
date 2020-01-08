@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <document type="com.apple.InterfaceBuilder3.Cocoa.Storyboard.XIB" version="3.0" toolsVersion="15702" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES" initialViewController="B8D-0N-5wS">
     <dependencies>
+        <deployment identifier="macosx"/>
         <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="15702"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -1648,32 +1649,30 @@
                                 </constraints>
                                 <imageCell key="cell" refusesFirstResponder="YES" alignment="left" imageScaling="proportionallyDown" image="iGlance_logo_white" id="BAb-uN-mbT"/>
                             </imageView>
-                            <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="3Qq-JC-Rt3">
-                                <rect key="frame" x="124" y="13" width="152" height="32"/>
-                                <buttonCell key="cell" type="push" title="Check for updates" bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="7Qm-yQ-Axt">
-                                    <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
-                                    <font key="font" metaFont="system"/>
-                                </buttonCell>
-                            </button>
                             <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="Ccc-Hv-nkz">
-                                <rect key="frame" x="136" y="59" width="129" height="18"/>
+                                <rect key="frame" x="136" y="58" width="129" height="18"/>
                                 <buttonCell key="cell" type="check" title="Autostart on boot" bezelStyle="regularSquare" imagePosition="left" inset="2" id="fg4-3Q-tWh">
                                     <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
                                     <font key="font" metaFont="system"/>
                                 </buttonCell>
+                                <connections>
+                                    <action selector="autoStartCheckboxChanged:" target="hqq-cw-DLQ" id="GIO-Sj-iBf"/>
+                                </connections>
                             </button>
                         </subviews>
                         <constraints>
-                            <constraint firstAttribute="bottom" secondItem="3Qq-JC-Rt3" secondAttribute="bottom" constant="20" id="5vd-Hf-AUT"/>
                             <constraint firstItem="bD9-hh-nap" firstAttribute="centerX" secondItem="b2C-CX-ahd" secondAttribute="centerX" id="HnD-VH-osJ"/>
                             <constraint firstItem="esp-rJ-Xwv" firstAttribute="centerX" secondItem="b2C-CX-ahd" secondAttribute="centerX" id="JNm-Lv-aVW"/>
-                            <constraint firstItem="3Qq-JC-Rt3" firstAttribute="top" secondItem="Ccc-Hv-nkz" secondAttribute="bottom" constant="20" id="XO7-LF-QdG"/>
                             <constraint firstItem="Ccc-Hv-nkz" firstAttribute="centerX" secondItem="b2C-CX-ahd" secondAttribute="centerX" id="Za0-Ll-cw6"/>
+                            <constraint firstAttribute="bottom" secondItem="Ccc-Hv-nkz" secondAttribute="bottom" constant="60" id="bzr-2N-V8C"/>
                             <constraint firstItem="bD9-hh-nap" firstAttribute="top" secondItem="esp-rJ-Xwv" secondAttribute="bottom" constant="10" id="eAs-md-vGJ"/>
                             <constraint firstItem="esp-rJ-Xwv" firstAttribute="top" secondItem="b2C-CX-ahd" secondAttribute="top" constant="20" id="mej-Bn-Db1"/>
-                            <constraint firstItem="3Qq-JC-Rt3" firstAttribute="centerX" secondItem="b2C-CX-ahd" secondAttribute="centerX" id="wba-cF-W7b"/>
                         </constraints>
                     </view>
+                    <connections>
+                        <outlet property="autostartOnBootCheckbox" destination="Ccc-Hv-nkz" id="IuH-B7-0d4"/>
+                        <outlet property="versionLabel" destination="Sbh-ca-W9W" id="slD-zM-WLA"/>
+                    </connections>
                 </viewController>
                 <customObject id="3vg-hS-HbH" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
             </objects>
