@@ -19,7 +19,7 @@ class AppDelegate: NSObject, NSApplicationDelegate {
 
     func applicationDidFinishLaunching(_ notification: Notification) {
         // kill the launcher app
-               killLauncherApplication()
+        killLauncherApplication()
     }
 
     // MARK: -

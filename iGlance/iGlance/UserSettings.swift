@@ -16,7 +16,6 @@ struct IGlanceUserSettings: Codable {
 class UserSettings {
     var settings: IGlanceUserSettings! {
         didSet {
-            print("User settings changed:", settings!)
             // when the values of the struct changed saved it to the user defaults object
             if !saveUserSettings(settings: self.settings) {
                 os_log("Could not save the user settings", type: .error)

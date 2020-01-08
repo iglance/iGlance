@@ -75,9 +75,16 @@ class PreferenceModalViewController: NSViewController {
         AppDelegate.userSettings.settings.autostartOnBoot = (sender.state == NSButton.StateValue.on)
 
         // enable the login item if the checkbox is activated
-        if sender.state == NSButton.StateValue.on && !SMLoginItemSetEnabled(LAUNCHER_BUNDLE_IDENTIFIER as CFString, true) {
-            os_log("Could not enable the iGlanceLauncher as login item", type: .error)
-        } else if !SMLoginItemSetEnabled(LAUNCHER_BUNDLE_IDENTIFIER as CFString, false) {
+        if sender.state == NSButton.StateValue.on {
+            if !SMLoginItemSetEnabled(LAUNCHER_BUNDLE_IDENTIFIER as CFString, true) {
+                os_log("Could not enable the iGlanceLauncher as login item", type: .error)
+            }
+
+            return
+        }
+
+        // disable the login item if the checkbox is not activated
+        if !SMLoginItemSetEnabled(LAUNCHER_BUNDLE_IDENTIFIER as CFString, false) {
             os_log("Could not deactive the iGlanceLauncher as login item", type: .error)
         }
     }
