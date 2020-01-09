@@ -212,6 +212,6 @@ class BatteryComponent {
 
         // update the menu entry with the current capacity
         let capacityEntry = menuBattery?.item(at: 0)
-        capacityEntry?.title = "Capacity: " + String(format: "%02d", Int(batteryCapacity)) + "%"
+        capacityEntry?.title = "Capacity: \(Int(batteryCapacity))%"
     }
 }
