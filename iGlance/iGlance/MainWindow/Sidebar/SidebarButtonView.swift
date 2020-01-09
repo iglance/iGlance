@@ -14,6 +14,7 @@ class SidebarButtonView: NSView {
     var mainViewStoryboardID: String?
     var highlighted: Bool = false {
         didSet {
+            // if highlighted was changed force a redraw
             self.needsDisplay = true
         }
     }

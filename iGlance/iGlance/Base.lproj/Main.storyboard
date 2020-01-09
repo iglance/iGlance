@@ -785,7 +785,7 @@
                         <rect key="frame" x="0.0" y="0.0" width="610" height="500"/>
                         <autoresizingMask key="autoresizingMask"/>
                         <subviews>
-                            <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="JWf-aU-Sjt">
+                            <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="JWf-aU-Sjt" customClass="ThemedLabel" customModule="iGlance" customModuleProvider="target">
                                 <rect key="frame" x="8" y="462" width="128" height="28"/>
                                 <textFieldCell key="cell" lineBreakMode="clipping" title="Dashboard" id="Yx2-TO-YkW">
                                     <font key="font" metaFont="systemBold" size="24"/>
@@ -802,7 +802,7 @@
                                             <rect key="frame" x="0.0" y="0.0" width="112" height="80"/>
                                             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                             <subviews>
-                                                <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="s6s-AL-M7m">
+                                                <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="s6s-AL-M7m" customClass="ThemedLabel" customModule="iGlance" customModuleProvider="target">
                                                     <rect key="frame" x="20" y="57" width="74" height="19"/>
                                                     <textFieldCell key="cell" lineBreakMode="clipping" alignment="center" title="Uptime" id="3Zz-J2-eQw">
                                                         <font key="font" metaFont="systemBold" size="15"/>
@@ -810,7 +810,7 @@
                                                         <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
                                                     </textFieldCell>
                                                 </textField>
-                                                <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="T5D-ND-OZQ">
+                                                <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="T5D-ND-OZQ" customClass="ThemedLabel" customModule="iGlance" customModuleProvider="target">
                                                     <rect key="frame" x="34" y="31" width="44" height="16"/>
                                                     <textFieldCell key="cell" lineBreakMode="clipping" title="7 days" id="Aim-jE-EWr">
                                                         <font key="font" metaFont="system"/>
@@ -818,7 +818,7 @@
                                                         <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
                                                     </textFieldCell>
                                                 </textField>
-                                                <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="CPH-CJ-61G">
+                                                <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="CPH-CJ-61G" customClass="ThemedLabel" customModule="iGlance" customModuleProvider="target">
                                                     <rect key="frame" x="28" y="10" width="56" height="16"/>
                                                     <textFieldCell key="cell" lineBreakMode="clipping" title="10 hours" id="7QY-PA-2aX">
                                                         <font key="font" metaFont="system"/>
@@ -849,7 +849,7 @@
                                             <rect key="frame" x="0.0" y="0.0" width="325" height="80"/>
                                             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                             <subviews>
-                                                <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="IM1-Ym-YNt">
+                                                <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="IM1-Ym-YNt" customClass="ThemedLabel" customModule="iGlance" customModuleProvider="target">
                                                     <rect key="frame" x="20" y="57" width="287" height="19"/>
                                                     <textFieldCell key="cell" lineBreakMode="clipping" alignment="center" title="System" id="ZKn-fp-gFH">
                                                         <font key="font" metaFont="systemBold" size="15"/>
@@ -860,7 +860,7 @@
                                                 <stackView distribution="fill" orientation="horizontal" alignment="top" spacing="5" horizontalStackHuggingPriority="249.99998474121094" verticalStackHuggingPriority="249.99998474121094" detachesHiddenViews="YES" translatesAutoresizingMaskIntoConstraints="NO" id="BZL-pW-A1e">
                                                     <rect key="frame" x="10" y="31" width="210" height="16"/>
                                                     <subviews>
-                                                        <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="49E-Qe-70t">
+                                                        <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="49E-Qe-70t" customClass="ThemedLabel" customModule="iGlance" customModuleProvider="target">
                                                             <rect key="frame" x="-2" y="0.0" width="35" height="16"/>
                                                             <textFieldCell key="cell" lineBreakMode="clipping" title="CPU:" id="3PB-IW-8YL">
                                                                 <font key="font" metaFont="system"/>
@@ -868,7 +868,7 @@
                                                                 <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
                                                             </textFieldCell>
                                                         </textField>
-                                                        <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="IZD-vv-5ch">
+                                                        <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="IZD-vv-5ch" customClass="ThemedLabel" customModule="iGlance" customModuleProvider="target">
                                                             <rect key="frame" x="34" y="0.0" width="178" height="16"/>
                                                             <textFieldCell key="cell" lineBreakMode="clipping" title="2.6 GHz Intel Core i7-8850H" id="bI5-gh-e0p">
                                                                 <font key="font" metaFont="system"/>
@@ -889,7 +889,7 @@
                                                 <stackView distribution="fill" orientation="horizontal" alignment="top" spacing="5" horizontalStackHuggingPriority="249.99998474121094" verticalStackHuggingPriority="249.99998474121094" detachesHiddenViews="YES" translatesAutoresizingMaskIntoConstraints="NO" id="S1q-UD-QKh">
                                                     <rect key="frame" x="10" y="10" width="144" height="16"/>
                                                     <subviews>
-                                                        <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="5yQ-FN-huN">
+                                                        <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="5yQ-FN-huN" customClass="ThemedLabel" customModule="iGlance" customModuleProvider="target">
                                                             <rect key="frame" x="-2" y="0.0" width="36" height="16"/>
                                                             <textFieldCell key="cell" lineBreakMode="clipping" title="GPU:" id="UvK-xJ-w0d">
                                                                 <font key="font" metaFont="system"/>
@@ -897,7 +897,7 @@
                                                                 <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
                                                             </textFieldCell>
                                                         </textField>
-                                                        <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="5Nh-lk-nnD">
+                                                        <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="5Nh-lk-nnD" customClass="ThemedLabel" customModule="iGlance" customModuleProvider="target">
                                                             <rect key="frame" x="35" y="0.0" width="111" height="16"/>
                                                             <textFieldCell key="cell" lineBreakMode="clipping" title="Radeon Pro 560X" id="iwn-T0-zfE">
                                                                 <font key="font" metaFont="system"/>
@@ -918,7 +918,7 @@
                                                 <stackView distribution="fill" orientation="horizontal" alignment="top" spacing="5" horizontalStackHuggingPriority="249.99998474121094" verticalStackHuggingPriority="249.99998474121094" detachesHiddenViews="YES" translatesAutoresizingMaskIntoConstraints="NO" id="s8d-cX-qC4">
                                                     <rect key="frame" x="234" y="31" width="71" height="16"/>
                                                     <subviews>
-                                                        <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="Ng1-Hc-ahB">
+                                                        <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="Ng1-Hc-ahB" customClass="ThemedLabel" customModule="iGlance" customModuleProvider="target">
                                                             <rect key="frame" x="-2" y="0.0" width="37" height="16"/>
                                                             <textFieldCell key="cell" lineBreakMode="clipping" title="RAM:" id="PIw-Wy-59S">
                                                                 <font key="font" metaFont="system"/>
@@ -926,7 +926,7 @@
                                                                 <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
                                                             </textFieldCell>
                                                         </textField>
-                                                        <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="AH1-Fb-t7F">
+                                                        <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="AH1-Fb-t7F" customClass="ThemedLabel" customModule="iGlance" customModuleProvider="target">
                                                             <rect key="frame" x="36" y="0.0" width="37" height="16"/>
                                                             <textFieldCell key="cell" lineBreakMode="clipping" title="16GB" id="M8u-FO-YWa">
                                                                 <font key="font" metaFont="system"/>
@@ -947,7 +947,7 @@
                                                 <stackView distribution="fill" orientation="horizontal" alignment="top" spacing="5" horizontalStackHuggingPriority="249.99998474121094" verticalStackHuggingPriority="249.99998474121094" detachesHiddenViews="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Qwt-S0-Ru1">
                                                     <rect key="frame" x="234" y="10" width="75" height="16"/>
                                                     <subviews>
-                                                        <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="4iS-cj-X8a">
+                                                        <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="4iS-cj-X8a" customClass="ThemedLabel" customModule="iGlance" customModuleProvider="target">
                                                             <rect key="frame" x="-2" y="0.0" width="34" height="16"/>
                                                             <textFieldCell key="cell" lineBreakMode="clipping" title="Disk:" id="D5b-7j-vxa">
                                                                 <font key="font" metaFont="system"/>
@@ -955,7 +955,7 @@
                                                                 <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
                                                             </textFieldCell>
                                                         </textField>
-                                                        <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="Y4S-gv-5tE">
+                                                        <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="Y4S-gv-5tE" customClass="ThemedLabel" customModule="iGlance" customModuleProvider="target">
                                                             <rect key="frame" x="33" y="0.0" width="44" height="16"/>
                                                             <textFieldCell key="cell" lineBreakMode="clipping" title="512GB" id="kB4-WI-alT">
                                                                 <font key="font" metaFont="system"/>
@@ -1000,7 +1000,7 @@
                                             <rect key="frame" x="0.0" y="0.0" width="112" height="80"/>
                                             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                             <subviews>
-                                                <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="cvW-QP-PoN">
+                                                <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="cvW-QP-PoN" customClass="ThemedLabel" customModule="iGlance" customModuleProvider="target">
                                                     <rect key="frame" x="20" y="57" width="74" height="19"/>
                                                     <textFieldCell key="cell" lineBreakMode="clipping" alignment="center" title="Battery" id="7KK-i6-COB">
                                                         <font key="font" metaFont="systemBold" size="15"/>
@@ -1011,7 +1011,7 @@
                                                 <stackView distribution="equalSpacing" orientation="horizontal" alignment="top" spacing="15" horizontalStackHuggingPriority="249.99998474121094" verticalStackHuggingPriority="249.99998474121094" detachesHiddenViews="YES" translatesAutoresizingMaskIntoConstraints="NO" id="5Ul-Hk-zpK">
                                                     <rect key="frame" x="10" y="31" width="92" height="16"/>
                                                     <subviews>
-                                                        <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="med-YE-eOS">
+                                                        <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="med-YE-eOS" customClass="ThemedLabel" customModule="iGlance" customModuleProvider="target">
                                                             <rect key="frame" x="-2" y="0.0" width="48" height="16"/>
                                                             <textFieldCell key="cell" lineBreakMode="clipping" title="Health:" id="kkj-gF-JhQ">
                                                                 <font key="font" metaFont="system"/>
@@ -1019,7 +1019,7 @@
                                                                 <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
                                                             </textFieldCell>
                                                         </textField>
-                                                        <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="s1C-zu-LHT">
+                                                        <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="s1C-zu-LHT" customClass="ThemedLabel" customModule="iGlance" customModuleProvider="target">
                                                             <rect key="frame" x="62" y="0.0" width="32" height="16"/>
                                                             <textFieldCell key="cell" lineBreakMode="clipping" title="95%" id="oui-d9-OA6">
                                                                 <font key="font" metaFont="system"/>
@@ -1040,7 +1040,7 @@
                                                 <stackView distribution="equalSpacing" orientation="horizontal" alignment="top" spacing="15" horizontalStackHuggingPriority="249.99998474121094" verticalStackHuggingPriority="249.99998474121094" detachesHiddenViews="YES" translatesAutoresizingMaskIntoConstraints="NO" id="ytr-gq-uCh">
                                                     <rect key="frame" x="9" y="10" width="93" height="16"/>
                                                     <subviews>
-                                                        <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="Dre-NS-qgA">
+                                                        <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="Dre-NS-qgA" customClass="ThemedLabel" customModule="iGlance" customModuleProvider="target">
                                                             <rect key="frame" x="-2" y="0.0" width="49" height="16"/>
                                                             <textFieldCell key="cell" lineBreakMode="clipping" title="Cycles:" id="wv4-5W-mh9">
                                                                 <font key="font" metaFont="system"/>
@@ -1048,7 +1048,7 @@
                                                                 <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
                                                             </textFieldCell>
                                                         </textField>
-                                                        <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="jrq-gy-Gg2">
+                                                        <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="jrq-gy-Gg2" customClass="ThemedLabel" customModule="iGlance" customModuleProvider="target">
                                                             <rect key="frame" x="69" y="0.0" width="26" height="16"/>
                                                             <textFieldCell key="cell" lineBreakMode="clipping" title="127" id="xrb-JM-NgI">
                                                                 <font key="font" metaFont="system"/>
@@ -1615,7 +1615,7 @@
                             <stackView distribution="fill" orientation="horizontal" alignment="top" spacing="5" horizontalStackHuggingPriority="249.99998474121094" verticalStackHuggingPriority="249.99998474121094" detachesHiddenViews="YES" translatesAutoresizingMaskIntoConstraints="NO" id="bD9-hh-nap">
                                 <rect key="frame" x="160" y="126" width="81" height="16"/>
                                 <subviews>
-                                    <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="jmM-1U-kd7">
+                                    <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="jmM-1U-kd7" customClass="ThemedLabel" customModule="iGlance" customModuleProvider="target">
                                         <rect key="frame" x="-2" y="0.0" width="50" height="16"/>
                                         <textFieldCell key="cell" lineBreakMode="clipping" title="Version" id="Gjp-IE-r9u">
                                             <font key="font" metaFont="system"/>
@@ -1623,7 +1623,7 @@
                                             <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
                                         </textFieldCell>
                                     </textField>
-                                    <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="Sbh-ca-W9W">
+                                    <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="Sbh-ca-W9W" customClass="ThemedLabel" customModule="iGlance" customModuleProvider="target">
                                         <rect key="frame" x="49" y="0.0" width="34" height="16"/>
                                         <textFieldCell key="cell" lineBreakMode="clipping" title="2.0.0" id="jD6-pB-bkl">
                                             <font key="font" metaFont="system"/>
@@ -1649,7 +1649,7 @@
                                 </constraints>
                                 <imageCell key="cell" refusesFirstResponder="YES" alignment="left" imageScaling="proportionallyDown" image="iGlance_logo_white" id="BAb-uN-mbT"/>
                             </imageView>
-                            <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="Ccc-Hv-nkz">
+                            <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="Ccc-Hv-nkz" customClass="ThemedButton" customModule="iGlance" customModuleProvider="target">
                                 <rect key="frame" x="136" y="58" width="129" height="18"/>
                                 <buttonCell key="cell" type="check" title="Autostart on boot" bezelStyle="regularSquare" imagePosition="left" inset="2" id="fg4-3Q-tWh">
                                     <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
@@ -1671,6 +1671,7 @@
                     </view>
                     <connections>
                         <outlet property="autostartOnBootCheckbox" destination="Ccc-Hv-nkz" id="IuH-B7-0d4"/>
+                        <outlet property="logoImage" destination="esp-rJ-Xwv" id="6aM-lu-5fV"/>
                         <outlet property="versionLabel" destination="Sbh-ca-W9W" id="slD-zM-WLA"/>
                     </connections>
                 </viewController>

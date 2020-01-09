@@ -19,6 +19,7 @@ class PreferenceModalViewController: NSViewController {
             autostartOnBootCheckbox.state = (AppDelegate.userSettings.settings.autostartOnBoot) ? NSButton.StateValue.on : NSButton.StateValue.off
         }
     }
+    @IBOutlet private var logoImage: NSImageView!
 
     // MARK: -
     // MARK: Private Variables
@@ -37,6 +38,17 @@ class PreferenceModalViewController: NSViewController {
         }
 
         versionLabel.stringValue = appVersion
+
+        // add a callback to change the logo depending on the current theme
+        DistributedNotificationCenter.default.addObserver(
+            self,
+            selector: #selector(onThemeChange),
+            name: .AppleInterfaceThemeChangedNotification,
+            object: nil
+        )
+
+        // add the correct logo image at startup
+        changeLogo()
     }
 
     override func viewDidAppear() {
@@ -94,5 +106,20 @@ class PreferenceModalViewController: NSViewController {
 
     func onDisappear(callback: @escaping () -> Void) {
         self.onDisappearCallback = callback
+    }
+
+    // MARK: -
+    // MARK: Private Functions
+    @objc
+    private func onThemeChange() {
+        changeLogo()
+    }
+
+    private func changeLogo() {
+        if ThemeManager.isDarkTheme() {
+            logoImage.image = NSImage(named: "iGlance_logo_white")
+        } else {
+            logoImage.image = NSImage(named: "iGlance_logo_black")
+        }
     }
 }

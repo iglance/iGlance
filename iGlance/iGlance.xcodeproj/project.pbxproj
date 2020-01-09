@@ -26,6 +26,8 @@
 		B46789BD23A69ECB00CE572D /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B46789BB23A69ECB00CE572D /* Main.storyboard */; };
 		B46F25D423B22DEC00E0A3F4 /* CpuInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = B46F25D323B22DEC00E0A3F4 /* CpuInfo.swift */; };
 		B46F25D623B22E4500E0A3F4 /* GpuInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = B46F25D523B22E4500E0A3F4 /* GpuInfo.swift */; };
+		B47094EA23C79F9A009D85AD /* ThemedLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B47094E923C79F9A009D85AD /* ThemedLabel.swift */; };
+		B47094EC23C7A30A009D85AD /* ThemedButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = B47094EB23C7A30A009D85AD /* ThemedButton.swift */; };
 		B47D3C8D23ABEDF100DE911F /* CustomDashboardBox.swift in Sources */ = {isa = PBXBuildFile; fileRef = B47D3C8C23ABEDF100DE911F /* CustomDashboardBox.swift */; };
 		B49F5D5723C5BCAF009E9BE6 /* UserSettings.swift in Sources */ = {isa = PBXBuildFile; fileRef = B49F5D5623C5BCAF009E9BE6 /* UserSettings.swift */; };
 		B4C37E6323A7946B008C7FC0 /* SidebarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B4C37E6223A7946B008C7FC0 /* SidebarView.swift */; };
@@ -119,6 +121,8 @@
 		B46789BF23A69ECB00CE572D /* iGlance.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = iGlance.entitlements; sourceTree = "<group>"; };
 		B46F25D323B22DEC00E0A3F4 /* CpuInfo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CpuInfo.swift; sourceTree = "<group>"; };
 		B46F25D523B22E4500E0A3F4 /* GpuInfo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GpuInfo.swift; sourceTree = "<group>"; };
+		B47094E923C79F9A009D85AD /* ThemedLabel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ThemedLabel.swift; sourceTree = "<group>"; };
+		B47094EB23C7A30A009D85AD /* ThemedButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ThemedButton.swift; sourceTree = "<group>"; };
 		B47D3C8C23ABEDF100DE911F /* CustomDashboardBox.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomDashboardBox.swift; sourceTree = "<group>"; };
 		B49F5D5623C5BCAF009E9BE6 /* UserSettings.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserSettings.swift; sourceTree = "<group>"; };
 		B4C37E6223A7946B008C7FC0 /* SidebarView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SidebarView.swift; sourceTree = "<group>"; };
@@ -274,8 +278,8 @@
 				B46789B523A69ECA00CE572D /* AppDelegate.swift */,
 				B4DE725E23C257610001CF46 /* Extensions.swift */,
 				B49F5D5623C5BCAF009E9BE6 /* UserSettings.swift */,
-				B46789B923A69ECB00CE572D /* Assets.xcassets */,
 				B46789BB23A69ECB00CE572D /* Main.storyboard */,
+				B46789B923A69ECB00CE572D /* Assets.xcassets */,
 				B46789BE23A69ECB00CE572D /* Info.plist */,
 				B46789BF23A69ECB00CE572D /* iGlance.entitlements */,
 			);
@@ -305,6 +309,8 @@
 			isa = PBXGroup;
 			children = (
 				B4C37E6F23A91F3C008C7FC0 /* ThemeManager.swift */,
+				B47094E923C79F9A009D85AD /* ThemedLabel.swift */,
+				B47094EB23C7A30A009D85AD /* ThemedButton.swift */,
 			);
 			path = Theme;
 			sourceTree = "<group>";
@@ -555,9 +561,11 @@
 				B43E111623C3B1F3000D58CF /* PreferenceWindowView.swift in Sources */,
 				B4C37E6B23A8D715008C7FC0 /* SegueAnimator.swift in Sources */,
 				B43ABF2C23AA3729007F93BA /* MainWindowController.swift in Sources */,
+				B47094EA23C79F9A009D85AD /* ThemedLabel.swift in Sources */,
 				B4D82FDC23C1031800D502FF /* DiskInfo.swift in Sources */,
 				B4C8DD2523AA3DB8008DAE45 /* ContentManagerView.swift in Sources */,
 				B46F25D423B22DEC00E0A3F4 /* CpuInfo.swift in Sources */,
+				B47094EC23C7A30A009D85AD /* ThemedButton.swift in Sources */,
 				B4C37E6923A8D6BB008C7FC0 /* SegueBetweenEmbedded.swift in Sources */,
 				B42BCE6023ABF73100A13601 /* DashboardViewController.swift in Sources */,
 				B4C37E6D23A8D811008C7FC0 /* ContentManagerViewControllerHolder.swift in Sources */,
