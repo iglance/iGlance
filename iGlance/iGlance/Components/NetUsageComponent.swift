@@ -150,7 +150,7 @@ class NetUsageComponent {
         let data = pipe.fileHandleForReading.readDataToEndOfFile()
         let interface = String(data: data, encoding: String.Encoding.utf8)?.trimmingCharacters(in: .whitespacesAndNewlines)
 
-        return interface ?? "en0"
+        return interface.map { $0.isEmpty ? "en0" : $0 } ?? "en0"
     }
 
     /**
