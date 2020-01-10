@@ -10,7 +10,7 @@
         <scene sceneID="Qve-LB-vF3">
             <objects>
                 <viewController title="Preference Modal View Controller" storyboardIdentifier="PreferenceModalViewController" id="eJb-KF-Kac" customClass="PreferenceModalViewController" customModule="iGlance" customModuleProvider="target" sceneMemberID="viewController">
-                    <view key="view" id="AXW-5W-vMJ" customClass="PreferenceView" customModule="iGlance" customModuleProvider="target">
+                    <view key="view" id="AXW-5W-vMJ">
                         <rect key="frame" x="0.0" y="0.0" width="400" height="250"/>
                         <autoresizingMask key="autoresizingMask"/>
                         <subviews>
