@@ -19,7 +19,7 @@
                                         <menuItem title="About iGlance" id="5kV-Vb-QxS">
                                             <modifierMask key="keyEquivalentModifierMask"/>
                                             <connections>
-                                                <action selector="orderFrontStandardAboutPanel:" target="Ady-hI-5gd" id="Exp-CZ-Vem"/>
+                                                <action selector="about:" target="Voe-Tx-rLC" id="Ti5-bs-T2e"/>
                                             </connections>
                                         </menuItem>
                                         <menuItem isSeparatorItem="YES" id="VOq-y0-SEH"/>
@@ -1603,81 +1603,6 @@
                 <customObject id="5FS-Iv-FT4" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="-545" y="1114"/>
-        </scene>
-        <!--Preference Modal View Controller-->
-        <scene sceneID="gFk-SS-aul">
-            <objects>
-                <viewController title="Preference Modal View Controller" storyboardIdentifier="PreferenceModalViewController" id="hqq-cw-DLQ" customClass="PreferenceModalViewController" customModule="iGlance" customModuleProvider="target" sceneMemberID="viewController">
-                    <view key="view" id="b2C-CX-ahd" customClass="PreferenceWindowView" customModule="iGlance" customModuleProvider="target">
-                        <rect key="frame" x="0.0" y="0.0" width="400" height="250"/>
-                        <autoresizingMask key="autoresizingMask"/>
-                        <subviews>
-                            <stackView distribution="fill" orientation="horizontal" alignment="top" spacing="5" horizontalStackHuggingPriority="249.99998474121094" verticalStackHuggingPriority="249.99998474121094" detachesHiddenViews="YES" translatesAutoresizingMaskIntoConstraints="NO" id="bD9-hh-nap">
-                                <rect key="frame" x="160" y="126" width="81" height="16"/>
-                                <subviews>
-                                    <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="jmM-1U-kd7" customClass="ThemedLabel" customModule="iGlance" customModuleProvider="target">
-                                        <rect key="frame" x="-2" y="0.0" width="50" height="16"/>
-                                        <textFieldCell key="cell" lineBreakMode="clipping" title="Version" id="Gjp-IE-r9u">
-                                            <font key="font" metaFont="system"/>
-                                            <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
-                                            <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
-                                        </textFieldCell>
-                                    </textField>
-                                    <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="Sbh-ca-W9W" customClass="ThemedLabel" customModule="iGlance" customModuleProvider="target">
-                                        <rect key="frame" x="49" y="0.0" width="34" height="16"/>
-                                        <textFieldCell key="cell" lineBreakMode="clipping" title="2.0.0" id="jD6-pB-bkl">
-                                            <font key="font" metaFont="system"/>
-                                            <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
-                                            <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
-                                        </textFieldCell>
-                                    </textField>
-                                </subviews>
-                                <visibilityPriorities>
-                                    <integer value="1000"/>
-                                    <integer value="1000"/>
-                                </visibilityPriorities>
-                                <customSpacing>
-                                    <real value="3.4028234663852886e+38"/>
-                                    <real value="3.4028234663852886e+38"/>
-                                </customSpacing>
-                            </stackView>
-                            <imageView horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="esp-rJ-Xwv">
-                                <rect key="frame" x="100" y="152" width="200" height="78"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="78" id="oUO-uE-T3G"/>
-                                    <constraint firstAttribute="width" constant="200" id="qwz-J4-uVk"/>
-                                </constraints>
-                                <imageCell key="cell" refusesFirstResponder="YES" alignment="left" imageScaling="proportionallyDown" image="iGlance_logo_white" id="BAb-uN-mbT"/>
-                            </imageView>
-                            <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="Ccc-Hv-nkz" customClass="ThemedButton" customModule="iGlance" customModuleProvider="target">
-                                <rect key="frame" x="136" y="58" width="129" height="18"/>
-                                <buttonCell key="cell" type="check" title="Autostart on boot" bezelStyle="regularSquare" imagePosition="left" inset="2" id="fg4-3Q-tWh">
-                                    <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
-                                    <font key="font" metaFont="system"/>
-                                </buttonCell>
-                                <connections>
-                                    <action selector="autoStartCheckboxChanged:" target="hqq-cw-DLQ" id="GIO-Sj-iBf"/>
-                                </connections>
-                            </button>
-                        </subviews>
-                        <constraints>
-                            <constraint firstItem="bD9-hh-nap" firstAttribute="centerX" secondItem="b2C-CX-ahd" secondAttribute="centerX" id="HnD-VH-osJ"/>
-                            <constraint firstItem="esp-rJ-Xwv" firstAttribute="centerX" secondItem="b2C-CX-ahd" secondAttribute="centerX" id="JNm-Lv-aVW"/>
-                            <constraint firstItem="Ccc-Hv-nkz" firstAttribute="centerX" secondItem="b2C-CX-ahd" secondAttribute="centerX" id="Za0-Ll-cw6"/>
-                            <constraint firstAttribute="bottom" secondItem="Ccc-Hv-nkz" secondAttribute="bottom" constant="60" id="bzr-2N-V8C"/>
-                            <constraint firstItem="bD9-hh-nap" firstAttribute="top" secondItem="esp-rJ-Xwv" secondAttribute="bottom" constant="10" id="eAs-md-vGJ"/>
-                            <constraint firstItem="esp-rJ-Xwv" firstAttribute="top" secondItem="b2C-CX-ahd" secondAttribute="top" constant="20" id="mej-Bn-Db1"/>
-                        </constraints>
-                    </view>
-                    <connections>
-                        <outlet property="autostartOnBootCheckbox" destination="Ccc-Hv-nkz" id="IuH-B7-0d4"/>
-                        <outlet property="logoImage" destination="esp-rJ-Xwv" id="6aM-lu-5fV"/>
-                        <outlet property="versionLabel" destination="Sbh-ca-W9W" id="slD-zM-WLA"/>
-                    </connections>
-                </viewController>
-                <customObject id="3vg-hS-HbH" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="-941" y="1024"/>
         </scene>
     </scenes>
     <resources>

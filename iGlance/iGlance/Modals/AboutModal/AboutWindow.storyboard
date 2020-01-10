@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.Cocoa.Storyboard.XIB" version="3.0" toolsVersion="15702" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES">
+    <dependencies>
+        <deployment identifier="macosx"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="15702"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <scenes>
+        <!--About Modal View Controller-->
+        <scene sceneID="Jsy-kA-YVC">
+            <objects>
+                <viewController title="About Modal View Controller" storyboardIdentifier="AboutModalViewController" id="pVh-1b-qN6" customClass="AboutModalViewController" customModule="iGlance" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" id="fU8-ph-ccG" customClass="AboutView" customModule="iGlance" customModuleProvider="target">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="400"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                        <subviews>
+                            <stackView distribution="fill" orientation="horizontal" alignment="top" spacing="5" horizontalStackHuggingPriority="249.99998474121094" verticalStackHuggingPriority="249.99998474121094" detachesHiddenViews="YES" translatesAutoresizingMaskIntoConstraints="NO" id="cOC-Bg-2dO">
+                                <rect key="frame" x="260" y="276" width="81" height="16"/>
+                                <subviews>
+                                    <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="NwL-cS-hcs" customClass="ThemedLabel" customModule="iGlance" customModuleProvider="target">
+                                        <rect key="frame" x="-2" y="0.0" width="50" height="16"/>
+                                        <textFieldCell key="cell" lineBreakMode="clipping" title="Version" id="kMp-bj-cvJ">
+                                            <font key="font" metaFont="system"/>
+                                            <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
+                                            <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
+                                        </textFieldCell>
+                                    </textField>
+                                    <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="Jr4-Fh-A8z" customClass="ThemedLabel" customModule="iGlance" customModuleProvider="target">
+                                        <rect key="frame" x="49" y="0.0" width="34" height="16"/>
+                                        <textFieldCell key="cell" lineBreakMode="clipping" title="2.0.0" id="Dqq-pB-ZhO">
+                                            <font key="font" metaFont="system"/>
+                                            <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
+                                            <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
+                                        </textFieldCell>
+                                    </textField>
+                                </subviews>
+                                <visibilityPriorities>
+                                    <integer value="1000"/>
+                                    <integer value="1000"/>
+                                </visibilityPriorities>
+                                <customSpacing>
+                                    <real value="3.4028234663852886e+38"/>
+                                    <real value="3.4028234663852886e+38"/>
+                                </customSpacing>
+                            </stackView>
+                            <imageView horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="Y4e-3c-bO5">
+                                <rect key="frame" x="200" y="302" width="200" height="78"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="200" id="2rb-sh-Pg8"/>
+                                    <constraint firstAttribute="height" constant="78" id="aPX-hs-Xr1"/>
+                                </constraints>
+                                <imageCell key="cell" refusesFirstResponder="YES" alignment="left" imageScaling="proportionallyDown" image="iGlance_logo_white" id="E58-AV-W89"/>
+                            </imageView>
+                        </subviews>
+                        <constraints>
+                            <constraint firstItem="Y4e-3c-bO5" firstAttribute="top" secondItem="fU8-ph-ccG" secondAttribute="top" constant="20" id="5La-WY-gDI"/>
+                            <constraint firstItem="cOC-Bg-2dO" firstAttribute="centerX" secondItem="fU8-ph-ccG" secondAttribute="centerX" id="8Af-Aj-9JC"/>
+                            <constraint firstItem="cOC-Bg-2dO" firstAttribute="top" secondItem="Y4e-3c-bO5" secondAttribute="bottom" constant="10" id="Hdd-NP-I52"/>
+                            <constraint firstItem="Y4e-3c-bO5" firstAttribute="centerX" secondItem="fU8-ph-ccG" secondAttribute="centerX" id="zdz-rb-U6l"/>
+                        </constraints>
+                    </view>
+                    <connections>
+                        <outlet property="logoImage" destination="Y4e-3c-bO5" id="Bgf-29-0sv"/>
+                        <outlet property="versionLabel" destination="Jr4-Fh-A8z" id="swa-OH-1GT"/>
+                    </connections>
+                </viewController>
+                <customObject id="bVs-gu-47W" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="144" y="146"/>
+        </scene>
+    </scenes>
+    <resources>
+        <image name="iGlance_logo_white" width="1280" height="500"/>
+    </resources>
+</document>

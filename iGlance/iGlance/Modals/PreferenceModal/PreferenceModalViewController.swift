@@ -10,7 +10,7 @@ import Cocoa
 import ServiceManagement
 import os.log
 
-class PreferenceModalViewController: NSViewController {
+class PreferenceModalViewController: ModalViewController {
     // MARK: -
     // MARK: Outlets
     @IBOutlet private var versionLabel: NSTextField!
@@ -20,10 +20,6 @@ class PreferenceModalViewController: NSViewController {
         }
     }
     @IBOutlet private var logoImage: NSImageView!
-
-    // MARK: -
-    // MARK: Private Variables
-    private var onDisappearCallback: (() -> Void)?
 
     // MARK: -
     // MARK: Function Overrides
@@ -36,7 +32,6 @@ class PreferenceModalViewController: NSViewController {
             os_log("Could not retrieve the version of the app", type: .error)
             return
         }
-
         versionLabel.stringValue = appVersion
 
         // add a callback to change the logo depending on the current theme
@@ -49,34 +44,6 @@ class PreferenceModalViewController: NSViewController {
 
         // add the correct logo image at startup
         changeLogo()
-    }
-
-    override func viewDidAppear() {
-        super.viewDidAppear()
-
-        // change the window appearance by making the titlebar transparent
-        self.view.window?.styleMask.insert(.fullSizeContentView)
-        self.view.window?.titlebarAppearsTransparent = true
-        self.view.window?.titleVisibility = .hidden
-
-        // disable resizing of the window
-        self.view.window?.styleMask.remove(.resizable)
-
-        // hide all unused window buttons
-        self.view.window?.standardWindowButton(.zoomButton)?.isHidden = true
-        self.view.window?.standardWindowButton(.miniaturizeButton)?.isHidden = true
-
-        // make the window unmovable
-        self.view.window?.isMovable = false
-    }
-
-    override func viewWillDisappear() {
-        super.viewWillDisappear()
-
-        // call the callback
-        if let unwrappedCallback = self.onDisappearCallback {
-            unwrappedCallback()
-        }
     }
 
     // MARK: -
@@ -102,19 +69,28 @@ class PreferenceModalViewController: NSViewController {
     }
 
     // MARK: -
-    // MARK: Instance Functions
-
-    func onDisappear(callback: @escaping () -> Void) {
-        self.onDisappearCallback = callback
-    }
-
-    // MARK: -
     // MARK: Private Functions
+
     @objc
     private func onThemeChange() {
         changeLogo()
     }
 
+    /**
+     * Set the version label to the current app version.
+     */
+    private func setVersionLabel() {
+        // get the version of the app
+        guard let appVersion = Bundle.main.infoDictionary?["CFBundleShortVersionString"] as? String else {
+            os_log("Could not retrieve the version of the app", type: .error)
+            return
+        }
+        versionLabel.stringValue = appVersion
+    }
+
+    /**
+     * Sets the logo according to the current os theme.
+     */
     private func changeLogo() {
         if ThemeManager.isDarkTheme() {
             logoImage.image = NSImage(named: "iGlance_logo_white")

@@ -8,7 +8,7 @@
 
 import Cocoa
 
-class PreferenceWindowView: NSView {
+class PreferenceView: NSView {
     /**
      * Prevent dragging of the window
      */

@@ -23,6 +23,37 @@ class AppDelegate: NSObject, NSApplicationDelegate {
     }
 
     // MARK: -
+    // MARK: Actions
+
+    /**
+     * This function is called when the 'About iGlance' button in the app menu is clicked
+     */
+    @IBAction private func about(_ sender: NSMenuItem) {
+        // instantiate the storyboard (bundle = nil indicates the apps main bundle)
+        let storyboard = NSStoryboard(name: "AboutWindow", bundle: nil)
+
+        // instantiate the view controller for the about window
+        guard let aboutModalViewController = storyboard.instantiateController(withIdentifier: "AboutModalViewController") as? AboutModalViewController else {
+            os_log("Could not instantiate 'AboutModalViewController'", type: .error)
+            return
+        }
+
+        // get the view controller from the main window
+        guard let mainWindowController = NSApplication.shared.windows.first(where: { $0.windowController is MainWindowController }) else {
+            os_log("Could not retrieve main window controller", type: .error)
+            return
+        }
+        // get the window of the main window view controller
+        guard let mainWindow = mainWindowController.contentViewController?.view.window else {
+            os_log("Could not retrieve the window of the main window view controller", type: .error)
+            return
+        }
+
+        aboutModalViewController.showModal(parentWindow: mainWindow)
+    }
+
+
+    // MARK: -
     // MARK: Private functions
 
     /**

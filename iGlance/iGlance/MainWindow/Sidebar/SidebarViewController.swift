@@ -75,48 +75,22 @@ class SidebarViewController: NSViewController {
     // MARK: Actions
 
     @IBAction private func preferenceButtonClick(_ sender: NSButton) {
+        // instantiate the storyboard (bundle = nil indicates the apps main bundle)
+        let storyboard = NSStoryboard(name: "PreferenceWindow", bundle: nil)
+
         // instantiate the view controller
-        guard let preferenceModalViewController = self.storyboard?.instantiateController(withIdentifier: "PreferenceModalViewController") as! PreferenceModalViewController? else {
+        guard let preferenceModalViewController = storyboard.instantiateController(withIdentifier: "PreferenceModalViewController") as? PreferenceModalViewController else {
             os_log("Could not instantiate 'PreferenceModalViewController'", type: .error)
             return
         }
 
-        // first display the view controller since otherwise its window variable is nil
-        presentAsModalWindow(preferenceModalViewController)
-
-        // get the position of the main window
-        guard let parentWindowFrame: NSRect = self.view.window?.frame else {
-            os_log("Could not retrieve the position of the modal parent window frame", type: .error)
+        // get the parent window
+        guard let parentWindow = self.view.window else {
+            os_log("Could not unwrap the parent window", type: .error)
             return
         }
 
-        // get the position of the modal window
-        guard let modalWindowFrame: NSRect = preferenceModalViewController.view.window?.frame else {
-            os_log("Could not retrieve the position of the modal window", type: .error)
-            return
-        }
-
-        // get the window of the modal
-        guard let modalWindow = preferenceModalViewController.view.window else {
-            os_log("Could not retrieve the modal window", type: .error)
-            return
-        }
-
-        // position the modal in the center of the main window
-        // (coordinate center of a window is in the left lower corner)
-        let newWindowPosition = NSPoint(
-            x: parentWindowFrame.midX - modalWindowFrame.width / 2,
-            y: parentWindowFrame.midY + modalWindowFrame.height / 2
-        )
-        modalWindow.setFrameTopLeftPoint(newWindowPosition)
-
-        // make the main window unmovable
-        self.view.window?.isMovable = false
-
-        // set the callback to make the main window movable again after the preference window was closed
-        preferenceModalViewController.onDisappear {
-            self.view.window?.isMovable = true
-        }
+        preferenceModalViewController.showModal(parentWindow: parentWindow)
     }
 
     // MARK: -
