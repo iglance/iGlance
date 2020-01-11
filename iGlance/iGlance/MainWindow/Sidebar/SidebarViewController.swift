@@ -7,7 +7,7 @@
 //
 
 import Cocoa
-import os.log
+import CocoaLumberjack
 
 class SidebarViewController: NSViewController {
     // MARK: -
@@ -80,13 +80,13 @@ class SidebarViewController: NSViewController {
 
         // instantiate the view controller
         guard let preferenceModalViewController = storyboard.instantiateController(withIdentifier: "PreferenceModalViewController") as? PreferenceModalViewController else {
-            os_log("Could not instantiate 'PreferenceModalViewController'", type: .error)
+            DDLogError("Could not instantiate 'PreferenceModalViewController'")
             return
         }
 
         // get the parent window
         guard let parentWindow = self.view.window else {
-            os_log("Could not unwrap the parent window", type: .error)
+            DDLogError("Could not unwrap the parent window")
             return
         }
 

@@ -7,7 +7,7 @@
 //
 
 import Foundation
-import os.log
+import CocoaLumberjack
 
 class SystemInfo {
     // MARK: -
@@ -37,7 +37,7 @@ class SystemInfo {
         var uptime = timespec()
 
         if clock_gettime(CLOCK_MONOTONIC_RAW, &uptime) != 0 {
-            os_log("Could not retrieve system uptime", type: .error)
+            DDLogError("Could not retrieve system uptime")
             return TimeDuration(days: 0, hours: 0, minutes: 0, seconds: 0)
         }
 

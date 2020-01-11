@@ -7,7 +7,7 @@
 //
 
 import Foundation
-import os.log
+import CocoaLumberjack
 
 class CpuInfo {
     /**
@@ -21,13 +21,13 @@ class CpuInfo {
         // get the length of the cpu name
         var stringSize = 0
         if sysctlbyname("machdep.cpu.brand_string", nil, &stringSize, nil, 0) != 0 {
-            os_log("Could not get the length of the cpu name", type: .error)
+            DDLogError("Could not get the length of the cpu name")
             return ""
         }
 
         var cpuName = [CChar](repeating: 0, count: Int(stringSize))
         if sysctlbyname("machdep.cpu.brand_string", &cpuName, &stringSize, nil, 0) != 0 {
-            os_log("Could not get the name of the cpu", type: .error)
+            DDLogError("Could not get the name of the cpu")
             return ""
         }
 

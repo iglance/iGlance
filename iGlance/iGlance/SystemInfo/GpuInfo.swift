@@ -7,7 +7,7 @@
 //
 
 import Foundation
-import os.log
+import CocoaLumberjack
 
 class GpuInfo {
     struct GpuInfo {
@@ -21,8 +21,7 @@ class GpuInfo {
      * - Returns: The name of the GPU (e.g. Radeon Pro 560X)
      */
     func getGpuName() -> String {
-        // taken from https://stackoverflow.com/a/32869978/9717671
-        // and https://github.com/sebhildebrandt/systeminformation/blob/master/lib/graphics.js
+        // pretty similar to https://github.com/sebhildebrandt/systeminformation/blob/master/lib/graphics.js
         let task = Process()
         let outputPipe = Pipe()
 
@@ -39,7 +38,7 @@ class GpuInfo {
 
         // check that the command was successful by checking the first line
         if !lines[0].contains("Graphics/Displays:") {
-            os_log("Command to retrieve the GPU name failed.", type: .error)
+            DDLogError("Command to retrieve the GPU name failed")
             return ""
         }
 

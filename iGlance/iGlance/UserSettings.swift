@@ -7,7 +7,7 @@
 //
 
 import Foundation
-import os.log
+import CocoaLumberjack
 
 struct IGlanceUserSettings: Codable {
     var autostartOnBoot: Bool = false
@@ -18,7 +18,7 @@ class UserSettings {
         didSet {
             // when the values of the struct changed saved it to the user defaults object
             if !saveUserSettings(settings: self.settings) {
-                os_log("Could not save the user settings", type: .error)
+                DDLogError("Could not save the user settings")
             }
         }
     }
@@ -44,7 +44,7 @@ class UserSettings {
             return decodedUserSettings
         } catch {
             // if an error occurred return the default settings
-            os_log("Could not decode the saved user settings", type: .error)
+            DDLogError("Could not decode the saved user settings")
             return IGlanceUserSettings()
         }
     }
@@ -61,7 +61,7 @@ class UserSettings {
 
             return true
         } catch {
-            os_log("Could not encode the user settings", type: .error)
+            DDLogError("Could not encode the user settings")
         }
 
         return false

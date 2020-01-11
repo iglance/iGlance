@@ -8,20 +8,20 @@
 
 import Foundation
 import SystemKit
-import os.log
+import CocoaLumberjack
 
 class Battery {
     private var skBattery = SKBattery()
 
     init() {
         if skBattery.open() != kIOReturnSuccess {
-            os_log("Opening a connection to the battery failed", type: .error)
+            DDLogError("Opening a connection to the battery failed")
         }
     }
 
     deinit {
         if skBattery.close() != kIOReturnSuccess {
-            os_log("Closing the connection to the battery failed", type: .error)
+            DDLogError("Closing the connection to the battery failed")
         }
     }
 
@@ -30,7 +30,7 @@ class Battery {
      */
     func getBatteryHealth() -> Float {
         if !skBattery.connectionIsOpen() {
-            os_log("Can't get battery health because there is no open connection to the battery", type: .error)
+            DDLogError("Can't get battery health because there is no open connection to the battery")
             return 0
         }
 
@@ -42,7 +42,7 @@ class Battery {
      */
     func getBatteryCycles() -> Int {
         if !skBattery.connectionIsOpen() {
-            os_log("Can't get battery cycles because there is no open connection to the battery", type: .error)
+            DDLogError("Can't get battery cycles because there is no open connection to the battery")
             return 0
         }
 

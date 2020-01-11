@@ -7,7 +7,7 @@
 //
 
 import Foundation
-import os.log
+import CocoaLumberjack
 
 class DiskInfo {
     /**
@@ -28,7 +28,7 @@ class DiskInfo {
 
         // check that the command was successful by checking the first line
         if !output.split(separator: "\n")[0].contains("NVMExpress:") {
-            os_log("Command to retrieve the disk size failed.", type: .error)
+            DDLogError("Command to retrieve the disk size failed.")
             return (0, "")
         }
 

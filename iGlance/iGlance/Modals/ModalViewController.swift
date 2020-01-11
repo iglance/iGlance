@@ -7,7 +7,7 @@
 //
 
 import Cocoa
-import os.log
+import CocoaLumberjack
 
 class ModalViewController: NSViewController {
     // MARK: -
@@ -69,7 +69,7 @@ class ModalViewController: NSViewController {
     func centerWindowOnParent(parentWindow: NSWindow) {
         // get the modal window
         guard let modalWindow = self.view.window else {
-            os_log("Could not retrieve the modal window", type: .error)
+            DDLogError("Could not retrieve the modal window")
             return
         }
 
@@ -100,7 +100,7 @@ class ModalViewController: NSViewController {
     private func changeWindowAppearance() {
         // get the modal window
         guard let modalWindow = self.view.window else {
-            os_log("Could not retrieve the modal window", type: .error)
+            DDLogError("Could not retrieve the modal window")
             return
         }
 

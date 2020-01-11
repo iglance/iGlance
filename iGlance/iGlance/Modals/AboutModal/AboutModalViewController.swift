@@ -7,7 +7,7 @@
 //
 
 import Cocoa
-import os.log
+import CocoaLumberjack
 
 class AboutModalViewController: ModalViewController {
     // MARK: -
@@ -52,7 +52,7 @@ class AboutModalViewController: ModalViewController {
     private func setVersionLabel() {
         // get the version of the app
         guard let appVersion = Bundle.main.infoDictionary?["CFBundleShortVersionString"] as? String else {
-            os_log("Could not retrieve the version of the app", type: .error)
+            DDLogError("Could not retrieve the version of the app")
             return
         }
         versionLabel.stringValue = appVersion
@@ -61,27 +61,27 @@ class AboutModalViewController: ModalViewController {
     private func setLicenseView() {
         // get the property list as a dictionary
         guard let plistPath = Bundle.main.path(forResource: "Credits", ofType: "plist") else {
-            os_log("Could not retrieve Credits.plist", type: .error)
+            DDLogError("Could not retrieve Credits.plist")
             return
         }
         guard let creditsDict = NSDictionary(contentsOfFile: plistPath) else {
-            os_log("Could not cast Credits.plist to a dictionary", type: .error)
+            DDLogError("Could not cast Credits.plist to a dictionary")
             return
         }
 
         var licenseViewString = ""
         for (index, key) in creditsDict.enumerated() {
             guard let library = creditsDict[key.key] as? [String: String] else {
-                os_log("Could not cast the library to a [String : String] dictionary", type: .error)
+                DDLogError("Could not cast the library to a [String : String] dictionary")
                 continue
             }
 
             guard let libUrl = library["URL"] else {
-                os_log("Could not unpack the url of a library", type: .error)
+                DDLogError("Could not unpack the url of a library")
                 continue
             }
             guard let libLicense = library["License"] else {
-                os_log("Could not unpack the license of a library", type: .error)
+                DDLogError("Could not unpack the license of a library")
                 continue
             }
 

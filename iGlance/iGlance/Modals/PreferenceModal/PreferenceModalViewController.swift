@@ -8,7 +8,7 @@
 
 import Cocoa
 import ServiceManagement
-import os.log
+import CocoaLumberjack
 
 class PreferenceModalViewController: ModalViewController {
     // MARK: -
@@ -29,7 +29,7 @@ class PreferenceModalViewController: ModalViewController {
 
         // get the version of the app
         guard let appVersion = Bundle.main.infoDictionary?["CFBundleShortVersionString"] as? String else {
-            os_log("Could not retrieve the version of the app", type: .error)
+            DDLogError("Could not retrieve the version of the app")
             return
         }
         versionLabel.stringValue = appVersion
@@ -56,7 +56,7 @@ class PreferenceModalViewController: ModalViewController {
         // enable the login item if the checkbox is activated
         if sender.state == NSButton.StateValue.on {
             if !SMLoginItemSetEnabled(LAUNCHER_BUNDLE_IDENTIFIER as CFString, true) {
-                os_log("Could not enable the iGlanceLauncher as login item", type: .error)
+                DDLogError("Could not enable the iGlanceLauncher as login item")
             }
 
             return
@@ -64,7 +64,7 @@ class PreferenceModalViewController: ModalViewController {
 
         // disable the login item if the checkbox is not activated
         if !SMLoginItemSetEnabled(LAUNCHER_BUNDLE_IDENTIFIER as CFString, false) {
-            os_log("Could not deactive the iGlanceLauncher as login item", type: .error)
+            DDLogError("Could not deactive the iGlanceLauncher as login item")
         }
     }
 
@@ -82,7 +82,7 @@ class PreferenceModalViewController: ModalViewController {
     private func setVersionLabel() {
         // get the version of the app
         guard let appVersion = Bundle.main.infoDictionary?["CFBundleShortVersionString"] as? String else {
-            os_log("Could not retrieve the version of the app", type: .error)
+            DDLogError("Could not retrieve the version of the app")
             return
         }
         versionLabel.stringValue = appVersion

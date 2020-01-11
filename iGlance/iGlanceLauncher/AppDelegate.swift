@@ -7,19 +7,32 @@
 //
 
 import Cocoa
-import os.log
+import CocoaLumberjack
 
 @NSApplicationMain
 class AppDelegate: NSObject, NSApplicationDelegate {
     func applicationDidFinishLaunching(_ aNotification: Notification) {
+        // set the custom log formatter
+        DDOSLogger.sharedInstance.logFormatter = CustomLogFormatter()
+        // add the loggers to the loggin framework
+        DDLog.add(DDOSLogger.sharedInstance, with: ddLogLevel)
+
+        // register the logger
+        let fileLogger = DDFileLogger()
+        fileLogger.logFormatter = CustomLogFormatter()
+        fileLogger.rollingFrequency = 60 * 60 * 24 // 24 hours
+        fileLogger.logFileManager.maximumNumberOfLogFiles = 7
+        DDLog.add(fileLogger, with: ddLogLevel)
+        
         if self.isMainAppRunning() {
             // if the main application is already running terminate the launcher
             self.killLauncher()
+            DDLogInfo("Killed the launcher application")
         }
 
         // launch the main app
         if !launchMainApp() {
-            os_log("Could not launch the main application", type: .error)
+            DDLogError("Could not launch the main application")
             return
         }
     }
