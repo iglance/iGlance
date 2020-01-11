@@ -6,7 +6,7 @@
             <title>2.0</title>
             <pubDate>Sat, 11 Jan 2020 19:15:01 +0100</pubDate>
             <sparkle:minimumSystemVersion>10.12</sparkle:minimumSystemVersion>
-            <enclosure url="https://raw.githubusercontent.com/iglance/iGlance/gui-redesign-25/Sparkle/updates/iGlance.zip" sparkle:version="2.0" sparkle:shortVersionString="2.0" length="9820058" type="application/octet-stream" sparkle:edSignature="plcixruuwd/TTuHP/lDxDz2gp/mDQ8LUbD4gTmICvdqr1+cpuOZhPECorm3c+2Iq06k7adtKTsfPLSoVKOy8Cg=="/>
+            <enclosure url="https://github.com/iglance/iGlance/releases/download/v1.4.3/iGlance.zip" sparkle:version="2.0" sparkle:shortVersionString="2.0" length="9820058" type="application/octet-stream" sparkle:edSignature="plcixruuwd/TTuHP/lDxDz2gp/mDQ8LUbD4gTmICvdqr1+cpuOZhPECorm3c+2Iq06k7adtKTsfPLSoVKOy8Cg=="/>
         </item>
     </channel>
 </rss>
