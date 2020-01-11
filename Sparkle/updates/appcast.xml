@@ -4,9 +4,9 @@
         <title>iGlance</title>
         <item>
             <title>2.0</title>
-            <pubDate>Sat, 11 Jan 2020 18:53:47 +0100</pubDate>
+            <pubDate>Sat, 11 Jan 2020 19:00:27 +0100</pubDate>
             <sparkle:minimumSystemVersion>10.12</sparkle:minimumSystemVersion>
-            <enclosure url="iGlance.zip" sparkle:version="1" sparkle:shortVersionString="2.0" length="9822137" type="application/octet-stream" sparkle:edSignature="5yjJjrXC9A1AVYshX4wZ3zZmzXfHaMZDvu0fs1I1AuZh9zMYU2LVI2I3A2k2ISzcR6/e7HvvZJrdX0HGMVhpDQ=="/>
+            <enclosure url="iGlance.zip" sparkle:version="1" sparkle:shortVersionString="2.0" length="9820022" type="application/octet-stream" sparkle:edSignature="R2XKwTesHwnj9Xx4wvU2x0cqqCvRUNfDgSrYB0xYoU6WOocLvKI05zYIiRLRLCbcBiUSrldEjE2sYkhoz+KyAg=="/>
         </item>
     </channel>
 </rss>
