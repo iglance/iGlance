@@ -16,7 +16,7 @@ class CustomDashboardBox: NSBox {
     // MARK: Variable Overrides
     override var borderWidth: CGFloat {
         get {
-            return 0.0
+            0.0
         }
         // swiftlint:disable:next unused_setter_value
         set {
@@ -26,7 +26,7 @@ class CustomDashboardBox: NSBox {
 
     override var fillColor: NSColor {
         get {
-            return ThemeManager.currentTheme().sidebarColor
+            ThemeManager.currentTheme().sidebarColor
         }
         // swiftlint:disable:next unused_setter_value
         set {
@@ -36,7 +36,7 @@ class CustomDashboardBox: NSBox {
 
     override var cornerRadius: CGFloat {
         get {
-            return 10
+            10
         }
         // swiftlint:disable:next unused_setter_value
         set {

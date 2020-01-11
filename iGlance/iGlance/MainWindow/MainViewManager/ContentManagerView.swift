@@ -13,6 +13,6 @@ class ContentManagerView: NSView {
      * Prevent dragging of the window.
      */
     override var mouseDownCanMoveWindow: Bool {
-        return false
+        false
     }
 }

@@ -179,7 +179,7 @@ public struct SKSystem {
 
     /// Number of physical cores on this machine.
     public static func physicalCores() -> Int {
-        return Int(SKSystem.hostBasicInfo().physical_cpu)
+        Int(SKSystem.hostBasicInfo().physical_cpu)
     }
 
     /**
@@ -189,7 +189,7 @@ public struct SKSystem {
     https://en.wikipedia.org/wiki/Hyper-threading
     */
     public static func logicalCores() -> Int {
-        return Int(SKSystem.hostBasicInfo().logical_cpu)
+        Int(SKSystem.hostBasicInfo().logical_cpu)
     }
 
     /**
@@ -250,7 +250,7 @@ public struct SKSystem {
 
     /// Size of physical memory on this machine
     public static func physicalMemory(_ unit: Unit = .gigabyte) -> Double {
-        return Double(SKSystem.hostBasicInfo().max_mem) / unit.rawValue
+        Double(SKSystem.hostBasicInfo().max_mem) / unit.rawValue
     }
 
     /**

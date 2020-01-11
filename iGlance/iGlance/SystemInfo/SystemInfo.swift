@@ -53,6 +53,6 @@ class SystemInfo {
      * Returns the size of the RAM in GB.
      */
     static func getRamSize() -> Int {
-        return Int(ProcessInfo.processInfo.physicalMemory / 1_073_741_824)
+        Int(ProcessInfo.processInfo.physicalMemory / 1_073_741_824)
     }
 }

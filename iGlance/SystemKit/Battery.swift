@@ -122,7 +122,7 @@ public struct SKBattery {
      * Returns true when a connection to the battery is open. Otherwise this function returns false.
      */
     public func connectionIsOpen() -> Bool {
-        return service != 0
+        service != 0
     }
 
     /**
@@ -277,7 +277,7 @@ public struct SKBattery {
     :returns: The current charge as a % out of 100.
     */
     public func charge() -> Double {
-        return floor(Double(currentCapacity()) / Double(maxCapactiy()) * 100.0)
+        floor(Double(currentCapacity()) / Double(maxCapactiy()) * 100.0)
     }
 
     /**

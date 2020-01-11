@@ -9,6 +9,7 @@
 import Cocoa
 import ServiceManagement
 import os.log
+import CocoaLumberjack
 
 @NSApplicationMain
 class AppDelegate: NSObject, NSApplicationDelegate {
@@ -20,6 +21,20 @@ class AppDelegate: NSObject, NSApplicationDelegate {
     func applicationDidFinishLaunching(_ notification: Notification) {
         // kill the launcher app
         killLauncherApplication()
+
+        // set the custom log formatter
+        DDOSLogger.sharedInstance.logFormatter = CustomLogFormatter()
+        // add the loggers to the loggin framework
+        DDLog.add(DDOSLogger.sharedInstance, with: ddLogLevel)
+
+        // register the logger
+        let fileLogger = DDFileLogger()
+        fileLogger.logFormatter = CustomLogFormatter()
+        fileLogger.rollingFrequency = 60 * 60 * 24 // 24 hours
+        fileLogger.logFileManager.maximumNumberOfLogFiles = 7
+        DDLog.add(fileLogger, with: ddLogLevel)
+
+        DDLogInfo("Application did launch")
     }
 
     // MARK: -
@@ -34,18 +49,18 @@ class AppDelegate: NSObject, NSApplicationDelegate {
 
         // instantiate the view controller for the about window
         guard let aboutModalViewController = storyboard.instantiateController(withIdentifier: "AboutModalViewController") as? AboutModalViewController else {
-            os_log("Could not instantiate 'AboutModalViewController'", type: .error)
+            DDLogError("Could not instantiate 'AboutModalViewController'")
             return
         }
 
         // get the view controller from the main window
         guard let mainWindowController = NSApplication.shared.windows.first(where: { $0.windowController is MainWindowController }) else {
-            os_log("Could not retrieve main window controller", type: .error)
+            DDLogError("Could not retrieve main window controller")
             return
         }
         // get the window of the main window view controller
         guard let mainWindow = mainWindowController.contentViewController?.view.window else {
-            os_log("Could not retrieve the window of the main window view controller", type: .error)
+            DDLogError("Could not retrieve the window of the main window view controller")
             return
         }
 
@@ -70,7 +85,7 @@ class AppDelegate: NSObject, NSApplicationDelegate {
 
         if launcherIsRunning {
             guard let mainAppBundleIdentifier = Bundle.main.bundleIdentifier else {
-                os_log("Could not retrieve the main bundle identifier", type: .error)
+                DDLogError("Could not retrieve the main bundle identifier")
                 return
             }
 

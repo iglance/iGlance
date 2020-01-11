@@ -164,4 +164,6 @@ identifier_name:
     - 'x2'
     - 'y1'
     - 'y2'
+excluded:
+  - Pods
 
