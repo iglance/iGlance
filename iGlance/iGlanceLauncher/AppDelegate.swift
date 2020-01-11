@@ -23,7 +23,7 @@ class AppDelegate: NSObject, NSApplicationDelegate {
         fileLogger.rollingFrequency = 60 * 60 * 24 // 24 hours
         fileLogger.logFileManager.maximumNumberOfLogFiles = 7
         DDLog.add(fileLogger, with: ddLogLevel)
-        
+
         if self.isMainAppRunning() {
             // if the main application is already running terminate the launcher
             self.killLauncher()

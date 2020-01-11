@@ -19,7 +19,7 @@
 	<key>CFBundleShortVersionString</key>
 	<string>$(MARKETING_VERSION)</string>
 	<key>CFBundleVersion</key>
-	<string>1</string>
+	<string>$(CURRENT_PROJECT_VERSION)</string>
 	<key>LSApplicationCategoryType</key>
 	<string>public.app-category.utilities</string>
 	<key>LSMinimumSystemVersion</key>
@@ -30,5 +30,9 @@
 	<string>Main</string>
 	<key>NSPrincipalClass</key>
 	<string>NSApplication</string>
+	<key>SUFeedURL</key>
+	<string>https://raw.githubusercontent.com/iglance/iGlance/gui-redesign-25/Sparkle/updates/appcast.xml</string>
+	<key>SUPublicEDKey</key>
+	<string>P3ARK4FDc8pGDsEcPHzAOcdQTLRecgY8FGAFaaXGWbs=</string>
 </dict>
 </plist>

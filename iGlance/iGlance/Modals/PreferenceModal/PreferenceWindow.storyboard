@@ -52,7 +52,7 @@
                                 <imageCell key="cell" refusesFirstResponder="YES" alignment="left" imageScaling="proportionallyDown" image="iGlance_logo_white" id="eXY-Sh-Eks"/>
                             </imageView>
                             <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="OEb-YF-FaP" customClass="ThemedButton" customModule="iGlance" customModuleProvider="target">
-                                <rect key="frame" x="136" y="58" width="129" height="18"/>
+                                <rect key="frame" x="136" y="59" width="129" height="18"/>
                                 <buttonCell key="cell" type="check" title="Autostart on boot" bezelStyle="regularSquare" imagePosition="left" inset="2" id="RLw-7p-H0K">
                                     <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
                                     <font key="font" metaFont="system"/>
@@ -61,18 +61,31 @@
                                     <action selector="autoStartCheckboxChanged:" target="eJb-KF-Kac" id="kHz-lk-YB9"/>
                                 </connections>
                             </button>
+                            <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="vOO-us-82J">
+                                <rect key="frame" x="124" y="13" width="152" height="32"/>
+                                <buttonCell key="cell" type="push" title="Check for updates" bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="ezD-Ok-lTj">
+                                    <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
+                                    <font key="font" metaFont="system"/>
+                                </buttonCell>
+                                <connections>
+                                    <action selector="checkForUpdates:" target="eJb-KF-Kac" id="tUG-vL-1Ym"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <constraints>
-                            <constraint firstAttribute="bottom" secondItem="OEb-YF-FaP" secondAttribute="bottom" constant="60" id="1L8-af-NTM"/>
                             <constraint firstItem="AQo-ln-3eP" firstAttribute="top" secondItem="6c4-9A-u91" secondAttribute="bottom" constant="10" id="2UI-7c-oaX"/>
                             <constraint firstItem="6c4-9A-u91" firstAttribute="centerX" secondItem="AXW-5W-vMJ" secondAttribute="centerX" id="GaH-eU-AwD"/>
+                            <constraint firstAttribute="bottom" secondItem="vOO-us-82J" secondAttribute="bottom" constant="20" id="QZu-41-MCx"/>
                             <constraint firstItem="6c4-9A-u91" firstAttribute="top" secondItem="AXW-5W-vMJ" secondAttribute="top" constant="20" id="VlW-AZ-VOe"/>
                             <constraint firstItem="OEb-YF-FaP" firstAttribute="centerX" secondItem="AXW-5W-vMJ" secondAttribute="centerX" id="X1U-9r-J2S"/>
                             <constraint firstItem="AQo-ln-3eP" firstAttribute="centerX" secondItem="AXW-5W-vMJ" secondAttribute="centerX" id="rt5-sr-b6A"/>
+                            <constraint firstItem="vOO-us-82J" firstAttribute="centerX" secondItem="AXW-5W-vMJ" secondAttribute="centerX" id="stZ-a9-xga"/>
+                            <constraint firstItem="vOO-us-82J" firstAttribute="top" secondItem="OEb-YF-FaP" secondAttribute="bottom" constant="20" id="wDa-2o-z5t"/>
                         </constraints>
                     </view>
                     <connections>
                         <outlet property="autostartOnBootCheckbox" destination="OEb-YF-FaP" id="iyd-B9-1br"/>
+                        <outlet property="checkUpdateButton" destination="vOO-us-82J" id="fGa-cu-Hmb"/>
                         <outlet property="logoImage" destination="6c4-9A-u91" id="KkS-jB-G7X"/>
                         <outlet property="versionLabel" destination="M9N-UL-9gz" id="Qjb-l0-YgJ"/>
                     </connections>

@@ -1,11 +1,15 @@
 # Uncomment the next line to define a global platform for your project
 platform :osx, '10.12'
 
+use_frameworks!
+
 target 'iGlance' do
   # Pods for iGlance
   pod "SwiftLint"
   
   pod "CocoaLumberjack/Swift"
+  
+  pod "Sparkle"
 end
 
 target 'iGlanceLauncher' do

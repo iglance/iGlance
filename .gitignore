@@ -3,3 +3,5 @@ xcuserdata/
 *.DS_Store
 
 iGlance/Pods/
+
+Sparkle/updates/*.zip

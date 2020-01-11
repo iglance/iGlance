@@ -2,21 +2,25 @@ PODS:
   - CocoaLumberjack/Core (3.6.0)
   - CocoaLumberjack/Swift (3.6.0):
     - CocoaLumberjack/Core
+  - Sparkle (1.22.0)
   - SwiftLint (0.38.2)
 
 DEPENDENCIES:
   - CocoaLumberjack/Swift
+  - Sparkle
   - SwiftLint
 
 SPEC REPOS:
   trunk:
     - CocoaLumberjack
+    - Sparkle
     - SwiftLint
 
 SPEC CHECKSUMS:
   CocoaLumberjack: 78b0c238666f4f58db069738ec176f4519557516
+  Sparkle: 593ac2e677c07bcb6c3b22d621240e7cbedaab57
   SwiftLint: 8f5d2f903e1c9bcbc832fd16771e80a263ac6cbb
 
-PODFILE CHECKSUM: b722b3f202f6fbcf22c6ac43d1b7da684145539a
+PODFILE CHECKSUM: 02c5fa462b337d4c3c81893e71ad94505ba697e9
 
 COCOAPODS: 1.8.4
