@@ -22,6 +22,12 @@
                                                 <action selector="about:" target="Voe-Tx-rLC" id="Ti5-bs-T2e"/>
                                             </connections>
                                         </menuItem>
+                                        <menuItem title="Check for Updates" id="URv-24-oUl">
+                                            <modifierMask key="keyEquivalentModifierMask"/>
+                                            <connections>
+                                                <action selector="checkForUpdates:" target="h90-e9-Lxe" id="NR9-S8-x97"/>
+                                            </connections>
+                                        </menuItem>
                                         <menuItem isSeparatorItem="YES" id="VOq-y0-SEH"/>
                                         <menuItem title="Preferences…" keyEquivalent="," id="BOF-NM-1cW"/>
                                         <menuItem isSeparatorItem="YES" id="wFC-TO-SCJ"/>
@@ -679,6 +685,7 @@
                 <customObject id="YLy-65-1bz" customClass="NSFontManager"/>
                 <customObject id="Ady-hI-5gd" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
                 <customObject id="h90-e9-Lxe" customClass="SUUpdater"/>
+                <userDefaultsController representsSharedInstance="YES" id="a62-hf-lvl"/>
             </objects>
             <point key="canvasLocation" x="75" y="0.0"/>
         </scene>

@@ -21,7 +21,6 @@ class PreferenceModalViewController: ModalViewController {
         }
     }
     @IBOutlet private var logoImage: NSImageView!
-    @IBOutlet private var checkUpdateButton: NSButton!
 
     // MARK: -
     // MARK: Function Overrides
@@ -71,18 +70,6 @@ class PreferenceModalViewController: ModalViewController {
         if !SMLoginItemSetEnabled(LAUNCHER_BUNDLE_IDENTIFIER as CFString, false) {
             DDLogError("Could not deactive the iGlanceLauncher as login item")
         }
-    }
-
-    /**
-     * This function is called when the 'Check for updates' button in the preference modal is pressed.
-     */
-    @IBAction private func checkForUpdates(_ sender: NSButton) {
-        guard let updater = SUUpdater.shared() else {
-            DDLogError("Could not unwrap the SUUpdater")
-            return
-        }
-
-        updater.checkForUpdates(self)
     }
 
     // MARK: -
