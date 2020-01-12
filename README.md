@@ -37,8 +37,9 @@ There are two ways you can contribute to this project:
 2. You can work on one of the open issues. Please read our [Contribution Guide](https://github.com/iglance/iGlance/blob/master/.github/CONTRIBUTING.md) and our [Code of Conduct](https://github.com/iglance/iGlance/blob/master/.github/CODE_OF_CONDUCT.md) before you start.
 
 ## Credits
-- <a href="https://github.com/beltex">beltex</a> - for providing the SMCKit and SystemKit Library
+- <a href="https://github.com/beltex">beltex</a> for providing the SMCKit and SystemKit Library
 - <a href="https://github.com/CocoaLumberjack/CocoaLumberjack">CocoaLumberjack</a> for their awesome logging framework
+- <a href="https://github.com/OskarGroth">Oskar Groth</a> for providing his AppMover framework
 - And of course all the other <a href="https://github.com/iglance/iGlance/graphs/contributors">contributors</a>.
 
 ## License
