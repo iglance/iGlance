@@ -21,6 +21,20 @@ class CustomLogFormatter: NSObject, DDLogFormatter {
 
     func format(message logMessage: DDLogMessage) -> String? {
         let dateAndTime = dateFormatter.string(from: logMessage.timestamp)
-        return "\(dateAndTime) [\(logMessage.fileName):\(logMessage.line)]: \(logMessage.message)"
+
+        var logFlag: String = "Error"
+        switch logMessage.flag {
+        case DDLogFlag.warning:
+            logFlag = "Warning"
+        case DDLogFlag.info:
+            logFlag = "Info"
+        case DDLogFlag.debug:
+            logFlag = "Debug"
+        case DDLogFlag.verbose:
+            logFlag = "Verbose"
+        default:
+            logFlag = "Error"
+        }
+        return "\(dateAndTime) \(logFlag): [\(logMessage.fileName):\(logMessage.line)]: \(logMessage.message)"
     }
 }
