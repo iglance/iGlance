@@ -15,3 +15,7 @@ end
 target 'iGlanceLauncher' do
   pod "CocoaLumberjack/Swift"
 end
+
+target 'AppMover' do
+  pod "CocoaLumberjack/Swift"
+end

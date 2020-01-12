@@ -56,9 +56,15 @@
 		B4DE727B23C2600A0001CF46 /* IOReturn.swift in Sources */ = {isa = PBXBuildFile; fileRef = B4DE727A23C2600A0001CF46 /* IOReturn.swift */; };
 		B4DE727D23C260320001CF46 /* Battery.swift in Sources */ = {isa = PBXBuildFile; fileRef = B4DE727C23C260320001CF46 /* Battery.swift */; };
 		B4DE728023C2644A0001CF46 /* Battery.swift in Sources */ = {isa = PBXBuildFile; fileRef = B4DE727F23C2644A0001CF46 /* Battery.swift */; };
+		B4E8621A23CB7B5A00B38F17 /* AppMover.h in Headers */ = {isa = PBXBuildFile; fileRef = B4E8621823CB7B5A00B38F17 /* AppMover.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		B4E8621D23CB7B5A00B38F17 /* AppMover.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B4E8621623CB7B5A00B38F17 /* AppMover.framework */; };
+		B4E8621E23CB7B5A00B38F17 /* AppMover.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = B4E8621623CB7B5A00B38F17 /* AppMover.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		B4E8622623CB7BE300B38F17 /* Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = B4E8622523CB7BE300B38F17 /* Extensions.swift */; };
+		B4E8622823CB7BF500B38F17 /* AppMover.swift in Sources */ = {isa = PBXBuildFile; fileRef = B4E8622723CB7BF500B38F17 /* AppMover.swift */; };
 		B4EFB55B23CA197500CF2FF2 /* CustomLogFormatter.swift in Sources */ = {isa = PBXBuildFile; fileRef = B4EFB55A23CA197500CF2FF2 /* CustomLogFormatter.swift */; };
 		B4EFB55C23CA197500CF2FF2 /* CustomLogFormatter.swift in Sources */ = {isa = PBXBuildFile; fileRef = B4EFB55A23CA197500CF2FF2 /* CustomLogFormatter.swift */; };
 		B4EFB55E23CA317F00CF2FF2 /* License.md in Resources */ = {isa = PBXBuildFile; fileRef = B4EFB55D23CA317F00CF2FF2 /* License.md */; };
+		D65B978BB0F8A853B63801B0 /* Pods_AppMover.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0DFDA55C4AAAD2FABDD2CE07 /* Pods_AppMover.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -75,6 +81,13 @@
 			proxyType = 1;
 			remoteGlobalIDString = B4DE726823C25F8C0001CF46;
 			remoteInfo = SystemKit;
+		};
+		B4E8621B23CB7B5A00B38F17 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = B46789AA23A69ECA00CE572D /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = B4E8621523CB7B5A00B38F17;
+			remoteInfo = AppMover;
 		};
 /* End PBXContainerItemProxy section */
 
@@ -95,6 +108,7 @@
 			dstPath = "";
 			dstSubfolderSpec = 10;
 			files = (
+				B4E8621E23CB7B5A00B38F17 /* AppMover.framework in Embed Frameworks */,
 				B4DE727123C25F8C0001CF46 /* SystemKit.framework in Embed Frameworks */,
 			);
 			name = "Embed Frameworks";
@@ -103,13 +117,16 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		0DFDA55C4AAAD2FABDD2CE07 /* Pods_AppMover.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_AppMover.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		1534A20EFFE95D5266464726 /* Pods-iGlance.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-iGlance.debug.xcconfig"; path = "Target Support Files/Pods-iGlance/Pods-iGlance.debug.xcconfig"; sourceTree = "<group>"; };
 		171AB134CB59FBA416D34FAF /* Pods-iGlance-iGlanceUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-iGlance-iGlanceUITests.debug.xcconfig"; path = "Target Support Files/Pods-iGlance-iGlanceUITests/Pods-iGlance-iGlanceUITests.debug.xcconfig"; sourceTree = "<group>"; };
+		23509DFB29686C22B124219D /* Pods-AppMover.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-AppMover.debug.xcconfig"; path = "Target Support Files/Pods-AppMover/Pods-AppMover.debug.xcconfig"; sourceTree = "<group>"; };
 		6361D7B564F7AAE188E62D32 /* Pods-iGlance.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-iGlance.release.xcconfig"; path = "Target Support Files/Pods-iGlance/Pods-iGlance.release.xcconfig"; sourceTree = "<group>"; };
 		6EAA7A6C4369581948235ABD /* Pods-iGlanceTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-iGlanceTests.debug.xcconfig"; path = "Target Support Files/Pods-iGlanceTests/Pods-iGlanceTests.debug.xcconfig"; sourceTree = "<group>"; };
 		7418909044D8747C9BE8B0BA /* Pods-iGlanceTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-iGlanceTests.release.xcconfig"; path = "Target Support Files/Pods-iGlanceTests/Pods-iGlanceTests.release.xcconfig"; sourceTree = "<group>"; };
 		935470C2452473A26C4D9B29 /* Pods-iGlance-iGlanceUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-iGlance-iGlanceUITests.release.xcconfig"; path = "Target Support Files/Pods-iGlance-iGlanceUITests/Pods-iGlance-iGlanceUITests.release.xcconfig"; sourceTree = "<group>"; };
 		9821AF9EFA8D52CDE24BB390 /* Pods_iGlance.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_iGlance.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		A844F7D5F83A2ED73F4CE6B8 /* Pods-AppMover.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-AppMover.release.xcconfig"; path = "Target Support Files/Pods-AppMover/Pods-AppMover.release.xcconfig"; sourceTree = "<group>"; };
 		B106EB288FD8B01308DF3E3B /* Pods-iGlanceLauncher.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-iGlanceLauncher.release.xcconfig"; path = "Target Support Files/Pods-iGlanceLauncher/Pods-iGlanceLauncher.release.xcconfig"; sourceTree = "<group>"; };
 		B4060E2E23C4F84D00CD945E /* ServiceManagement.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = ServiceManagement.framework; path = System/Library/Frameworks/ServiceManagement.framework; sourceTree = SDKROOT; };
 		B4060E3123C4FAEF00CD945E /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
@@ -162,6 +179,12 @@
 		B4DE727A23C2600A0001CF46 /* IOReturn.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IOReturn.swift; sourceTree = "<group>"; };
 		B4DE727C23C260320001CF46 /* Battery.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Battery.swift; sourceTree = "<group>"; };
 		B4DE727F23C2644A0001CF46 /* Battery.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Battery.swift; sourceTree = "<group>"; };
+		B4E8621623CB7B5A00B38F17 /* AppMover.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = AppMover.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		B4E8621823CB7B5A00B38F17 /* AppMover.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppMover.h; sourceTree = "<group>"; };
+		B4E8621923CB7B5A00B38F17 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		B4E8622523CB7BE300B38F17 /* Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Extensions.swift; sourceTree = "<group>"; };
+		B4E8622723CB7BF500B38F17 /* AppMover.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppMover.swift; sourceTree = "<group>"; };
+		B4E8622923CB7D9300B38F17 /* LICENSE.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = LICENSE.md; sourceTree = "<group>"; };
 		B4EFB55A23CA197500CF2FF2 /* CustomLogFormatter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomLogFormatter.swift; sourceTree = "<group>"; };
 		B4EFB55D23CA317F00CF2FF2 /* License.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = License.md; sourceTree = "<group>"; };
 		BDD6EB3EE4469B8317F256AA /* Pods-iGlanceLauncher.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-iGlanceLauncher.debug.xcconfig"; path = "Target Support Files/Pods-iGlanceLauncher/Pods-iGlanceLauncher.debug.xcconfig"; sourceTree = "<group>"; };
@@ -173,6 +196,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				B4E8621D23CB7B5A00B38F17 /* AppMover.framework in Frameworks */,
 				B4060E2F23C4F84D00CD945E /* ServiceManagement.framework in Frameworks */,
 				B4DE727023C25F8C0001CF46 /* SystemKit.framework in Frameworks */,
 				677D54A9D3D427EFF8513BF9 /* Pods_iGlance.framework in Frameworks */,
@@ -194,6 +218,14 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		B4E8621323CB7B5A00B38F17 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				D65B978BB0F8A853B63801B0 /* Pods_AppMover.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
@@ -203,6 +235,7 @@
 				B4060E2E23C4F84D00CD945E /* ServiceManagement.framework */,
 				9821AF9EFA8D52CDE24BB390 /* Pods_iGlance.framework */,
 				CC5CCFBC36B73AFFE2E5AD92 /* Pods_iGlanceLauncher.framework */,
+				0DFDA55C4AAAD2FABDD2CE07 /* Pods_AppMover.framework */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -285,8 +318,8 @@
 			children = (
 				B4060E3023C4FAE200CD945E /* Shared */,
 				B46789B423A69ECA00CE572D /* iGlance */,
-				B4DE726A23C25F8C0001CF46 /* SystemKit */,
 				B4CF2F7623C4F5CD00544511 /* iGlanceLauncher */,
+				B4E8622423CB7B8B00B38F17 /* Libraries */,
 				B46789B323A69ECA00CE572D /* Products */,
 				DC5547E60A2C6317C874630B /* Pods */,
 				AAAB1F73870D1085E1944A64 /* Frameworks */,
@@ -299,6 +332,7 @@
 				B46789B223A69ECA00CE572D /* iGlance.app */,
 				B4DE726923C25F8C0001CF46 /* SystemKit.framework */,
 				B4CF2F7523C4F5CD00544511 /* iGlanceLauncher.app */,
+				B4E8621623CB7B5A00B38F17 /* AppMover.framework */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -387,6 +421,27 @@
 			path = SystemKit;
 			sourceTree = "<group>";
 		};
+		B4E8621723CB7B5A00B38F17 /* AppMover */ = {
+			isa = PBXGroup;
+			children = (
+				B4E8622723CB7BF500B38F17 /* AppMover.swift */,
+				B4E8622523CB7BE300B38F17 /* Extensions.swift */,
+				B4E8621823CB7B5A00B38F17 /* AppMover.h */,
+				B4E8621923CB7B5A00B38F17 /* Info.plist */,
+				B4E8622923CB7D9300B38F17 /* LICENSE.md */,
+			);
+			path = AppMover;
+			sourceTree = "<group>";
+		};
+		B4E8622423CB7B8B00B38F17 /* Libraries */ = {
+			isa = PBXGroup;
+			children = (
+				B4E8621723CB7B5A00B38F17 /* AppMover */,
+				B4DE726A23C25F8C0001CF46 /* SystemKit */,
+			);
+			path = Libraries;
+			sourceTree = "<group>";
+		};
 		DC5547E60A2C6317C874630B /* Pods */ = {
 			isa = PBXGroup;
 			children = (
@@ -398,6 +453,8 @@
 				7418909044D8747C9BE8B0BA /* Pods-iGlanceTests.release.xcconfig */,
 				BDD6EB3EE4469B8317F256AA /* Pods-iGlanceLauncher.debug.xcconfig */,
 				B106EB288FD8B01308DF3E3B /* Pods-iGlanceLauncher.release.xcconfig */,
+				23509DFB29686C22B124219D /* Pods-AppMover.debug.xcconfig */,
+				A844F7D5F83A2ED73F4CE6B8 /* Pods-AppMover.release.xcconfig */,
 			);
 			path = Pods;
 			sourceTree = "<group>";
@@ -410,6 +467,14 @@
 			buildActionMask = 2147483647;
 			files = (
 				B4DE726D23C25F8C0001CF46 /* SystemKit.h in Headers */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		B4E8621123CB7B5A00B38F17 /* Headers */ = {
+			isa = PBXHeadersBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				B4E8621A23CB7B5A00B38F17 /* AppMover.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -434,6 +499,7 @@
 			dependencies = (
 				B419052723C637AF00B0B197 /* PBXTargetDependency */,
 				B4DE726F23C25F8C0001CF46 /* PBXTargetDependency */,
+				B4E8621C23CB7B5A00B38F17 /* PBXTargetDependency */,
 			);
 			name = iGlance;
 			productName = iGlance;
@@ -477,6 +543,25 @@
 			productReference = B4DE726923C25F8C0001CF46 /* SystemKit.framework */;
 			productType = "com.apple.product-type.framework";
 		};
+		B4E8621523CB7B5A00B38F17 /* AppMover */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = B4E8622123CB7B5A00B38F17 /* Build configuration list for PBXNativeTarget "AppMover" */;
+			buildPhases = (
+				2F89403013B3F4E7697E7607 /* [CP] Check Pods Manifest.lock */,
+				B4E8621123CB7B5A00B38F17 /* Headers */,
+				B4E8621223CB7B5A00B38F17 /* Sources */,
+				B4E8621323CB7B5A00B38F17 /* Frameworks */,
+				B4E8621423CB7B5A00B38F17 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = AppMover;
+			productName = AppMover;
+			productReference = B4E8621623CB7B5A00B38F17 /* AppMover.framework */;
+			productType = "com.apple.product-type.framework";
+		};
 /* End PBXNativeTarget section */
 
 /* Begin PBXProject section */
@@ -494,6 +579,10 @@
 						CreatedOnToolsVersion = 11.3;
 					};
 					B4DE726823C25F8C0001CF46 = {
+						CreatedOnToolsVersion = 11.3;
+						LastSwiftMigration = 1130;
+					};
+					B4E8621523CB7B5A00B38F17 = {
 						CreatedOnToolsVersion = 11.3;
 						LastSwiftMigration = 1130;
 					};
@@ -515,6 +604,7 @@
 				B46789B123A69ECA00CE572D /* iGlance */,
 				B4CF2F7423C4F5CD00544511 /* iGlanceLauncher */,
 				B4DE726823C25F8C0001CF46 /* SystemKit */,
+				B4E8621523CB7B5A00B38F17 /* AppMover */,
 			);
 		};
 /* End PBXProject section */
@@ -549,9 +639,38 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		B4E8621423CB7B5A00B38F17 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
+		2F89403013B3F4E7697E7607 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-AppMover-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
 		45DAEF2282E9517D5DB4753F /* [CP] Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
@@ -708,6 +827,15 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		B4E8621223CB7B5A00B38F17 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				B4E8622623CB7BE300B38F17 /* Extensions.swift in Sources */,
+				B4E8622823CB7BF500B38F17 /* AppMover.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXTargetDependency section */
@@ -720,6 +848,11 @@
 			isa = PBXTargetDependency;
 			target = B4DE726823C25F8C0001CF46 /* SystemKit */;
 			targetProxy = B4DE726E23C25F8C0001CF46 /* PBXContainerItemProxy */;
+		};
+		B4E8621C23CB7B5A00B38F17 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = B4E8621523CB7B5A00B38F17 /* AppMover */;
+			targetProxy = B4E8621B23CB7B5A00B38F17 /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
 
@@ -967,13 +1100,13 @@
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
 				COMBINE_HIDPI_IMAGES = YES;
-				CURRENT_PROJECT_VERSION = 1;
+				CURRENT_PROJECT_VERSION = 1.0;
 				DEFINES_MODULE = YES;
 				DEVELOPMENT_TEAM = J6GXEPK4NG;
 				DYLIB_COMPATIBILITY_VERSION = 1;
 				DYLIB_CURRENT_VERSION = 1;
 				DYLIB_INSTALL_NAME_BASE = "@rpath";
-				INFOPLIST_FILE = SystemKit/Info.plist;
+				INFOPLIST_FILE = Libraries/SystemKit/Info.plist;
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
@@ -999,13 +1132,13 @@
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
 				COMBINE_HIDPI_IMAGES = YES;
-				CURRENT_PROJECT_VERSION = 1;
+				CURRENT_PROJECT_VERSION = 1.0;
 				DEFINES_MODULE = YES;
 				DEVELOPMENT_TEAM = J6GXEPK4NG;
 				DYLIB_COMPATIBILITY_VERSION = 1;
 				DYLIB_CURRENT_VERSION = 1;
 				DYLIB_INSTALL_NAME_BASE = "@rpath";
-				INFOPLIST_FILE = SystemKit/Info.plist;
+				INFOPLIST_FILE = Libraries/SystemKit/Info.plist;
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
@@ -1015,6 +1148,71 @@
 				MACOSX_DEPLOYMENT_TARGET = 10.12;
 				MARKETING_VERSION = 1.0;
 				PRODUCT_BUNDLE_IDENTIFIER = io.github.iglance.SystemKit;
+				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
+				SKIP_INSTALL = YES;
+				SWIFT_VERSION = 5.0;
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
+			};
+			name = Release;
+		};
+		B4E8621F23CB7B5A00B38F17 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 23509DFB29686C22B124219D /* Pods-AppMover.debug.xcconfig */;
+			buildSettings = {
+				CLANG_ENABLE_MODULES = YES;
+				CODE_SIGN_IDENTITY = "Apple Development";
+				CODE_SIGN_STYLE = Automatic;
+				COMBINE_HIDPI_IMAGES = YES;
+				CURRENT_PROJECT_VERSION = 1.0;
+				DEFINES_MODULE = YES;
+				DEVELOPMENT_TEAM = J6GXEPK4NG;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				INFOPLIST_FILE = Libraries/AppMover/Info.plist;
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/../Frameworks",
+					"@loader_path/Frameworks",
+				);
+				MACOSX_DEPLOYMENT_TARGET = 10.12;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = io.github.iglance.AppMover;
+				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
+				SKIP_INSTALL = YES;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				SWIFT_VERSION = 5.0;
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
+			};
+			name = Debug;
+		};
+		B4E8622023CB7B5A00B38F17 /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = A844F7D5F83A2ED73F4CE6B8 /* Pods-AppMover.release.xcconfig */;
+			buildSettings = {
+				CLANG_ENABLE_MODULES = YES;
+				CODE_SIGN_IDENTITY = "Apple Development";
+				CODE_SIGN_STYLE = Automatic;
+				COMBINE_HIDPI_IMAGES = YES;
+				CURRENT_PROJECT_VERSION = 1.0;
+				DEFINES_MODULE = YES;
+				DEVELOPMENT_TEAM = J6GXEPK4NG;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				INFOPLIST_FILE = Libraries/AppMover/Info.plist;
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/../Frameworks",
+					"@loader_path/Frameworks",
+				);
+				MACOSX_DEPLOYMENT_TARGET = 10.12;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = io.github.iglance.AppMover;
 				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
 				SKIP_INSTALL = YES;
 				SWIFT_VERSION = 5.0;
@@ -1058,6 +1256,15 @@
 			buildConfigurations = (
 				B4DE727323C25F8C0001CF46 /* Debug */,
 				B4DE727423C25F8C0001CF46 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		B4E8622123CB7B5A00B38F17 /* Build configuration list for PBXNativeTarget "AppMover" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				B4E8621F23CB7B5A00B38F17 /* Debug */,
+				B4E8622023CB7B5A00B38F17 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;

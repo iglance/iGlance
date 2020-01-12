@@ -10,6 +10,13 @@ import Cocoa
 import ServiceManagement
 import os.log
 import CocoaLumberjack
+import AppMover
+
+#if DEBUG
+let DEBUG = true
+#else
+let DEBUG = false
+#endif
 
 @NSApplicationMain
 class AppDelegate: NSObject, NSApplicationDelegate {
@@ -35,6 +42,11 @@ class AppDelegate: NSObject, NSApplicationDelegate {
         DDLog.add(fileLogger, with: ddLogLevel)
 
         DDLogInfo("Application did launch")
+
+        // check whether the app has to be moved into the applications folder
+        if !DEBUG {
+            AppMover.moveIfNecessary()
+        }
     }
 
     // MARK: -
