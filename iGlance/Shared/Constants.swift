@@ -9,12 +9,13 @@
 import Foundation
 import CocoaLumberjack
 
-let LAUNCHER_BUNDLE_IDENTIFIER = "io.github.iglance.iGlanceLauncher"
-let MAIN_APP_BUNDLE_IDENTIFIER = "io.github.iglance.iGlance"
-
-// set the log level of the app to info on release builds
 #if DEBUG
+let DEBUG = true
 let ddLogLevel = DDLogLevel.debug
 #else
+let DEBUG = false
 let ddLogLevel = DDLogLevel.info
 #endif
+
+let LAUNCHER_BUNDLE_IDENTIFIER = "io.github.iglance.iGlanceLauncher"
+let MAIN_APP_BUNDLE_IDENTIFIER = "io.github.iglance.iGlance"

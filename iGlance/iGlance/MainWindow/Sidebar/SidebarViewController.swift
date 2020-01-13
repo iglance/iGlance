@@ -137,10 +137,12 @@ class SidebarViewController: NSViewController {
     private func onThemeChange() {
         // change the sidebar logo
         changeSidebarLogo()
+
+        // change the preferences logo
+        changePreferencesLogo()
     }
 
     /**
-     * Adds the iGlance logo to the top of the sidebar.
      * Depending on the current theme the white or black iGlance logo is selected.
      */
     private func changeSidebarLogo() {
@@ -148,6 +150,17 @@ class SidebarViewController: NSViewController {
             self.logoImage.image = NSImage(named: "iGlance_logo_white")
         } else {
             self.logoImage.image = NSImage(named: "iGlance_logo_black")
+        }
+    }
+
+    /**
+     * Depending on the current theme the grey or blue preference icon is selected.
+     */
+    private func changePreferencesLogo() {
+        if ThemeManager.isDarkTheme() {
+            self.preferenceButton.image = NSImage(named: "Preferences_dark")
+        } else {
+            self.preferenceButton.image = NSImage(named: "Preferences_light")
         }
     }
 

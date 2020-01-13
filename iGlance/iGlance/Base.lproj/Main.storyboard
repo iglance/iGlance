@@ -1357,7 +1357,7 @@
                                                                             <constraint firstAttribute="height" constant="15" id="V9s-Ml-wP5"/>
                                                                             <constraint firstAttribute="width" constant="15" id="xVU-pD-wXt"/>
                                                                         </constraints>
-                                                                        <imageCell key="cell" refusesFirstResponder="YES" alignment="left" imageScaling="proportionallyDown" image="NSActionTemplate" id="k81-J1-08k"/>
+                                                                        <imageCell key="cell" refusesFirstResponder="YES" alignment="left" imageScaling="proportionallyDown" image="Dashboard_dark" id="k81-J1-08k"/>
                                                                     </imageView>
                                                                     <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="LoF-hV-F8T">
                                                                         <rect key="frame" x="43" y="0.0" width="45" height="23"/>
@@ -1396,7 +1396,7 @@
                                                                             <constraint firstAttribute="height" constant="15" id="XMB-YX-ORg"/>
                                                                             <constraint firstAttribute="width" constant="15" id="uaV-r2-Hfb"/>
                                                                         </constraints>
-                                                                        <imageCell key="cell" refusesFirstResponder="YES" alignment="left" imageScaling="proportionallyDown" image="NSActionTemplate" id="4kc-N4-NZE"/>
+                                                                        <imageCell key="cell" refusesFirstResponder="YES" alignment="left" imageScaling="proportionallyDown" image="Dashboard_dark" id="4kc-N4-NZE"/>
                                                                     </imageView>
                                                                     <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="Pmx-Ng-7aj">
                                                                         <rect key="frame" x="43" y="0.0" width="76" height="23"/>
@@ -1435,7 +1435,7 @@
                                                                             <constraint firstAttribute="width" constant="15" id="bck-k3-cCD"/>
                                                                             <constraint firstAttribute="height" constant="15" id="n53-yq-KAi"/>
                                                                         </constraints>
-                                                                        <imageCell key="cell" refusesFirstResponder="YES" alignment="left" imageScaling="proportionallyDown" image="NSActionTemplate" id="tbz-ov-9Nw"/>
+                                                                        <imageCell key="cell" refusesFirstResponder="YES" alignment="left" imageScaling="proportionallyDown" image="Dashboard_dark" id="tbz-ov-9Nw"/>
                                                                     </imageView>
                                                                     <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="JBu-O5-LAs">
                                                                         <rect key="frame" x="43" y="0.0" width="78" height="23"/>
@@ -1474,7 +1474,7 @@
                                                                             <constraint firstAttribute="width" constant="15" id="I3h-fh-9BX"/>
                                                                             <constraint firstAttribute="height" constant="15" id="rxw-CC-w5b"/>
                                                                         </constraints>
-                                                                        <imageCell key="cell" refusesFirstResponder="YES" alignment="left" imageScaling="proportionallyDown" image="NSActionTemplate" id="Nlg-tK-lR4"/>
+                                                                        <imageCell key="cell" refusesFirstResponder="YES" alignment="left" imageScaling="proportionallyDown" image="Dashboard_dark" id="Nlg-tK-lR4"/>
                                                                     </imageView>
                                                                     <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="e9o-NW-8U3">
                                                                         <rect key="frame" x="43" y="0.0" width="36" height="23"/>
@@ -1513,7 +1513,7 @@
                                                                             <constraint firstAttribute="height" constant="15" id="4FJ-Sy-5ur"/>
                                                                             <constraint firstAttribute="width" constant="15" id="rB3-gJ-Oow"/>
                                                                         </constraints>
-                                                                        <imageCell key="cell" refusesFirstResponder="YES" alignment="left" imageScaling="proportionallyDown" image="NSActionTemplate" id="FXA-Au-bbB"/>
+                                                                        <imageCell key="cell" refusesFirstResponder="YES" alignment="left" imageScaling="proportionallyDown" image="Dashboard_dark" id="FXA-Au-bbB"/>
                                                                     </imageView>
                                                                     <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="aX4-Ez-GzA">
                                                                         <rect key="frame" x="43" y="0.0" width="67" height="23"/>
@@ -1578,7 +1578,7 @@
                                             <constraint firstAttribute="height" constant="15" id="J90-SD-zeh"/>
                                             <constraint firstAttribute="width" constant="15" id="Sbb-De-hmN"/>
                                         </constraints>
-                                        <buttonCell key="cell" type="square" bezelStyle="shadowlessSquare" image="NSActionTemplate" imagePosition="only" alignment="center" imageScaling="proportionallyUpOrDown" inset="2" id="XPL-Pw-Hwk">
+                                        <buttonCell key="cell" type="square" bezelStyle="shadowlessSquare" image="Preferences_dark" imagePosition="only" alignment="center" imageScaling="proportionallyUpOrDown" inset="2" id="XPL-Pw-Hwk">
                                             <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
                                             <font key="font" metaFont="system"/>
                                         </buttonCell>
@@ -1615,7 +1615,7 @@
     </scenes>
     <resources>
         <image name="Dashboard_dark" width="500" height="500"/>
-        <image name="NSActionTemplate" width="14" height="14"/>
+        <image name="Preferences_dark" width="250" height="250"/>
         <image name="iGlance_logo_white" width="1280" height="500"/>
     </resources>
 </document>

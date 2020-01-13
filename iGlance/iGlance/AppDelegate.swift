@@ -12,12 +12,6 @@ import os.log
 import CocoaLumberjack
 import AppMover
 
-#if DEBUG
-let DEBUG = true
-#else
-let DEBUG = false
-#endif
-
 @NSApplicationMain
 class AppDelegate: NSObject, NSApplicationDelegate {
     static let userSettings = UserSettings()
