@@ -70,7 +70,7 @@ class AboutModalViewController: ModalViewController {
         }
 
         var licenseViewString = ""
-        for (index, key) in creditsDict.enumerated() {
+        for key in creditsDict {
             guard let library = creditsDict[key.key] as? [String: String] else {
                 DDLogError("Could not cast the library to a [String : String] dictionary")
                 continue
@@ -92,7 +92,12 @@ class AboutModalViewController: ModalViewController {
             libraryString += libLicense
 
             // add the library string to the license view
-            licenseViewString += (index == 0 ? "" : "\n\n\n\n") + libraryString
+            if key.key as? String == "iGlance" {
+                // if the current license is from iGlance put it in front of any other license
+                licenseViewString = libraryString + "\n\n\n\n" + licenseViewString
+            } else {
+                licenseViewString += (licenseViewString.isEmpty ? "" : "\n\n\n\n") + libraryString
+            }
         }
 
         // set the content of the license text view
