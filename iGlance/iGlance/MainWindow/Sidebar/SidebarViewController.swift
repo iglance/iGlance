@@ -60,12 +60,7 @@ class SidebarViewController: NSViewController {
         getSidebarButtonWith(identifier: sidebarButtonViewIDs[0].buttonViewID)?.highlighted = true
 
         // add a callback to change the logo depending on the current theme
-        DistributedNotificationCenter.default.addObserver(
-            self,
-            selector: #selector(onThemeChange),
-            name: .AppleInterfaceThemeChangedNotification,
-            object: nil
-        )
+        ThemeManager.onThemeChange(self, #selector(onThemeChange))
 
         // add the correct logo image at startup
         changeSidebarLogo()

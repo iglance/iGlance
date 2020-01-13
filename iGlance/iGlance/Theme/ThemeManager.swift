@@ -78,4 +78,16 @@ class ThemeManager {
             return Theme.lightTheme
         }
     }
+
+    private init() {}
+
+    static func onThemeChange(_ observer: Any, _ selector: Selector) {
+        // add a callback to change the logo depending on the current theme
+        DistributedNotificationCenter.default.addObserver(
+            observer,
+            selector: selector,
+            name: .AppleInterfaceThemeChangedNotification,
+            object: nil
+        )
+    }
 }

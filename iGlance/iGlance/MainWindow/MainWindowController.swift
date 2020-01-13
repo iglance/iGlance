@@ -19,12 +19,7 @@ class MainWindowController: NSWindowController {
         mainWindow.backgroundColor = ThemeManager.currentTheme().titlebarColor
 
         // set a callback to adjust the background color of the window if the theme changes
-        DistributedNotificationCenter.default.addObserver(
-            self,
-            selector: #selector(updateMainWindow),
-            name: .AppleInterfaceThemeChangedNotification,
-            object: nil
-        )
+        ThemeManager.onThemeChange(self, #selector(updateMainWindow))
 
         // hide the zoom window button
         self.window?.standardWindowButton(.zoomButton)?.isHidden = true
