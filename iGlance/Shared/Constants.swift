@@ -11,10 +11,8 @@ import CocoaLumberjack
 
 #if DEBUG
 let DEBUG = true
-let ddLogLevel = DDLogLevel.debug
 #else
 let DEBUG = false
-let ddLogLevel = DDLogLevel.info
 #endif
 
 let LAUNCHER_BUNDLE_IDENTIFIER = "io.github.iglance.iGlanceLauncher"

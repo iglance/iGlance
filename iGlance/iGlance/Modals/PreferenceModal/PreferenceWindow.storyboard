@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.Cocoa.Storyboard.XIB" version="3.0" toolsVersion="15702" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES">
+<document type="com.apple.InterfaceBuilder3.Cocoa.Storyboard.XIB" version="3.0" toolsVersion="15705" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES">
     <dependencies>
         <deployment identifier="macosx"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="15702"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="15705"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
@@ -52,8 +52,8 @@
                                 <imageCell key="cell" refusesFirstResponder="YES" alignment="left" imageScaling="proportionallyDown" image="iGlance_logo_white" id="eXY-Sh-Eks"/>
                             </imageView>
                             <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="OEb-YF-FaP" customClass="ThemedButton" customModule="iGlance" customModuleProvider="target">
-                                <rect key="frame" x="136" y="58" width="129" height="18"/>
-                                <buttonCell key="cell" type="check" title="Autostart on boot" bezelStyle="regularSquare" imagePosition="left" inset="2" id="RLw-7p-H0K">
+                                <rect key="frame" x="136" y="42" width="129" height="18"/>
+                                <buttonCell key="cell" type="check" title="Autostart on Boot" bezelStyle="regularSquare" imagePosition="left" inset="2" id="RLw-7p-H0K">
                                     <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
                                     <font key="font" metaFont="system"/>
                                 </buttonCell>
@@ -61,14 +61,26 @@
                                     <action selector="autoStartCheckboxChanged:" target="eJb-KF-Kac" id="kHz-lk-YB9"/>
                                 </connections>
                             </button>
+                            <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="Dog-g4-PBP" customClass="ThemedButton" customModule="iGlance" customModuleProvider="target">
+                                <rect key="frame" x="133" y="18" width="135" height="18"/>
+                                <buttonCell key="cell" type="check" title="Advanced Logging" bezelStyle="regularSquare" imagePosition="left" inset="2" id="zy2-2Y-LeO">
+                                    <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
+                                    <font key="font" metaFont="system"/>
+                                </buttonCell>
+                                <connections>
+                                    <action selector="advancedLoggingCheckboxChanged:" target="eJb-KF-Kac" id="6uB-1N-DEI"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <constraints>
                             <constraint firstItem="AQo-ln-3eP" firstAttribute="top" secondItem="6c4-9A-u91" secondAttribute="bottom" constant="10" id="2UI-7c-oaX"/>
                             <constraint firstItem="6c4-9A-u91" firstAttribute="centerX" secondItem="AXW-5W-vMJ" secondAttribute="centerX" id="GaH-eU-AwD"/>
-                            <constraint firstAttribute="bottom" secondItem="OEb-YF-FaP" secondAttribute="bottom" constant="60" id="STi-Vg-x8F"/>
+                            <constraint firstAttribute="bottom" secondItem="Dog-g4-PBP" secondAttribute="bottom" constant="20" id="Ici-xY-nTu"/>
                             <constraint firstItem="6c4-9A-u91" firstAttribute="top" secondItem="AXW-5W-vMJ" secondAttribute="top" constant="20" id="VlW-AZ-VOe"/>
                             <constraint firstItem="OEb-YF-FaP" firstAttribute="centerX" secondItem="AXW-5W-vMJ" secondAttribute="centerX" id="X1U-9r-J2S"/>
+                            <constraint firstItem="Dog-g4-PBP" firstAttribute="top" secondItem="OEb-YF-FaP" secondAttribute="bottom" constant="10" id="ej6-nb-NbU"/>
                             <constraint firstItem="AQo-ln-3eP" firstAttribute="centerX" secondItem="AXW-5W-vMJ" secondAttribute="centerX" id="rt5-sr-b6A"/>
+                            <constraint firstItem="Dog-g4-PBP" firstAttribute="centerX" secondItem="AXW-5W-vMJ" secondAttribute="centerX" id="zpv-d6-S8Q"/>
                         </constraints>
                     </view>
                     <connections>

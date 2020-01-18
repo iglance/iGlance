@@ -67,6 +67,15 @@ class PreferenceModalViewController: ModalViewController {
         }
     }
 
+    @IBAction private func advancedLoggingCheckboxChanged(_ sender: NSButton) {
+        // set the dynamic logging level depending on the state of the button
+        if sender.state == NSButton.StateValue.on {
+            dynamicLogLevel = .all
+        } else {
+            dynamicLogLevel = .error
+        }
+    }
+
     // MARK: -
     // MARK: Private Functions
 

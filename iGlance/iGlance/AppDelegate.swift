@@ -26,14 +26,20 @@ class AppDelegate: NSObject, NSApplicationDelegate {
         // set the custom log formatter
         DDOSLogger.sharedInstance.logFormatter = CustomLogFormatter()
         // add the loggers to the loggin framework
-        DDLog.add(DDOSLogger.sharedInstance, with: ddLogLevel)
+        DDLog.add(DDOSLogger.sharedInstance)
 
         // register the logger
         let fileLogger = DDFileLogger()
         fileLogger.logFormatter = CustomLogFormatter()
         fileLogger.rollingFrequency = 60 * 60 * 24 // 24 hours
         fileLogger.logFileManager.maximumNumberOfLogFiles = 7
-        DDLog.add(fileLogger, with: ddLogLevel)
+        DDLog.add(fileLogger)
+
+        // set the default log level to error
+        dynamicLogLevel = .error
+        if DEBUG {
+            dynamicLogLevel = .all
+        }
 
         DDLogInfo("Application did launch")
 
