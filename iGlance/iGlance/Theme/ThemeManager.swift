@@ -30,7 +30,7 @@ enum Theme: Int {
         }
     }
 
-    var sidebarFontColor: NSColor {
+    var fontColor: NSColor {
         switch self {
         case .darkTheme:
             return NSColor.colorFrom(hex: "#D9D9D9")

@@ -11,7 +11,7 @@ import Cocoa
 class ThemedLabel: NSTextField {
     override func draw(_ dirtyRect: NSRect) {
         // text color has to be set before we draw the rect
-        self.textColor = ThemeManager.currentTheme().sidebarFontColor
+        self.textColor = ThemeManager.currentTheme().fontColor
 
         super.draw(dirtyRect)
     }

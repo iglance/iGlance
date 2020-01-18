@@ -8,6 +8,7 @@
 
 import Foundation
 import Cocoa
+import CocoaLumberjack
 
 extension Notification.Name {
     /** The notification name for os theme changes. */
@@ -52,5 +53,30 @@ extension NSColor {
             blue: blue,
             alpha: CGFloat(alpha ?? 1.0)
         )
+    }
+}
+
+extension NSImage {
+    func tint(color: NSColor) -> NSImage {
+        // copy the current instance of the image
+        guard let image = self.copy() as? NSImage else {
+            DDLogError("Could not copy the image '\(self.name() ?? "no name")'")
+            return self
+        }
+
+        // lock the copied image
+        image.lockFocus()
+
+        // set the fill color
+        color.set()
+
+        // fill the image with the color
+        let imageRect = NSRect(origin: NSPoint.zero, size: image.size)
+        imageRect.fill(using: .sourceAtop)
+
+        // unlock the image instance
+        image.unlockFocus()
+
+        return image
     }
 }

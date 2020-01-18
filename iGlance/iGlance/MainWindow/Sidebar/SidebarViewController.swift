@@ -62,8 +62,8 @@ class SidebarViewController: NSViewController {
         // add a callback to change the logo depending on the current theme
         ThemeManager.onThemeChange(self, #selector(onThemeChange))
 
-        // add the correct logo image at startup
-        changeSidebarLogo()
+        // call the theme change callback once on startup to set the correct colors
+        onThemeChange()
     }
 
     // MARK: -
@@ -158,9 +158,9 @@ class SidebarViewController: NSViewController {
      */
     private func changePreferencesLogo() {
         if ThemeManager.isDarkTheme() {
-            self.preferenceButton.image = NSImage(named: "Preferences_dark")
+            self.preferenceButton.image = self.preferenceButton.image?.tint(color: ThemeManager.currentTheme().fontColor)
         } else {
-            self.preferenceButton.image = NSImage(named: "Preferences_light")
+            self.preferenceButton.image = self.preferenceButton.image?.tint(color: ThemeManager.currentTheme().fontColor)
         }
     }
 

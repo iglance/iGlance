@@ -94,16 +94,16 @@ class SidebarButtonView: NSView {
         if highlighted && ThemeManager.currentTheme() == Theme.lightTheme {
             // if the light theme is active, set the font and the icon of the highlighted button
             // to the colors of the dark theme to have more contrast
-
-            label.textColor = Theme.darkTheme.sidebarFontColor
-            icon.image = NSImage(named: "Dashboard_dark")
+            label.textColor = Theme.darkTheme.fontColor
+            icon.image = icon.image?.tint(color: Theme.darkTheme.fontColor)
             return
         }
 
         // change the color of the label
-        label.textColor = ThemeManager.currentTheme().sidebarFontColor
+        label.textColor = ThemeManager.currentTheme().fontColor
         // change the image according to the theme
-        icon.image = ThemeManager.currentTheme() == Theme.darkTheme ? NSImage(named: "Dashboard_dark") : NSImage(named: "Dashboard_light")
+        let color = ThemeManager.currentTheme().fontColor
+        icon.image = icon.image?.tint(color: color)
     }
 
     // MARK: -
