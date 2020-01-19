@@ -1,4 +1,4 @@
 os: osx
 language: objective-c
 osx_image: xcode11.2
-script: cd iGlance && xcodebuild -project 'iGlance.xcodeproj' -config Release -scheme iGlance CODE_SIGN_IDENTITY="" CODE_SIGNING_REQUIRED=NO
+script: cd iGlance && xcodebuild -workspace iGlance.xcworkspace -scheme iGlance -config Release CODE_SIGN_IDENTITY="" CODE_SIGNING_REQUIRED=NO
