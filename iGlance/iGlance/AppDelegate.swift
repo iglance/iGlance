@@ -19,16 +19,14 @@ class AppDelegate: NSObject, NSApplicationDelegate {
     // MARK: -
     // MARK: Lifecycle Functions
 
-    func applicationDidFinishLaunching(_ notification: Notification) {
-        // kill the launcher app
-        killLauncherApplication()
-
+    func applicationWillFinishLaunching(_ notification: Notification) {
         // set the custom log formatter
         DDOSLogger.sharedInstance.logFormatter = CustomLogFormatter()
         // add the loggers to the loggin framework
         DDLog.add(DDOSLogger.sharedInstance)
 
         // register the logger
+        // logs are saved under /Library/Logs/iGlance/
         let fileLogger = DDFileLogger()
         fileLogger.logFormatter = CustomLogFormatter()
         fileLogger.rollingFrequency = 60 * 60 * 24 // 24 hours
@@ -40,8 +38,13 @@ class AppDelegate: NSObject, NSApplicationDelegate {
         if DEBUG {
             dynamicLogLevel = .all
         }
+    }
 
-        DDLogInfo("Application did launch")
+    func applicationDidFinishLaunching(_ notification: Notification) {
+        // kill the launcher app
+        killLauncherApplication()
+
+        DDLogInfo("iGlance did launch")
 
         // check whether the app has to be moved into the applications folder
         if !DEBUG {
@@ -77,6 +80,8 @@ class AppDelegate: NSObject, NSApplicationDelegate {
         }
 
         aboutModalViewController.showModal(parentWindow: mainWindow)
+
+        DDLogInfo("Displaying the 'About' modal")
     }
 
 
@@ -96,6 +101,7 @@ class AppDelegate: NSObject, NSApplicationDelegate {
         }.isEmpty
 
         if launcherIsRunning {
+            DDLogInfo("iGlance Launcher is already running")
             guard let mainAppBundleIdentifier = Bundle.main.bundleIdentifier else {
                 DDLogError("Could not retrieve the main bundle identifier")
                 return
@@ -103,6 +109,7 @@ class AppDelegate: NSObject, NSApplicationDelegate {
 
             // if the launcher application is running terminate it
             DistributedNotificationCenter.default().post(name: .killLauncher, object: mainAppBundleIdentifier)
+            DDLogInfo("Sent notification to kill the launcher")
         }
     }
 }

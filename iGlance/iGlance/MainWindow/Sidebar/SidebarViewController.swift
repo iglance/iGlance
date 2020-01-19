@@ -140,6 +140,11 @@ class SidebarViewController: NSViewController {
 
         // change the preferences logo
         changePreferencesLogo()
+
+        // update the sidebar button font color
+        for identifier in sidebarButtonViewIDs {
+            getSidebarButtonWith(identifier: identifier.buttonViewID)?.updateFontColor()
+        }
     }
 
     /**

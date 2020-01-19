@@ -18,11 +18,18 @@ class AppDelegate: NSObject, NSApplicationDelegate {
         DDLog.add(DDOSLogger.sharedInstance)
 
         // register the logger
+        // logs are saved under /Library/Containers/io.github.iglance.iGlanceLauncher/Data/Library/Logs/iGlanceLauncher/
         let fileLogger = DDFileLogger()
         fileLogger.logFormatter = CustomLogFormatter()
         fileLogger.rollingFrequency = 60 * 60 * 24 // 24 hours
         fileLogger.logFileManager.maximumNumberOfLogFiles = 7
         DDLog.add(fileLogger)
+
+        // set the default log level to error
+        dynamicLogLevel = .error
+        if DEBUG {
+            dynamicLogLevel = .all
+        }
 
         if self.isMainAppRunning() {
             // if the main application is already running terminate the launcher
@@ -35,6 +42,8 @@ class AppDelegate: NSObject, NSApplicationDelegate {
             DDLogError("Could not launch the main application")
             return
         }
+
+        DDLogInfo("iGlance Launcher did finish launching")
     }
 
     // MARK: -

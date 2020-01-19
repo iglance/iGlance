@@ -17,6 +17,7 @@ class PreferenceModalViewController: ModalViewController {
     @IBOutlet private var versionLabel: NSTextField!
     @IBOutlet private var autostartOnBootCheckbox: NSButton! {
         didSet {
+            // load the initial value from the user settings
             autostartOnBootCheckbox.state = (AppDelegate.userSettings.settings.autostartOnBoot) ? NSButton.StateValue.on : NSButton.StateValue.off
         }
     }
@@ -40,6 +41,8 @@ class PreferenceModalViewController: ModalViewController {
 
         // add the correct logo image at startup
         changeLogo()
+
+        DDLogInfo("View did appear")
     }
 
     // MARK: -
@@ -50,13 +53,17 @@ class PreferenceModalViewController: ModalViewController {
      */
     @IBAction private func autoStartCheckboxChanged(_ sender: NSButton) {
         // set the auto start on boot user setting
+        DDLogInfo("'Autostart on Boot'-checkbox changed")
         AppDelegate.userSettings.settings.autostartOnBoot = (sender.state == NSButton.StateValue.on)
 
         // enable the login item if the checkbox is activated
         if sender.state == NSButton.StateValue.on {
+            DDLogInfo("Checkbox is checked")
             if !SMLoginItemSetEnabled(LAUNCHER_BUNDLE_IDENTIFIER as CFString, true) {
                 DDLogError("Could not enable the iGlanceLauncher as login item")
             }
+
+            DDLogInfo("Successfully enabled iGlance Launcher as a login item")
 
             return
         }
@@ -65,13 +72,17 @@ class PreferenceModalViewController: ModalViewController {
         if !SMLoginItemSetEnabled(LAUNCHER_BUNDLE_IDENTIFIER as CFString, false) {
             DDLogError("Could not deactive the iGlanceLauncher as login item")
         }
+        DDLogInfo("Successfully disabled the iGlance Launcher as a login item")
     }
 
     @IBAction private func advancedLoggingCheckboxChanged(_ sender: NSButton) {
+        DDLogInfo("'Advanced Logging'-checkbox changed")
         // set the dynamic logging level depending on the state of the button
         if sender.state == NSButton.StateValue.on {
+            DDLogInfo("Setting the log level to 'all'")
             dynamicLogLevel = .all
         } else {
+            DDLogInfo("Setting the log level to 'error'")
             dynamicLogLevel = .error
         }
     }

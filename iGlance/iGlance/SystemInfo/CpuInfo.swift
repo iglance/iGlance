@@ -31,6 +31,9 @@ class CpuInfo {
             return ""
         }
 
-        return String(cString: cpuName)
+        let cpuNameString = String(cString: cpuName)
+        DDLogInfo("Got the cpu name: \(cpuNameString)")
+
+        return cpuNameString
     }
 }

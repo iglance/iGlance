@@ -79,9 +79,11 @@ class GpuInfo {
         for gpu in gpuInfo {
             if gpu.bus != "Built-In" {
                 gpuName = gpu.name
+                DDLogInfo("Set the gpu name to \(gpuName)")
             } else if gpuName == "No GPU found" && gpu.bus == "Built-In" {
                 // if there was no other gpu found and the bus is built in, return the built in gpu
                 gpuName = gpu.name
+                DDLogInfo("Set the gpu name to \(gpuName)")
             }
         }
 

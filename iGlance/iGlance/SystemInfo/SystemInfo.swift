@@ -46,13 +46,19 @@ class SystemInfo {
         let hours = (uptime.tv_sec / 3600) % 24
         let days = uptime.tv_sec / (60 * 60 * 24)
 
-        return TimeDuration(days: days, hours: hours, minutes: minutes, seconds: seconds)
+        let uptimeDuration = TimeDuration(days: days, hours: hours, minutes: minutes, seconds: seconds)
+        DDLogInfo("Got the system uptime: \(uptimeDuration)")
+
+        return uptimeDuration
     }
 
     /**
      * Returns the size of the RAM in GB.
      */
     static func getRamSize() -> Int {
-        Int(ProcessInfo.processInfo.physicalMemory / 1_073_741_824)
+        let ramSize = Int(ProcessInfo.processInfo.physicalMemory / 1_073_741_824)
+        DDLogInfo("Got the ram size: \(ramSize)")
+
+        return ramSize
     }
 }

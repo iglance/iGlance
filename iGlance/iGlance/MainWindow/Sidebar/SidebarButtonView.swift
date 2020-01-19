@@ -7,6 +7,7 @@
 //
 
 import Cocoa
+import CocoaLumberjack
 
 class SidebarButtonView: NSView {
     // MARK: -
@@ -73,29 +74,56 @@ class SidebarButtonView: NSView {
             ThemeManager.currentTheme().sidebarButtonHoverColor.setFill()
             dirtyRect.fill()
         }
-
-        // update the color of the label
-        updateFontColor()
     }
 
     // MARK: -
     // MARK: Private Functions
 
     /**
+     * Returns the icon of the sidebar button.
+     */
+    private func getButtonIcon() -> NSImageView? {
+        // get the stack view
+        guard let stackView = self.subviews[0] as? NSStackView else {
+            DDLogError("Could not cast subview to 'NSStackView'")
+            return nil
+        }
+        // get the icon and the label
+        guard let icon = stackView.subviews[0] as? NSImageView else {
+            DDLogError("Could not cast the subview to 'NSImageView'")
+            return nil
+        }
+
+        return icon
+    }
+
+    /**
+     * Returns the label of the sidebar button.
+     */
+    private func getButtonLabel() -> NSTextField? {
+        // get the stack view
+        guard let stackView = self.subviews[0] as? NSStackView else {
+            DDLogError("Could not cast subview to 'NSStackView'")
+            return nil
+        }
+        // get the icon and the label
+        guard let label = stackView.subviews[1] as? NSTextField else {
+            DDLogError("Could not cast the subview to 'NSTextField'")
+            return nil
+        }
+
+        return label
+    }
+
+    // MARK: -
+    // MARK: Instance Functions
+
+    /**
      * Changes the color of the icon and the label according to the currently selected theme.
      */
-    private func updateFontColor() {
-        // get the stack view
-        let stackView = self.subviews[0] as! NSStackView
-        // get the icon and the label
-        let icon = stackView.subviews[0] as! NSImageView
-        let label = stackView.subviews[1] as! NSTextField
-
-        if highlighted && ThemeManager.currentTheme() == Theme.lightTheme {
-            // if the light theme is active, set the font and the icon of the highlighted button
-            // to the colors of the dark theme to have more contrast
-            label.textColor = Theme.darkTheme.fontColor
-            icon.image = icon.image?.tint(color: Theme.darkTheme.fontColor)
+    func updateFontColor() {
+        guard let label = getButtonLabel(), let icon = getButtonIcon() else {
+            DDLogError("Could not retrieve label or the icon of the sidebar button")
             return
         }
 
@@ -105,9 +133,6 @@ class SidebarButtonView: NSView {
         let color = ThemeManager.currentTheme().fontColor
         icon.image = icon.image?.tint(color: color)
     }
-
-    // MARK: -
-    // MARK: Instance Functions
 
     /**
      * Sets the function which is called when the button is clicked.

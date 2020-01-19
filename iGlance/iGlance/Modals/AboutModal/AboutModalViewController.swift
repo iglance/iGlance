@@ -31,6 +31,8 @@ class AboutModalViewController: ModalViewController {
 
         // add the correct logo image at startup
         changeLogo()
+
+        DDLogInfo("View will appear")
     }
 
     // MARK: -
@@ -38,6 +40,7 @@ class AboutModalViewController: ModalViewController {
 
     @objc
     private func onThemeChange() {
+        DDLogInfo("Theme changed")
         changeLogo()
     }
 

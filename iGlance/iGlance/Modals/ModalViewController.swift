@@ -23,6 +23,8 @@ class ModalViewController: NSViewController {
         super.viewDidAppear()
 
         changeWindowAppearance()
+
+        DDLogInfo("View did appear")
     }
 
     override func viewWillDisappear() {
@@ -32,6 +34,8 @@ class ModalViewController: NSViewController {
         if let unwrappedCallback = self.onDisappearCallback {
             unwrappedCallback()
         }
+
+        DDLogInfo("View will disappear")
     }
 
     // MARK: -
@@ -41,6 +45,7 @@ class ModalViewController: NSViewController {
      * This function takes a callback which is executed when the modal is about to disappear.
      */
     func onDisappear(callback: @escaping () -> Void) {
+        DDLogInfo("Set on disappear callback")
         self.onDisappearCallback = callback
     }
 
@@ -53,6 +58,7 @@ class ModalViewController: NSViewController {
 
         // make the parent window unmovable
         parentWindow.isMovable = false
+        DDLogInfo("Made the parent window unmovable")
 
         // center the modal on the parent window
         centerWindowOnParent(parentWindow: parentWindow)
@@ -60,6 +66,7 @@ class ModalViewController: NSViewController {
         // set the callback to make the main window movable again after the preference window was closed
         self.onDisappear {
             parentWindow.isMovable = true
+            DDLogInfo("Made the parent window movable again")
         }
     }
 
@@ -86,6 +93,7 @@ class ModalViewController: NSViewController {
             y: parentWindowFrame.midY + modalWindowFrame.height / 2
         )
         modalWindow.setFrameTopLeftPoint(newWindowPosition)
+        DDLogInfo("Set the position of the modal window to (\(newWindowPosition.x), \(newWindowPosition.y))")
 
         // make the main window unmovable
         modalWindow.isMovable = false
@@ -118,5 +126,7 @@ class ModalViewController: NSViewController {
 
         // make the window unmovable
         modalWindow.isMovable = false
+
+        DDLogInfo("Changed the appearance of the window")
     }
 }

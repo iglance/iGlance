@@ -60,7 +60,7 @@ extension NSImage {
     func tint(color: NSColor) -> NSImage {
         // copy the current instance of the image
         guard let image = self.copy() as? NSImage else {
-            DDLogError("Could not copy the image '\(self.name() ?? "no name")'")
+            DDLogError("Could not copy the image")
             return self
         }
 
@@ -76,6 +76,8 @@ extension NSImage {
 
         // unlock the image instance
         image.unlockFocus()
+
+        DDLogInfo("Tinted the image with the name '\(self.name() ?? "no name available")'")
 
         return image
     }
