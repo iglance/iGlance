@@ -75,7 +75,7 @@ class FanComponent {
      */
     func getMinFanSpeed() throws -> Int {
         var minFanSpeed: Int = 0
-        for i in 0...fanCount-1 {
+        for i in 0..<fanCount {
             let minSpeed = try SMCKit.fanMinSpeed(i)
             if minSpeed > minFanSpeed {
                 minFanSpeed = minSpeed
@@ -89,7 +89,7 @@ class FanComponent {
      */
     func getMaxFanSpeed() throws -> Int {
         var maxFanSpeed: Int = 0
-        for i in 0...fanCount-1 {
+        for i in 0..<fanCount {
             let maxSpeed = try SMCKit.fanMaxSpeed(i)
             if maxSpeed > maxFanSpeed {
                 maxFanSpeed = maxSpeed
@@ -103,7 +103,7 @@ class FanComponent {
      */
     func getCurrentFanSpeed() throws -> Int {
         var currentFanSpeed: Int = 0
-        for i in 0...fanCount-1 {
+        for i in 0..<fanCount {
             let currentSpeed = try SMCKit.fanCurrentSpeed(i)
             if currentSpeed > currentFanSpeed {
                 currentFanSpeed = currentSpeed
