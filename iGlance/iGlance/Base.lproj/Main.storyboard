@@ -1310,18 +1310,18 @@
                                                         <rect key="frame" x="0.0" y="240" width="200" height="50"/>
                                                         <subviews>
                                                             <stackView distribution="fill" orientation="horizontal" alignment="centerY" spacing="10" horizontalStackHuggingPriority="249.99998474121094" verticalStackHuggingPriority="249.99998474121094" fixedFrame="YES" detachesHiddenViews="YES" translatesAutoresizingMaskIntoConstraints="NO" id="7Jv-GP-2PH">
-                                                                <rect key="frame" x="0.0" y="14" width="136" height="23"/>
+                                                                <rect key="frame" x="0.0" y="12" width="141" height="25"/>
                                                                 <subviews>
                                                                     <imageView horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="CkG-la-2rI">
-                                                                        <rect key="frame" x="10" y="2" width="20" height="20"/>
+                                                                        <rect key="frame" x="10" y="0.0" width="25" height="25"/>
                                                                         <constraints>
-                                                                            <constraint firstAttribute="width" constant="20" id="GYr-dW-aUB"/>
-                                                                            <constraint firstAttribute="height" constant="20" id="pKD-0f-JGY"/>
+                                                                            <constraint firstAttribute="width" constant="25" id="GYr-dW-aUB"/>
+                                                                            <constraint firstAttribute="height" constant="25" id="pKD-0f-JGY"/>
                                                                         </constraints>
                                                                         <imageCell key="cell" refusesFirstResponder="YES" alignment="left" imageScaling="proportionallyDown" image="Dashboard" id="OwG-Bq-zi3"/>
                                                                     </imageView>
                                                                     <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="rh4-4X-AQ9">
-                                                                        <rect key="frame" x="38" y="0.0" width="100" height="23"/>
+                                                                        <rect key="frame" x="43" y="1" width="100" height="23"/>
                                                                         <textFieldCell key="cell" lineBreakMode="clipping" title="Dashboard" id="0Nl-A2-nfD">
                                                                             <font key="font" metaFont="system" size="20"/>
                                                                             <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
@@ -1349,18 +1349,18 @@
                                                         <rect key="frame" x="0.0" y="192" width="200" height="50"/>
                                                         <subviews>
                                                             <stackView distribution="fill" orientation="horizontal" alignment="centerY" spacing="10" horizontalStackHuggingPriority="249.99998474121094" verticalStackHuggingPriority="249.99998474121094" fixedFrame="YES" detachesHiddenViews="YES" translatesAutoresizingMaskIntoConstraints="NO" id="MHn-wb-Jyt">
-                                                                <rect key="frame" x="0.0" y="13" width="81" height="23"/>
+                                                                <rect key="frame" x="0.0" y="11" width="86" height="25"/>
                                                                 <subviews>
                                                                     <imageView horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="HTM-46-gLx">
-                                                                        <rect key="frame" x="10" y="2" width="20" height="20"/>
+                                                                        <rect key="frame" x="10" y="0.0" width="25" height="25"/>
                                                                         <constraints>
-                                                                            <constraint firstAttribute="height" constant="20" id="V9s-Ml-wP5"/>
-                                                                            <constraint firstAttribute="width" constant="20" id="xVU-pD-wXt"/>
+                                                                            <constraint firstAttribute="height" constant="25" id="V9s-Ml-wP5"/>
+                                                                            <constraint firstAttribute="width" constant="25" id="xVU-pD-wXt"/>
                                                                         </constraints>
                                                                         <imageCell key="cell" refusesFirstResponder="YES" alignment="left" imageScaling="proportionallyDown" image="Cpu" id="k81-J1-08k"/>
                                                                     </imageView>
                                                                     <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="LoF-hV-F8T">
-                                                                        <rect key="frame" x="38" y="0.0" width="45" height="23"/>
+                                                                        <rect key="frame" x="43" y="1" width="45" height="23"/>
                                                                         <textFieldCell key="cell" lineBreakMode="clipping" title="CPU" id="uKE-10-UkV">
                                                                             <font key="font" metaFont="system" size="20"/>
                                                                             <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
@@ -1388,18 +1388,18 @@
                                                         <rect key="frame" x="0.0" y="144" width="200" height="50"/>
                                                         <subviews>
                                                             <stackView distribution="fill" orientation="horizontal" alignment="centerY" spacing="10" horizontalStackHuggingPriority="249.99998474121094" verticalStackHuggingPriority="249.99998474121094" fixedFrame="YES" detachesHiddenViews="YES" translatesAutoresizingMaskIntoConstraints="NO" id="AHi-wJ-Om5">
-                                                                <rect key="frame" x="0.0" y="13" width="112" height="23"/>
+                                                                <rect key="frame" x="0.0" y="11" width="117" height="25"/>
                                                                 <subviews>
                                                                     <imageView horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="Brq-Yj-N7j">
-                                                                        <rect key="frame" x="10" y="2" width="20" height="20"/>
+                                                                        <rect key="frame" x="10" y="0.0" width="25" height="25"/>
                                                                         <constraints>
-                                                                            <constraint firstAttribute="height" constant="20" id="XMB-YX-ORg"/>
-                                                                            <constraint firstAttribute="width" constant="20" id="uaV-r2-Hfb"/>
+                                                                            <constraint firstAttribute="height" constant="25" id="XMB-YX-ORg"/>
+                                                                            <constraint firstAttribute="width" constant="25" id="uaV-r2-Hfb"/>
                                                                         </constraints>
                                                                         <imageCell key="cell" refusesFirstResponder="YES" alignment="left" imageScaling="proportionallyDown" image="Memory" id="4kc-N4-NZE"/>
                                                                     </imageView>
                                                                     <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="Pmx-Ng-7aj">
-                                                                        <rect key="frame" x="38" y="0.0" width="76" height="23"/>
+                                                                        <rect key="frame" x="43" y="1" width="76" height="23"/>
                                                                         <textFieldCell key="cell" lineBreakMode="clipping" title="Memory" id="9fw-ca-Rku">
                                                                             <font key="font" metaFont="system" size="20"/>
                                                                             <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
@@ -1427,18 +1427,18 @@
                                                         <rect key="frame" x="0.0" y="96" width="200" height="50"/>
                                                         <subviews>
                                                             <stackView distribution="fill" orientation="horizontal" alignment="centerY" spacing="10" horizontalStackHuggingPriority="249.99998474121094" verticalStackHuggingPriority="249.99998474121094" fixedFrame="YES" detachesHiddenViews="YES" translatesAutoresizingMaskIntoConstraints="NO" id="QaW-Ag-tPc">
-                                                                <rect key="frame" x="0.0" y="13" width="114" height="23"/>
+                                                                <rect key="frame" x="0.0" y="11" width="119" height="25"/>
                                                                 <subviews>
                                                                     <imageView horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="rwh-tJ-64p">
-                                                                        <rect key="frame" x="10" y="2" width="20" height="20"/>
+                                                                        <rect key="frame" x="10" y="0.0" width="25" height="25"/>
                                                                         <constraints>
-                                                                            <constraint firstAttribute="width" constant="20" id="bck-k3-cCD"/>
-                                                                            <constraint firstAttribute="height" constant="20" id="n53-yq-KAi"/>
+                                                                            <constraint firstAttribute="width" constant="25" id="bck-k3-cCD"/>
+                                                                            <constraint firstAttribute="height" constant="25" id="n53-yq-KAi"/>
                                                                         </constraints>
-                                                                        <imageCell key="cell" refusesFirstResponder="YES" alignment="left" imageScaling="proportionallyDown" image="Dashboard" id="tbz-ov-9Nw"/>
+                                                                        <imageCell key="cell" refusesFirstResponder="YES" alignment="left" imageScaling="proportionallyDown" image="Network" id="tbz-ov-9Nw"/>
                                                                     </imageView>
                                                                     <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="JBu-O5-LAs">
-                                                                        <rect key="frame" x="38" y="0.0" width="78" height="23"/>
+                                                                        <rect key="frame" x="43" y="1" width="78" height="23"/>
                                                                         <textFieldCell key="cell" lineBreakMode="clipping" title="Network" id="AMG-eC-xti">
                                                                             <font key="font" metaFont="system" size="20"/>
                                                                             <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
@@ -1466,18 +1466,18 @@
                                                         <rect key="frame" x="0.0" y="48" width="200" height="50"/>
                                                         <subviews>
                                                             <stackView distribution="fill" orientation="horizontal" alignment="centerY" spacing="10" horizontalStackHuggingPriority="249.99998474121094" verticalStackHuggingPriority="249.99998474121094" fixedFrame="YES" detachesHiddenViews="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Oem-uJ-8dv">
-                                                                <rect key="frame" x="0.0" y="13" width="72" height="23"/>
+                                                                <rect key="frame" x="0.0" y="11" width="77" height="25"/>
                                                                 <subviews>
                                                                     <imageView horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="caS-HP-wQK">
-                                                                        <rect key="frame" x="10" y="2" width="20" height="20"/>
+                                                                        <rect key="frame" x="10" y="0.0" width="25" height="25"/>
                                                                         <constraints>
-                                                                            <constraint firstAttribute="width" constant="20" id="I3h-fh-9BX"/>
-                                                                            <constraint firstAttribute="height" constant="20" id="rxw-CC-w5b"/>
+                                                                            <constraint firstAttribute="width" constant="25" id="I3h-fh-9BX"/>
+                                                                            <constraint firstAttribute="height" constant="25" id="rxw-CC-w5b"/>
                                                                         </constraints>
-                                                                        <imageCell key="cell" refusesFirstResponder="YES" alignment="left" imageScaling="proportionallyDown" image="Dashboard" id="Nlg-tK-lR4"/>
+                                                                        <imageCell key="cell" refusesFirstResponder="YES" alignment="left" imageScaling="proportionallyDown" image="Fan" id="Nlg-tK-lR4"/>
                                                                     </imageView>
                                                                     <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="e9o-NW-8U3">
-                                                                        <rect key="frame" x="38" y="0.0" width="36" height="23"/>
+                                                                        <rect key="frame" x="43" y="1" width="36" height="23"/>
                                                                         <textFieldCell key="cell" lineBreakMode="clipping" title="Fan" id="1rn-0c-uKY">
                                                                             <font key="font" metaFont="system" size="20"/>
                                                                             <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
@@ -1505,18 +1505,18 @@
                                                         <rect key="frame" x="0.0" y="0.0" width="200" height="50"/>
                                                         <subviews>
                                                             <stackView distribution="fill" orientation="horizontal" alignment="centerY" spacing="10" horizontalStackHuggingPriority="249.99998474121094" verticalStackHuggingPriority="249.99998474121094" fixedFrame="YES" detachesHiddenViews="YES" translatesAutoresizingMaskIntoConstraints="NO" id="2QJ-bu-s2m">
-                                                                <rect key="frame" x="0.0" y="13" width="103" height="23"/>
+                                                                <rect key="frame" x="0.0" y="11" width="108" height="25"/>
                                                                 <subviews>
                                                                     <imageView horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="rp3-Nx-TaY">
-                                                                        <rect key="frame" x="10" y="2" width="20" height="20"/>
+                                                                        <rect key="frame" x="10" y="0.0" width="25" height="25"/>
                                                                         <constraints>
-                                                                            <constraint firstAttribute="height" constant="20" id="4FJ-Sy-5ur"/>
-                                                                            <constraint firstAttribute="width" constant="20" id="rB3-gJ-Oow"/>
+                                                                            <constraint firstAttribute="height" constant="25" id="4FJ-Sy-5ur"/>
+                                                                            <constraint firstAttribute="width" constant="25" id="rB3-gJ-Oow"/>
                                                                         </constraints>
                                                                         <imageCell key="cell" refusesFirstResponder="YES" alignment="left" imageScaling="proportionallyDown" image="Dashboard" id="FXA-Au-bbB"/>
                                                                     </imageView>
                                                                     <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="aX4-Ez-GzA">
-                                                                        <rect key="frame" x="38" y="0.0" width="67" height="23"/>
+                                                                        <rect key="frame" x="43" y="1" width="67" height="23"/>
                                                                         <textFieldCell key="cell" lineBreakMode="clipping" title="Battery" id="lkU-V9-GJd">
                                                                             <font key="font" metaFont="system" size="20"/>
                                                                             <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
@@ -1614,10 +1614,12 @@
         </scene>
     </scenes>
     <resources>
-        <image name="Cpu" width="500" height="500"/>
-        <image name="Dashboard" width="500" height="500"/>
-        <image name="Memory" width="500" height="500"/>
-        <image name="Preferences" width="500" height="500"/>
+        <image name="Cpu" width="120" height="120"/>
+        <image name="Dashboard" width="120" height="120"/>
+        <image name="Fan" width="120" height="120"/>
+        <image name="Memory" width="120" height="120"/>
+        <image name="Network" width="120" height="120"/>
+        <image name="Preferences" width="120" height="120"/>
         <image name="iGlance_logo_white" width="1280" height="500"/>
     </resources>
 </document>
