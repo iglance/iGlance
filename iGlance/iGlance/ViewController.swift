@@ -95,18 +95,9 @@ class ViewController: NSViewController {
     @IBAction func cbCheckForUpdatesOnWake_clicked(_ sender: Any) {
         AppDelegate.UserSettings.userWantsCheckForUpdateOnWake = (cbCheckForUpdatesOnWake.state == NSButton.StateValue.on)
         if cbCheckForUpdatesOnWake.state == NSButton.StateValue.on {
-            if !SMLoginItemSetEnabled(NCConstants.launcherApplicationIdentifier as CFString, true) {
-                _ = AppDelegate.dialogOK(question: "Error", text: "Something went wrong, sorry")
-                cbCheckForUpdatesOnWake.state = NSButton.StateValue.off
-            } else {
-                UserDefaults.standard.set(true, forKey: "userWantsCheckForUpdateOnWake")
-            }
+            UserDefaults.standard.set(true, forKey: "userWantsCheckForUpdateOnWake")
         } else {
-            if !SMLoginItemSetEnabled(NCConstants.launcherApplicationIdentifier as CFString, false) {
-                _ = AppDelegate.dialogOK(question: "Error", text: "Something went wrong, sorry")
-            } else {
-                UserDefaults.standard.set(false, forKey: "userWantsCheckForUpdateOnWake")
-            }
+            UserDefaults.standard.set(false, forKey: "userWantsCheckForUpdateOnWake")
         }
     }
 
