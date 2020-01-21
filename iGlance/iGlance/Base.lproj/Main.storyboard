@@ -1513,7 +1513,7 @@
                                                                             <constraint firstAttribute="height" constant="25" id="4FJ-Sy-5ur"/>
                                                                             <constraint firstAttribute="width" constant="25" id="rB3-gJ-Oow"/>
                                                                         </constraints>
-                                                                        <imageCell key="cell" refusesFirstResponder="YES" alignment="left" imageScaling="proportionallyDown" image="Dashboard" id="FXA-Au-bbB"/>
+                                                                        <imageCell key="cell" refusesFirstResponder="YES" alignment="left" imageScaling="proportionallyDown" image="Battery" id="FXA-Au-bbB"/>
                                                                     </imageView>
                                                                     <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="aX4-Ez-GzA">
                                                                         <rect key="frame" x="43" y="1" width="67" height="23"/>
@@ -1614,6 +1614,7 @@
         </scene>
     </scenes>
     <resources>
+        <image name="Battery" width="120" height="120"/>
         <image name="Cpu" width="120" height="120"/>
         <image name="Dashboard" width="120" height="120"/>
         <image name="Fan" width="120" height="120"/>
