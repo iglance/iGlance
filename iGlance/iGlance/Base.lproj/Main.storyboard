@@ -1306,7 +1306,7 @@
                                             <stackView distribution="fill" orientation="vertical" alignment="centerX" spacing="-2" horizontalStackHuggingPriority="249.99998474121094" verticalStackHuggingPriority="249.99998474121094" detachesHiddenViews="YES" translatesAutoresizingMaskIntoConstraints="NO" id="EiX-L0-7OK">
                                                 <rect key="frame" x="0.0" y="0.0" width="200" height="290"/>
                                                 <subviews>
-                                                    <customView identifier="DashboardButtonView" translatesAutoresizingMaskIntoConstraints="NO" id="YMG-9v-Bi1" customClass="SidebarButtonView" customModule="iGlance" customModuleProvider="target">
+                                                    <customView identifier="DashboardButtonView" translatesAutoresizingMaskIntoConstraints="NO" id="YMG-9v-Bi1" userLabel="Dashboard Button View" customClass="SidebarButtonView" customModule="iGlance" customModuleProvider="target">
                                                         <rect key="frame" x="0.0" y="240" width="200" height="50"/>
                                                         <subviews>
                                                             <stackView distribution="fill" orientation="horizontal" alignment="centerY" spacing="10" horizontalStackHuggingPriority="249.99998474121094" verticalStackHuggingPriority="249.99998474121094" fixedFrame="YES" detachesHiddenViews="YES" translatesAutoresizingMaskIntoConstraints="NO" id="7Jv-GP-2PH">

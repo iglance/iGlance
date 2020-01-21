@@ -117,12 +117,17 @@ class SidebarViewController: NSViewController {
      */
     func onButtonClick(_ sender: SidebarButtonView) {
         for identifier in sidebarButtonViewIDs {
-            let buttonView = getSidebarButtonWith(identifier: identifier.buttonViewID)
+            guard let buttonView = getSidebarButtonWith(identifier: identifier.buttonViewID) else {
+                DDLogError("Could not get the sidebar button view with the identifier \(identifier.buttonViewID)")
+                return
+            }
 
-            if buttonView?.identifier == sender.identifier {
-                buttonView?.highlighted = true
-            } else {
-                buttonView?.highlighted = false
+            if buttonView.identifier == sender.identifier {
+                buttonView.highlighted = true
+                buttonView.updateFontColor()
+            } else if buttonView.highlighted {
+                buttonView.highlighted = false
+                buttonView.updateFontColor()
             }
         }
     }

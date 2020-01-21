@@ -7,6 +7,7 @@
 //
 
 import Cocoa
+import CocoaLumberjack
 
 class DashboardViewController: MainViewViewController {
     // MARK: -
@@ -37,6 +38,8 @@ class DashboardViewController: MainViewViewController {
         self.updateUptimeInfo()
         self.setSystemInfo()
         self.setBatteryInfo()
+
+        DDLogInfo("Dashboard view did load")
     }
 
     // MARK: -
@@ -51,6 +54,8 @@ class DashboardViewController: MainViewViewController {
 
         daysUptimeLabel.stringValue = "\(uptime.days) days"
         hoursUptimeLabel.stringValue = "\(uptime.hours) hours"
+
+        DDLogInfo("Updated uptime info")
     }
 
     /**
@@ -78,6 +83,8 @@ class DashboardViewController: MainViewViewController {
 
         let diskSize = SystemInfo.disk.getInternalDiskSize()
         diskSizeLabel.stringValue = "\(diskSize.0) \(diskSize.1)"
+
+        DDLogInfo("Updated system info")
     }
 
     /**
@@ -89,5 +96,7 @@ class DashboardViewController: MainViewViewController {
 
         // set the cycle count of the battery
         batteryCyclesLabel.stringValue = "\(SystemInfo.battery.getBatteryCycles())"
+
+        DDLogInfo("Updated battery info")
     }
 }

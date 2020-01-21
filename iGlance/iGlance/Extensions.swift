@@ -57,6 +57,11 @@ extension NSColor {
 }
 
 extension NSImage {
+    /**
+     * Tints the image with the given color.
+     *
+     * - Parameter color: The given color.
+     */
     func tint(color: NSColor) -> NSImage {
         // copy the current instance of the image
         guard let image = self.copy() as? NSImage else {
