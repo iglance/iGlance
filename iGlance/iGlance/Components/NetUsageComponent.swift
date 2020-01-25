@@ -48,6 +48,7 @@ class NetUsageComponent {
     var uSpeedLast: UInt64?
     var lastUpBytes: UInt64?
     var lastDownBytes: UInt64?
+    var lastNetInterface: String?
 
     /**
      * Image variables for the menu bar icon
@@ -118,8 +119,15 @@ class NetUsageComponent {
         let regex = try? NSRegularExpression(pattern: "/ +/g")
         let stats = regex?.stringByReplacingMatches(in: String((lines?[1])!), options: [], range: NSRange(location: 0, length: String((lines?[1])!).count), withTemplate: " ").split(separator: " ")
         
-        let downBytes = UInt64(String((stats?[6])!))!
-        let upBytes = UInt64(String((stats?[9])!))!
+        let downBytes = UInt64(String((stats?[stats!.endIndex - 6])!))!
+        let upBytes = UInt64(String((stats?[stats!.endIndex - 3])!))!
+        
+        // if the network interface changed reset the last up and down byte count
+        if lastNetInterface != nil && interface != lastNetInterface! {
+            lastUpBytes = upBytes
+            lastDownBytes = downBytes
+        }
+        lastNetInterface = interface
         
         var upSpeed = UInt64(0)
         var downSpeed = UInt64(0)
