@@ -90,7 +90,7 @@ class MemUsageComponent {
         let memTaken = memActive + memCompressed + memWired
         let totalMemUsage = Double(memTaken / System.physicalMemory()) * 100
 
-        if InterfaceStyle() == InterfaceStyle.Dark {
+        if isDarkMode() {
             memImg = "menubar-label-mem-white"
             pbIMG = "progressbar-white"
         } else {

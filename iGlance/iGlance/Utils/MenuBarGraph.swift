@@ -64,7 +64,7 @@ class MenuBarGraph {
         if drawBorder {
             // draw the border around the graph area
             let borderRect = NSRect(x: 6, y: 0, width: width-8, height: 18)
-            if InterfaceStyle() == InterfaceStyle.Dark {
+            if isDarkMode() {
                 NSColor.white.set()
             } else {
                 NSColor.black.set()

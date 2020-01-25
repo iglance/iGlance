@@ -27,13 +27,8 @@
 import Cocoa
 import ServiceManagement
 
-enum InterfaceStyle: String {
-    case Dark, Light
-
-    init() {
-        let type = UserDefaults.standard.string(forKey: "AppleInterfaceStyle") ?? "Light"
-        self = InterfaceStyle(rawValue: type)!
-    }
+func isDarkMode() -> Bool {
+    return UserDefaults.standard.string(forKey: "AppleInterfaceStyle") != nil ? true : false
 }
 
 extension NSColor {

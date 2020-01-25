@@ -88,7 +88,7 @@ class CpuUsageComponent {
         myCpuMenuView.percentUser.stringValue = String(Int(cpuUser)) + "%"
         myCpuMenuView.percentIdle.stringValue = String(Int(cpuIdle)) + "%"
         
-        if InterfaceStyle() == InterfaceStyle.Dark {
+        if isDarkMode() {
             cpuImg = "menubar-label-cpu-white"
             pbImg = "progressbar-white"
         } else {

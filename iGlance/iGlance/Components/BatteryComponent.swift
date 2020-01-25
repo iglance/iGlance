@@ -160,7 +160,7 @@ class BatteryComponent {
         // determine the color scheme and set the font color accordingly
         var batteryIconString: String?
         var fontColor: NSColor?
-        if InterfaceStyle() == InterfaceStyle.Dark {
+        if isDarkMode() {
             batteryIconString = "battery-icon-white"
             fontColor = NSColor.white
         } else {

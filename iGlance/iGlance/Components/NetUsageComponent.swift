@@ -224,7 +224,7 @@ class NetUsageComponent {
             updateMenuText(down: getTotalDownloaded(), up: getTotalUploaded())
         }
 
-        if InterfaceStyle() == InterfaceStyle.Dark {
+        if isDarkMode() {
             bandIMG = "bandwidth-white"
             bandColor = NSColor.white
         } else {
