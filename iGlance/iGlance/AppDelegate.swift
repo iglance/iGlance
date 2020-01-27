@@ -11,6 +11,7 @@ import ServiceManagement
 import os.log
 import CocoaLumberjack
 import AppMover
+import SMCKit
 
 @NSApplicationMain
 class AppDelegate: NSObject, NSApplicationDelegate {
@@ -49,6 +50,25 @@ class AppDelegate: NSObject, NSApplicationDelegate {
         // check whether the app has to be moved into the applications folder
         if !DEBUG {
             AppMover.moveIfNecessary()
+        }
+
+        // open the connection to the SMC
+        do {
+            try SMCKit.open()
+        } catch SMCKit.SMCError.driverNotFound {
+            DDLogError("Could not find the SMC driver.")
+        } catch {
+            DDLogError("Failed to open a connection to the SMC")
+        }
+    }
+    
+    func applicationWillTerminate(_ notification: Notification) {
+        // kill the launcher app if it is still running
+        killLauncherApplication()
+        
+        // close the connection to the SMC
+        if !SMCKit.close() {
+            DDLogError("Failed to close the connection to the SMC")
         }
     }
 
