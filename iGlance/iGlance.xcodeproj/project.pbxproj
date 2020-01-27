@@ -14,6 +14,8 @@
 		B4060E3223C4FAEF00CD945E /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = B4060E3123C4FAEF00CD945E /* Constants.swift */; };
 		B4060E3323C4FAEF00CD945E /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = B4060E3123C4FAEF00CD945E /* Constants.swift */; };
 		B4060E3523C5014B00CD945E /* Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = B4060E3423C5014B00CD945E /* Extensions.swift */; };
+		B419CB7A23DF4BBD00F46DAC /* SMCKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B419CB7323DF4BB400F46DAC /* SMCKit.framework */; };
+		B419CB7B23DF4BBD00F46DAC /* SMCKit.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = B419CB7323DF4BB400F46DAC /* SMCKit.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		B41F6D5F23C8DE240046D637 /* PreferenceWindow.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B41F6D5E23C8DE240046D637 /* PreferenceWindow.storyboard */; };
 		B41F6D6123C8DFC60046D637 /* AboutModalViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B41F6D6023C8DFC60046D637 /* AboutModalViewController.swift */; };
 		B41F6D6523C8DFDF0046D637 /* AboutWindow.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B41F6D6423C8DFDF0046D637 /* AboutWindow.storyboard */; };
@@ -75,6 +77,41 @@
 			remoteGlobalIDString = B4CF2F7423C4F5CD00544511;
 			remoteInfo = iGlanceLauncher;
 		};
+		B419CB7223DF4BB400F46DAC /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = B419CB6B23DF4BB400F46DAC /* SMCKit.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = 4CE5668B1A00A48800787F6B;
+			remoteInfo = SMCKit;
+		};
+		B419CB7423DF4BB400F46DAC /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = B419CB6B23DF4BB400F46DAC /* SMCKit.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = 4CE566961A00A48800787F6B;
+			remoteInfo = SMCKitTests;
+		};
+		B419CB7623DF4BB400F46DAC /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = B419CB6B23DF4BB400F46DAC /* SMCKit.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = 4CDDA69D1AEC0D010037CE7B;
+			remoteInfo = powermetricsTests;
+		};
+		B419CB7823DF4BB400F46DAC /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = B419CB6B23DF4BB400F46DAC /* SMCKit.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = 4C982BDD1A040CD500F4A639;
+			remoteInfo = SMCKitTool;
+		};
+		B419CB7C23DF4BD400F46DAC /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = B419CB6B23DF4BB400F46DAC /* SMCKit.xcodeproj */;
+			proxyType = 1;
+			remoteGlobalIDString = 4CE5668A1A00A48800787F6B;
+			remoteInfo = SMCKit;
+		};
 		B4DE726E23C25F8C0001CF46 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = B46789AA23A69ECA00CE572D /* Project object */;
@@ -110,6 +147,7 @@
 			files = (
 				B4E8621E23CB7B5A00B38F17 /* AppMover.framework in Embed Frameworks */,
 				B4DE727123C25F8C0001CF46 /* SystemKit.framework in Embed Frameworks */,
+				B419CB7B23DF4BBD00F46DAC /* SMCKit.framework in Embed Frameworks */,
 			);
 			name = "Embed Frameworks";
 			runOnlyForDeploymentPostprocessing = 0;
@@ -131,6 +169,16 @@
 		B4060E2E23C4F84D00CD945E /* ServiceManagement.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = ServiceManagement.framework; path = System/Library/Frameworks/ServiceManagement.framework; sourceTree = SDKROOT; };
 		B4060E3123C4FAEF00CD945E /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
 		B4060E3423C5014B00CD945E /* Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Extensions.swift; sourceTree = "<group>"; };
+		B419CB5F23DF4BB400F46DAC /* LICENSE */ = {isa = PBXFileReference; lastKnownFileType = text; path = LICENSE; sourceTree = "<group>"; };
+		B419CB6123DF4BB400F46DAC /* main.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = main.swift; sourceTree = "<group>"; };
+		B419CB6323DF4BB400F46DAC /* SMCKit.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SMCKit.h; sourceTree = "<group>"; };
+		B419CB6423DF4BB400F46DAC /* SMC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SMC.swift; sourceTree = "<group>"; };
+		B419CB6523DF4BB400F46DAC /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		B419CB6623DF4BB400F46DAC /* README.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
+		B419CB6723DF4BB400F46DAC /* .gitignore */ = {isa = PBXFileReference; lastKnownFileType = text; path = .gitignore; sourceTree = "<group>"; };
+		B419CB6923DF4BB400F46DAC /* SMCKitTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SMCKitTests.swift; sourceTree = "<group>"; };
+		B419CB6A23DF4BB400F46DAC /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		B419CB6B23DF4BB400F46DAC /* SMCKit.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; path = SMCKit.xcodeproj; sourceTree = "<group>"; };
 		B41F6D5E23C8DE240046D637 /* PreferenceWindow.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = PreferenceWindow.storyboard; sourceTree = "<group>"; };
 		B41F6D6023C8DFC60046D637 /* AboutModalViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AboutModalViewController.swift; sourceTree = "<group>"; };
 		B41F6D6423C8DFDF0046D637 /* AboutWindow.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = AboutWindow.storyboard; sourceTree = "<group>"; };
@@ -200,6 +248,7 @@
 				B4060E2F23C4F84D00CD945E /* ServiceManagement.framework in Frameworks */,
 				B4DE727023C25F8C0001CF46 /* SystemKit.framework in Frameworks */,
 				677D54A9D3D427EFF8513BF9 /* Pods_iGlance.framework in Frameworks */,
+				B419CB7A23DF4BBD00F46DAC /* SMCKit.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -271,6 +320,58 @@
 				B4C37E6A23A8D715008C7FC0 /* SegueAnimator.swift */,
 			);
 			path = MainViewManager;
+			sourceTree = "<group>";
+		};
+		B419CB5E23DF4BB400F46DAC /* SMCKit */ = {
+			isa = PBXGroup;
+			children = (
+				B419CB5F23DF4BB400F46DAC /* LICENSE */,
+				B419CB6023DF4BB400F46DAC /* powermetricsTests */,
+				B419CB6223DF4BB400F46DAC /* SMCKit */,
+				B419CB6623DF4BB400F46DAC /* README.md */,
+				B419CB6723DF4BB400F46DAC /* .gitignore */,
+				B419CB6823DF4BB400F46DAC /* SMCKitTests */,
+				B419CB6B23DF4BB400F46DAC /* SMCKit.xcodeproj */,
+			);
+			path = SMCKit;
+			sourceTree = "<group>";
+		};
+		B419CB6023DF4BB400F46DAC /* powermetricsTests */ = {
+			isa = PBXGroup;
+			children = (
+				B419CB6123DF4BB400F46DAC /* main.swift */,
+			);
+			path = powermetricsTests;
+			sourceTree = "<group>";
+		};
+		B419CB6223DF4BB400F46DAC /* SMCKit */ = {
+			isa = PBXGroup;
+			children = (
+				B419CB6323DF4BB400F46DAC /* SMCKit.h */,
+				B419CB6423DF4BB400F46DAC /* SMC.swift */,
+				B419CB6523DF4BB400F46DAC /* Info.plist */,
+			);
+			path = SMCKit;
+			sourceTree = "<group>";
+		};
+		B419CB6823DF4BB400F46DAC /* SMCKitTests */ = {
+			isa = PBXGroup;
+			children = (
+				B419CB6923DF4BB400F46DAC /* SMCKitTests.swift */,
+				B419CB6A23DF4BB400F46DAC /* Info.plist */,
+			);
+			path = SMCKitTests;
+			sourceTree = "<group>";
+		};
+		B419CB6C23DF4BB400F46DAC /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				B419CB7323DF4BB400F46DAC /* SMCKit.framework */,
+				B419CB7523DF4BB400F46DAC /* SMCKitTests.xctest */,
+				B419CB7723DF4BB400F46DAC /* powermetricsTests */,
+				B419CB7923DF4BB400F46DAC /* SMCKitTool */,
+			);
+			name = Products;
 			sourceTree = "<group>";
 		};
 		B41F6D6623C8E4620046D637 /* Modals */ = {
@@ -436,6 +537,7 @@
 		B4E8622423CB7B8B00B38F17 /* Libraries */ = {
 			isa = PBXGroup;
 			children = (
+				B419CB5E23DF4BB400F46DAC /* SMCKit */,
 				B4E8621723CB7B5A00B38F17 /* AppMover */,
 				B4DE726A23C25F8C0001CF46 /* SystemKit */,
 			);
@@ -497,6 +599,7 @@
 			buildRules = (
 			);
 			dependencies = (
+				B419CB7D23DF4BD400F46DAC /* PBXTargetDependency */,
 				B419052723C637AF00B0B197 /* PBXTargetDependency */,
 				B4DE726F23C25F8C0001CF46 /* PBXTargetDependency */,
 				B4E8621C23CB7B5A00B38F17 /* PBXTargetDependency */,
@@ -599,6 +702,12 @@
 			mainGroup = B46789A923A69ECA00CE572D;
 			productRefGroup = B46789B323A69ECA00CE572D /* Products */;
 			projectDirPath = "";
+			projectReferences = (
+				{
+					ProductGroup = B419CB6C23DF4BB400F46DAC /* Products */;
+					ProjectRef = B419CB6B23DF4BB400F46DAC /* SMCKit.xcodeproj */;
+				},
+			);
 			projectRoot = "";
 			targets = (
 				B46789B123A69ECA00CE572D /* iGlance */,
@@ -608,6 +717,37 @@
 			);
 		};
 /* End PBXProject section */
+
+/* Begin PBXReferenceProxy section */
+		B419CB7323DF4BB400F46DAC /* SMCKit.framework */ = {
+			isa = PBXReferenceProxy;
+			fileType = wrapper.framework;
+			path = SMCKit.framework;
+			remoteRef = B419CB7223DF4BB400F46DAC /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		B419CB7523DF4BB400F46DAC /* SMCKitTests.xctest */ = {
+			isa = PBXReferenceProxy;
+			fileType = wrapper.cfbundle;
+			path = SMCKitTests.xctest;
+			remoteRef = B419CB7423DF4BB400F46DAC /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		B419CB7723DF4BB400F46DAC /* powermetricsTests */ = {
+			isa = PBXReferenceProxy;
+			fileType = "compiled.mach-o.executable";
+			path = powermetricsTests;
+			remoteRef = B419CB7623DF4BB400F46DAC /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		B419CB7923DF4BB400F46DAC /* SMCKitTool */ = {
+			isa = PBXReferenceProxy;
+			fileType = "compiled.mach-o.executable";
+			path = SMCKitTool;
+			remoteRef = B419CB7823DF4BB400F46DAC /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+/* End PBXReferenceProxy section */
 
 /* Begin PBXResourcesBuildPhase section */
 		B46789B023A69ECA00CE572D /* Resources */ = {
@@ -843,6 +983,11 @@
 			isa = PBXTargetDependency;
 			target = B4CF2F7423C4F5CD00544511 /* iGlanceLauncher */;
 			targetProxy = B419052623C637AF00B0B197 /* PBXContainerItemProxy */;
+		};
+		B419CB7D23DF4BD400F46DAC /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			name = SMCKit;
+			targetProxy = B419CB7C23DF4BD400F46DAC /* PBXContainerItemProxy */;
 		};
 		B4DE726F23C25F8C0001CF46 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
