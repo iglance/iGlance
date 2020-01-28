@@ -61,11 +61,11 @@ class AppDelegate: NSObject, NSApplicationDelegate {
             DDLogError("Failed to open a connection to the SMC")
         }
     }
-    
+
     func applicationWillTerminate(_ notification: Notification) {
         // kill the launcher app if it is still running
         killLauncherApplication()
-        
+
         // close the connection to the SMC
         if !SMCKit.close() {
             DDLogError("Failed to close the connection to the SMC")

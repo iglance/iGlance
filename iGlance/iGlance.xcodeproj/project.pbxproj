@@ -98,13 +98,6 @@
 			remoteGlobalIDString = 4CDDA69D1AEC0D010037CE7B;
 			remoteInfo = powermetricsTests;
 		};
-		B419CB7823DF4BB400F46DAC /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = B419CB6B23DF4BB400F46DAC /* SMCKit.xcodeproj */;
-			proxyType = 2;
-			remoteGlobalIDString = 4C982BDD1A040CD500F4A639;
-			remoteInfo = SMCKitTool;
-		};
 		B419CB7C23DF4BD400F46DAC /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = B419CB6B23DF4BB400F46DAC /* SMCKit.xcodeproj */;
@@ -369,7 +362,6 @@
 				B419CB7323DF4BB400F46DAC /* SMCKit.framework */,
 				B419CB7523DF4BB400F46DAC /* SMCKitTests.xctest */,
 				B419CB7723DF4BB400F46DAC /* powermetricsTests */,
-				B419CB7923DF4BB400F46DAC /* SMCKitTool */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -738,13 +730,6 @@
 			fileType = "compiled.mach-o.executable";
 			path = powermetricsTests;
 			remoteRef = B419CB7623DF4BB400F46DAC /* PBXContainerItemProxy */;
-			sourceTree = BUILT_PRODUCTS_DIR;
-		};
-		B419CB7923DF4BB400F46DAC /* SMCKitTool */ = {
-			isa = PBXReferenceProxy;
-			fileType = "compiled.mach-o.executable";
-			path = SMCKitTool;
-			remoteRef = B419CB7823DF4BB400F46DAC /* PBXContainerItemProxy */;
 			sourceTree = BUILT_PRODUCTS_DIR;
 		};
 /* End PBXReferenceProxy section */
@@ -1194,6 +1179,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_ENTITLEMENTS = iGlanceLauncher/iGlanceLauncher.entitlements;
+				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
 				COMBINE_HIDPI_IMAGES = YES;
 				CURRENT_PROJECT_VERSION = 2.0;
@@ -1219,6 +1205,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_ENTITLEMENTS = iGlanceLauncher/iGlanceLauncher.entitlements;
+				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
 				COMBINE_HIDPI_IMAGES = YES;
 				CURRENT_PROJECT_VERSION = 2.0;
