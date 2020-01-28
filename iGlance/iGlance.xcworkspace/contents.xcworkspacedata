@@ -5,6 +5,9 @@
       location = "group:iGlance.xcodeproj">
    </FileRef>
    <FileRef
+      location = "group:Libraries/SMCKit/SMCKit.xcodeproj">
+   </FileRef>
+   <FileRef
       location = "group:Pods/Pods.xcodeproj">
    </FileRef>
 </Workspace>
