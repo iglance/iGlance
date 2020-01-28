@@ -1,3 +1,6 @@
 [submodule "iGlance/Libraries/SMCKit"]
 	path = iGlance/Libraries/SMCKit
 	url = git@github.com:iglance/SMCKit.git
+[submodule "iGlance/Libraries/SystemKit"]
+	path = iGlance/Libraries/SystemKit
+	url = git@github.com:iglance/SystemKit.git

@@ -2,12 +2,15 @@
 <Workspace
    version = "1.0">
    <FileRef
+      location = "group:iGlance/iGlance.xcodeproj">
+   </FileRef>
+   <FileRef
       location = "group:Libraries/SMCKit/SMCKit.xcodeproj">
    </FileRef>
    <FileRef
-      location = "group:Pods/Pods.xcodeproj">
+      location = "group:Libraries/SystemKit/SystemKit.xcodeproj">
    </FileRef>
    <FileRef
-      location = "group:iGlance/iGlance.xcodeproj">
+      location = "group:Pods/Pods.xcodeproj">
    </FileRef>
 </Workspace>

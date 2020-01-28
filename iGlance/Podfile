@@ -37,3 +37,10 @@ target "SMCKit" do
   
   pod "SwiftLint"
 end
+
+target "SystemKit" do
+  workspace "iGlance"
+  project "Libraries/SystemKit/SystemKit.xcodeproj"
+
+  pod "SwiftLint"
+end
