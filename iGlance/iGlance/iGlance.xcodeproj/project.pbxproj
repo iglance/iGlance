@@ -157,12 +157,6 @@
 		B4D82FDB23C1031800D502FF /* DiskInfo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DiskInfo.swift; sourceTree = "<group>"; };
 		B4D86E1A23AA710B00671B52 /* MainViewViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainViewViewController.swift; sourceTree = "<group>"; };
 		B4DE725E23C257610001CF46 /* Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Extensions.swift; sourceTree = "<group>"; };
-		B4DE726B23C25F8C0001CF46 /* SystemKit.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SystemKit.h; sourceTree = "<group>"; };
-		B4DE726C23C25F8C0001CF46 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		B4DE727623C25FD40001CF46 /* System.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = System.swift; sourceTree = "<group>"; };
-		B4DE727823C25FF10001CF46 /* Process.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Process.swift; sourceTree = "<group>"; };
-		B4DE727A23C2600A0001CF46 /* IOReturn.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IOReturn.swift; sourceTree = "<group>"; };
-		B4DE727C23C260320001CF46 /* Battery.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Battery.swift; sourceTree = "<group>"; };
 		B4DE727F23C2644A0001CF46 /* Battery.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Battery.swift; sourceTree = "<group>"; };
 		B4E8621623CB7B5A00B38F17 /* AppMover.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = AppMover.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		B4E8621823CB7B5A00B38F17 /* AppMover.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppMover.h; sourceTree = "<group>"; };
@@ -171,7 +165,6 @@
 		B4E8622723CB7BF500B38F17 /* AppMover.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppMover.swift; sourceTree = "<group>"; };
 		B4E8622923CB7D9300B38F17 /* LICENSE.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = LICENSE.md; sourceTree = "<group>"; };
 		B4EFB55A23CA197500CF2FF2 /* CustomLogFormatter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomLogFormatter.swift; sourceTree = "<group>"; };
-		B4EFB55D23CA317F00CF2FF2 /* License.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = License.md; sourceTree = "<group>"; };
 		B4F4AA1023E072F200F57F70 /* SystemKit.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = SystemKit.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		BDF380F9580CA61048B83D05 /* Pods_iGlanceLauncher.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_iGlanceLauncher.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		D040CDF5F5948F95966D5A84 /* Pods-iGlanceLauncher.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-iGlanceLauncher.release.xcconfig"; path = "../../Pods/Target Support Files/Pods-iGlanceLauncher/Pods-iGlanceLauncher.release.xcconfig"; sourceTree = "<group>"; };
@@ -389,20 +382,6 @@
 			path = MainViews;
 			sourceTree = "<group>";
 		};
-		B4DE726A23C25F8C0001CF46 /* SystemKit */ = {
-			isa = PBXGroup;
-			children = (
-				B4DE727623C25FD40001CF46 /* System.swift */,
-				B4DE727823C25FF10001CF46 /* Process.swift */,
-				B4DE727A23C2600A0001CF46 /* IOReturn.swift */,
-				B4DE727C23C260320001CF46 /* Battery.swift */,
-				B4DE726B23C25F8C0001CF46 /* SystemKit.h */,
-				B4DE726C23C25F8C0001CF46 /* Info.plist */,
-				B4EFB55D23CA317F00CF2FF2 /* License.md */,
-			);
-			path = SystemKit;
-			sourceTree = "<group>";
-		};
 		B4E8621723CB7B5A00B38F17 /* AppMover */ = {
 			isa = PBXGroup;
 			children = (
@@ -419,7 +398,6 @@
 			isa = PBXGroup;
 			children = (
 				B4E8621723CB7B5A00B38F17 /* AppMover */,
-				B4DE726A23C25F8C0001CF46 /* SystemKit */,
 			);
 			path = Libraries;
 			sourceTree = "<group>";
