@@ -7,7 +7,7 @@ use_frameworks!
 
 target 'iGlance' do
   workspace "iGlance"
-  project "iGlance.xcodeproj"
+  project "iGlance/iGlance.xcodeproj"
   
   # Pods for iGlance
   pod "SwiftLint"
@@ -19,14 +19,14 @@ end
 
 target 'iGlanceLauncher' do
   workspace "iGlance"
-  project "iGlance.xcodeproj"
+  project "iGlance/iGlance.xcodeproj"
   
   pod "CocoaLumberjack/Swift"
 end
 
 target 'AppMover' do
   workspace "iGlance"
-  project "iGlance.xcodeproj"
+  project "iGlance/iGlance.xcodeproj"
   
   pod "CocoaLumberjack/Swift"
 end

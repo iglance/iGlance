@@ -104,7 +104,6 @@ class AppDelegate: NSObject, NSApplicationDelegate {
         DDLogInfo("Displaying the 'About' modal")
     }
 
-
     // MARK: -
     // MARK: Private functions
 
