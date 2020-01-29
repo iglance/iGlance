@@ -4,3 +4,6 @@
 [submodule "iGlance/Libraries/SystemKit"]
 	path = iGlance/Libraries/SystemKit
 	url = git@github.com:iglance/SystemKit.git
+[submodule "iGlance/Libraries/AppMover"]
+	path = iGlance/Libraries/AppMover
+	url = git@github.com:iglance/AppMover.git

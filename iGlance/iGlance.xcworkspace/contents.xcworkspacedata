@@ -11,6 +11,9 @@
       location = "group:Libraries/SystemKit/SystemKit.xcodeproj">
    </FileRef>
    <FileRef
+      location = "group:Libraries/AppMover/AppMover.xcodeproj">
+   </FileRef>
+   <FileRef
       location = "group:Pods/Pods.xcodeproj">
    </FileRef>
 </Workspace>
