@@ -32,6 +32,16 @@ class MainWindowViewController: NSViewController {
         }
     }
 
+    override func viewWillAppear() {
+        // show the dock icon of the app
+        NSApp.setActivationPolicy(.regular)
+    }
+
+    override func viewWillDisappear() {
+        // set the activation level of the app. This will hide the dock icon.
+        NSApp.setActivationPolicy(.accessory)
+    }
+
     // MARK: -
     // MARK: Private Functions
     /**
