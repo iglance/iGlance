@@ -15,7 +15,14 @@ import SMCKit
 
 @NSApplicationMain
 class AppDelegate: NSObject, NSApplicationDelegate {
+    // MARK: -
+    // MARK: Static Constants
     static let userSettings = UserSettings()
+
+    // MARK: -
+    // MARK: Instance Variables
+
+    var mainWindow: MainWindowController = NSStoryboard(name: "Main", bundle: nil).instantiateController(withIdentifier: "MainWindowController") as! MainWindowController
 
     // MARK: -
     // MARK: Lifecycle Functions
@@ -60,6 +67,16 @@ class AppDelegate: NSObject, NSApplicationDelegate {
         } catch {
             DDLogError("Failed to open a connection to the SMC")
         }
+
+        showMainWindow()
+    }
+
+    func applicationShouldHandleReopen(_ sender: NSApplication, hasVisibleWindows flag: Bool) -> Bool {
+        // show the main window
+        showMainWindow()
+
+        // return false to prevent a relaunch of the app
+        return false
     }
 
     func applicationWillTerminate(_ notification: Notification) {
@@ -105,7 +122,7 @@ class AppDelegate: NSObject, NSApplicationDelegate {
     }
 
     // MARK: -
-    // MARK: Private functions
+    // MARK: Private Functions
 
     /**
      * Kills the iGlanceLauncher application.
@@ -130,5 +147,16 @@ class AppDelegate: NSObject, NSApplicationDelegate {
             DistributedNotificationCenter.default().post(name: .killLauncher, object: mainAppBundleIdentifier)
             DDLogInfo("Sent notification to kill the launcher")
         }
+    }
+
+    // MARK: -
+    // MARK: Instance Functions
+
+    /**
+     * Shows the main window, order it in front of any other window and activate the window..
+     */
+    func showMainWindow() {
+        mainWindow.showWindow(nil)
+        NSApp.activate(ignoringOtherApps: true)
     }
 }
