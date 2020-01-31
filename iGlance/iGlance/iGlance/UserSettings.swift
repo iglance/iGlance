@@ -10,7 +10,9 @@ import Foundation
 import CocoaLumberjack
 
 struct IGlanceUserSettings: Codable {
+    // global settings
     var autostartOnBoot: Bool = false
+    var updateInterval: Double = 2.0
 }
 
 class UserSettings {

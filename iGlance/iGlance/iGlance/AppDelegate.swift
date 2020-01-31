@@ -73,7 +73,7 @@ class AppDelegate: NSObject, NSApplicationDelegate {
         }
 
         // create the timer object
-        currentUpdateLoopTimer = createUpdateLoopTimer(interval: 1.0)
+        currentUpdateLoopTimer = createUpdateLoopTimer(interval: AppDelegate.userSettings.settings.updateInterval)
     }
 
     func applicationShouldHandleReopen(_ sender: NSApplication, hasVisibleWindows flag: Bool) -> Bool {

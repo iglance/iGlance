@@ -22,6 +22,22 @@ class PreferenceModalViewController: ModalViewController {
         }
     }
     @IBOutlet private var logoImage: NSImageView!
+    @IBOutlet private var updateIntervalSelector: NSPopUpButton! {
+        didSet {
+            // initialize the selector with the correct value from the user settings
+            switch AppDelegate.userSettings.settings.updateInterval {
+            case 1.0:
+                // select the fast option which is 1 second
+                updateIntervalSelector.selectItem(at: 0)
+            case 3.0:
+                // select the slow option which is 3 seconds
+                updateIntervalSelector.selectItem(at: 2)
+            default:
+                // default to the medium option which is 2 seconds
+                updateIntervalSelector.selectItem(at: 1)
+            }
+        }
+    }
 
     // MARK: -
     // MARK: Function Overrides
@@ -88,9 +104,31 @@ class PreferenceModalViewController: ModalViewController {
         }
     }
 
+    @IBAction private func updateIntervalSelectorChanged(_ sender: NSPopUpButton) {
+        // set the user settings
+        switch updateIntervalSelector.indexOfSelectedItem {
+        case 0:
+            // the first item is the fast option
+            AppDelegate.userSettings.settings.updateInterval = 1.0
+        case 2:
+            // the third item is the slow option
+            AppDelegate.userSettings.settings.updateInterval = 3.0
+        default:
+            // default to the medium option
+            AppDelegate.userSettings.settings.updateInterval = 2.0
+        }
+
+        // update the update loop timer
+        let appDelegate = NSApplication.shared.delegate as! AppDelegate
+        appDelegate.changeUpdateLoopTimeInterval(interval: AppDelegate.userSettings.settings.updateInterval)
+    }
+
     // MARK: -
     // MARK: Private Functions
 
+    /**
+     * Called when the os theme changed.
+     */
     @objc
     private func onThemeChange() {
         changeLogo()

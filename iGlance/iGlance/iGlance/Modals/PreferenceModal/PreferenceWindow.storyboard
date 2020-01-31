@@ -71,11 +71,51 @@
                                     <action selector="advancedLoggingCheckboxChanged:" target="eJb-KF-Kac" id="6uB-1N-DEI"/>
                                 </connections>
                             </button>
+                            <stackView distribution="fill" orientation="horizontal" alignment="centerY" spacing="4" horizontalStackHuggingPriority="249.99998474121094" verticalStackHuggingPriority="249.99998474121094" detachesHiddenViews="YES" translatesAutoresizingMaskIntoConstraints="NO" id="0Eo-RX-Pt3">
+                                <rect key="frame" x="71" y="68" width="259" height="21"/>
+                                <subviews>
+                                    <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="m2f-Bt-ZSz">
+                                        <rect key="frame" x="-2" y="3" width="101" height="16"/>
+                                        <textFieldCell key="cell" lineBreakMode="clipping" title="Update Interval:" id="ljP-No-tfB">
+                                            <font key="font" metaFont="system"/>
+                                            <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
+                                            <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
+                                        </textFieldCell>
+                                    </textField>
+                                    <popUpButton verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="jx3-Z8-qZx">
+                                        <rect key="frame" x="99" y="-3" width="163" height="25"/>
+                                        <popUpButtonCell key="cell" type="push" title="Medium (2 seconds)" bezelStyle="rounded" alignment="left" lineBreakMode="truncatingTail" state="on" borderStyle="borderAndBezel" imageScaling="proportionallyDown" inset="2" selectedItem="uaD-aN-ugH" id="203-ka-o4w">
+                                            <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
+                                            <font key="font" metaFont="system"/>
+                                            <menu key="menu" id="pzL-Tx-Ir7">
+                                                <items>
+                                                    <menuItem title="Fast (1 second)" id="zTp-ZW-BoE"/>
+                                                    <menuItem title="Medium (2 seconds)" state="on" id="uaD-aN-ugH"/>
+                                                    <menuItem title="Slow (3 seconds)" id="7VU-Za-4j3"/>
+                                                </items>
+                                            </menu>
+                                        </popUpButtonCell>
+                                        <connections>
+                                            <action selector="updateIntervalSelectorChanged:" target="eJb-KF-Kac" id="xW0-de-Ffs"/>
+                                        </connections>
+                                    </popUpButton>
+                                </subviews>
+                                <visibilityPriorities>
+                                    <integer value="1000"/>
+                                    <integer value="1000"/>
+                                </visibilityPriorities>
+                                <customSpacing>
+                                    <real value="3.4028234663852886e+38"/>
+                                    <real value="3.4028234663852886e+38"/>
+                                </customSpacing>
+                            </stackView>
                         </subviews>
                         <constraints>
+                            <constraint firstItem="0Eo-RX-Pt3" firstAttribute="centerX" secondItem="AXW-5W-vMJ" secondAttribute="centerX" id="0kv-pJ-owS"/>
                             <constraint firstItem="AQo-ln-3eP" firstAttribute="top" secondItem="6c4-9A-u91" secondAttribute="bottom" constant="10" id="2UI-7c-oaX"/>
                             <constraint firstItem="6c4-9A-u91" firstAttribute="centerX" secondItem="AXW-5W-vMJ" secondAttribute="centerX" id="GaH-eU-AwD"/>
                             <constraint firstAttribute="bottom" secondItem="Dog-g4-PBP" secondAttribute="bottom" constant="20" id="Ici-xY-nTu"/>
+                            <constraint firstItem="OEb-YF-FaP" firstAttribute="top" secondItem="0Eo-RX-Pt3" secondAttribute="bottom" constant="10" id="KoO-Cq-IcU"/>
                             <constraint firstItem="6c4-9A-u91" firstAttribute="top" secondItem="AXW-5W-vMJ" secondAttribute="top" constant="20" id="VlW-AZ-VOe"/>
                             <constraint firstItem="OEb-YF-FaP" firstAttribute="centerX" secondItem="AXW-5W-vMJ" secondAttribute="centerX" id="X1U-9r-J2S"/>
                             <constraint firstItem="Dog-g4-PBP" firstAttribute="top" secondItem="OEb-YF-FaP" secondAttribute="bottom" constant="10" id="ej6-nb-NbU"/>
@@ -86,6 +126,7 @@
                     <connections>
                         <outlet property="autostartOnBootCheckbox" destination="OEb-YF-FaP" id="iyd-B9-1br"/>
                         <outlet property="logoImage" destination="6c4-9A-u91" id="KkS-jB-G7X"/>
+                        <outlet property="updateIntervalSelector" destination="jx3-Z8-qZx" id="i4R-ax-0hj"/>
                         <outlet property="versionLabel" destination="M9N-UL-9gz" id="Qjb-l0-YgJ"/>
                     </connections>
                 </viewController>
