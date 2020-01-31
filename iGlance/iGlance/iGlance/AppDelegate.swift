@@ -24,6 +24,10 @@ class AppDelegate: NSObject, NSApplicationDelegate {
 
     var mainWindow: MainWindowController = NSStoryboard(name: "Main", bundle: nil).instantiateController(withIdentifier: "MainWindowController") as! MainWindowController
 
+    let menuBarItemManager = MenuBarItemManager()
+
+    var currentUpdateLoopTimer: Timer!
+
     // MARK: -
     // MARK: Lifecycle Functions
 
@@ -68,7 +72,8 @@ class AppDelegate: NSObject, NSApplicationDelegate {
             DDLogError("Failed to open a connection to the SMC")
         }
 
-        showMainWindow()
+        // create the timer object
+        currentUpdateLoopTimer = createUpdateLoopTimer(interval: 1.0)
     }
 
     func applicationShouldHandleReopen(_ sender: NSApplication, hasVisibleWindows flag: Bool) -> Bool {
@@ -155,8 +160,43 @@ class AppDelegate: NSObject, NSApplicationDelegate {
     /**
      * Shows the main window, order it in front of any other window and activate the window..
      */
+    @objc
     func showMainWindow() {
         mainWindow.showWindow(nil)
         NSApp.activate(ignoringOtherApps: true)
+    }
+
+    /**
+     * Creates a timer and adds it to a the current run loop. The timer calls the update loop every given time interval.
+     *
+     * - Returns: The newly created timer.
+     */
+    func createUpdateLoopTimer(interval: Double) -> Timer {
+        let timer = Timer(timeInterval: interval, target: self, selector: #selector(updateLoop), userInfo: nil, repeats: true)
+        RunLoop.current.add(timer, forMode: RunLoop.Mode.common)
+
+        return timer
+    }
+
+    /**
+     * The main update loop for the whole app. This function is called every user defined time interval.
+     */
+    @objc
+    func updateLoop() {
+        menuBarItemManager.updateMenuBarItems()
+    }
+
+    /**
+     * Changes the update interval of the main loop to the given time interval. Returns the new timer object.
+     */
+    func changeUpdateLoopTimeInterval(interval: Double) -> Timer {
+        // invalidate the currently used timer to stop it
+        currentUpdateLoopTimer.invalidate()
+
+        // create a new timer object
+        let timer = createUpdateLoopTimer(interval: interval)
+        RunLoop.current.add(timer, forMode: RunLoop.Mode.common)
+
+        return timer
     }
 }

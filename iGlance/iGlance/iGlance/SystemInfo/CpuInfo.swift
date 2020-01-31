@@ -8,6 +8,7 @@
 
 import Foundation
 import CocoaLumberjack
+import SMCKit
 
 class CpuInfo {
     /**
@@ -16,8 +17,6 @@ class CpuInfo {
      * - Returns: The name of the cpu as a string (e.g. Intel(R) Core(TM) i7-8850H CPU @ 2.60GHz)
      */
     func getCpuName() -> String {
-        // taken from https://stackoverflow.com/a/18099669/9717671
-
         // get the length of the cpu name
         var stringSize = 0
         if sysctlbyname("machdep.cpu.brand_string", nil, &stringSize, nil, 0) != 0 {
@@ -35,5 +34,26 @@ class CpuInfo {
         DDLogInfo("Got the cpu name: \(cpuNameString)")
 
         return cpuNameString
+    }
+
+    /**
+     * Returns the cpu temperature (cpu peci temperature) as a double. If an error occured the function returns -1.0
+     *
+     * - Parameter unit: The unit in which the temperature should be returned.
+     */
+    func getCpuTemp(unit: TemperatureUnit) -> Double {
+        do {
+            let cpuTemp = try SMCKit.temperature(TemperatureSensors.CPU_PECI.code, unit: unit)
+
+            return cpuTemp
+        } catch SMCKit.SMCError.keyNotFound {
+            DDLogError("The given SMC key was not found")
+        } catch SMCKit.SMCError.notPrivileged {
+            DDLogError("Not privileged to read the SMC")
+        } catch {
+            DDLogError("An unknown error occurred")
+        }
+
+        return -1.0
     }
 }

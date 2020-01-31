@@ -23,6 +23,9 @@
 		B43ABF2C23AA3729007F93BA /* MainWindowController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B43ABF2B23AA3729007F93BA /* MainWindowController.swift */; };
 		B43E111323C3AF36000D58CF /* PreferenceModalViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B43E111223C3AF36000D58CF /* PreferenceModalViewController.swift */; };
 		B44D507123C8F1030071609E /* Credits.plist in Resources */ = {isa = PBXBuildFile; fileRef = B44D507023C8F1030071609E /* Credits.plist */; };
+		B452554B23E358E7000F79BF /* MenuBarItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = B452554723E358E7000F79BF /* MenuBarItem.swift */; };
+		B452554C23E358E7000F79BF /* CpuTempMenuBarItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = B452554923E358E7000F79BF /* CpuTempMenuBarItem.swift */; };
+		B452554D23E358E7000F79BF /* MenuBarItemManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = B452554A23E358E7000F79BF /* MenuBarItemManager.swift */; };
 		B46789B623A69ECA00CE572D /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = B46789B523A69ECA00CE572D /* AppDelegate.swift */; };
 		B46789B823A69ECA00CE572D /* MainWindowViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B46789B723A69ECA00CE572D /* MainWindowViewController.swift */; };
 		B46789BA23A69ECB00CE572D /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = B46789B923A69ECB00CE572D /* Assets.xcassets */; };
@@ -113,6 +116,9 @@
 		B43ABF2B23AA3729007F93BA /* MainWindowController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainWindowController.swift; sourceTree = "<group>"; };
 		B43E111223C3AF36000D58CF /* PreferenceModalViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PreferenceModalViewController.swift; sourceTree = "<group>"; };
 		B44D507023C8F1030071609E /* Credits.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Credits.plist; sourceTree = "<group>"; };
+		B452554723E358E7000F79BF /* MenuBarItem.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MenuBarItem.swift; sourceTree = "<group>"; };
+		B452554923E358E7000F79BF /* CpuTempMenuBarItem.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CpuTempMenuBarItem.swift; sourceTree = "<group>"; };
+		B452554A23E358E7000F79BF /* MenuBarItemManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MenuBarItemManager.swift; sourceTree = "<group>"; };
 		B46789B223A69ECA00CE572D /* iGlance.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = iGlance.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		B46789B523A69ECA00CE572D /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		B46789B723A69ECA00CE572D /* MainWindowViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainWindowViewController.swift; sourceTree = "<group>"; };
@@ -276,6 +282,24 @@
 			path = PreferenceModal;
 			sourceTree = "<group>";
 		};
+		B452554623E358E7000F79BF /* MenuBarItems */ = {
+			isa = PBXGroup;
+			children = (
+				B452554823E358E7000F79BF /* Cpu */,
+				B452554723E358E7000F79BF /* MenuBarItem.swift */,
+				B452554A23E358E7000F79BF /* MenuBarItemManager.swift */,
+			);
+			path = MenuBarItems;
+			sourceTree = "<group>";
+		};
+		B452554823E358E7000F79BF /* Cpu */ = {
+			isa = PBXGroup;
+			children = (
+				B452554923E358E7000F79BF /* CpuTempMenuBarItem.swift */,
+			);
+			path = Cpu;
+			sourceTree = "<group>";
+		};
 		B46789A923A69ECA00CE572D = {
 			isa = PBXGroup;
 			children = (
@@ -300,6 +324,7 @@
 		B46789B423A69ECA00CE572D /* iGlance */ = {
 			isa = PBXGroup;
 			children = (
+				B452554623E358E7000F79BF /* MenuBarItems */,
 				B41F6D6623C8E4620046D637 /* Modals */,
 				B42BCE6123AC01A200A13601 /* SystemInfo */,
 				B40E946023A9435200D63D17 /* MainWindow */,
@@ -583,11 +608,14 @@
 				B46F25D623B22E4500E0A3F4 /* GpuInfo.swift in Sources */,
 				B46789B823A69ECA00CE572D /* MainWindowViewController.swift in Sources */,
 				B4C37E6B23A8D715008C7FC0 /* SegueAnimator.swift in Sources */,
+				B452554D23E358E7000F79BF /* MenuBarItemManager.swift in Sources */,
 				B41F6D6123C8DFC60046D637 /* AboutModalViewController.swift in Sources */,
 				B43ABF2C23AA3729007F93BA /* MainWindowController.swift in Sources */,
 				B47094EA23C79F9A009D85AD /* ThemedLabel.swift in Sources */,
 				B4D82FDC23C1031800D502FF /* DiskInfo.swift in Sources */,
+				B452554B23E358E7000F79BF /* MenuBarItem.swift in Sources */,
 				B4C8DD2523AA3DB8008DAE45 /* ContentManagerView.swift in Sources */,
+				B452554C23E358E7000F79BF /* CpuTempMenuBarItem.swift in Sources */,
 				B46F25D423B22DEC00E0A3F4 /* CpuInfo.swift in Sources */,
 				B47094EC23C7A30A009D85AD /* ThemedButton.swift in Sources */,
 				B41F6D6823C8E4770046D637 /* ModalViewController.swift in Sources */,
