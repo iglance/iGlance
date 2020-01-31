@@ -20,15 +20,14 @@ class CpuTempMenuBarItem: MenuBarItem {
     // MARK: -
     // MARK: Protocol Implementations
     func update() {
-        let temp: Double = SystemInfo.cpu.getCpuTemp(unit: .celius)
+        let temp: Double = SystemInfo.cpu.getCpuTemp()
 
         guard let button = self.statusItem.button else {
             DDLogError("Could not retrieve the button of the 'CpuTempMenuBarItem'")
             return
         }
 
-        // TODO: add fahrenheit
-        button.title = String(Int(temp)) + "°C"
+        button.title = String(Int(temp)) + "°"
     }
 
     // MARK: -

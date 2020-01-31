@@ -39,6 +39,21 @@ class PreferenceModalViewController: ModalViewController {
         }
     }
 
+    @IBOutlet private var tempUnitSelector: NSPopUpButton! {
+        didSet {
+            switch AppDelegate.userSettings.settings.tempUnit {
+            case .fahrenheit:
+                // the second item is celsius
+                tempUnitSelector.selectItem(at: 1)
+            case .kelvin:
+                // the third item is kelvin
+                tempUnitSelector.selectItem(at: 2)
+            default:
+                tempUnitSelector.selectItem(at: 0)
+            }
+        }
+    }
+
     // MARK: -
     // MARK: Function Overrides
 
@@ -121,6 +136,21 @@ class PreferenceModalViewController: ModalViewController {
         // update the update loop timer
         let appDelegate = NSApplication.shared.delegate as! AppDelegate
         appDelegate.changeUpdateLoopTimeInterval(interval: AppDelegate.userSettings.settings.updateInterval)
+    }
+
+    @IBAction private func tempUnitSelectorChanged(_ sender: NSPopUpButton) {
+        // set the user settings
+        switch tempUnitSelector.indexOfSelectedItem {
+        case 1:
+            // the second item is fahrenheit
+            AppDelegate.userSettings.settings.tempUnit = .fahrenheit
+        case 2:
+            // the third item is kelvin
+            AppDelegate.userSettings.settings.tempUnit = .kelvin
+        default:
+            // the default item (the first one) is celsius
+            AppDelegate.userSettings.settings.tempUnit = .celsius
+        }
     }
 
     // MARK: -

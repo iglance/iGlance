@@ -41,9 +41,9 @@ class CpuInfo {
      *
      * - Parameter unit: The unit in which the temperature should be returned.
      */
-    func getCpuTemp(unit: TemperatureUnit) -> Double {
+    func getCpuTemp() -> Double {
         do {
-            let cpuTemp = try SMCKit.temperature(TemperatureSensors.CPU_PECI.code, unit: unit)
+            let cpuTemp = try SMCKit.temperature(TemperatureSensors.CPU_PECI.code, unit: AppDelegate.userSettings.settings.tempUnit)
 
             return cpuTemp
         } catch SMCKit.SMCError.keyNotFound {

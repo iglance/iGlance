@@ -187,9 +187,9 @@ class AppDelegate: NSObject, NSApplicationDelegate {
     }
 
     /**
-     * Changes the update interval of the main loop to the given time interval. Returns the new timer object.
+     * Changes the update interval of the main loop to the given time interval.
      */
-    func changeUpdateLoopTimeInterval(interval: Double) -> Timer {
+    func changeUpdateLoopTimeInterval(interval: Double) {
         // invalidate the currently used timer to stop it
         currentUpdateLoopTimer.invalidate()
 
@@ -197,6 +197,6 @@ class AppDelegate: NSObject, NSApplicationDelegate {
         let timer = createUpdateLoopTimer(interval: interval)
         RunLoop.current.add(timer, forMode: RunLoop.Mode.common)
 
-        return timer
+        currentUpdateLoopTimer = timer
     }
 }

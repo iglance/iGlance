@@ -8,11 +8,13 @@
 
 import Foundation
 import CocoaLumberjack
+import SMCKit
 
 struct IGlanceUserSettings: Codable {
     // global settings
     var autostartOnBoot: Bool = false
     var updateInterval: Double = 2.0
+    var tempUnit: TemperatureUnit = .celsius
 }
 
 class UserSettings {
