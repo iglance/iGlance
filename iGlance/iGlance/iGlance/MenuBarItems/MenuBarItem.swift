@@ -15,8 +15,18 @@ protocol MenuBarItemProtocol {
 class MenuBarItemClass {
     let statusItem: NSStatusItem
 
+    var menuItems: [NSMenuItem] = [] {
+        didSet {
+            // rebuild the menu if a new item was added
+            buildMenu()
+        }
+    }
+
     init() {
         statusItem = NSStatusBar.system.statusItem(withLength: NSStatusItem.variableLength)
+
+        // build the menu once
+        buildMenu()
     }
 
     /**
@@ -31,6 +41,31 @@ class MenuBarItemClass {
      */
     func hide() {
         statusItem.isVisible = false
+    }
+
+    // MARK: -
+    // MARK: Private Functions
+
+    /**
+     * Creates the menu
+     */
+    private func buildMenu() {
+        let menu = NSMenu()
+
+        // add all custom menu items
+        for item in menuItems {
+            menu.addItem(item)
+        }
+
+        // add the settings button to the menu
+        menu.addItem(NSMenuItem(title: "Settings", action: #selector(AppDelegate.showMainWindow), keyEquivalent: ","))
+        menu.addItem(NSMenuItem.separator())
+
+        // add the quit button to the menu
+        menu.addItem(NSMenuItem(title: "Quit iGlance", action: #selector(NSApplication.terminate(_:)), keyEquivalent: "q"))
+
+        // set the menu for the status item
+        self.statusItem.menu = menu
     }
 }
 

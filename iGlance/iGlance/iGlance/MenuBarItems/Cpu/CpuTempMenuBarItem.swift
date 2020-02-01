@@ -12,9 +12,6 @@ import CocoaLumberjack
 class CpuTempMenuBarItem: MenuBarItem {
     override init() {
         super.init()
-
-        // set the menu for the status item
-        self.statusItem.menu = buildMenu()
     }
 
     // MARK: -
@@ -28,24 +25,5 @@ class CpuTempMenuBarItem: MenuBarItem {
         }
 
         button.title = String(Int(temp)) + "°"
-    }
-
-    // MARK: -
-    // MARK: Private Functions
-
-    /**
-     * Returns the menu for the menu bar item.
-     */
-    private func buildMenu() -> NSMenu {
-        let menu = NSMenu()
-
-        // add the settings button
-        menu.addItem(NSMenuItem(title: "Settings", action: #selector(AppDelegate.showMainWindow), keyEquivalent: "s"))
-        menu.addItem(NSMenuItem.separator())
-
-        // add the quit button
-        menu.addItem(NSMenuItem(title: "Quit iGlance", action: #selector(NSApplication.terminate(_:)), keyEquivalent: "q"))
-
-        return menu
     }
 }
