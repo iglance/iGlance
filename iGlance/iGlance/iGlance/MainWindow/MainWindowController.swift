@@ -7,11 +7,27 @@
 //
 
 import Cocoa
+import CocoaLumberjack
 
 class MainWindowController: NSWindowController {
     // MARK: -
     // MARK: Outlets
     @IBOutlet private var mainWindow: NSWindow!
+
+    override init(window: NSWindow?) {
+        super.init(window: window)
+
+        // show the dock icon if no menu bar item is visible
+        // this prevents that the app is running but the user has no means to interact with the app
+        if AppDelegate.menuBarItemManager.menuBarItems.contains(where: { $0.statusItem.isVisible == true }) {
+            NSApp.setActivationPolicy(.regular)
+            DDLogInfo("Dock icon is shown because no menu bar icon is visible")
+        }
+    }
+
+    required init?(coder: NSCoder) {
+        super.init(coder: coder)
+    }
 
     // MARK: -
     // MARK: Function Overrides

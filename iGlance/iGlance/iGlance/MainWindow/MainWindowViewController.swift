@@ -7,6 +7,7 @@
 //
 
 import Cocoa
+import CocoaLumberjack
 
 class MainWindowViewController: NSViewController {
     // MARK: -
@@ -38,8 +39,11 @@ class MainWindowViewController: NSViewController {
     }
 
     override func viewWillDisappear() {
-        // set the activation level of the app. This will hide the dock icon.
-        NSApp.setActivationPolicy(.accessory)
+        // hide the dock icon of the app if at least one menu bar item is visible.
+        if AppDelegate.menuBarItemManager.menuBarItems.contains(where: { $0.statusItem.isVisible == true }) {
+            NSApp.setActivationPolicy(.accessory)
+            DDLogInfo("Hide dock icon")
+        }
     }
 
     // MARK: -
