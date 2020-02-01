@@ -18,7 +18,7 @@ class PreferenceModalViewController: ModalViewController {
     @IBOutlet private var autostartOnBootCheckbox: NSButton! {
         didSet {
             // load the initial value from the user settings
-            autostartOnBootCheckbox.state = (AppDelegate.userSettings.settings.autostartOnBoot) ? NSButton.StateValue.on : NSButton.StateValue.off
+            autostartOnBootCheckbox.state = AppDelegate.userSettings.settings.autostartOnBoot ? NSButton.StateValue.on : NSButton.StateValue.off
         }
     }
     @IBOutlet private var logoImage: NSImageView!

@@ -19,12 +19,12 @@ class AppDelegate: NSObject, NSApplicationDelegate {
     // MARK: Static Constants
     static let userSettings = UserSettings()
 
+    static let menuBarItemManager = MenuBarItemManager()
+
     // MARK: -
     // MARK: Instance Variables
 
     var mainWindow: MainWindowController = NSStoryboard(name: "Main", bundle: nil).instantiateController(withIdentifier: "MainWindowController") as! MainWindowController
-
-    let menuBarItemManager = MenuBarItemManager()
 
     var currentUpdateLoopTimer: Timer!
 
@@ -183,7 +183,7 @@ class AppDelegate: NSObject, NSApplicationDelegate {
      */
     @objc
     func updateLoop() {
-        menuBarItemManager.updateMenuBarItems()
+        AppDelegate.menuBarItemManager.updateMenuBarItems()
     }
 
     /**

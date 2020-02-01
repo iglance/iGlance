@@ -26,6 +26,7 @@
 		B452554B23E358E7000F79BF /* MenuBarItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = B452554723E358E7000F79BF /* MenuBarItem.swift */; };
 		B452554C23E358E7000F79BF /* CpuTempMenuBarItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = B452554923E358E7000F79BF /* CpuTempMenuBarItem.swift */; };
 		B452554D23E358E7000F79BF /* MenuBarItemManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = B452554A23E358E7000F79BF /* MenuBarItemManager.swift */; };
+		B459D29123E4A80800E6CC67 /* CpuViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B459D29023E4A80800E6CC67 /* CpuViewController.swift */; };
 		B46789B623A69ECA00CE572D /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = B46789B523A69ECA00CE572D /* AppDelegate.swift */; };
 		B46789B823A69ECA00CE572D /* MainWindowViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B46789B723A69ECA00CE572D /* MainWindowViewController.swift */; };
 		B46789BA23A69ECB00CE572D /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = B46789B923A69ECB00CE572D /* Assets.xcassets */; };
@@ -119,6 +120,7 @@
 		B452554723E358E7000F79BF /* MenuBarItem.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MenuBarItem.swift; sourceTree = "<group>"; };
 		B452554923E358E7000F79BF /* CpuTempMenuBarItem.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CpuTempMenuBarItem.swift; sourceTree = "<group>"; };
 		B452554A23E358E7000F79BF /* MenuBarItemManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MenuBarItemManager.swift; sourceTree = "<group>"; };
+		B459D29023E4A80800E6CC67 /* CpuViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CpuViewController.swift; sourceTree = "<group>"; };
 		B46789B223A69ECA00CE572D /* iGlance.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = iGlance.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		B46789B523A69ECA00CE572D /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		B46789B723A69ECA00CE572D /* MainWindowViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainWindowViewController.swift; sourceTree = "<group>"; };
@@ -386,6 +388,7 @@
 		B4D86E1923AA70FD00671B52 /* MainViews */ = {
 			isa = PBXGroup;
 			children = (
+				B459D29023E4A80800E6CC67 /* CpuViewController.swift */,
 				B47D3C8B23ABEDCC00DE911F /* DashboardView */,
 				B4D86E1A23AA710B00671B52 /* MainViewViewController.swift */,
 			);
@@ -619,6 +622,7 @@
 				B46F25D423B22DEC00E0A3F4 /* CpuInfo.swift in Sources */,
 				B47094EC23C7A30A009D85AD /* ThemedButton.swift in Sources */,
 				B41F6D6823C8E4770046D637 /* ModalViewController.swift in Sources */,
+				B459D29123E4A80800E6CC67 /* CpuViewController.swift in Sources */,
 				B4C37E6923A8D6BB008C7FC0 /* SegueBetweenEmbedded.swift in Sources */,
 				B42BCE6023ABF73100A13601 /* DashboardViewController.swift in Sources */,
 				B4C37E6D23A8D811008C7FC0 /* ContentManagerViewControllerHolder.swift in Sources */,

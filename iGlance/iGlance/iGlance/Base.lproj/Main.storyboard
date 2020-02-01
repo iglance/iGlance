@@ -1132,27 +1132,30 @@
         <!--CPU View Controller-->
         <scene sceneID="uUd-va-qL0">
             <objects>
-                <viewController title="CPU View Controller" storyboardIdentifier="CpuStoryboardID" id="uGw-Yr-sBC" customClass="MainViewViewController" customModule="iGlance" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController title="CPU View Controller" storyboardIdentifier="CpuStoryboardID" id="uGw-Yr-sBC" customClass="CpuViewController" customModule="iGlance" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" id="q0i-aM-agG">
                         <rect key="frame" x="0.0" y="0.0" width="600" height="500"/>
                         <autoresizingMask key="autoresizingMask"/>
                         <subviews>
-                            <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="XON-Ou-7aN">
-                                <rect key="frame" x="18" y="464" width="31" height="16"/>
-                                <textFieldCell key="cell" lineBreakMode="clipping" title="CPU" id="0aO-pH-o5v">
-                                    <font key="font" usesAppearanceFont="YES"/>
-                                    <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
-                                    <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
-                                </textFieldCell>
-                            </textField>
+                            <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="Xe1-Jt-TNX">
+                                <rect key="frame" x="18" y="464" width="164" height="18"/>
+                                <buttonCell key="cell" type="check" title="Show CPU temperature" bezelStyle="regularSquare" imagePosition="left" state="on" inset="2" id="Cds-u8-W37">
+                                    <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
+                                    <font key="font" metaFont="system"/>
+                                </buttonCell>
+                                <connections>
+                                    <action selector="cpuTempCheckboxChanged:" target="uGw-Yr-sBC" id="P09-C8-f3l"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <constraints>
-                            <constraint firstItem="XON-Ou-7aN" firstAttribute="leading" secondItem="q0i-aM-agG" secondAttribute="leading" constant="20" symbolic="YES" id="Dt8-kp-yUg"/>
-                            <constraint firstItem="XON-Ou-7aN" firstAttribute="top" secondItem="q0i-aM-agG" secondAttribute="top" constant="20" symbolic="YES" id="KxG-eP-NZB"/>
-                            <constraint firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="XON-Ou-7aN" secondAttribute="trailing" constant="553" id="TOq-HV-CcB"/>
+                            <constraint firstItem="Xe1-Jt-TNX" firstAttribute="leading" secondItem="q0i-aM-agG" secondAttribute="leading" constant="20" id="DRs-Qt-17T"/>
+                            <constraint firstItem="Xe1-Jt-TNX" firstAttribute="top" secondItem="q0i-aM-agG" secondAttribute="top" constant="20" id="HAU-Hs-nVB"/>
+                            <constraint firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="Xe1-Jt-TNX" secondAttribute="trailing" constant="20" symbolic="YES" id="bbW-le-fNL"/>
                         </constraints>
                     </view>
                     <connections>
+                        <outlet property="cpuTempCheckbox" destination="Xe1-Jt-TNX" id="QS5-Xf-9a3"/>
                         <segue destination="Pbp-jU-Jl9" kind="custom" identifier="CpuToMemory" customClass="SegueBetweenEmbedded" customModule="iGlance" customModuleProvider="target" id="yJ3-ZM-qyr"/>
                     </connections>
                 </viewController>
@@ -1578,7 +1581,7 @@
                                             <constraint firstAttribute="height" constant="15" id="URO-q9-4XQ"/>
                                             <constraint firstAttribute="width" constant="15" id="lRb-X2-aTw"/>
                                         </constraints>
-                                        <buttonCell key="cell" type="square" bezelStyle="shadowlessSquare" image="Preferences" imagePosition="only" alignment="center" imageScaling="proportionallyUpOrDown" inset="2" id="hxS-d9-Pvv">
+                                        <buttonCell key="cell" type="square" bezelStyle="shadowlessSquare" image="Preferences" imagePosition="only" alignment="center" imageScaling="proportionallyDown" inset="2" id="hxS-d9-Pvv">
                                             <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
                                             <font key="font" metaFont="system"/>
                                         </buttonCell>

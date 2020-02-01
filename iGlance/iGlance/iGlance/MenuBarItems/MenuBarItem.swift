@@ -18,6 +18,20 @@ class MenuBarItemClass {
     init() {
         statusItem = NSStatusBar.system.statusItem(withLength: NSStatusItem.variableLength)
     }
+
+    /**
+     * Displays the menu bar item in the menu bar.
+     */
+    func show() {
+        statusItem.isVisible = true
+    }
+
+    /**
+     * Hides the menu bar item in the menu bar.
+     */
+    func hide() {
+        statusItem.isVisible = false
+    }
 }
 
 typealias MenuBarItem = MenuBarItemClass & MenuBarItemProtocol

@@ -9,18 +9,22 @@
 import Foundation
 
 class MenuBarItemManager {
+    /// The menu bar item for the cpu temperature
+    let cpuTemp = CpuTempMenuBarItem()
+
+    /// An array containing all the visible AND not visible menu bar items
     var menuBarItems: [MenuBarItem] = []
 
     init() {
-        menuBarItems.append(CpuTempMenuBarItem())
+        menuBarItems.append(cpuTemp)
     }
 
     /**
      * Updates all menu bar items.
      */
     func updateMenuBarItems() {
-        // iterate all menu bar items and call the update function
-        for item in menuBarItems {
+        // iterate all menu bar items and call the update function for the visible ones
+        for item in menuBarItems where item.statusItem.isVisible {
             item.update()
         }
     }
