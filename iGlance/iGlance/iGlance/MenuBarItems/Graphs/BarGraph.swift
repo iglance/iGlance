@@ -74,11 +74,12 @@ class BarGraph {
      * Takes an image and draws the usage bar on the given image
      */
     private func drawUsageBar( image: inout NSImage, currentValue: Double) {
-        // get the maximum height of the bar. Keep in mind that the border of the graph is 1 pixel wide
-        let maxBarHeight = Double(self.barBorder.size.height - 2)
+        // get the maximum height of the bar.
+        // Keep in mind that the border of the graph is 1 pixel wide. However the 2x picture is used which is why we subtract 2 / 2 = 1 pixel
+        let maxBarHeight = Double(self.barBorder.size.height - 1)
 
         // get the width of the bar
-        let barWidth = Double(self.barBorder.size.width - 2)
+        let barWidth = Double(self.barBorder.size.width - 1)
         // get the height of the bar
         let barHeight = Double((maxBarHeight / self.maxValue) * currentValue)
 
@@ -88,7 +89,7 @@ class BarGraph {
         barColor.setFill()
 
         // create the usage bar as a rectangle
-        let usageBar = NSRect(x: 1.0, y: 1.0, width: barWidth, height: barHeight)
+        let usageBar = NSRect(x: 0.5, y: 0.5, width: barWidth, height: barHeight)
         usageBar.fill()
 
         // set the current fill color to clear

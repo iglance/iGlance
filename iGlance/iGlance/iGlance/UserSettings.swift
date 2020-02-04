@@ -12,6 +12,7 @@ import SMCKit
 
 struct CpuSettings: Codable {
     var showTemperature: Bool = true
+    var showUsage: Bool = true
 }
 
 struct IGlanceUserSettings: Codable {

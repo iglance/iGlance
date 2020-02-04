@@ -14,6 +14,11 @@ class CpuViewController: MainViewViewController {
             cpuTempCheckbox.state = AppDelegate.userSettings.settings.cpu.showTemperature ? NSButton.StateValue.on : NSButton.StateValue.off
         }
     }
+    @IBOutlet private var cpuUsageCheckbox: NSButton! {
+        didSet {
+            cpuUsageCheckbox.state = AppDelegate.userSettings.settings.cpu.showUsage ? NSButton.StateValue.on : NSButton.StateValue.off
+        }
+    }
 
     @IBAction private func cpuTempCheckboxChanged(_ sender: NSButton) {
         // get the boolean to the current state of the checkbox
@@ -27,6 +32,21 @@ class CpuViewController: MainViewViewController {
             AppDelegate.menuBarItemManager.cpuTemp.show()
         } else {
             AppDelegate.menuBarItemManager.cpuTemp.hide()
+        }
+    }
+
+    @IBAction private func cpuUsageCheckboxChanged(_ sender: NSButton) {
+        // get the boolean to the current state of the checkbox
+        let activated = sender.state == NSButton.StateValue.on
+
+        // set the user settings
+        AppDelegate.userSettings.settings.cpu.showTemperature = activated
+
+        // show or hide the menu bar item
+        if activated {
+            AppDelegate.menuBarItemManager.cpuUsage.show()
+        } else {
+            AppDelegate.menuBarItemManager.cpuUsage.hide()
         }
     }
 }
