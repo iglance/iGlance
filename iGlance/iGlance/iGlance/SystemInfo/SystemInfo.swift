@@ -8,6 +8,8 @@
 
 import Foundation
 import CocoaLumberjack
+import SystemKit
+import SMCKit
 
 class SystemInfo {
     // MARK: -
@@ -20,18 +22,47 @@ class SystemInfo {
     }
 
     // MARK: -
+    // MARK: Instance Variables
+    let skSystem: SKSystem
+
+    // MARK: -
     // MARK: Static Variables
-    static let cpu = CpuInfo()
-    static let gpu = GpuInfo()
-    static let disk = DiskInfo()
-    static let battery = Battery()
+    let cpu: CpuInfo
+    let gpu: GpuInfo
+    let disk: DiskInfo
+    let battery: BatteryInfo
+
+    init() {
+        self.skSystem = SKSystem()
+
+        self.cpu = CpuInfo(skSystem: self.skSystem)
+        self.gpu = GpuInfo()
+        self.disk = DiskInfo()
+        self.battery = BatteryInfo()
+
+        // open the connection to the SMC
+        do {
+            try SMCKit.open()
+        } catch SMCKit.SMCError.driverNotFound {
+            DDLogError("Could not find the SMC driver.")
+        } catch {
+            DDLogError("Failed to open a connection to the SMC")
+        }
+    }
+
+    deinit {
+        // close the connection to the SMC
+        if !SMCKit.close() {
+            DDLogError("Failed to close the connection to the SMC")
+        }
+    }
 
     // MARK: -
     // MARK: Static Functions
     /**
      * Returns uptime of the system since the last boot.
      */
-    static func getSystemUptime() -> TimeDuration {
+    func getSystemUptime() -> TimeDuration {
         // taken from https://stackoverflow.com/a/45068046/9717671
 
         var uptime = timespec()
@@ -55,7 +86,7 @@ class SystemInfo {
     /**
      * Returns the size of the RAM in GB.
      */
-    static func getRamSize() -> Int {
+    func getRamSize() -> Int {
         let ramSize = Int(ProcessInfo.processInfo.physicalMemory / 1_073_741_824)
         DDLogInfo("Got the ram size: \(ramSize)")
 

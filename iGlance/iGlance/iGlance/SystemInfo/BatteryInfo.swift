@@ -10,7 +10,7 @@ import Foundation
 import SystemKit
 import CocoaLumberjack
 
-class Battery {
+class BatteryInfo {
     private var skBattery = SKBattery()
 
     init() {

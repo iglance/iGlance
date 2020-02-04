@@ -50,7 +50,7 @@ class DashboardViewController: MainViewViewController {
      */
     private func updateUptimeInfo() {
         // get the system uptime in seconds
-        let uptime = SystemInfo.getSystemUptime()
+        let uptime = AppDelegate.systemInfo.getSystemUptime()
 
         daysUptimeLabel.stringValue = "\(uptime.days) days"
         hoursUptimeLabel.stringValue = "\(uptime.hours) hours"
@@ -71,17 +71,17 @@ class DashboardViewController: MainViewViewController {
         DashboardViewController.self.didSetSystemInfo = true
 
         // set the cpu name
-        let cpuName = SystemInfo.cpu.getCpuName()
+        let cpuName = AppDelegate.systemInfo.cpu.getCpuName()
         // remove the intel core branding
         cpuNameLabel.stringValue = cpuName.replacingOccurrences(of: "Intel(R) Core(TM) ", with: "")
 
         // set the gpu name
-        gpuNameLabel.stringValue = SystemInfo.gpu.getGpuName()
+        gpuNameLabel.stringValue = AppDelegate.systemInfo.gpu.getGpuName()
 
         // set the ram size
-        ramSizeLabel.stringValue = "\(SystemInfo.getRamSize()) GB"
+        ramSizeLabel.stringValue = "\(AppDelegate.systemInfo.getRamSize()) GB"
 
-        let diskSize = SystemInfo.disk.getInternalDiskSize()
+        let diskSize = AppDelegate.systemInfo.disk.getInternalDiskSize()
         diskSizeLabel.stringValue = "\(diskSize.0) \(diskSize.1)"
 
         DDLogInfo("Updated system info")
@@ -92,10 +92,10 @@ class DashboardViewController: MainViewViewController {
      */
     private func setBatteryInfo() {
         // set the health of the battery
-        batteryHealthLabel.stringValue = "\(Int(SystemInfo.battery.getBatteryHealth() * 100.0))%"
+        batteryHealthLabel.stringValue = "\(Int(AppDelegate.systemInfo.battery.getBatteryHealth() * 100.0))%"
 
         // set the cycle count of the battery
-        batteryCyclesLabel.stringValue = "\(SystemInfo.battery.getBatteryCycles())"
+        batteryCyclesLabel.stringValue = "\(AppDelegate.systemInfo.battery.getBatteryCycles())"
 
         DDLogInfo("Updated battery info")
     }

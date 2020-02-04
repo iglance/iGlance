@@ -9,8 +9,15 @@
 import Foundation
 import CocoaLumberjack
 import SMCKit
+import SystemKit
 
 class CpuInfo {
+    private var skSystem: SKSystem
+
+    init(skSystem: SKSystem) {
+        self.skSystem = skSystem
+    }
+
     /**
      * Gets the name of the cpu.
      *
@@ -55,5 +62,14 @@ class CpuInfo {
         }
 
         return -1.0
+    }
+
+    /**
+     * Returns the cpu usage. Each value is rounded to the nearest integer value and represents the usage in percent.
+     */
+    func getCpuUsage() -> (system: Int, user: Int, idle: Int, nice: Int) {
+        let usage = skSystem.usageCPU()
+
+        return (Int(round(usage.0)), Int(round(usage.1)), Int(round(usage.2)), Int(round(usage.3)))
     }
 }

@@ -18,6 +18,7 @@
 		B41F6D6823C8E4770046D637 /* ModalViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B41F6D6723C8E4770046D637 /* ModalViewController.swift */; };
 		B42BCE6023ABF73100A13601 /* DashboardViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B42BCE5F23ABF73100A13601 /* DashboardViewController.swift */; };
 		B42BCE6323AC01CC00A13601 /* SystemInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = B42BCE6223AC01CC00A13601 /* SystemInfo.swift */; };
+		B439332723E99E0800CDEB1D /* BarGraph.swift in Sources */ = {isa = PBXBuildFile; fileRef = B439332623E99E0800CDEB1D /* BarGraph.swift */; };
 		B43ABF2823AA1E99007F93BA /* SidebarButtonView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B43ABF2723AA1E99007F93BA /* SidebarButtonView.swift */; };
 		B43ABF2A23AA32FA007F93BA /* SidebarViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B43ABF2923AA32FA007F93BA /* SidebarViewController.swift */; };
 		B43ABF2C23AA3729007F93BA /* MainWindowController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B43ABF2B23AA3729007F93BA /* MainWindowController.swift */; };
@@ -36,6 +37,7 @@
 		B47094EA23C79F9A009D85AD /* ThemedLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B47094E923C79F9A009D85AD /* ThemedLabel.swift */; };
 		B47094EC23C7A30A009D85AD /* ThemedButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = B47094EB23C7A30A009D85AD /* ThemedButton.swift */; };
 		B47D3C8D23ABEDF100DE911F /* CustomDashboardBox.swift in Sources */ = {isa = PBXBuildFile; fileRef = B47D3C8C23ABEDF100DE911F /* CustomDashboardBox.swift */; };
+		B48BD19123E73F8E00152931 /* CpuUsageMenuBarItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = B48BD19023E73F8E00152931 /* CpuUsageMenuBarItem.swift */; };
 		B49CDFF523E1E18A0070D664 /* AppMover.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B49CDFF223E1DB9B0070D664 /* AppMover.framework */; };
 		B49CDFF623E1E18A0070D664 /* AppMover.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = B49CDFF223E1DB9B0070D664 /* AppMover.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		B49CDFF823E1E1950070D664 /* SMCKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B49CDFF723E1E1950070D664 /* SMCKit.framework */; };
@@ -56,7 +58,7 @@
 		B4D82FDC23C1031800D502FF /* DiskInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = B4D82FDB23C1031800D502FF /* DiskInfo.swift */; };
 		B4D86E1B23AA710B00671B52 /* MainViewViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B4D86E1A23AA710B00671B52 /* MainViewViewController.swift */; };
 		B4DE725F23C257610001CF46 /* Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = B4DE725E23C257610001CF46 /* Extensions.swift */; };
-		B4DE728023C2644A0001CF46 /* Battery.swift in Sources */ = {isa = PBXBuildFile; fileRef = B4DE727F23C2644A0001CF46 /* Battery.swift */; };
+		B4DE728023C2644A0001CF46 /* BatteryInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = B4DE727F23C2644A0001CF46 /* BatteryInfo.swift */; };
 		B4EFB55B23CA197500CF2FF2 /* CustomLogFormatter.swift in Sources */ = {isa = PBXBuildFile; fileRef = B4EFB55A23CA197500CF2FF2 /* CustomLogFormatter.swift */; };
 		B4EFB55C23CA197500CF2FF2 /* CustomLogFormatter.swift in Sources */ = {isa = PBXBuildFile; fileRef = B4EFB55A23CA197500CF2FF2 /* CustomLogFormatter.swift */; };
 		FE556499492832BE97606DAD /* Pods_iGlance.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 84955815F03407826031ABBF /* Pods_iGlance.framework */; };
@@ -112,6 +114,7 @@
 		B41F6D6723C8E4770046D637 /* ModalViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ModalViewController.swift; sourceTree = "<group>"; };
 		B42BCE5F23ABF73100A13601 /* DashboardViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DashboardViewController.swift; sourceTree = "<group>"; };
 		B42BCE6223AC01CC00A13601 /* SystemInfo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SystemInfo.swift; sourceTree = "<group>"; };
+		B439332623E99E0800CDEB1D /* BarGraph.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BarGraph.swift; sourceTree = "<group>"; };
 		B43ABF2723AA1E99007F93BA /* SidebarButtonView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SidebarButtonView.swift; sourceTree = "<group>"; };
 		B43ABF2923AA32FA007F93BA /* SidebarViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SidebarViewController.swift; sourceTree = "<group>"; };
 		B43ABF2B23AA3729007F93BA /* MainWindowController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainWindowController.swift; sourceTree = "<group>"; };
@@ -133,6 +136,7 @@
 		B47094E923C79F9A009D85AD /* ThemedLabel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ThemedLabel.swift; sourceTree = "<group>"; };
 		B47094EB23C7A30A009D85AD /* ThemedButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ThemedButton.swift; sourceTree = "<group>"; };
 		B47D3C8C23ABEDF100DE911F /* CustomDashboardBox.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomDashboardBox.swift; sourceTree = "<group>"; };
+		B48BD19023E73F8E00152931 /* CpuUsageMenuBarItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CpuUsageMenuBarItem.swift; sourceTree = "<group>"; };
 		B49CDFF223E1DB9B0070D664 /* AppMover.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = AppMover.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		B49CDFF723E1E1950070D664 /* SMCKit.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = SMCKit.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		B49CDFFA23E1E1A00070D664 /* SystemKit.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = SystemKit.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -154,7 +158,7 @@
 		B4D82FDB23C1031800D502FF /* DiskInfo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DiskInfo.swift; sourceTree = "<group>"; };
 		B4D86E1A23AA710B00671B52 /* MainViewViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainViewViewController.swift; sourceTree = "<group>"; };
 		B4DE725E23C257610001CF46 /* Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Extensions.swift; sourceTree = "<group>"; };
-		B4DE727F23C2644A0001CF46 /* Battery.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Battery.swift; sourceTree = "<group>"; };
+		B4DE727F23C2644A0001CF46 /* BatteryInfo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BatteryInfo.swift; sourceTree = "<group>"; };
 		B4EFB55A23CA197500CF2FF2 /* CustomLogFormatter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomLogFormatter.swift; sourceTree = "<group>"; };
 		B4F4AA1023E072F200F57F70 /* SystemKit.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = SystemKit.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		C613649DA4B6320FA4A7C8A2 /* Pods-iGlance.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-iGlance.debug.xcconfig"; path = "Target Support Files/Pods-iGlance/Pods-iGlance.debug.xcconfig"; sourceTree = "<group>"; };
@@ -261,7 +265,7 @@
 				B46F25D323B22DEC00E0A3F4 /* CpuInfo.swift */,
 				B46F25D523B22E4500E0A3F4 /* GpuInfo.swift */,
 				B4D82FDB23C1031800D502FF /* DiskInfo.swift */,
-				B4DE727F23C2644A0001CF46 /* Battery.swift */,
+				B4DE727F23C2644A0001CF46 /* BatteryInfo.swift */,
 			);
 			path = SystemInfo;
 			sourceTree = "<group>";
@@ -273,6 +277,14 @@
 				B41F6D6423C8DFDF0046D637 /* AboutWindow.storyboard */,
 			);
 			path = AboutModal;
+			sourceTree = "<group>";
+		};
+		B439332523E99DF900CDEB1D /* Graphs */ = {
+			isa = PBXGroup;
+			children = (
+				B439332623E99E0800CDEB1D /* BarGraph.swift */,
+			);
+			path = Graphs;
 			sourceTree = "<group>";
 		};
 		B43E111423C3B1D8000D58CF /* PreferenceModal */ = {
@@ -287,6 +299,7 @@
 		B452554623E358E7000F79BF /* MenuBarItems */ = {
 			isa = PBXGroup;
 			children = (
+				B439332523E99DF900CDEB1D /* Graphs */,
 				B452554823E358E7000F79BF /* Cpu */,
 				B452554723E358E7000F79BF /* MenuBarItem.swift */,
 				B452554A23E358E7000F79BF /* MenuBarItemManager.swift */,
@@ -298,6 +311,7 @@
 			isa = PBXGroup;
 			children = (
 				B452554923E358E7000F79BF /* CpuTempMenuBarItem.swift */,
+				B48BD19023E73F8E00152931 /* CpuUsageMenuBarItem.swift */,
 			);
 			path = Cpu;
 			sourceTree = "<group>";
@@ -604,7 +618,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				B4DE728023C2644A0001CF46 /* Battery.swift in Sources */,
+				B4DE728023C2644A0001CF46 /* BatteryInfo.swift in Sources */,
 				B43E111323C3AF36000D58CF /* PreferenceModalViewController.swift in Sources */,
 				B4C37E6723A8CF89008C7FC0 /* ContentManagerViewController.swift in Sources */,
 				B4D86E1B23AA710B00671B52 /* MainViewViewController.swift in Sources */,
@@ -624,8 +638,10 @@
 				B41F6D6823C8E4770046D637 /* ModalViewController.swift in Sources */,
 				B459D29123E4A80800E6CC67 /* CpuViewController.swift in Sources */,
 				B4C37E6923A8D6BB008C7FC0 /* SegueBetweenEmbedded.swift in Sources */,
+				B439332723E99E0800CDEB1D /* BarGraph.swift in Sources */,
 				B42BCE6023ABF73100A13601 /* DashboardViewController.swift in Sources */,
 				B4C37E6D23A8D811008C7FC0 /* ContentManagerViewControllerHolder.swift in Sources */,
+				B48BD19123E73F8E00152931 /* CpuUsageMenuBarItem.swift in Sources */,
 				B43ABF2A23AA32FA007F93BA /* SidebarViewController.swift in Sources */,
 				B4C37E6323A7946B008C7FC0 /* SidebarView.swift in Sources */,
 				B4C37E7023A91F3C008C7FC0 /* ThemeManager.swift in Sources */,

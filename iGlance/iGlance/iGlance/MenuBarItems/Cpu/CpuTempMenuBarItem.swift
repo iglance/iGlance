@@ -17,7 +17,7 @@ class CpuTempMenuBarItem: MenuBarItem {
     // MARK: -
     // MARK: Protocol Implementations
     func update() {
-        let temp: Double = SystemInfo.cpu.getCpuTemp()
+        let temp: Double = AppDelegate.systemInfo.cpu.getCpuTemp()
 
         guard let button = self.statusItem.button else {
             DDLogError("Could not retrieve the button of the 'CpuTempMenuBarItem'")

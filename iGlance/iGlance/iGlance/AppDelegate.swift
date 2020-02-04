@@ -8,10 +8,8 @@
 
 import Cocoa
 import ServiceManagement
-import os.log
 import CocoaLumberjack
 import AppMover
-import SMCKit
 
 @NSApplicationMain
 class AppDelegate: NSObject, NSApplicationDelegate {
@@ -20,6 +18,8 @@ class AppDelegate: NSObject, NSApplicationDelegate {
     static let userSettings = UserSettings()
 
     static let menuBarItemManager = MenuBarItemManager()
+
+    static let systemInfo = SystemInfo()
 
     // MARK: -
     // MARK: Instance Variables
@@ -63,15 +63,6 @@ class AppDelegate: NSObject, NSApplicationDelegate {
             AppMover.moveIfNecessary()
         }
 
-        // open the connection to the SMC
-        do {
-            try SMCKit.open()
-        } catch SMCKit.SMCError.driverNotFound {
-            DDLogError("Could not find the SMC driver.")
-        } catch {
-            DDLogError("Failed to open a connection to the SMC")
-        }
-
         // create the timer object
         currentUpdateLoopTimer = createUpdateLoopTimer(interval: AppDelegate.userSettings.settings.updateInterval)
     }
@@ -87,11 +78,6 @@ class AppDelegate: NSObject, NSApplicationDelegate {
     func applicationWillTerminate(_ notification: Notification) {
         // kill the launcher app if it is still running
         killLauncherApplication()
-
-        // close the connection to the SMC
-        if !SMCKit.close() {
-            DDLogError("Failed to close the connection to the SMC")
-        }
     }
 
     // MARK: -
