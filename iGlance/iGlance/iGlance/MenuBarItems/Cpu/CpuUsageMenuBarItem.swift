@@ -31,6 +31,7 @@ class CpuUsageMenuBarItem: MenuBarItem {
         // get the total usage
         let totalUsage = usage.user + usage.system
 
-        button.image = self.barGraph.getImage(currentValue: Double(totalUsage))
+        let barColor = AppDelegate.userSettings.settings.cpu.usageBarColor
+        button.image = self.barGraph.getImage(currentValue: Double(totalUsage), barColor: barColor.nsColor)
     }
 }

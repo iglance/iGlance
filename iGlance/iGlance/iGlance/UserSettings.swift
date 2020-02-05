@@ -13,6 +13,7 @@ import SMCKit
 struct CpuSettings: Codable {
     var showTemperature: Bool = true
     var showUsage: Bool = true
+    var usageBarColor = CodableColor(nsColor: NSColor.purple)
 }
 
 struct IGlanceUserSettings: Codable {

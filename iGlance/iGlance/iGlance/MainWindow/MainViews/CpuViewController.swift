@@ -7,8 +7,12 @@
 //
 
 import Cocoa
+import CocoaLumberjack
 
 class CpuViewController: MainViewViewController {
+    // MARK: -
+    // MARK: Outlets
+
     @IBOutlet private var cpuTempCheckbox: NSButton! {
         didSet {
             cpuTempCheckbox.state = AppDelegate.userSettings.settings.cpu.showTemperature ? NSButton.StateValue.on : NSButton.StateValue.off
@@ -19,6 +23,15 @@ class CpuViewController: MainViewViewController {
             cpuUsageCheckbox.state = AppDelegate.userSettings.settings.cpu.showUsage ? NSButton.StateValue.on : NSButton.StateValue.off
         }
     }
+
+    @IBOutlet private var usageColorWell: NSColorWell! {
+        didSet {
+            usageColorWell.color = AppDelegate.userSettings.settings.cpu.usageBarColor.nsColor
+        }
+    }
+
+    // MARK: -
+    // MARK: Actions
 
     @IBAction private func cpuTempCheckboxChanged(_ sender: NSButton) {
         // get the boolean to the current state of the checkbox
@@ -33,6 +46,8 @@ class CpuViewController: MainViewViewController {
         } else {
             AppDelegate.menuBarItemManager.cpuTemp.hide()
         }
+
+        DDLogInfo("Did set cpu temp checkbox value to (\(activated))")
     }
 
     @IBAction private func cpuUsageCheckboxChanged(_ sender: NSButton) {
@@ -48,5 +63,14 @@ class CpuViewController: MainViewViewController {
         } else {
             AppDelegate.menuBarItemManager.cpuUsage.hide()
         }
+
+        DDLogInfo("Did set cpu usage checkbox value to (\(activated))")
+    }
+
+    @IBAction private func usageColorWellChanged(_ sender: NSColorWell) {
+        // set the color of the usage bar
+        AppDelegate.userSettings.settings.cpu.usageBarColor = CodableColor(nsColor: sender.color)
+
+        DDLogInfo("Changed usage bar color to (\(sender.color))")
     }
 }
