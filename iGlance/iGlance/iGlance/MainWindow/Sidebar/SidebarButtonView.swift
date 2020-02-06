@@ -13,6 +13,7 @@ class SidebarButtonView: NSView {
     // MARK: -
     // MARK: Public Instance Variables
     var mainViewStoryboardID: String?
+    var iconName: String?
     var highlighted: Bool = false {
         didSet {
             // if highlighted was changed force a redraw
@@ -24,6 +25,9 @@ class SidebarButtonView: NSView {
     // MARK: Private Instance Variables
     private var hovered: Bool = false
     private var onClickCallback: ((_ sender: SidebarButtonView) -> Void)?
+
+    /// - Tag: buttonIcon
+    private var buttonIcon: NSImage?
 
     // MARK: -
     // MARK: Function Overrides
@@ -80,21 +84,35 @@ class SidebarButtonView: NSView {
     // MARK: Private Functions
 
     /**
-     * Returns the icon of the sidebar button.
+     * Sets the [buttonIcon](x-source-tag://buttonIcon) variable to the correctly tinted button image.
+     *
+     * - Parameter color: The color in which the button icon should be tinted.
      */
-    private func getButtonIcon() -> NSImageView? {
+    private func setButtonIcon(color: NSColor) {
         // get the stack view
         guard let stackView = self.subviews[0] as? NSStackView else {
             DDLogError("Could not cast subview to 'NSStackView'")
-            return nil
-        }
-        // get the icon and the label
-        guard let icon = stackView.subviews[0] as? NSImageView else {
-            DDLogError("Could not cast the subview to 'NSImageView'")
-            return nil
+            return
         }
 
-        return icon
+        // set the icon
+        guard let imageName = self.iconName else {
+            DDLogError("Sidebar icon name of sidebar button to view \(String(describing: mainViewStoryboardID)) is nil")
+            return
+        }
+
+        // get the image view
+        guard let imageView = stackView.subviews[0] as? NSImageView else {
+            DDLogError("Could not cast the subview to 'NSImageView'")
+            return
+        }
+
+        if self.buttonIcon == nil {
+            // if the icon is not set yet, set it
+            self.buttonIcon = NSImage(named: imageName)
+        }
+
+        imageView.image = self.buttonIcon?.tint(color: color)
     }
 
     /**
@@ -122,26 +140,24 @@ class SidebarButtonView: NSView {
      * Changes the color of the icon and the label according to the currently selected theme.
      */
     func updateFontColor() {
-        guard let label = getButtonLabel(), let icon = getButtonIcon() else {
+        guard let label = getButtonLabel() else {
             DDLogError("Could not retrieve label or the icon of the sidebar button")
             return
         }
 
+        // get the font color
+        var fontColor = ThemeManager.currentTheme().fontColor
         // when current theme is light set the font color to a light color on active sidebar buttons
         if highlighted && ThemeManager.currentTheme() == Theme.lightTheme {
-            // change the color of the label
-            label.textColor = Theme.darkTheme.fontColor
-            // change the image according to the theme
-            let color = Theme.darkTheme.fontColor
-            icon.image = icon.image?.tint(color: color)
+            // change the font color
+            fontColor = Theme.darkTheme.fontColor
             return
         }
 
-        // change the color of the label
-        label.textColor = ThemeManager.currentTheme().fontColor
-        // change the image according to the theme
-        let color = ThemeManager.currentTheme().fontColor
-        icon.image = icon.image?.tint(color: color)
+        // set the color of the icon
+        setButtonIcon(color: fontColor)
+        // set the color of the label
+        label.textColor = fontColor
     }
 
     /**

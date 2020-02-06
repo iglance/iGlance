@@ -14,12 +14,14 @@ class SidebarViewController: NSViewController {
     // MARK: Struct Definitions
 
     /**
-     * Structure to save the ID of a NSView of a sidebar button and its corresponding
-     * main view storyboard ID which is displayed in the container view when the button is clicked.
+     * Structure to save the ID of a NSView of a sidebar button, its corresponding
+     * main view storyboard ID which is displayed in the container view when the button is clicked
+     * and the name of the icon of the sidebar button.
      */
     struct SidebarButtonIDs {
         let buttonViewID: String
         let mainViewStoryboardID: String
+        let buttonIconID: String
     }
 
     // MARK: -
@@ -34,12 +36,12 @@ class SidebarViewController: NSViewController {
 
     /** An array containing the IDs to all the sidebar buttons and their corresponding main view storyboard IDs*/
     private var sidebarButtonViewIDs: [SidebarButtonIDs] = [
-        SidebarButtonIDs(buttonViewID: "DashboardButtonView", mainViewStoryboardID: "DashboardStoryboardID"),
-        SidebarButtonIDs(buttonViewID: "CpuButtonView", mainViewStoryboardID: "CpuStoryboardID"),
-        SidebarButtonIDs(buttonViewID: "MemoryButtonView", mainViewStoryboardID: "MemoryStoryboardID"),
-        SidebarButtonIDs(buttonViewID: "NetworkButtonView", mainViewStoryboardID: "NetworkStoryboardID"),
-        SidebarButtonIDs(buttonViewID: "FanButtonView", mainViewStoryboardID: "FanStoryboardID"),
-        SidebarButtonIDs(buttonViewID: "BatteryButtonView", mainViewStoryboardID: "BatteryStoryboardID")
+        SidebarButtonIDs(buttonViewID: "DashboardButtonView", mainViewStoryboardID: "DashboardStoryboardID", buttonIconID: "DashboardIcon"),
+        SidebarButtonIDs(buttonViewID: "CpuButtonView", mainViewStoryboardID: "CpuStoryboardID", buttonIconID: "CpuIcon"),
+        SidebarButtonIDs(buttonViewID: "MemoryButtonView", mainViewStoryboardID: "MemoryStoryboardID", buttonIconID: "MemoryIcon"),
+        SidebarButtonIDs(buttonViewID: "NetworkButtonView", mainViewStoryboardID: "NetworkStoryboardID", buttonIconID: "NetworkIcon"),
+        SidebarButtonIDs(buttonViewID: "FanButtonView", mainViewStoryboardID: "FanStoryboardID", buttonIconID: "FanIcon"),
+        SidebarButtonIDs(buttonViewID: "BatteryButtonView", mainViewStoryboardID: "BatteryStoryboardID", buttonIconID: "BatteryIcon")
     ]
     private var preferenceModalViewController: PreferenceModalViewController?
 
@@ -49,11 +51,15 @@ class SidebarViewController: NSViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        // set the storyboard ids of the main views of the buttons
+        // set the storyboard ids of the main views and the the icon ids of the buttons
         for identifier in sidebarButtonViewIDs {
             let buttonView = getSidebarButtonWith(identifier: identifier.buttonViewID)!
 
+            // set the story board ids
             buttonView.mainViewStoryboardID = identifier.mainViewStoryboardID
+
+            // set the icon ids
+            buttonView.iconName = identifier.buttonIconID
         }
 
         // on startup select the dashboard
