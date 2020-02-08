@@ -47,8 +47,12 @@ class AppDelegate: NSObject, NSApplicationDelegate {
 
         // set the default log level to error
         dynamicLogLevel = .error
+
         if DEBUG {
+            // log all messages
             dynamicLogLevel = .all
+            // open the window on startup in debug mode
+            showMainWindow()
         }
     }
 

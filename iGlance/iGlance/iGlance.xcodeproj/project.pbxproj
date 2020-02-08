@@ -62,6 +62,8 @@
 		B4DE728023C2644A0001CF46 /* BatteryInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = B4DE727F23C2644A0001CF46 /* BatteryInfo.swift */; };
 		B4EFB55B23CA197500CF2FF2 /* CustomLogFormatter.swift in Sources */ = {isa = PBXBuildFile; fileRef = B4EFB55A23CA197500CF2FF2 /* CustomLogFormatter.swift */; };
 		B4EFB55C23CA197500CF2FF2 /* CustomLogFormatter.swift in Sources */ = {isa = PBXBuildFile; fileRef = B4EFB55A23CA197500CF2FF2 /* CustomLogFormatter.swift */; };
+		B4FE0DB123EF1E0100AE94E6 /* LineGraph.swift in Sources */ = {isa = PBXBuildFile; fileRef = B4FE0DB023EF1E0100AE94E6 /* LineGraph.swift */; };
+		B4FE0DB323EF210500AE94E6 /* Graph.swift in Sources */ = {isa = PBXBuildFile; fileRef = B4FE0DB223EF210500AE94E6 /* Graph.swift */; };
 		FE556499492832BE97606DAD /* Pods_iGlance.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 84955815F03407826031ABBF /* Pods_iGlance.framework */; };
 /* End PBXBuildFile section */
 
@@ -163,6 +165,8 @@
 		B4DE727F23C2644A0001CF46 /* BatteryInfo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BatteryInfo.swift; sourceTree = "<group>"; };
 		B4EFB55A23CA197500CF2FF2 /* CustomLogFormatter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomLogFormatter.swift; sourceTree = "<group>"; };
 		B4F4AA1023E072F200F57F70 /* SystemKit.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = SystemKit.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		B4FE0DB023EF1E0100AE94E6 /* LineGraph.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LineGraph.swift; sourceTree = "<group>"; };
+		B4FE0DB223EF210500AE94E6 /* Graph.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Graph.swift; sourceTree = "<group>"; };
 		C613649DA4B6320FA4A7C8A2 /* Pods-iGlance.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-iGlance.debug.xcconfig"; path = "Target Support Files/Pods-iGlance/Pods-iGlance.debug.xcconfig"; sourceTree = "<group>"; };
 		F7F7841E10C5D08CE0848D69 /* Pods-iGlance.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-iGlance.release.xcconfig"; path = "Target Support Files/Pods-iGlance/Pods-iGlance.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -285,6 +289,8 @@
 			isa = PBXGroup;
 			children = (
 				B439332623E99E0800CDEB1D /* BarGraph.swift */,
+				B4FE0DB023EF1E0100AE94E6 /* LineGraph.swift */,
+				B4FE0DB223EF210500AE94E6 /* Graph.swift */,
 			);
 			path = Graphs;
 			sourceTree = "<group>";
@@ -347,10 +353,10 @@
 				B42BCE6123AC01A200A13601 /* SystemInfo */,
 				B40E946023A9435200D63D17 /* MainWindow */,
 				B4C37E6E23A91F2F008C7FC0 /* Theme */,
+				B4FE0DAD23EF1BCB00AE94E6 /* Utils */,
 				B46789B523A69ECA00CE572D /* AppDelegate.swift */,
 				B4DE725E23C257610001CF46 /* Extensions.swift */,
 				B49F5D5623C5BCAF009E9BE6 /* UserSettings.swift */,
-				B49CD58E23EB17D9009711E6 /* CodableColor.swift */,
 				B46789BB23A69ECB00CE572D /* Main.storyboard */,
 				B46789B923A69ECB00CE572D /* Assets.xcassets */,
 				B46789BE23A69ECB00CE572D /* Info.plist */,
@@ -410,6 +416,14 @@
 				B4D86E1A23AA710B00671B52 /* MainViewViewController.swift */,
 			);
 			path = MainViews;
+			sourceTree = "<group>";
+		};
+		B4FE0DAD23EF1BCB00AE94E6 /* Utils */ = {
+			isa = PBXGroup;
+			children = (
+				B49CD58E23EB17D9009711E6 /* CodableColor.swift */,
+			);
+			path = Utils;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -646,6 +660,8 @@
 				B42BCE6023ABF73100A13601 /* DashboardViewController.swift in Sources */,
 				B4C37E6D23A8D811008C7FC0 /* ContentManagerViewControllerHolder.swift in Sources */,
 				B48BD19123E73F8E00152931 /* CpuUsageMenuBarItem.swift in Sources */,
+				B4FE0DB123EF1E0100AE94E6 /* LineGraph.swift in Sources */,
+				B4FE0DB323EF210500AE94E6 /* Graph.swift in Sources */,
 				B43ABF2A23AA32FA007F93BA /* SidebarViewController.swift in Sources */,
 				B4C37E6323A7946B008C7FC0 /* SidebarView.swift in Sources */,
 				B4C37E7023A91F3C008C7FC0 /* ThemeManager.swift in Sources */,

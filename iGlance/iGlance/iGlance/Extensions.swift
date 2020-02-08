@@ -54,6 +54,17 @@ extension NSColor {
             alpha: CGFloat(alpha ?? 1.0)
         )
     }
+
+    /**
+     * Converts the color to a hex string
+     */
+    func toHex() -> String {
+        let redComponent = Int(self.redComponent * 0xFF)
+        let greenComponent = Int(self.greenComponent * 0xFF)
+        let blueComponent = Int(self.blueComponent * 0xFF)
+
+        return String(format: "#%02X%02X%02X", redComponent, greenComponent, blueComponent)
+    }
 }
 
 extension NSImage {

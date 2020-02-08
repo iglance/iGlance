@@ -14,11 +14,7 @@ struct Key: Hashable {
     let isDarkTheme: Bool
 }
 
-class BarGraph {
-    var barBorder: NSImage!
-
-    var borderImageSize: NSSize!
-
+class BarGraph: Graph {
     let maxValue: Double
 
     private var imageCache: [Key: (image: NSImage, color: NSColor)] = [Key: (image: NSImage, color: NSColor)]()
@@ -32,66 +28,68 @@ class BarGraph {
         // set the maximum value for the bar
         self.maxValue = maxValue
 
-        // get the image (getting it every time we draw the image ensures that it adapts to the current osx theme)
-        self.barBorder = NSImage(named: "BarGraphBorder")
-        // update the size variable of the image
-        self.borderImageSize = self.barBorder.size
+        // call the super initializer
+        super.init()
+
+        // set the width of the bar graph
+        self.imageSize.width = 9.0
     }
 
     /**
      * Returns the bar graph image for the menu bar.
      */
-    func getImage(currentValue: Double, barColor: NSColor) -> NSImage {
+    func getImage(currentValue: Double, graphColor: NSColor) -> NSImage {
         // check whether we need to redraw the graph
         let key = Key(value: currentValue, isDarkTheme: ThemeManager.isDarkTheme())
-        if imageCache[key] != nil && imageCache[key]!.color == barColor {
+        if imageCache[key] != nil && imageCache[key]!.color == graphColor {
             return imageCache[key]!.image
         }
 
         // create a new image with the same size as the border image
-        var image = NSImage(size: self.borderImageSize)
-        // lock the focus on the image in order to draw on it
-        image.lockFocus()
+        var image = NSImage(size: self.imageSize)
 
-        // tint the image for dark/light mode
-        let tintedBarBorder = self.barBorder.tint(color: key.isDarkTheme ? NSColor.white : NSColor.black)
-        // draw the usage bar border
-        tintedBarBorder.draw(at: NSPoint.zero, from: NSRect.zero, operation: .sourceOver, fraction: 1.0)
+        // first draw the bar to draw over the sharp corners of the bar
+        self.drawBarGraph(image: &image, currentValue: currentValue, barColor: graphColor)
 
-        // draw the usage bar
-        self.drawUsageBar(image: &image, currentValue: currentValue, barColor: barColor)
-
-        // unlock the focus of the image
-        image.unlockFocus()
+        // draw the border of the graph
+        self.drawBorder(image: &image)
 
         // add the image and its color to the cache
-        imageCache[key] = (image, barColor)
+        imageCache[key] = (image, graphColor)
+
+        DDLogInfo("Cached bar graph for value (\(currentValue)) and color (\(graphColor.toHex()))")
 
         return image
     }
 
     /**
-     * Takes an image and draws the usage bar on the given image
+     * Takes an image and draws the bar on the given image
      */
-    private func drawUsageBar( image: inout NSImage, currentValue: Double, barColor: NSColor) {
+    private func drawBarGraph( image: inout NSImage, currentValue: Double, barColor: NSColor) {
+        // lock the focus on the image in order to draw on it
+        image.lockFocus()
+
         // get the maximum height of the bar.
         // Keep in mind that the border of the graph is 1 pixel wide. However the 2x picture is used which is why we subtract 2 / 2 = 1 pixel
-        let maxBarHeight = Double(self.barBorder.size.height - 1)
+        let maxBarHeight = Double(self.imageSize.height - 1)
 
         // get the width of the bar
-        let barWidth = Double(self.barBorder.size.width - 1)
+        let barWidth = Double(self.imageSize.width - 1)
         // get the height of the bar
         let barHeight = Double((maxBarHeight / self.maxValue) * currentValue)
 
         // set the bar color as a fill color
         barColor.setFill()
 
-        // create the usage bar as a rectangle
+        // create the bar as a rectangle
         // 1 / 2 = 0.5 pixel offset since the 2x image is used and the border is 1 pixel wide
-        let usageBar = NSRect(x: 0.5, y: 0.5, width: barWidth, height: barHeight)
-        usageBar.fill()
+        let bar = NSRect(x: 0.5, y: 0.5, width: barWidth, height: barHeight)
+        bar.fill()
 
         // set the current fill color to clear
         NSColor.clear.setFill()
+
+        // unlock the focus of the image
+        image.unlockFocus()
     }
 }

@@ -11,9 +11,11 @@ import CocoaLumberjack
 
 class CpuUsageMenuBarItem: MenuBarItem {
     let barGraph: BarGraph
+    let lineGraph: LineGraph
 
     override init() {
         self.barGraph = BarGraph(maxValue: 100)
+        self.lineGraph = LineGraph(width: 50)
 
         super.init()
     }
@@ -31,7 +33,11 @@ class CpuUsageMenuBarItem: MenuBarItem {
         // get the total usage
         let totalUsage = usage.user + usage.system
 
-        let barColor = AppDelegate.userSettings.settings.cpu.usageBarColor
-        button.image = self.barGraph.getImage(currentValue: Double(totalUsage), barColor: barColor.nsColor)
+        if AppDelegate.userSettings.settings.cpu.usageGraphKind == .bar {
+            let barColor = AppDelegate.userSettings.settings.cpu.usageBarColor
+            button.image = self.barGraph.getImage(currentValue: Double(totalUsage), graphColor: barColor.nsColor)
+        } else {
+            button.image = self.lineGraph.getImage(currentValue: Double(totalUsage), graphColor: NSColor.green)
+        }
     }
 }

@@ -8,6 +8,7 @@
 
 import Foundation
 import AppKit
+import CocoaLumberjack
 
 enum Theme: Int {
     case darkTheme, lightTheme

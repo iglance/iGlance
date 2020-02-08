@@ -14,6 +14,7 @@ struct CpuSettings: Codable {
     var showTemperature: Bool = true
     var showUsage: Bool = true
     var usageBarColor = CodableColor(nsColor: NSColor.purple)
+    var usageGraphKind: GraphKind = .bar
 }
 
 struct IGlanceUserSettings: Codable {
