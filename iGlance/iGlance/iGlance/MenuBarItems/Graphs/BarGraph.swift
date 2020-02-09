@@ -70,24 +70,20 @@ class BarGraph: Graph {
         image.lockFocus()
 
         // get the maximum height of the bar.
-        // Keep in mind that the border of the graph is 1 pixel wide. However the 2x picture is used which is why we subtract 2 / 2 = 1 pixel
-        let maxBarHeight = Double(self.imageSize.height - 1)
+        let maxBarHeight = Double(self.imageSize.height - self.borderWidth * 2)
 
         // get the width of the bar
-        let barWidth = Double(self.imageSize.width - 1)
+        let barWidth = Double(self.imageSize.width - self.borderWidth * 2)
         // get the height of the bar
         let barHeight = Double((maxBarHeight / self.maxValue) * currentValue)
 
         // set the bar color as a fill color
-        barColor.setFill()
+        barColor.set()
 
         // create the bar as a rectangle
         // 1 / 2 = 0.5 pixel offset since the 2x image is used and the border is 1 pixel wide
-        let bar = NSRect(x: 0.5, y: 0.5, width: barWidth, height: barHeight)
+        let bar = NSRect(x: self.borderWidth, y: self.borderWidth, width: CGFloat(barWidth), height: CGFloat(barHeight))
         bar.fill()
-
-        // set the current fill color to clear
-        NSColor.clear.setFill()
 
         // unlock the focus of the image
         image.unlockFocus()

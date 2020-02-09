@@ -17,6 +17,8 @@ protocol GraphProtocol {
 class GraphClass {
     var imageSize: NSSize
 
+    let borderWidth = CGFloat(0.5)
+
     init() {
         self.imageSize = NSSize(width: 9, height: 18)
     }
@@ -28,15 +30,20 @@ class GraphClass {
         // lock the focus on the image in order to draw on it
         image.lockFocus()
 
-        // create the rounded rectangle
-        let rect = NSRect(x: 0, y: 0, width: self.imageSize.width, height: self.imageSize.height)
-        let roundedRect = NSBezierPath(roundedRect: rect, xRadius: 3.0, yRadius: 3.0)
-        roundedRect.lineWidth = 1.0
+        // create the rounded rectangle. Keep in mind that the line is drawn centered on the rectangle border.
+        let rect = NSRect(
+            x: borderWidth / 2, // subtract half the border width to align the graph border to the image border
+            y: borderWidth / 2,
+            width: self.imageSize.width - borderWidth, // subtract the border width once since half the border of each side has to be subtracted
+            height: self.imageSize.height - borderWidth
+        )
+        let roundedRect = NSBezierPath(roundedRect: rect, xRadius: 2, yRadius: 2)
+        roundedRect.lineWidth = borderWidth
 
         if ThemeManager.isDarkTheme() {
-            NSColor.white.setStroke()
+            NSColor.white.set()
         } else {
-            NSColor.black.setStroke()
+            NSColor.black.set()
         }
 
         // draw the border
