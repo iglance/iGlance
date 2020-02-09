@@ -54,6 +54,9 @@ class AppDelegate: NSObject, NSApplicationDelegate {
             // open the window on startup in debug mode
             showMainWindow()
         }
+
+        // call the update loop once on startup to render the menu bar items
+        self.updateLoop()
     }
 
     func applicationDidFinishLaunching(_ notification: Notification) {

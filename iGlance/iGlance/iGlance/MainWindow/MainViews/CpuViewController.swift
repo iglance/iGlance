@@ -126,11 +126,19 @@ class CpuViewController: MainViewViewController {
             // default to the bar graph option
             AppDelegate.userSettings.settings.cpu.usageGraphKind = .bar
         }
+
+        // update the menu bar items to make the change visible immediatley
+        AppDelegate.menuBarItemManager.updateMenuBarItems()
+
+        DDLogInfo("Selected cpu usage graph kind \(AppDelegate.userSettings.settings.cpu.usageGraphKind)")
     }
 
     @IBAction private func usageColorWellChanged(_ sender: NSColorWell) {
         // set the color of the usage bar
         AppDelegate.userSettings.settings.cpu.usageBarColor = CodableColor(nsColor: sender.color)
+
+        // update the menu bar items to make the change visible immediatley
+        AppDelegate.menuBarItemManager.updateMenuBarItems()
 
         DDLogInfo("Changed usage bar color to (\(sender.color.toHex()))")
     }
