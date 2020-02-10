@@ -15,7 +15,7 @@ class CpuUsageMenuBarItem: MenuBarItem {
 
     override init() {
         self.barGraph = BarGraph(maxValue: 100)
-        self.lineGraph = LineGraph(width: 50)
+        self.lineGraph = LineGraph(maxValue: 100, imageWidth: 50)
 
         super.init()
     }
@@ -33,11 +33,15 @@ class CpuUsageMenuBarItem: MenuBarItem {
         // get the total usage
         let totalUsage = usage.user + usage.system
 
+        let graphColor = AppDelegate.userSettings.settings.cpu.usageGraphColor.nsColor
         if AppDelegate.userSettings.settings.cpu.usageGraphKind == .bar {
-            let barColor = AppDelegate.userSettings.settings.cpu.usageBarColor
-            button.image = self.barGraph.getImage(currentValue: Double(totalUsage), graphColor: barColor.nsColor)
+            button.image = self.barGraph.getImage(currentValue: Double(totalUsage), graphColor: graphColor)
         } else {
-            button.image = self.lineGraph.getImage(currentValue: Double(totalUsage), graphColor: NSColor.green)
+            button.image = self.lineGraph.getImage(currentValue: Double(totalUsage), graphColor: graphColor)
         }
+
+        // add the value to the line graph history
+        // this allows us to draw the resent history when the user switches to the line graph
+        self.lineGraph.addValue(value: Double(totalUsage))
     }
 }

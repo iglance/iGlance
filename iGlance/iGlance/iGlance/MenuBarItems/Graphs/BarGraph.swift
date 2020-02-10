@@ -17,7 +17,7 @@ struct Key: Hashable {
 class BarGraph: Graph {
     let maxValue: Double
 
-    private var imageCache: [Key: (image: NSImage, color: NSColor)] = [Key: (image: NSImage, color: NSColor)]()
+    private var imageCache: [Key : (image: NSImage, color: NSColor)] = [Key: (image: NSImage, color: NSColor)]()
 
     /**
      * Initializer of the BarGraph class.
@@ -81,7 +81,6 @@ class BarGraph: Graph {
         barColor.set()
 
         // create the bar as a rectangle
-        // 1 / 2 = 0.5 pixel offset since the 2x image is used and the border is 1 pixel wide
         let bar = NSRect(x: self.borderWidth, y: self.borderWidth, width: CGFloat(barWidth), height: CGFloat(barHeight))
         bar.fill()
 

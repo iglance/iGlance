@@ -37,7 +37,7 @@ class GraphClass {
             width: self.imageSize.width - borderWidth, // subtract the border width once since half the border of each side has to be subtracted
             height: self.imageSize.height - borderWidth
         )
-        let roundedRect = NSBezierPath(roundedRect: rect, xRadius: 2, yRadius: 2)
+        let roundedRect = NSBezierPath(roundedRect: rect, xRadius: 1.5, yRadius: 1.5)
         roundedRect.lineWidth = borderWidth
 
         if ThemeManager.isDarkTheme() {

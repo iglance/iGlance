@@ -75,7 +75,7 @@ class CpuViewController: MainViewViewController {
 
     @IBOutlet private var usageColorWell: NSColorWell! {
         didSet {
-            usageColorWell.color = AppDelegate.userSettings.settings.cpu.usageBarColor.nsColor
+            usageColorWell.color = AppDelegate.userSettings.settings.cpu.usageGraphColor.nsColor
         }
     }
 
@@ -135,7 +135,7 @@ class CpuViewController: MainViewViewController {
 
     @IBAction private func usageColorWellChanged(_ sender: NSColorWell) {
         // set the color of the usage bar
-        AppDelegate.userSettings.settings.cpu.usageBarColor = CodableColor(nsColor: sender.color)
+        AppDelegate.userSettings.settings.cpu.usageGraphColor = CodableColor(nsColor: sender.color)
 
         // update the menu bar items to make the change visible immediatley
         AppDelegate.menuBarItemManager.updateMenuBarItems()
