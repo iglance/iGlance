@@ -33,6 +33,8 @@ class GpuInfo {
         let outputData = outputPipe.fileHandleForReading.readDataToEndOfFile()
         let output = NSString(data: outputData, encoding: String.Encoding.utf8.rawValue)! as String
 
+        DDLogInfo("Output of gpu name command: \(output)")
+
         // seperate the lines
         let lines = output.split(separator: "\n")
 

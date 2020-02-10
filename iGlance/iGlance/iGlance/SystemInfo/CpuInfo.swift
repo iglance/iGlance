@@ -37,6 +37,8 @@ class CpuInfo {
             return ""
         }
 
+        DDLogInfo("Raw cpu name value: \(cpuName)")
+
         let cpuNameString = String(cString: cpuName)
         DDLogInfo("Got the cpu name: \(cpuNameString)")
 
@@ -51,6 +53,8 @@ class CpuInfo {
     func getCpuTemp() -> Double {
         do {
             let cpuTemp = try SMCKit.temperature(TemperatureSensors.CPU_PECI.code, unit: AppDelegate.userSettings.settings.tempUnit)
+
+            DDLogInfo("Read cpu temperature: \(cpuTemp)")
 
             return cpuTemp
         } catch SMCKit.SMCError.keyNotFound {
@@ -69,6 +73,8 @@ class CpuInfo {
      */
     func getCpuUsage() -> (system: Int, user: Int, idle: Int, nice: Int) {
         let usage = skSystem.usageCPU()
+
+        DDLogInfo("Read cpu usage: \(usage)")
 
         return (Int(round(usage.0)), Int(round(usage.1)), Int(round(usage.2)), Int(round(usage.3)))
     }

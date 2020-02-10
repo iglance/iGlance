@@ -34,7 +34,12 @@ class BatteryInfo {
             return 0
         }
 
-        return Float(self.skBattery.maxCapactiy()) / Float(self.skBattery.designCapacity())
+        let maxCap = self.skBattery.maxCapactiy()
+        let designCap = self.skBattery.designCapacity()
+
+        DDLogInfo("Read maximum capacity \(maxCap) and design capacity \(designCap) of battery")
+
+        return Float(maxCap) / Float(designCap)
     }
 
     /**
@@ -46,6 +51,8 @@ class BatteryInfo {
             return 0
         }
 
-        return self.skBattery.cycleCount()
+        let cycleCount = self.skBattery.cycleCount()
+        DDLogInfo("Read the cycle count of the battery \(cycleCount)")
+        return cycleCount
     }
 }

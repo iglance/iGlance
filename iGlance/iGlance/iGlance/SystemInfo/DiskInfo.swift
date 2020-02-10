@@ -26,6 +26,8 @@ class DiskInfo {
         let outputData = outputPipe.fileHandleForReading.readDataToEndOfFile()
         let output = NSString(data: outputData, encoding: String.Encoding.utf8.rawValue)! as String
 
+        DDLogInfo("Output of internal disk size command: \(output)")
+
         // check that the command was successful by checking the first line
         if !output.split(separator: "\n")[0].contains("NVMExpress:") {
             DDLogError("Command to retrieve the disk size failed.")

@@ -72,6 +72,8 @@ class SystemInfo {
             return TimeDuration(days: 0, hours: 0, minutes: 0, seconds: 0)
         }
 
+        DDLogInfo("Raw uptime value: \(uptime)")
+
         let seconds = uptime.tv_sec % 60
         let minutes = (uptime.tv_sec / 60) % 60
         let hours = (uptime.tv_sec / 3600) % 24
