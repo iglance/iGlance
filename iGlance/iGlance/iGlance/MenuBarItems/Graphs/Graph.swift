@@ -9,6 +9,12 @@
 import Cocoa
 
 protocol GraphProtocol {
+    /**
+     * Returns the image with the graph and its border drawn on it.
+     *
+     * - Parameter currentValue: The current value (most recent value) in the graph.
+     * - Parameter graphColor: The color of the graph
+     */
     func getImage(currentValue: Double, graphColor: NSColor) -> NSImage
 
     func drawBorder(image: inout NSImage)

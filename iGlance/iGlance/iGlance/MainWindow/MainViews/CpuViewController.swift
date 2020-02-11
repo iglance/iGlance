@@ -73,6 +73,31 @@ class CpuViewController: MainViewViewController {
         }
     }
 
+    @IBOutlet private var graphWidthStackView: NSStackView! {
+        didSet {
+            switch AppDelegate.userSettings.settings.cpu.usageGraphKind {
+            case .line:
+                // line graph is the second option
+                graphWidthStackView.isHidden = false
+            default:
+                // bar graph is the first option
+                graphWidthStackView.isHidden = true
+            }
+        }
+    }
+
+    @IBOutlet private var graphWidthLabel: NSTextField! {
+        didSet {
+            graphWidthLabel.stringValue = String(AppDelegate.userSettings.settings.cpu.usageLineGraphWidth)
+        }
+    }
+
+    @IBOutlet private var graphWidthSlider: NSSlider! {
+        didSet {
+            graphWidthSlider.intValue = Int32(AppDelegate.userSettings.settings.cpu.usageLineGraphWidth)
+        }
+    }
+
     @IBOutlet private var usageColorWell: NSColorWell! {
         didSet {
             usageColorWell.color = AppDelegate.userSettings.settings.cpu.usageGraphColor.nsColor
@@ -122,15 +147,30 @@ class CpuViewController: MainViewViewController {
         case 1:
             // the first item is the line graph option
             AppDelegate.userSettings.settings.cpu.usageGraphKind = .line
+            graphWidthStackView.isHidden = false
         default:
             // default to the bar graph option
             AppDelegate.userSettings.settings.cpu.usageGraphKind = .bar
+            graphWidthStackView.isHidden = true
         }
 
         // update the menu bar items to make the change visible immediatley
         AppDelegate.menuBarItemManager.updateMenuBarItems()
 
         DDLogInfo("Selected cpu usage graph kind \(AppDelegate.userSettings.settings.cpu.usageGraphKind)")
+    }
+
+    @IBAction private func graphWidthSliderChanged(_ sender: NSSlider) {
+        // update the width label
+        graphWidthLabel.intValue = sender.intValue
+
+        // update the user settings
+        AppDelegate.userSettings.settings.cpu.usageLineGraphWidth = Int(sender.intValue)
+
+        // update the width of the menu bar item
+        AppDelegate.menuBarItemManager.cpuUsage.lineGraph.setGraphWidth(width: Int(sender.intValue))
+        // rerender the menu bar item
+        AppDelegate.menuBarItemManager.cpuUsage.update()
     }
 
     @IBAction private func usageColorWellChanged(_ sender: NSColorWell) {

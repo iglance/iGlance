@@ -15,7 +15,8 @@ class CpuUsageMenuBarItem: MenuBarItem {
 
     override init() {
         self.barGraph = BarGraph(maxValue: 100)
-        self.lineGraph = LineGraph(maxValue: 100, imageWidth: 50)
+        let graphWidth = AppDelegate.userSettings.settings.cpu.usageLineGraphWidth
+        self.lineGraph = LineGraph(maxValue: 100, imageWidth: graphWidth)
 
         super.init()
     }

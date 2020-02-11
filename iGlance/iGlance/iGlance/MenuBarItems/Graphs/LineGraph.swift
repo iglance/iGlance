@@ -9,12 +9,17 @@
 import Cocoa
 
 class LineGraph: Graph {
+    // MARK: -
+    // MARK: Private Instance Variables
     private var graphImage: NSImage?
 
     private var valueHistory: Queue = Queue<Double>()
     private var valueCount: Int {
         Int(self.imageSize.width - self.borderWidth * 2)
     }
+
+    // MARK: -
+    // MARK: Public Instance Functions
 
     /**
      * Initializer
@@ -73,6 +78,16 @@ class LineGraph: Graph {
             _ = valueHistory.dequeue()
         }
     }
+
+    /**
+     * Sets the width of the graph.
+     */
+    func setGraphWidth(width: Int) {
+        self.imageSize.width = CGFloat(width)
+    }
+
+    // MARK: -
+    // MARK: Private Functions
 
     /**
      * Adds the given value to the history of the line graph.
