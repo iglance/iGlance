@@ -16,6 +16,7 @@ struct CpuSettings: Codable {
     var usageGraphColor = CodableColor(nsColor: NSColor.blue)
     var usageGraphKind: GraphKind = .bar
     var usageLineGraphWidth: Int = 50
+    var showUsageGraphBorder: Bool = true
 }
 
 struct IGlanceUserSettings: Codable {

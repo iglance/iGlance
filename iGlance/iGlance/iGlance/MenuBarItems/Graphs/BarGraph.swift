@@ -15,9 +15,16 @@ struct Key: Hashable {
 }
 
 class BarGraph: Graph {
+    // MARK: -
+    // MARK: Public Instance Variables
     let maxValue: Double
 
-    private var imageCache: [Key : (image: NSImage, color: NSColor)] = [Key: (image: NSImage, color: NSColor)]()
+    // MARK: -
+    // MARK: Private Instance Variables
+    private var imageCache: [Key: NSImage] = [Key: NSImage]()
+
+    // MARK: -
+    // MARK: Public Instance Variables
 
     /**
      * Initializer of the BarGraph class.
@@ -41,8 +48,8 @@ class BarGraph: Graph {
     func getImage(currentValue: Double, graphColor: NSColor) -> NSImage {
         // check whether we need to redraw the graph
         let key = Key(value: currentValue, isDarkTheme: ThemeManager.isDarkTheme())
-        if imageCache[key] != nil && imageCache[key]!.color == graphColor {
-            return imageCache[key]!.image
+        if imageCache[key] != nil {
+            return imageCache[key]!
         }
 
         // create a new image with the same size as the border image
@@ -55,12 +62,22 @@ class BarGraph: Graph {
         self.drawBorder(image: &image)
 
         // add the image and its color to the cache
-        imageCache[key] = (image, graphColor)
+        imageCache[key] = image
 
         DDLogInfo("Cached bar graph for value (\(currentValue)) and color (\(graphColor.toHex()))")
 
         return image
     }
+
+    /**
+     * Clears the image cache of the bar graph. This function should be called when the appearance of the graph did change.
+     */
+    func clearImageCache() {
+        imageCache.removeAll()
+    }
+
+    // MARK: -
+    // MARK: Private Instance Functions
 
     /**
      * Takes an image and draws the bar on the given image

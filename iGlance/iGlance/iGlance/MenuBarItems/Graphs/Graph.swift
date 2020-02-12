@@ -30,9 +30,13 @@ class GraphClass {
     }
 
     /**
-     * Draws a border with rounded cornsers around the image.
+     * Draws a border with rounded cornsers around the image. If the user doesn't want the border to be drawn the function returns immediately.
      */
     func drawBorder(image: inout NSImage) {
+        if !AppDelegate.userSettings.settings.cpu.showUsageGraphBorder {
+            return
+        }
+
         // lock the focus on the image in order to draw on it
         image.lockFocus()
 

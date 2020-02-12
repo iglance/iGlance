@@ -104,6 +104,12 @@ class CpuViewController: MainViewViewController {
         }
     }
 
+    @IBOutlet var usageGraphBorderCheckbox: NSButton! {
+        didSet {
+            usageGraphBorderCheckbox.state = AppDelegate.userSettings.settings.cpu.showUsageGraphBorder ? NSButton.StateValue.on : NSButton.StateValue.off
+        }
+    }
+
     // MARK: -
     // MARK: Actions
 
@@ -177,9 +183,28 @@ class CpuViewController: MainViewViewController {
         // set the color of the usage bar
         AppDelegate.userSettings.settings.cpu.usageGraphColor = CodableColor(nsColor: sender.color)
 
-        // update the menu bar items to make the change visible immediatley
+        // update the menu bar items to make the change visible immediately
         AppDelegate.menuBarItemManager.updateMenuBarItems()
 
+        // clear the cache of the bar graph
+        AppDelegate.menuBarItemManager.cpuUsage.barGraph.clearImageCache()
+
         DDLogInfo("Changed usage bar color to (\(sender.color.toHex()))")
+    }
+
+    @IBAction private func usageGraphBorderCheckboxChanged(_ sender: NSButton) {
+        // get the boolean to the current state of the checkbox
+        let activated = sender.state == NSButton.StateValue.on
+
+        // set the user settings
+        AppDelegate.userSettings.settings.cpu.showUsageGraphBorder = activated
+
+        // clear the cache of the bar graph
+        AppDelegate.menuBarItemManager.cpuUsage.barGraph.clearImageCache()
+
+        // update the menu bar items to make the change visible immediately
+        AppDelegate.menuBarItemManager.updateMenuBarItems()
+
+        DDLogInfo("Did set graph border checkbox value to (\(activated))")
     }
 }
