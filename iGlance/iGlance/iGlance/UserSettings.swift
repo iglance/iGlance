@@ -19,6 +19,14 @@ struct CpuSettings: Codable {
     var showUsageGraphBorder: Bool = true
 }
 
+struct MemorySettings: Codable {
+    var showUsage: Bool = true
+    var usageGraphColor = CodableColor(nsColor: NSColor.blue)
+    var usageGraphKind: GraphKind = .bar
+    var usageLineGraphWidth: Int = 50
+    var showUsageGraphBorder: Bool = true
+}
+
 struct IGlanceUserSettings: Codable {
     // global settings
     var autostartOnBoot: Bool = false
@@ -26,6 +34,7 @@ struct IGlanceUserSettings: Codable {
     var tempUnit: TemperatureUnit = .celsius
 
     var cpu = CpuSettings()
+    var memory = MemorySettings()
 }
 
 class UserSettings {

@@ -8,6 +8,42 @@
 
 import Cocoa
 
+public enum GraphKind: Codable {
+    case line
+    case bar
+
+    enum Key: CodingKey {
+        case rawValue
+    }
+
+    enum CodingError: Error {
+        case unknownValue
+    }
+
+    public init(from decoder: Decoder) throws {
+        let container = try decoder.container(keyedBy: Key.self)
+        let rawValue = try container.decode(Int.self, forKey: .rawValue)
+        switch rawValue {
+        case 0:
+            self = .line
+        case 1:
+            self = .bar
+        default:
+            throw CodingError.unknownValue
+        }
+    }
+
+    public func encode(to encoder: Encoder) throws {
+        var container = encoder.container(keyedBy: Key.self)
+        switch self {
+        case .line:
+            try container.encode(0, forKey: .rawValue)
+        case .bar:
+            try container.encode(1, forKey: .rawValue)
+        }
+    }
+}
+
 protocol GraphProtocol {
     /**
      * Returns the image with the graph and its border drawn on it.

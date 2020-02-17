@@ -31,6 +31,7 @@ class SystemInfo {
     let gpu: GpuInfo
     let disk: DiskInfo
     let battery: BatteryInfo
+    let memory: MemoryInfo
 
     init() {
         self.skSystem = SKSystem()
@@ -39,6 +40,7 @@ class SystemInfo {
         self.gpu = GpuInfo()
         self.disk = DiskInfo()
         self.battery = BatteryInfo()
+        self.memory = MemoryInfo()
 
         // open the connection to the SMC
         do {

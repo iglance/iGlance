@@ -9,9 +9,13 @@
 import Foundation
 
 class MenuBarItemManager {
-    /// The menu bar item for the cpu
+    /// The cpu temperature menu bar item
     let cpuTemp = CpuTempMenuBarItem()
+    /// The cpu usage menu bar item
     let cpuUsage = CpuUsageMenuBarItem()
+
+    // The memory usage menu bar item
+    let memoryUsage = MemoryUsageMenuBarItem()
 
     /// An array containing all the visible AND not visible menu bar items
     var menuBarItems: [MenuBarItem] = []
@@ -19,6 +23,7 @@ class MenuBarItemManager {
     init() {
         menuBarItems.append(cpuTemp)
         menuBarItems.append(cpuUsage)
+        menuBarItems.append(memoryUsage)
     }
 
     /**

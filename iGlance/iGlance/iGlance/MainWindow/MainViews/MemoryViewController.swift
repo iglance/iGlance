@@ -1,32 +1,27 @@
 //
-//  CpuViewController.swift
+//  MemoryViewController.swift
 //  iGlance
 //
-//  Created by Dominik on 31.01.20.
+//  Created by Dominik on 12.02.20.
 //  Copyright © 2020 D0miH. All rights reserved.
 //
 
 import Cocoa
 import CocoaLumberjack
 
-class CpuViewController: MainViewViewController {
+class MemoryViewController: MainViewViewController {
     // MARK: -
     // MARK: Outlets
 
-    @IBOutlet private var cpuTempCheckbox: NSButton! {
+    @IBOutlet private var memoryUsageCheckbox: NSButton! {
         didSet {
-            cpuTempCheckbox.state = AppDelegate.userSettings.settings.cpu.showTemperature ? NSButton.StateValue.on : NSButton.StateValue.off
-        }
-    }
-    @IBOutlet private var cpuUsageCheckbox: NSButton! {
-        didSet {
-            cpuUsageCheckbox.state = AppDelegate.userSettings.settings.cpu.showUsage ? NSButton.StateValue.on : NSButton.StateValue.off
+            memoryUsageCheckbox.state = (AppDelegate.userSettings.settings.memory.showUsage ? NSButton.StateValue.on : NSButton.StateValue.off)
         }
     }
 
     @IBOutlet private var graphSelector: NSPopUpButton! {
         didSet {
-            switch AppDelegate.userSettings.settings.cpu.usageGraphKind {
+            switch AppDelegate.userSettings.settings.memory.usageGraphKind {
             case .line:
                 // line graph is the second option
                 graphSelector.selectItem(at: 1)
@@ -39,7 +34,7 @@ class CpuViewController: MainViewViewController {
 
     @IBOutlet private var graphWidthStackView: NSStackView! {
         didSet {
-            switch AppDelegate.userSettings.settings.cpu.usageGraphKind {
+            switch AppDelegate.userSettings.settings.memory.usageGraphKind {
             case .line:
                 // line graph is the second option
                 graphWidthStackView.isHidden = false
@@ -52,63 +47,46 @@ class CpuViewController: MainViewViewController {
 
     @IBOutlet private var graphWidthLabel: NSTextField! {
         didSet {
-            graphWidthLabel.stringValue = String(AppDelegate.userSettings.settings.cpu.usageLineGraphWidth)
+            graphWidthLabel.stringValue = String(AppDelegate.userSettings.settings.memory.usageLineGraphWidth)
         }
     }
 
     @IBOutlet private var graphWidthSlider: NSSlider! {
         didSet {
-            graphWidthSlider.intValue = Int32(AppDelegate.userSettings.settings.cpu.usageLineGraphWidth)
+            graphWidthSlider.intValue = Int32(AppDelegate.userSettings.settings.memory.usageLineGraphWidth)
         }
     }
 
     @IBOutlet private var usageColorWell: NSColorWell! {
         didSet {
-            usageColorWell.color = AppDelegate.userSettings.settings.cpu.usageGraphColor.nsColor
+            usageColorWell.color = AppDelegate.userSettings.settings.memory.usageGraphColor.nsColor
         }
     }
 
     @IBOutlet private var usageGraphBorderCheckbox: NSButton! {
         didSet {
-            usageGraphBorderCheckbox.state = AppDelegate.userSettings.settings.cpu.showUsageGraphBorder ? NSButton.StateValue.on : NSButton.StateValue.off
+            usageGraphBorderCheckbox.state = AppDelegate.userSettings.settings.memory.showUsageGraphBorder ? NSButton.StateValue.on : NSButton.StateValue.off
         }
     }
 
     // MARK: -
     // MARK: Actions
 
-    @IBAction private func cpuTempCheckboxChanged(_ sender: NSButton) {
+    @IBAction private func memoryUsageCheckboxChanged(_ sender: NSButton) {
         // get the boolean to the current state of the checkbox
         let activated = sender.state == NSButton.StateValue.on
 
         // set the user settings
-        AppDelegate.userSettings.settings.cpu.showTemperature = activated
+        AppDelegate.userSettings.settings.memory.showUsage = activated
 
         // show or hide the menu bar item
         if activated {
-            AppDelegate.menuBarItemManager.cpuTemp.show()
+            AppDelegate.menuBarItemManager.memoryUsage.show()
         } else {
-            AppDelegate.menuBarItemManager.cpuTemp.hide()
+            AppDelegate.menuBarItemManager.memoryUsage.hide()
         }
 
-        DDLogInfo("Did set cpu temp checkbox value to (\(activated))")
-    }
-
-    @IBAction private func cpuUsageCheckboxChanged(_ sender: NSButton) {
-        // get the boolean to the current state of the checkbox
-        let activated = sender.state == NSButton.StateValue.on
-
-        // set the user settings
-        AppDelegate.userSettings.settings.cpu.showUsage = activated
-
-        // show or hide the menu bar item
-        if activated {
-            AppDelegate.menuBarItemManager.cpuUsage.show()
-        } else {
-            AppDelegate.menuBarItemManager.cpuUsage.hide()
-        }
-
-        DDLogInfo("Did set cpu usage checkbox value to (\(activated))")
+        DDLogInfo("Did set memory usage checkbox value to (\(activated))")
     }
 
     @IBAction private func graphSelectorChanged(_ sender: NSPopUpButton) {
@@ -116,18 +94,18 @@ class CpuViewController: MainViewViewController {
         switch graphSelector.indexOfSelectedItem {
         case 1:
             // the first item is the line graph option
-            AppDelegate.userSettings.settings.cpu.usageGraphKind = .line
+            AppDelegate.userSettings.settings.memory.usageGraphKind = .line
             graphWidthStackView.isHidden = false
         default:
             // default to the bar graph option
-            AppDelegate.userSettings.settings.cpu.usageGraphKind = .bar
+            AppDelegate.userSettings.settings.memory.usageGraphKind = .bar
             graphWidthStackView.isHidden = true
         }
 
         // update the menu bar items to make the change visible immediatley
         AppDelegate.menuBarItemManager.updateMenuBarItems()
 
-        DDLogInfo("Selected cpu usage graph kind \(AppDelegate.userSettings.settings.cpu.usageGraphKind)")
+        DDLogInfo("Selected memory usage graph kind \(AppDelegate.userSettings.settings.memory.usageGraphKind)")
     }
 
     @IBAction private func graphWidthSliderChanged(_ sender: NSSlider) {
@@ -135,23 +113,23 @@ class CpuViewController: MainViewViewController {
         graphWidthLabel.intValue = sender.intValue
 
         // update the user settings
-        AppDelegate.userSettings.settings.cpu.usageLineGraphWidth = Int(sender.intValue)
+        AppDelegate.userSettings.settings.memory.usageLineGraphWidth = Int(sender.intValue)
 
         // update the width of the menu bar item
-        AppDelegate.menuBarItemManager.cpuUsage.lineGraph.setGraphWidth(width: Int(sender.intValue))
+        AppDelegate.menuBarItemManager.memoryUsage.lineGraph.setGraphWidth(width: Int(sender.intValue))
         // rerender the menu bar item
-        AppDelegate.menuBarItemManager.cpuUsage.update()
+        AppDelegate.menuBarItemManager.memoryUsage.update()
     }
 
     @IBAction private func usageColorWellChanged(_ sender: NSColorWell) {
         // set the color of the usage bar
-        AppDelegate.userSettings.settings.cpu.usageGraphColor = CodableColor(nsColor: sender.color)
+        AppDelegate.userSettings.settings.memory.usageGraphColor = CodableColor(nsColor: sender.color)
 
         // update the menu bar items to make the change visible immediately
         AppDelegate.menuBarItemManager.updateMenuBarItems()
 
         // clear the cache of the bar graph
-        AppDelegate.menuBarItemManager.cpuUsage.barGraph.clearImageCache()
+        AppDelegate.menuBarItemManager.memoryUsage.barGraph.clearImageCache()
 
         DDLogInfo("Changed usage bar color to (\(sender.color.toHex()))")
     }
@@ -161,10 +139,10 @@ class CpuViewController: MainViewViewController {
         let activated = sender.state == NSButton.StateValue.on
 
         // set the user settings
-        AppDelegate.userSettings.settings.cpu.showUsageGraphBorder = activated
+        AppDelegate.userSettings.settings.memory.showUsageGraphBorder = activated
 
         // clear the cache of the bar graph
-        AppDelegate.menuBarItemManager.cpuUsage.barGraph.clearImageCache()
+        AppDelegate.menuBarItemManager.memoryUsage.barGraph.clearImageCache()
 
         // update the menu bar items to make the change visible immediately
         AppDelegate.menuBarItemManager.updateMenuBarItems()
