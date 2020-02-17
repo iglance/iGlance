@@ -32,6 +32,7 @@ class SystemInfo {
     let disk: DiskInfo
     let battery: BatteryInfo
     let memory: MemoryInfo
+    let fan: FanInfo
 
     init() {
         self.skSystem = SKSystem()
@@ -41,6 +42,7 @@ class SystemInfo {
         self.disk = DiskInfo()
         self.battery = BatteryInfo()
         self.memory = MemoryInfo()
+        self.fan = FanInfo()
 
         // open the connection to the SMC
         do {

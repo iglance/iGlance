@@ -66,6 +66,7 @@
 		B4DE728023C2644A0001CF46 /* BatteryInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = B4DE727F23C2644A0001CF46 /* BatteryInfo.swift */; };
 		B4EFB55B23CA197500CF2FF2 /* CustomLogFormatter.swift in Sources */ = {isa = PBXBuildFile; fileRef = B4EFB55A23CA197500CF2FF2 /* CustomLogFormatter.swift */; };
 		B4EFB55C23CA197500CF2FF2 /* CustomLogFormatter.swift in Sources */ = {isa = PBXBuildFile; fileRef = B4EFB55A23CA197500CF2FF2 /* CustomLogFormatter.swift */; };
+		B4F4AF3B23FAFBD60033B5CE /* FanInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = B4F4AF3A23FAFBD60033B5CE /* FanInfo.swift */; };
 		B4FE0DB123EF1E0100AE94E6 /* LineGraph.swift in Sources */ = {isa = PBXBuildFile; fileRef = B4FE0DB023EF1E0100AE94E6 /* LineGraph.swift */; };
 		B4FE0DB323EF210500AE94E6 /* Graph.swift in Sources */ = {isa = PBXBuildFile; fileRef = B4FE0DB223EF210500AE94E6 /* Graph.swift */; };
 		FE556499492832BE97606DAD /* Pods_iGlance.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 84955815F03407826031ABBF /* Pods_iGlance.framework */; };
@@ -173,6 +174,7 @@
 		B4DE727F23C2644A0001CF46 /* BatteryInfo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BatteryInfo.swift; sourceTree = "<group>"; };
 		B4EFB55A23CA197500CF2FF2 /* CustomLogFormatter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomLogFormatter.swift; sourceTree = "<group>"; };
 		B4F4AA1023E072F200F57F70 /* SystemKit.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = SystemKit.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		B4F4AF3A23FAFBD60033B5CE /* FanInfo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FanInfo.swift; sourceTree = "<group>"; };
 		B4FE0DB023EF1E0100AE94E6 /* LineGraph.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LineGraph.swift; sourceTree = "<group>"; };
 		B4FE0DB223EF210500AE94E6 /* Graph.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Graph.swift; sourceTree = "<group>"; };
 		C613649DA4B6320FA4A7C8A2 /* Pods-iGlance.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-iGlance.debug.xcconfig"; path = "Target Support Files/Pods-iGlance/Pods-iGlance.debug.xcconfig"; sourceTree = "<group>"; };
@@ -289,6 +291,7 @@
 				B4D82FDB23C1031800D502FF /* DiskInfo.swift */,
 				B4DE727F23C2644A0001CF46 /* BatteryInfo.swift */,
 				B415FF2B23F45F6000ED6567 /* MemoryInfo.swift */,
+				B4F4AF3A23FAFBD60033B5CE /* FanInfo.swift */,
 			);
 			path = SystemInfo;
 			sourceTree = "<group>";
@@ -690,6 +693,7 @@
 				B415FF2C23F45F6000ED6567 /* MemoryInfo.swift in Sources */,
 				B4DE725F23C257610001CF46 /* Extensions.swift in Sources */,
 				B42BCE6323AC01CC00A13601 /* SystemInfo.swift in Sources */,
+				B4F4AF3B23FAFBD60033B5CE /* FanInfo.swift in Sources */,
 				B415FF2A23F45F0800ED6567 /* MemoryUsageMenuBarItem.swift in Sources */,
 				B47D3C8D23ABEDF100DE911F /* CustomDashboardBox.swift in Sources */,
 				B4EFB55B23CA197500CF2FF2 /* CustomLogFormatter.swift in Sources */,
