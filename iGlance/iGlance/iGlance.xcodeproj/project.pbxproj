@@ -324,7 +324,6 @@
 		B452554623E358E7000F79BF /* MenuBarItems */ = {
 			isa = PBXGroup;
 			children = (
-				B439332523E99DF900CDEB1D /* Graphs */,
 				B452554823E358E7000F79BF /* Cpu */,
 				B415FF2823F45EE600ED6567 /* Memory */,
 				B452554723E358E7000F79BF /* MenuBarItem.swift */,
@@ -366,6 +365,7 @@
 		B46789B423A69ECA00CE572D /* iGlance */ = {
 			isa = PBXGroup;
 			children = (
+				B439332523E99DF900CDEB1D /* Graphs */,
 				B452554623E358E7000F79BF /* MenuBarItems */,
 				B41F6D6623C8E4620046D637 /* Modals */,
 				B42BCE6123AC01A200A13601 /* SystemInfo */,
