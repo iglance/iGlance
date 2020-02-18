@@ -1200,18 +1200,18 @@
                                 </customSpacing>
                             </stackView>
                             <stackView distribution="fill" orientation="horizontal" alignment="centerY" horizontalStackHuggingPriority="249.99998474121094" verticalStackHuggingPriority="249.99998474121094" detachesHiddenViews="YES" translatesAutoresizingMaskIntoConstraints="NO" id="ET5-It-2lY">
-                                <rect key="frame" x="50" y="405" width="105" height="20"/>
+                                <rect key="frame" x="50" y="405" width="103" height="20"/>
                                 <subviews>
                                     <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="hvq-Z6-w6F">
-                                        <rect key="frame" x="-2" y="2" width="81" height="16"/>
-                                        <textFieldCell key="cell" lineBreakMode="clipping" title="Graph Color:" id="mea-mx-uKm">
+                                        <rect key="frame" x="-2" y="2" width="79" height="16"/>
+                                        <textFieldCell key="cell" lineBreakMode="clipping" title="Graph color:" id="mea-mx-uKm">
                                             <font key="font" metaFont="label" size="13"/>
                                             <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
                                             <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
                                         </textFieldCell>
                                     </textField>
                                     <colorWell translatesAutoresizingMaskIntoConstraints="NO" id="ePe-xs-bb2">
-                                        <rect key="frame" x="85" y="0.0" width="20" height="20"/>
+                                        <rect key="frame" x="83" y="0.0" width="20" height="20"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="20" id="4vQ-7i-Vem"/>
                                             <constraint firstAttribute="width" constant="20" id="NML-Uz-H2e"/>
@@ -1406,18 +1406,18 @@
                                 </customSpacing>
                             </stackView>
                             <stackView distribution="fill" orientation="horizontal" alignment="centerY" horizontalStackHuggingPriority="249.99998474121094" verticalStackHuggingPriority="249.99998474121094" detachesHiddenViews="YES" translatesAutoresizingMaskIntoConstraints="NO" id="U7H-s6-Pyy">
-                                <rect key="frame" x="50" y="429" width="105" height="20"/>
+                                <rect key="frame" x="50" y="429" width="103" height="20"/>
                                 <subviews>
                                     <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="bua-3u-tY3">
-                                        <rect key="frame" x="-2" y="2" width="81" height="16"/>
-                                        <textFieldCell key="cell" lineBreakMode="clipping" title="Graph Color:" id="K17-XZ-WFK">
+                                        <rect key="frame" x="-2" y="2" width="79" height="16"/>
+                                        <textFieldCell key="cell" lineBreakMode="clipping" title="Graph color:" id="K17-XZ-WFK">
                                             <font key="font" metaFont="label" size="13"/>
                                             <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
                                             <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
                                         </textFieldCell>
                                     </textField>
                                     <colorWell translatesAutoresizingMaskIntoConstraints="NO" id="Kkt-at-5Bc">
-                                        <rect key="frame" x="85" y="0.0" width="20" height="20"/>
+                                        <rect key="frame" x="83" y="0.0" width="20" height="20"/>
                                         <constraints>
                                             <constraint firstAttribute="width" constant="20" id="EmK-uO-ZfU"/>
                                             <constraint firstAttribute="height" constant="20" id="Pk8-Et-hSC"/>
@@ -1580,27 +1580,44 @@
         <!--Fan View Controller-->
         <scene sceneID="pAg-29-Upi">
             <objects>
-                <viewController title="Fan View Controller" storyboardIdentifier="FanStoryboardID" id="76f-do-Hko" customClass="MainViewViewController" customModule="iGlance" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController title="Fan View Controller" storyboardIdentifier="FanStoryboardID" id="76f-do-Hko" customClass="FanViewController" customModule="iGlance" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" id="X4Z-EU-k4i">
                         <rect key="frame" x="0.0" y="0.0" width="601" height="500"/>
                         <autoresizingMask key="autoresizingMask"/>
                         <subviews>
-                            <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="k8t-6m-qhK">
-                                <rect key="frame" x="18" y="464" width="26" height="16"/>
-                                <textFieldCell key="cell" lineBreakMode="clipping" title="Fan" id="Ip8-2b-Kbc">
-                                    <font key="font" usesAppearanceFont="YES"/>
-                                    <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
-                                    <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
-                                </textFieldCell>
-                            </textField>
+                            <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="wIQ-57-FFM">
+                                <rect key="frame" x="18" y="464" width="119" height="18"/>
+                                <buttonCell key="cell" type="check" title="Show fan speed" bezelStyle="regularSquare" imagePosition="left" state="on" inset="2" id="u7q-ej-Rj9">
+                                    <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
+                                    <font key="font" metaFont="label" size="13"/>
+                                </buttonCell>
+                                <connections>
+                                    <action selector="fanSpeedCheckboxChanged:" target="76f-do-Hko" id="6df-fu-y73"/>
+                                </connections>
+                            </button>
+                            <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="AoW-nk-eCM">
+                                <rect key="frame" x="48" y="440" width="145" height="18"/>
+                                <buttonCell key="cell" type="check" title="Show fan speed unit" bezelStyle="regularSquare" imagePosition="left" state="on" inset="2" id="u30-OG-Akj">
+                                    <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
+                                    <font key="font" metaFont="label" size="13"/>
+                                </buttonCell>
+                                <connections>
+                                    <action selector="fanSpeedUnitCheckboxChanged:" target="76f-do-Hko" id="pSC-0E-S8t"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <constraints>
-                            <constraint firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="k8t-6m-qhK" secondAttribute="trailing" constant="530" id="9Rw-CP-UBQ"/>
-                            <constraint firstItem="k8t-6m-qhK" firstAttribute="top" secondItem="X4Z-EU-k4i" secondAttribute="top" constant="20" symbolic="YES" id="jMr-RV-Yfd"/>
-                            <constraint firstItem="k8t-6m-qhK" firstAttribute="leading" secondItem="X4Z-EU-k4i" secondAttribute="leading" constant="20" symbolic="YES" id="lWK-ri-tvu"/>
+                            <constraint firstItem="wIQ-57-FFM" firstAttribute="leading" secondItem="X4Z-EU-k4i" secondAttribute="leading" constant="20" id="3ys-Bt-9Te"/>
+                            <constraint firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="AoW-nk-eCM" secondAttribute="trailing" constant="20" symbolic="YES" id="gKe-uG-oR7"/>
+                            <constraint firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="wIQ-57-FFM" secondAttribute="trailing" constant="20" symbolic="YES" id="iu2-tL-DLW"/>
+                            <constraint firstItem="wIQ-57-FFM" firstAttribute="top" secondItem="X4Z-EU-k4i" secondAttribute="top" constant="20" id="oKw-d0-0aK"/>
+                            <constraint firstItem="AoW-nk-eCM" firstAttribute="top" secondItem="wIQ-57-FFM" secondAttribute="bottom" constant="10" id="vEZ-9a-GtX"/>
+                            <constraint firstItem="AoW-nk-eCM" firstAttribute="leading" secondItem="X4Z-EU-k4i" secondAttribute="leading" constant="50" id="vLT-YV-Ji6"/>
                         </constraints>
                     </view>
                     <connections>
+                        <outlet property="fanSpeedCheckbox" destination="wIQ-57-FFM" id="jWk-23-sdK"/>
+                        <outlet property="fanSpeedUnitCheckbox" destination="AoW-nk-eCM" id="LBy-Nh-eMf"/>
                         <segue destination="jU5-ml-SBe" kind="custom" identifier="FanToBattery" customClass="SegueBetweenEmbedded" customModule="iGlance" customModuleProvider="target" id="dch-Y9-xBD"/>
                     </connections>
                 </viewController>

@@ -17,6 +17,9 @@ class MenuBarItemManager {
     // The memory usage menu bar item
     let memoryUsage = MemoryUsageMenuBarItem()
 
+    // The fan menu bar item
+    let fan = FanMenuBarItem()
+
     /// An array containing all the visible AND not visible menu bar items
     var menuBarItems: [MenuBarItem] = []
 
@@ -24,6 +27,7 @@ class MenuBarItemManager {
         menuBarItems.append(cpuTemp)
         menuBarItems.append(cpuUsage)
         menuBarItems.append(memoryUsage)
+        menuBarItems.append(fan)
     }
 
     /**

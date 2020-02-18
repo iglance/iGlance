@@ -27,6 +27,11 @@ struct MemorySettings: Codable {
     var showUsageGraphBorder: Bool = true
 }
 
+struct FanSettings: Codable {
+    var showFanSpeed: Bool = true
+    var showFanSpeedUnit: Bool = true
+}
+
 struct IGlanceUserSettings: Codable {
     // global settings
     var autostartOnBoot: Bool = false
@@ -35,6 +40,7 @@ struct IGlanceUserSettings: Codable {
 
     var cpu = CpuSettings()
     var memory = MemorySettings()
+    var fan = FanSettings()
 }
 
 class UserSettings {
