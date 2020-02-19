@@ -88,14 +88,4 @@ class SystemInfo {
 
         return uptimeDuration
     }
-
-    /**
-     * Returns the size of the RAM in GB.
-     */
-    func getRamSize() -> Int {
-        let ramSize = Int(ProcessInfo.processInfo.physicalMemory / 1_073_741_824)
-        DDLogInfo("Got the ram size: \(ramSize)")
-
-        return ramSize
-    }
 }

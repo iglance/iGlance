@@ -7,6 +7,7 @@
 //
 
 import Cocoa
+import CocoaLumberjack
 
 public enum GraphKind: Codable {
     case line
@@ -50,15 +51,20 @@ protocol GraphProtocol {
      *
      * - Parameter currentValue: The current value (most recent value) in the graph.
      * - Parameter graphColor: The color of the graph
+     * - Parameter gradientColor: This color is used to draw the gradient. If this value is nil, no gradient is drawn.
      */
-    func getImage(currentValue: Double, graphColor: NSColor) -> NSImage
+    func getImage(currentValue: Double, graphColor: NSColor, drawBorder: Bool, gradientColor: NSColor?) -> NSImage
 
     func drawBorder(image: inout NSImage)
 }
 
 class GraphClass {
+    // MARK: -
+    // MARK: Instance Variables
     var imageSize: NSSize
 
+    // MARK: -
+    // MARK: Instance Constants
     let borderWidth = CGFloat(0.5)
 
     init() {
@@ -69,10 +75,6 @@ class GraphClass {
      * Draws a border with rounded cornsers around the image. If the user doesn't want the border to be drawn the function returns immediately.
      */
     func drawBorder(image: inout NSImage) {
-        if !AppDelegate.userSettings.settings.cpu.showUsageGraphBorder {
-            return
-        }
-
         // lock the focus on the image in order to draw on it
         image.lockFocus()
 
@@ -97,6 +99,40 @@ class GraphClass {
 
         // unlock the focus of the image
         image.unlockFocus()
+    }
+
+    /**
+     * Returns a gradient bar as an image. We will render this gradient bar only partly according to the current graph value.
+     */
+    internal func getGradientBar(barWidth: Double, maxBarHeight: Double, barColor: NSColor, gradientColor: NSColor) -> NSImage {
+        // create an image for the gradient bar
+        let gradientImage = NSImage(size: NSSize(width: barWidth, height: maxBarHeight))
+
+        // create the whole rect for the gradient. We will only render this rect partly
+        let gradientRect = NSRect(x: 0, y: 0, width: CGFloat(barWidth), height: CGFloat(maxBarHeight))
+
+        // lock the gradient image
+        gradientImage.lockFocus()
+
+        // create the gradient
+        guard let gradient = NSGradient(starting: barColor, ending: gradientColor) else {
+            DDLogError("Failed to create the gradient")
+
+            // return a one colored bar
+            barColor.setFill()
+            gradientRect.fill()
+            gradientImage.unlockFocus()
+
+            return gradientImage
+        }
+
+        // draw the gradient into the rectangle
+        gradient.draw(in: gradientRect, angle: 90)
+
+        // unlock the focus of the image
+        gradientImage.unlockFocus()
+
+        return gradientImage
     }
 }
 

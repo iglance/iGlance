@@ -79,7 +79,7 @@ class DashboardViewController: MainViewViewController {
         gpuNameLabel.stringValue = AppDelegate.systemInfo.gpu.getGpuName()
 
         // set the ram size
-        ramSizeLabel.stringValue = "\(AppDelegate.systemInfo.getRamSize()) GB"
+        ramSizeLabel.stringValue = "\(AppDelegate.systemInfo.memory.getTotalMemorySize()) GB"
 
         let diskSize = AppDelegate.systemInfo.disk.getInternalDiskSize()
         diskSizeLabel.stringValue = "\(diskSize.0) \(diskSize.1)"

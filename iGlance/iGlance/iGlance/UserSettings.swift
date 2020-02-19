@@ -10,13 +10,23 @@ import Foundation
 import CocoaLumberjack
 import SMCKit
 
+struct ColorGradientSettings: Codable {
+    var useGradient: Bool
+    var secondaryColor: CodableColor
+}
+
 struct CpuSettings: Codable {
     var showTemperature: Bool = true
     var showUsage: Bool = true
-    var usageGraphColor = CodableColor(nsColor: NSColor.blue)
+    var usageGraphColor = CodableColor(nsColor: NSColor.green)
     var usageGraphKind: GraphKind = .bar
     var usageLineGraphWidth: Int = 50
     var showUsageGraphBorder: Bool = true
+
+    var colorGradientSettings = ColorGradientSettings(
+        useGradient: false,
+        secondaryColor: CodableColor(nsColor: NSColor.red)
+    )
 }
 
 struct MemorySettings: Codable {
@@ -25,6 +35,11 @@ struct MemorySettings: Codable {
     var usageGraphKind: GraphKind = .bar
     var usageLineGraphWidth: Int = 50
     var showUsageGraphBorder: Bool = true
+
+    var colorGradientSettings = ColorGradientSettings(
+        useGradient: false,
+        secondaryColor: CodableColor(nsColor: NSColor.red)
+    )
 }
 
 struct FanSettings: Codable {

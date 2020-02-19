@@ -13,10 +13,18 @@ class LineGraph: Graph {
     // MARK: Private Instance Variables
     private var graphImage: NSImage?
 
+    /// the history containing all the graph values
     private var valueHistory: Queue = Queue<Double>()
+    /// the number of values in the graph
     private var valueCount: Int {
         Int(self.imageSize.width - self.borderWidth * 2)
     }
+    /// the maximum height in pixel of the graph bars
+    private var maxbarHeight: Double {
+        Double(self.imageSize.height - self.borderWidth * 2)
+    }
+    /// the maximum value of the graph (equals 100%)
+    private let maxValue: Double
 
     // MARK: -
     // MARK: Public Instance Functions
@@ -27,39 +35,64 @@ class LineGraph: Graph {
      * - Parameter imageWidth: width of the graph in pixel
      */
     init(maxValue: Double, imageWidth: Int) {
+        // set the maximum value for the graph
+        self.maxValue = maxValue
+
         super.init()
 
         self.imageSize.width = CGFloat(imageWidth)
     }
 
-    func getImage(currentValue: Double, graphColor: NSColor) -> NSImage {
+    func getImage(currentValue: Double, graphColor: NSColor, drawBorder: Bool, gradientColor: NSColor?) -> NSImage {
         // create a new image
         var image = NSImage(size: self.imageSize)
 
         // first draw the graph
-        self.drawLineGraph(image: &image, currentValue: currentValue, graphColor: graphColor)
+        self.drawLineGraph(image: &image, currentValue: currentValue, graphColor: graphColor, gradientColor: gradientColor)
 
         // draw the border over the graph
-        self.drawBorder(image: &image)
+        if drawBorder {
+            self.drawBorder(image: &image)
+        }
 
         return image
     }
 
-    func drawLineGraph(image: inout NSImage, currentValue: Double, graphColor: NSColor) {
+    func drawLineGraph(image: inout NSImage, currentValue: Double, graphColor: NSColor, gradientColor: NSColor?) {
         // add the current value to the history
         self.addValueToHistory(currentValue: currentValue)
+
+        // set the width of the bar to 1
+        let barWidth = 1.0
 
         // lock the image to draw the graph
         image.lockFocus()
 
-        // set the fill color
-        graphColor.set()
+        var gradientImage: NSImage?
+        if gradientColor != nil {
+            gradientImage = getGradientBar(barWidth: barWidth, maxBarHeight: self.maxbarHeight, barColor: graphColor, gradientColor: gradientColor!)
+        }
 
         // iterate the values and draw a bar for each value on the correct position
         var nextValuePosition = self.imageSize.width - self.borderWidth - 1
         for value in valueHistory.makeIterator().reversed() {
-            let valueBar = NSRect(x: nextValuePosition, y: self.borderWidth, width: 1, height: CGFloat(value))
-            valueBar.fill()
+            // calculate the height of the bar
+            let barHeight = Double((maxValue / self.maxValue) * value)
+
+            // draw the gradient if necessary
+            if gradientImage != nil {
+                gradientImage!.draw(
+                    at: NSPoint(x: nextValuePosition, y: self.borderWidth),
+                    from: NSRect(x: 0, y: 0, width: barWidth, height: barHeight),
+                    operation: NSCompositingOperation.sourceOver,
+                    fraction: 1.0
+                )
+            } else {
+                // create the rect and draw it
+                let valueBar = NSRect(x: nextValuePosition, y: self.borderWidth, width: CGFloat(barWidth), height: CGFloat(barHeight))
+                graphColor.setFill()
+                valueBar.fill()
+            }
 
             // set the position for the next value
             nextValuePosition -= 1

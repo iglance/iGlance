@@ -821,7 +821,7 @@
                                                 <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="T5D-ND-OZQ" customClass="ThemedLabel" customModule="iGlance" customModuleProvider="target">
                                                     <rect key="frame" x="34" y="31" width="44" height="16"/>
                                                     <textFieldCell key="cell" lineBreakMode="clipping" title="7 days" id="Aim-jE-EWr">
-                                                        <font key="font" metaFont="label" size="13"/>
+                                                        <font key="font" metaFont="system"/>
                                                         <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
                                                         <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
                                                     </textFieldCell>
@@ -829,7 +829,7 @@
                                                 <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="CPH-CJ-61G" customClass="ThemedLabel" customModule="iGlance" customModuleProvider="target">
                                                     <rect key="frame" x="28" y="10" width="56" height="16"/>
                                                     <textFieldCell key="cell" lineBreakMode="clipping" title="10 hours" id="7QY-PA-2aX">
-                                                        <font key="font" metaFont="label" size="13"/>
+                                                        <font key="font" metaFont="system"/>
                                                         <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
                                                         <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
                                                     </textFieldCell>
@@ -871,7 +871,7 @@
                                                         <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="49E-Qe-70t" customClass="ThemedLabel" customModule="iGlance" customModuleProvider="target">
                                                             <rect key="frame" x="-2" y="0.0" width="35" height="16"/>
                                                             <textFieldCell key="cell" lineBreakMode="clipping" title="CPU:" id="3PB-IW-8YL">
-                                                                <font key="font" metaFont="label" size="13"/>
+                                                                <font key="font" metaFont="system"/>
                                                                 <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
                                                                 <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
                                                             </textFieldCell>
@@ -879,7 +879,7 @@
                                                         <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="IZD-vv-5ch" customClass="ThemedLabel" customModule="iGlance" customModuleProvider="target">
                                                             <rect key="frame" x="34" y="0.0" width="178" height="16"/>
                                                             <textFieldCell key="cell" lineBreakMode="clipping" title="2.6 GHz Intel Core i7-8850H" id="bI5-gh-e0p">
-                                                                <font key="font" metaFont="label" size="13"/>
+                                                                <font key="font" metaFont="system"/>
                                                                 <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
                                                                 <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
                                                             </textFieldCell>
@@ -900,7 +900,7 @@
                                                         <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="5yQ-FN-huN" customClass="ThemedLabel" customModule="iGlance" customModuleProvider="target">
                                                             <rect key="frame" x="-2" y="0.0" width="36" height="16"/>
                                                             <textFieldCell key="cell" lineBreakMode="clipping" title="GPU:" id="UvK-xJ-w0d">
-                                                                <font key="font" metaFont="label" size="13"/>
+                                                                <font key="font" metaFont="system"/>
                                                                 <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
                                                                 <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
                                                             </textFieldCell>
@@ -908,7 +908,7 @@
                                                         <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="5Nh-lk-nnD" customClass="ThemedLabel" customModule="iGlance" customModuleProvider="target">
                                                             <rect key="frame" x="35" y="0.0" width="111" height="16"/>
                                                             <textFieldCell key="cell" lineBreakMode="clipping" title="Radeon Pro 560X" id="iwn-T0-zfE">
-                                                                <font key="font" metaFont="label" size="13"/>
+                                                                <font key="font" metaFont="system"/>
                                                                 <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
                                                                 <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
                                                             </textFieldCell>
@@ -929,7 +929,7 @@
                                                         <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="Ng1-Hc-ahB" customClass="ThemedLabel" customModule="iGlance" customModuleProvider="target">
                                                             <rect key="frame" x="-2" y="0.0" width="37" height="16"/>
                                                             <textFieldCell key="cell" lineBreakMode="clipping" title="RAM:" id="PIw-Wy-59S">
-                                                                <font key="font" metaFont="label" size="13"/>
+                                                                <font key="font" metaFont="system"/>
                                                                 <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
                                                                 <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
                                                             </textFieldCell>
@@ -937,7 +937,7 @@
                                                         <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="AH1-Fb-t7F" customClass="ThemedLabel" customModule="iGlance" customModuleProvider="target">
                                                             <rect key="frame" x="36" y="0.0" width="37" height="16"/>
                                                             <textFieldCell key="cell" lineBreakMode="clipping" title="16GB" id="M8u-FO-YWa">
-                                                                <font key="font" metaFont="label" size="13"/>
+                                                                <font key="font" metaFont="system"/>
                                                                 <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
                                                                 <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
                                                             </textFieldCell>
@@ -958,7 +958,7 @@
                                                         <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="4iS-cj-X8a" customClass="ThemedLabel" customModule="iGlance" customModuleProvider="target">
                                                             <rect key="frame" x="-2" y="0.0" width="34" height="16"/>
                                                             <textFieldCell key="cell" lineBreakMode="clipping" title="Disk:" id="D5b-7j-vxa">
-                                                                <font key="font" metaFont="label" size="13"/>
+                                                                <font key="font" metaFont="system"/>
                                                                 <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
                                                                 <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
                                                             </textFieldCell>
@@ -966,7 +966,7 @@
                                                         <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="Y4S-gv-5tE" customClass="ThemedLabel" customModule="iGlance" customModuleProvider="target">
                                                             <rect key="frame" x="33" y="0.0" width="44" height="16"/>
                                                             <textFieldCell key="cell" lineBreakMode="clipping" title="512GB" id="kB4-WI-alT">
-                                                                <font key="font" metaFont="label" size="13"/>
+                                                                <font key="font" metaFont="system"/>
                                                                 <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
                                                                 <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
                                                             </textFieldCell>
@@ -1022,7 +1022,7 @@
                                                         <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="med-YE-eOS" customClass="ThemedLabel" customModule="iGlance" customModuleProvider="target">
                                                             <rect key="frame" x="-2" y="0.0" width="48" height="16"/>
                                                             <textFieldCell key="cell" lineBreakMode="clipping" title="Health:" id="kkj-gF-JhQ">
-                                                                <font key="font" metaFont="label" size="13"/>
+                                                                <font key="font" metaFont="system"/>
                                                                 <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
                                                                 <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
                                                             </textFieldCell>
@@ -1030,7 +1030,7 @@
                                                         <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="s1C-zu-LHT" customClass="ThemedLabel" customModule="iGlance" customModuleProvider="target">
                                                             <rect key="frame" x="62" y="0.0" width="32" height="16"/>
                                                             <textFieldCell key="cell" lineBreakMode="clipping" title="95%" id="oui-d9-OA6">
-                                                                <font key="font" metaFont="label" size="13"/>
+                                                                <font key="font" metaFont="system"/>
                                                                 <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
                                                                 <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
                                                             </textFieldCell>
@@ -1051,7 +1051,7 @@
                                                         <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="Dre-NS-qgA" customClass="ThemedLabel" customModule="iGlance" customModuleProvider="target">
                                                             <rect key="frame" x="-2" y="0.0" width="49" height="16"/>
                                                             <textFieldCell key="cell" lineBreakMode="clipping" title="Cycles:" id="wv4-5W-mh9">
-                                                                <font key="font" metaFont="label" size="13"/>
+                                                                <font key="font" metaFont="system"/>
                                                                 <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
                                                                 <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
                                                             </textFieldCell>
@@ -1059,7 +1059,7 @@
                                                         <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="jrq-gy-Gg2" customClass="ThemedLabel" customModule="iGlance" customModuleProvider="target">
                                                             <rect key="frame" x="69" y="0.0" width="26" height="16"/>
                                                             <textFieldCell key="cell" lineBreakMode="clipping" title="127" id="xrb-JM-NgI">
-                                                                <font key="font" metaFont="label" size="13"/>
+                                                                <font key="font" metaFont="system"/>
                                                                 <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
                                                                 <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
                                                             </textFieldCell>
@@ -1141,7 +1141,7 @@
                                 <rect key="frame" x="18" y="464" width="164" height="18"/>
                                 <buttonCell key="cell" type="check" title="Show CPU temperature" bezelStyle="regularSquare" imagePosition="left" state="on" inset="2" id="Cds-u8-W37">
                                     <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
-                                    <font key="font" metaFont="label" size="13"/>
+                                    <font key="font" metaFont="system"/>
                                 </buttonCell>
                                 <connections>
                                     <action selector="cpuTempCheckboxChanged:" target="uGw-Yr-sBC" id="P09-C8-f3l"/>
@@ -1154,7 +1154,7 @@
                                         <rect key="frame" x="-2" y="2" width="126" height="18"/>
                                         <buttonCell key="cell" type="check" title="Show CPU usage" bezelStyle="regularSquare" imagePosition="left" state="on" inset="2" id="cEi-JW-jiT">
                                             <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
-                                            <font key="font" metaFont="label" size="13"/>
+                                            <font key="font" metaFont="system"/>
                                         </buttonCell>
                                         <connections>
                                             <action selector="cpuUsageCheckboxChanged:" target="uGw-Yr-sBC" id="S39-Sy-390"/>
@@ -1163,7 +1163,7 @@
                                     <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="JUy-ej-Ujc">
                                         <rect key="frame" x="125" y="3" width="18" height="16"/>
                                         <textFieldCell key="cell" lineBreakMode="clipping" title="as" id="lxg-M5-WiN">
-                                            <font key="font" metaFont="label" size="13"/>
+                                            <font key="font" metaFont="system"/>
                                             <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
                                             <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
                                         </textFieldCell>
@@ -1175,7 +1175,7 @@
                                         </constraints>
                                         <popUpButtonCell key="cell" type="push" title="Bar Graph" bezelStyle="rounded" alignment="left" lineBreakMode="truncatingTail" state="on" borderStyle="borderAndBezel" imageScaling="proportionallyDown" inset="2" selectedItem="UFs-8F-M8O" id="RGl-Bu-WvW">
                                             <behavior key="behavior" lightByBackground="YES" lightByGray="YES"/>
-                                            <font key="font" metaFont="label" size="13"/>
+                                            <font key="font" metaFont="system"/>
                                             <menu key="menu" id="bSl-xy-YHK">
                                                 <items>
                                                     <menuItem title="Bar Graph" state="on" id="UFs-8F-M8O"/>
@@ -1205,7 +1205,7 @@
                                     <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="hvq-Z6-w6F">
                                         <rect key="frame" x="-2" y="2" width="79" height="16"/>
                                         <textFieldCell key="cell" lineBreakMode="clipping" title="Graph color:" id="mea-mx-uKm">
-                                            <font key="font" metaFont="label" size="13"/>
+                                            <font key="font" metaFont="system"/>
                                             <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
                                             <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
                                         </textFieldCell>
@@ -1216,7 +1216,7 @@
                                             <constraint firstAttribute="height" constant="20" id="4vQ-7i-Vem"/>
                                             <constraint firstAttribute="width" constant="20" id="NML-Uz-H2e"/>
                                         </constraints>
-                                        <color key="color" red="0.0" green="0.0" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                        <color key="color" red="0.0" green="1" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                         <connections>
                                             <action selector="usageColorWellChanged:" target="uGw-Yr-sBC" id="EiT-sO-HnY"/>
                                         </connections>
@@ -1237,7 +1237,7 @@
                                     <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="58k-mq-i3p">
                                         <rect key="frame" x="-2" y="0.0" width="82" height="16"/>
                                         <textFieldCell key="cell" lineBreakMode="clipping" title="Graph width:" id="On5-fx-QWp">
-                                            <font key="font" metaFont="label" size="13"/>
+                                            <font key="font" metaFont="system"/>
                                             <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
                                             <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
                                         </textFieldCell>
@@ -1261,7 +1261,7 @@
                                                     <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="25" id="U52-bL-pu2"/>
                                                 </constraints>
                                                 <textFieldCell key="cell" lineBreakMode="clipping" alignment="right" title="50" id="RTI-di-BEV">
-                                                    <font key="font" metaFont="label" size="13"/>
+                                                    <font key="font" metaFont="system"/>
                                                     <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
                                                     <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
                                                 </textFieldCell>
@@ -1269,7 +1269,7 @@
                                             <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="8H8-ak-SAw">
                                                 <rect key="frame" x="23" y="0.0" width="19" height="16"/>
                                                 <textFieldCell key="cell" lineBreakMode="clipping" title="px" id="Az2-2P-cKr">
-                                                    <font key="font" metaFont="label" size="13"/>
+                                                    <font key="font" metaFont="system"/>
                                                     <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
                                                     <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
                                                 </textFieldCell>
@@ -1307,19 +1307,76 @@
                                 <rect key="frame" x="48" y="379" width="139" height="18"/>
                                 <buttonCell key="cell" type="check" title="Show graph border" bezelStyle="regularSquare" imagePosition="left" state="on" inset="2" id="bIW-9G-JM9">
                                     <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
-                                    <font key="font" metaFont="label" size="13"/>
+                                    <font key="font" metaFont="system"/>
                                 </buttonCell>
                                 <connections>
                                     <action selector="usageGraphBorderCheckboxChanged:" target="uGw-Yr-sBC" id="uv0-rf-nRm"/>
                                 </connections>
                             </button>
+                            <stackView distribution="fill" orientation="horizontal" alignment="centerY" spacing="15" horizontalStackHuggingPriority="249.99998474121094" verticalStackHuggingPriority="249.99998474121094" detachesHiddenViews="YES" translatesAutoresizingMaskIntoConstraints="NO" id="3OR-d7-zts">
+                                <rect key="frame" x="50" y="351" width="257" height="20"/>
+                                <subviews>
+                                    <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="u2P-Ah-WZf">
+                                        <rect key="frame" x="-2" y="1" width="134" height="18"/>
+                                        <buttonCell key="cell" type="check" title="Use color gradient" bezelStyle="regularSquare" imagePosition="left" inset="2" id="FPC-vc-aOB">
+                                            <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
+                                            <font key="font" metaFont="system"/>
+                                        </buttonCell>
+                                        <connections>
+                                            <action selector="colorGradientCheckboxChanged:" target="uGw-Yr-sBC" id="oF4-Ed-SGW"/>
+                                        </connections>
+                                    </button>
+                                    <stackView distribution="fill" orientation="horizontal" alignment="centerY" horizontalStackHuggingPriority="249.99998474121094" verticalStackHuggingPriority="249.99998474121094" detachesHiddenViews="YES" translatesAutoresizingMaskIntoConstraints="NO" id="L78-zY-qzI">
+                                        <rect key="frame" x="145" y="0.0" width="112" height="20"/>
+                                        <subviews>
+                                            <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="v7m-Jv-fcq">
+                                                <rect key="frame" x="-2" y="2" width="88" height="16"/>
+                                                <textFieldCell key="cell" lineBreakMode="clipping" title="Second color:" id="WJj-cr-cxL">
+                                                    <font key="font" metaFont="system"/>
+                                                    <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
+                                                    <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
+                                                </textFieldCell>
+                                            </textField>
+                                            <colorWell translatesAutoresizingMaskIntoConstraints="NO" id="Qrv-Pe-cjW">
+                                                <rect key="frame" x="92" y="0.0" width="20" height="20"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="height" constant="20" id="jFT-fD-7eJ"/>
+                                                    <constraint firstAttribute="width" constant="20" id="wCs-lF-NVc"/>
+                                                </constraints>
+                                                <color key="color" red="1" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                <connections>
+                                                    <action selector="secondaryColorWellChanged:" target="uGw-Yr-sBC" id="UvM-q5-oz8"/>
+                                                </connections>
+                                            </colorWell>
+                                        </subviews>
+                                        <visibilityPriorities>
+                                            <integer value="1000"/>
+                                            <integer value="1000"/>
+                                        </visibilityPriorities>
+                                        <customSpacing>
+                                            <real value="3.4028234663852886e+38"/>
+                                            <real value="3.4028234663852886e+38"/>
+                                        </customSpacing>
+                                    </stackView>
+                                </subviews>
+                                <visibilityPriorities>
+                                    <integer value="1000"/>
+                                    <integer value="1000"/>
+                                </visibilityPriorities>
+                                <customSpacing>
+                                    <real value="3.4028234663852886e+38"/>
+                                    <real value="3.4028234663852886e+38"/>
+                                </customSpacing>
+                            </stackView>
                         </subviews>
                         <constraints>
                             <constraint firstItem="uK4-wT-QAk" firstAttribute="top" secondItem="Xe1-Jt-TNX" secondAttribute="bottom" constant="10" id="8rY-i8-XqG"/>
                             <constraint firstItem="DUt-WU-a5o" firstAttribute="top" secondItem="q0i-aM-agG" secondAttribute="top" constant="46" id="9YC-Bf-KUj"/>
                             <constraint firstItem="Xe1-Jt-TNX" firstAttribute="leading" secondItem="q0i-aM-agG" secondAttribute="leading" constant="20" id="DRs-Qt-17T"/>
                             <constraint firstItem="Xe1-Jt-TNX" firstAttribute="top" secondItem="q0i-aM-agG" secondAttribute="top" constant="20" id="HAU-Hs-nVB"/>
+                            <constraint firstItem="3OR-d7-zts" firstAttribute="top" secondItem="7uy-pD-grI" secondAttribute="bottom" constant="10" id="MPB-uW-Lzv"/>
                             <constraint firstItem="DUt-WU-a5o" firstAttribute="leading" secondItem="uK4-wT-QAk" secondAttribute="trailing" constant="20" id="Mh9-HG-5iZ"/>
+                            <constraint firstItem="3OR-d7-zts" firstAttribute="leading" secondItem="q0i-aM-agG" secondAttribute="leading" constant="50" id="aHf-xA-42J"/>
                             <constraint firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="Xe1-Jt-TNX" secondAttribute="trailing" constant="20" symbolic="YES" id="bbW-le-fNL"/>
                             <constraint firstItem="ET5-It-2lY" firstAttribute="top" secondItem="uK4-wT-QAk" secondAttribute="bottom" constant="10" id="gib-kn-MgW"/>
                             <constraint firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="7uy-pD-grI" secondAttribute="trailing" constant="20" symbolic="YES" id="gsz-Yc-sCZ"/>
@@ -1330,12 +1387,14 @@
                         </constraints>
                     </view>
                     <connections>
+                        <outlet property="colorGradientCheckbox" destination="u2P-Ah-WZf" id="c1t-W1-odS"/>
                         <outlet property="cpuTempCheckbox" destination="Xe1-Jt-TNX" id="QS5-Xf-9a3"/>
                         <outlet property="cpuUsageCheckbox" destination="Kpt-VS-dwb" id="Iyq-Nt-2xy"/>
                         <outlet property="graphSelector" destination="83j-0L-MmJ" id="ojZ-br-xIt"/>
                         <outlet property="graphWidthLabel" destination="nzS-Ce-CRt" id="m7C-gc-mVK"/>
                         <outlet property="graphWidthSlider" destination="PUP-bn-KFm" id="V4E-zh-LVA"/>
                         <outlet property="graphWidthStackView" destination="DUt-WU-a5o" id="9Pa-aN-xu2"/>
+                        <outlet property="secondaryColorWell" destination="Qrv-Pe-cjW" id="VD9-Ol-c08"/>
                         <outlet property="usageColorWell" destination="ePe-xs-bb2" id="qgE-Yd-4iK"/>
                         <outlet property="usageGraphBorderCheckbox" destination="7uy-pD-grI" id="RX7-Af-6MA"/>
                         <segue destination="Pbp-jU-Jl9" kind="custom" identifier="CpuToMemory" customClass="SegueBetweenEmbedded" customModule="iGlance" customModuleProvider="target" id="yJ3-ZM-qyr"/>
@@ -1360,7 +1419,7 @@
                                         <rect key="frame" x="-2" y="2" width="149" height="18"/>
                                         <buttonCell key="cell" type="check" title="Show memory usage" bezelStyle="regularSquare" imagePosition="left" state="on" inset="2" id="u5o-av-Pu4">
                                             <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
-                                            <font key="font" metaFont="label" size="13"/>
+                                            <font key="font" metaFont="system"/>
                                         </buttonCell>
                                         <connections>
                                             <action selector="memoryUsageCheckboxChanged:" target="Pbp-jU-Jl9" id="K0G-Bg-7yO"/>
@@ -1369,7 +1428,7 @@
                                     <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="CpZ-zA-XGW">
                                         <rect key="frame" x="148" y="3" width="18" height="16"/>
                                         <textFieldCell key="cell" lineBreakMode="clipping" title="as" id="760-AV-VHc">
-                                            <font key="font" metaFont="label" size="13"/>
+                                            <font key="font" metaFont="system"/>
                                             <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
                                             <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
                                         </textFieldCell>
@@ -1381,7 +1440,7 @@
                                         </constraints>
                                         <popUpButtonCell key="cell" type="push" title="Bar Graph" bezelStyle="rounded" alignment="left" lineBreakMode="truncatingTail" state="on" borderStyle="borderAndBezel" imageScaling="proportionallyDown" inset="2" selectedItem="hWS-rc-wqS" id="gLu-Bw-1c1">
                                             <behavior key="behavior" lightByBackground="YES" lightByGray="YES"/>
-                                            <font key="font" metaFont="label" size="13"/>
+                                            <font key="font" metaFont="system"/>
                                             <menu key="menu" id="6gK-4w-MPH">
                                                 <items>
                                                     <menuItem title="Bar Graph" state="on" id="hWS-rc-wqS"/>
@@ -1411,7 +1470,7 @@
                                     <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="bua-3u-tY3">
                                         <rect key="frame" x="-2" y="2" width="79" height="16"/>
                                         <textFieldCell key="cell" lineBreakMode="clipping" title="Graph color:" id="K17-XZ-WFK">
-                                            <font key="font" metaFont="label" size="13"/>
+                                            <font key="font" metaFont="system"/>
                                             <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
                                             <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
                                         </textFieldCell>
@@ -1441,7 +1500,7 @@
                                 <rect key="frame" x="48" y="403" width="139" height="18"/>
                                 <buttonCell key="cell" type="check" title="Show graph border" bezelStyle="regularSquare" imagePosition="left" state="on" inset="2" id="kh9-1c-aYg">
                                     <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
-                                    <font key="font" metaFont="label" size="13"/>
+                                    <font key="font" metaFont="system"/>
                                 </buttonCell>
                                 <connections>
                                     <action selector="usageGraphBorderCheckboxChanged:" target="Pbp-jU-Jl9" id="6zZ-6N-oyV"/>
@@ -1453,7 +1512,7 @@
                                     <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="KXm-Qd-tuT">
                                         <rect key="frame" x="-2" y="0.0" width="82" height="16"/>
                                         <textFieldCell key="cell" lineBreakMode="clipping" title="Graph width:" id="EKg-sa-UJq">
-                                            <font key="font" metaFont="label" size="13"/>
+                                            <font key="font" metaFont="system"/>
                                             <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
                                             <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
                                         </textFieldCell>
@@ -1477,7 +1536,7 @@
                                                     <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="25" id="Cw8-HX-7M5"/>
                                                 </constraints>
                                                 <textFieldCell key="cell" lineBreakMode="clipping" alignment="right" title="50" id="5VX-1X-YAg">
-                                                    <font key="font" metaFont="label" size="13"/>
+                                                    <font key="font" metaFont="system"/>
                                                     <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
                                                     <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
                                                 </textFieldCell>
@@ -1485,7 +1544,7 @@
                                             <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="guy-w5-TZf">
                                                 <rect key="frame" x="23" y="0.0" width="19" height="16"/>
                                                 <textFieldCell key="cell" lineBreakMode="clipping" title="px" id="gCy-wf-KeS">
-                                                    <font key="font" metaFont="label" size="13"/>
+                                                    <font key="font" metaFont="system"/>
                                                     <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
                                                     <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
                                                 </textFieldCell>
@@ -1518,12 +1577,69 @@
                                     <real value="3.4028234663852886e+38"/>
                                 </customSpacing>
                             </stackView>
+                            <stackView distribution="fill" orientation="horizontal" alignment="centerY" spacing="15" horizontalStackHuggingPriority="249.99998474121094" verticalStackHuggingPriority="249.99998474121094" detachesHiddenViews="YES" translatesAutoresizingMaskIntoConstraints="NO" id="cqr-It-bkd">
+                                <rect key="frame" x="50" y="375" width="257" height="20"/>
+                                <subviews>
+                                    <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="Dk9-qc-Hp5">
+                                        <rect key="frame" x="-2" y="1" width="134" height="18"/>
+                                        <buttonCell key="cell" type="check" title="Use color gradient" bezelStyle="regularSquare" imagePosition="left" inset="2" id="YkO-ft-bYs">
+                                            <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
+                                            <font key="font" metaFont="system"/>
+                                        </buttonCell>
+                                        <connections>
+                                            <action selector="colorGradientCheckboxChanged:" target="Pbp-jU-Jl9" id="pqU-db-CI3"/>
+                                        </connections>
+                                    </button>
+                                    <stackView distribution="fill" orientation="horizontal" alignment="centerY" horizontalStackHuggingPriority="249.99998474121094" verticalStackHuggingPriority="249.99998474121094" detachesHiddenViews="YES" translatesAutoresizingMaskIntoConstraints="NO" id="h3d-zL-1qo">
+                                        <rect key="frame" x="145" y="0.0" width="112" height="20"/>
+                                        <subviews>
+                                            <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="jjO-aG-Mt5">
+                                                <rect key="frame" x="-2" y="2" width="88" height="16"/>
+                                                <textFieldCell key="cell" lineBreakMode="clipping" title="Second color:" id="dDJ-6a-iHU">
+                                                    <font key="font" metaFont="system"/>
+                                                    <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
+                                                    <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
+                                                </textFieldCell>
+                                            </textField>
+                                            <colorWell translatesAutoresizingMaskIntoConstraints="NO" id="Qye-Nb-xc8">
+                                                <rect key="frame" x="92" y="0.0" width="20" height="20"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="height" constant="20" id="iWw-jd-iwZ"/>
+                                                    <constraint firstAttribute="width" constant="20" id="s8p-PS-Y8X"/>
+                                                </constraints>
+                                                <color key="color" red="1" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                <connections>
+                                                    <action selector="secondaryColorWellChanged:" target="Pbp-jU-Jl9" id="mOn-Rd-f2e"/>
+                                                </connections>
+                                            </colorWell>
+                                        </subviews>
+                                        <visibilityPriorities>
+                                            <integer value="1000"/>
+                                            <integer value="1000"/>
+                                        </visibilityPriorities>
+                                        <customSpacing>
+                                            <real value="3.4028234663852886e+38"/>
+                                            <real value="3.4028234663852886e+38"/>
+                                        </customSpacing>
+                                    </stackView>
+                                </subviews>
+                                <visibilityPriorities>
+                                    <integer value="1000"/>
+                                    <integer value="1000"/>
+                                </visibilityPriorities>
+                                <customSpacing>
+                                    <real value="3.4028234663852886e+38"/>
+                                    <real value="3.4028234663852886e+38"/>
+                                </customSpacing>
+                            </stackView>
                         </subviews>
                         <constraints>
                             <constraint firstItem="Kr3-Kf-vay" firstAttribute="top" secondItem="XsI-br-NL6" secondAttribute="top" constant="22" id="0iK-Tm-AOc"/>
                             <constraint firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="cRC-Sj-FxQ" secondAttribute="trailing" constant="20" symbolic="YES" id="1mM-hO-wGX"/>
                             <constraint firstItem="Ziw-yN-qhs" firstAttribute="top" secondItem="XsI-br-NL6" secondAttribute="top" constant="20" id="2gK-vk-TC8"/>
+                            <constraint firstItem="cqr-It-bkd" firstAttribute="leading" secondItem="XsI-br-NL6" secondAttribute="leading" constant="50" id="57S-0a-WM3"/>
                             <constraint firstItem="Kr3-Kf-vay" firstAttribute="leading" secondItem="Ziw-yN-qhs" secondAttribute="trailing" constant="20" id="CoL-11-dJl"/>
+                            <constraint firstItem="cqr-It-bkd" firstAttribute="top" secondItem="cRC-Sj-FxQ" secondAttribute="bottom" constant="10" id="DTy-fK-NLi"/>
                             <constraint firstItem="U7H-s6-Pyy" firstAttribute="leading" secondItem="XsI-br-NL6" secondAttribute="leading" constant="50" id="Fo2-zN-X83"/>
                             <constraint firstItem="U7H-s6-Pyy" firstAttribute="top" secondItem="Ziw-yN-qhs" secondAttribute="bottom" constant="10" id="TTW-W9-rKx"/>
                             <constraint firstItem="cRC-Sj-FxQ" firstAttribute="top" secondItem="U7H-s6-Pyy" secondAttribute="bottom" constant="10" id="c3R-CF-9R3"/>
@@ -1532,11 +1648,13 @@
                         </constraints>
                     </view>
                     <connections>
+                        <outlet property="colorGradientCheckbox" destination="Dk9-qc-Hp5" id="fot-Mn-z2h"/>
                         <outlet property="graphSelector" destination="JVQ-4F-P5n" id="awG-uQ-NmB"/>
                         <outlet property="graphWidthLabel" destination="W5e-cC-NCg" id="tLw-eb-EKL"/>
                         <outlet property="graphWidthSlider" destination="zPC-7x-F63" id="JwA-R0-kdb"/>
                         <outlet property="graphWidthStackView" destination="Kr3-Kf-vay" id="ZMp-76-H9I"/>
                         <outlet property="memoryUsageCheckbox" destination="NpS-Zj-dKQ" id="Sza-9P-UL9"/>
+                        <outlet property="secondaryColorWell" destination="Qye-Nb-xc8" id="sch-m3-UUg"/>
                         <outlet property="usageColorWell" destination="Kkt-at-5Bc" id="CDf-Hf-OEG"/>
                         <outlet property="usageGraphBorderCheckbox" destination="cRC-Sj-FxQ" id="qdQ-N8-OMU"/>
                         <segue destination="16f-vh-LVT" kind="custom" identifier="MemoryToNetwork" customClass="SegueBetweenEmbedded" customModule="iGlance" customModuleProvider="target" id="4qV-iA-ERA"/>
@@ -1589,7 +1707,7 @@
                                 <rect key="frame" x="18" y="464" width="119" height="18"/>
                                 <buttonCell key="cell" type="check" title="Show fan speed" bezelStyle="regularSquare" imagePosition="left" state="on" inset="2" id="u7q-ej-Rj9">
                                     <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
-                                    <font key="font" metaFont="label" size="13"/>
+                                    <font key="font" metaFont="system"/>
                                 </buttonCell>
                                 <connections>
                                     <action selector="fanSpeedCheckboxChanged:" target="76f-do-Hko" id="6df-fu-y73"/>
@@ -1599,7 +1717,7 @@
                                 <rect key="frame" x="48" y="440" width="145" height="18"/>
                                 <buttonCell key="cell" type="check" title="Show fan speed unit" bezelStyle="regularSquare" imagePosition="left" state="on" inset="2" id="u30-OG-Akj">
                                     <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
-                                    <font key="font" metaFont="label" size="13"/>
+                                    <font key="font" metaFont="system"/>
                                 </buttonCell>
                                 <connections>
                                     <action selector="fanSpeedUnitCheckboxChanged:" target="76f-do-Hko" id="pSC-0E-S8t"/>
@@ -1952,7 +2070,7 @@
                                         </constraints>
                                         <buttonCell key="cell" type="square" bezelStyle="shadowlessSquare" image="PreferencesIcon" imagePosition="only" alignment="center" imageScaling="proportionallyDown" inset="2" id="hxS-d9-Pvv">
                                             <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
-                                            <font key="font" metaFont="label" size="13"/>
+                                            <font key="font" metaFont="system"/>
                                         </buttonCell>
                                         <connections>
                                             <action selector="preferenceButtonClick:" target="RxD-FS-69G" id="mfg-SE-N5g"/>

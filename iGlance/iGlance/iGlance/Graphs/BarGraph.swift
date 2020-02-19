@@ -17,11 +17,22 @@ struct Key: Hashable {
 class BarGraph: Graph {
     // MARK: -
     // MARK: Public Instance Variables
+    /// The maximum value which corresponds to 100% of the bar graph
     let maxValue: Double
 
     // MARK: -
     // MARK: Private Instance Variables
     private var imageCache: [Key: NSImage] = [Key: NSImage]()
+
+    /// The maximum height of the bar of the graph in pixel
+    private var maxBarHeight: Double {
+        Double(self.imageSize.height - self.borderWidth * 2)
+    }
+
+    /// The width of the bar of the graph in pixel
+    private var barWidth: Double {
+        Double(self.imageSize.width - self.borderWidth * 2)
+    }
 
     // MARK: -
     // MARK: Public Instance Variables
@@ -45,10 +56,11 @@ class BarGraph: Graph {
     /**
      * Returns the bar graph image for the menu bar.
      */
-    func getImage(currentValue: Double, graphColor: NSColor) -> NSImage {
+    func getImage(currentValue: Double, graphColor: NSColor, drawBorder: Bool, gradientColor: NSColor?) -> NSImage {
         // check whether we need to redraw the graph
         let key = Key(value: currentValue, isDarkTheme: ThemeManager.isDarkTheme())
         if imageCache[key] != nil {
+            DDLogInfo("Using image from cache")
             return imageCache[key]!
         }
 
@@ -56,10 +68,12 @@ class BarGraph: Graph {
         var image = NSImage(size: self.imageSize)
 
         // first draw the bar to draw over the sharp corners of the bar
-        self.drawBarGraph(image: &image, currentValue: currentValue, barColor: graphColor)
+        self.drawBarGraph(image: &image, currentValue: currentValue, barColor: graphColor, gradientColor: gradientColor)
 
         // draw the border of the graph
-        self.drawBorder(image: &image)
+        if drawBorder {
+            self.drawBorder(image: &image)
+        }
 
         // add the image and its color to the cache
         imageCache[key] = image
@@ -82,17 +96,29 @@ class BarGraph: Graph {
     /**
      * Takes an image and draws the bar on the given image
      */
-    private func drawBarGraph( image: inout NSImage, currentValue: Double, barColor: NSColor) {
+    private func drawBarGraph(image: inout NSImage, currentValue: Double, barColor: NSColor, gradientColor: NSColor?) {
         // lock the focus on the image in order to draw on it
         image.lockFocus()
 
-        // get the maximum height of the bar.
-        let maxBarHeight = Double(self.imageSize.height - self.borderWidth * 2)
-
-        // get the width of the bar
-        let barWidth = Double(self.imageSize.width - self.borderWidth * 2)
         // get the height of the bar
         let barHeight = Double((maxBarHeight / self.maxValue) * currentValue)
+
+        // draw the gradient if necessary
+        if gradientColor != nil {
+            // get the gradient image
+            let gradientImage = getGradientBar(barWidth: barWidth, maxBarHeight: maxBarHeight, barColor: barColor, gradientColor: gradientColor!)
+
+            // draw the gradient image only has high as the current bar height
+            gradientImage.draw(
+                at: NSPoint(x: self.borderWidth, y: self.borderWidth),
+                from: NSRect(x: 0, y: 0, width: barWidth, height: barHeight),
+                operation: NSCompositingOperation.sourceOver,
+                fraction: 1.0
+            )
+
+            image.unlockFocus()
+            return
+        }
 
         // set the bar color as a fill color
         barColor.set()

@@ -69,6 +69,18 @@ class MemoryViewController: MainViewViewController {
         }
     }
 
+    @IBOutlet private var colorGradientCheckbox: NSButton! {
+        didSet {
+            colorGradientCheckbox.state = AppDelegate.userSettings.settings.memory.colorGradientSettings.useGradient ? NSButton.StateValue.on : NSButton.StateValue.off
+        }
+    }
+
+    @IBOutlet private var secondaryColorWell: NSColorWell! {
+        didSet {
+            secondaryColorWell.color = AppDelegate.userSettings.settings.memory.colorGradientSettings.secondaryColor.nsColor
+        }
+    }
+
     // MARK: -
     // MARK: Actions
 
@@ -125,11 +137,11 @@ class MemoryViewController: MainViewViewController {
         // set the color of the usage bar
         AppDelegate.userSettings.settings.memory.usageGraphColor = CodableColor(nsColor: sender.color)
 
-        // update the menu bar items to make the change visible immediately
-        AppDelegate.menuBarItemManager.updateMenuBarItems()
-
         // clear the cache of the bar graph
         AppDelegate.menuBarItemManager.memoryUsage.barGraph.clearImageCache()
+
+        // update the menu bar items to make the change visible immediately
+        AppDelegate.menuBarItemManager.updateMenuBarItems()
 
         DDLogInfo("Changed usage bar color to (\(sender.color.toHex()))")
     }
@@ -148,5 +160,34 @@ class MemoryViewController: MainViewViewController {
         AppDelegate.menuBarItemManager.updateMenuBarItems()
 
         DDLogInfo("Did set graph border checkbox value to (\(activated))")
+    }
+
+    @IBAction private func colorGradientCheckboxChanged(_ sender: NSButton) {
+        // get the boolean to the current state of the checkbox
+        let activated = sender.state == NSButton.StateValue.on
+
+        // set the user setting
+        AppDelegate.userSettings.settings.memory.colorGradientSettings.useGradient = activated
+
+        // clear the cache of the bar graph
+        AppDelegate.menuBarItemManager.memoryUsage.barGraph.clearImageCache()
+
+        // update the menu bar items to make the change visible immediately
+        AppDelegate.menuBarItemManager.updateMenuBarItems()
+
+        DDLogInfo("Did set color gradient checkbox value to (\(activated))")
+    }
+
+    @IBAction private func secondaryColorWellChanged(_ sender: NSColorWell) {
+        // set the secondary color
+        AppDelegate.userSettings.settings.memory.colorGradientSettings.secondaryColor = CodableColor(nsColor: sender.color)
+
+        // clear the cache of the bar graph
+        AppDelegate.menuBarItemManager.memoryUsage.barGraph.clearImageCache()
+
+        // update the menu bar items to visualize the change
+        AppDelegate.menuBarItemManager.updateMenuBarItems()
+
+        DDLogInfo("Changed usage gradient color to (\(sender.color.toHex()))")
     }
 }

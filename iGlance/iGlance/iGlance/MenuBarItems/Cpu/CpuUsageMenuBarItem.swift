@@ -34,11 +34,15 @@ class CpuUsageMenuBarItem: MenuBarItem {
         // get the total usage
         let totalUsage = usage.user + usage.system
 
+        // get all the necessary settings
         let graphColor = AppDelegate.userSettings.settings.cpu.usageGraphColor.nsColor
+        let gradientColor: NSColor? = AppDelegate.userSettings.settings.cpu.colorGradientSettings.useGradient ? AppDelegate.userSettings.settings.cpu.colorGradientSettings.secondaryColor.nsColor : nil
+        let drawBorder = AppDelegate.userSettings.settings.cpu.showUsageGraphBorder
+
         if AppDelegate.userSettings.settings.cpu.usageGraphKind == .bar {
-            button.image = self.barGraph.getImage(currentValue: Double(totalUsage), graphColor: graphColor)
+            button.image = self.barGraph.getImage(currentValue: Double(totalUsage), graphColor: graphColor, drawBorder: drawBorder, gradientColor: gradientColor)
         } else {
-            button.image = self.lineGraph.getImage(currentValue: Double(totalUsage), graphColor: graphColor)
+            button.image = self.lineGraph.getImage(currentValue: Double(totalUsage), graphColor: graphColor, drawBorder: drawBorder, gradientColor: gradientColor)
         }
 
         // add the value to the line graph history
