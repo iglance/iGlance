@@ -125,7 +125,7 @@ class NetworkMenuBarItem: MenuBarItem {
      * Creates an attributed string that can be drawn on the menu bar image.
      */
     private func createAttributedBandwidthString(value: String, unit: String) -> NSAttributedString {
-        // create th attributed string
+        // create the attributed string
         let attrString = NSMutableAttributedString(string: value + " " + unit)
 
         // define the font for the number value and the unit
