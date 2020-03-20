@@ -33,6 +33,7 @@ class SystemInfo {
     let battery: BatteryInfo
     let memory: MemoryInfo
     let fan: FanInfo
+    let network: NetworkInfo
 
     init() {
         self.skSystem = SKSystem()
@@ -43,6 +44,7 @@ class SystemInfo {
         self.battery = BatteryInfo()
         self.memory = MemoryInfo()
         self.fan = FanInfo()
+        self.network = NetworkInfo()
 
         // open the connection to the SMC
         do {

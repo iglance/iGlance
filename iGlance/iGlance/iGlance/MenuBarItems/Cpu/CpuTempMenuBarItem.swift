@@ -10,10 +10,6 @@ import Cocoa
 import CocoaLumberjack
 
 class CpuTempMenuBarItem: MenuBarItem {
-    override init() {
-        super.init()
-    }
-
     // MARK: -
     // MARK: Protocol Implementations
     func update() {

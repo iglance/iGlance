@@ -47,6 +47,10 @@ struct FanSettings: Codable {
     var showFanSpeedUnit: Bool = true
 }
 
+struct NetworkSettings: Codable {
+    var showBandwidth: Bool = true
+}
+
 struct IGlanceUserSettings: Codable {
     // global settings
     var autostartOnBoot: Bool = false
@@ -56,6 +60,7 @@ struct IGlanceUserSettings: Codable {
     var cpu = CpuSettings()
     var memory = MemorySettings()
     var fan = FanSettings()
+    var network = NetworkSettings()
 }
 
 class UserSettings {

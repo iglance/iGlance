@@ -24,7 +24,10 @@ class DiskInfo {
         task.standardOutput = outputPipe
         task.launch()
         let outputData = outputPipe.fileHandleForReading.readDataToEndOfFile()
-        let output = NSString(data: outputData, encoding: String.Encoding.utf8.rawValue)! as String
+        guard let output = String(data: outputData, encoding: String.Encoding.utf8) else {
+            DDLogError("An error occurred while casting the command output to a string")
+            return (0, "")
+        }
 
         DDLogInfo("Output of internal disk size command: \(output)")
 

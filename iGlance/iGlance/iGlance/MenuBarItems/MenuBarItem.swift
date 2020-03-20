@@ -9,6 +9,9 @@
 import Cocoa
 
 protocol MenuBarItemProtocol {
+    /**
+     * Updates the menu bar item. This function is called during every update interval.
+     */
     func update()
 }
 
