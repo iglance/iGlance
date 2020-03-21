@@ -32,6 +32,9 @@ class FanViewController: MainViewViewController {
         // get the boolean value of the checkbox
         let activated = sender.state == NSButton.StateValue.on
 
+        // depending on the state of the checkbox hide or show the unit checkbox
+        fanSpeedUnitCheckbox.isHidden = !activated
+
         // set the user setting
         AppDelegate.userSettings.settings.fan.showFanSpeed = activated
 
