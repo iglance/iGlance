@@ -14,7 +14,7 @@ class NetworkMenuBarItem: MenuBarItem {
         // before showing the network bandwidth menu bar icon get the bandwidth
         // once to prevent random values in the menu bar because of wrong last up- and downloaded total bytes
         let interface = AppDelegate.systemInfo.network.getCurrentlyUsedInterface()
-        AppDelegate.systemInfo.network.getNetworkBandwidth(interface: interface)
+        _ = AppDelegate.systemInfo.network.getNetworkBandwidth(interface: interface)
 
         super.init()
     }
@@ -60,7 +60,7 @@ class NetworkMenuBarItem: MenuBarItem {
         // get the value and the unit
         if bytes > 1_000_000_000 {
             // Gigabyte per second
-            let gigabyteValue = Double(bytes) / 1_000_000_000.0
+            let gigabyteValue = Double(bytes) / 1_000_000_000
             // if the value is greater than 100 don't display the decimal places
             value = gigabyteValue >= 100 ? String(Int(gigabyteValue)) : String(format: "%.2f", gigabyteValue)
             unit = "GB/s"
@@ -85,7 +85,7 @@ class NetworkMenuBarItem: MenuBarItem {
     private func createMenuBarImage(up: (value: String, unit: String), down: (value: String, unit: String)) -> NSImage? {
         // create the attributed strings for the upload and download
         let uploadString = self.createAttributedBandwidthString(value: up.value, unit: up.unit)
-        let downloadString = self.createAttributedBandwidthString(value: down.value, unit: up.unit)
+        let downloadString = self.createAttributedBandwidthString(value: down.value, unit: down.unit)
 
         // get the bandwidth icon
         guard let bandwidthIcon = NSImage(named: "NetworkBandwidthIcon@2") else {
@@ -133,7 +133,7 @@ class NetworkMenuBarItem: MenuBarItem {
 
         // add the attributes
         attrString.addAttribute(.font, value: font, range: NSRange(location: 0, length: attrString.length - 1 - unit.count))
-        //attrString.addAttribute(.kern, value: 1.2, range: NSRange(location: 0, length: attrString.length - 1 - unit.count))
+        attrString.addAttribute(.kern, value: 1.2, range: NSRange(location: 0, length: attrString.length - 1 - unit.count))
         attrString.addAttribute(.font, value: font, range: NSRange(location: attrString.length - unit.count, length: unit.count))
         let fontColor = ThemeManager.isDarkTheme() ? NSColor.white : NSColor.black
         attrString.addAttribute(.foregroundColor, value: fontColor, range: NSRange(location: 0, length: attrString.length))
