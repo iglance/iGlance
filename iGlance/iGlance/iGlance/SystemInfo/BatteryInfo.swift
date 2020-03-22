@@ -57,6 +57,8 @@ struct PowerSourceInfo {
     var currentCapacity: Int?
     /// The number of cycles the battery was designed for
     var charging: Bool?
+    /// Whether the battery is fully charged
+    var isCharged: Bool?
     /// Whether the battery is currently present
     var present: Bool?
     /// The maximum capacity of the battery in percentage (usually 100%)
@@ -135,8 +137,7 @@ class BatteryInfo {
         // get the battery info
         let batInfo = getInternalBatteryInfo()
 
-        if batInfo?.timeToEmpty != nil {
-            let timeToEmpty = (batInfo?.timeToEmpty)!
+        if let timeToEmpty = batInfo?.timeToEmpty {
             DDLogInfo("Time until battery is empty: \(timeToEmpty)")
             return timeToEmpty
         }
@@ -151,8 +152,7 @@ class BatteryInfo {
     func timeToFullCharge() -> Int {
         let batInfo = getInternalBatteryInfo()
 
-        if batInfo?.timeToFullCharge != nil {
-            let timeToFullCharge = (batInfo?.timeToFullCharge)!
+        if let timeToFullCharge = batInfo?.timeToFullCharge {
             DDLogInfo("Battery time to full charge: \(timeToFullCharge)")
             return timeToFullCharge
         }
@@ -187,14 +187,28 @@ class BatteryInfo {
     func isFullyCharged() -> Bool {
         let batInfo = getInternalBatteryInfo()
 
-        if let maxCapacity = batInfo?.maxCapacity, let currentCapacity = batInfo?.currentCapacity {
-            let isFullyCharged = maxCapacity == currentCapacity
-            DDLogInfo("Battery isFullyCharged value: \(isFullyCharged)")
-            return isFullyCharged
+        if let isCharged = batInfo?.isCharged {
+            DDLogInfo("Battery isFullyCharged value: \(isCharged)")
+            return isCharged
         }
 
         DDLogError("Failed to calculate whether the battery is fully charged")
         return false
+    }
+
+    /**
+     * Returns the current charge of the battery in percentage (value between 0 and 100).
+     */
+    func getCharge() -> Int {
+        let batInfo = getInternalBatteryInfo()
+
+        if let currentCapacity = batInfo?.currentCapacity {
+            DDLogInfo("Battery current capacity value: \(currentCapacity)")
+            return currentCapacity
+        }
+
+        DDLogError("Failed to read the current capacity of the battery")
+        return 0
     }
 
     /**
@@ -239,6 +253,8 @@ class BatteryInfo {
                 batInfo.currentCapacity = psInfo[kIOPSCurrentCapacityKey] as? Int
 
                 batInfo.charging = psInfo[kIOPSIsChargedKey] as? Bool
+
+                batInfo.isCharged = psInfo[kIOPSIsChargedKey] as? Bool
 
                 batInfo.present = psInfo[kIOPSIsPresentKey] as? Bool
 

@@ -53,6 +53,7 @@ struct NetworkSettings: Codable {
 
 struct BatterySettings: Codable {
     var showBattery: Bool = true
+    var showPercentage: Bool = false
 }
 
 struct IGlanceUserSettings: Codable {

@@ -19,6 +19,18 @@ class BatteryViewController: MainViewViewController {
         }
     }
 
+    @IBOutlet var batterySelector: NSPopUpButton! {
+        didSet {
+            if AppDelegate.userSettings.settings.battery.showPercentage {
+                // showing percentage is the second option
+                batterySelector.selectItem(at: 1)
+            } else {
+                // showing the remaining time is the first option
+                batterySelector.selectItem(at: 0)
+            }
+        }
+    }
+
     // MARK: -
     // MARK: Actions
 
@@ -36,5 +48,20 @@ class BatteryViewController: MainViewViewController {
         }
 
         DDLogInfo("Did set battery checkbox value to (\(activated))")
+    }
+
+    @IBAction private func batterySelectorChanged(_ sender: NSPopUpButton) {
+        if batterySelector.indexOfSelectedItem == 0 {
+            // the first item is to display the remaining time
+            AppDelegate.userSettings.settings.battery.showPercentage = false
+        } else {
+            // the second item is to display the percentage
+            AppDelegate.userSettings.settings.battery.showPercentage = true
+        }
+
+        // update the menu bar items to make the change visible immediately
+        AppDelegate.menuBarItemManager.updateMenuBarItems()
+
+        DDLogInfo("Selected option to display battery percentage: \(AppDelegate.userSettings.settings.battery.showPercentage)")
     }
 }

@@ -1764,15 +1764,55 @@
                                     <action selector="batteryCheckboxChanged:" target="jU5-ml-SBe" id="I35-tU-m5M"/>
                                 </connections>
                             </button>
+                            <stackView distribution="fill" orientation="horizontal" alignment="centerY" horizontalStackHuggingPriority="249.99998474121094" verticalStackHuggingPriority="249.99998474121094" detachesHiddenViews="YES" translatesAutoresizingMaskIntoConstraints="NO" id="5Ke-6G-cUj">
+                                <rect key="frame" x="50" y="435" width="172" height="21"/>
+                                <subviews>
+                                    <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="0wv-qH-eqT">
+                                        <rect key="frame" x="-2" y="3" width="38" height="16"/>
+                                        <textFieldCell key="cell" lineBreakMode="clipping" title="Show" id="2IX-pu-lqb">
+                                            <font key="font" metaFont="label" size="13"/>
+                                            <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
+                                            <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
+                                        </textFieldCell>
+                                    </textField>
+                                    <popUpButton verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="d6S-Dy-d9p">
+                                        <rect key="frame" x="40" y="-3" width="135" height="25"/>
+                                        <popUpButtonCell key="cell" type="push" title="Remaining Time" bezelStyle="rounded" alignment="left" lineBreakMode="truncatingTail" state="on" borderStyle="borderAndBezel" imageScaling="proportionallyDown" inset="2" selectedItem="6Y8-jG-mb6" id="WPg-h8-scY">
+                                            <behavior key="behavior" lightByBackground="YES" lightByGray="YES"/>
+                                            <font key="font" metaFont="label" size="13"/>
+                                            <menu key="menu" id="MPD-Vv-1HR">
+                                                <items>
+                                                    <menuItem title="Remaining Time" state="on" id="6Y8-jG-mb6"/>
+                                                    <menuItem title="Percentage" id="2yx-sR-WuB"/>
+                                                </items>
+                                            </menu>
+                                        </popUpButtonCell>
+                                        <connections>
+                                            <action selector="batterySelectorChanged:" target="jU5-ml-SBe" id="znE-rR-uel"/>
+                                        </connections>
+                                    </popUpButton>
+                                </subviews>
+                                <visibilityPriorities>
+                                    <integer value="1000"/>
+                                    <integer value="1000"/>
+                                </visibilityPriorities>
+                                <customSpacing>
+                                    <real value="3.4028234663852886e+38"/>
+                                    <real value="3.4028234663852886e+38"/>
+                                </customSpacing>
+                            </stackView>
                         </subviews>
                         <constraints>
+                            <constraint firstItem="5Ke-6G-cUj" firstAttribute="top" secondItem="4eh-dV-WXg" secondAttribute="bottom" constant="10" id="9jP-iW-OnE"/>
                             <constraint firstItem="4eh-dV-WXg" firstAttribute="leading" secondItem="q13-1a-uFQ" secondAttribute="leading" constant="20" id="GjL-Jb-ju2"/>
                             <constraint firstItem="4eh-dV-WXg" firstAttribute="top" secondItem="q13-1a-uFQ" secondAttribute="top" constant="20" id="dJA-du-CZp"/>
+                            <constraint firstItem="5Ke-6G-cUj" firstAttribute="leading" secondItem="q13-1a-uFQ" secondAttribute="leading" constant="50" id="pV5-nZ-iyy"/>
                             <constraint firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="4eh-dV-WXg" secondAttribute="trailing" constant="20" symbolic="YES" id="pi8-KM-Q3B"/>
                         </constraints>
                     </view>
                     <connections>
                         <outlet property="batteryCheckbox" destination="4eh-dV-WXg" id="aLI-Kf-WfG"/>
+                        <outlet property="batterySelector" destination="d6S-Dy-d9p" id="N7B-uT-WZF"/>
                     </connections>
                 </viewController>
                 <customObject id="kg2-nN-wZv" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>

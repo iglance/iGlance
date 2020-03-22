@@ -114,7 +114,7 @@ class MemoryViewController: MainViewViewController {
             graphWidthStackView.isHidden = true
         }
 
-        // update the menu bar items to make the change visible immediatley
+        // update the menu bar items to make the change visible immediately
         AppDelegate.menuBarItemManager.updateMenuBarItems()
 
         DDLogInfo("Selected memory usage graph kind \(AppDelegate.userSettings.settings.memory.usageGraphKind)")
