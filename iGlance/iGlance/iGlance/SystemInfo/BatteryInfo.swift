@@ -14,7 +14,7 @@ import CocoaLumberjack
 class BatteryInfo {
     // MARK: -
     // MARK: Structure Definitions
-    
+
     /**
      * Structure that contains the remaining time of the battery.
      */
@@ -26,7 +26,7 @@ class BatteryInfo {
         /// The error code of the function reading the battery time. Is either `kIOPSTimeRemainingUnknown`, `kIOPSTimeRemainingUnlimited` or `0` if the remaining battery time could be estimated.
         var errorCode: Double
     }
-    
+
     // MARK: -
     // MARK: Private Variables
     private var skBattery = SKBattery()
@@ -47,7 +47,7 @@ class BatteryInfo {
 
     // MARK: -
     // MARK: Instance Methods
-    
+
     /**
      * Returns the health of the battery in percent (in the range [0,1]).
      */
@@ -78,14 +78,14 @@ class BatteryInfo {
         DDLogInfo("Read the cycle count of the battery \(cycleCount)")
         return cycleCount
     }
-    
+
     /**
      * Returns the estimated time until all power sources are empty
      */
     func getRemainingBatteryTime() -> RemainingBatteryTime {
         // get the remaining time in seconds
         let remaining: CFTimeInterval = IOPSGetTimeRemainingEstimate()
-        
+
         switch remaining {
         case kIOPSTimeRemainingUnknown:
             DDLogInfo("The remaining battery time is unknown")
@@ -96,16 +96,16 @@ class BatteryInfo {
             return RemainingBatteryTime(minutes: 0, hours: 0, errorCode: kIOPSTimeRemainingUnlimited)
         default:
             DDLogInfo("Remaining battery time is \(remaining) seconds")
-            
+
             // calculate the remaining minutes and hours
             let remainingMinutes = Int(floor(remaining / 60))
             let hours = remainingMinutes / 60
             let minutes = remainingMinutes % 60
-            
+
             return RemainingBatteryTime(minutes: minutes, hours: hours, errorCode: 0)
         }
     }
-    
+
     /**
      * Returns the remaining battery charge in percentage (between 0 and 100). The function returns nil if an error occurred.
      */
@@ -113,7 +113,7 @@ class BatteryInfo {
         // get the power source handles
         let psSnapshot = IOPSCopyPowerSourcesInfo().takeRetainedValue()
         let psHandles = IOPSCopyPowerSourcesList(psSnapshot).takeRetainedValue() as Array
-        
+
         for psHandle in psHandles {
             // get the power source info
             if let psInfo = IOPSGetPowerSourceDescription(psSnapshot, psHandle).takeRetainedValue() as? [String: AnyObject] {
@@ -121,12 +121,12 @@ class BatteryInfo {
                     DDLogError("Could not read the name of the power source")
                     return nil
                 }
-                
+
                 guard let currentCapacity = psInfo[kIOPSCurrentCapacityKey] as? Int else {
                     DDLogInfo("Failed to read the current capacity of the power source with the name \(name)")
                     return nil
                 }
-                
+
                 if name == "InternalBattery-0" {
                     return currentCapacity
                 }
