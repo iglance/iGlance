@@ -1749,26 +1749,31 @@
         <!--Battery View Controller-->
         <scene sceneID="RUx-H1-VqW">
             <objects>
-                <viewController title="Battery View Controller" storyboardIdentifier="BatteryStoryboardID" id="jU5-ml-SBe" customClass="MainViewViewController" customModule="iGlance" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController title="Battery View Controller" storyboardIdentifier="BatteryStoryboardID" id="jU5-ml-SBe" customClass="BatteryViewController" customModule="iGlance" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" id="q13-1a-uFQ">
                         <rect key="frame" x="0.0" y="0.0" width="601" height="500"/>
                         <autoresizingMask key="autoresizingMask"/>
                         <subviews>
-                            <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="rKB-nF-Lce">
-                                <rect key="frame" x="18" y="464" width="48" height="16"/>
-                                <textFieldCell key="cell" lineBreakMode="clipping" title="Battery" id="NRR-Su-OUT">
-                                    <font key="font" usesAppearanceFont="YES"/>
-                                    <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
-                                    <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
-                                </textFieldCell>
-                            </textField>
+                            <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="4eh-dV-WXg">
+                                <rect key="frame" x="18" y="464" width="225" height="18"/>
+                                <buttonCell key="cell" type="check" title="Show battery symbol in menu bar" bezelStyle="regularSquare" imagePosition="left" state="on" inset="2" id="XXw-qA-EQk">
+                                    <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
+                                    <font key="font" metaFont="label" size="13"/>
+                                </buttonCell>
+                                <connections>
+                                    <action selector="batteryCheckboxChanged:" target="jU5-ml-SBe" id="I35-tU-m5M"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <constraints>
-                            <constraint firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="rKB-nF-Lce" secondAttribute="trailing" constant="530" id="PwS-K6-OCn"/>
-                            <constraint firstItem="rKB-nF-Lce" firstAttribute="leading" secondItem="q13-1a-uFQ" secondAttribute="leading" constant="20" symbolic="YES" id="PxW-WI-IvE"/>
-                            <constraint firstItem="rKB-nF-Lce" firstAttribute="top" secondItem="q13-1a-uFQ" secondAttribute="top" constant="20" symbolic="YES" id="XKe-64-odM"/>
+                            <constraint firstItem="4eh-dV-WXg" firstAttribute="leading" secondItem="q13-1a-uFQ" secondAttribute="leading" constant="20" id="GjL-Jb-ju2"/>
+                            <constraint firstItem="4eh-dV-WXg" firstAttribute="top" secondItem="q13-1a-uFQ" secondAttribute="top" constant="20" id="dJA-du-CZp"/>
+                            <constraint firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="4eh-dV-WXg" secondAttribute="trailing" constant="20" symbolic="YES" id="pi8-KM-Q3B"/>
                         </constraints>
                     </view>
+                    <connections>
+                        <outlet property="batteryCheckbox" destination="4eh-dV-WXg" id="aLI-Kf-WfG"/>
+                    </connections>
                 </viewController>
                 <customObject id="kg2-nN-wZv" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
             </objects>

@@ -11,22 +11,71 @@ import IOKit.ps
 import SystemKit
 import CocoaLumberjack
 
+enum PowerSourceState {
+    /// power source is drawing internal power
+    case sourceIsDrawingPower
+    /// power source is connected to external power source
+    case connectedToPowerSource
+    /// power source is no longer connected (offline)
+    case offline
+}
+
+enum PowerSourceHealth {
+    case good
+    case fair
+    case poor
+}
+
+/**
+ * How the power source conveys power source data to the machine
+ */
+enum PowerSourceTransportType {
+    case usbType
+    case networkType
+    case serialType
+    case internalType
+}
+
+/**
+ * The type of power source.
+ */
+enum PowerSourceType {
+    case ups
+    case internalBattery
+}
+
+/**
+ * All the information about a power source
+ * - Tag: PowerSourceInfo
+ */
+struct PowerSourceInfo {
+    /// The health of the battery. Possible values are `kIOPSGoodValue`, `kIOPSFairValue` or `kIOPSPoorValue`
+    var health: PowerSourceHealth?
+    /// The current of the battery in mA
+    var current: Int?
+    /// The current capacity of the battery in percent or mAh
+    var currentCapacity: Int?
+    /// The number of cycles the battery was designed for
+    var charging: Bool?
+    /// Whether the battery is currently present
+    var present: Bool?
+    /// The maximum capacity of the battery in percentage (usually 100%)
+    var maxCapacity: Int?
+    /// The name of the battery
+    var name: String?
+    /// The state of the battery
+    var state: PowerSourceState?
+    /// The remaining time in minutes until the batter is empty. A value of -1 indicates that the time is still calculated.
+    var timeToEmpty: Int?
+    /// The remaining time in minutes until the battery is fully charged. A value of -1 indicates that the time is still calculated
+    var timeToFullCharge: Int?
+    /// The transport type of the battery
+    var transportType: PowerSourceTransportType?
+    /// The type of the battery
+    var type: PowerSourceType?
+}
+
 class BatteryInfo {
-    // MARK: -
-    // MARK: Structure Definitions
-
-    /**
-     * Structure that contains the remaining time of the battery.
-     */
-    struct RemainingBatteryTime {
-        /// The remaining minutes of the battery
-        var minutes: Int
-        /// The remaining hours of the battery
-        var hours: Int
-        /// The error code of the function reading the battery time. Is either `kIOPSTimeRemainingUnknown`, `kIOPSTimeRemainingUnlimited` or `0` if the remaining battery time could be estimated.
-        var errorCode: Double
-    }
-
     // MARK: -
     // MARK: Private Variables
     private var skBattery = SKBattery()
@@ -80,61 +129,164 @@ class BatteryInfo {
     }
 
     /**
-     * Returns the estimated time until all power sources are empty
+     * Returns the estimated time in minutes until the internal battery is empty. A value of -1 indicates that the time is still calculated.
      */
-    func getRemainingBatteryTime() -> RemainingBatteryTime {
-        // get the remaining time in seconds
-        let remaining: CFTimeInterval = IOPSGetTimeRemainingEstimate()
+    func timeToEmpty() -> Int {
+        // get the battery info
+        let batInfo = getInternalBatteryInfo()
 
-        switch remaining {
-        case kIOPSTimeRemainingUnknown:
-            DDLogInfo("The remaining battery time is unknown")
-            // return zero as time
-            return RemainingBatteryTime(minutes: 0, hours: 0, errorCode: kIOPSTimeRemainingUnknown)
-        case kIOPSTimeRemainingUnlimited:
-            DDLogInfo("The system has access to an unlimited power source (AC)")
-            return RemainingBatteryTime(minutes: 0, hours: 0, errorCode: kIOPSTimeRemainingUnlimited)
-        default:
-            DDLogInfo("Remaining battery time is \(remaining) seconds")
-
-            // calculate the remaining minutes and hours
-            let remainingMinutes = Int(floor(remaining / 60))
-            let hours = remainingMinutes / 60
-            let minutes = remainingMinutes % 60
-
-            return RemainingBatteryTime(minutes: minutes, hours: hours, errorCode: 0)
+        if batInfo?.timeToEmpty != nil {
+            let timeToEmpty = (batInfo?.timeToEmpty)!
+            DDLogInfo("Time until battery is empty: \(timeToEmpty)")
+            return timeToEmpty
         }
+
+        DDLogError("Time to empty is nil and therefore not available")
+        return 0
     }
 
     /**
      * Returns the remaining battery charge in percentage (between 0 and 100). The function returns nil if an error occurred.
      */
-    func getRemainingCharge() -> Int? {
+    func timeToFullCharge() -> Int {
+        let batInfo = getInternalBatteryInfo()
+
+        if batInfo?.timeToFullCharge != nil {
+            let timeToFullCharge = (batInfo?.timeToFullCharge)!
+            DDLogInfo("Battery time to full charge: \(timeToFullCharge)")
+            return timeToFullCharge
+        }
+
+        DDLogError("Time to full charge is nil and therefore not available")
+        return 0
+    }
+
+    /**
+     * Returns true if the computer is connected to AC, returns false otherwise.
+     */
+    func isOnAC() -> Bool {
+        let onAC = skBattery.isACPowered()
+
+        DDLogInfo("Battery isOnAC value: \(onAC)")
+        return onAC
+    }
+
+    /**
+     * Returns true if the battery is currently charging, returns false otherwise.
+     */
+    func isCharging() -> Bool {
+        let isCharging = skBattery.isCharging()
+
+        DDLogInfo("Battery isCharging value: \(isCharging)")
+        return isCharging
+    }
+
+    /**
+     * Returns true if the battery is fully charged, returns false otherwise.
+     */
+    func isFullyCharged() -> Bool {
+        let batInfo = getInternalBatteryInfo()
+
+        if let maxCapacity = batInfo?.maxCapacity, let currentCapacity = batInfo?.currentCapacity {
+            let isFullyCharged = maxCapacity == currentCapacity
+            DDLogInfo("Battery isFullyCharged value: \(isFullyCharged)")
+            return isFullyCharged
+        }
+
+        DDLogError("Failed to calculate whether the battery is fully charged")
+        return false
+    }
+
+    /**
+     * Returns the [PowerSourceInfo](x-source-tag://PowerSourceInfo) of the internal battery.
+     */
+    func getInternalBatteryInfo() -> PowerSourceInfo? {
+        let batteryInfo = getPowerSourceInfo().first { $0.name == "InternalBattery-0" }
+
+        DDLogInfo("The power source info object of the internal battery: \(String(describing: batteryInfo))")
+        return batteryInfo
+    }
+
+    /**
+     * Returns the info about all the connected power sources.
+     */
+    func getPowerSourceInfo() -> [PowerSourceInfo] {
         // get the power source handles
-        let psSnapshot = IOPSCopyPowerSourcesInfo().takeRetainedValue()
-        let psHandles = IOPSCopyPowerSourcesList(psSnapshot).takeRetainedValue() as Array
+        let psInfo = IOPSCopyPowerSourcesInfo().takeRetainedValue()
+        let psHandles = IOPSCopyPowerSourcesList(psInfo).takeRetainedValue() as [CFTypeRef]
+
+        var batteryInfoArray: [PowerSourceInfo] = []
 
         for psHandle in psHandles {
             // get the power source info
-            if let psInfo = IOPSGetPowerSourceDescription(psSnapshot, psHandle).takeRetainedValue() as? [String: AnyObject] {
-                guard let name = psInfo[kIOPSNameKey] as? String else {
-                    DDLogError("Could not read the name of the power source")
-                    return nil
+            if let psInfo = IOPSGetPowerSourceDescription(psInfo, psHandle).takeUnretainedValue() as? [String: AnyObject] {
+                // create a new battery information struct
+                var batInfo = PowerSourceInfo()
+
+                if let health = psInfo[kIOPSBatteryHealthKey] as? String {
+                    switch health {
+                    case kIOPSGoodValue:
+                        batInfo.health = .good
+                    case kIOPSFairValue:
+                        batInfo.health = .fair
+                    default:
+                        batInfo.health = .poor
+                    }
                 }
 
-                guard let currentCapacity = psInfo[kIOPSCurrentCapacityKey] as? Int else {
-                    DDLogInfo("Failed to read the current capacity of the power source with the name \(name)")
-                    return nil
+                batInfo.current = psInfo[kIOPSCurrentKey] as? Int
+
+                batInfo.currentCapacity = psInfo[kIOPSCurrentCapacityKey] as? Int
+
+                batInfo.charging = psInfo[kIOPSIsChargedKey] as? Bool
+
+                batInfo.present = psInfo[kIOPSIsPresentKey] as? Bool
+
+                batInfo.maxCapacity = psInfo[kIOPSMaxCapacityKey] as? Int
+
+                batInfo.name = psInfo[kIOPSNameKey] as? String
+
+                if let state = psInfo[kIOPSPowerSourceStateKey] as? String {
+                    switch state {
+                    case kIOPSBatteryPowerValue:
+                        batInfo.state = .sourceIsDrawingPower
+                    case kIOPSACPowerValue:
+                        batInfo.state = .connectedToPowerSource
+                    default:
+                        batInfo.state = .offline
+                    }
                 }
 
-                if name == "InternalBattery-0" {
-                    return currentCapacity
+                batInfo.timeToEmpty = psInfo[kIOPSTimeToEmptyKey] as? Int
+
+                batInfo.timeToFullCharge = psInfo[kIOPSTimeToFullChargeKey] as? Int
+
+                if let transportType = psInfo[kIOPSTransportTypeKey] as? String {
+                    switch transportType {
+                    case kIOPSUSBTransportType:
+                        batInfo.transportType = .usbType
+                    case kIOPSSerialTransportType:
+                        batInfo.transportType = .serialType
+                    case kIOPSNetworkTransportType:
+                        batInfo.transportType = .networkType
+                    default:
+                        batInfo.transportType = .internalType
+                    }
                 }
+
+                if let psType = psInfo[kIOPSTypeKey] as? String {
+                    switch psType {
+                    case kIOPSUPSType:
+                        batInfo.type = .ups
+                    default:
+                        batInfo.type = .internalBattery
+                    }
+                }
+
+                batteryInfoArray.append(batInfo)
             }
         }
 
-        // if we got to this point in the function something went wrong
-        DDLogError("Could not read the power source info")
-        return nil
+        return batteryInfoArray
     }
 }

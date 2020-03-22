@@ -67,6 +67,8 @@
 		B4D86E1B23AA710B00671B52 /* MainViewViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B4D86E1A23AA710B00671B52 /* MainViewViewController.swift */; };
 		B4DE725F23C257610001CF46 /* Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = B4DE725E23C257610001CF46 /* Extensions.swift */; };
 		B4DE728023C2644A0001CF46 /* BatteryInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = B4DE727F23C2644A0001CF46 /* BatteryInfo.swift */; };
+		B4E909112427B33F00260479 /* BatteryMenuBarItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = B4E909102427B33F00260479 /* BatteryMenuBarItem.swift */; };
+		B4E909132427B5EA00260479 /* BatteryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B4E909122427B5EA00260479 /* BatteryViewController.swift */; };
 		B4E9E53A2416ACCA0090E9E8 /* NetworkMenuBarItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = B4E9E5392416ACCA0090E9E8 /* NetworkMenuBarItem.swift */; };
 		B4E9E53C2416AD1F0090E9E8 /* NetworkViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B4E9E53B2416AD1F0090E9E8 /* NetworkViewController.swift */; };
 		B4EFB55B23CA197500CF2FF2 /* CustomLogFormatter.swift in Sources */ = {isa = PBXBuildFile; fileRef = B4EFB55A23CA197500CF2FF2 /* CustomLogFormatter.swift */; };
@@ -180,6 +182,8 @@
 		B4D86E1A23AA710B00671B52 /* MainViewViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainViewViewController.swift; sourceTree = "<group>"; };
 		B4DE725E23C257610001CF46 /* Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Extensions.swift; sourceTree = "<group>"; };
 		B4DE727F23C2644A0001CF46 /* BatteryInfo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BatteryInfo.swift; sourceTree = "<group>"; };
+		B4E909102427B33F00260479 /* BatteryMenuBarItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BatteryMenuBarItem.swift; sourceTree = "<group>"; };
+		B4E909122427B5EA00260479 /* BatteryViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BatteryViewController.swift; sourceTree = "<group>"; };
 		B4E9E5392416ACCA0090E9E8 /* NetworkMenuBarItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkMenuBarItem.swift; sourceTree = "<group>"; };
 		B4E9E53B2416AD1F0090E9E8 /* NetworkViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkViewController.swift; sourceTree = "<group>"; };
 		B4EFB55A23CA197500CF2FF2 /* CustomLogFormatter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomLogFormatter.swift; sourceTree = "<group>"; };
@@ -334,6 +338,7 @@
 				B415FF2923F45F0800ED6567 /* MemoryUsageMenuBarItem.swift */,
 				B4E9E5392416ACCA0090E9E8 /* NetworkMenuBarItem.swift */,
 				B452554823E358E7000F79BF /* Cpu */,
+				B4E909102427B33F00260479 /* BatteryMenuBarItem.swift */,
 				B452554723E358E7000F79BF /* MenuBarItem.swift */,
 				B452554A23E358E7000F79BF /* MenuBarItemManager.swift */,
 			);
@@ -442,6 +447,7 @@
 				B459D29023E4A80800E6CC67 /* CpuViewController.swift */,
 				B415FF2623F459EF00ED6567 /* MemoryViewController.swift */,
 				B4CFC47523FC393300A0ED15 /* FanViewController.swift */,
+				B4E909122427B5EA00260479 /* BatteryViewController.swift */,
 				B4E9E53B2416AD1F0090E9E8 /* NetworkViewController.swift */,
 			);
 			path = MainViews;
@@ -691,9 +697,11 @@
 				B4C37E6923A8D6BB008C7FC0 /* SegueBetweenEmbedded.swift in Sources */,
 				B439332723E99E0800CDEB1D /* BarGraph.swift in Sources */,
 				B42BCE6023ABF73100A13601 /* DashboardViewController.swift in Sources */,
+				B4E909112427B33F00260479 /* BatteryMenuBarItem.swift in Sources */,
 				B4C37E6D23A8D811008C7FC0 /* ContentManagerViewControllerHolder.swift in Sources */,
 				B48BD19123E73F8E00152931 /* CpuUsageMenuBarItem.swift in Sources */,
 				B4CFC47623FC393300A0ED15 /* FanViewController.swift in Sources */,
+				B4E909132427B5EA00260479 /* BatteryViewController.swift in Sources */,
 				B4FE0DB123EF1E0100AE94E6 /* LineGraph.swift in Sources */,
 				B4FE0DB323EF210500AE94E6 /* Graph.swift in Sources */,
 				B43ABF2A23AA32FA007F93BA /* SidebarViewController.swift in Sources */,

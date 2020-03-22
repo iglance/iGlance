@@ -51,6 +51,10 @@ struct NetworkSettings: Codable {
     var showBandwidth: Bool = true
 }
 
+struct BatterySettings: Codable {
+    var showBattery: Bool = true
+}
+
 struct IGlanceUserSettings: Codable {
     // global settings
     var autostartOnBoot: Bool = false
@@ -61,6 +65,7 @@ struct IGlanceUserSettings: Codable {
     var memory = MemorySettings()
     var fan = FanSettings()
     var network = NetworkSettings()
+    var battery = BatterySettings()
 }
 
 class UserSettings {
