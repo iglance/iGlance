@@ -6,7 +6,7 @@
 //  Copyright © 2020 D0miH. All rights reserved.
 //
 
-import Cocoa
+import Foundation
 import CocoaLumberjack
 
 class NetworkMenuBarItem: MenuBarItem {
