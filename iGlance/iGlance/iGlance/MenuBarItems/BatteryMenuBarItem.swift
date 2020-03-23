@@ -55,7 +55,12 @@ class BatteryMenuBarItem: MenuBarItem {
             batteryIcon = NSImage(named: "BatteryIconPlugged")
         } else if !isCharging && !isOnAC || !isOnAC && isCharging {
             // the case !isOnAC && isCharging occurs when the machine is unplugged from AC and the remaining time is still calculated
-            batteryIcon = NSImage(named: "BatteryIcon")
+            guard var iconTemplate = NSImage(named: "BatteryIcon") else {
+                DDLogError("Failed to load the battery template icon")
+                return
+            }
+            let charge = AppDelegate.systemInfo.battery.getCharge()
+            batteryIcon = getChargeBatteryIcon(batteryIcon: &iconTemplate, currentCharge: charge)
         }
 
         // the battery icon is nil loading the icon failed
@@ -142,5 +147,40 @@ class BatteryMenuBarItem: MenuBarItem {
         let charge = AppDelegate.systemInfo.battery.getCharge()
 
         return "\(charge)%"
+    }
+
+    /**
+     * Returns an image which indicates the charge of the battery.
+     *
+     * - Parameter batteryIcon: The given image on which the charge indication is drawn.
+     * - Parameter currentCharge: The current charge in percentage.
+     */
+    func getChargeBatteryIcon(batteryIcon: inout NSImage, currentCharge: Int) -> NSImage {
+        // lock the focus
+        batteryIcon.lockFocus()
+
+        // the battery icon in x2 resolution has a height of 36 and a width of 18 while the nob at the top is 3 pixels high
+        // the borders of the battery icon are 1.5 pixels thick
+        let borderWidth = 1.5 / 2
+        let chargeBarMargin = 1.5
+        let batteryWidth = (18 / 2.0)
+        let batteryHeight = ((36 - 3) / 2.0)
+
+        // calculate the width and the max height of the bar
+        let chargeBarWidth = batteryWidth - (2 * borderWidth) - (2 * chargeBarMargin) // chargeBar has a margin of 0.5 pixels to the outline of the battery
+        let chargeBarMaxHeight = batteryHeight - (2 * borderWidth) - (2 * chargeBarMargin)
+
+        // calculate the current height of the charge bar
+        let chargeBarCurrentHeight = (chargeBarMaxHeight / 100) * Double(currentCharge)
+
+        // create and draw the charge bar
+        let chargeBar = NSRect(x: borderWidth + chargeBarMargin, y: borderWidth + chargeBarMargin, width: chargeBarWidth, height: chargeBarCurrentHeight)
+        (ThemeManager.isDarkTheme() ? NSColor.white : NSColor.black).set()
+        chargeBar.fill()
+
+        // unlock the focus
+        batteryIcon.unlockFocus()
+
+        return batteryIcon
     }
 }
