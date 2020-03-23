@@ -298,7 +298,8 @@ class BatteryInfo {
 
                 batInfo.charging = psInfo[kIOPSIsChargedKey] as? Bool
 
-                batInfo.isCharged = psInfo[kIOPSIsChargedKey] as? Bool
+                // if the key is not present the battery is not charged
+                batInfo.isCharged = psInfo[kIOPSIsChargedKey] as? Bool ?? false
 
                 batInfo.present = psInfo[kIOPSIsPresentKey] as? Bool
 
