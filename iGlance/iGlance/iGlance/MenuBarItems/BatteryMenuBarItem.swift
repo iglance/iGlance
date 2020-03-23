@@ -11,6 +11,22 @@ import CocoaLumberjack
 import IOKit.ps
 
 class BatteryMenuBarItem: MenuBarItem {
+    private var chargeMenuEntry = NSMenuItem(title: "Charge: N/A%", action: nil, keyEquivalent: "")
+    private var remainingTimeMenuEntry = NSMenuItem(title: "Remaining: N/A", action: nil, keyEquivalent: "")
+
+    override init() {
+        super.init()
+
+        // update the title of the menu entries
+        let charge = AppDelegate.systemInfo.battery.getCharge()
+        chargeMenuEntry.title = "Charge: \(charge)%"
+        let remainingTime = getRemainingTimeString()
+        remainingTimeMenuEntry.title = "Remaining: \(remainingTime.string)"
+
+        // add them to the menu
+        menuItems.append(contentsOf: [chargeMenuEntry, remainingTimeMenuEntry, NSMenuItem.separator()])
+    }
+
     override func updateMenuBarIcon() {
         // get the button of the menu bar item
         guard let button = self.statusItem.button else {
@@ -18,6 +34,87 @@ class BatteryMenuBarItem: MenuBarItem {
             return
         }
 
+        // get the string for the button
+        var buttonString: NSAttributedString
+        if AppDelegate.userSettings.settings.battery.showPercentage {
+            buttonString = getPercentageString()
+        } else {
+            buttonString = getRemainingTimeString()
+        }
+
+        // get the battery icon
+        let batteryIcon = getBatteryIcon()
+        // the battery icon is nil loading the icon failed
+        if batteryIcon == nil {
+            return
+        }
+
+        // create the menu bar image
+        let marginBetweenIconAndString = CGFloat(5)
+        let image = NSImage(size: NSSize(width: buttonString.size().width + batteryIcon!.size.width + marginBetweenIconAndString, height: 18))
+
+        // lock the image to render the string
+        image.lockFocus()
+
+        // render the string
+        buttonString.draw(at: NSPoint(x: image.size.width - buttonString.size().width, y: image.size.height / 2 - buttonString.size().height / 2))
+
+        // tint the battery icon to match it to the theme of the os
+        let tintedBatteryIcon = batteryIcon!.tint(color: ThemeManager.isDarkTheme() ? NSColor.white : NSColor.black)
+        // render the battery icon
+        tintedBatteryIcon.draw(at: NSPoint(x: 0, y: 18 / 2 - tintedBatteryIcon.size.height / 2), from: NSRect.zero, operation: .sourceOver, fraction: 1.0)
+
+        // unlock the focus of the image
+        image.unlockFocus()
+
+        button.image = image
+    }
+
+    override func updateMenuBarMenu() {
+        // update the title of the menu entries
+        let charge = AppDelegate.systemInfo.battery.getCharge()
+        chargeMenuEntry.title = "Charge: \(charge)%"
+        let remainingTime = getRemainingTimeString()
+        remainingTimeMenuEntry.title = "Remaining: \(remainingTime.string)"
+    }
+
+    // MARK: -
+    // MARK: Private Functions
+
+    /**
+     * Returns the battery icon depending on the state of the battery.
+     */
+    private func getBatteryIcon() -> NSImage? {
+        // get info about the battery to determin which icon to use
+        let isOnAC = AppDelegate.systemInfo.battery.isOnAC()
+        let isCharging = AppDelegate.systemInfo.battery.isCharging()
+        let isCharged = AppDelegate.systemInfo.battery.isFullyCharged()
+        let batteryState = AppDelegate.systemInfo.battery.getInternalBatteryState()
+
+        var batteryIcon: NSImage?
+        if isOnAC && !isCharging || isCharged {
+            batteryIcon = NSImage(named: "BatteryIconPlugged")
+        } else if isOnAC && isCharging {
+            batteryIcon = NSImage(named: "BatteryIconCharging")
+        } else if !isCharging && !isOnAC || !isOnAC && isCharging {
+            // the case !isOnAC && isCharging occurs when the machine is unplugged from AC and the remaining time is still calculated
+            guard var iconTemplate = NSImage(named: "BatteryIcon") else {
+                DDLogError("Failed to load the battery template icon (battery state: \(batteryState)")
+                return nil
+            }
+            let charge = AppDelegate.systemInfo.battery.getCharge()
+            batteryIcon = getChargeBatteryIcon(batteryIcon: &iconTemplate, currentCharge: charge)
+        }
+
+        if batteryIcon == nil {
+            DDLogError("Failed to load the battery icon (battery state: \(batteryState)")
+            return nil
+        }
+
+        return batteryIcon
+    }
+
+    private func getRemainingTimeString() -> NSAttributedString {
         // get the state of the internal battery
         let batteryState = AppDelegate.systemInfo.battery.getInternalBatteryState()
 
@@ -44,57 +141,13 @@ class BatteryMenuBarItem: MenuBarItem {
             buttonString = NSAttributedString(string: "Error", attributes: attributes)
         }
 
-        // get info about the battery to determin which icon to use
-        let isOnAC = AppDelegate.systemInfo.battery.isOnAC()
-        let isCharging = AppDelegate.systemInfo.battery.isCharging()
-        let isCharged = AppDelegate.systemInfo.battery.isFullyCharged()
-
-        var batteryIcon: NSImage?
-        if isOnAC && !isCharging || isCharged {
-            batteryIcon = NSImage(named: "BatteryIconPlugged")
-        } else if isOnAC && isCharging {
-            batteryIcon = NSImage(named: "BatteryIconCharging")
-        } else if !isCharging && !isOnAC || !isOnAC && isCharging {
-            // the case !isOnAC && isCharging occurs when the machine is unplugged from AC and the remaining time is still calculated
-            guard var iconTemplate = NSImage(named: "BatteryIcon") else {
-                DDLogError("Failed to load the battery template icon")
-                return
-            }
-            let charge = AppDelegate.systemInfo.battery.getCharge()
-            batteryIcon = getChargeBatteryIcon(batteryIcon: &iconTemplate, currentCharge: charge)
-        }
-
-        // the battery icon is nil loading the icon failed
-        if batteryIcon == nil {
-            DDLogError("Failed to load the battery icon (battery state: \(batteryState)")
-            return
-        }
-
-        // create the menu bar image
-        let marginBetweenIconAndString = CGFloat(5)
-        let image = NSImage(size: NSSize(width: buttonString.size().width + batteryIcon!.size.width + marginBetweenIconAndString, height: 18))
-
-        // lock the image to render the string
-        image.lockFocus()
-
-        // render the string
-        buttonString.draw(at: NSPoint(x: image.size.width - buttonString.size().width, y: image.size.height / 2 - buttonString.size().height / 2))
-
-        // tint the battery icon to match it to the theme of the os
-        let tintedBatteryIcon = batteryIcon!.tint(color: ThemeManager.isDarkTheme() ? NSColor.white : NSColor.black)
-        // render the battery icon
-        tintedBatteryIcon.draw(at: NSPoint(x: 0, y: 18 / 2 - tintedBatteryIcon.size.height / 2), from: NSRect.zero, operation: .sourceOver, fraction: 1.0)
-
-        // unlock the focus of the image
-        image.unlockFocus()
-
-        button.image = image
+        return buttonString
     }
 
     /**
      * Returns the string of the remaining time until the battery is fully charged.
      */
-    func getTimeToFullString() -> NSAttributedString {
+    private func getTimeToFullString() -> NSAttributedString {
         // get the time until fully charged
         let timeToFullMinutes = AppDelegate.systemInfo.battery.timeToFullCharge()
         let timeToFull = convertMinutesToHours(minutes: timeToFullMinutes)
@@ -112,7 +165,7 @@ class BatteryMenuBarItem: MenuBarItem {
     /**
      * Returns the string of the remaining time until the battery is empty.
      */
-    func getTimeToEmptyString() -> NSAttributedString {
+    private func getTimeToEmptyString() -> NSAttributedString {
         // get the time until fully charged
         let timeToEmptyMinutes = AppDelegate.systemInfo.battery.timeToEmpty()
         let timeToEmpty = convertMinutesToHours(minutes: timeToEmptyMinutes)
@@ -130,7 +183,7 @@ class BatteryMenuBarItem: MenuBarItem {
     /**
      * Converts the given number of minutes into hours and minutes. If a value below zero is provided the function will return (hours: 0, minutes: 0).
      */
-    func convertMinutesToHours(minutes: Int) -> (hours: Int, minutes: Int) {
+    private func convertMinutesToHours(minutes: Int) -> (hours: Int, minutes: Int) {
         if minutes <= 0 {
             return (hours: 0, minutes: 0)
         }
@@ -144,10 +197,16 @@ class BatteryMenuBarItem: MenuBarItem {
     /**
      * Returns the string that is displaying the current charge of the battery in percentage.
      */
-    func getPercentageString() -> String {
+    private func getPercentageString() -> NSAttributedString {
         let charge = AppDelegate.systemInfo.battery.getCharge()
 
-        return "\(charge)%"
+        // define the attributes
+        let attributes = [
+            NSAttributedString.Key.font: NSFont(name: "Apple SD Gothic Neo", size: 14)!,
+            NSAttributedString.Key.foregroundColor: ThemeManager.isDarkTheme() ? NSColor.white : NSColor.black
+        ]
+
+        return NSAttributedString(string: "\(charge)%", attributes: attributes)
     }
 
     /**
@@ -156,7 +215,7 @@ class BatteryMenuBarItem: MenuBarItem {
      * - Parameter batteryIcon: The given image on which the charge indication is drawn.
      * - Parameter currentCharge: The current charge in percentage.
      */
-    func getChargeBatteryIcon(batteryIcon: inout NSImage, currentCharge: Int) -> NSImage {
+    private func getChargeBatteryIcon(batteryIcon: inout NSImage, currentCharge: Int) -> NSImage {
         // lock the focus
         batteryIcon.lockFocus()
 

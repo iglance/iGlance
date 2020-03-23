@@ -23,15 +23,17 @@ class FanMenuBarItem: MenuBarItem {
     /// the number of fans of the machine
     private let fanCount: Int
     /// Array that stores all the info of each fan
-    private let fanMenus: [FanMenu]
+    private var fanMenus: [FanMenu] = []
 
     override init() {
         // initially get the number of fans
         fanCount = AppDelegate.systemInfo.fan.getNumberOfFans()
-        fanMenus = FanMenuBarItem.getFanMenus()
 
         // call the super initializer
         super.init()
+
+        // get the fan menus
+        fanMenus = getFanMenus()
 
         let entries = createMenuItems()
         // add all the entries at once to prevent rebuilding the menu multiple times
@@ -143,7 +145,7 @@ class FanMenuBarItem: MenuBarItem {
     /**
      * Returns an array with the [FanMenu](x-source-tag://FanMenu) for every fan.
      */
-    private static func getFanMenus() -> [FanMenu] {
+    private func getFanMenus() -> [FanMenu] {
         var menus: [FanMenu] = []
         let fanCount = AppDelegate.systemInfo.fan.getNumberOfFans()
 
