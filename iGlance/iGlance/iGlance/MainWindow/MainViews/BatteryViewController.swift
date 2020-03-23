@@ -19,7 +19,7 @@ class BatteryViewController: MainViewViewController {
         }
     }
 
-    @IBOutlet var batterySelector: NSPopUpButton! {
+    @IBOutlet private var batterySelector: NSPopUpButton! {
         didSet {
             if AppDelegate.userSettings.settings.battery.showPercentage {
                 // showing percentage is the second option

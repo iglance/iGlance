@@ -22,7 +22,6 @@ whitelist_rules:
   - discarded_notification_center_observer
   - discouraged_direct_init
   - discouraged_object_literal
-  - discouraged_optional_boolean
   - discouraged_optional_collection
   - duplicate_enum_cases
   - duplicate_imports
@@ -154,16 +153,15 @@ identifier_name:
     error: 2
   validates_start_with_lowercase: false
   allowed_symbols:
-    - '_'
+    - "_"
   excluded:
-    - 'x'
-    - 'y'
-    - 'a'
-    - 'b'
-    - 'x1'
-    - 'x2'
-    - 'y1'
-    - 'y2'
+    - "x"
+    - "y"
+    - "a"
+    - "b"
+    - "x1"
+    - "x2"
+    - "y1"
+    - "y2"
 excluded:
   - Pods
-
