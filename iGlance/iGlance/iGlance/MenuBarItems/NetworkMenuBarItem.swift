@@ -88,7 +88,7 @@ class NetworkMenuBarItem: MenuBarItem {
         let downloadString = self.createAttributedBandwidthString(value: down.value, unit: down.unit)
 
         // get the bandwidth icon
-        guard let bandwidthIcon = NSImage(named: "NetworkBandwidthIcon@2") else {
+        guard let bandwidthIcon = NSImage(named: "NetworkBandwidthIcon") else {
             DDLogError("An error occurred while loading the bandwidth menu bar icon")
             return nil
         }

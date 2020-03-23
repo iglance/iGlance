@@ -77,6 +77,22 @@ struct PowerSourceInfo {
     var type: PowerSourceType?
 }
 
+/// - Tag: InternalBatteryState
+enum InternalBatteryState {
+    /// The remaining time until empty or fully charged is calculated
+    case calculatingRemainingTime
+    /// The battery is plugged in but is not charging
+    case notCharging
+    /// The battery is plugged in and is fully charged
+    case fullyCharged
+    /// The battery is discharging and can provide a time estimate
+    case discharging
+    /// The battery is not fully charged, is plugged in and can provide an estimate for when it will be fully charged.
+    case charging
+    /// The  battery has an unknown state
+    case unknown
+}
+
 class BatteryInfo {
     // MARK: -
     // MARK: Private Variables
@@ -147,7 +163,7 @@ class BatteryInfo {
     }
 
     /**
-     * Returns the remaining battery charge in percentage (between 0 and 100). The function returns nil if an error occurred.
+     * Returns the estimated time in minutes until the internal battery is empty. A value of -1 indicates that the time is still calculated.
      */
     func timeToFullCharge() -> Int {
         let batInfo = getInternalBatteryInfo()
@@ -209,6 +225,34 @@ class BatteryInfo {
 
         DDLogError("Failed to read the current capacity of the battery")
         return 0
+    }
+
+    /**
+     * Returns the state of the battery and returns a value of [InternalBatteryState](x-source-tag://InternalBatteryState).
+     */
+    func getInternalBatteryState() -> InternalBatteryState {
+        let timeToEmptyMinutes = timeToEmpty()
+        let timeToFullMinutes = timeToFullCharge()
+        let onAC = isOnAC()
+        let charging = isCharging()
+        let fullyCharged = isFullyCharged()
+
+        if !onAC && timeToEmptyMinutes == -1 || onAC && timeToFullMinutes == -1 {
+            // if the machine is not charging and no time is available, the time is calculated
+            return .calculatingRemainingTime
+        } else if onAC &&  !charging {
+            // if the machine is on ac but the battery is not charging
+            return .notCharging
+        } else if onAC && fullyCharged {
+            // if the machine is charging and the battery is fully charged
+            return .fullyCharged
+        } else if onAC && timeToFullMinutes != -1 {
+            return .charging
+        } else if !onAC && timeToEmptyMinutes != -1 {
+            return .discharging
+        }
+
+        return .unknown
     }
 
     /**

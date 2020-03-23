@@ -65,14 +65,15 @@ class FanMenuBarItem: MenuBarItem {
     private func createAttributedRPMString(value: Int, unit: Bool) -> NSAttributedString {
         // create the attributed string
         let string = String(value) + " " + (unit ? "RPM" : "")
-        let attribString = NSMutableAttributedString(string: string)
 
-        // define the font
-        let font = NSFont(name: "Apple SD Gothic Neo", size: 14)!
+        // define the attributes
+        let attributes = [
+            NSAttributedString.Key.font: NSFont(name: "Apple SD Gothic Neo", size: 14)!,
+            NSAttributedString.Key.foregroundColor: ThemeManager.isDarkTheme() ? NSColor.white : NSColor.black
+        ]
 
-        attribString.addAttribute(.font, value: font, range: NSRange(location: 0, length: string.count))
-        let fontColor = ThemeManager.isDarkTheme() ? NSColor.white : NSColor.black
-        attribString.addAttribute(.foregroundColor, value: fontColor, range: NSRange(location: 0, length: string.count))
+        // create the string
+        let attribString = NSAttributedString(string: string, attributes: attributes)
 
         return attribString
     }

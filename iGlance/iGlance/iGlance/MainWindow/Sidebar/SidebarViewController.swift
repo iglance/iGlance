@@ -36,12 +36,12 @@ class SidebarViewController: NSViewController {
 
     /** An array containing the IDs to all the sidebar buttons and their corresponding main view storyboard IDs*/
     private var sidebarButtonViewIDs: [SidebarButtonIDs] = [
-        SidebarButtonIDs(buttonViewID: "DashboardButtonView", mainViewStoryboardID: "DashboardStoryboardID", buttonIconID: "DashboardIcon"),
-        SidebarButtonIDs(buttonViewID: "CpuButtonView", mainViewStoryboardID: "CpuStoryboardID", buttonIconID: "CpuIcon"),
-        SidebarButtonIDs(buttonViewID: "MemoryButtonView", mainViewStoryboardID: "MemoryStoryboardID", buttonIconID: "MemoryIcon"),
-        SidebarButtonIDs(buttonViewID: "NetworkButtonView", mainViewStoryboardID: "NetworkStoryboardID", buttonIconID: "NetworkIcon"),
-        SidebarButtonIDs(buttonViewID: "FanButtonView", mainViewStoryboardID: "FanStoryboardID", buttonIconID: "FanIcon"),
-        SidebarButtonIDs(buttonViewID: "BatteryButtonView", mainViewStoryboardID: "BatteryStoryboardID", buttonIconID: "BatteryIcon")
+        SidebarButtonIDs(buttonViewID: "DashboardButtonView", mainViewStoryboardID: "DashboardStoryboardID", buttonIconID: "DashboardMenuIcon"),
+        SidebarButtonIDs(buttonViewID: "CpuButtonView", mainViewStoryboardID: "CpuStoryboardID", buttonIconID: "CpuMenuIcon"),
+        SidebarButtonIDs(buttonViewID: "MemoryButtonView", mainViewStoryboardID: "MemoryStoryboardID", buttonIconID: "MemoryMenuIcon"),
+        SidebarButtonIDs(buttonViewID: "NetworkButtonView", mainViewStoryboardID: "NetworkStoryboardID", buttonIconID: "NetworkMenuIcon"),
+        SidebarButtonIDs(buttonViewID: "FanButtonView", mainViewStoryboardID: "FanStoryboardID", buttonIconID: "FanMenuIcon"),
+        SidebarButtonIDs(buttonViewID: "BatteryButtonView", mainViewStoryboardID: "BatteryStoryboardID", buttonIconID: "BatteryMenuIcon")
     ]
     private var preferenceModalViewController: PreferenceModalViewController?
 
