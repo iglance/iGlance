@@ -23,7 +23,7 @@ class CpuUsageMenuBarItem: MenuBarItem {
 
     // MARK: -
     // MARK: Protocol Implementations
-    func update() {
+    override func updateMenuBarIcon() {
         let usage = AppDelegate.systemInfo.cpu.getCpuUsage()
 
         guard let button = self.statusItem.button else {

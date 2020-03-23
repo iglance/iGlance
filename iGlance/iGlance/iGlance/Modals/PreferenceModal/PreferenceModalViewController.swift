@@ -15,13 +15,22 @@ class PreferenceModalViewController: ModalViewController {
     // MARK: -
     // MARK: Outlets
     @IBOutlet private var versionLabel: NSTextField!
+
     @IBOutlet private var autostartOnBootCheckbox: NSButton! {
         didSet {
             // load the initial value from the user settings
             autostartOnBootCheckbox.state = AppDelegate.userSettings.settings.autostartOnBoot ? NSButton.StateValue.on : NSButton.StateValue.off
         }
     }
+
+    @IBOutlet private var advancedLoggingCheckbox: ThemedButton! {
+        didSet {
+            advancedLoggingCheckbox.state = DEBUG ? NSButton.StateValue.on : NSButton.StateValue.off
+        }
+    }
+
     @IBOutlet private var logoImage: NSImageView!
+
     @IBOutlet private var updateIntervalSelector: NSPopUpButton! {
         didSet {
             // initialize the selector with the correct value from the user settings

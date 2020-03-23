@@ -12,7 +12,7 @@ import CocoaLumberjack
 class CpuTempMenuBarItem: MenuBarItem {
     // MARK: -
     // MARK: Protocol Implementations
-    func update() {
+    override func updateMenuBarIcon() {
         let temp = Int(AppDelegate.systemInfo.cpu.getCpuTemp())
 
         guard let button = self.statusItem.button else {

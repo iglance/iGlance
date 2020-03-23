@@ -11,7 +11,7 @@ import CocoaLumberjack
 import IOKit.ps
 
 class BatteryMenuBarItem: MenuBarItem {
-    func update() {
+    override func updateMenuBarIcon() {
         // get the button of the menu bar item
         guard let button = self.statusItem.button else {
             DDLogError("Could not retrieve the button of the 'BatteryMenuBarItem'")

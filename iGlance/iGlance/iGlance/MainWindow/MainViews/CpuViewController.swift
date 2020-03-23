@@ -152,7 +152,7 @@ class CpuViewController: MainViewViewController {
         // update the width of the menu bar item
         AppDelegate.menuBarItemManager.cpuUsage.lineGraph.setGraphWidth(width: Int(sender.intValue))
         // rerender the menu bar item
-        AppDelegate.menuBarItemManager.cpuUsage.update()
+        AppDelegate.menuBarItemManager.cpuUsage.updateMenuBarIcon()
     }
 
     @IBAction private func usageColorWellChanged(_ sender: NSColorWell) {

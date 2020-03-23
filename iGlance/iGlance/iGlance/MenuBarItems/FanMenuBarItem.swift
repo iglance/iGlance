@@ -10,17 +10,38 @@ import Foundation
 import CocoaLumberjack
 
 class FanMenuBarItem: MenuBarItem {
+    // MARK: -
+    // MARK: Structure Definitions
+
+    /// - Tag: FanMenu
+    struct FanMenu {
+        var minFanSpeed: NSMenuItem
+        var maxFanSpeed: NSMenuItem
+        var currentFanSpeed: NSMenuItem
+    }
+
+    /// the number of fans of the machine
     private let fanCount: Int
+    /// Array that stores all the info of each fan
+    private let fanMenus: [FanMenu]
 
     override init() {
+        // initially get the number of fans
         fanCount = AppDelegate.systemInfo.fan.getNumberOfFans()
+        fanMenus = FanMenuBarItem.getFanMenus()
 
+        // call the super initializer
         super.init()
+
+        let entries = createMenuItems()
+        // add all the entries at once to prevent rebuilding the menu multiple times
+        self.menuItems.append(contentsOf: entries)
     }
 
     // MARK: -
-    // MARK: Protocol Implementations
-    func update() {
+    // MARK: Override Functions
+
+    override func updateMenuBarIcon() {
         var curMaxFanSpeed = 0
         for id in 0..<fanCount {
             // get the fan speed for the current fan
@@ -56,6 +77,23 @@ class FanMenuBarItem: MenuBarItem {
         button.image = image
     }
 
+    override func updateMenuBarMenu() {
+        // iterate all fans
+        for id in 0..<fanCount {
+            // get the current fan speed
+            let currentFanSpeed = AppDelegate.systemInfo.fan.getCurrentFanSpeed(id: id)
+
+            // get the current fan menu
+            let currentFanMenu = fanMenus[id]
+
+            // update the current fan speed entry
+            currentFanMenu.currentFanSpeed.title = "Current:\t\t \(currentFanSpeed) RPM"
+        }
+    }
+
+    // MARK: -
+    // MARK: Private Functions
+
     /**
      * Returns the attributed string of the current fan RPM that can be rendered on an image.
      *
@@ -76,5 +114,53 @@ class FanMenuBarItem: MenuBarItem {
         let attribString = NSAttributedString(string: string, attributes: attributes)
 
         return attribString
+    }
+
+    /**
+     * Creates all the entries of the menu for the fan menu bar item and returns them in an array.
+     */
+    private func createMenuItems() -> [NSMenuItem] {
+        // array for all the menu entries
+        var entries: [NSMenuItem] = []
+
+        // get the min and max fan speed for each fan
+        for id in 0..<fanCount {
+            // create the entries
+            let heading = NSMenuItem(title: "Fan \(id + 1)", action: nil, keyEquivalent: "")
+            let minEntry = fanMenus[id].minFanSpeed
+            let maxEntry = fanMenus[id].maxFanSpeed
+            let currentEntry = fanMenus[id].currentFanSpeed
+            let separator = NSMenuItem.separator()
+
+            entries.append(contentsOf: [heading, minEntry, maxEntry, currentEntry, separator])
+        }
+
+        return entries
+    }
+
+    // MARK: -
+    // MARK: Static Functions
+    /**
+     * Returns an array with the [FanMenu](x-source-tag://FanMenu) for every fan.
+     */
+    private static func getFanMenus() -> [FanMenu] {
+        var menus: [FanMenu] = []
+        let fanCount = AppDelegate.systemInfo.fan.getNumberOfFans()
+
+        for id in 0..<fanCount {
+            // get the min, max and current fan speed for the current fan
+            let minFanSpeed = AppDelegate.systemInfo.fan.getMinFanSpeed(id: id)
+            let maxFanSpeed = AppDelegate.systemInfo.fan.getMaxFanSpeed(id: id)
+            let currentFanSpeed = AppDelegate.systemInfo.fan.getCurrentFanSpeed(id: id)
+
+            // create the menu entries
+            let minEntry = NSMenuItem(title: "Min: \t\t \(minFanSpeed) RPM", action: nil, keyEquivalent: "")
+            let maxEntry = NSMenuItem(title: "Max: \t\t \(maxFanSpeed) RPM", action: nil, keyEquivalent: "")
+            let currentEntry = NSMenuItem(title: "Current:\t\t \(currentFanSpeed) RPM", action: nil, keyEquivalent: "")
+
+            menus.append(FanMenu(minFanSpeed: minEntry, maxFanSpeed: maxEntry, currentFanSpeed: currentEntry))
+        }
+
+        return menus
     }
 }

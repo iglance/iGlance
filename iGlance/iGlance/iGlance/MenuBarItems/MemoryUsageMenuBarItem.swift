@@ -24,7 +24,7 @@ class MemoryUsageMenuBarItem: MenuBarItem {
 
     // MARK: -
     // MARK: Protocol Implementations
-    func update() {
+    override func updateMenuBarIcon() {
         let usage = AppDelegate.systemInfo.memory.getMemoryUsage()
 
         guard let button = self.statusItem.button else {

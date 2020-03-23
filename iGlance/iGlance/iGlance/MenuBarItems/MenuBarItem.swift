@@ -10,14 +10,15 @@ import Cocoa
 
 protocol MenuBarItemProtocol {
     /**
-     * Updates the menu bar item. This function is called during every update interval.
+     * Updates the icon of the menu bar item. This function is called during every update interval.
      */
-    func update()
+    func updateMenuBarIcon()
 }
 
 class MenuBarItemClass {
     let statusItem: NSStatusItem
 
+    /// holds all the menu items for the menu. The menu is rebuild everytime an item is added or removed.
     var menuItems: [NSMenuItem] = [] {
         didSet {
             // rebuild the menu if a new item was added
@@ -26,10 +27,31 @@ class MenuBarItemClass {
     }
 
     init() {
+        // create the status item
         statusItem = NSStatusBar.system.statusItem(withLength: NSStatusItem.variableLength)
 
         // build the menu once
         buildMenu()
+    }
+
+    /**
+     * Updates the menu bar item. This function is called during every update interval.
+     */
+    func update() {
+        updateMenuBarIcon()
+        updateMenuBarMenu()
+    }
+
+    /**
+    * Updates the icon of the menu bar item. This function is called during every update interval.
+    */
+    func updateMenuBarIcon() {
+    }
+
+    /**
+    * Updates the menu of the menu bar item. This function is called during every update interval.
+    */
+    func updateMenuBarMenu() {
     }
 
     /**
@@ -62,7 +84,6 @@ class MenuBarItemClass {
 
         // add the settings button to the menu
         menu.addItem(NSMenuItem(title: "Settings", action: #selector(AppDelegate.showMainWindow), keyEquivalent: ","))
-        menu.addItem(NSMenuItem.separator())
 
         // add the quit button to the menu
         menu.addItem(NSMenuItem(title: "Quit iGlance", action: #selector(NSApplication.terminate(_:)), keyEquivalent: "q"))

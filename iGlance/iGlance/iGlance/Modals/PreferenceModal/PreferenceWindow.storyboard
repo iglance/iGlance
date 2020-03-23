@@ -170,6 +170,7 @@
                         </constraints>
                     </view>
                     <connections>
+                        <outlet property="advancedLoggingCheckbox" destination="Dog-g4-PBP" id="S9H-YP-Eei"/>
                         <outlet property="autostartOnBootCheckbox" destination="OEb-YF-FaP" id="iyd-B9-1br"/>
                         <outlet property="logoImage" destination="6c4-9A-u91" id="KkS-jB-G7X"/>
                         <outlet property="tempUnitSelector" destination="04b-YO-tCr" id="NRi-n6-EAt"/>
