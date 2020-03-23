@@ -68,6 +68,7 @@ class LineGraph: Graph {
         // lock the image to draw the graph
         image.lockFocus()
 
+        // get the bar to draw the gradient
         var gradientImage: NSImage?
         if gradientColor != nil {
             gradientImage = getGradientBar(barWidth: barWidth, maxBarHeight: self.maxbarHeight, barColor: graphColor, gradientColor: gradientColor!)
@@ -77,7 +78,7 @@ class LineGraph: Graph {
         var nextValuePosition = self.imageSize.width - self.borderWidth - 1
         for value in valueHistory.makeIterator().reversed() {
             // calculate the height of the bar
-            let barHeight = Double((maxValue / self.maxValue) * value)
+            let barHeight = Double((self.maxbarHeight / self.maxValue) * value)
 
             // draw the gradient if necessary
             if gradientImage != nil {

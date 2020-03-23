@@ -14,10 +14,10 @@ class MemoryUsageMenuBarItem: MenuBarItem {
     let lineGraph: LineGraph
 
     override init() {
-        let maxMemValue = AppDelegate.systemInfo.memory.getTotalMemorySize()
-        self.barGraph = BarGraph(maxValue: Double(maxMemValue))
+        let maxMemValue = Double(AppDelegate.systemInfo.memory.getTotalMemorySize())
+        self.barGraph = BarGraph(maxValue: maxMemValue)
         let graphWidth = AppDelegate.userSettings.settings.memory.usageLineGraphWidth
-        self.lineGraph = LineGraph(maxValue: 100, imageWidth: graphWidth)
+        self.lineGraph = LineGraph(maxValue: maxMemValue, imageWidth: graphWidth)
 
         super.init()
     }
