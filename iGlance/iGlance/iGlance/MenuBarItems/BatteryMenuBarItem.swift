@@ -47,12 +47,13 @@ class BatteryMenuBarItem: MenuBarItem {
         // get info about the battery to determin which icon to use
         let isOnAC = AppDelegate.systemInfo.battery.isOnAC()
         let isCharging = AppDelegate.systemInfo.battery.isCharging()
+        let isCharged = AppDelegate.systemInfo.battery.isFullyCharged()
 
         var batteryIcon: NSImage?
-        if isOnAC && isCharging {
-            batteryIcon = NSImage(named: "BatteryIconCharging")
-        } else if isOnAC && !isCharging {
+        if isOnAC && !isCharging || isCharged {
             batteryIcon = NSImage(named: "BatteryIconPlugged")
+        } else if isOnAC && isCharging {
+            batteryIcon = NSImage(named: "BatteryIconCharging")
         } else if !isCharging && !isOnAC || !isOnAC && isCharging {
             // the case !isOnAC && isCharging occurs when the machine is unplugged from AC and the remaining time is still calculated
             guard var iconTemplate = NSImage(named: "BatteryIcon") else {
