@@ -13,8 +13,8 @@ import IOKit.ps
 class BatteryMenuBarItem: MenuBarItem {
     // MARK: -
     // MARK: Private Variables
-    private var chargeMenuEntry = NSMenuItem(title: "Charge: N/A%", action: nil, keyEquivalent: "")
-    private var remainingTimeMenuEntry = NSMenuItem(title: "Remaining: N/A", action: nil, keyEquivalent: "")
+    private let chargeMenuEntry = NSMenuItem(title: "Charge: N/A%", action: nil, keyEquivalent: "")
+    private let remainingTimeMenuEntry = NSMenuItem(title: "Remaining: N/A", action: nil, keyEquivalent: "")
 
     override init() {
         super.init()

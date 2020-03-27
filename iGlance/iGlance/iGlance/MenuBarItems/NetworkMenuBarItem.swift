@@ -12,10 +12,10 @@ import CocoaLumberjack
 class NetworkMenuBarItem: MenuBarItem {
     // MARK: -
     // MARK: Private Variables
-    private var totalTransmittedMenuEntry = NSMenuItem(title: "Total: \t N/A", action: nil, keyEquivalent: "")
-    private var totalUploadedMenuEntry = NSMenuItem(title: "Up: \t\t N/A", action: nil, keyEquivalent: "")
-    private var totalDownloadedMenuEntry = NSMenuItem(title: "Down: \t N/A", action: nil, keyEquivalent: "")
-    private var resetMenuEntry = NSMenuItem(title: "Reset statistic", action: #selector(resetNetworkStats), keyEquivalent: "r")
+    private let totalTransmittedMenuEntry = NSMenuItem(title: "Total: \t N/A", action: nil, keyEquivalent: "")
+    private let totalUploadedMenuEntry = NSMenuItem(title: "Up: \t\t N/A", action: nil, keyEquivalent: "")
+    private let totalDownloadedMenuEntry = NSMenuItem(title: "Down: \t N/A", action: nil, keyEquivalent: "")
+    private let resetMenuEntry = NSMenuItem(title: "Reset statistic", action: #selector(resetNetworkStats), keyEquivalent: "r")
 
     /// The total transmitted bytes that were read on the last reset
     private var totalBytesOnLastReset: [String: (up: UInt64, down: UInt64)] = [:]

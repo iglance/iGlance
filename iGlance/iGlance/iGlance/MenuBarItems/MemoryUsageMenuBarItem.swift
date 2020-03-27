@@ -33,6 +33,9 @@ class MemoryUsageMenuBarItem: MenuBarItem {
     // MARK: -
     // MARK: Private Functions
 
+    /**
+     * Updates the icon of the menu bar item. This function is called during every update interval.
+     */
     private func updateMenuBarIcon(memoryUsage: (free: Double, active: Double, inactive: Double, wired: Double, compressed: Double)) {
         guard let button = self.statusItem.button else {
             DDLogError("Could not retrieve the button of the 'MemoryUsageMenuBarItem'")
