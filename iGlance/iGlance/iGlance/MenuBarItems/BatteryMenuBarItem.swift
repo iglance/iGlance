@@ -22,7 +22,8 @@ class BatteryMenuBarItem: MenuBarItem {
         // update the title of the menu entries
         let charge = AppDelegate.systemInfo.battery.getCharge()
         chargeMenuEntry.title = "Charge: \(charge)%"
-        let remainingTime = getRemainingTimeString()
+        let batteryState = AppDelegate.systemInfo.battery.getInternalBatteryState()
+        let remainingTime = getRemainingTimeString(batteryState: batteryState)
         remainingTimeMenuEntry.title = "Remaining: \(remainingTime.string)"
 
         // add them to the menu
@@ -33,14 +34,33 @@ class BatteryMenuBarItem: MenuBarItem {
     // MARK: Protocol Implementations
 
     func update() {
-        updateMenuBarIcon()
-        updateMenuBarMenu()
+        // get the current charge
+        let currentCharge = AppDelegate.systemInfo.battery.getCharge()
+        // get the state of the internal battery
+        let batteryState = AppDelegate.systemInfo.battery.getInternalBatteryState()
+        // get whether the battery is on AC
+        let isOnAC = AppDelegate.systemInfo.battery.isOnAC()
+        // get whether the battery is charging
+        let isCharging = AppDelegate.systemInfo.battery.isCharging()
+        // get whether the battery is charged
+        let isCharged = AppDelegate.systemInfo.battery.isFullyCharged()
+
+        updateMenuBarIcon(currentCharge: currentCharge, isOnAC: isOnAC, isCharging: isCharging, isCharged: isCharged, batteryState: batteryState)
+        updateMenuBarMenu(currentCharge: currentCharge, batteryState: batteryState)
     }
 
     // MARK: -
     // MARK: Private Functions
 
-    private func updateMenuBarIcon() {
+    /**
+     * Updates the icon of the menu bar item. This function is called during every update interval.
+     *
+     * - Parameter currentCharge: The current charg of the battery in percentage
+     * - Parameter isOnAC: Indicates whether the battery is currently on AC
+     * - Parameter isCharging: Indicates whether the battery is currently charging.
+     * - Parameter batteryState: The internal state object of the battery.
+     */
+    private func updateMenuBarIcon(currentCharge: Int, isOnAC: Bool, isCharging: Bool, isCharged: Bool, batteryState: InternalBatteryState) {
         // get the button of the menu bar item
         guard let button = self.statusItem.button else {
             DDLogError("Could not retrieve the button of the 'BatteryMenuBarItem'")
@@ -50,13 +70,13 @@ class BatteryMenuBarItem: MenuBarItem {
         // get the string for the button
         var buttonString: NSAttributedString
         if AppDelegate.userSettings.settings.battery.showPercentage {
-            buttonString = getPercentageString()
+            buttonString = getPercentageString(currentCharge: currentCharge)
         } else {
-            buttonString = getRemainingTimeString()
+            buttonString = getRemainingTimeString(batteryState: batteryState)
         }
 
         // get the battery icon
-        let batteryIcon = getBatteryIcon()
+        let batteryIcon = getBatteryIcon(currentCharge: currentCharge, isOnAC: isOnAC, isCharging: isCharging, isCharged: isCharged, batteryState: batteryState)
         // the battery icon is nil loading the icon failed
         if batteryIcon == nil {
             return
@@ -83,24 +103,27 @@ class BatteryMenuBarItem: MenuBarItem {
         button.image = image
     }
 
-    private func updateMenuBarMenu() {
+    /**
+     * Updates the menu of the menu bar item. This function is called during every update interval.
+     *
+     * - Parameter batteryState: The internal state of the battery.
+     */
+    private func updateMenuBarMenu(currentCharge: Int, batteryState: InternalBatteryState) {
         // update the title of the menu entries
-        let charge = AppDelegate.systemInfo.battery.getCharge()
-        chargeMenuEntry.title = "Charge: \(charge)%"
-        let remainingTime = getRemainingTimeString()
+        chargeMenuEntry.title = "Charge: \(currentCharge)%"
+        let remainingTime = getRemainingTimeString(batteryState: batteryState)
         remainingTimeMenuEntry.title = "Remaining: \(remainingTime.string)"
     }
 
     /**
      * Returns the battery icon depending on the state of the battery.
+     *
+     * - Parameter isOnAC: Indicates whether the battery is on AC.
+     * - Parameter isCharging: Indicates whether the battery is currently charging.
+     * - Parameter isCharged: Indicates whether the battery is fully charged.
+     * - Parameter batteryState: The internal state of the battery.
      */
-    private func getBatteryIcon() -> NSImage? {
-        // get info about the battery to determin which icon to use
-        let isOnAC = AppDelegate.systemInfo.battery.isOnAC()
-        let isCharging = AppDelegate.systemInfo.battery.isCharging()
-        let isCharged = AppDelegate.systemInfo.battery.isFullyCharged()
-        let batteryState = AppDelegate.systemInfo.battery.getInternalBatteryState()
-
+    private func getBatteryIcon(currentCharge: Int, isOnAC: Bool, isCharging: Bool, isCharged: Bool, batteryState: InternalBatteryState) -> NSImage? {
         var batteryIcon: NSImage?
         if isOnAC && !isCharging || isCharged {
             batteryIcon = NSImage(named: "BatteryIconPlugged")
@@ -112,8 +135,7 @@ class BatteryMenuBarItem: MenuBarItem {
                 DDLogError("Failed to load the battery template icon (battery state: \(batteryState)")
                 return nil
             }
-            let charge = AppDelegate.systemInfo.battery.getCharge()
-            batteryIcon = getChargeBatteryIcon(batteryIcon: &iconTemplate, currentCharge: charge)
+            batteryIcon = getChargeBatteryIcon(batteryIcon: &iconTemplate, currentCharge: currentCharge)
         }
 
         if batteryIcon == nil {
@@ -124,10 +146,18 @@ class BatteryMenuBarItem: MenuBarItem {
         return batteryIcon
     }
 
-    private func getRemainingTimeString() -> NSAttributedString {
-        // get the state of the internal battery
-        let batteryState = AppDelegate.systemInfo.battery.getInternalBatteryState()
-
+    /**
+     * Returns the string which indicates the remaining time to charge or discharge.
+     *
+     * - Possible Values:
+     *      * `Calculating`
+     *      * The remaining time until full (hh:mm)
+     *      * The remaining time until empty (hh:mm)
+     *      * `Charged`
+     *      * `Not Charging`
+     *      * `Error`
+     */
+    private func getRemainingTimeString(batteryState: InternalBatteryState) -> NSAttributedString {
         var buttonString: NSAttributedString
 
         // define the attributes
@@ -207,16 +237,14 @@ class BatteryMenuBarItem: MenuBarItem {
     /**
      * Returns the string that is displaying the current charge of the battery in percentage.
      */
-    private func getPercentageString() -> NSAttributedString {
-        let charge = AppDelegate.systemInfo.battery.getCharge()
-
+    private func getPercentageString(currentCharge: Int) -> NSAttributedString {
         // define the attributes
         let attributes = [
             NSAttributedString.Key.font: NSFont(name: "Apple SD Gothic Neo", size: 14)!,
             NSAttributedString.Key.foregroundColor: ThemeManager.isDarkTheme() ? NSColor.white : NSColor.black
         ]
 
-        return NSAttributedString(string: "\(charge)%", attributes: attributes)
+        return NSAttributedString(string: "\(currentCharge)%", attributes: attributes)
     }
 
     /**
