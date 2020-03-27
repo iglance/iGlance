@@ -10,9 +10,6 @@ import Foundation
 import CocoaLumberjack
 
 class MemoryUsageMenuBarItem: MenuBarItem {
-    let barGraph: BarGraph
-    let lineGraph: LineGraph
-
     override init() {
         let maxMemValue = Double(AppDelegate.systemInfo.memory.getTotalMemorySize())
         self.barGraph = BarGraph(maxValue: maxMemValue)
@@ -20,7 +17,24 @@ class MemoryUsageMenuBarItem: MenuBarItem {
         self.lineGraph = LineGraph(maxValue: maxMemValue, imageWidth: graphWidth)
 
         super.init()
+
+        // add the menu entries
+        menuItems.append(contentsOf: [activeMemoryMenuEntry, compressedMemoryMenuEntry, wiredMemoryMenuEntry, freeMemoryMenuEntry, NSMenuItem.separator()])
     }
+
+    // MARK: -
+    // MARK: Instance Variables
+
+    let barGraph: BarGraph
+    let lineGraph: LineGraph
+
+    // MARK: -
+    // MARK: Private Variables
+
+    private let activeMemoryMenuEntry = NSMenuItem(title: "Active: \t\t\t N/A", action: nil, keyEquivalent: "")
+    private let compressedMemoryMenuEntry = NSMenuItem(title: "Compressed: \t N/A", action: nil, keyEquivalent: "")
+    private let wiredMemoryMenuEntry = NSMenuItem(title: "Wired: \t\t\t N/A", action: nil, keyEquivalent: "")
+    private let freeMemoryMenuEntry = NSMenuItem(title: "Free: \t\t\t N/A", action: nil, keyEquivalent: "")
 
     // MARK: -
     // MARK: Protocol Implementations
@@ -28,6 +42,7 @@ class MemoryUsageMenuBarItem: MenuBarItem {
     func update() {
         let usage = AppDelegate.systemInfo.memory.getMemoryUsage()
         updateMenuBarIcon(memoryUsage: usage)
+        updateMenuBarMenu(memoryUsage: usage)
     }
 
     // MARK: -
@@ -58,5 +73,15 @@ class MemoryUsageMenuBarItem: MenuBarItem {
         // add the value to the line graph history
         // this allows us to draw the resent history when the user switches to the line graph
         self.lineGraph.addValue(value: Double(totalUsage))
+    }
+
+    /**
+     * Updates the menu of the menu bar item. This function is called during every update interval.
+     */
+    private func updateMenuBarMenu(memoryUsage: (free: Double, active: Double, inactive: Double, wired: Double, compressed: Double)) {
+        activeMemoryMenuEntry.title = "Active: \t\t\t \(String(format: "%.2f", memoryUsage.active)) GB"
+        wiredMemoryMenuEntry.title = "Wired: \t\t\t \(String(format: "%.2f", memoryUsage.wired)) GB"
+        compressedMemoryMenuEntry.title = "Compressed: \t \(String(format: "%.2f", memoryUsage.compressed)) GB"
+        freeMemoryMenuEntry.title = "Free: \t\t\t \(String(format: "%.2f", memoryUsage.free)) GB"
     }
 }

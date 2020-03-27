@@ -12,7 +12,7 @@ import SystemKit
 
 class MemoryInfo {
     /**
-     * Returns the usage of the RAM
+     * Returns the usage of the RAM in GB.
      */
     func getMemoryUsage() -> (free: Double, active: Double, inactive: Double, wired: Double, compressed: Double) {
         let usage = SKSystem.memoryUsage()
