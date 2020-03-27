@@ -10,9 +10,9 @@ import Cocoa
 
 protocol MenuBarItemProtocol {
     /**
-     * Updates the icon of the menu bar item. This function is called during every update interval.
+     * Updates the menu bar item. This function is called during every update interval.
      */
-    func updateMenuBarIcon()
+    func update()
 }
 
 class MenuBarItemClass {
@@ -32,26 +32,6 @@ class MenuBarItemClass {
 
         // build the menu once
         buildMenu()
-    }
-
-    /**
-     * Updates the menu bar item. This function is called during every update interval.
-     */
-    func update() {
-        updateMenuBarIcon()
-        updateMenuBarMenu()
-    }
-
-    /**
-    * Updates the icon of the menu bar item. This function is called during every update interval.
-    */
-    func updateMenuBarIcon() {
-    }
-
-    /**
-    * Updates the menu of the menu bar item. This function is called during every update interval.
-    */
-    func updateMenuBarMenu() {
     }
 
     /**

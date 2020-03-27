@@ -41,13 +41,36 @@ class FanMenuBarItem: MenuBarItem {
     }
 
     // MARK: -
-    // MARK: Override Functions
+    // MARK: Protocol Implementations
 
-    override func updateMenuBarIcon() {
-        var curMaxFanSpeed = 0
+    func update() {
+        // get the info for every fan
+        var fanInfo: [(currentFanSpeed: Int, maxFanSpeed: Int, minFanSpeed: Int)] = []
         for id in 0..<fanCount {
             // get the fan speed for the current fan
-            let fanSpeed = AppDelegate.systemInfo.fan.getCurrentFanSpeed(id: id)
+            let currentFanSpeed = AppDelegate.systemInfo.fan.getCurrentFanSpeed(id: id)
+            let maxFanSpeed = AppDelegate.systemInfo.fan.getMaxFanSpeed(id: id)
+            let minFanSpeed = AppDelegate.systemInfo.fan.getMinFanSpeed(id: id)
+
+            fanInfo.append((currentFanSpeed: currentFanSpeed, maxFanSpeed: maxFanSpeed, minFanSpeed: minFanSpeed))
+        }
+
+        updateMenuBarIcon(fanInfo: fanInfo)
+        updateMenuBarMenu(fanInfo: fanInfo)
+    }
+
+
+    // MARK: -
+    // MARK: Private Functions
+
+    /**
+    * Updates the icon of the menu bar item. This function is called during every update interval.
+    */
+    private func updateMenuBarIcon(fanInfo: [(currentFanSpeed: Int, maxFanSpeed: Int, minFanSpeed: Int)]) {
+        var curMaxFanSpeed = 0
+        for info in fanInfo {
+            // get the fan speed for the current fan
+            let fanSpeed = info.currentFanSpeed
 
             // if the rpm of the current fan is higher than the saved fan speed update it
             if curMaxFanSpeed < fanSpeed {
@@ -79,11 +102,14 @@ class FanMenuBarItem: MenuBarItem {
         button.image = image
     }
 
-    override func updateMenuBarMenu() {
+    /**
+    * Updates the menu of the menu bar item. This function is called during every update interval.
+    */
+    private func updateMenuBarMenu(fanInfo: [(currentFanSpeed: Int, maxFanSpeed: Int, minFanSpeed: Int)]) {
         // iterate all fans
-        for id in 0..<fanCount {
+        for (id, info) in fanInfo.enumerated() {
             // get the current fan speed
-            let currentFanSpeed = AppDelegate.systemInfo.fan.getCurrentFanSpeed(id: id)
+            let currentFanSpeed = info.currentFanSpeed
 
             // get the current fan menu
             let currentFanMenu = fanMenus[id]
@@ -92,9 +118,6 @@ class FanMenuBarItem: MenuBarItem {
             currentFanMenu.currentFanSpeed.title = "Current:\t\t \(currentFanSpeed) RPM"
         }
     }
-
-    // MARK: -
-    // MARK: Private Functions
 
     /**
      * Returns the attributed string of the current fan RPM that can be rendered on an image.
@@ -147,7 +170,6 @@ class FanMenuBarItem: MenuBarItem {
      */
     private func getFanMenus() -> [FanMenu] {
         var menus: [FanMenu] = []
-        let fanCount = AppDelegate.systemInfo.fan.getNumberOfFans()
 
         for id in 0..<fanCount {
             // get the min, max and current fan speed for the current fan

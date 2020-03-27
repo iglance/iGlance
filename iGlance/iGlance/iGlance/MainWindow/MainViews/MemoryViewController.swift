@@ -130,7 +130,7 @@ class MemoryViewController: MainViewViewController {
         // update the width of the menu bar item
         AppDelegate.menuBarItemManager.memoryUsage.lineGraph.setGraphWidth(width: Int(sender.intValue))
         // rerender the menu bar item
-        AppDelegate.menuBarItemManager.memoryUsage.updateMenuBarIcon()
+        AppDelegate.menuBarItemManager.memoryUsage.update()
     }
 
     @IBAction private func usageColorWellChanged(_ sender: NSColorWell) {

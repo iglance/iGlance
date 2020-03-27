@@ -23,7 +23,15 @@ class CpuUsageMenuBarItem: MenuBarItem {
 
     // MARK: -
     // MARK: Protocol Implementations
-    override func updateMenuBarIcon() {
+    
+    func update() {
+        updateMenuBarIcon()
+    }
+
+    // MARK: -
+    // MARK: Private Functions
+
+    private func updateMenuBarIcon() {
         let usage = AppDelegate.systemInfo.cpu.getCpuUsage()
 
         guard let button = self.statusItem.button else {

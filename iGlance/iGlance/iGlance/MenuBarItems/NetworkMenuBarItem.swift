@@ -44,7 +44,12 @@ class NetworkMenuBarItem: MenuBarItem {
         self.totalBytesOnLastReset[interface] = totalTransmittedBytes
     }
 
-    override func updateMenuBarIcon() {
+    func update() {
+        updateMenuBarMenu()
+        updateMenuBarIcon()
+    }
+
+    func updateMenuBarIcon() {
         // get the button of the menu bar item
         guard let button = self.statusItem.button else {
             DDLogError("Could not retrieve the button of the 'NetworkMenuBarItem'")
@@ -65,7 +70,7 @@ class NetworkMenuBarItem: MenuBarItem {
         button.image = menuBarImage
     }
 
-    override func updateMenuBarMenu() {
+    func updateMenuBarMenu() {
         // get the currently used interface
         let interfaceName = AppDelegate.systemInfo.network.getCurrentlyUsedInterface()
 

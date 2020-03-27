@@ -16,8 +16,6 @@ class BatteryMenuBarItem: MenuBarItem {
     private var chargeMenuEntry = NSMenuItem(title: "Charge: N/A%", action: nil, keyEquivalent: "")
     private var remainingTimeMenuEntry = NSMenuItem(title: "Remaining: N/A", action: nil, keyEquivalent: "")
 
-    // MARK: -
-    // MARK: Overridden Functions
     override init() {
         super.init()
 
@@ -31,7 +29,18 @@ class BatteryMenuBarItem: MenuBarItem {
         menuItems.append(contentsOf: [chargeMenuEntry, remainingTimeMenuEntry, NSMenuItem.separator()])
     }
 
-    override func updateMenuBarIcon() {
+    // MARK: -
+    // MARK: Protocol Implementations
+
+    func update() {
+        updateMenuBarIcon()
+        updateMenuBarMenu()
+    }
+
+    // MARK: -
+    // MARK: Private Functions
+    
+    private func updateMenuBarIcon() {
         // get the button of the menu bar item
         guard let button = self.statusItem.button else {
             DDLogError("Could not retrieve the button of the 'BatteryMenuBarItem'")
@@ -74,16 +83,13 @@ class BatteryMenuBarItem: MenuBarItem {
         button.image = image
     }
 
-    override func updateMenuBarMenu() {
+    private func updateMenuBarMenu() {
         // update the title of the menu entries
         let charge = AppDelegate.systemInfo.battery.getCharge()
         chargeMenuEntry.title = "Charge: \(charge)%"
         let remainingTime = getRemainingTimeString()
         remainingTimeMenuEntry.title = "Remaining: \(remainingTime.string)"
     }
-
-    // MARK: -
-    // MARK: Private Functions
 
     /**
      * Returns the battery icon depending on the state of the battery.
