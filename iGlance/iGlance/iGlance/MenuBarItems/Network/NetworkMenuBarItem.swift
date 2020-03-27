@@ -12,10 +12,10 @@ import CocoaLumberjack
 class NetworkMenuBarItem: MenuBarItem {
     // MARK: -
     // MARK: Private Variables
-    private let totalTransmittedMenuEntry = NSMenuItem(title: "Total: \t N/A", action: nil, keyEquivalent: "")
-    private let totalUploadedMenuEntry = NSMenuItem(title: "Up: \t\t N/A", action: nil, keyEquivalent: "")
-    private let totalDownloadedMenuEntry = NSMenuItem(title: "Down: \t N/A", action: nil, keyEquivalent: "")
+    /// The menu entry to reset the network stats that are displayed in the menu
     private let resetMenuEntry = NSMenuItem(title: "Reset statistic", action: #selector(resetNetworkStats), keyEquivalent: "r")
+    /// The network statistics view that is displayed in the menu bar item menu
+    let networkStatsMenuView = NetworkStatisticsMenuView(frame: NSRect(x: 0, y: 0, width: 250, height: 50))
 
     /// The total transmitted bytes that were read on the last reset
     private var totalBytesOnLastReset: [String: (up: UInt64, down: UInt64)] = [:]
@@ -33,8 +33,12 @@ class NetworkMenuBarItem: MenuBarItem {
         super.init()
 
         // add the menu entrys
+
+        let networkStatsMenuItem = NSMenuItem(title: "", action: nil, keyEquivalent: "")
+        networkStatsMenuItem.view = networkStatsMenuView
+
         resetMenuEntry.target = self
-        menuItems.append(contentsOf: [totalTransmittedMenuEntry, totalUploadedMenuEntry, totalDownloadedMenuEntry, resetMenuEntry, NSMenuItem.separator()])
+        menuItems.append(contentsOf: [networkStatsMenuItem, resetMenuEntry, NSMenuItem.separator()])
 
         // get the bandwidth once to initialize the values internally. The effect of this call is that the bandwidth value on startup is 0
         _ = AppDelegate.systemInfo.network.getNetworkBandwidth(interface: interface)
@@ -113,10 +117,10 @@ class NetworkMenuBarItem: MenuBarItem {
         let convertedDown = convertToCorrectUnit(bytes: totalBytesDownloaded, perSecond: false)
         let convertedTotal = convertToCorrectUnit(bytes: totalBytesUploaded + totalBytesDownloaded, perSecond: false)
 
-        // update the menu entrys
-        totalTransmittedMenuEntry.title = "Total: \t \(convertedTotal.value) \(convertedTotal.unit)"
-        totalDownloadedMenuEntry.title = "Down: \t \(convertedDown.value) \(convertedDown.unit)"
-        totalUploadedMenuEntry.title = "Up: \t\t \(convertedUp.value) \(convertedUp.unit)"
+        // update the menu view
+        networkStatsMenuView.setUploadLabel("\(convertedUp.value) \(convertedUp.unit)")
+        networkStatsMenuView.setDownloadLabel("\(convertedDown.value) \(convertedDown.unit)")
+        networkStatsMenuView.setTotalLabel("\(convertedTotal.value) \(convertedTotal.unit)")
     }
 
     // MARK: -
