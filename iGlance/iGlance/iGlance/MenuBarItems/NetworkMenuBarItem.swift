@@ -45,22 +45,22 @@ class NetworkMenuBarItem: MenuBarItem {
     }
 
     func update() {
-        updateMenuBarMenu()
-        updateMenuBarIcon()
+        // get the currently used network interface
+        let interfaceName = AppDelegate.systemInfo.network.getCurrentlyUsedInterface()
+
+        updateMenuBarMenu(currentInterface: interfaceName)
+        updateMenuBarIcon(currentInterface: interfaceName)
     }
 
-    func updateMenuBarIcon() {
+    func updateMenuBarIcon(currentInterface: String) {
         // get the button of the menu bar item
         guard let button = self.statusItem.button else {
             DDLogError("Could not retrieve the button of the 'NetworkMenuBarItem'")
             return
         }
 
-        // get the currently used network interface
-        let interfaceName = AppDelegate.systemInfo.network.getCurrentlyUsedInterface()
-
         // get the bandwidth
-        let bandwidth = AppDelegate.systemInfo.network.getNetworkBandwidth(interface: interfaceName)
+        let bandwidth = AppDelegate.systemInfo.network.getNetworkBandwidth(interface: currentInterface)
         let networkBandwidthUp = convertToCorrectUnit(bytes: bandwidth.up, perSecond: true)
         let networkBandwidthDown = convertToCorrectUnit(bytes: bandwidth.down, perSecond: true)
 
@@ -70,25 +70,22 @@ class NetworkMenuBarItem: MenuBarItem {
         button.image = menuBarImage
     }
 
-    func updateMenuBarMenu() {
-        // get the currently used interface
-        let interfaceName = AppDelegate.systemInfo.network.getCurrentlyUsedInterface()
-
+    func updateMenuBarMenu(currentInterface: String) {
         // update the values of the current interface
-        if let currentInterfaceLastResetValue = self.totalBytesOnLastReset[interfaceName] {
+        if let currentInterfaceLastResetValue = self.totalBytesOnLastReset[currentInterface] {
             // get the total transmitted bytes of that interface
-            let transmittedBytes = AppDelegate.systemInfo.network.getTotalTransmittedBytesOf(interface: interfaceName)
+            let transmittedBytes = AppDelegate.systemInfo.network.getTotalTransmittedBytesOf(interface: currentInterface)
 
             // get the difference of the currently total transmitted bytes and the total transmitted bytes on the last reset
             let bytesUploaded = transmittedBytes.up - currentInterfaceLastResetValue.up
             let bytesDownloaded = transmittedBytes.down - currentInterfaceLastResetValue.down
 
             // update the dictionary
-            self.transmittedBytesPerInterface[interfaceName] = (up: bytesUploaded, down: bytesDownloaded)
+            self.transmittedBytesPerInterface[currentInterface] = (up: bytesUploaded, down: bytesDownloaded)
         } else {
             // if the last reset value of the current interface is not available set it
-            let transmittedBytes = AppDelegate.systemInfo.network.getTotalTransmittedBytesOf(interface: interfaceName)
-            self.totalBytesOnLastReset[interfaceName] = transmittedBytes
+            let transmittedBytes = AppDelegate.systemInfo.network.getTotalTransmittedBytesOf(interface: currentInterface)
+            self.totalBytesOnLastReset[currentInterface] = transmittedBytes
         }
 
         // add the transmitted bytes of every interface together

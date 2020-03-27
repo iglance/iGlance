@@ -39,7 +39,7 @@ class BatteryMenuBarItem: MenuBarItem {
 
     // MARK: -
     // MARK: Private Functions
-    
+
     private func updateMenuBarIcon() {
         // get the button of the menu bar item
         guard let button = self.statusItem.button else {

@@ -23,7 +23,7 @@ class CpuUsageMenuBarItem: MenuBarItem {
 
     // MARK: -
     // MARK: Protocol Implementations
-    
+
     func update() {
         updateMenuBarIcon()
     }
