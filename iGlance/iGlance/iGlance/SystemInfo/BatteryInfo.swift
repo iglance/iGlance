@@ -240,15 +240,15 @@ class BatteryInfo {
         if !onAC && timeToEmptyMinutes == -1 || onAC && timeToFullMinutes == -1 {
             // if the machine is not charging and no time is available, the time is calculated
             return .calculatingRemainingTime
-        } else if onAC &&  !charging {
+        } else if onAC &&  !charging && !fullyCharged {
             // if the machine is on ac but the battery is not charging
             return .notCharging
-        } else if onAC && fullyCharged {
+        } else if onAC && !charging && fullyCharged {
             // if the machine is charging and the battery is fully charged
             return .fullyCharged
-        } else if onAC && timeToFullMinutes != -1 {
+        } else if onAC && charging && !fullyCharged && timeToFullMinutes != -1 {
             return .charging
-        } else if !onAC && timeToEmptyMinutes != -1 {
+        } else if !onAC && !charging && !fullyCharged && timeToEmptyMinutes != -1 {
             return .discharging
         }
 
