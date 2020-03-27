@@ -11,9 +11,13 @@ import CocoaLumberjack
 import IOKit.ps
 
 class BatteryMenuBarItem: MenuBarItem {
+    // MARK: -
+    // MARK: Private Variables
     private var chargeMenuEntry = NSMenuItem(title: "Charge: N/A%", action: nil, keyEquivalent: "")
     private var remainingTimeMenuEntry = NSMenuItem(title: "Remaining: N/A", action: nil, keyEquivalent: "")
 
+    // MARK: -
+    // MARK: Overridden Functions
     override init() {
         super.init()
 

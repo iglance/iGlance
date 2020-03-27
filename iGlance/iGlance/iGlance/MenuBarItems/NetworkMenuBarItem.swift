@@ -10,6 +10,20 @@ import Foundation
 import CocoaLumberjack
 
 class NetworkMenuBarItem: MenuBarItem {
+    // MARK: -
+    // MARK: Private Variables
+    private var totalTransmittedMenuEntry = NSMenuItem(title: "Total: \t N/A", action: nil, keyEquivalent: "")
+    private var totalUploadedMenuEntry = NSMenuItem(title: "Up: \t\t N/A", action: nil, keyEquivalent: "")
+    private var totalDownloadedMenuEntry = NSMenuItem(title: "Down: \t N/A", action: nil, keyEquivalent: "")
+    private var resetMenuEntry = NSMenuItem(title: "Reset statistic", action: #selector(resetNetworkStats), keyEquivalent: "r")
+
+    /// The total transmitted bytes that were read on the last reset
+    private var totalBytesOnLastReset: [String: (up: UInt64, down: UInt64)] = [:]
+    /// The transmitted bytes since the last reset of every interface
+    private var transmittedBytesPerInterface: [String: (up: UInt64, down: UInt64)] = [:]
+
+    // MARK: -
+    // MARK: Overridden Functions
     override init() {
         // before showing the network bandwidth menu bar icon get the bandwidth
         // once to prevent random values in the menu bar because of wrong last up- and downloaded total bytes
@@ -17,6 +31,17 @@ class NetworkMenuBarItem: MenuBarItem {
         _ = AppDelegate.systemInfo.network.getNetworkBandwidth(interface: interface)
 
         super.init()
+
+        // add the menu entrys
+        resetMenuEntry.target = self
+        menuItems.append(contentsOf: [totalTransmittedMenuEntry, totalUploadedMenuEntry, totalDownloadedMenuEntry, resetMenuEntry, NSMenuItem.separator()])
+
+        // get the bandwidth once to initialize the values internally. The effect of this call is that the bandwidth value on startup is 0
+        _ = AppDelegate.systemInfo.network.getNetworkBandwidth(interface: interface)
+
+        // set the total down and up loaded bytes once on start
+        let totalTransmittedBytes = AppDelegate.systemInfo.network.getTotalTransmittedBytesOf(interface: interface)
+        self.totalBytesOnLastReset[interface] = totalTransmittedBytes
     }
 
     override func updateMenuBarIcon() {
@@ -31,8 +56,8 @@ class NetworkMenuBarItem: MenuBarItem {
 
         // get the bandwidth
         let bandwidth = AppDelegate.systemInfo.network.getNetworkBandwidth(interface: interfaceName)
-        let networkBandwidthUp = convertToCorrectUnit(bytes: bandwidth.up)
-        let networkBandwidthDown = convertToCorrectUnit(bytes: bandwidth.down)
+        let networkBandwidthUp = convertToCorrectUnit(bytes: bandwidth.up, perSecond: true)
+        let networkBandwidthDown = convertToCorrectUnit(bytes: bandwidth.down, perSecond: true)
 
         let menuBarImage = createMenuBarImage(up: networkBandwidthUp, down: networkBandwidthDown)
 
@@ -40,10 +65,79 @@ class NetworkMenuBarItem: MenuBarItem {
         button.image = menuBarImage
     }
 
+    override func updateMenuBarMenu() {
+        // get the currently used interface
+        let interfaceName = AppDelegate.systemInfo.network.getCurrentlyUsedInterface()
+
+        // update the values of the current interface
+        if let currentInterfaceLastResetValue = self.totalBytesOnLastReset[interfaceName] {
+            // get the total transmitted bytes of that interface
+            let transmittedBytes = AppDelegate.systemInfo.network.getTotalTransmittedBytesOf(interface: interfaceName)
+
+            // get the difference of the currently total transmitted bytes and the total transmitted bytes on the last reset
+            let bytesUploaded = transmittedBytes.up - currentInterfaceLastResetValue.up
+            let bytesDownloaded = transmittedBytes.down - currentInterfaceLastResetValue.down
+
+            // update the dictionary
+            self.transmittedBytesPerInterface[interfaceName] = (up: bytesUploaded, down: bytesDownloaded)
+        } else {
+            // if the last reset value of the current interface is not available set it
+            let transmittedBytes = AppDelegate.systemInfo.network.getTotalTransmittedBytesOf(interface: interfaceName)
+            self.totalBytesOnLastReset[interfaceName] = transmittedBytes
+        }
+
+        // add the transmitted bytes of every interface together
+        var totalBytesUploaded: UInt64 = 0
+        var totalBytesDownloaded: UInt64 = 0
+        for interface in self.transmittedBytesPerInterface.keys {
+            // get the transmitted bytes of the current interface
+            let currentTransmittedBytes = self.transmittedBytesPerInterface[interface]!
+            totalBytesUploaded += currentTransmittedBytes.up
+            totalBytesDownloaded += currentTransmittedBytes.down
+        }
+
+        // convert the total and up/down-loaded bytes to the correct unit
+        let convertedUp = convertToCorrectUnit(bytes: totalBytesUploaded, perSecond: false)
+        let convertedDown = convertToCorrectUnit(bytes: totalBytesDownloaded, perSecond: false)
+        let convertedTotal = convertToCorrectUnit(bytes: totalBytesUploaded + totalBytesDownloaded, perSecond: false)
+
+        // update the menu entrys
+        totalTransmittedMenuEntry.title = "Total: \t \(convertedTotal.value) \(convertedTotal.unit)"
+        totalDownloadedMenuEntry.title = "Down: \t \(convertedDown.value) \(convertedDown.unit)"
+        totalUploadedMenuEntry.title = "Up: \t\t \(convertedUp.value) \(convertedUp.unit)"
+    }
+
+    // MARK: -
+    // MARK: Private Functions
+
+    /**
+     * Resets the total bytes downloaded and the total bytes uploaded.
+     */
+    @objc
+    private func resetNetworkStats() {
+        // get the currently used interface
+        let interfaceName = AppDelegate.systemInfo.network.getCurrentlyUsedInterface()
+
+        // remove all interfaces from the dictionaries
+        for interface in self.totalBytesOnLastReset.keys {
+            self.totalBytesOnLastReset.removeValue(forKey: interface)
+        }
+
+        for interface in self.transmittedBytesPerInterface.keys {
+            self.transmittedBytesPerInterface.removeValue(forKey: interface)
+        }
+
+        // reset the total transmitted bytes for the currently used interface
+        self.totalBytesOnLastReset[interfaceName] = AppDelegate.systemInfo.network.getTotalTransmittedBytesOf(interface: interfaceName)
+    }
+
     /**
      *  Takes the bandwidth in bytes and returns the correct value according to the unit as a string and the correct unit (KB/s, MB/s, GB/s) as a string.
      *  If the given value of bytes is smaller than 1000 the function will return a value of zero and as unit "KB/s".
      *  The biggest unit that can be used to display the bandwidth with a value greater than 1 is used:
+     *
+     *  - Parameter bytes: The given number of bytes
+     *  - Parameter perSecond: Whether the returned unit should be per second
      *
      *      Examples:
      *          512 Bytes -> (value: "0", unit: "KB/s")
@@ -52,10 +146,12 @@ class NetworkMenuBarItem: MenuBarItem {
      *          5_000_000_000 Bytes -> (value: "5", unit: "GB/s")
      *
      */
-    private func convertToCorrectUnit(bytes: UInt64) -> (value: String, unit: String) {
+    private func convertToCorrectUnit(bytes: UInt64, perSecond: Bool) -> (value: String, unit: String) {
+        let perSecondString = perSecond ? "/s" : ""
+
         // set the default values for the variables
         var value = "0"
-        var unit = "KB/s"
+        var unit = "KB" + perSecondString
 
         // get the value and the unit
         if bytes > 1_000_000_000 {
@@ -63,17 +159,17 @@ class NetworkMenuBarItem: MenuBarItem {
             let gigabyteValue = Double(bytes) / 1_000_000_000
             // if the value is greater than 100 don't display the decimal places
             value = gigabyteValue >= 100 ? String(Int(gigabyteValue)) : String(format: "%.2f", gigabyteValue)
-            unit = "GB/s"
+            unit = "GB" + perSecondString
         } else if bytes > 1_000_000 {
             // Megabytes per second
             let megabyteValue = Double(bytes) / 1_000_000
             // if the value is greater than 100 don't display the decimal places
             value = megabyteValue >= 100 ? String(Int(megabyteValue)) : String(format: "%.2f", megabyteValue)
-            unit = "MB/s"
+            unit = "MB" + perSecondString
         } else if bytes > 1000 {
             // Kilobyte per second
             value = String(Int(bytes / 1000))
-            unit = "KB/s"
+            unit = "KB" + perSecondString
         }
 
         return (value: value, unit: unit)

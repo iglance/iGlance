@@ -10,15 +10,43 @@ import Foundation
 import CocoaLumberjack
 
 class NetworkInfo {
-    /// The total uploaded and downloaded bytes of an interface that were read during the last update interval of the app.
-    var lastBandwidthByteValues: (up: UInt64, down: UInt64) = (up: 0, down: 0)
+    // MARK: -
+    // MARK: Private Variables
+    /// The total uploaded and downloaded bytes that were read during the last update interval of the app.
+    /// This variable is used to calculate the network bandwidth using [getNetworkBandwidth()](x-source-tag://getNetworkBandwidth())
+    private var totalTransmittedBytes: (up: UInt64, down: UInt64) = (up: 0, down: 0)
 
+    // MARK: -
+    // MARK: Instance Functions
     /**
      * Returns the current bandwidth of the given interface in bytes.
      *
      *  - Parameter interface: The name of the interface.
+     *
+     *  - Tag: getNetworkBandwidth()
      */
     func getNetworkBandwidth(interface: String) -> (up: UInt64, down: UInt64) {
+        // get the total transmitted bytes of the interfafe
+        let transmittedBytes = getTotalTransmittedBytesOf(interface: interface)
+
+        // get the transmitted byte since the last update
+        let upBytes = transmittedBytes.up - self.totalTransmittedBytes.up
+        let downBytes = transmittedBytes.down - self.totalTransmittedBytes.down
+
+        // divide the bandwidth by the update interval to get the average of one update duration
+        let upBandwidth = upBytes / UInt64(AppDelegate.userSettings.settings.updateInterval)
+        let downBandwidth = downBytes / UInt64(AppDelegate.userSettings.settings.updateInterval)
+
+        // update the total transmitted bytes
+        self.totalTransmittedBytes = transmittedBytes
+
+        return (up: upBandwidth, down: downBandwidth)
+    }
+
+    /**
+     * Returns the total transmitted bytes of an interface since booting the machine.
+     */
+    func getTotalTransmittedBytesOf(interface: String) -> (up: UInt64, down: UInt64) {
         // create the process to call the netstat commandline tool
         let process = Process()
         process.launchPath = "/usr/bin/env"
@@ -60,20 +88,13 @@ class NetworkInfo {
         // split the line at the spaces to get the columns of the table
         let columns = cleanedFirstLine.split(separator: " ")
 
-        // get the down- and uploaded bytes
-        guard let downBytes = UInt64(String(columns[6])), let upBytes = UInt64(String(columns[9])) else {
+        // get the total down- and uploaded bytes
+        guard let totalDownBytes = UInt64(String(columns[6])), let totalUpBytes = UInt64(String(columns[9])) else {
             DDLogError("Something went wrong while retrieving the down- and uploaded bytes")
             return (up: 0, down: 0)
         }
 
-        // divide the bandwidth by the update interval to get the average of one update duration
-        let upBandwidth = (upBytes - self.lastBandwidthByteValues.up) / UInt64(AppDelegate.userSettings.settings.updateInterval)
-        let downBandwidth = (downBytes - self.lastBandwidthByteValues.down) / UInt64(AppDelegate.userSettings.settings.updateInterval)
-
-        self.lastBandwidthByteValues.up = upBytes
-        self.lastBandwidthByteValues.down = downBytes
-
-        return (up: upBandwidth, down: downBandwidth)
+        return (up: totalUpBytes, down: totalDownBytes)
     }
 
     /**
