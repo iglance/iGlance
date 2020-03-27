@@ -26,21 +26,20 @@ class MemoryUsageMenuBarItem: MenuBarItem {
     // MARK: Protocol Implementations
 
     func update() {
-        updateMenuBarIcon()
+        let usage = AppDelegate.systemInfo.memory.getMemoryUsage()
+        updateMenuBarIcon(memoryUsage: usage)
     }
 
     // MARK: -
     // MARK: Private Functions
 
-    private func updateMenuBarIcon() {
-        let usage = AppDelegate.systemInfo.memory.getMemoryUsage()
-
+    private func updateMenuBarIcon(memoryUsage: (free: Double, active: Double, inactive: Double, wired: Double, compressed: Double)) {
         guard let button = self.statusItem.button else {
             DDLogError("Could not retrieve the button of the 'MemoryUsageMenuBarItem'")
             return
         }
 
-        let totalUsage = usage.active + usage.compressed + usage.wired
+        let totalUsage = memoryUsage.active + memoryUsage.compressed + memoryUsage.wired
 
         // get all the necessary settings
         let graphColor = AppDelegate.userSettings.settings.memory.usageGraphColor.nsColor
