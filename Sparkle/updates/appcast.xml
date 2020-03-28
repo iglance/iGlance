@@ -3,10 +3,19 @@
     <channel>
         <title>iGlance</title>
         <item>
-            <title>2.0</title>
-            <pubDate>Sat, 11 Jan 2020 19:15:01 +0100</pubDate>
+            <title>2.0.1</title>
+            <pubDate>Sat, 28 Mar 2020 17:31:29 +0100</pubDate>
             <sparkle:minimumSystemVersion>10.12</sparkle:minimumSystemVersion>
-            <enclosure url="https://github.com/iglance/iGlance/releases/download/v1.4.3/iGlance.zip" sparkle:version="2.0" sparkle:shortVersionString="2.0" length="9820058" type="application/octet-stream" sparkle:edSignature="plcixruuwd/TTuHP/lDxDz2gp/mDQ8LUbD4gTmICvdqr1+cpuOZhPECorm3c+2Iq06k7adtKTsfPLSoVKOy8Cg=="/>
+            <enclosure url="https://github.com/iglance/iGlance/releases/download/v2.0.1/iGlance_2.0.1.zip" sparkle:version="2.0.1" sparkle:shortVersionString="2.0.1" length="10091451" type="application/octet-stream" sparkle:edSignature="VJ/DEpNF64UuJ2d25IrvAudVFj83/qzSD3xL9pMJTuIfmSmV4n6SpCt49sVoiLNUi16qQO1ACBaI6Mcx1qzJDA=="/>
+            <sparkle:deltas>
+                <enclosure url="https://raw.githubusercontent.com/iglance/iGlance/gui-redesign-25/Sparkle/updates/iGlance2.0.1-2.0.delta" sparkle:version="2.0.1" sparkle:shortVersionString="2.0.1" sparkle:deltaFrom="2.0" length="90500" type="application/octet-stream" sparkle:edSignature="1mi3Gkq1ufEzVKKx0bSHP4c6MVXsCbSMNM4S6znbJzP4D3jDjTa95vghVO3ZvKMGZc7PJBjIraYztQ4UveBhDw=="/>
+            </sparkle:deltas>
+        </item>
+        <item>
+            <title>2.0</title>
+            <pubDate>Sat, 28 Mar 2020 17:36:16 +0100</pubDate>
+            <sparkle:minimumSystemVersion>10.12</sparkle:minimumSystemVersion>
+            <enclosure url="https://github.com/iglance/iGlance/releases/download/v2.0/iGlance_2.0.zip" sparkle:version="2.0" sparkle:shortVersionString="2.0" length="10091439" type="application/octet-stream" sparkle:edSignature="vB+KqPJGcNjvgz6fBmKPZRK9g0PWxIJ/K6/6zDuiFz8Nj9+4eUNnW54gcOgTwoVn1EUru4iIfIKsOxEVgbauDQ=="/>
         </item>
     </channel>
 </rss>
