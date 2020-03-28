@@ -42,6 +42,11 @@ class MemoryViewController: MainViewViewController {
                 // bar graph is the first option
                 graphWidthStackView.isHidden = true
             }
+
+            // if the usage is not displayed hide it
+            if !AppDelegate.userSettings.settings.memory.showUsage {
+                graphWidthStackView.isHidden = true
+            }
         }
     }
 
@@ -66,6 +71,11 @@ class MemoryViewController: MainViewViewController {
     @IBOutlet private var usageGraphBorderCheckbox: NSButton! {
         didSet {
             usageGraphBorderCheckbox.state = AppDelegate.userSettings.settings.memory.showUsageGraphBorder ? NSButton.StateValue.on : NSButton.StateValue.off
+
+            // if the usage is not displayed hide it
+            if !AppDelegate.userSettings.settings.memory.showUsage {
+                usageGraphBorderCheckbox.isHidden = true
+            }
         }
     }
 
@@ -78,6 +88,33 @@ class MemoryViewController: MainViewViewController {
     @IBOutlet private var secondaryColorWell: NSColorWell! {
         didSet {
             secondaryColorWell.color = AppDelegate.userSettings.settings.memory.colorGradientSettings.secondaryColor.nsColor
+        }
+    }
+
+    @IBOutlet private var graphSelectorStackView: NSStackView! {
+        didSet {
+            // if the usage is not displayed hide it
+            if !AppDelegate.userSettings.settings.memory.showUsage {
+                graphSelectorStackView.isHidden = true
+            }
+        }
+    }
+
+    @IBOutlet private var graphColorStackView: NSStackView! {
+        didSet {
+            // if the usage is not displayed hide it
+            if !AppDelegate.userSettings.settings.memory.showUsage {
+                graphColorStackView.isHidden = true
+            }
+        }
+    }
+
+    @IBOutlet private var secondaryColorStackView: NSStackView! {
+        didSet {
+            // if the usage is not displayed hide it
+            if !AppDelegate.userSettings.settings.memory.showUsage {
+                secondaryColorStackView.isHidden = true
+            }
         }
     }
 
@@ -97,6 +134,13 @@ class MemoryViewController: MainViewViewController {
         } else {
             AppDelegate.menuBarItemManager.memoryUsage.hide()
         }
+
+        // show or hide all the other settings for the memory usage
+        graphSelectorStackView.isHidden = !activated
+        graphWidthStackView.isHidden = !activated || (AppDelegate.userSettings.settings.memory.usageGraphKind == .bar)
+        graphColorStackView.isHidden = !activated
+        usageGraphBorderCheckbox.isHidden = !activated
+        secondaryColorStackView.isHidden = !activated
 
         DDLogInfo("Did set memory usage checkbox value to (\(activated))")
     }

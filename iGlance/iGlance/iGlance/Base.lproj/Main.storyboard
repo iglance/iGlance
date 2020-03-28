@@ -887,41 +887,55 @@
                                             <action selector="memoryUsageCheckboxChanged:" target="Pbp-jU-Jl9" id="K0G-Bg-7yO"/>
                                         </connections>
                                     </button>
-                                    <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="CpZ-zA-XGW">
-                                        <rect key="frame" x="148" y="3" width="18" height="16"/>
-                                        <textFieldCell key="cell" lineBreakMode="clipping" title="as" id="760-AV-VHc">
-                                            <font key="font" metaFont="system"/>
-                                            <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
-                                            <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
-                                        </textFieldCell>
-                                    </textField>
-                                    <popUpButton verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="JVQ-4F-P5n">
-                                        <rect key="frame" x="167" y="-3" width="115" height="25"/>
-                                        <constraints>
-                                            <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="110" id="oTW-LY-epa"/>
-                                        </constraints>
-                                        <popUpButtonCell key="cell" type="push" title="Bar Graph" bezelStyle="rounded" alignment="left" lineBreakMode="truncatingTail" state="on" borderStyle="borderAndBezel" imageScaling="proportionallyDown" inset="2" selectedItem="hWS-rc-wqS" id="gLu-Bw-1c1">
-                                            <behavior key="behavior" lightByBackground="YES" lightByGray="YES"/>
-                                            <font key="font" metaFont="system"/>
-                                            <menu key="menu" id="6gK-4w-MPH">
-                                                <items>
-                                                    <menuItem title="Bar Graph" state="on" id="hWS-rc-wqS"/>
-                                                    <menuItem title="Line Graph" id="9Pa-Qg-SFm"/>
-                                                </items>
-                                            </menu>
-                                        </popUpButtonCell>
-                                        <connections>
-                                            <action selector="graphSelectorChanged:" target="Pbp-jU-Jl9" id="zsa-pU-LyV"/>
-                                        </connections>
-                                    </popUpButton>
+                                    <stackView distribution="fill" orientation="horizontal" alignment="centerY" spacing="5" horizontalStackHuggingPriority="249.99998474121094" verticalStackHuggingPriority="249.99998474121094" detachesHiddenViews="YES" translatesAutoresizingMaskIntoConstraints="NO" id="l37-bA-GeV">
+                                        <rect key="frame" x="150" y="0.0" width="129" height="21"/>
+                                        <subviews>
+                                            <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="CpZ-zA-XGW">
+                                                <rect key="frame" x="-2" y="3" width="18" height="16"/>
+                                                <textFieldCell key="cell" lineBreakMode="clipping" title="as" id="760-AV-VHc">
+                                                    <font key="font" metaFont="system"/>
+                                                    <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
+                                                    <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
+                                                </textFieldCell>
+                                            </textField>
+                                            <popUpButton verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="JVQ-4F-P5n">
+                                                <rect key="frame" x="17" y="-3" width="115" height="25"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="110" id="oTW-LY-epa"/>
+                                                </constraints>
+                                                <popUpButtonCell key="cell" type="push" title="Bar Graph" bezelStyle="rounded" alignment="left" lineBreakMode="truncatingTail" state="on" borderStyle="borderAndBezel" imageScaling="proportionallyDown" inset="2" selectedItem="hWS-rc-wqS" id="gLu-Bw-1c1">
+                                                    <behavior key="behavior" lightByBackground="YES" lightByGray="YES"/>
+                                                    <font key="font" metaFont="system"/>
+                                                    <menu key="menu" id="6gK-4w-MPH">
+                                                        <items>
+                                                            <menuItem title="Bar Graph" state="on" id="hWS-rc-wqS"/>
+                                                            <menuItem title="Line Graph" id="9Pa-Qg-SFm"/>
+                                                        </items>
+                                                    </menu>
+                                                </popUpButtonCell>
+                                                <connections>
+                                                    <action selector="graphSelectorChanged:" target="Pbp-jU-Jl9" id="zsa-pU-LyV"/>
+                                                </connections>
+                                            </popUpButton>
+                                        </subviews>
+                                        <visibilityPriorities>
+                                            <integer value="1000"/>
+                                            <integer value="1000"/>
+                                        </visibilityPriorities>
+                                        <customSpacing>
+                                            <real value="3.4028234663852886e+38"/>
+                                            <real value="3.4028234663852886e+38"/>
+                                        </customSpacing>
+                                    </stackView>
                                 </subviews>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="21" id="oF4-Yw-ddz"/>
+                                </constraints>
                                 <visibilityPriorities>
-                                    <integer value="1000"/>
                                     <integer value="1000"/>
                                     <integer value="1000"/>
                                 </visibilityPriorities>
                                 <customSpacing>
-                                    <real value="3.4028234663852886e+38"/>
                                     <real value="3.4028234663852886e+38"/>
                                     <real value="3.4028234663852886e+38"/>
                                 </customSpacing>
@@ -1111,11 +1125,14 @@
                     </view>
                     <connections>
                         <outlet property="colorGradientCheckbox" destination="Dk9-qc-Hp5" id="fot-Mn-z2h"/>
+                        <outlet property="graphColorStackView" destination="U7H-s6-Pyy" id="eE5-8Z-CKn"/>
                         <outlet property="graphSelector" destination="JVQ-4F-P5n" id="awG-uQ-NmB"/>
+                        <outlet property="graphSelectorStackView" destination="l37-bA-GeV" id="e0R-HV-gU7"/>
                         <outlet property="graphWidthLabel" destination="W5e-cC-NCg" id="tLw-eb-EKL"/>
                         <outlet property="graphWidthSlider" destination="zPC-7x-F63" id="JwA-R0-kdb"/>
                         <outlet property="graphWidthStackView" destination="Kr3-Kf-vay" id="ZMp-76-H9I"/>
                         <outlet property="memoryUsageCheckbox" destination="NpS-Zj-dKQ" id="Sza-9P-UL9"/>
+                        <outlet property="secondaryColorStackView" destination="cqr-It-bkd" id="dY9-Mq-nat"/>
                         <outlet property="secondaryColorWell" destination="Qye-Nb-xc8" id="sch-m3-UUg"/>
                         <outlet property="usageColorWell" destination="Kkt-at-5Bc" id="CDf-Hf-OEG"/>
                         <outlet property="usageGraphBorderCheckbox" destination="cRC-Sj-FxQ" id="qdQ-N8-OMU"/>
