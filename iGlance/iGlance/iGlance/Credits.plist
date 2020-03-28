@@ -3,9 +3,11 @@
 <plist version="1.0">
 <dict>
 	<key>SMCKit</key>
-	<dict/>
-	<key>License</key>
-	<string>The MIT License (MIT)
+	<dict>
+		<key>URL</key>
+		<string>https://github.com/iglance/SMCKit</string>
+		<key>License</key>
+		<string>The MIT License (MIT)
 
 Copyright (c) 2014-2017  beltex &lt;https://github.com/beltex&gt;
 
@@ -26,8 +28,7 @@ AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
 LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
 OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
 THE SOFTWARE.</string>
-	<key>URL</key>
-	<string>https://github.com/iglance/SMCKit</string>
+	</dict>
 	<key>iGlance</key>
 	<dict>
 		<key>License</key>

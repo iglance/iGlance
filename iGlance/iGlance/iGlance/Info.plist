@@ -33,7 +33,7 @@
 	<key>NSPrincipalClass</key>
 	<string>NSApplication</string>
 	<key>SUFeedURL</key>
-	<string>https://raw.githubusercontent.com/iglance/iGlance/gui-redesign-25/Sparkle/updates/appcast.xml</string>
+	<string>https://raw.githubusercontent.com/iglance/iGlance/master/Sparkle/updates/appcast.xml</string>
 	<key>SUPublicEDKey</key>
 	<string>P3ARK4FDc8pGDsEcPHzAOcdQTLRecgY8FGAFaaXGWbs=</string>
 </dict>
