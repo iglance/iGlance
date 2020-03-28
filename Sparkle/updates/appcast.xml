@@ -1,12 +1,12 @@
 <?xml version="1.0" standalone="yes"?>
 <rss xmlns:sparkle="http://www.andymatuschak.org/xml-namespaces/sparkle" version="2.0">
     <channel>
-        <title>iGlance</title>
+        <title>iGlance_v2_0</title>
         <item>
             <title>2.0</title>
-            <pubDate>Sat, 28 Mar 2020 17:53:13 +0100</pubDate>
+            <pubDate>Sat, 28 Mar 2020 20:08:52 +0100</pubDate>
             <sparkle:minimumSystemVersion>10.12</sparkle:minimumSystemVersion>
-            <enclosure url="https://raw.githubusercontent.com/iglance/iGlance/master/Sparkle/updates/iGlance_v2.0.zip" sparkle:version="2.0" sparkle:shortVersionString="2.0" length="10091477" type="application/octet-stream" sparkle:edSignature="FaNxnYnRZqm66UTvPdufyKLQA6x7mVJyRve3XEzcOiDOWQ7r1R3Ht6gvRnqtbx1MHvGq4rXlOxURYByj8AENCw=="/>
+            <enclosure url="https://raw.githubusercontent.com/iglance/iGlance/master/Sparkle/updates/iGlance_v2_0.zip" sparkle:version="2.0" sparkle:shortVersionString="2.0" length="10107572" type="application/octet-stream" sparkle:edSignature="a5n8jqOGGLZ1RRFc4lP71yAVKoolQtXz3POMokgG/fdVNQnI1IdxITY2yOtGRP4pCKbjIct8h5J25C8V8plQAA=="/>
         </item>
     </channel>
 </rss>
