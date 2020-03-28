@@ -1,0 +1,37 @@
+# Uncomment the next line to define a global platform for your project
+platform :osx, '10.12'
+
+workspace "iGlance"
+
+use_frameworks!
+
+pod "SwiftLint"
+pod "CocoaLumberjack/Swift"
+
+target 'iGlance' do
+  workspace "iGlance"
+  project "iGlance/iGlance.xcodeproj"
+  
+  # Pods for iGlance
+  pod "Sparkle"
+end
+
+target 'iGlanceLauncher' do
+  workspace "iGlance"
+  project "iGlance/iGlance.xcodeproj"
+end
+
+target "SMCKit" do
+  workspace "iGlance"
+  project "Libraries/SMCKit/SMCKit.xcodeproj"
+end
+
+target "SystemKit" do
+  workspace "iGlance"
+  project "Libraries/SystemKit/SystemKit.xcodeproj"
+end
+
+target "AppMover" do
+  workspace "iGlance"
+  project "Libraries/AppMover/AppMover.xcodeproj"
+end

@@ -1,8 +1,7 @@
-
-iGlance/iGlance\.xcodeproj/project\.xcworkspace/
-
-iGlance/iGlance\.xcodeproj/xcuserdata/
+xcuserdata/
 
 *.DS_Store
 
-.idea
+iGlance/Pods/
+
+Sparkle/updates/*.zip
