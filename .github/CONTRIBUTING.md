@@ -22,7 +22,3 @@ This will make it clear which issue is referenced by this branch.
 Now you can start coding 💻🖥
 
 After you finished implementing the feature you can create a new pull request to merge your feature branch into our `development` branch.
-
-```
-
-```

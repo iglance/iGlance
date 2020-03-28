@@ -26,5 +26,6 @@
 
 ## Checklist
 
-[ ] I have read the [Contribution Guide](https://github.com/iglance/iGlance/blob/master/.github/CONTRIBUTING.md) and the [Code of Conduct](https://github.com/iglance/iGlance/blob/master/.github/CODE_OF_CONDUCT.md)  
-[ ] All checks and tests run through
+- [ ] I have read the [Contribution Guide](https://github.com/iglance/iGlance/blob/master/.github/CONTRIBUTING.md) and the [Code of Conduct](https://github.com/iglance/iGlance/blob/master/.github/CODE_OF_CONDUCT.md)
+
+- [ ] All checks and tests run through
