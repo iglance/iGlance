@@ -15,7 +15,7 @@ class BatteryViewController: MainViewViewController {
 
     @IBOutlet private var batteryCheckbox: NSButton! {
         didSet {
-            batteryCheckbox.state = AppDelegate.userSettings.settings.battery.showBatteryMenuBarItem ? NSButton.StateValue.on : NSButton.StateValue.off
+            batteryCheckbox.state = AppDelegate.userSettings.settings.battery.showBatteryMenuBarItem ? .on : .off
         }
     }
 
@@ -40,12 +40,60 @@ class BatteryViewController: MainViewViewController {
         }
     }
 
+    @IBOutlet private var lowBatteryNotificationCheckbox: NSButton! {
+        didSet {
+            lowBatteryNotificationCheckbox.state = AppDelegate.userSettings.settings.battery.lowBatteryNotification.notifyUser ? .on : .off
+        }
+    }
+
+    @IBOutlet private var highBatteryNotificationCheckbox: NSButton! {
+        didSet {
+            highBatteryNotificationCheckbox.state = AppDelegate.userSettings.settings.battery.highBatteryNotification.notifyUser ? .on : .off
+        }
+    }
+
+    @IBOutlet private var lowBatteryNotificationTextField: NSTextField! {
+        didSet {
+            lowBatteryNotificationTextField.intValue = Int32(AppDelegate.userSettings.settings.battery.lowBatteryNotification.value)
+
+            // set the action that is called when the user finished editing
+            lowBatteryNotificationTextField.target = self
+            lowBatteryNotificationTextField.action = #selector(lowBatteryNotificationTextFieldChanged(_:))
+        }
+    }
+
+    @IBOutlet private var lowBatteryNotificationStackView: NSStackView! {
+        didSet {
+            if !AppDelegate.userSettings.settings.battery.lowBatteryNotification.notifyUser {
+                lowBatteryNotificationStackView.isHidden = true
+            }
+        }
+    }
+
+    @IBOutlet private var highBatteryNotificationTextField: NSTextField! {
+        didSet {
+            highBatteryNotificationTextField.intValue = Int32(AppDelegate.userSettings.settings.battery.highBatteryNotification.value)
+
+            // set the action that is called when the user finished editing
+            highBatteryNotificationTextField.target = self
+            highBatteryNotificationTextField.action = #selector(highBatteryNotificationTextFieldChanged(_:))
+        }
+    }
+
+    @IBOutlet private var highBatteryNotificationStackView: NSStackView! {
+        didSet {
+            if !AppDelegate.userSettings.settings.battery.highBatteryNotification.notifyUser {
+                highBatteryNotificationStackView.isHidden = true
+            }
+        }
+    }
+
     // MARK: -
     // MARK: Actions
 
     @IBAction private func batteryCheckboxChanged(_ sender: NSButton) {
         // get the boolean value of the checkbox
-        let activated = sender.state == NSButton.StateValue.on
+        let activated = sender.state == .on
 
         // set the user settings
         AppDelegate.userSettings.settings.battery.showBatteryMenuBarItem = activated
@@ -75,5 +123,51 @@ class BatteryViewController: MainViewViewController {
         AppDelegate.menuBarItemManager.updateMenuBarItems()
 
         DDLogInfo("Selected option to display battery percentage: \(AppDelegate.userSettings.settings.battery.showPercentage)")
+    }
+
+    @IBAction private func lowBatteryNotificationCheckboxChanged(_ sender: NSButton) {
+        // get the status of the checkbox
+        let activated = sender.state == .on
+
+        // update the user settings
+        AppDelegate.userSettings.settings.battery.lowBatteryNotification.notifyUser = activated
+
+        //  hide the value text field stack view if necessary
+        lowBatteryNotificationStackView.isHidden = !activated
+    }
+
+    @IBAction private func highBatteryNotificationCheckboxChanged(_ sender: NSButton) {
+        // get the status of the checkbox
+        let activated = sender.state == .on
+
+        // update the user settings
+        AppDelegate.userSettings.settings.battery.highBatteryNotification.notifyUser = activated
+
+        //  hide the value text field stack view if necessary
+        highBatteryNotificationStackView.isHidden = !activated
+    }
+
+    @objc
+    private func lowBatteryNotificationTextFieldChanged(_ sender: NSTextField) {
+        // get the value
+        let value = Int(sender.intValue)
+
+        // update the user settings
+        AppDelegate.userSettings.settings.battery.lowBatteryNotification.value = value
+
+        // set the first responder to nil in order to loose focus
+        lowBatteryNotificationTextField.window?.makeFirstResponder(lowBatteryNotificationTextField.window?.contentView)
+    }
+
+    @objc
+    private func highBatteryNotificationTextFieldChanged(_ sender: NSTextField) {
+        // get the value
+        let value = Int(sender.intValue)
+
+        // update the user settings
+        AppDelegate.userSettings.settings.battery.highBatteryNotification.value = value
+
+        // set the first responder to nil in order to loose focus
+        highBatteryNotificationTextField.window?.makeFirstResponder(highBatteryNotificationTextField.window?.contentView)
     }
 }

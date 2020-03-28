@@ -17,3 +17,5 @@ let DEBUG = false
 
 let LAUNCHER_BUNDLE_IDENTIFIER = "io.github.iglance.iGlanceLauncher"
 let MAIN_APP_BUNDLE_IDENTIFIER = "io.github.iglance.iGlance"
+
+let BATTERY_NOTIFICATION_IDENTIFIER = "battery-notification-id"

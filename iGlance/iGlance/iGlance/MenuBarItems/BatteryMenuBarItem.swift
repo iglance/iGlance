@@ -11,16 +11,14 @@ import CocoaLumberjack
 import IOKit.ps
 
 class BatteryMenuBarItem: MenuBarItem {
-    // MARK: -
-    // MARK: Private Variables
-    private let chargeMenuEntry = NSMenuItem(title: "Charge: N/A%", action: nil, keyEquivalent: "")
-    private let remainingTimeMenuEntry = NSMenuItem(title: "Remaining: N/A", action: nil, keyEquivalent: "")
-
     override init() {
+        // initialize the last battery charge value
+        let charge = AppDelegate.systemInfo.battery.getCharge()
+        self.lastBatteryCharge = charge
+
         super.init()
 
         // update the title of the menu entries
-        let charge = AppDelegate.systemInfo.battery.getCharge()
         chargeMenuEntry.title = "Charge: \(charge)%"
         let batteryState = AppDelegate.systemInfo.battery.getInternalBatteryState()
         let remainingTime = getRemainingTimeString(batteryState: batteryState)
@@ -29,6 +27,14 @@ class BatteryMenuBarItem: MenuBarItem {
         // add them to the menu
         menuItems.append(contentsOf: [chargeMenuEntry, remainingTimeMenuEntry, NSMenuItem.separator()])
     }
+
+    // MARK: -
+    // MARK: Private Variables
+    private let chargeMenuEntry = NSMenuItem(title: "Charge: N/A%", action: nil, keyEquivalent: "")
+    private let remainingTimeMenuEntry = NSMenuItem(title: "Remaining: N/A", action: nil, keyEquivalent: "")
+
+    /// The charge of the battery that was read during the last update
+    private var lastBatteryCharge: Int
 
     // MARK: -
     // MARK: Protocol Implementations
@@ -45,8 +51,21 @@ class BatteryMenuBarItem: MenuBarItem {
         // get whether the battery is charged
         let isCharged = AppDelegate.systemInfo.battery.isFullyCharged()
 
+        // update the menu bar icon and the menu of the menu bar item
         updateMenuBarIcon(currentCharge: currentCharge, isOnAC: isOnAC, isCharging: isCharging, isCharged: isCharged, batteryState: batteryState)
         updateMenuBarMenu(currentCharge: currentCharge, batteryState: batteryState)
+
+        // remove all previous sent notifications
+        NSUserNotificationCenter.default.removeAllDeliveredNotifications()
+        // notify the user about the capacity of the battery if necessary
+        if AppDelegate.userSettings.settings.battery.lowBatteryNotification.notifyUser {
+            deliverLowBatteryNotification(currentCharge: currentCharge)
+        }
+        if AppDelegate.userSettings.settings.battery.highBatteryNotification.notifyUser {
+            deliverHighBatteryNotification(currentCharge: currentCharge)
+        }
+
+        self.lastBatteryCharge = currentCharge
     }
 
     // MARK: -
@@ -280,5 +299,44 @@ class BatteryMenuBarItem: MenuBarItem {
         batteryIcon.unlockFocus()
 
         return batteryIcon
+    }
+
+    /**
+     * Delivers the low battery charge notification if the threshold is reached.
+     *
+     *  - Parameter currentCharge: The current charge of the battery.
+     */
+    private func deliverLowBatteryNotification(currentCharge: Int) {
+        let lowThreshold = AppDelegate.userSettings.settings.battery.lowBatteryNotification.value
+
+        if self.lastBatteryCharge > lowThreshold && currentCharge <= lowThreshold {
+            deliverNotification(title: "Battery Info", message: "Battery is low", identifier: BATTERY_NOTIFICATION_IDENTIFIER)
+        }
+    }
+
+    /**
+     * Delivers the high battery charge notification if the threshold is reached.
+     *
+     *  - Parameter currentCharge: The current charge of the battery.
+     */
+    private func deliverHighBatteryNotification(currentCharge: Int) {
+        let highThreshold = AppDelegate.userSettings.settings.battery.highBatteryNotification.value
+
+        if self.lastBatteryCharge < highThreshold &&  currentCharge >= highThreshold {
+            deliverNotification(title: "Battery Info", message: "Battery is almost fully charged", identifier: BATTERY_NOTIFICATION_IDENTIFIER)
+        }
+    }
+
+    /**
+     * Notifies the user with a notification with the given title and message.
+     */
+    private func deliverNotification(title: String, message: String, identifier: String) {
+        // create the notification and set its properties
+        let notification = NSUserNotification()
+        notification.identifier = identifier
+        notification.title = title
+        notification.subtitle = message
+        notification.soundName = NSUserNotificationDefaultSoundName
+        NSUserNotificationCenter.default.deliver(notification)
     }
 }

@@ -51,9 +51,17 @@ struct NetworkSettings: Codable {
     var showBandwidth: Bool = true
 }
 
+struct BatteryNotificationSettings: Codable {
+    var notifyUser: Bool
+    var value: Int
+}
+
 struct BatterySettings: Codable {
-    var showBattery: Bool = true
+    var showBatteryMenuBarItem: Bool = true
+    /// Is true when the percentage of the battery charge is displayed. If the value is false, the remaining time is displayed instead
     var showPercentage: Bool = false
+    var lowBatteryNotification = BatteryNotificationSettings(notifyUser: true, value: 20)
+    var highBatteryNotification = BatteryNotificationSettings(notifyUser: true, value: 90)
 }
 
 struct IGlanceUserSettings: Codable {
