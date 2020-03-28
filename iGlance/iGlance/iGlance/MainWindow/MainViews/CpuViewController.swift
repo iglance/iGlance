@@ -39,12 +39,18 @@ class CpuViewController: MainViewViewController {
 
     @IBOutlet private var graphWidthStackView: NSStackView! {
         didSet {
+            // depending on the current kind of graph display the slider
             switch AppDelegate.userSettings.settings.cpu.usageGraphKind {
             case .line:
                 // line graph is the second option
                 graphWidthStackView.isHidden = false
             default:
                 // bar graph is the first option
+                graphWidthStackView.isHidden = true
+            }
+
+            // if the cpu usage is not shown at all hide the slider
+            if !AppDelegate.userSettings.settings.cpu.showUsage {
                 graphWidthStackView.isHidden = true
             }
         }
@@ -71,6 +77,11 @@ class CpuViewController: MainViewViewController {
     @IBOutlet private var usageGraphBorderCheckbox: NSButton! {
         didSet {
             usageGraphBorderCheckbox.state = AppDelegate.userSettings.settings.cpu.showUsageGraphBorder ? NSButton.StateValue.on : NSButton.StateValue.off
+
+            // if the cpu usage is not displayed hide it
+            if !AppDelegate.userSettings.settings.cpu.showUsage {
+                usageGraphBorderCheckbox.isHidden = true
+            }
         }
     }
 
@@ -83,6 +94,33 @@ class CpuViewController: MainViewViewController {
     @IBOutlet private var secondaryColorWell: NSColorWell! {
         didSet {
             secondaryColorWell.color = AppDelegate.userSettings.settings.cpu.colorGradientSettings.secondaryColor.nsColor
+        }
+    }
+
+    @IBOutlet private var graphSelectionStackView: NSStackView! {
+        didSet {
+            // if the cpu usage is not displayed hide it
+            if !AppDelegate.userSettings.settings.cpu.showUsage {
+                graphSelectionStackView.isHidden = true
+            }
+        }
+    }
+
+    @IBOutlet private var graphColorStackView: NSStackView! {
+        didSet {
+            // if the cpu usage is not displayed hide it
+            if !AppDelegate.userSettings.settings.cpu.showUsage {
+                graphColorStackView.isHidden = true
+            }
+        }
+    }
+
+    @IBOutlet private var secondaryColorStackView: NSStackView! {
+        didSet {
+            // if the cpu usage is not displayed hide it
+            if !AppDelegate.userSettings.settings.cpu.showUsage {
+                secondaryColorStackView.isHidden = true
+            }
         }
     }
 
@@ -119,6 +157,13 @@ class CpuViewController: MainViewViewController {
         } else {
             AppDelegate.menuBarItemManager.cpuUsage.hide()
         }
+
+        // show  or hide all the other settings for the cpu usage
+        graphSelectionStackView.isHidden = !activated
+        graphWidthStackView.isHidden = (AppDelegate.userSettings.settings.cpu.usageGraphKind == .bar) || !activated
+        graphColorStackView.isHidden = !activated
+        usageGraphBorderCheckbox.isHidden = !activated
+        secondaryColorStackView.isHidden = !activated
 
         DDLogInfo("Did set cpu usage checkbox value to (\(activated))")
     }
