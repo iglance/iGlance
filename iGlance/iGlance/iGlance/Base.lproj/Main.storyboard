@@ -79,6 +79,12 @@
                                                 <action selector="print:" target="Ady-hI-5gd" id="euZ-1j-48x"/>
                                             </connections>
                                         </menuItem>
+                                        <menuItem isSeparatorItem="YES" id="edB-3D-5wF"/>
+                                        <menuItem title="Close" keyEquivalent="w" id="4rx-Ty-iez">
+                                            <connections>
+                                                <action selector="performClose:" target="Ady-hI-5gd" id="xNh-JJ-lJM"/>
+                                            </connections>
+                                        </menuItem>
                                     </items>
                                 </menu>
                             </menuItem>
