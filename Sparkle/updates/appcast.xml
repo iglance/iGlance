@@ -17,5 +17,15 @@
                 <enclosure url="https://raw.githubusercontent.com/iglance/iGlance/master/Sparkle/updates/iGlance2.0.1-2.0.delta" sparkle:version="2.0.1" sparkle:shortVersionString="2.0.1" sparkle:deltaFrom="2.0" length="132094" type="application/octet-stream" sparkle:edSignature="NgBzTj1ScIqpYI1V2gP5j915Uy5mQqn2faB1/tRtneNsEsufZx72Mxarw0vvDycMn+QKORdx3foTyyNb8882Bg=="/>
             </sparkle:deltas>
         </item>
+        <item>
+            <title>2.0.2</title>
+            <pubDate>Sun, 29 Mar 2020 10:46:00 +0200</pubDate>
+            <sparkle:minimumSystemVersion>10.12</sparkle:minimumSystemVersion>
+            <enclosure url="https://github.com/iglance/iGlance/releases/download/v2.0.2/iGlance_v2.0.2.zip" sparkle:version="2.0.2" sparkle:shortVersionString="2.0.2" length="10108480" type="application/octet-stream" sparkle:edSignature="dnWolfRCHNtHSZuIsaC20kKhDIfj+wL63fK3ulfHvfn4bYorG+NZ7hCAjGWMf5++r637KbtMyxr7/1lqv5JVCg=="/>
+            <sparkle:deltas>
+                <enclosure url="https://raw.githubusercontent.com/iglance/iGlance/master/Sparkle/updates/iGlance2.0.2-2.0.1.delta" sparkle:version="2.0.2" sparkle:shortVersionString="2.0.2" sparkle:deltaFrom="2.0.1" length="111979" type="application/octet-stream" sparkle:edSignature="knfVsKp2yYIYOLHKbSj0dCkfhvHOnJRqNA5aJj+nI+kI1Ota1bRg45TWeJ2in1lGMENBzqwZBrnWbHIisP1XBQ=="/>
+                <enclosure url="https://raw.githubusercontent.com/iglance/iGlance/master/Sparkle/updates/iGlance2.0.2-2.0.delta" sparkle:version="2.0.2" sparkle:shortVersionString="2.0.2" sparkle:deltaFrom="2.0" length="147903" type="application/octet-stream" sparkle:edSignature="Vsses70C1z8mLYGXZxARaanVj4ws1bEcD7Vj9YJsCIMFziUhsAaUNyyy+OV3jGeF7ng7f6SZy/2bDzXNUxknDg=="/>
+            </sparkle:deltas>
+        </item>
     </channel>
 </rss>
