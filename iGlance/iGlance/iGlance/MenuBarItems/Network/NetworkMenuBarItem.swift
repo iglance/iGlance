@@ -98,8 +98,14 @@ class NetworkMenuBarItem: MenuBarItem {
             let transmittedBytes = AppDelegate.systemInfo.network.getTotalTransmittedBytesOf(interface: currentInterface)
 
             // get the difference of the currently total transmitted bytes and the total transmitted bytes on the last reset
-            let bytesUploaded = transmittedBytes.up - currentInterfaceLastResetValue.up
-            let bytesDownloaded = transmittedBytes.down - currentInterfaceLastResetValue.down
+            var bytesUploaded = transmittedBytes.up
+            var bytesDownloaded = transmittedBytes.down
+            if transmittedBytes.up > currentInterfaceLastResetValue.up {
+                bytesUploaded = transmittedBytes.up - currentInterfaceLastResetValue.up
+            }
+            if transmittedBytes.down > currentInterfaceLastResetValue.down {
+                bytesDownloaded = transmittedBytes.down - currentInterfaceLastResetValue.down
+            }
 
             // update the dictionary
             self.transmittedBytesPerInterface[currentInterface] = (up: bytesUploaded, down: bytesDownloaded)
