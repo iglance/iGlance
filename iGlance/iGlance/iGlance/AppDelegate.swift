@@ -31,6 +31,8 @@ class AppDelegate: NSObject, NSApplicationDelegate {
     // MARK: -
     // MARK: Instance Variables
 
+    let logger = Logger()
+
     var mainWindow: MainWindowController = NSStoryboard(name: "Main", bundle: nil).instantiateController(withIdentifier: "MainWindowController") as! MainWindowController
 
     var currentUpdateLoopTimer: Timer!
@@ -39,29 +41,6 @@ class AppDelegate: NSObject, NSApplicationDelegate {
     // MARK: Lifecycle Functions
 
     func applicationWillFinishLaunching(_ notification: Notification) {
-        // set the custom log formatter
-        DDOSLogger.sharedInstance.logFormatter = CustomLogFormatter()
-        // add the loggers to the loggin framework
-        DDLog.add(DDOSLogger.sharedInstance)
-
-        // register the logger
-        // logs are saved under /Library/Logs/iGlance/
-        let fileLogger = DDFileLogger()
-        fileLogger.logFormatter = CustomLogFormatter()
-        fileLogger.rollingFrequency = 60 * 60 * 24 // 24 hours
-        fileLogger.logFileManager.maximumNumberOfLogFiles = 7
-        DDLog.add(fileLogger)
-
-        // set the default log level to error
-        dynamicLogLevel = .error
-
-        if DEBUG {
-            // log all messages
-            dynamicLogLevel = .all
-            // open the window on startup in debug mode
-            showMainWindow()
-        }
-
         // call the update loop once on startup to render the menu bar items
         self.updateLoop()
     }

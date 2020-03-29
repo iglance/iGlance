@@ -21,7 +21,7 @@ class NetworkInfo {
     // MARK: Private Variables
     /// The total uploaded and downloaded bytes that were read during the last update interval of the app.
     /// This variable is used to calculate the network bandwidth using [getNetworkBandwidth()](x-source-tag://getNetworkBandwidth())
-    private var totalTransmittedBytes: (up: UInt64, down: UInt64) = (up: 0, down: 0)
+    private var lastTotalTransmittedBytes: (up: UInt64, down: UInt64) = (up: 0, down: 0)
 
     // MARK: -
     // MARK: Instance Functions
@@ -37,15 +37,22 @@ class NetworkInfo {
         let transmittedBytes = getTotalTransmittedBytesOf(interface: interface)
 
         // get the transmitted byte since the last update
-        let upBytes = transmittedBytes.up - self.totalTransmittedBytes.up
-        let downBytes = transmittedBytes.down - self.totalTransmittedBytes.down
+        var upBytes: UInt64 = 0
+        var downBytes: UInt64 = 0
+        // if the lastTotalTransmittedBytes is greater than the current transmitted bytes, the currently used interface was changed
+        if transmittedBytes.up >= self.lastTotalTransmittedBytes.up {
+            upBytes = transmittedBytes.up - self.lastTotalTransmittedBytes.up
+        }
+        if transmittedBytes.down >= self.lastTotalTransmittedBytes.down {
+            downBytes = transmittedBytes.down - self.lastTotalTransmittedBytes.down
+        }
 
         // divide the bandwidth by the update interval to get the average of one update duration
         let upBandwidth = upBytes / UInt64(AppDelegate.userSettings.settings.updateInterval)
         let downBandwidth = downBytes / UInt64(AppDelegate.userSettings.settings.updateInterval)
 
         // update the total transmitted bytes
-        self.totalTransmittedBytes = transmittedBytes
+        self.lastTotalTransmittedBytes = transmittedBytes
 
         return (up: upBandwidth, down: downBandwidth)
     }
@@ -71,7 +78,7 @@ class NetworkInfo {
             return (up: 0, down: 0)
         }
 
-        DDLogInfo("Output of network bandwidth command: \(commandOutput)")
+        DDLogInfo("Output of network bandwidth command: \n\(commandOutput)")
 
         // split the lines of the output
         let lowerCaseOutput = commandOutput.lowercased()
@@ -120,6 +127,8 @@ class NetworkInfo {
 
         // get the command output
         let commandOutput = pipe.fileHandleForReading.readDataToEndOfFile()
+
+        DDLogInfo("Output of the network interface command: \n\(commandOutput)")
 
         // get the currently used interface
         guard let commandString = String(data: commandOutput, encoding: String.Encoding.utf8) else {

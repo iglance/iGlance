@@ -36,7 +36,7 @@ class DiskInfo {
             return (0, "")
         }
 
-        DDLogInfo("Output of internal disk size command: \(output)")
+        DDLogInfo("Output of internal disk size command: \n\(output)")
 
         // get all the devices
         var devices = output.components(separatedBy: "\n\n          Capacity:")
