@@ -1,4 +1,4 @@
-# iGlance &ensp;&ensp;[![Build Status](https://travis-ci.org/iglance/iGlance.svg?branch=master)](https://travis-ci.org/iglance/iGlance) [![Github All Releases](https://img.shields.io/github/downloads/iglance/iGlance/latest/total.svg?colorB=orange)](https://github.com/iglance/iGlance/releases) [![SwiftLint Sindre](https://img.shields.io/badge/SwiftLint-Sindre-hotpink.svg)](https://github.com/sindresorhus/swiftlint-sindre)
+# iGlance &ensp;&ensp;![Build](https://github.com/iglance/iGlance/workflows/Build/badge.svg) [![Github All Releases](https://img.shields.io/github/downloads/iglance/iGlance/latest/total.svg?colorB=orange)](https://github.com/iglance/iGlance/releases) [![SwiftLint Sindre](https://img.shields.io/badge/SwiftLint-Sindre-hotpink.svg)](https://github.com/sindresorhus/swiftlint-sindre)
 
 > Free and open source system monitor for OSX and macOS for the menu bar
 
