@@ -41,6 +41,7 @@
 		B46F25D623B22E4500E0A3F4 /* GpuInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = B46F25D523B22E4500E0A3F4 /* GpuInfo.swift */; };
 		B47094EA23C79F9A009D85AD /* ThemedLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B47094E923C79F9A009D85AD /* ThemedLabel.swift */; };
 		B47094EC23C7A30A009D85AD /* ThemedButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = B47094EB23C7A30A009D85AD /* ThemedButton.swift */; };
+		B472EC20243101DB002F7504 /* Logger.swift in Sources */ = {isa = PBXBuildFile; fileRef = B472EC1F243101DB002F7504 /* Logger.swift */; };
 		B47D3C8D23ABEDF100DE911F /* CustomDashboardBox.swift in Sources */ = {isa = PBXBuildFile; fileRef = B47D3C8C23ABEDF100DE911F /* CustomDashboardBox.swift */; };
 		B48BD19123E73F8E00152931 /* CpuUsageMenuBarItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = B48BD19023E73F8E00152931 /* CpuUsageMenuBarItem.swift */; };
 		B49CD58F23EB17D9009711E6 /* CodableColor.swift in Sources */ = {isa = PBXBuildFile; fileRef = B49CD58E23EB17D9009711E6 /* CodableColor.swift */; };
@@ -157,6 +158,7 @@
 		B46F25D523B22E4500E0A3F4 /* GpuInfo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GpuInfo.swift; sourceTree = "<group>"; };
 		B47094E923C79F9A009D85AD /* ThemedLabel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ThemedLabel.swift; sourceTree = "<group>"; };
 		B47094EB23C7A30A009D85AD /* ThemedButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ThemedButton.swift; sourceTree = "<group>"; };
+		B472EC1F243101DB002F7504 /* Logger.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Logger.swift; sourceTree = "<group>"; };
 		B47D3C8C23ABEDF100DE911F /* CustomDashboardBox.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomDashboardBox.swift; sourceTree = "<group>"; };
 		B48BD19023E73F8E00152931 /* CpuUsageMenuBarItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CpuUsageMenuBarItem.swift; sourceTree = "<group>"; };
 		B49CD58E23EB17D9009711E6 /* CodableColor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CodableColor.swift; sourceTree = "<group>"; };
@@ -390,6 +392,7 @@
 				B4C37E6E23A91F2F008C7FC0 /* Theme */,
 				B4FE0DAD23EF1BCB00AE94E6 /* Utils */,
 				B46789B523A69ECA00CE572D /* AppDelegate.swift */,
+				B472EC1F243101DB002F7504 /* Logger.swift */,
 				B4DE725E23C257610001CF46 /* Extensions.swift */,
 				B49F5D5623C5BCAF009E9BE6 /* UserSettings.swift */,
 				B46789BB23A69ECB00CE572D /* Main.storyboard */,
@@ -721,6 +724,7 @@
 				B4FE0DB123EF1E0100AE94E6 /* LineGraph.swift in Sources */,
 				B4FE0DB323EF210500AE94E6 /* Graph.swift in Sources */,
 				B43ABF2A23AA32FA007F93BA /* SidebarViewController.swift in Sources */,
+				B472EC20243101DB002F7504 /* Logger.swift in Sources */,
 				B415FF2723F459EF00ED6567 /* MemoryViewController.swift in Sources */,
 				B4C37E6323A7946B008C7FC0 /* SidebarView.swift in Sources */,
 				B45AC91D24212B2A00D331AC /* NetworkInfo.swift in Sources */,
