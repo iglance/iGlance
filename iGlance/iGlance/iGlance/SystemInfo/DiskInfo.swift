@@ -27,7 +27,7 @@ class DiskInfo {
 
         // execute the system_profiler command
         task.launchPath = "/usr/sbin/system_profiler"
-        task.arguments = ["SPNVMeDataType"]
+        task.arguments = ["SPNVMeDataType", "SPSerialATADataType"]
         task.standardOutput = outputPipe
         task.launch()
         let outputData = outputPipe.fileHandleForReading.readDataToEndOfFile()
@@ -38,14 +38,13 @@ class DiskInfo {
 
         DDLogInfo("Output of internal disk size command: \(output)")
 
-        // check that the command was successful by checking the first line
-        if !output.split(separator: "\n")[0].contains("NVMExpress:") {
-            DDLogError("Command to retrieve the disk size failed.")
+        // get all the devices
+        var devices = output.components(separatedBy: "\n\n          Capacity:")
+        if devices.isEmpty {
+            DDLogError("Could not find the keyword 'Capacity' in the command output")
             return (0, "")
         }
 
-        // get all the devices
-        var devices = output.components(separatedBy: "\n\n          Capacity:")
         // remove the name of the disk
         devices.removeFirst()
 
