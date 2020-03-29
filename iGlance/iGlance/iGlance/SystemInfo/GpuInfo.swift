@@ -43,7 +43,7 @@ class GpuInfo {
             return ""
         }
 
-        DDLogInfo("Output of gpu name command: \(output)")
+        DDLogInfo("Output of gpu name command: \n\(output)")
 
         // seperate the lines
         let lines = output.split(separator: "\n")

@@ -71,7 +71,7 @@ class NetworkInfo {
             return (up: 0, down: 0)
         }
 
-        DDLogInfo("Output of network bandwidth command: \(commandOutput)")
+        DDLogInfo("Output of network bandwidth command: \n\(commandOutput)")
 
         // split the lines of the output
         let lowerCaseOutput = commandOutput.lowercased()
@@ -120,6 +120,8 @@ class NetworkInfo {
 
         // get the command output
         let commandOutput = pipe.fileHandleForReading.readDataToEndOfFile()
+        
+        DDLogInfo("Output of the network interface command: \n\(commandOutput)")
 
         // get the currently used interface
         guard let commandString = String(data: commandOutput, encoding: String.Encoding.utf8) else {
