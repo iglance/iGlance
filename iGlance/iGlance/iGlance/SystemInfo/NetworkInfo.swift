@@ -120,7 +120,7 @@ class NetworkInfo {
 
         // get the command output
         let commandOutput = pipe.fileHandleForReading.readDataToEndOfFile()
-        
+
         DDLogInfo("Output of the network interface command: \n\(commandOutput)")
 
         // get the currently used interface

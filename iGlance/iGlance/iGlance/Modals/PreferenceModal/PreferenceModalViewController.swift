@@ -26,13 +26,13 @@ class PreferenceModalViewController: ModalViewController {
     @IBOutlet private var autostartOnBootCheckbox: NSButton! {
         didSet {
             // load the initial value from the user settings
-            autostartOnBootCheckbox.state = AppDelegate.userSettings.settings.autostartOnBoot ? NSButton.StateValue.on : NSButton.StateValue.off
+            autostartOnBootCheckbox.state = AppDelegate.userSettings.settings.autostartOnBoot ? .on : .off
         }
     }
 
     @IBOutlet private var advancedLoggingCheckbox: ThemedButton! {
         didSet {
-            advancedLoggingCheckbox.state = DEBUG ? NSButton.StateValue.on : NSButton.StateValue.off
+            advancedLoggingCheckbox.state = AppDelegate.userSettings.settings.advancedLogging ? .on : .off
         }
     }
 
@@ -123,8 +123,9 @@ class PreferenceModalViewController: ModalViewController {
     }
 
     @IBAction private func advancedLoggingCheckboxChanged(_ sender: NSButton) {
+        let activated = sender.state == .on
         // set the dynamic logging level depending on the state of the button
-        if sender.state == NSButton.StateValue.on {
+        if activated {
             dynamicLogLevel = .all
             DDLogInfo("Set the log level to 'all'")
             DDLogInfo("Activated 'Advanced Loggin'")
@@ -133,6 +134,9 @@ class PreferenceModalViewController: ModalViewController {
             DDLogInfo("Set the log level to 'error'")
             DDLogInfo("Deactivated 'Advanced Loggin'")
         }
+
+        // set the user setting
+        AppDelegate.userSettings.settings.advancedLogging = activated
     }
 
     @IBAction private func updateIntervalSelectorChanged(_ sender: NSPopUpButton) {
