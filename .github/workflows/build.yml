@@ -14,10 +14,11 @@ jobs:
   build:
 
     runs-on: macos-latest
-    env:
-      working-directory: ./iGlance
 
     steps:
     - uses: actions/checkout@v2
+      with:
+        submodules: 'recursive'
     - name: Build
       run: pod install && xcodebuild -workspace iGlance.xcworkspace -scheme iGlance -config Release CODE_SIGN_IDENTITY="" CODE_SIGNING_REQUIRED=NO
+      working-directory: ./iGlance
