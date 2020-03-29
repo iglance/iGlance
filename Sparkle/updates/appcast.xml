@@ -27,5 +27,16 @@
                 <enclosure url="https://raw.githubusercontent.com/iglance/iGlance/master/Sparkle/updates/iGlance2.0.2-2.0.delta" sparkle:version="2.0.2" sparkle:shortVersionString="2.0.2" sparkle:deltaFrom="2.0" length="147903" type="application/octet-stream" sparkle:edSignature="Vsses70C1z8mLYGXZxARaanVj4ws1bEcD7Vj9YJsCIMFziUhsAaUNyyy+OV3jGeF7ng7f6SZy/2bDzXNUxknDg=="/>
             </sparkle:deltas>
         </item>
+        <item>
+            <title>2.0.3</title>
+            <pubDate>Sun, 29 Mar 2020 19:27:26 +0200</pubDate>
+            <sparkle:minimumSystemVersion>10.12</sparkle:minimumSystemVersion>
+            <enclosure url="https://github.com/iglance/iGlance/releases/download/v2.0.3/iGlance_v2.0.3.zip" sparkle:version="2.0.3" sparkle:shortVersionString="2.0.3" length="10109566" type="application/octet-stream" sparkle:edSignature="TzvJIhwa6XdWPNU+tgxn+RH8Zedb0dO3tM3Eb+xuBeMeXh9Rsb33YiJNHXu24S50GBLZ4Fyq3D0O6NJHNoODBA=="/>
+            <sparkle:deltas>
+                <enclosure url="https://raw.githubusercontent.com/iglance/iGlance/master/Sparkle/updates/iGlance2.0.3-2.0.2.delta" sparkle:version="2.0.3" sparkle:shortVersionString="2.0.3" sparkle:deltaFrom="2.0.2" length="149668" type="application/octet-stream" sparkle:edSignature="1QP4iaV1kl8YNsu/KgCW840cgJRqs3ckxWBeT5NEAyX1ol1X9Ia4UPq+61+08bbTUvRyD2GFC41j1GMJRL1SAQ=="/>
+                <enclosure url="https://raw.githubusercontent.com/iglance/iGlance/master/Sparkle/updates/iGlance2.0.3-2.0.1.delta" sparkle:version="2.0.3" sparkle:shortVersionString="2.0.3" sparkle:deltaFrom="2.0.1" length="147984" type="application/octet-stream" sparkle:edSignature="tLyDlxT08XKWC3RZEUin0B8Nksv6hdRKMwTVbXC/kS4qoTLxXi9r7lT1krFVS1FMOi29yabDyH8hj9S0rF9hDA=="/>
+                <enclosure url="https://raw.githubusercontent.com/iglance/iGlance/master/Sparkle/updates/iGlance2.0.3-2.0.delta" sparkle:version="2.0.3" sparkle:shortVersionString="2.0.3" sparkle:deltaFrom="2.0" length="166680" type="application/octet-stream" sparkle:edSignature="hkVob2S3VVXZRSbSKMGPxrKdVaJcGDT6fvuDi1WMI4r2f7ExwY7kzqxZTMs37RADod6NqmwdmBcLXa1sd06JBg=="/>
+            </sparkle:deltas>
+        </item>
     </channel>
 </rss>
