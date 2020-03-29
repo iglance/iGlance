@@ -74,6 +74,7 @@ struct BatterySettings: Codable {
 struct IGlanceUserSettings: Codable {
     // global settings
     var autostartOnBoot: Bool = false
+    var advancedLogging: Bool = DEBUG
     var updateInterval: Double = 2.0
     var tempUnit: TemperatureUnit = .celsius
 
