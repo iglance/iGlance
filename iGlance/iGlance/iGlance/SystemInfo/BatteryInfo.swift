@@ -131,7 +131,7 @@ class BatteryInfo {
             return 0
         }
 
-        let maxCap = self.skBattery.maxCapactiy()
+        let maxCap = self.skBattery.maxCapacity()
         let designCap = self.skBattery.designCapacity()
 
         DDLogInfo("Read maximum capacity \(maxCap) and design capacity \(designCap) of battery")
