@@ -1,8 +1,16 @@
-# iGlance &ensp;&ensp;![Build](https://github.com/iglance/iGlance/workflows/Build/badge.svg) [![Github All Releases](https://img.shields.io/github/downloads/iglance/iGlance/latest/total.svg?colorB=orange)](https://github.com/iglance/iGlance/releases) [![SwiftLint Sindre](https://img.shields.io/badge/SwiftLint-Sindre-hotpink.svg)](https://github.com/sindresorhus/swiftlint-sindre)
+<p align="center"><img width="400" src="icons/iGlance_logo_black.png" alt="iGlance logo"/></p>
 
-> Free and open source system monitor for OSX and macOS for the menu bar
-
-## Introduction
+<p align="center">
+   <a href="https://github.com/iglance/iGlance/actions?query=workflow%3ABuild">
+      <img src="https://github.com/iglance/iGlance/workflows/Build/badge.svg" alt="Build status badge"/>
+   </a>
+   <a href="https://github.com/iglance/iGlance/releases">
+      <img src="https://img.shields.io/github/downloads/iglance/iGlance/latest/total.svg?colorB=orange" alt="Github All Releases"/>
+   </a>
+   <a href="https://github.com/sindresorhus/swiftlint-sindre">
+      <img src="https://img.shields.io/badge/SwiftLint-Sindre-hotpink.svg" alt="SwiftLint Sindre"/>
+   </a>
+</p>
 
 iGlance is a small system monitor that displays current stats about your Mac on the menu bar. It is built to be highly customizable so that everyone can adjust it to his/her needs. A full list of all the features is below. If you encounter any bugs or have suggestions for new features, feel free to write them down in the Issues tab.
 
