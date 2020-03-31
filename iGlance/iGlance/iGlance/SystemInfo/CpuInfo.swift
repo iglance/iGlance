@@ -59,7 +59,7 @@ class CpuInfo {
      */
     func getCpuTemp() -> Double {
         do {
-            let cpuTemp = try SMCKit.temperature(TemperatureSensors.CPU_PECI.code, unit: AppDelegate.userSettings.settings.tempUnit)
+            let cpuTemp = try SMCKit.temperature(TemperatureSensors.CPU_0_PROXIMITY.code, unit: AppDelegate.userSettings.settings.tempUnit)
 
             DDLogInfo("Read cpu temperature: \(cpuTemp)")
 
