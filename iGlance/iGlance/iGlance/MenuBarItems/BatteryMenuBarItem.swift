@@ -110,7 +110,12 @@ class BatteryMenuBarItem: MenuBarItem {
 
         // create the menu bar image
         let marginBetweenIconAndString = CGFloat(5)
-        let image = NSImage(size: NSSize(width: buttonString.size().width + batteryIcon!.size.width + marginBetweenIconAndString, height: 18))
+        let image = NSImage(
+            size: NSSize(
+                width: buttonString.size().width + batteryIcon!.size.width + marginBetweenIconAndString,
+                height: CGFloat(self.menuBarHeight)
+            )
+        )
 
         // lock the image to render the string
         image.lockFocus()

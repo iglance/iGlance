@@ -219,20 +219,31 @@ class NetworkMenuBarItem: MenuBarItem {
         }
 
         // create the menu bar image for the bandwidth.
-        let bandwidthTextWidth = CGFloat(55)
+        let bandwidthTextWidth = CGFloat(55) // this value was found by trail and error
         let bandwidthIconWidth = bandwidthIcon.size.width
-        let menuBarImage = NSImage(size: NSSize(width: bandwidthTextWidth + bandwidthIconWidth, height: 18))
+        let menuBarImage = NSImage(
+            size: NSSize(
+                width: bandwidthTextWidth + bandwidthIconWidth,
+                height: CGFloat(self.menuBarHeight)
+            )
+        )
 
         // focus the image to render the bandwidth values
         menuBarImage.lockFocus()
 
         // draw the upload string
         let uploadStringSize = uploadString.size()
-        uploadString.draw(at: NSPoint(x: bandwidthIconWidth + bandwidthTextWidth - uploadStringSize.width, y: 6))
+        uploadString.draw(
+            at: NSPoint(
+                x: bandwidthIconWidth + bandwidthTextWidth - uploadStringSize.width,
+                y: menuBarImage.size.height - 11 // this value was found by trail and error
+            )
+        )
 
         // draw the download string
         let downloadStringsize = downloadString.size()
-        downloadString.draw(at: NSPoint(x: bandwidthIconWidth + bandwidthTextWidth - downloadStringsize.width, y: -3))
+        // y value was found by trail and error
+        downloadString.draw(at: NSPoint(x: bandwidthIconWidth + bandwidthTextWidth - downloadStringsize.width, y: -2))
 
         // tint the icon to have the correct color depending on the current theme
         let tintedBandwidthIcon = bandwidthIcon.tint(color: ThemeManager.isDarkTheme() ? NSColor.white : NSColor.black)

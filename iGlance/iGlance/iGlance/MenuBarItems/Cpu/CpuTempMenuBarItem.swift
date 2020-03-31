@@ -40,7 +40,7 @@ class CpuTempMenuBarItem: MenuBarItem {
 
         // create an image for the menu bar item
         let imageWidth = 30
-        let image = NSImage(size: NSSize(width: imageWidth, height: 18))
+        let image = NSImage(size: NSSize(width: imageWidth, height: self.menubarHeightWithMargin))
 
         // lock the image to render the string
         image.lockFocus()

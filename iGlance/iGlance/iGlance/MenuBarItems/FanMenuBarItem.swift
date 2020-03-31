@@ -95,7 +95,7 @@ class FanMenuBarItem: MenuBarItem {
 
         // create an image for the menu bar item
         let imageWidth = AppDelegate.userSettings.settings.fan.showFanSpeedUnit ? 65 : 40
-        let image = NSImage(size: NSSize(width: imageWidth, height: 18))
+        let image = NSImage(size: NSSize(width: imageWidth, height: self.menubarHeightWithMargin))
 
         // lock the image to render the string
         image.lockFocus()
