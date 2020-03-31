@@ -1,5 +1,6 @@
 ---
-name: Bug report
+
+name: Bug report 🐛
 about: Create a report to help us improve
 ---**Describe the bug**
 A clear and concise description of what the bug is.
@@ -15,13 +16,15 @@ Steps to reproduce the behavior:
 **Expected behavior**
 A clear and concise description of what you expected to happen.
 
-**Screenshots**
+**Screenshots (Optional)**
 If applicable, add screenshots to help explain your problem.
 
 **Desktop (please complete the following information):**
 
-- OS Version: [e.g. 10.12]
+- MacOS Version: [e.g. 10.12]
 - Version of the app: [e.g. 2.0.3]
 
-**Additional context**
-Add any other context about the problem here.
+**Log**
+Please activate `Advanced Logging` in the settings, restart the app and perform the steps to reproduce the bug.
+After the bug occurred, please close the app completely (i.e. by opening the app window and pressing `CMD+Q`).
+Please take the latest log file from `~/Library/Logs/iGlance/` and upload it here.
