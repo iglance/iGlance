@@ -110,7 +110,12 @@ class BatteryMenuBarItem: MenuBarItem {
 
         // create the menu bar image
         let marginBetweenIconAndString = CGFloat(5)
-        let image = NSImage(size: NSSize(width: buttonString.size().width + batteryIcon!.size.width + marginBetweenIconAndString, height: 18))
+        let image = NSImage(
+            size: NSSize(
+                width: buttonString.size().width + batteryIcon!.size.width + marginBetweenIconAndString,
+                height: CGFloat(self.menuBarHeight)
+            )
+        )
 
         // lock the image to render the string
         image.lockFocus()
@@ -188,7 +193,7 @@ class BatteryMenuBarItem: MenuBarItem {
 
         // define the attributes
         let attributes = [
-            NSAttributedString.Key.font: NSFont(name: "Apple SD Gothic Neo", size: 14)!,
+            NSAttributedString.Key.font: NSFont.systemFont(ofSize: 13),
             NSAttributedString.Key.foregroundColor: ThemeManager.isDarkTheme() ? NSColor.white : NSColor.black
         ]
 
@@ -221,7 +226,7 @@ class BatteryMenuBarItem: MenuBarItem {
 
         // define the attributes
         let attributes = [
-            NSAttributedString.Key.font: NSFont(name: "Apple SD Gothic Neo", size: 14)!,
+            NSAttributedString.Key.font: NSFont.systemFont(ofSize: 13),
             NSAttributedString.Key.foregroundColor: ThemeManager.isDarkTheme() ? NSColor.white : NSColor.black
         ]
 
@@ -239,7 +244,7 @@ class BatteryMenuBarItem: MenuBarItem {
 
         // define the attributes
         let attributes = [
-            NSAttributedString.Key.font: NSFont(name: "Apple SD Gothic Neo", size: 14)!,
+            NSAttributedString.Key.font: NSFont.systemFont(ofSize: 13),
             NSAttributedString.Key.foregroundColor: ThemeManager.isDarkTheme() ? NSColor.white : NSColor.black
         ]
 
@@ -266,7 +271,7 @@ class BatteryMenuBarItem: MenuBarItem {
     private func getPercentageString(currentCharge: Int) -> NSAttributedString {
         // define the attributes
         let attributes = [
-            NSAttributedString.Key.font: NSFont(name: "Apple SD Gothic Neo", size: 14)!,
+            NSAttributedString.Key.font: NSFont.systemFont(ofSize: 13),
             NSAttributedString.Key.foregroundColor: ThemeManager.isDarkTheme() ? NSColor.white : NSColor.black
         ]
 
