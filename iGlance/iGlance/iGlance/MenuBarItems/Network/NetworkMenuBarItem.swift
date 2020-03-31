@@ -254,7 +254,7 @@ class NetworkMenuBarItem: MenuBarItem {
         let attrString = NSMutableAttributedString(string: value + " " + unit)
 
         // define the font for the number value and the unit
-        let font = NSFont(name: "Apple SD Gothic Neo Light", size: 10)!
+        let font = NSFont.systemFont(ofSize: 9)
 
         // add the attributes
         attrString.addAttribute(.font, value: font, range: NSRange(location: 0, length: attrString.length - 1 - unit.count))

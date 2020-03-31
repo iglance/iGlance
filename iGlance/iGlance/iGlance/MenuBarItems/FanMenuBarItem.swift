@@ -138,7 +138,7 @@ class FanMenuBarItem: MenuBarItem {
 
         // define the attributes
         let attributes = [
-            NSAttributedString.Key.font: NSFont(name: "Apple SD Gothic Neo", size: 14)!,
+            NSAttributedString.Key.font: NSFont.systemFont(ofSize: 13),
             NSAttributedString.Key.foregroundColor: ThemeManager.isDarkTheme() ? NSColor.white : NSColor.black
         ]
 
