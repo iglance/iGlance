@@ -40,7 +40,7 @@ class CpuTempMenuBarItem: MenuBarItem {
 
         // create an image for the menu bar item
         let imageWidth = 30
-        let image = NSImage(size: NSSize(width: imageWidth, height: 18))
+        let image = NSImage(size: NSSize(width: imageWidth, height: self.menubarHeightWithMargin))
 
         // lock the image to render the string
         image.lockFocus()
@@ -65,7 +65,7 @@ class CpuTempMenuBarItem: MenuBarItem {
         let attribString = NSMutableAttributedString(string: string)
 
         // define the font
-        let font = NSFont(name: "Apple SD Gothic Neo", size: 14)!
+        let font = NSFont.systemFont(ofSize: 13)
 
         attribString.addAttribute(.font, value: font, range: NSRange(location: 0, length: string.count))
         let fontColor = ThemeManager.isDarkTheme() ? NSColor.white : NSColor.black

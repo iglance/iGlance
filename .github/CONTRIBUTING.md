@@ -15,7 +15,8 @@ pod install
 We have a `master` and a `development` branch in this repository. The `master` branch is responsible for all the releases. We push to this branch only if we release a new version of `iGlance`. The development (as the name suggests) is for developing.
 Therefore the next step is to create a new branch which is based on the `development` branch. Name your branch after the following scheme:
 
-`feature/<short-issue-description>-<github-feature-id>`
+`feature/<short-issue-description>-<github-issue-id>`
+`bug-fix/<short-issue-description>-<github-issue-id>`
 
 This will make it clear which issue is referenced by this branch.
 

@@ -115,13 +115,10 @@
                             </menuItem>
                             <menuItem title="Diagnostics" id="Fuq-kV-Ubk">
                                 <modifierMask key="keyEquivalentModifierMask"/>
-                                <menu key="submenu" title="Diagnostics" systemMenu="window" id="pZ0-xF-28n">
+                                <menu key="submenu" title="Diagnostics" id="eFn-sS-dLd">
                                     <items>
-                                        <menuItem title="Save Log Files..." id="RWa-DA-MeM">
+                                        <menuItem title="Save Logfile..." id="41S-gD-t7E">
                                             <modifierMask key="keyEquivalentModifierMask"/>
-                                            <connections>
-                                                <action selector="performMiniaturize:" target="Ady-hI-5gd" id="uId-bG-tOu"/>
-                                            </connections>
                                         </menuItem>
                                     </items>
                                 </menu>
