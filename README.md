@@ -47,14 +47,14 @@ We have nothing to do with an app called "iStats X: CPU & Memory" which is avail
 
 # Roadmap
 
-## Version 2.1:
+### Version 2.1:
 
 - Import/Export Settings
 - Use database to save all the read information (for displaying graphs and to prevent reading value multiple times when changing e.g. the width of the menu bar items)
 - Add UI tests
 - Use drag and drop to arrange/add the menu bar items
 
-## Version 2.2
+### Version 2.2
 
 - Add disk io menu bar item
 - Display the disk io (read/write speed)
