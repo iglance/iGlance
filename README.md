@@ -36,6 +36,10 @@ There are two possible ways to install iGlance:
 
    `brew cask install iglance`
 
+## Warning about iStat X
+
+We have nothing to do with an app called "iStats X: CPU & Memory" which is available in the App Store. iStats X is a copy of an old version of our app. The values of the cpu temperature or the fan speeds are just random values since it is technically not possible to read the cpu temperature using an app which is distrubuted over the App Store without downloading a helper which is distributed outside of the App Store. Those values have nothing to do with the real temperature of the cpu or the real fan speeds. If you bought this app and found iGlance through an update popup, you could try to get iStats X refunded over at https://support.apple.com/en-us/HT204084.
+
 ## Contribute
 
 There are two ways you can contribute to this project:
