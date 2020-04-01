@@ -17,8 +17,10 @@
 
 iGlance is a small system monitor that displays current stats about your Mac on the menu bar. It is built to be highly customizable so that everyone can adjust it to his/her needs. A full list of all the features is below. If you encounter any bugs or have suggestions for new features, feel free to write them down in the Issues tab.
 
+<p align="center">
 <img src="readme_images/Menubar_Preview.jpg" title="Menubar Preview" alt="Menubar Preview" width="400"/>
 <img src="readme_images/iGlance_Preview.jpg" title="iGlance Preview" alt="iGlance Preview"/>
+</p>
 
 # Features
 
