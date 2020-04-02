@@ -72,7 +72,7 @@ class Logger {
                     DDLogError("Somethings went wrong while saving the log file")
                     return
                 }
-                
+
                 DDLogInfo("The log file \(mostRecentLogFileUrl.lastPathComponent) was successfully saved")
             } else if result == .cancel {
                 DDLogInfo("The save logfile dialog was cancelled")
