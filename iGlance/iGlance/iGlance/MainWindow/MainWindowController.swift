@@ -51,6 +51,9 @@ class MainWindowController: NSWindowController {
         self.window?.center()
     }
 
+    // MARK: -
+    // MARK: Private Functions
+
     @objc
     private func updateMainWindow() {
         mainWindow.backgroundColor = ThemeManager.currentTheme().titlebarColor
