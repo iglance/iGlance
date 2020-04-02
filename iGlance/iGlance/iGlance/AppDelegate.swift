@@ -188,4 +188,11 @@ class AppDelegate: NSObject, NSApplicationDelegate {
     static func getInstance() -> AppDelegate? {
         NSApplication.shared.delegate as? AppDelegate
     }
+
+    // MARK: -
+    // MARK: Actions
+
+    @IBAction private func saveMostRecentLogFile(sender: AnyObject) {
+        self.logger.saveMostRecentLogFile()
+    }
 }
