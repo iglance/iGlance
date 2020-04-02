@@ -63,21 +63,12 @@
                                     <items>
                                         <menuItem title="Import Settings..." id="aTl-1u-JFS">
                                             <modifierMask key="keyEquivalentModifierMask"/>
-                                            <connections>
-                                                <action selector="print:" target="Ady-hI-5gd" id="qaZ-4w-aoO"/>
-                                            </connections>
                                         </menuItem>
                                         <menuItem title="Export Settings..." id="pEa-Tm-cAy">
                                             <modifierMask key="keyEquivalentModifierMask"/>
-                                            <connections>
-                                                <action selector="print:" target="Ady-hI-5gd" id="znB-8W-S7W"/>
-                                            </connections>
                                         </menuItem>
                                         <menuItem title="Reset Settings..." id="mjT-CA-nxz">
                                             <modifierMask key="keyEquivalentModifierMask"/>
-                                            <connections>
-                                                <action selector="print:" target="Ady-hI-5gd" id="euZ-1j-48x"/>
-                                            </connections>
                                         </menuItem>
                                         <menuItem isSeparatorItem="YES" id="edB-3D-5wF"/>
                                         <menuItem title="Close" keyEquivalent="w" id="4rx-Ty-iez">
@@ -119,6 +110,9 @@
                                     <items>
                                         <menuItem title="Save Logfile..." id="41S-gD-t7E">
                                             <modifierMask key="keyEquivalentModifierMask"/>
+                                            <connections>
+                                                <action selector="saveMostRecentLogFileWithSender:" target="Ady-hI-5gd" id="4xx-cR-Xmu"/>
+                                            </connections>
                                         </menuItem>
                                     </items>
                                 </menu>

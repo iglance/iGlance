@@ -178,4 +178,21 @@ class AppDelegate: NSObject, NSApplicationDelegate {
 
         currentUpdateLoopTimer = timer
     }
+
+    // MARK: -
+    // MARK: Static Functions
+
+    /**
+     * Returns the current instance of the app delegate class.
+     */
+    static func getInstance() -> AppDelegate? {
+        NSApplication.shared.delegate as? AppDelegate
+    }
+
+    // MARK: -
+    // MARK: Actions
+
+    @IBAction private func saveMostRecentLogFile(sender: AnyObject) {
+        self.logger.saveMostRecentLogFile()
+    }
 }
