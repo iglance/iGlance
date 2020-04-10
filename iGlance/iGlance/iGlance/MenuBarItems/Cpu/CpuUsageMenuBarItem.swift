@@ -77,7 +77,7 @@ class CpuUsageMenuBarItem: MenuBarItem {
         }
 
         // add the value to the line graph history
-        // this allows us to draw the resent history when the user switches to the line graph
+        // this allows us to draw the recent history when the user switches to the line graph
         self.lineGraph.addValue(value: Double(totalUsage))
     }
 
