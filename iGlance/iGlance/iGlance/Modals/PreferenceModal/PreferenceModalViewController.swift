@@ -154,11 +154,11 @@ class PreferenceModalViewController: ModalViewController {
         }
 
         // update the update loop timer
-        if let appDelegate = AppDelegate.getInstance() {
-            appDelegate.changeUpdateLoopTimeInterval(interval: AppDelegate.userSettings.settings.updateInterval)
-        } else {
+        guard let appDelegate = AppDelegate.getInstance() else {
             DDLogError("Could not retrieve the App Delegate Instance")
+            return
         }
+        appDelegate.changeUpdateLoopTimeInterval(interval: AppDelegate.userSettings.settings.updateInterval)
     }
 
     @IBAction private func tempUnitSelectorChanged(_ sender: NSPopUpButton) {
