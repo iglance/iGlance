@@ -171,12 +171,42 @@ class AppDelegate: NSObject, NSApplicationDelegate {
     // MARK: Instance Functions
 
     /**
-     * Shows the main window, order it in front of any other window and activate the window..
+     * Shows the main window, order it in front of any other window and activate the window.
      */
     @objc
     func showMainWindow() {
         mainWindow.showWindow(nil)
         NSApp.activate(ignoringOtherApps: true)
+    }
+
+    /**
+     * Shows the preference window by first showing the main window and then the preference window of the app.
+     */
+    func showPreferenceWindow() {
+        // first show the main window. Basically it should never be the case that the main window is nil or not visible
+        if let window = mainWindow.window, !window.isVisible {
+            NSApp.activate(ignoringOtherApps: true)
+        } else if mainWindow.window == nil {
+            showMainWindow()
+        }
+
+        // then show the preference window
+        // instantiate the storyboard (bundle = nil indicates the apps main bundle)
+        let storyboard = NSStoryboard(name: "PreferenceWindow", bundle: nil)
+
+        // instantiate the view controller
+        guard let preferenceModalViewController = storyboard.instantiateController(withIdentifier: "PreferenceModalViewController") as? PreferenceModalViewController else {
+            DDLogError("Could not instantiate 'PreferenceModalViewController'")
+            return
+        }
+
+        // get the parent window
+        guard let parentWindow = mainWindow.window else {
+            DDLogError("Could not unwrap the parent window")
+            return
+        }
+
+        preferenceModalViewController.showModal(parentWindow: parentWindow)
     }
 
     /**
@@ -227,5 +257,9 @@ class AppDelegate: NSObject, NSApplicationDelegate {
 
     @IBAction private func saveMostRecentLogFile(sender: AnyObject) {
         self.logger.saveMostRecentLogFile()
+    }
+
+    @IBAction private func showPreferenceWindow(sender: AnyObject) {
+        self.showPreferenceWindow()
     }
 }

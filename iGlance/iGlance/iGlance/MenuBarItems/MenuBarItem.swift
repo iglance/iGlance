@@ -74,7 +74,7 @@ class MenuBarItemClass {
         }
 
         // add the settings button to the menu
-        menu.addItem(NSMenuItem(title: "Settings", action: #selector(AppDelegate.showMainWindow), keyEquivalent: ","))
+        menu.addItem(NSMenuItem(title: "Show window", action: #selector(AppDelegate.showMainWindow), keyEquivalent: ","))
 
         // add the quit button to the menu
         menu.addItem(NSMenuItem(title: "Quit iGlance", action: #selector(NSApplication.terminate(_:)), keyEquivalent: "q"))
