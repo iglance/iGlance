@@ -108,7 +108,9 @@ class BarGraph: Graph {
         image.lockFocus()
 
         // get the height of the bar
-        let barHeight = Double((maxBarHeight / self.maxValue) * currentValue)
+        // prevent a value of zero since this would cause a bug when drawing the bar
+        let value = (currentValue == 0 ? 0.1 : currentValue)
+        let barHeight = Double((maxBarHeight / self.maxValue) * value)
 
         // draw the gradient if necessary
         if gradientColor != nil {

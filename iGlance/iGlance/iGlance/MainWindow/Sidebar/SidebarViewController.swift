@@ -83,22 +83,12 @@ class SidebarViewController: NSViewController {
     // MARK: Actions
 
     @IBAction private func preferenceButtonClick(_ sender: NSButton) {
-        // instantiate the storyboard (bundle = nil indicates the apps main bundle)
-        let storyboard = NSStoryboard(name: "PreferenceWindow", bundle: nil)
-
-        // instantiate the view controller
-        guard let preferenceModalViewController = storyboard.instantiateController(withIdentifier: "PreferenceModalViewController") as? PreferenceModalViewController else {
-            DDLogError("Could not instantiate 'PreferenceModalViewController'")
+        guard let appDelegate = AppDelegate.getInstance() else {
+            DDLogError("Could not retrieve the app delegate instance")
             return
         }
 
-        // get the parent window
-        guard let parentWindow = self.view.window else {
-            DDLogError("Could not unwrap the parent window")
-            return
-        }
-
-        preferenceModalViewController.showModal(parentWindow: parentWindow)
+        appDelegate.showPreferenceWindow()
     }
 
     // MARK: -

@@ -58,6 +58,20 @@ class AppDelegate: NSObject, NSApplicationDelegate {
 
         // create the timer object
         currentUpdateLoopTimer = createUpdateLoopTimer(interval: AppDelegate.userSettings.settings.updateInterval)
+
+        // add the observer for sleep mode
+        NSWorkspace.shared.notificationCenter.addObserver(
+            self,
+            selector: #selector(self.onWakeUp(notification:)),
+            name: NSWorkspace.didWakeNotification,
+            object: nil
+        )
+        NSWorkspace.shared.notificationCenter.addObserver(
+            self,
+            selector: #selector(self.onSleep(notification:)),
+            name: NSWorkspace.willSleepNotification,
+            object: nil
+        )
     }
 
     func applicationShouldHandleReopen(_ sender: NSApplication, hasVisibleWindows flag: Bool) -> Bool {
@@ -71,6 +85,26 @@ class AppDelegate: NSObject, NSApplicationDelegate {
     func applicationWillTerminate(_ notification: Notification) {
         // kill the launcher app if it is still running
         killLauncherApplication()
+    }
+
+    /**
+     * This function will be called when the machine is waking up from sleep
+     */
+    @objc
+    private func onWakeUp(notification: NSNotification) {
+        // invalidate the old timer and start a new timer
+        changeUpdateLoopTimeInterval(interval: AppDelegate.userSettings.settings.updateInterval)
+        DDLogInfo("Create a new timer after waking up from sleep")
+    }
+
+    /**
+     * This function will be called when the machine is going into sleep mode.
+     */
+    @objc
+    private func onSleep(notification: NSNotification) {
+        // invalidate currently used timer
+        currentUpdateLoopTimer.invalidate()
+        DDLogInfo("Invalidated the current timer")
     }
 
     // MARK: -
@@ -121,7 +155,7 @@ class AppDelegate: NSObject, NSApplicationDelegate {
         }.isEmpty
 
         if launcherIsRunning {
-            DDLogInfo("iGlance Launcher is already running")
+            DDLogInfo("iGlance Launcher is running")
             guard let mainAppBundleIdentifier = Bundle.main.bundleIdentifier else {
                 DDLogError("Could not retrieve the main bundle identifier")
                 return
@@ -137,7 +171,7 @@ class AppDelegate: NSObject, NSApplicationDelegate {
     // MARK: Instance Functions
 
     /**
-     * Shows the main window, order it in front of any other window and activate the window..
+     * Shows the main window, order it in front of any other window and activate the window.
      */
     @objc
     func showMainWindow() {
@@ -146,13 +180,42 @@ class AppDelegate: NSObject, NSApplicationDelegate {
     }
 
     /**
+     * Shows the preference window by first showing the main window and then the preference window of the app.
+     */
+    func showPreferenceWindow() {
+        // first show the main window. Basically it should never be the case that the main window is nil or not visible
+        if let window = mainWindow.window, !window.isVisible {
+            NSApp.activate(ignoringOtherApps: true)
+        } else if mainWindow.window == nil {
+            showMainWindow()
+        }
+
+        // then show the preference window
+        // instantiate the storyboard (bundle = nil indicates the apps main bundle)
+        let storyboard = NSStoryboard(name: "PreferenceWindow", bundle: nil)
+
+        // instantiate the view controller
+        guard let preferenceModalViewController = storyboard.instantiateController(withIdentifier: "PreferenceModalViewController") as? PreferenceModalViewController else {
+            DDLogError("Could not instantiate 'PreferenceModalViewController'")
+            return
+        }
+
+        // get the parent window
+        guard let parentWindow = mainWindow.window else {
+            DDLogError("Could not unwrap the parent window")
+            return
+        }
+
+        preferenceModalViewController.showModal(parentWindow: parentWindow)
+    }
+
+    /**
      * Creates a timer and adds it to a the current run loop. The timer calls the update loop every given time interval.
      *
      * - Returns: The newly created timer.
      */
     func createUpdateLoopTimer(interval: Double) -> Timer {
-        let timer = Timer(timeInterval: interval, target: self, selector: #selector(updateLoop), userInfo: nil, repeats: true)
-        RunLoop.current.add(timer, forMode: RunLoop.Mode.common)
+        let timer = Timer.scheduledTimer(timeInterval: interval, target: self, selector: #selector(updateLoop), userInfo: nil, repeats: true)
 
         return timer
     }
@@ -177,5 +240,26 @@ class AppDelegate: NSObject, NSApplicationDelegate {
         RunLoop.current.add(timer, forMode: RunLoop.Mode.common)
 
         currentUpdateLoopTimer = timer
+    }
+
+    // MARK: -
+    // MARK: Static Functions
+
+    /**
+     * Returns the current instance of the app delegate class.
+     */
+    static func getInstance() -> AppDelegate? {
+        NSApplication.shared.delegate as? AppDelegate
+    }
+
+    // MARK: -
+    // MARK: Actions
+
+    @IBAction private func saveMostRecentLogFile(sender: AnyObject) {
+        self.logger.saveMostRecentLogFile()
+    }
+
+    @IBAction private func showPreferenceWindow(sender: AnyObject) {
+        self.showPreferenceWindow()
     }
 }

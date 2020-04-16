@@ -27,5 +27,5 @@ If applicable, add screenshots to help explain your problem.
 
 **Log**
 Please activate `Advanced Logging` in the settings, restart the app and perform the steps to reproduce the bug.
-After the bug occurred, please close the app completely (i.e. by opening the app window and pressing `CMD+Q`).
-Please take the latest log file from `~/Library/Logs/iGlance/` and upload it here.
+After the bug occurred, please open the iGlance window and in the app menu at the top left of the menu bar click on `Diagnostics > Save Logfile...`.
+Save the logfile somewhere and upload it here by dragging the file into the textfield.

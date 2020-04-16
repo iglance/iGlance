@@ -89,6 +89,6 @@ class MemoryUsageMenuBarItem: MenuBarItem {
         activeMemoryMenuEntry.title = "Active: \t\t\t \(String(format: "%.2f", memoryUsage.active)) GB"
         wiredMemoryMenuEntry.title = "Wired: \t\t\t \(String(format: "%.2f", memoryUsage.wired)) GB"
         compressedMemoryMenuEntry.title = "Compressed: \t \(String(format: "%.2f", memoryUsage.compressed)) GB"
-        freeMemoryMenuEntry.title = "Free: \t\t\t \(String(format: "%.2f", memoryUsage.free)) GB"
+        freeMemoryMenuEntry.title = "Free: \t\t\t \(String(format: "%.2f", memoryUsage.free + memoryUsage.inactive)) GB"
     }
 }
