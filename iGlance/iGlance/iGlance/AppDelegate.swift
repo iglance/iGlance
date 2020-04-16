@@ -58,6 +58,20 @@ class AppDelegate: NSObject, NSApplicationDelegate {
 
         // create the timer object
         currentUpdateLoopTimer = createUpdateLoopTimer(interval: AppDelegate.userSettings.settings.updateInterval)
+
+        // add the observer for sleep mode
+        NSWorkspace.shared.notificationCenter.addObserver(
+            self,
+            selector: #selector(self.onWakeUp(notification:)),
+            name: NSWorkspace.didWakeNotification,
+            object: nil
+        )
+        NSWorkspace.shared.notificationCenter.addObserver(
+            self,
+            selector: #selector(self.onSleep(notification:)),
+            name: NSWorkspace.willSleepNotification,
+            object: nil
+        )
     }
 
     func applicationShouldHandleReopen(_ sender: NSApplication, hasVisibleWindows flag: Bool) -> Bool {
@@ -71,6 +85,26 @@ class AppDelegate: NSObject, NSApplicationDelegate {
     func applicationWillTerminate(_ notification: Notification) {
         // kill the launcher app if it is still running
         killLauncherApplication()
+    }
+
+    /**
+     * This function will be called when the machine is waking up from sleep
+     */
+    @objc
+    private func onWakeUp(notification: NSNotification) {
+        // invalidate the old timer and start a new timer
+        changeUpdateLoopTimeInterval(interval: AppDelegate.userSettings.settings.updateInterval)
+        DDLogInfo("Create a new timer after waking up from sleep")
+    }
+
+    /**
+     * This function will be called when the machine is going into sleep mode.
+     */
+    @objc
+    private func onSleep(notification: NSNotification) {
+        // invalidate currently used timer
+        currentUpdateLoopTimer.invalidate()
+        DDLogInfo("Invalidated the current timer")
     }
 
     // MARK: -
@@ -121,7 +155,7 @@ class AppDelegate: NSObject, NSApplicationDelegate {
         }.isEmpty
 
         if launcherIsRunning {
-            DDLogInfo("iGlance Launcher is already running")
+            DDLogInfo("iGlance Launcher is running")
             guard let mainAppBundleIdentifier = Bundle.main.bundleIdentifier else {
                 DDLogError("Could not retrieve the main bundle identifier")
                 return
@@ -151,8 +185,7 @@ class AppDelegate: NSObject, NSApplicationDelegate {
      * - Returns: The newly created timer.
      */
     func createUpdateLoopTimer(interval: Double) -> Timer {
-        let timer = Timer(timeInterval: interval, target: self, selector: #selector(updateLoop), userInfo: nil, repeats: true)
-        RunLoop.current.add(timer, forMode: RunLoop.Mode.common)
+        let timer = Timer.scheduledTimer(timeInterval: interval, target: self, selector: #selector(updateLoop), userInfo: nil, repeats: true)
 
         return timer
     }
