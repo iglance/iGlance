@@ -215,8 +215,10 @@ class AppDelegate: NSObject, NSApplicationDelegate {
      * - Returns: The newly created timer.
      */
     func createUpdateLoopTimer(interval: Double) -> Timer {
-        let timer = Timer.scheduledTimer(timeInterval: interval, target: self, selector: #selector(updateLoop), userInfo: nil, repeats: true)
-
+        let timer = Timer(timeInterval: interval, target: self, selector: #selector(updateLoop), userInfo: nil, repeats: true)
+        // add the timer to the run loop using the common mode
+        RunLoop.current.add(timer, forMode: .common)
+        
         return timer
     }
 
@@ -237,7 +239,6 @@ class AppDelegate: NSObject, NSApplicationDelegate {
 
         // create a new timer object
         let timer = createUpdateLoopTimer(interval: interval)
-        RunLoop.current.add(timer, forMode: RunLoop.Mode.common)
 
         currentUpdateLoopTimer = timer
     }
