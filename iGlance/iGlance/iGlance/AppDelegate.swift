@@ -35,7 +35,7 @@ class AppDelegate: NSObject, NSApplicationDelegate {
 
     var mainWindow: MainWindowController = NSStoryboard(name: "Main", bundle: nil).instantiateController(withIdentifier: "MainWindowController") as! MainWindowController
 
-    var currentUpdateLoopTimer: Timer!
+    var currentUpdateLoopTimer: RepeatingTimer!
 
     // MARK: -
     // MARK: Lifecycle Functions
@@ -92,8 +92,8 @@ class AppDelegate: NSObject, NSApplicationDelegate {
      */
     @objc
     private func onWakeUp(notification: NSNotification) {
-        // invalidate the old timer and start a new timer
-        changeUpdateLoopTimeInterval(interval: AppDelegate.userSettings.settings.updateInterval)
+        // resume the timer
+        currentUpdateLoopTimer.resume()
         DDLogInfo("Create a new timer after waking up from sleep")
     }
 
@@ -102,8 +102,8 @@ class AppDelegate: NSObject, NSApplicationDelegate {
      */
     @objc
     private func onSleep(notification: NSNotification) {
-        // invalidate currently used timer
-        currentUpdateLoopTimer.invalidate()
+        // suspend the current timer
+        currentUpdateLoopTimer.suspend()
         DDLogInfo("Invalidated the current timer")
     }
 
@@ -214,8 +214,10 @@ class AppDelegate: NSObject, NSApplicationDelegate {
      *
      * - Returns: The newly created timer.
      */
-    func createUpdateLoopTimer(interval: Double) -> Timer {
-        let timer = Timer.scheduledTimer(timeInterval: interval, target: self, selector: #selector(updateLoop), userInfo: nil, repeats: true)
+    func createUpdateLoopTimer(interval: Double) -> RepeatingTimer {
+        let timer = RepeatingTimer(timeInterval: interval)
+        timer.eventHandler = updateLoop
+        timer.resume()
 
         return timer
     }
@@ -223,23 +225,20 @@ class AppDelegate: NSObject, NSApplicationDelegate {
     /**
      * The main update loop for the whole app. This function is called every user defined time interval.
      */
-    @objc
     func updateLoop() {
-        AppDelegate.menuBarItemManager.updateMenuBarItems()
+        DispatchQueue.main.async {
+            AppDelegate.menuBarItemManager.updateMenuBarItems()
+        }
     }
 
     /**
      * Changes the update interval of the main loop to the given time interval.
      */
     func changeUpdateLoopTimeInterval(interval: Double) {
-        // invalidate the currently used timer to stop it
-        currentUpdateLoopTimer.invalidate()
-
-        // create a new timer object
-        let timer = createUpdateLoopTimer(interval: interval)
-        RunLoop.current.add(timer, forMode: RunLoop.Mode.common)
-
-        currentUpdateLoopTimer = timer
+        // create a new timer instance
+        let timer = RepeatingTimer(timeInterval: interval)
+        timer.eventHandler = updateLoop
+        timer.resume()
     }
 
     // MARK: -

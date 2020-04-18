@@ -16,7 +16,6 @@
 import Cocoa
 import ServiceManagement
 import CocoaLumberjack
-import Sparkle
 
 class PreferenceModalViewController: ModalViewController {
     // MARK: -
@@ -152,6 +151,8 @@ class PreferenceModalViewController: ModalViewController {
             // default to the medium option
             AppDelegate.userSettings.settings.updateInterval = 2.0
         }
+
+        DDLogInfo("Set the update interval to \(updateIntervalSelector.indexOfSelectedItem + 1) seconds")
 
         // update the update loop timer
         guard let appDelegate = AppDelegate.getInstance() else {
