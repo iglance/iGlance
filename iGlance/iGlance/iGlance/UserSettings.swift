@@ -85,7 +85,7 @@ struct IGlanceUserSettings: Codable {
     var battery = BatterySettings()
 }
 
-class UserSettings {
+class UserSettings: Codable {
     var settings: IGlanceUserSettings! {
         didSet {
             DDLogInfo("User settings changed")
@@ -98,8 +98,12 @@ class UserSettings {
 
     private let userSettingsKey: String = "iGlanceUserSettings"
 
-    init() {
-        settings = loadUserSettings()
+    init(isDefault: Bool) {
+        if !isDefault {
+            settings = loadUserSettings()
+        } else {
+            settings = IGlanceUserSettings()
+        }
     }
 
     /**
@@ -143,5 +147,9 @@ class UserSettings {
         }
 
         return false
+    }
+
+    public func saveUserSettingsWrapper() -> Bool {
+        saveUserSettings(settings: self.settings)
     }
 }
