@@ -84,6 +84,11 @@ class LineGraph: Graph {
         // iterate the values and draw a bar for each value on the correct position
         var nextValuePosition = self.imageSize.width - self.borderWidth - 1
         for value in valueHistory.makeIterator().reversed() {
+            // if the value is zero we don't have to draw anything and can continue with the loop
+            if value == 0 {
+                continue
+            }
+
             // calculate the height of the bar
             let barHeight = Double((self.maxbarHeight / self.maxValue) * value)
 
