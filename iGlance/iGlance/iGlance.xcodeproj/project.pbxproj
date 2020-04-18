@@ -44,6 +44,7 @@
 		B472EC20243101DB002F7504 /* Logger.swift in Sources */ = {isa = PBXBuildFile; fileRef = B472EC1F243101DB002F7504 /* Logger.swift */; };
 		B47D3C8D23ABEDF100DE911F /* CustomDashboardBox.swift in Sources */ = {isa = PBXBuildFile; fileRef = B47D3C8C23ABEDF100DE911F /* CustomDashboardBox.swift */; };
 		B48BD19123E73F8E00152931 /* CpuUsageMenuBarItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = B48BD19023E73F8E00152931 /* CpuUsageMenuBarItem.swift */; };
+		B4924F09244A2492000D8BDD /* RepeatingTimer.swift in Sources */ = {isa = PBXBuildFile; fileRef = B4924F08244A2492000D8BDD /* RepeatingTimer.swift */; };
 		B49CD58F23EB17D9009711E6 /* CodableColor.swift in Sources */ = {isa = PBXBuildFile; fileRef = B49CD58E23EB17D9009711E6 /* CodableColor.swift */; };
 		B49CDFF523E1E18A0070D664 /* AppMover.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B49CDFF223E1DB9B0070D664 /* AppMover.framework */; };
 		B49CDFF623E1E18A0070D664 /* AppMover.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = B49CDFF223E1DB9B0070D664 /* AppMover.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
@@ -161,6 +162,7 @@
 		B472EC1F243101DB002F7504 /* Logger.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Logger.swift; sourceTree = "<group>"; };
 		B47D3C8C23ABEDF100DE911F /* CustomDashboardBox.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomDashboardBox.swift; sourceTree = "<group>"; };
 		B48BD19023E73F8E00152931 /* CpuUsageMenuBarItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CpuUsageMenuBarItem.swift; sourceTree = "<group>"; };
+		B4924F08244A2492000D8BDD /* RepeatingTimer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RepeatingTimer.swift; sourceTree = "<group>"; };
 		B49CD58E23EB17D9009711E6 /* CodableColor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CodableColor.swift; sourceTree = "<group>"; };
 		B49CDFF223E1DB9B0070D664 /* AppMover.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = AppMover.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		B49CDFF723E1E1950070D664 /* SMCKit.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = SMCKit.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -392,6 +394,7 @@
 				B4C37E6E23A91F2F008C7FC0 /* Theme */,
 				B4FE0DAD23EF1BCB00AE94E6 /* Utils */,
 				B46789B523A69ECA00CE572D /* AppDelegate.swift */,
+				B4924F08244A2492000D8BDD /* RepeatingTimer.swift */,
 				B472EC1F243101DB002F7504 /* Logger.swift */,
 				B4DE725E23C257610001CF46 /* Extensions.swift */,
 				B49F5D5623C5BCAF009E9BE6 /* UserSettings.swift */,
@@ -721,6 +724,7 @@
 				B4CFC47623FC393300A0ED15 /* FanViewController.swift in Sources */,
 				B4A0D37A242E5FD500690098 /* NetworkStatisticsMenuView.swift in Sources */,
 				B4E909132427B5EA00260479 /* BatteryViewController.swift in Sources */,
+				B4924F09244A2492000D8BDD /* RepeatingTimer.swift in Sources */,
 				B4FE0DB123EF1E0100AE94E6 /* LineGraph.swift in Sources */,
 				B4FE0DB323EF210500AE94E6 /* Graph.swift in Sources */,
 				B43ABF2A23AA32FA007F93BA /* SidebarViewController.swift in Sources */,
