@@ -19,7 +19,11 @@ import CocoaLumberjack
 class NetworkViewController: MainViewViewController {
     // MARK: -
     // MARK: Outlets
-    @IBOutlet private var networkUsageCheckbox: NSButton!
+    @IBOutlet private var networkUsageCheckbox: NSButton! {
+        didSet {
+            networkUsageCheckbox.state = AppDelegate.userSettings.settings.network.showBandwidth ? .on : .off
+        }
+    }
 
     // MARK: -
     // MARK: Actions
