@@ -104,30 +104,51 @@ class NetworkInfo {
      * Returns the name of the currently used network interface as a string. If something went wrong the default network interface "en0" is returned.
      */
     func getCurrentlyUsedInterface() -> String {
-        // create the process for the command
-        let process = Process()
-        process.launchPath = "/bin/bash"
-        process.arguments = ["-c", "route get 0.0.0.0 2>/dev/null | grep interface: | awk '{print $2}'"]
-
-        // create the pipe for the output
-        let pipe = Pipe()
-        process.standardOutput = pipe
-        process.launch()
-
-        // get the command output
-        let commandOutput = pipe.fileHandleForReading.readDataToEndOfFile()
-
-        DDLogInfo("Output of the network interface command: \n\(commandOutput)")
-
-        // get the currently used interface
-        guard let commandString = String(data: commandOutput, encoding: String.Encoding.utf8) else {
-            DDLogError("Something went wrong while casting the command output to a string")
+        // idea is from https://apple.stackexchange.com/a/223446
+        // get the srvice list
+        let arguments = ["-listallhardwareports"]
+        guard let netCmdOutput = executeCommand(launchPath: "/usr/sbin/networksetup", arguments: arguments) else {
+            DDLogError("Something went wrong while executing the networksetup command")
             return "en0"
         }
+        let interfaceList = netCmdOutput.split(separator: "\n")
+            .filter { $0.contains("Device:") }
+            .map { $0.replacingOccurrences(of: "Device: ", with: "") }
 
-        // get the interface name
-        let interfaceName = commandString.trimmingCharacters(in: .whitespacesAndNewlines)
+        // the default interface is en0
+        var activeInterfaces = ["en0"]
 
-        return interfaceName.isEmpty ? "en0" : interfaceName
+        // iterate the list from top to bottom
+        for interfaceName in interfaceList {
+            // get more info about the current network interface
+            guard let ifconfOutput = executeCommand(launchPath: "/sbin/ifconfig", arguments: [interfaceName]) else {
+                DDLogError("Something went wrong while executing the ifconfig command for interface \(interfaceName)")
+                continue
+            }
+
+            // get the status line
+            let statusString = ifconfOutput.split(separator: "\n")
+                .filter { $0.contains("status:") }
+                .map { $0.replacingOccurrences(of: "\tstatus: ", with: "") }
+
+            // check if the string array is empty
+            if statusString.isEmpty {
+                DDLogInfo("Could not find a status string for interface \(interfaceName)")
+                continue
+            }
+
+            // if we got more values log it, but proceed and check if one of them is active
+            if statusString.count > 1 {
+                DDLogError("Read more than one status string for interface \(interfaceName)")
+            }
+
+            if statusString.contains("active") && !activeInterfaces.contains(interfaceName) {
+                // add the active interface to the list
+                activeInterfaces.insert(interfaceName, at: 0)
+            }
+        }
+
+        // return the first interface in the list
+        return activeInterfaces[0]
     }
 }
