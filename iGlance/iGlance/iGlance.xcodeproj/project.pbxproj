@@ -62,6 +62,7 @@
 		B4C37E6D23A8D811008C7FC0 /* ContentManagerViewControllerHolder.swift in Sources */ = {isa = PBXBuildFile; fileRef = B4C37E6C23A8D811008C7FC0 /* ContentManagerViewControllerHolder.swift */; };
 		B4C37E7023A91F3C008C7FC0 /* ThemeManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = B4C37E6F23A91F3C008C7FC0 /* ThemeManager.swift */; };
 		B4C8DD2523AA3DB8008DAE45 /* ContentManagerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B4C8DD2423AA3DB8008DAE45 /* ContentManagerView.swift */; };
+		B4C985E3244CB694002F8D3F /* Utils.swift in Sources */ = {isa = PBXBuildFile; fileRef = B4C985E2244CB694002F8D3F /* Utils.swift */; };
 		B4CF2F7823C4F5CD00544511 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = B4CF2F7723C4F5CD00544511 /* AppDelegate.swift */; };
 		B4CF2F7C23C4F5CE00544511 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = B4CF2F7B23C4F5CE00544511 /* Assets.xcassets */; };
 		B4CF2F7F23C4F5CE00544511 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B4CF2F7D23C4F5CE00544511 /* Main.storyboard */; };
@@ -178,6 +179,7 @@
 		B4C37E6C23A8D811008C7FC0 /* ContentManagerViewControllerHolder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentManagerViewControllerHolder.swift; sourceTree = "<group>"; };
 		B4C37E6F23A91F3C008C7FC0 /* ThemeManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ThemeManager.swift; sourceTree = "<group>"; };
 		B4C8DD2423AA3DB8008DAE45 /* ContentManagerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentManagerView.swift; sourceTree = "<group>"; };
+		B4C985E2244CB694002F8D3F /* Utils.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Utils.swift; sourceTree = "<group>"; };
 		B4CF2F7523C4F5CD00544511 /* iGlanceLauncher.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = iGlanceLauncher.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		B4CF2F7723C4F5CD00544511 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		B4CF2F7B23C4F5CE00544511 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -307,6 +309,7 @@
 				B4DE727F23C2644A0001CF46 /* BatteryInfo.swift */,
 				B415FF2B23F45F6000ED6567 /* MemoryInfo.swift */,
 				B4F4AF3A23FAFBD60033B5CE /* FanInfo.swift */,
+				B4C985E2244CB694002F8D3F /* Utils.swift */,
 			);
 			path = SystemInfo;
 			sourceTree = "<group>";
@@ -721,6 +724,7 @@
 				B4E909112427B33F00260479 /* BatteryMenuBarItem.swift in Sources */,
 				B4C37E6D23A8D811008C7FC0 /* ContentManagerViewControllerHolder.swift in Sources */,
 				B48BD19123E73F8E00152931 /* CpuUsageMenuBarItem.swift in Sources */,
+				B4C985E3244CB694002F8D3F /* Utils.swift in Sources */,
 				B4CFC47623FC393300A0ED15 /* FanViewController.swift in Sources */,
 				B4A0D37A242E5FD500690098 /* NetworkStatisticsMenuView.swift in Sources */,
 				B4E909132427B5EA00260479 /* BatteryViewController.swift in Sources */,

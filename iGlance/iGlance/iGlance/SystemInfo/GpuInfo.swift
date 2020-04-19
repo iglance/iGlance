@@ -29,17 +29,8 @@ class GpuInfo {
      */
     func getGpuName() -> String {
         // pretty similar to https://github.com/sebhildebrandt/systeminformation/blob/master/lib/graphics.js
-        let task = Process()
-        let outputPipe = Pipe()
-
-        // execute the system_profiler command
-        task.launchPath = "/usr/sbin/system_profiler"
-        task.arguments = ["SPDisplaysDataType"]
-        task.standardOutput = outputPipe
-        task.launch()
-        let outputData = outputPipe.fileHandleForReading.readDataToEndOfFile()
-        guard let output = String(data: outputData, encoding: String.Encoding.utf8) else {
-            DDLogError("An error occurred while casting the command output to a string")
+        guard let output = executeCommand(launchPath: "/usr/sbin/system_profiler", arguments: ["SPDisplaysDataType"]) else {
+            DDLogError("An error occurred while executing the system_profiler command")
             return ""
         }
 
