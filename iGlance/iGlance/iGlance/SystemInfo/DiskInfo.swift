@@ -24,7 +24,7 @@ class DiskInfo {
     func getInternalDiskSize() -> (Int, String) {
         guard let output = executeCommand(launchPath: "/usr/sbin/system_profiler", arguments: ["SPNVMeDataType", "SPSerialATADataType"]) else {
             DDLogError("An error occurred while executing the system_profiler command")
-
+            
             return (0, "")
         }
 
