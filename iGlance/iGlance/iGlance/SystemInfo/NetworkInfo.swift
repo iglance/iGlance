@@ -106,8 +106,8 @@ class NetworkInfo {
     func getCurrentlyUsedInterface() -> String {
         // idea is from https://apple.stackexchange.com/a/223446
         // get the srvice list
-        let arguments = ["networksetup", "-listallhardwareports"]
-        guard let netCmdOutput = executeCommand(launchPath: "/usr/bin/env", arguments: arguments) else {
+        let arguments = ["-listallhardwareports"]
+        guard let netCmdOutput = executeCommand(launchPath: "/usr/sbin/networksetup", arguments: arguments) else {
             DDLogError("Something went wrong while executing the networksetup command")
             return "en0"
         }
@@ -118,20 +118,10 @@ class NetworkInfo {
         // the default interface is en0
         var activeInterfaces = ["en0"]
 
-        // get all the network interfaces of ifconfig
-        guard let ifconfigInterfacesCommand = executeCommand(launchPath: "/usr/bin/env", arguments: ["ifconfig", "-lu"]) else {
-            DDLogError("Something went wrong while executing the ifconfig command to retrieve all interfaces")
-            return activeInterfaces[0]
-        }
-        let ifconfigInterfacesList = ifconfigInterfacesCommand
-            .replacingOccurrences(of: "\n", with: "")
-            .split(separator: " ")
-            .map { String($0) }
-
         // iterate the list from top to bottom
-        for interfaceName in interfaceList where ifconfigInterfacesList.contains(interfaceName) {
+        for interfaceName in interfaceList {
             // get more info about the current network interface
-            guard let ifconfOutput = executeCommand(launchPath: "/usr/bin/env", arguments: ["ifconfig", interfaceName]) else {
+            guard let ifconfOutput = executeCommand(launchPath: "/sbin/ifconfig", arguments: [interfaceName]) else {
                 DDLogError("Something went wrong while executing the ifconfig command for interface \(interfaceName)")
                 continue
             }
