@@ -62,7 +62,7 @@ class NetworkInfo {
      */
     func getTotalTransmittedBytesOf(interface: String) -> (up: UInt64, down: UInt64) {
         // create the process to call the netstat commandline tool
-        guard let commandOutput = executeCommand(launchPath: <#T##String#>, arguments: <#T##[String]#>) else {
+        guard let commandOutput = executeCommand(launchPath: "/usr/bin/env", arguments: ["netstat", "-bdnI", interface]) else {
             DDLogError("An error occurred while executing the netstat command")
             return (up: 0, down: 0)
         }
