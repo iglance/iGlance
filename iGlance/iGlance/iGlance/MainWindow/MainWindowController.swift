@@ -34,6 +34,13 @@ class MainWindowController: NSWindowController {
 
     required init?(coder: NSCoder) {
         super.init(coder: coder)
+
+        // show the dock icon if no menu bar item is visible
+        // this prevents that the app is running but the user has no means to interact with the app
+        if !AppDelegate.menuBarItemManager.menuBarItems.contains(where: { $0.statusItem.isVisible == true }) {
+            NSApp.setActivationPolicy(.regular)
+            DDLogInfo("Dock icon is shown because no menu bar icon is visible")
+        }
     }
 
     // MARK: -

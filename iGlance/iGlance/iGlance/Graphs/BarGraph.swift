@@ -104,13 +104,16 @@ class BarGraph: Graph {
      * Takes an image and draws the bar on the given image
      */
     private func drawBarGraph(image: inout NSImage, currentValue: Double, barColor: NSColor, gradientColor: NSColor?) {
+        // if the current value is zero we don't have to draw anything and can return immediately
+        if currentValue == 0 {
+            return
+        }
+
         // lock the focus on the image in order to draw on it
         image.lockFocus()
 
         // get the height of the bar
-        // prevent a value of zero since this would cause a bug when drawing the bar
-        let value = (currentValue == 0 ? 0.1 : currentValue)
-        let barHeight = Double((maxBarHeight / self.maxValue) * value)
+        let barHeight = Double((maxBarHeight / self.maxValue) * currentValue)
 
         // draw the gradient if necessary
         if gradientColor != nil {

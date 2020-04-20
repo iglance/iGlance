@@ -56,6 +56,7 @@ class Logger {
         let savePanel = NSSavePanel()
         savePanel.nameFieldStringValue = mostRecentLogFileUrl.lastPathComponent
 
+        DDLogInfo("Saving the most recent log file")
         savePanel.begin { result in
             if result == .OK {
                 var success = false

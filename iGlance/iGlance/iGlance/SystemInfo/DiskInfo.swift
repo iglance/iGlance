@@ -22,17 +22,9 @@ class DiskInfo {
      * disk and the second element beeing the unit (e.g. MB, GB, TB...).
      */
     func getInternalDiskSize() -> (Int, String) {
-        let task = Process()
-        let outputPipe = Pipe()
+        guard let output = executeCommand(launchPath: "/usr/sbin/system_profiler", arguments: ["SPNVMeDataType", "SPSerialATADataType"]) else {
+            DDLogError("An error occurred while executing the system_profiler command")
 
-        // execute the system_profiler command
-        task.launchPath = "/usr/sbin/system_profiler"
-        task.arguments = ["SPNVMeDataType", "SPSerialATADataType"]
-        task.standardOutput = outputPipe
-        task.launch()
-        let outputData = outputPipe.fileHandleForReading.readDataToEndOfFile()
-        guard let output = String(data: outputData, encoding: String.Encoding.utf8) else {
-            DDLogError("An error occurred while casting the command output to a string")
             return (0, "")
         }
 

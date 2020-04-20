@@ -44,6 +44,7 @@
 		B472EC20243101DB002F7504 /* Logger.swift in Sources */ = {isa = PBXBuildFile; fileRef = B472EC1F243101DB002F7504 /* Logger.swift */; };
 		B47D3C8D23ABEDF100DE911F /* CustomDashboardBox.swift in Sources */ = {isa = PBXBuildFile; fileRef = B47D3C8C23ABEDF100DE911F /* CustomDashboardBox.swift */; };
 		B48BD19123E73F8E00152931 /* CpuUsageMenuBarItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = B48BD19023E73F8E00152931 /* CpuUsageMenuBarItem.swift */; };
+		B4924F09244A2492000D8BDD /* RepeatingTimer.swift in Sources */ = {isa = PBXBuildFile; fileRef = B4924F08244A2492000D8BDD /* RepeatingTimer.swift */; };
 		B49CD58F23EB17D9009711E6 /* CodableColor.swift in Sources */ = {isa = PBXBuildFile; fileRef = B49CD58E23EB17D9009711E6 /* CodableColor.swift */; };
 		B49CDFF523E1E18A0070D664 /* AppMover.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B49CDFF223E1DB9B0070D664 /* AppMover.framework */; };
 		B49CDFF623E1E18A0070D664 /* AppMover.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = B49CDFF223E1DB9B0070D664 /* AppMover.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
@@ -61,6 +62,7 @@
 		B4C37E6D23A8D811008C7FC0 /* ContentManagerViewControllerHolder.swift in Sources */ = {isa = PBXBuildFile; fileRef = B4C37E6C23A8D811008C7FC0 /* ContentManagerViewControllerHolder.swift */; };
 		B4C37E7023A91F3C008C7FC0 /* ThemeManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = B4C37E6F23A91F3C008C7FC0 /* ThemeManager.swift */; };
 		B4C8DD2523AA3DB8008DAE45 /* ContentManagerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B4C8DD2423AA3DB8008DAE45 /* ContentManagerView.swift */; };
+		B4C985E3244CB694002F8D3F /* Utils.swift in Sources */ = {isa = PBXBuildFile; fileRef = B4C985E2244CB694002F8D3F /* Utils.swift */; };
 		B4CF2F7823C4F5CD00544511 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = B4CF2F7723C4F5CD00544511 /* AppDelegate.swift */; };
 		B4CF2F7C23C4F5CE00544511 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = B4CF2F7B23C4F5CE00544511 /* Assets.xcassets */; };
 		B4CF2F7F23C4F5CE00544511 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B4CF2F7D23C4F5CE00544511 /* Main.storyboard */; };
@@ -161,6 +163,7 @@
 		B472EC1F243101DB002F7504 /* Logger.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Logger.swift; sourceTree = "<group>"; };
 		B47D3C8C23ABEDF100DE911F /* CustomDashboardBox.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomDashboardBox.swift; sourceTree = "<group>"; };
 		B48BD19023E73F8E00152931 /* CpuUsageMenuBarItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CpuUsageMenuBarItem.swift; sourceTree = "<group>"; };
+		B4924F08244A2492000D8BDD /* RepeatingTimer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RepeatingTimer.swift; sourceTree = "<group>"; };
 		B49CD58E23EB17D9009711E6 /* CodableColor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CodableColor.swift; sourceTree = "<group>"; };
 		B49CDFF223E1DB9B0070D664 /* AppMover.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = AppMover.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		B49CDFF723E1E1950070D664 /* SMCKit.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = SMCKit.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -176,6 +179,7 @@
 		B4C37E6C23A8D811008C7FC0 /* ContentManagerViewControllerHolder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentManagerViewControllerHolder.swift; sourceTree = "<group>"; };
 		B4C37E6F23A91F3C008C7FC0 /* ThemeManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ThemeManager.swift; sourceTree = "<group>"; };
 		B4C8DD2423AA3DB8008DAE45 /* ContentManagerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentManagerView.swift; sourceTree = "<group>"; };
+		B4C985E2244CB694002F8D3F /* Utils.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Utils.swift; sourceTree = "<group>"; };
 		B4CF2F7523C4F5CD00544511 /* iGlanceLauncher.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = iGlanceLauncher.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		B4CF2F7723C4F5CD00544511 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		B4CF2F7B23C4F5CE00544511 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -305,6 +309,7 @@
 				B4DE727F23C2644A0001CF46 /* BatteryInfo.swift */,
 				B415FF2B23F45F6000ED6567 /* MemoryInfo.swift */,
 				B4F4AF3A23FAFBD60033B5CE /* FanInfo.swift */,
+				B4C985E2244CB694002F8D3F /* Utils.swift */,
 			);
 			path = SystemInfo;
 			sourceTree = "<group>";
@@ -392,6 +397,7 @@
 				B4C37E6E23A91F2F008C7FC0 /* Theme */,
 				B4FE0DAD23EF1BCB00AE94E6 /* Utils */,
 				B46789B523A69ECA00CE572D /* AppDelegate.swift */,
+				B4924F08244A2492000D8BDD /* RepeatingTimer.swift */,
 				B472EC1F243101DB002F7504 /* Logger.swift */,
 				B4DE725E23C257610001CF46 /* Extensions.swift */,
 				B49F5D5623C5BCAF009E9BE6 /* UserSettings.swift */,
@@ -718,9 +724,11 @@
 				B4E909112427B33F00260479 /* BatteryMenuBarItem.swift in Sources */,
 				B4C37E6D23A8D811008C7FC0 /* ContentManagerViewControllerHolder.swift in Sources */,
 				B48BD19123E73F8E00152931 /* CpuUsageMenuBarItem.swift in Sources */,
+				B4C985E3244CB694002F8D3F /* Utils.swift in Sources */,
 				B4CFC47623FC393300A0ED15 /* FanViewController.swift in Sources */,
 				B4A0D37A242E5FD500690098 /* NetworkStatisticsMenuView.swift in Sources */,
 				B4E909132427B5EA00260479 /* BatteryViewController.swift in Sources */,
+				B4924F09244A2492000D8BDD /* RepeatingTimer.swift in Sources */,
 				B4FE0DB123EF1E0100AE94E6 /* LineGraph.swift in Sources */,
 				B4FE0DB323EF210500AE94E6 /* Graph.swift in Sources */,
 				B43ABF2A23AA32FA007F93BA /* SidebarViewController.swift in Sources */,
@@ -908,7 +916,7 @@
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
 				COMBINE_HIDPI_IMAGES = YES;
-				CURRENT_PROJECT_VERSION = 2.0.5;
+				CURRENT_PROJECT_VERSION = 2.0.6;
 				DEVELOPMENT_TEAM = J6GXEPK4NG;
 				ENABLE_HARDENED_RUNTIME = YES;
 				INFOPLIST_FILE = iGlance/Info.plist;
@@ -917,7 +925,7 @@
 					"@executable_path/../Frameworks",
 				);
 				MACOSX_DEPLOYMENT_TARGET = 10.12;
-				MARKETING_VERSION = 2.0.5;
+				MARKETING_VERSION = 2.0.6;
 				PRODUCT_BUNDLE_IDENTIFIER = io.github.iglance.iGlance;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
@@ -935,7 +943,7 @@
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
 				COMBINE_HIDPI_IMAGES = YES;
-				CURRENT_PROJECT_VERSION = 2.0.5;
+				CURRENT_PROJECT_VERSION = 2.0.6;
 				DEVELOPMENT_TEAM = J6GXEPK4NG;
 				ENABLE_HARDENED_RUNTIME = YES;
 				INFOPLIST_FILE = iGlance/Info.plist;
@@ -944,7 +952,7 @@
 					"@executable_path/../Frameworks",
 				);
 				MACOSX_DEPLOYMENT_TARGET = 10.12;
-				MARKETING_VERSION = 2.0.5;
+				MARKETING_VERSION = 2.0.6;
 				PRODUCT_BUNDLE_IDENTIFIER = io.github.iglance.iGlance;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
