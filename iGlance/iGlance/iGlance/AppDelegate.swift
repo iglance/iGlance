@@ -239,6 +239,8 @@ class AppDelegate: NSObject, NSApplicationDelegate {
         let timer = RepeatingTimer(timeInterval: interval)
         timer.eventHandler = updateLoop
         timer.resume()
+
+        self.currentUpdateLoopTimer = timer
     }
 
     // MARK: -
