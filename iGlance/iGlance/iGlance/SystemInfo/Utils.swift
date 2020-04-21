@@ -17,7 +17,7 @@ import CocoaLumberjack
 func executeCommand(launchPath: String, arguments: [String]) -> String? {
     let task = Process()
     let outputPipe = Pipe()
-    
+
     // execute the command
     task.launchPath = launchPath
     task.arguments = arguments
@@ -28,6 +28,6 @@ func executeCommand(launchPath: String, arguments: [String]) -> String? {
         DDLogError("An error occurred while casting the command output to a string")
         return nil
     }
-    
+
     return output
 }
