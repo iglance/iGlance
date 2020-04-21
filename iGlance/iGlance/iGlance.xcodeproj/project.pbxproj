@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		274CA92A244ED22600BD8163 /* DiskViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 274CA929244ED22600BD8163 /* DiskViewController.swift */; };
 		29AE00790B5C3F8386AEA221 /* Pods_iGlanceLauncher.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 75159D3A3C41F7B84171B6BA /* Pods_iGlanceLauncher.framework */; };
 		B4060E2B23C4F82A00CD945E /* iGlanceLauncher.app in CopyFiles */ = {isa = PBXBuildFile; fileRef = B4CF2F7523C4F5CD00544511 /* iGlanceLauncher.app */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
 		B4060E3223C4FAEF00CD945E /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = B4060E3123C4FAEF00CD945E /* Constants.swift */; };
@@ -81,6 +82,7 @@
 		B4F4AF3B23FAFBD60033B5CE /* FanInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = B4F4AF3A23FAFBD60033B5CE /* FanInfo.swift */; };
 		B4FE0DB123EF1E0100AE94E6 /* LineGraph.swift in Sources */ = {isa = PBXBuildFile; fileRef = B4FE0DB023EF1E0100AE94E6 /* LineGraph.swift */; };
 		B4FE0DB323EF210500AE94E6 /* Graph.swift in Sources */ = {isa = PBXBuildFile; fileRef = B4FE0DB223EF210500AE94E6 /* Graph.swift */; };
+		DAB005682437C70F00E737DD /* DiskUsageMenuBarItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = DAB005672437C70F00E737DD /* DiskUsageMenuBarItem.swift */; };
 		FE556499492832BE97606DAD /* Pods_iGlance.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 84955815F03407826031ABBF /* Pods_iGlance.framework */; };
 /* End PBXBuildFile section */
 
@@ -121,6 +123,7 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		274CA929244ED22600BD8163 /* DiskViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DiskViewController.swift; sourceTree = "<group>"; };
 		6311816E3B346E8E2E144369 /* Pods-iGlanceLauncher.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-iGlanceLauncher.debug.xcconfig"; path = "Target Support Files/Pods-iGlanceLauncher/Pods-iGlanceLauncher.debug.xcconfig"; sourceTree = "<group>"; };
 		75159D3A3C41F7B84171B6BA /* Pods_iGlanceLauncher.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_iGlanceLauncher.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		84955815F03407826031ABBF /* Pods_iGlance.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_iGlance.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -202,6 +205,7 @@
 		B4FE0DB023EF1E0100AE94E6 /* LineGraph.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LineGraph.swift; sourceTree = "<group>"; };
 		B4FE0DB223EF210500AE94E6 /* Graph.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Graph.swift; sourceTree = "<group>"; };
 		C613649DA4B6320FA4A7C8A2 /* Pods-iGlance.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-iGlance.debug.xcconfig"; path = "Target Support Files/Pods-iGlance/Pods-iGlance.debug.xcconfig"; sourceTree = "<group>"; };
+		DAB005672437C70F00E737DD /* DiskUsageMenuBarItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DiskUsageMenuBarItem.swift; sourceTree = "<group>"; };
 		F7F7841E10C5D08CE0848D69 /* Pods-iGlance.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-iGlance.release.xcconfig"; path = "Target Support Files/Pods-iGlance/Pods-iGlance.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -352,6 +356,7 @@
 				B4E909102427B33F00260479 /* BatteryMenuBarItem.swift */,
 				B452554723E358E7000F79BF /* MenuBarItem.swift */,
 				B452554A23E358E7000F79BF /* MenuBarItemManager.swift */,
+				DAB005672437C70F00E737DD /* DiskUsageMenuBarItem.swift */,
 			);
 			path = MenuBarItems;
 			sourceTree = "<group>";
@@ -472,6 +477,7 @@
 				B4CFC47523FC393300A0ED15 /* FanViewController.swift */,
 				B4E909122427B5EA00260479 /* BatteryViewController.swift */,
 				B4E9E53B2416AD1F0090E9E8 /* NetworkViewController.swift */,
+				274CA929244ED22600BD8163 /* DiskViewController.swift */,
 			);
 			path = MainViews;
 			sourceTree = "<group>";
@@ -708,6 +714,7 @@
 				B452554D23E358E7000F79BF /* MenuBarItemManager.swift in Sources */,
 				B41F6D6123C8DFC60046D637 /* AboutModalViewController.swift in Sources */,
 				B43ABF2C23AA3729007F93BA /* MainWindowController.swift in Sources */,
+				274CA92A244ED22600BD8163 /* DiskViewController.swift in Sources */,
 				B47094EA23C79F9A009D85AD /* ThemedLabel.swift in Sources */,
 				B4D82FDC23C1031800D502FF /* DiskInfo.swift in Sources */,
 				B452554B23E358E7000F79BF /* MenuBarItem.swift in Sources */,
@@ -745,6 +752,7 @@
 				B415FF2A23F45F0800ED6567 /* MemoryUsageMenuBarItem.swift in Sources */,
 				B47D3C8D23ABEDF100DE911F /* CustomDashboardBox.swift in Sources */,
 				B4EFB55B23CA197500CF2FF2 /* CustomLogFormatter.swift in Sources */,
+				DAB005682437C70F00E737DD /* DiskUsageMenuBarItem.swift in Sources */,
 				B46789B623A69ECA00CE572D /* AppDelegate.swift in Sources */,
 				B43ABF2823AA1E99007F93BA /* SidebarButtonView.swift in Sources */,
 				B49F5D5723C5BCAF009E9BE6 /* UserSettings.swift in Sources */,
