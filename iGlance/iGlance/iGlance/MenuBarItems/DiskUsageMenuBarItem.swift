@@ -25,8 +25,6 @@ class DiskUsageMenuBarItem: MenuBarItem {
 
     /**
      * Updates the icon of the menu bar item. This function is called during every update interval.
-     *
-     * - Parameter currentInterface: The name of the currently used interface.
      */
     func updateMenuBarIcon() {
         // get the button of the menu bar item
