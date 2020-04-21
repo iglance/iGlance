@@ -60,4 +60,17 @@ class DiskInfo {
         // if no capacity was found return a default value
         return (0, "")
     }
+
+    static func getFreeDiskSize() -> (Int, Int) {
+        let fileURL = URL(fileURLWithPath: "/")
+        do {
+            let values = try fileURL.resourceValues(forKeys: [.volumeTotalCapacityKey, .volumeAvailableCapacityKey])
+            let totalSpace = values.volumeTotalCapacity
+            let freeSpace = values.volumeAvailableCapacity
+            return (totalSpace! - freeSpace!, freeSpace!)
+        } catch {
+            print("Error retrieving capacity: \(error.localizedDescription)")
+        }
+        return (0, 0)
+    }
 }

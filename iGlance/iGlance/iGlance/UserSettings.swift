@@ -71,6 +71,10 @@ struct BatterySettings: Codable {
     var highBatteryNotification = BatteryNotificationSettings(notifyUser: true, value: 90)
 }
 
+struct DiskSettings: Codable {
+    var showDiskUsage: Bool = true
+}
+
 struct IGlanceUserSettings: Codable {
     // global settings
     var autostartOnBoot: Bool = false
@@ -83,6 +87,7 @@ struct IGlanceUserSettings: Codable {
     var fan = FanSettings()
     var network = NetworkSettings()
     var battery = BatterySettings()
+    var disk = DiskSettings()
 }
 
 class UserSettings {
