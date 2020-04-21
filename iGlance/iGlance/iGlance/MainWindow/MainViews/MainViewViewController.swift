@@ -27,5 +27,10 @@ class MainViewViewController: NSViewController {
         visualEffectView.material = NSVisualEffectView.Material.menu
         // add the visual effect view
         self.view.addSubview(visualEffectView, positioned: NSWindow.OrderingMode.below, relativeTo: nil)
+        updateGUIComponents()
+    }
+
+    public func updateGUIComponents() {
+        // Implement in inherited class
     }
 }

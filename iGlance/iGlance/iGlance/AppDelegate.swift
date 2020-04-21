@@ -42,7 +42,6 @@ class AppDelegate: NSObject, NSApplicationDelegate {
 
     func applicationWillFinishLaunching(_ notification: Notification) {
         // call the update loop once on startup to render the menu bar items
-        self.setMenuBarItemsVisibility()
         self.updateLoop()
     }
 
@@ -210,7 +209,9 @@ class AppDelegate: NSObject, NSApplicationDelegate {
         savePanel.isExtensionHidden = false
         savePanel.canSelectHiddenExtension = false
         savePanel.runModal()
-        guard let saveURL = savePanel.url else { return }
+        guard let saveURL = savePanel.url else {
+            return
+        }
 
         let jsonEncoder = JSONEncoder()
         var jsonData: Data
@@ -243,23 +244,32 @@ class AppDelegate: NSObject, NSApplicationDelegate {
         openPanel.canSelectHiddenExtension = false
         openPanel.runModal()
 
-        guard let importURL = openPanel.url else { return }
+        guard let importURL = openPanel.url else {
+            return
+        }
 
         do {
             let fileContents = try String(contentsOf: importURL, encoding: String.Encoding.utf8)
             let jsonDecoder = JSONDecoder()
             let jsonData = fileContents.data(using: .utf8)!
             let newObject = try jsonDecoder.decode(UserSettings.self, from: jsonData)
-            AppDelegate.userSettings = newObject
-            AppDelegate.userSettings.saveUserSettingsWrapper()
+            AppDelegate.userSettings.settings = newObject.settings
 
-            let alert = NSAlert()
-            alert.messageText = "Restart iGlance"
-            alert.informativeText = "iGlance needs to be restarted now"
-            alert.alertStyle = .warning
-            alert.addButton(withTitle: "OK")
-            alert.runModal()
-            NSApplication.shared.terminate(self)
+            // Set new update interval
+            self.changeUpdateLoopTimeInterval(interval: AppDelegate.userSettings.settings.updateInterval)
+
+            // Clear image cache of bar graphs
+            AppDelegate.menuBarItemManager.cpuUsage.barGraph.clearImageCache()
+            AppDelegate.menuBarItemManager.memoryUsage.barGraph.clearImageCache()
+
+            // Set correct visibility of menubaritems
+            AppDelegate.menuBarItemManager.updateMenuBarItems()
+
+            // Restart main window
+            mainWindow.close()
+            mainWindow = NSStoryboard(name: "Main", bundle: nil).instantiateController(withIdentifier: "MainWindowController") as! MainWindowController
+            sleep(1)
+            showMainWindow()
         } catch {
             let errorAlert = NSAlert()
             errorAlert.messageText = "Error"
@@ -284,59 +294,24 @@ class AppDelegate: NSObject, NSApplicationDelegate {
         }
 
         let defaultSettings = UserSettings(isDefault: true)
-        AppDelegate.userSettings = defaultSettings
-        AppDelegate.userSettings.saveUserSettingsWrapper()
+        AppDelegate.userSettings.settings = defaultSettings.settings
+        //AppDelegate.userSettings = defaultSettings
+        //AppDelegate.userSettings.saveUserSettingsWrapper()
 
-        let alert = NSAlert()
-        alert.messageText = "Restart iGlance"
-        alert.informativeText = "iGlance needs to be restarted now"
-        alert.alertStyle = .warning
-        alert.addButton(withTitle: "OK")
-        alert.runModal()
-        NSApplication.shared.terminate(self)
-    }
+        // Set new update interval
+        self.changeUpdateLoopTimeInterval(interval: AppDelegate.userSettings.settings.updateInterval)
 
-    func setMenuBarItemsVisibility() {
-        var once = false
-        // BATTERY
-        if AppDelegate.userSettings.settings.battery.showBatteryMenuBarItem {
-            once = true
-            AppDelegate.menuBarItemManager.battery.show()
-        } else {
-            AppDelegate.menuBarItemManager.battery.hide()
-        }
-        // FAN
-        if AppDelegate.userSettings.settings.fan.showFanSpeed {
-            once = true
-            AppDelegate.menuBarItemManager.fan.show()
-        } else {
-            AppDelegate.menuBarItemManager.fan.hide()
-        }
-        // MEMORY USAGE
-        if AppDelegate.userSettings.settings.memory.showUsage {
-            once = true
-            AppDelegate.menuBarItemManager.memoryUsage.show()
-        } else {
-            AppDelegate.menuBarItemManager.memoryUsage.hide()
-        }
-        // CPU TEMP
-        if AppDelegate.userSettings.settings.cpu.showTemperature {
-            once = true
-            AppDelegate.menuBarItemManager.cpuTemp.show()
-        } else {
-            AppDelegate.menuBarItemManager.cpuTemp.hide()
-        }
-        // CPU USAGE
-        if AppDelegate.userSettings.settings.cpu.showUsage {
-            once = true
-            AppDelegate.menuBarItemManager.cpuUsage.show()
-        } else {
-            AppDelegate.menuBarItemManager.cpuUsage.hide()
-        }
+        // Clear image cache of bar graphs
+        AppDelegate.menuBarItemManager.cpuUsage.barGraph.clearImageCache()
+        AppDelegate.menuBarItemManager.memoryUsage.barGraph.clearImageCache()
 
-        // Show main window if no menu bar item is displayed
-        if !once {
-            self.showMainWindow()
-        }
+        // Set correct visibility of menubaritems
+        AppDelegate.menuBarItemManager.updateMenuBarItems()
+
+        // Restart main window
+        mainWindow.close()
+        mainWindow = NSStoryboard(name: "Main", bundle: nil).instantiateController(withIdentifier: "MainWindowController") as! MainWindowController
+        sleep(2)
+        showMainWindow()
     }
 }

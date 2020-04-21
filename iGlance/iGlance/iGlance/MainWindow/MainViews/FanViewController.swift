@@ -29,6 +29,7 @@ class FanViewController: MainViewViewController {
     @IBOutlet private var fanSpeedUnitCheckbox: NSButton! {
         didSet {
             fanSpeedUnitCheckbox.state = AppDelegate.userSettings.settings.fan.showFanSpeedUnit ? NSButton.StateValue.on : NSButton.StateValue.off
+            fanSpeedUnitCheckbox.isHidden = (fanSpeedCheckbox.state == .off)
         }
     }
 
@@ -65,5 +66,11 @@ class FanViewController: MainViewViewController {
         AppDelegate.menuBarItemManager.updateMenuBarItems()
 
         DDLogInfo("Did set fan speed unit checkbox value to (\(activated))")
+    }
+
+    override func updateGUIComponents() {
+        // Call didSet methods of all GUI components
+        self.fanSpeedCheckbox = { self.fanSpeedCheckbox }()
+        self.fanSpeedUnitCheckbox = { self.fanSpeedUnitCheckbox }()
     }
 }

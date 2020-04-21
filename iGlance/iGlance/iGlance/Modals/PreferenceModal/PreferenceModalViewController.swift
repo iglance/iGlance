@@ -209,4 +209,14 @@ class PreferenceModalViewController: ModalViewController {
             logoImage.image = NSImage(named: "iGlance_logo_black")
         }
     }
+
+    override func updateGUIComponents() {
+        // Call didSet methods of all GUI components
+        self.versionLabel = { self.versionLabel }()
+        self.autostartOnBootCheckbox = { self.autostartOnBootCheckbox }()
+        self.advancedLoggingCheckbox = { self.advancedLoggingCheckbox }()
+        self.logoImage = { self.logoImage }()
+        self.updateIntervalSelector = { self.updateIntervalSelector }()
+        self.tempUnitSelector = { self.tempUnitSelector }()
+    }
 }

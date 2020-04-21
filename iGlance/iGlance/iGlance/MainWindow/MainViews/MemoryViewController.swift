@@ -241,4 +241,20 @@ class MemoryViewController: MainViewViewController {
 
         DDLogInfo("Changed usage gradient color to (\(sender.color.toHex()))")
     }
+
+    override func updateGUIComponents() {
+        // Call didSet methods of all GUI components
+        self.memoryUsageCheckbox = { self.memoryUsageCheckbox }()
+        self.graphSelector = { self.graphSelector }()
+        self.graphWidthStackView = { self.graphWidthStackView }()
+        self.graphWidthLabel = { self.graphWidthLabel }()
+        self.graphWidthSlider = { self.graphWidthSlider }()
+        self.usageColorWell = { self.usageColorWell }()
+        self.usageGraphBorderCheckbox = { self.usageGraphBorderCheckbox }()
+        self.colorGradientCheckbox = { self.colorGradientCheckbox }()
+        self.secondaryColorWell = { self.secondaryColorWell }()
+        self.graphSelectorStackView = { self.graphSelectorStackView }()
+        self.graphColorStackView = { self.graphColorStackView }()
+        self.secondaryColorStackView = { self.secondaryColorStackView }()
+    }
 }

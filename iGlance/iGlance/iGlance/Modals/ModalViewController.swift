@@ -63,6 +63,8 @@ class ModalViewController: NSViewController {
         // first display the view controller since otherwise its window variable is nil
         presentAsModalWindow(self)
 
+        updateGUIComponents()
+
         // make the parent window unmovable
         parentWindow.isMovable = false
         DDLogInfo("Made the parent window unmovable")
@@ -135,5 +137,9 @@ class ModalViewController: NSViewController {
         modalWindow.isMovable = false
 
         DDLogInfo("Changed the appearance of the window")
+    }
+
+    func updateGUIComponents() {
+        // Insert in inherited class
     }
 }

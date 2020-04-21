@@ -55,7 +55,10 @@ struct FanSettings: Codable {
 }
 
 struct NetworkSettings: Codable {
-    var showBandwidth: Bool = true
+    var showBandwidth: Bool = true {
+        didSet {
+        }
+    }
 }
 
 struct BatteryNotificationSettings: Codable {

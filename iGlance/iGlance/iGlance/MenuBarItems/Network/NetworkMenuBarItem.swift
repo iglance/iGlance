@@ -56,6 +56,10 @@ class NetworkMenuBarItem: MenuBarItem {
     }
 
     func update() {
+        self.statusItem.isVisible = AppDelegate.userSettings.settings.network.showBandwidth
+        if !self.statusItem.isVisible {
+            return
+        }
         // get the currently used network interface
         let interfaceName = AppDelegate.systemInfo.network.getCurrentlyUsedInterface()
 

@@ -38,4 +38,9 @@ class NetworkViewController: MainViewViewController {
 
         DDLogInfo("Did set network checkbox value to (\(activated))")
     }
+
+    override func updateGUIComponents() {
+        // Call didSet methods of all GUI components
+        self.networkUsageCheckbox = { self.networkUsageCheckbox }()
+    }
 }

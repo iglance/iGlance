@@ -66,6 +66,7 @@ class BarGraph: Graph {
     func getImage(currentValue: Double, graphColor: NSColor, drawBorder: Bool, gradientColor: NSColor?) -> NSImage {
         // check whether we need to redraw the graph
         let key = Key(value: currentValue, isDarkTheme: ThemeManager.isDarkTheme())
+
         if imageCache[key] != nil {
             DDLogInfo("Using image from cache")
             return imageCache[key]!

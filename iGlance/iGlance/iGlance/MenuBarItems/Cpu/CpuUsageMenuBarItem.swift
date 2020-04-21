@@ -43,6 +43,10 @@ class CpuUsageMenuBarItem: MenuBarItem {
     // MARK: Protocol Implementations
 
     func update() {
+        self.statusItem.isVisible = AppDelegate.userSettings.settings.cpu.showUsage
+        if !self.statusItem.isVisible {
+            return
+        }
         let usage = AppDelegate.systemInfo.cpu.getCpuUsage()
         updateMenuBarIcon(usage: usage)
         updateMenuBarMenu(usage: usage)

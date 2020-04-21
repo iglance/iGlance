@@ -51,6 +51,10 @@ class FanMenuBarItem: MenuBarItem {
     // MARK: Protocol Implementations
 
     func update() {
+        self.statusItem.isVisible = AppDelegate.userSettings.settings.fan.showFanSpeed
+        if !self.statusItem.isVisible {
+            return
+        }
         // get the info for every fan
         var fanInfo: [(currentFanSpeed: Int, maxFanSpeed: Int, minFanSpeed: Int)] = []
         for id in 0..<fanCount {
