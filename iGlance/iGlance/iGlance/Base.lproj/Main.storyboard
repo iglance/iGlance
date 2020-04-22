@@ -1429,6 +1429,7 @@
                         </subviews>
                         <constraints>
                             <constraint firstItem="Sy9-Qu-Fl1" firstAttribute="leading" secondItem="VIp-kZ-3dC" secondAttribute="leading" constant="20" id="42d-Vc-Vd6"/>
+                            <constraint firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="Sy9-Qu-Fl1" secondAttribute="trailing" constant="20" symbolic="YES" id="Oyp-eg-hdN"/>
                             <constraint firstItem="Sy9-Qu-Fl1" firstAttribute="top" secondItem="VIp-kZ-3dC" secondAttribute="top" constant="20" id="wtl-XV-UiD"/>
                         </constraints>
                     </view>
