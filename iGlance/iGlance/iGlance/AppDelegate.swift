@@ -295,6 +295,8 @@ class AppDelegate: NSObject, NSApplicationDelegate {
 
         let defaultSettings = UserSettings(isDefault: true)
         AppDelegate.userSettings.settings = defaultSettings.settings
+        //AppDelegate.userSettings = defaultSettings
+        //AppDelegate.userSettings.saveUserSettingsWrapper()
 
         // Set new update interval
         self.changeUpdateLoopTimeInterval(interval: AppDelegate.userSettings.settings.updateInterval)

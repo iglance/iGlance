@@ -151,4 +151,8 @@ class UserSettings: Codable {
 
         return false
     }
+
+    public func saveUserSettingsWrapper() -> Bool {
+        saveUserSettings(settings: self.settings)
+    }
 }
