@@ -48,7 +48,8 @@ class SidebarViewController: NSViewController {
         SidebarButtonIDs(buttonViewID: "MemoryButtonView", mainViewStoryboardID: "MemoryStoryboardID", buttonIconID: "MemoryMenuIcon"),
         SidebarButtonIDs(buttonViewID: "NetworkButtonView", mainViewStoryboardID: "NetworkStoryboardID", buttonIconID: "NetworkMenuIcon"),
         SidebarButtonIDs(buttonViewID: "FanButtonView", mainViewStoryboardID: "FanStoryboardID", buttonIconID: "FanMenuIcon"),
-        SidebarButtonIDs(buttonViewID: "BatteryButtonView", mainViewStoryboardID: "BatteryStoryboardID", buttonIconID: "BatteryMenuIcon")
+        SidebarButtonIDs(buttonViewID: "BatteryButtonView", mainViewStoryboardID: "BatteryStoryboardID", buttonIconID: "BatteryMenuIcon"),
+        SidebarButtonIDs(buttonViewID: "DiskButtonView", mainViewStoryboardID: "DiskStoryboardID", buttonIconID: "DiskMenuIcon")
     ]
     private var preferenceModalViewController: PreferenceModalViewController?
 

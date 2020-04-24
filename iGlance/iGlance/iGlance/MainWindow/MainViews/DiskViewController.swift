@@ -13,23 +13,30 @@
 //  You should have received a copy of the GNU General Public License
 //  along with this program.  If not, see <https://www.gnu.org/licenses/>.
 
-import Foundation
+import Cocoa
 import CocoaLumberjack
 
-class DiskInfo {
-    /**
-     *  Returns the named tuple of used disk space and free disk space in bytes
-     */
-    static func getFreeDiskUsageInfo() -> (usedSpace: Int, freeSpace: Int) {
-        let fileURL = URL(fileURLWithPath: "/")
-        do {
-            let values = try fileURL.resourceValues(forKeys: [.volumeTotalCapacityKey, .volumeAvailableCapacityKey])
-            let totalSpace = values.volumeTotalCapacity
-            let freeSpace = values.volumeAvailableCapacity
-            return (totalSpace! - freeSpace!, freeSpace!)
-        } catch {
-            DDLogError("Error retrieving capacity: \(error.localizedDescription)")
+class DiskViewController: MainViewViewController {
+    // MARK: -
+    // MARK: Outlets
+    @IBOutlet private var diskkUsageCheckbox: NSButton!
+
+    // MARK: -
+    // MARK: Actions
+
+    @IBAction private func diskUsageCheckboxChanged(_ sender: NSButton) {
+        // get the boolean value of the checkbox
+        let activated = sender.state == NSButton.StateValue.on
+
+        // set the user setting
+        AppDelegate.userSettings.settings.disk.showDiskUsage = activated
+
+        if activated {
+            AppDelegate.menuBarItemManager.diskUsage.show()
+        } else {
+            AppDelegate.menuBarItemManager.diskUsage.hide()
         }
-        return (0, 0)
+
+        DDLogInfo("Did set disk checkbox value to (\(activated))")
     }
 }
