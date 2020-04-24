@@ -29,6 +29,8 @@ func executeCommand(launchPath: String, arguments: [String]) -> String? {
         return nil
     }
 
+    task.waitUntilExit()
+
     return output
 }
 
