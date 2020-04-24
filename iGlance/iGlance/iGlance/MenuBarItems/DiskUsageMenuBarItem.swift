@@ -46,10 +46,10 @@ class DiskUsageMenuBarItem: MenuBarItem {
 
         // get the sizes
         let (used, free) = DiskInfo.getFreeDiskUsageInfo()
-        let usedSpace = DiskInfo.convertToCorrectUnit(bytes: used)
-        let freeSpace = DiskInfo.convertToCorrectUnit(bytes: free)
+        let usedSpace = convertToCorrectUnit(bytes: used)
+        let freeSpace = convertToCorrectUnit(bytes: free)
 
-        let menuBarImage = createMenuBarImage(up: usedSpace, down: freeSpace)
+        let menuBarImage = createMenuBarImage(used: usedSpace, free: freeSpace)
 
         // set the menu bar item image
         button.image = menuBarImage
@@ -61,10 +61,12 @@ class DiskUsageMenuBarItem: MenuBarItem {
     /**
      * Returns the image that can be rendered on the menu bar.
      */
-    private func createMenuBarImage(up: (value: String, unit: String), down: (value: String, unit: String)) -> NSImage? {
+    private func createMenuBarImage(used: (value: Double, unit: SystemInfo.ByteUnit), free: (value: Double, unit: SystemInfo.ByteUnit)) -> NSImage? {
         // create the attributed strings for the upload and download
-        let freeSpaceString = self.createAttributedString(text: "\(down.value) \(down.unit)")
-        let usedSpaceString = self.createAttributedString(text: "\(up.value) \(up.unit)")
+        let usedValueString = used.unit > .Gigabyte ? String(format: "%.2f", free.value) : String(format: "%.1f", free.value)
+        let freeValueString = free.unit > .Gigabyte ?String(format: "%.2f", used.value) : String(format: "%.1f", used.value)
+        let freeSpaceString = self.createAttributedString(text: "\(usedValueString) \(free.unit.rawValue)")
+        let usedSpaceString = self.createAttributedString(text: "\(freeValueString) \(used.unit.rawValue)")
 
         let freeStringSize = freeSpaceString.size()
         let usedStringSize = usedSpaceString.size()
@@ -81,22 +83,22 @@ class DiskUsageMenuBarItem: MenuBarItem {
         // focus the image to render the disk space values
         menuBarImage.lockFocus()
 
-        freeString.draw(at: NSPoint(x: 0, y: menuBarImage.size.height - 10)) // F: is the first line
-        usedString.draw(at: NSPoint(x: 0, y: -2))
+        freeString.draw(at: NSPoint(x: 0, y: menuBarImage.size.height - 9)) // F: is the first line
+        usedString.draw(at: NSPoint(x: 0, y: -1))
 
         // draw the total space string
 
         freeSpaceString.draw(
             at: NSPoint(
                 x: iconWidth + textWidth - freeStringSize.width,
-                y: menuBarImage.size.height - 11 // this value was found by trail and error
+                y: menuBarImage.size.height - 9 // this value was found by trail and error
             )
         )
 
         // draw the free space string
 
         // y value was found by trail and error
-        usedSpaceString.draw(at: NSPoint(x: iconWidth + textWidth - usedStringSize.width, y: -2))
+        usedSpaceString.draw(at: NSPoint(x: iconWidth + textWidth - usedStringSize.width, y: -1))
 
         // unlock the focus of drawing
         menuBarImage.unlockFocus()

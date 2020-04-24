@@ -89,8 +89,9 @@ class DashboardViewController: MainViewViewController {
         ramSizeLabel.stringValue = "\(AppDelegate.systemInfo.memory.getTotalMemorySize()) GB"
 
         let (usedSpace, freeSpace) = DiskInfo.getFreeDiskUsageInfo()
-        let diskSize = DiskInfo.convertToCorrectUnit(bytes: (usedSpace + freeSpace))
-        diskSizeLabel.stringValue = "\(diskSize.value) \(diskSize.unit)"
+        let diskSize = convertToCorrectUnit(bytes: (usedSpace + freeSpace))
+        let sizeString = diskSize.unit <= .Gigabyte ? String(Int(diskSize.value)) : String(format: "%.2f", diskSize.value)
+        diskSizeLabel.stringValue = "\(sizeString) \(diskSize.unit.rawValue)"
 
         DDLogInfo("Updated system info")
     }

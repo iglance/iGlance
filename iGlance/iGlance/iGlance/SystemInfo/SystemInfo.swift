@@ -28,6 +28,38 @@ class SystemInfo {
         let seconds: Int
     }
 
+    enum ByteUnit: String, Comparable, CaseIterable {
+        static func < (lhs: SystemInfo.ByteUnit, rhs: SystemInfo.ByteUnit) -> Bool {
+            let caseArray = self.allCases
+
+            var lhsIndex: Int?
+            var rhsIndex: Int?
+            for index in 0..<caseArray.count {
+                if caseArray[index] == lhs {
+                    lhsIndex = index
+                }
+                if caseArray[index] == rhs {
+                    rhsIndex = index
+                }
+            }
+
+            if lhsIndex == nil || rhsIndex == nil {
+                DDLogError("Something went wrong while comparing the two ByteUnits \(lhs) and \(rhs)")
+                return false
+            }
+
+            return lhsIndex! < rhsIndex!
+        }
+
+        case Byte = "B"
+        case Kilobyte = "KB"
+        case Megabyte = "MB"
+        case Gigabyte = "GB"
+        case Terabyte = "TB"
+        case Petabyte = "PB"
+        case Exabyte = "EB"
+    }
+
     // MARK: -
     // MARK: Instance Variables
     let skSystem: SKSystem

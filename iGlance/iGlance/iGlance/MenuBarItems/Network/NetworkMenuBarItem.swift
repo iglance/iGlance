@@ -77,8 +77,8 @@ class NetworkMenuBarItem: MenuBarItem {
 
         // get the bandwidth
         let bandwidth = AppDelegate.systemInfo.network.getNetworkBandwidth(interface: currentInterface)
-        let networkBandwidthUp = convertToCorrectUnit(bytes: bandwidth.up, perSecond: true)
-        let networkBandwidthDown = convertToCorrectUnit(bytes: bandwidth.down, perSecond: true)
+        let networkBandwidthUp = convertToCorrectUnit(bytes: Int(bandwidth.up))
+        let networkBandwidthDown = convertToCorrectUnit(bytes: Int(bandwidth.down))
 
         let menuBarImage = createMenuBarImage(up: networkBandwidthUp, down: networkBandwidthDown)
 
@@ -126,14 +126,17 @@ class NetworkMenuBarItem: MenuBarItem {
         }
 
         // convert the total and up/down-loaded bytes to the correct unit
-        let convertedUp = convertToCorrectUnit(bytes: totalBytesUploaded, perSecond: false)
-        let convertedDown = convertToCorrectUnit(bytes: totalBytesDownloaded, perSecond: false)
-        let convertedTotal = convertToCorrectUnit(bytes: totalBytesUploaded + totalBytesDownloaded, perSecond: false)
+        let convertedUp = convertToCorrectUnit(bytes: Int(totalBytesUploaded))
+        let convertedDown = convertToCorrectUnit(bytes: Int(totalBytesDownloaded))
+        let convertedTotal = convertToCorrectUnit(bytes: Int(totalBytesUploaded + totalBytesDownloaded))
 
         // update the menu view
-        networkStatsMenuView.setUploadLabel("\(convertedUp.value) \(convertedUp.unit)")
-        networkStatsMenuView.setDownloadLabel("\(convertedDown.value) \(convertedDown.unit)")
-        networkStatsMenuView.setTotalLabel("\(convertedTotal.value) \(convertedTotal.unit)")
+        let upValueString = convertedUp.unit >= .Gigabyte ? String(format: "%.1f", convertedUp.value) : String(format: "%.2f", convertedUp.value)
+        let downValueString = convertedDown.unit >= .Gigabyte ? String(format: "%.1f", convertedDown.value) : String(format: "%.2f", convertedDown.value)
+        let totalValueString = convertedTotal.unit >= .Gigabyte ? String(format: "%.1f", convertedTotal.value) : String(format: "%.2f", convertedTotal.value)
+        networkStatsMenuView.setUploadLabel("\(upValueString) \(convertedUp.unit.rawValue)")
+        networkStatsMenuView.setDownloadLabel("\(downValueString) \(convertedDown.unit.rawValue)")
+        networkStatsMenuView.setTotalLabel("\(totalValueString) \(convertedTotal.unit.rawValue)")
     }
 
     // MARK: -
@@ -161,56 +164,15 @@ class NetworkMenuBarItem: MenuBarItem {
     }
 
     /**
-     *  Takes the bandwidth in bytes and returns the correct value according to the unit as a string and the correct unit (KB/s, MB/s, GB/s) as a string.
-     *  If the given value of bytes is smaller than 1000 the function will return a value of zero and as unit "KB/s".
-     *  The biggest unit that can be used to display the bandwidth with a value greater than 1 is used:
-     *
-     *  - Parameter bytes: The given number of bytes
-     *  - Parameter perSecond: Whether the returned unit should be per second
-     *
-     *      Examples:
-     *          512 Bytes -> (value: "0", unit: "KB/s")
-     *          5_000 Bytes -> (value: "5", unit: "KB/s")
-     *          5_000_000 Bytes -> (value: "5", unit: "MB/s")
-     *          5_000_000_000 Bytes -> (value: "5", unit: "GB/s")
-     *
-     */
-    private func convertToCorrectUnit(bytes: UInt64, perSecond: Bool) -> (value: String, unit: String) {
-        let perSecondString = perSecond ? "/s" : ""
-
-        // set the default values for the variables
-        var value = "0"
-        var unit = "KB" + perSecondString
-
-        // get the value and the unit
-        if bytes > 1_000_000_000 {
-            // Gigabyte per second
-            let gigabyteValue = Double(bytes) / 1_000_000_000
-            // if the value is greater than 100 don't display the decimal places
-            value = gigabyteValue >= 100 ? String(Int(gigabyteValue)) : String(format: "%.2f", gigabyteValue)
-            unit = "GB" + perSecondString
-        } else if bytes > 1_000_000 {
-            // Megabytes per second
-            let megabyteValue = Double(bytes) / 1_000_000
-            // if the value is greater than 100 don't display the decimal places
-            value = megabyteValue >= 100 ? String(Int(megabyteValue)) : String(format: "%.2f", megabyteValue)
-            unit = "MB" + perSecondString
-        } else if bytes > 1000 {
-            // Kilobyte per second
-            value = String(Int(bytes / 1000))
-            unit = "KB" + perSecondString
-        }
-
-        return (value: value, unit: unit)
-    }
-
-    /**
      * Returns the image that can be rendered on the menu bar.
      */
-    private func createMenuBarImage(up: (value: String, unit: String), down: (value: String, unit: String)) -> NSImage? {
+    private func createMenuBarImage(up: (value: Double, unit: SystemInfo.ByteUnit), down: (value: Double, unit: SystemInfo.ByteUnit)) -> NSImage? {
+        let valueStringUp = up.unit < .Megabyte ? String(Int(up.value)) : String(format: "%.2f", up.value)
+        let valueStringDown = down.unit < .Megabyte ? String(Int(down.value)) : String(format: "%.2f", down.value)
+
         // create the attributed strings for the upload and download
-        let uploadString = self.createAttributedBandwidthString(value: up.value, unit: up.unit)
-        let downloadString = self.createAttributedBandwidthString(value: down.value, unit: down.unit)
+        let uploadString = self.createAttributedBandwidthString(value: valueStringUp, unit: up.unit.rawValue + "/s")
+        let downloadString = self.createAttributedBandwidthString(value: valueStringDown, unit: down.unit.rawValue + "/s")
 
         // get the bandwidth icon
         guard let bandwidthIcon = NSImage(named: "NetworkBandwidthIcon") else {
