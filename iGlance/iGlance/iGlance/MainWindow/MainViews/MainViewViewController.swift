@@ -27,10 +27,13 @@ class MainViewViewController: NSViewController {
         visualEffectView.material = NSVisualEffectView.Material.menu
         // add the visual effect view
         self.view.addSubview(visualEffectView, positioned: NSWindow.OrderingMode.below, relativeTo: nil)
+        // trigger didSet methods of all outlets to update GUI
         updateGUIComponents()
     }
 
-    public func updateGUIComponents() {
+
+    func updateGUIComponents() {
         // Implement in inherited class
+        fatalError("Function 'updateGUIComponents' not implemented")
     }
 }

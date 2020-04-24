@@ -7,7 +7,10 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		29AE00790B5C3F8386AEA221 /* Pods_iGlanceLauncher.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 75159D3A3C41F7B84171B6BA /* Pods_iGlanceLauncher.framework */; };
+		0282AFC72452B61F0026FD19 /* Dialog.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0282AFC62452B61F0026FD19 /* Dialog.swift */; };
+		0282AFC92452C72F0026FD19 /* Autostart.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0282AFC82452C72F0026FD19 /* Autostart.swift */; };
+		6CA197EE9972523C071FC0F4 /* Pods_iGlance.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6D3175EF0B347DBD4AE56293 /* Pods_iGlance.framework */; };
+		83B967D347631AB2B86FFA80 /* Pods_iGlanceLauncher.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5F79F1BE1B758199F1841F9E /* Pods_iGlanceLauncher.framework */; };
 		B4060E2B23C4F82A00CD945E /* iGlanceLauncher.app in CopyFiles */ = {isa = PBXBuildFile; fileRef = B4CF2F7523C4F5CD00544511 /* iGlanceLauncher.app */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
 		B4060E3223C4FAEF00CD945E /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = B4060E3123C4FAEF00CD945E /* Constants.swift */; };
 		B4060E3323C4FAEF00CD945E /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = B4060E3123C4FAEF00CD945E /* Constants.swift */; };
@@ -79,7 +82,6 @@
 		B4F4AF3B23FAFBD60033B5CE /* FanInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = B4F4AF3A23FAFBD60033B5CE /* FanInfo.swift */; };
 		B4FE0DB123EF1E0100AE94E6 /* LineGraph.swift in Sources */ = {isa = PBXBuildFile; fileRef = B4FE0DB023EF1E0100AE94E6 /* LineGraph.swift */; };
 		B4FE0DB323EF210500AE94E6 /* Graph.swift in Sources */ = {isa = PBXBuildFile; fileRef = B4FE0DB223EF210500AE94E6 /* Graph.swift */; };
-		FE556499492832BE97606DAD /* Pods_iGlance.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 84955815F03407826031ABBF /* Pods_iGlance.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -119,10 +121,14 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
-		6311816E3B346E8E2E144369 /* Pods-iGlanceLauncher.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-iGlanceLauncher.debug.xcconfig"; path = "Target Support Files/Pods-iGlanceLauncher/Pods-iGlanceLauncher.debug.xcconfig"; sourceTree = "<group>"; };
-		75159D3A3C41F7B84171B6BA /* Pods_iGlanceLauncher.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_iGlanceLauncher.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		84955815F03407826031ABBF /* Pods_iGlance.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_iGlance.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		8B31142614DD37CB1111D407 /* Pods-iGlanceLauncher.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-iGlanceLauncher.release.xcconfig"; path = "Target Support Files/Pods-iGlanceLauncher/Pods-iGlanceLauncher.release.xcconfig"; sourceTree = "<group>"; };
+		0282AFC62452B61F0026FD19 /* Dialog.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Dialog.swift; sourceTree = "<group>"; };
+		0282AFC82452C72F0026FD19 /* Autostart.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Autostart.swift; sourceTree = "<group>"; };
+		31830008E8411E89318CAE95 /* Pods-iGlanceLauncher.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-iGlanceLauncher.release.xcconfig"; path = "Target Support Files/Pods-iGlanceLauncher/Pods-iGlanceLauncher.release.xcconfig"; sourceTree = "<group>"; };
+		38CA14F4AF2DC4D3F10B5439 /* Pods-iGlance.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-iGlance.release.xcconfig"; path = "Target Support Files/Pods-iGlance/Pods-iGlance.release.xcconfig"; sourceTree = "<group>"; };
+		3DE315620689BE2F69344567 /* Pods-iGlanceLauncher.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-iGlanceLauncher.debug.xcconfig"; path = "Target Support Files/Pods-iGlanceLauncher/Pods-iGlanceLauncher.debug.xcconfig"; sourceTree = "<group>"; };
+		48FFD35BD7BF5BFC156A284B /* Pods-iGlance.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-iGlance.debug.xcconfig"; path = "Target Support Files/Pods-iGlance/Pods-iGlance.debug.xcconfig"; sourceTree = "<group>"; };
+		5F79F1BE1B758199F1841F9E /* Pods_iGlanceLauncher.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_iGlanceLauncher.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		6D3175EF0B347DBD4AE56293 /* Pods_iGlance.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_iGlance.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		B4060E2E23C4F84D00CD945E /* ServiceManagement.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = ServiceManagement.framework; path = System/Library/Frameworks/ServiceManagement.framework; sourceTree = SDKROOT; };
 		B4060E3123C4FAEF00CD945E /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
 		B4060E3423C5014B00CD945E /* Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Extensions.swift; sourceTree = "<group>"; };
@@ -197,8 +203,6 @@
 		B4F4AF3A23FAFBD60033B5CE /* FanInfo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FanInfo.swift; sourceTree = "<group>"; };
 		B4FE0DB023EF1E0100AE94E6 /* LineGraph.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LineGraph.swift; sourceTree = "<group>"; };
 		B4FE0DB223EF210500AE94E6 /* Graph.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Graph.swift; sourceTree = "<group>"; };
-		C613649DA4B6320FA4A7C8A2 /* Pods-iGlance.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-iGlance.debug.xcconfig"; path = "Target Support Files/Pods-iGlance/Pods-iGlance.debug.xcconfig"; sourceTree = "<group>"; };
-		F7F7841E10C5D08CE0848D69 /* Pods-iGlance.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-iGlance.release.xcconfig"; path = "Target Support Files/Pods-iGlance/Pods-iGlance.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -209,7 +213,7 @@
 				B49CDFFB23E1E1A00070D664 /* SystemKit.framework in Frameworks */,
 				B49CDFF523E1E18A0070D664 /* AppMover.framework in Frameworks */,
 				B49CDFF823E1E1950070D664 /* SMCKit.framework in Frameworks */,
-				FE556499492832BE97606DAD /* Pods_iGlance.framework in Frameworks */,
+				6CA197EE9972523C071FC0F4 /* Pods_iGlance.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -217,20 +221,20 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				29AE00790B5C3F8386AEA221 /* Pods_iGlanceLauncher.framework in Frameworks */,
+				83B967D347631AB2B86FFA80 /* Pods_iGlanceLauncher.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		92E5F6F59BFCDEDB568DF770 /* Pods */ = {
+		9D3086A356E951C4DE7FB730 /* Pods */ = {
 			isa = PBXGroup;
 			children = (
-				C613649DA4B6320FA4A7C8A2 /* Pods-iGlance.debug.xcconfig */,
-				F7F7841E10C5D08CE0848D69 /* Pods-iGlance.release.xcconfig */,
-				6311816E3B346E8E2E144369 /* Pods-iGlanceLauncher.debug.xcconfig */,
-				8B31142614DD37CB1111D407 /* Pods-iGlanceLauncher.release.xcconfig */,
+				48FFD35BD7BF5BFC156A284B /* Pods-iGlance.debug.xcconfig */,
+				38CA14F4AF2DC4D3F10B5439 /* Pods-iGlance.release.xcconfig */,
+				3DE315620689BE2F69344567 /* Pods-iGlanceLauncher.debug.xcconfig */,
+				31830008E8411E89318CAE95 /* Pods-iGlanceLauncher.release.xcconfig */,
 			);
 			name = Pods;
 			path = ../Pods;
@@ -245,8 +249,8 @@
 				B4F4AA1023E072F200F57F70 /* SystemKit.framework */,
 				B4ACC24B23E065EB0023538B /* SMCKit.framework */,
 				B4060E2E23C4F84D00CD945E /* ServiceManagement.framework */,
-				84955815F03407826031ABBF /* Pods_iGlance.framework */,
-				75159D3A3C41F7B84171B6BA /* Pods_iGlanceLauncher.framework */,
+				6D3175EF0B347DBD4AE56293 /* Pods_iGlance.framework */,
+				5F79F1BE1B758199F1841F9E /* Pods_iGlanceLauncher.framework */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -368,7 +372,7 @@
 				B4CF2F7623C4F5CD00544511 /* iGlanceLauncher */,
 				B46789B323A69ECA00CE572D /* Products */,
 				AAAB1F73870D1085E1944A64 /* Frameworks */,
-				92E5F6F59BFCDEDB568DF770 /* Pods */,
+				9D3086A356E951C4DE7FB730 /* Pods */,
 			);
 			sourceTree = "<group>";
 		};
@@ -475,6 +479,8 @@
 			children = (
 				B49CD58E23EB17D9009711E6 /* CodableColor.swift */,
 				B4514DED23F1898800C18E44 /* Queue.swift */,
+				0282AFC62452B61F0026FD19 /* Dialog.swift */,
+				0282AFC82452C72F0026FD19 /* Autostart.swift */,
 			);
 			path = Utils;
 			sourceTree = "<group>";
@@ -486,14 +492,14 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = B46789D823A69ECB00CE572D /* Build configuration list for PBXNativeTarget "iGlance" */;
 			buildPhases = (
-				1A6924CF7DD8B78909201EB6 /* [CP] Check Pods Manifest.lock */,
+				D6A2C5F933E9C1B2BD8AE4E5 /* [CP] Check Pods Manifest.lock */,
 				B4E000F523A94D9100BF5AE0 /* ShellScript */,
 				B46789AE23A69ECA00CE572D /* Sources */,
 				B46789AF23A69ECA00CE572D /* Frameworks */,
 				B46789B023A69ECA00CE572D /* Resources */,
 				B4DE727523C25F8C0001CF46 /* Embed Frameworks */,
 				B4060E2A23C4F81300CD945E /* CopyFiles */,
-				C35DBB47538E620FB186A627 /* [CP] Embed Pods Frameworks */,
+				408D6E0E8B525C2E905CA6A5 /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -509,11 +515,11 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = B4CF2F8223C4F5CE00544511 /* Build configuration list for PBXNativeTarget "iGlanceLauncher" */;
 			buildPhases = (
-				A25B24506159691DB9EC39A2 /* [CP] Check Pods Manifest.lock */,
+				797FDB5045008364F0A00567 /* [CP] Check Pods Manifest.lock */,
 				B4CF2F7123C4F5CD00544511 /* Sources */,
 				B4CF2F7223C4F5CD00544511 /* Frameworks */,
 				B4CF2F7323C4F5CD00544511 /* Resources */,
-				A31B30E57C0E5EA53E5AC13F /* [CP] Embed Pods Frameworks */,
+				77ACAC1E8CCD820EC79FB69F /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -587,29 +593,41 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
-		1A6924CF7DD8B78909201EB6 /* [CP] Check Pods Manifest.lock */ = {
+		408D6E0E8B525C2E905CA6A5 /* [CP] Embed Pods Frameworks */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
 			);
 			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-iGlance/Pods-iGlance-frameworks-${CONFIGURATION}-input-files.xcfilelist",
 			);
-			inputPaths = (
-				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
-				"${PODS_ROOT}/Manifest.lock",
-			);
-			name = "[CP] Check Pods Manifest.lock";
+			name = "[CP] Embed Pods Frameworks";
 			outputFileListPaths = (
-			);
-			outputPaths = (
-				"$(DERIVED_FILE_DIR)/Pods-iGlance-checkManifestLockResult.txt",
+				"${PODS_ROOT}/Target Support Files/Pods-iGlance/Pods-iGlance-frameworks-${CONFIGURATION}-output-files.xcfilelist",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-iGlance/Pods-iGlance-frameworks.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
-		A25B24506159691DB9EC39A2 /* [CP] Check Pods Manifest.lock */ = {
+		77ACAC1E8CCD820EC79FB69F /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-iGlanceLauncher/Pods-iGlanceLauncher-frameworks-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-iGlanceLauncher/Pods-iGlanceLauncher-frameworks-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-iGlanceLauncher/Pods-iGlanceLauncher-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		797FDB5045008364F0A00567 /* [CP] Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -631,23 +649,6 @@
 			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
 			showEnvVarsInLog = 0;
 		};
-		A31B30E57C0E5EA53E5AC13F /* [CP] Embed Pods Frameworks */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputFileListPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-iGlanceLauncher/Pods-iGlanceLauncher-frameworks-${CONFIGURATION}-input-files.xcfilelist",
-			);
-			name = "[CP] Embed Pods Frameworks";
-			outputFileListPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-iGlanceLauncher/Pods-iGlanceLauncher-frameworks-${CONFIGURATION}-output-files.xcfilelist",
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-iGlanceLauncher/Pods-iGlanceLauncher-frameworks.sh\"\n";
-			showEnvVarsInLog = 0;
-		};
 		B4E000F523A94D9100BF5AE0 /* ShellScript */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
@@ -665,21 +666,26 @@
 			shellPath = /bin/sh;
 			shellScript = "# Type a script or drag a script file from your workspace to insert its path.\nif test -f \"${PODS_ROOT}/SwiftLint/swiftlint\"; then\n    \"${PODS_ROOT}/SwiftLint/swiftlint\" autocorrect \n    \"${PODS_ROOT}/SwiftLint/swiftlint\"\nelse\n    echo \"warning: SwiftLint not installed, please install the dependencies of this project using CocoaPods\"\nfi\n";
 		};
-		C35DBB47538E620FB186A627 /* [CP] Embed Pods Frameworks */ = {
+		D6A2C5F933E9C1B2BD8AE4E5 /* [CP] Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
 			);
 			inputFileListPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-iGlance/Pods-iGlance-frameworks-${CONFIGURATION}-input-files.xcfilelist",
 			);
-			name = "[CP] Embed Pods Frameworks";
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
 			outputFileListPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-iGlance/Pods-iGlance-frameworks-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-iGlance-checkManifestLockResult.txt",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-iGlance/Pods-iGlance-frameworks.sh\"\n";
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
 			showEnvVarsInLog = 0;
 		};
 /* End PBXShellScriptBuildPhase section */
@@ -699,6 +705,7 @@
 				B46F25D623B22E4500E0A3F4 /* GpuInfo.swift in Sources */,
 				B46789B823A69ECA00CE572D /* MainWindowViewController.swift in Sources */,
 				B4C37E6B23A8D715008C7FC0 /* SegueAnimator.swift in Sources */,
+				0282AFC72452B61F0026FD19 /* Dialog.swift in Sources */,
 				B452554D23E358E7000F79BF /* MenuBarItemManager.swift in Sources */,
 				B41F6D6123C8DFC60046D637 /* AboutModalViewController.swift in Sources */,
 				B43ABF2C23AA3729007F93BA /* MainWindowController.swift in Sources */,
@@ -735,6 +742,7 @@
 				B42BCE6323AC01CC00A13601 /* SystemInfo.swift in Sources */,
 				B4F4AF3B23FAFBD60033B5CE /* FanInfo.swift in Sources */,
 				B415FF2A23F45F0800ED6567 /* MemoryUsageMenuBarItem.swift in Sources */,
+				0282AFC92452C72F0026FD19 /* Autostart.swift in Sources */,
 				B47D3C8D23ABEDF100DE911F /* CustomDashboardBox.swift in Sources */,
 				B4EFB55B23CA197500CF2FF2 /* CustomLogFormatter.swift in Sources */,
 				B46789B623A69ECA00CE572D /* AppDelegate.swift in Sources */,
@@ -900,7 +908,7 @@
 		};
 		B46789D923A69ECB00CE572D /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = C613649DA4B6320FA4A7C8A2 /* Pods-iGlance.debug.xcconfig */;
+			baseConfigurationReference = 48FFD35BD7BF5BFC156A284B /* Pods-iGlance.debug.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = "$(inherited)";
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
@@ -909,7 +917,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				COMBINE_HIDPI_IMAGES = YES;
 				CURRENT_PROJECT_VERSION = 2.0.4;
-				DEVELOPMENT_TEAM = J6GXEPK4NG;
+				DEVELOPMENT_TEAM = H6X2A7DR2V;
 				ENABLE_HARDENED_RUNTIME = YES;
 				INFOPLIST_FILE = iGlance/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -927,7 +935,7 @@
 		};
 		B46789DA23A69ECB00CE572D /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = F7F7841E10C5D08CE0848D69 /* Pods-iGlance.release.xcconfig */;
+			baseConfigurationReference = 38CA14F4AF2DC4D3F10B5439 /* Pods-iGlance.release.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = "$(inherited)";
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
@@ -936,7 +944,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				COMBINE_HIDPI_IMAGES = YES;
 				CURRENT_PROJECT_VERSION = 2.0.4;
-				DEVELOPMENT_TEAM = J6GXEPK4NG;
+				DEVELOPMENT_TEAM = H6X2A7DR2V;
 				ENABLE_HARDENED_RUNTIME = YES;
 				INFOPLIST_FILE = iGlance/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -954,7 +962,7 @@
 		};
 		B4CF2F8323C4F5CE00544511 /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 6311816E3B346E8E2E144369 /* Pods-iGlanceLauncher.debug.xcconfig */;
+			baseConfigurationReference = 3DE315620689BE2F69344567 /* Pods-iGlanceLauncher.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_ENTITLEMENTS = iGlanceLauncher/iGlanceLauncher.entitlements;
@@ -962,7 +970,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				COMBINE_HIDPI_IMAGES = YES;
 				CURRENT_PROJECT_VERSION = 2.0;
-				DEVELOPMENT_TEAM = J6GXEPK4NG;
+				DEVELOPMENT_TEAM = H6X2A7DR2V;
 				ENABLE_HARDENED_RUNTIME = YES;
 				INFOPLIST_FILE = iGlanceLauncher/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -980,7 +988,7 @@
 		};
 		B4CF2F8423C4F5CE00544511 /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 8B31142614DD37CB1111D407 /* Pods-iGlanceLauncher.release.xcconfig */;
+			baseConfigurationReference = 31830008E8411E89318CAE95 /* Pods-iGlanceLauncher.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_ENTITLEMENTS = iGlanceLauncher/iGlanceLauncher.entitlements;
@@ -988,7 +996,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				COMBINE_HIDPI_IMAGES = YES;
 				CURRENT_PROJECT_VERSION = 2.0;
-				DEVELOPMENT_TEAM = J6GXEPK4NG;
+				DEVELOPMENT_TEAM = H6X2A7DR2V;
 				ENABLE_HARDENED_RUNTIME = YES;
 				INFOPLIST_FILE = iGlanceLauncher/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (

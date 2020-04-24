@@ -27,12 +27,14 @@ class PreferenceModalViewController: ModalViewController {
         didSet {
             // load the initial value from the user settings
             autostartOnBootCheckbox.state = AppDelegate.userSettings.settings.autostartOnBoot ? .on : .off
+            self.setAutostartOnBoot(buttonState: autostartOnBootCheckbox.state)
         }
     }
 
     @IBOutlet private var advancedLoggingCheckbox: ThemedButton! {
         didSet {
             advancedLoggingCheckbox.state = AppDelegate.userSettings.settings.advancedLogging ? .on : .off
+            self.setAdvancedLogging(buttonState: advancedLoggingCheckbox.state)
         }
     }
 
@@ -52,6 +54,7 @@ class PreferenceModalViewController: ModalViewController {
                 // default to the medium option which is 2 seconds
                 updateIntervalSelector.selectItem(at: 1)
             }
+            self.setUpdateInterval(buttonValue: updateIntervalSelector)
         }
     }
 
@@ -67,6 +70,7 @@ class PreferenceModalViewController: ModalViewController {
             default:
                 tempUnitSelector.selectItem(at: 0)
             }
+            self.setTempUnit(buttonValue: tempUnitSelector)
         }
     }
 
@@ -92,6 +96,16 @@ class PreferenceModalViewController: ModalViewController {
         DDLogInfo("View did appear")
     }
 
+    override func updateGUIComponents() {
+        // Call didSet methods of all GUI components
+        self.versionLabel = { self.versionLabel }()
+        self.autostartOnBootCheckbox = { self.autostartOnBootCheckbox }()
+        self.advancedLoggingCheckbox = { self.advancedLoggingCheckbox }()
+        self.logoImage = { self.logoImage }()
+        self.updateIntervalSelector = { self.updateIntervalSelector }()
+        self.tempUnitSelector = { self.tempUnitSelector }()
+    }
+
     // MARK: -
     // MARK: Actions
 
@@ -99,81 +113,19 @@ class PreferenceModalViewController: ModalViewController {
      * This function is called when the 'Autostart on boot' checkbox is clicked.
      */
     @IBAction private func autoStartCheckboxChanged(_ sender: NSButton) {
-        // set the auto start on boot user setting
-        DDLogInfo("'Autostart on Boot'-checkbox changed")
-        AppDelegate.userSettings.settings.autostartOnBoot = (sender.state == NSButton.StateValue.on)
-
-        // enable the login item if the checkbox is activated
-        if sender.state == NSButton.StateValue.on {
-            DDLogInfo("Checkbox is checked")
-            if !SMLoginItemSetEnabled(LAUNCHER_BUNDLE_IDENTIFIER as CFString, true) {
-                DDLogError("Could not enable the iGlanceLauncher as login item")
-            }
-
-            DDLogInfo("Successfully enabled iGlance Launcher as a login item")
-
-            return
-        }
-
-        // disable the login item if the checkbox is not activated
-        if !SMLoginItemSetEnabled(LAUNCHER_BUNDLE_IDENTIFIER as CFString, false) {
-            DDLogError("Could not deactive the iGlanceLauncher as login item")
-        }
-        DDLogInfo("Successfully disabled the iGlance Launcher as a login item")
+        self.setAutostartOnBoot(buttonState: sender.state)
     }
 
     @IBAction private func advancedLoggingCheckboxChanged(_ sender: NSButton) {
-        let activated = sender.state == .on
-        // set the dynamic logging level depending on the state of the button
-        if activated {
-            dynamicLogLevel = .all
-            DDLogInfo("Set the log level to 'all'")
-            DDLogInfo("Activated 'Advanced Loggin'")
-        } else {
-            dynamicLogLevel = .error
-            DDLogInfo("Set the log level to 'error'")
-            DDLogInfo("Deactivated 'Advanced Loggin'")
-        }
-
-        // set the user setting
-        AppDelegate.userSettings.settings.advancedLogging = activated
+        self.setAdvancedLogging(buttonState: sender.state)
     }
 
     @IBAction private func updateIntervalSelectorChanged(_ sender: NSPopUpButton) {
-        // set the user settings
-        switch updateIntervalSelector.indexOfSelectedItem {
-        case 0:
-            // the first item is the fast option
-            AppDelegate.userSettings.settings.updateInterval = 1.0
-        case 2:
-            // the third item is the slow option
-            AppDelegate.userSettings.settings.updateInterval = 3.0
-        default:
-            // default to the medium option
-            AppDelegate.userSettings.settings.updateInterval = 2.0
-        }
-
-        // update the update loop timer
-        if let appDelegate = AppDelegate.getInstance() {
-            appDelegate.changeUpdateLoopTimeInterval(interval: AppDelegate.userSettings.settings.updateInterval)
-        } else {
-            DDLogError("Could not retrieve the App Delegate Instance")
-        }
+        self.setUpdateInterval(buttonValue: sender)
     }
 
     @IBAction private func tempUnitSelectorChanged(_ sender: NSPopUpButton) {
-        // set the user settings
-        switch tempUnitSelector.indexOfSelectedItem {
-        case 1:
-            // the second item is fahrenheit
-            AppDelegate.userSettings.settings.tempUnit = .fahrenheit
-        case 2:
-            // the third item is kelvin
-            AppDelegate.userSettings.settings.tempUnit = .kelvin
-        default:
-            // the default item (the first one) is celsius
-            AppDelegate.userSettings.settings.tempUnit = .celsius
-        }
+        self.setTempUnit(buttonValue: sender)
     }
 
     // MARK: -
@@ -210,13 +162,81 @@ class PreferenceModalViewController: ModalViewController {
         }
     }
 
-    override func updateGUIComponents() {
-        // Call didSet methods of all GUI components
-        self.versionLabel = { self.versionLabel }()
-        self.autostartOnBootCheckbox = { self.autostartOnBootCheckbox }()
-        self.advancedLoggingCheckbox = { self.advancedLoggingCheckbox }()
-        self.logoImage = { self.logoImage }()
-        self.updateIntervalSelector = { self.updateIntervalSelector }()
-        self.tempUnitSelector = { self.tempUnitSelector }()
+    private func setAutostartOnBoot(buttonState: NSButton.StateValue) {
+        // set the auto start on boot user setting
+        DDLogInfo("'Autostart on Boot'-checkbox changed")
+        AppDelegate.userSettings.settings.autostartOnBoot = (buttonState == NSButton.StateValue.on)
+        Autostart.updateAutostartOnBoot()
+    }
+
+    private func setAdvancedLogging(buttonState: NSButton.StateValue) {
+        let activated = (buttonState == .on)
+        // set the dynamic logging level depending on the state of the button
+        if activated {
+            dynamicLogLevel = .all
+            DDLogInfo("Set the log level to 'all'")
+            DDLogInfo("Activated 'Advanced Loggin'")
+        } else {
+            dynamicLogLevel = .error
+            DDLogInfo("Set the log level to 'error'")
+            DDLogInfo("Deactivated 'Advanced Loggin'")
+        }
+
+        // set the user setting
+        AppDelegate.userSettings.settings.advancedLogging = activated
+    }
+
+    private func setUpdateInterval(buttonValue: NSPopUpButton) {
+        // set the user settings
+        switch buttonValue.indexOfSelectedItem {
+        case 0:
+            // select the fast option which is 1 second
+            if AppDelegate.userSettings.settings.updateInterval == 1.0 {
+                // Since this function is also called if the value wasn't changed, avoid unnecessary updateLoopTimeInterval() calls if the value was the same
+                return
+            } else {
+                // Otherwise set the setting accordingly
+                AppDelegate.userSettings.settings.updateInterval = 1.0
+            }
+        case 2:
+            // the third item is the slow option
+            if AppDelegate.userSettings.settings.updateInterval == 3.0 {
+                // Since this function is also called if the value wasn't changed, avoid unnecessary updateLoopTimeInterval() calls if the value was the same
+                return
+            } else {
+                // Otherwise set the setting accordingly
+                AppDelegate.userSettings.settings.updateInterval = 3.0
+            }
+        default:
+            // default to the medium option
+            if AppDelegate.userSettings.settings.updateInterval == 2.0 {
+                // Since this function is also called if the value wasn't changed, avoid unnecessary updateLoopTimeInterval() calls if the value was the same
+                return
+            } else {
+                // Otherwise set the setting accordingly
+                AppDelegate.userSettings.settings.updateInterval = 2.0
+            }
+        }
+        // If the timer was changed, update it
+        if let appDelegate = AppDelegate.getInstance() {
+            appDelegate.changeUpdateLoopTimeInterval(interval: AppDelegate.userSettings.settings.updateInterval)
+        } else {
+            DDLogError("Could not retrieve the App Delegate Instance")
+        }
+    }
+
+    private func setTempUnit(buttonValue: NSPopUpButton) {
+        // set the user settings
+        switch buttonValue.indexOfSelectedItem {
+        case 1:
+            // the second item is fahrenheit
+            AppDelegate.userSettings.settings.tempUnit = .fahrenheit
+        case 2:
+            // the third item is kelvin
+            AppDelegate.userSettings.settings.tempUnit = .kelvin
+        default:
+            // the default item (the first one) is celsius
+            AppDelegate.userSettings.settings.tempUnit = .celsius
+        }
     }
 }

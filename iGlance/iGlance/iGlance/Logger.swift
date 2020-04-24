@@ -41,11 +41,7 @@ class Logger {
 
         // check if there are any log files
         if logfilePaths.isEmpty {
-            let alert = NSAlert()
-            alert.messageText = "Error"
-            alert.informativeText = "No logfiles were found"
-            alert.addButton(withTitle: "Ok")
-            alert.runModal()
+            Dialog.showErrorModal(messageText: "Error", informativeText: "No logfiles were found")
 
             DDLogError("No log files were found")
             return
@@ -64,11 +60,7 @@ class Logger {
                 }
 
                 if !success {
-                    let alert = NSAlert()
-                    alert.messageText = "Error"
-                    alert.informativeText = "Something went wrong while saving the log file"
-                    alert.addButton(withTitle: "Ok")
-                    alert.runModal()
+                    Dialog.showErrorModal(messageText: "Error", informativeText: "Something went wrong while saving the log file")
                     DDLogError("Somethings went wrong while saving the log file")
                     return
                 }
@@ -97,6 +89,15 @@ class Logger {
         } catch {
             DDLogError("Failed to copy the log file to the destination")
             return false
+        }
+    }
+
+    func updateLogSettings() {
+        if AppDelegate.userSettings.settings.advancedLogging {
+            // log all messages
+            dynamicLogLevel = .all
+        } else {
+            dynamicLogLevel = .error
         }
     }
 }

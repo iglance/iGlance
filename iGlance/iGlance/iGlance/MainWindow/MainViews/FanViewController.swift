@@ -34,6 +34,14 @@ class FanViewController: MainViewViewController {
     }
 
     // MARK: -
+    // MARK: Function Overrides
+    override func updateGUIComponents() {
+        // Call didSet methods of all GUI components
+        self.fanSpeedCheckbox = { self.fanSpeedCheckbox }()
+        self.fanSpeedUnitCheckbox = { self.fanSpeedUnitCheckbox }()
+    }
+
+    // MARK: -
     // MARK: Actions
 
     @IBAction private func fanSpeedCheckboxChanged(_ sender: NSButton) {
@@ -66,11 +74,5 @@ class FanViewController: MainViewViewController {
         AppDelegate.menuBarItemManager.updateMenuBarItems()
 
         DDLogInfo("Did set fan speed unit checkbox value to (\(activated))")
-    }
-
-    override func updateGUIComponents() {
-        // Call didSet methods of all GUI components
-        self.fanSpeedCheckbox = { self.fanSpeedCheckbox }()
-        self.fanSpeedUnitCheckbox = { self.fanSpeedUnitCheckbox }()
     }
 }

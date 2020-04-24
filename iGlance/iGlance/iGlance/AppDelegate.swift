@@ -22,7 +22,7 @@ import AppMover
 class AppDelegate: NSObject, NSApplicationDelegate {
     // MARK: -
     // MARK: Static Constants
-    static var userSettings = UserSettings(isDefault: false)
+    static var userSettings = UserSettings()
 
     static let menuBarItemManager = MenuBarItemManager()
 
@@ -179,6 +179,22 @@ class AppDelegate: NSObject, NSApplicationDelegate {
         currentUpdateLoopTimer = timer
     }
 
+    private func updateGUIofCurrentMainView() {
+        guard let mainWindowVC = mainWindow.contentViewController as? MainWindowViewController else {
+            DDLogError("Could not call the 'contentViewController' of the main window to 'MainWindowViewController'")
+            return
+        }
+        guard let contentManagerVC = mainWindowVC.contentManagerViewController else {
+            DDLogError("'contentManagerViewController' of main window is nil")
+            return
+        }
+        guard let mainViewVC = contentManagerVC.currentViewController as? MainViewViewController else {
+            DDLogError("Could not cast the 'currentViewController' of the 'ContentManagerViewController' to 'MainViewViewController'")
+            return
+        }
+        mainViewVC.updateGUIComponents()
+    }
+
     // MARK: -
     // MARK: Static Functions
 
@@ -197,119 +213,20 @@ class AppDelegate: NSObject, NSApplicationDelegate {
     }
 
     @IBAction private func exportSettings(sender: AnyObject) {
-        DDLogInfo("Exporting user settings")
-        let savePanel = NSSavePanel()
-
-        savePanel.showsTagField = false
-        savePanel.title = "Export iGlance settings"
-        savePanel.prompt = "Save"
-        savePanel.nameFieldLabel = "Export path:"
-        savePanel.nameFieldStringValue = "settings"
-        savePanel.allowedFileTypes = ["json"]
-        savePanel.isExtensionHidden = false
-        savePanel.canSelectHiddenExtension = false
-        savePanel.runModal()
-        guard let saveURL = savePanel.url else {
-            return
-        }
-
-        let jsonEncoder = JSONEncoder()
-        var jsonData: Data
-
-        do {
-            jsonData = try jsonEncoder.encode(AppDelegate.userSettings)
-        } catch {
-            return
-        }
-
-        let json = String(data: jsonData, encoding: String.Encoding.utf8)
-
-        do {
-            try json!.write(to: saveURL, atomically: true, encoding: .utf8)
-        } catch {
-            print(error)
-            return
-        }
+        AppDelegate.userSettings.exportUserSettings()
     }
 
     @IBAction private func importSettings(sender: AnyObject) {
-        let openPanel = NSOpenPanel()
-        openPanel.showsTagField = true
-        openPanel.title = "Import iGlance settings"
-        openPanel.prompt = "Open"
-        openPanel.nameFieldLabel = "Import path:"
-        openPanel.nameFieldStringValue = "settings.json"
-        openPanel.allowedFileTypes = ["json"]
-        openPanel.isExtensionHidden = false
-        openPanel.canSelectHiddenExtension = false
-        openPanel.runModal()
-
-        guard let importURL = openPanel.url else {
-            return
-        }
-
-        do {
-            let fileContents = try String(contentsOf: importURL, encoding: String.Encoding.utf8)
-            let jsonDecoder = JSONDecoder()
-            let jsonData = fileContents.data(using: .utf8)!
-            let newObject = try jsonDecoder.decode(UserSettings.self, from: jsonData)
-            AppDelegate.userSettings.settings = newObject.settings
-
-            // Set new update interval
-            self.changeUpdateLoopTimeInterval(interval: AppDelegate.userSettings.settings.updateInterval)
-
-            // Clear image cache of bar graphs
-            AppDelegate.menuBarItemManager.cpuUsage.barGraph.clearImageCache()
-            AppDelegate.menuBarItemManager.memoryUsage.barGraph.clearImageCache()
-
-            // Set correct visibility of menubaritems
-            AppDelegate.menuBarItemManager.updateMenuBarItems()
-
-            // Restart main window
-            mainWindow.close()
-            mainWindow = NSStoryboard(name: "Main", bundle: nil).instantiateController(withIdentifier: "MainWindowController") as! MainWindowController
-            sleep(1)
-            showMainWindow()
-        } catch {
-            let errorAlert = NSAlert()
-            errorAlert.messageText = "Error"
-            errorAlert.informativeText = "An error occured while importing settings"
-            errorAlert.alertStyle = .critical
-            errorAlert.addButton(withTitle: "OK")
-            errorAlert.runModal()
-        }
+        AppDelegate.userSettings.importUserSettings()
+        self.updateGUIofCurrentMainView()
+        logger.updateLogSettings()
+        Autostart.updateAutostartOnBoot()
     }
 
     @IBAction private func resetSettings(sender: AnyObject) {
-        let confirm = NSAlert()
-        confirm.messageText = "Reset Settings"
-        confirm.informativeText = "Are you sure that you want to reset all settings?"
-        confirm.alertStyle = .warning
-        confirm.addButton(withTitle: "Yes")
-        confirm.addButton(withTitle: "Cancel")
-        let res = confirm.runModal()
-
-        if res == .alertSecondButtonReturn {
-            return
-        }
-
-        let defaultSettings = UserSettings(isDefault: true)
-        AppDelegate.userSettings.settings = defaultSettings.settings
-
-        // Set new update interval
-        self.changeUpdateLoopTimeInterval(interval: AppDelegate.userSettings.settings.updateInterval)
-
-        // Clear image cache of bar graphs
-        AppDelegate.menuBarItemManager.cpuUsage.barGraph.clearImageCache()
-        AppDelegate.menuBarItemManager.memoryUsage.barGraph.clearImageCache()
-
-        // Set correct visibility of menubaritems
-        AppDelegate.menuBarItemManager.updateMenuBarItems()
-
-        // Restart main window
-        mainWindow.close()
-        mainWindow = NSStoryboard(name: "Main", bundle: nil).instantiateController(withIdentifier: "MainWindowController") as! MainWindowController
-        sleep(2)
-        showMainWindow()
+        AppDelegate.userSettings.resetUserSettings()
+        self.updateGUIofCurrentMainView()
+        logger.updateLogSettings()
+        Autostart.updateAutostartOnBoot()
     }
 }

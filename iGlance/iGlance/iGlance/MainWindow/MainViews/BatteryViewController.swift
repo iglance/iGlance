@@ -96,6 +96,21 @@ class BatteryViewController: MainViewViewController {
     }
 
     // MARK: -
+    // MARK: Function Overrides
+    override func updateGUIComponents() {
+        // Call didSet methods of all GUI components
+        self.batteryCheckbox = { self.batteryCheckbox }()
+        self.batterySelector = { self.batterySelector }()
+        self.displayedInfoStackView = { self.displayedInfoStackView }()
+        self.lowBatteryNotificationCheckbox = { self.lowBatteryNotificationCheckbox }()
+        self.highBatteryNotificationCheckbox = { self.highBatteryNotificationCheckbox }()
+        self.lowBatteryNotificationTextField = { self.lowBatteryNotificationTextField }()
+        self.lowBatteryNotificationStackView = { self.lowBatteryNotificationStackView }()
+        self.highBatteryNotificationTextField = { self.highBatteryNotificationTextField }()
+        self.highBatteryNotificationStackView = { self.highBatteryNotificationStackView }()
+    }
+
+    // MARK: -
     // MARK: Actions
 
     @IBAction private func batteryCheckboxChanged(_ sender: NSButton) {
@@ -176,18 +191,5 @@ class BatteryViewController: MainViewViewController {
 
         // set the first responder to nil in order to loose focus
         highBatteryNotificationTextField.window?.makeFirstResponder(highBatteryNotificationTextField.window?.contentView)
-    }
-
-    override func updateGUIComponents() {
-        // Call didSet methods of all GUI components
-        self.batteryCheckbox = { self.batteryCheckbox }()
-        self.batterySelector = { self.batterySelector }()
-        self.displayedInfoStackView = { self.displayedInfoStackView }()
-        self.lowBatteryNotificationCheckbox = { self.lowBatteryNotificationCheckbox }()
-        self.highBatteryNotificationCheckbox = { self.highBatteryNotificationCheckbox }()
-        self.lowBatteryNotificationTextField = { self.lowBatteryNotificationTextField }()
-        self.lowBatteryNotificationStackView = { self.lowBatteryNotificationStackView }()
-        self.highBatteryNotificationTextField = { self.highBatteryNotificationTextField }()
-        self.highBatteryNotificationStackView = { self.highBatteryNotificationStackView }()
     }
 }
