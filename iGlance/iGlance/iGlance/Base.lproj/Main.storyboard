@@ -382,7 +382,7 @@
                                                         </textField>
                                                         <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="AH1-Fb-t7F" customClass="ThemedLabel" customModule="iGlance" customModuleProvider="target">
                                                             <rect key="frame" x="36" y="0.0" width="37" height="16"/>
-                                                            <textFieldCell key="cell" lineBreakMode="clipping" title="16GB" id="M8u-FO-YWa">
+                                                            <textFieldCell key="cell" lineBreakMode="clipping" alignment="justified" title="16GB" id="M8u-FO-YWa">
                                                                 <font key="font" metaFont="system"/>
                                                                 <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
                                                                 <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
@@ -411,7 +411,7 @@
                                                         </textField>
                                                         <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="Y4S-gv-5tE" customClass="ThemedLabel" customModule="iGlance" customModuleProvider="target">
                                                             <rect key="frame" x="33" y="0.0" width="44" height="16"/>
-                                                            <textFieldCell key="cell" lineBreakMode="clipping" title="512GB" id="kB4-WI-alT">
+                                                            <textFieldCell key="cell" lineBreakMode="clipping" alignment="justified" title="512GB" id="kB4-WI-alT">
                                                                 <font key="font" metaFont="system"/>
                                                                 <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
                                                                 <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>

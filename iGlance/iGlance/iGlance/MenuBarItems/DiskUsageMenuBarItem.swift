@@ -18,6 +18,17 @@ import CocoaLumberjack
 
 class DiskUsageMenuBarItem: MenuBarItem {
     // MARK: -
+    // MARK: Private Variables
+    private var freeString = NSAttributedString()
+    private var usedString = NSAttributedString()
+    private var iconWidth = CGFloat(12)
+
+    override init() {
+        super.init()
+        freeString = createAttributedString(text: "F:")
+        usedString = createAttributedString(text: "U:")
+        iconWidth = max(freeString.size().width, usedString.size().width)
+    }
 
     func update() {
         updateMenuBarIcon()
@@ -34,9 +45,9 @@ class DiskUsageMenuBarItem: MenuBarItem {
         }
 
         // get the sizes
-        let (used, free) = DiskInfo.getFreeDiskSize()
-        let usedSpace = convertToCorrectUnit(bytes: used)
-        let freeSpace = convertToCorrectUnit(bytes: free)
+        let (used, free) = DiskInfo.getFreeDiskUsageInfo()
+        let usedSpace = DiskInfo.convertToCorrectUnit(bytes: used)
+        let freeSpace = DiskInfo.convertToCorrectUnit(bytes: free)
 
         let menuBarImage = createMenuBarImage(up: usedSpace, down: freeSpace)
 
@@ -48,45 +59,21 @@ class DiskUsageMenuBarItem: MenuBarItem {
     // MARK: Private Functions
 
     /**
-    *  Takes the amount of space in bytes and returns the correct value according to the unit as a string and the correct unit (KB, MB, GB, TB) as a string.
-    *  If the given value of bytes is smaller than 1000 the function will return a value as is and unit of "B".
-    *
-    *  - Parameter bytes: The given number of bytes
-    *
-    *      Examples:
-    *          512 Bytes -> (value: "512", unit: "B")
-    *          5_000 Bytes -> (value: "5", unit: "KB")
-    *          5_000_000 Bytes -> (value: "5", unit: "MB")
-    *          5_000_000_000 Bytes -> (value: "5", unit: "GB")
-    *
-    */
-    func convertToCorrectUnit(bytes: Int) -> (value: String, unit: String) {
-        if bytes < 1000 {
-            return (value: "\(bytes)", unit: "B")
-        }
-        let exp = Int(log2(Double(bytes)) / log2(1000.0))
-        let unit = ["KB", "MB", "GB", "TB", "PB", "EB"][exp - 1]
-        let number = Double(bytes) / pow(1000, Double(exp))
-
-        return (value: String(format: "%.1f", number), unit: unit)
-    }
-
-    /**
      * Returns the image that can be rendered on the menu bar.
      */
     private func createMenuBarImage(up: (value: String, unit: String), down: (value: String, unit: String)) -> NSImage? {
         // create the attributed strings for the upload and download
-        let freeString = self.crateAttributedString(text: "F:")
-        let usedString = self.crateAttributedString(text: "U:")
-        let freeSpaceString = self.createAttributedBandwidthString(value: down.value, unit: down.unit)
-        let usedSpaceString = self.createAttributedBandwidthString(value: up.value, unit: up.unit)
+        let freeSpaceString = self.createAttributedString(text: "\(down.value) \(down.unit)")
+        let usedSpaceString = self.createAttributedString(text: "\(up.value) \(up.unit)")
 
-        // create the menu bar image for the bandwidth.
-        let textWidth = CGFloat(55) // this value was found by trail and error
-        let iconWidth = CGFloat(12)
+        let freeStringSize = freeSpaceString.size()
+        let usedStringSize = usedSpaceString.size()
+
+        // create the menu bar image for the disk usage.
+        let textWidth = max(freeStringSize.width, usedStringSize.width)
         let menuBarImage = NSImage(
             size: NSSize(
-                width: textWidth + iconWidth,
+                width: iconWidth + textWidth,
                 height: CGFloat(self.menuBarHeight)
             )
         )
@@ -94,11 +81,11 @@ class DiskUsageMenuBarItem: MenuBarItem {
         // focus the image to render the disk space values
         menuBarImage.lockFocus()
 
-        freeString.draw(at: NSPoint(x: 0, y: menuBarImage.size.height - 9)) // F: is the first line
-        usedString.draw(at: NSPoint(x: 0, y: -1))
+        freeString.draw(at: NSPoint(x: 0, y: menuBarImage.size.height - 10)) // F: is the first line
+        usedString.draw(at: NSPoint(x: 0, y: -2))
 
         // draw the total space string
-        let freeStringSize = freeSpaceString.size()
+
         freeSpaceString.draw(
             at: NSPoint(
                 x: iconWidth + textWidth - freeStringSize.width,
@@ -107,7 +94,7 @@ class DiskUsageMenuBarItem: MenuBarItem {
         )
 
         // draw the free space string
-        let usedStringSize = usedSpaceString.size()
+
         // y value was found by trail and error
         usedSpaceString.draw(at: NSPoint(x: iconWidth + textWidth - usedStringSize.width, y: -2))
 
@@ -120,27 +107,7 @@ class DiskUsageMenuBarItem: MenuBarItem {
     /**
      * Creates an attributed string that can be drawn on the menu bar image.
      */
-    private func createAttributedBandwidthString(value: String, unit: String) -> NSAttributedString {
-        // create the attributed string
-        let attrString = NSMutableAttributedString(string: value + " " + unit)
-
-        // define the font for the number value and the unit
-        let font = NSFont.systemFont(ofSize: 9)
-
-        // add the attributes
-        attrString.addAttribute(.font, value: font, range: NSRange(location: 0, length: attrString.length - 1 - unit.count))
-        attrString.addAttribute(.kern, value: 1.2, range: NSRange(location: 0, length: attrString.length - 1 - unit.count))
-        attrString.addAttribute(.font, value: font, range: NSRange(location: attrString.length - unit.count, length: unit.count))
-        let fontColor = ThemeManager.isDarkTheme() ? NSColor.white : NSColor.black
-        attrString.addAttribute(.foregroundColor, value: fontColor, range: NSRange(location: 0, length: attrString.length))
-
-        return attrString
-    }
-
-    /**
-     * Creates an attributed string that can be drawn on the menu bar image.
-     */
-    private func crateAttributedString(text: String) -> NSAttributedString {
+    private func createAttributedString(text: String) -> NSAttributedString {
         let attrString = NSMutableAttributedString(
             string: text,
             attributes: [

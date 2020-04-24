@@ -88,8 +88,9 @@ class DashboardViewController: MainViewViewController {
         // set the ram size
         ramSizeLabel.stringValue = "\(AppDelegate.systemInfo.memory.getTotalMemorySize()) GB"
 
-        let diskSize = AppDelegate.systemInfo.disk.getInternalDiskSize()
-        diskSizeLabel.stringValue = "\(diskSize.0) \(diskSize.1)"
+        let (usedSpace, freeSpace) = DiskInfo.getFreeDiskUsageInfo()
+        let diskSize = DiskInfo.convertToCorrectUnit(bytes: (usedSpace + freeSpace))
+        diskSizeLabel.stringValue = "\(diskSize.value) \(diskSize.unit)"
 
         DDLogInfo("Updated system info")
     }
