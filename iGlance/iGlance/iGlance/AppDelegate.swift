@@ -22,7 +22,7 @@ import AppMover
 class AppDelegate: NSObject, NSApplicationDelegate {
     // MARK: -
     // MARK: Static Constants
-    static var userSettings = UserSettings()
+    static let userSettings = UserSettings()
 
     static let menuBarItemManager = MenuBarItemManager()
 
