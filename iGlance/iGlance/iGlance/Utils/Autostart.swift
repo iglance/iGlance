@@ -11,6 +11,9 @@ import ServiceManagement
 import CocoaLumberjack
 
 class Autostart: NSObject {
+    /**
+     * Activates or deactivates autostart on boot accordingly to the current user settings.
+     */
     static func updateAutostartOnBoot() {
         // enable the login item if the setting is true
         if AppDelegate.userSettings.settings.autostartOnBoot {

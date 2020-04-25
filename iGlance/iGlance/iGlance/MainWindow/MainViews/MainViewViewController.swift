@@ -31,7 +31,9 @@ class MainViewViewController: NSViewController {
         updateGUIComponents()
     }
 
-
+    /**
+     * This function will trigger the didSet of all outlets in the main view.
+     */
     func updateGUIComponents() {
         // Implement in inherited class
         fatalError("Function 'updateGUIComponents' not implemented")

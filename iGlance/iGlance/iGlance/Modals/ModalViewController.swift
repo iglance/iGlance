@@ -56,6 +56,9 @@ class ModalViewController: NSViewController {
         self.onDisappearCallback = callback
     }
 
+    /**
+     * Calls all didSet methods of all the outlets of the modal.
+     */
     func updateGUIComponents() {
         // Insert in inherited class
         fatalError("Function 'updateGUIComponents' not implemented")

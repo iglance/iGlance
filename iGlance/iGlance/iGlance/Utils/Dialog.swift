@@ -9,6 +9,9 @@
 import Cocoa
 
 public class Dialog: NSObject {
+    /**
+     * Displays an error modal with the given message and informative text.
+     */
     public static func showErrorModal(messageText: String, informativeText: String) {
         let errorAlert = NSAlert()
         errorAlert.messageText = messageText
@@ -18,6 +21,9 @@ public class Dialog: NSObject {
         errorAlert.runModal()
     }
 
+    /**
+     * Displays a confimation modal in which the user has the option to accept or cancel.
+     */
     public static func showConfirmModal(messageText: String, informativeText: String) -> NSApplication.ModalResponse {
         let confirm = NSAlert()
         confirm.messageText = messageText

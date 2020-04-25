@@ -152,7 +152,9 @@ class UserSettings {
         self.settings = IGlanceUserSettings()
     }
 
-
+    /**
+     * Opens a save dialog for exporting the current settings as a json file to the selected destination.
+     */
     func exportUserSettings() {
         DDLogInfo("Exporting user settings")
         let savePanel = NSSavePanel()
@@ -189,6 +191,9 @@ class UserSettings {
         }
     }
 
+    /**
+     * Opens a dialog in which the user can select a JSON-file which contains the settings that are going to be imported.
+     */
     func importUserSettings() {
         let openPanel = NSOpenPanel()
         openPanel.showsTagField = true
@@ -232,6 +237,9 @@ class UserSettings {
         }
     }
 
+    /**
+     * Opens a dialog in which the user has to confirm that the settings should be reset. If the user confirms the dialog all settings are reset to default.
+     */
     func resetUserSettings() {
         if Dialog.showConfirmModal(messageText: "Reset Settings", informativeText: "Are you sure that you want to reset all settings?") == .alertSecondButtonReturn {
             // Cancel button clicked

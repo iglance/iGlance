@@ -113,18 +113,22 @@ class PreferenceModalViewController: ModalViewController {
      * This function is called when the 'Autostart on boot' checkbox is clicked.
      */
     @IBAction private func autoStartCheckboxChanged(_ sender: NSButton) {
+        DDLogInfo("'Autostart on Boot'-checkbox changed")
         self.setAutostartOnBoot(buttonState: sender.state)
     }
 
     @IBAction private func advancedLoggingCheckboxChanged(_ sender: NSButton) {
+        DDLogInfo("Log level checkbox changed")
         self.setAdvancedLogging(buttonState: sender.state)
     }
 
     @IBAction private func updateIntervalSelectorChanged(_ sender: NSPopUpButton) {
+        DDLogInfo("Update interval selector changed")
         self.setUpdateInterval(buttonValue: sender)
     }
 
     @IBAction private func tempUnitSelectorChanged(_ sender: NSPopUpButton) {
+        DDLogInfo("Temp unit selector changed")
         self.setTempUnit(buttonValue: sender)
     }
 
@@ -164,7 +168,6 @@ class PreferenceModalViewController: ModalViewController {
 
     private func setAutostartOnBoot(buttonState: NSButton.StateValue) {
         // set the auto start on boot user setting
-        DDLogInfo("'Autostart on Boot'-checkbox changed")
         AppDelegate.userSettings.settings.autostartOnBoot = (buttonState == NSButton.StateValue.on)
         Autostart.updateAutostartOnBoot()
     }
@@ -188,35 +191,25 @@ class PreferenceModalViewController: ModalViewController {
 
     private func setUpdateInterval(buttonValue: NSPopUpButton) {
         // set the user settings
+        let oldUpdateInterval = AppDelegate.userSettings.settings.updateInterval
         switch buttonValue.indexOfSelectedItem {
         case 0:
             // select the fast option which is 1 second
-            if AppDelegate.userSettings.settings.updateInterval == 1.0 {
-                // Since this function is also called if the value wasn't changed, avoid unnecessary updateLoopTimeInterval() calls if the value was the same
-                return
-            } else {
-                // Otherwise set the setting accordingly
-                AppDelegate.userSettings.settings.updateInterval = 1.0
-            }
+            AppDelegate.userSettings.settings.updateInterval = 1.0
         case 2:
             // the third item is the slow option
-            if AppDelegate.userSettings.settings.updateInterval == 3.0 {
-                // Since this function is also called if the value wasn't changed, avoid unnecessary updateLoopTimeInterval() calls if the value was the same
-                return
-            } else {
-                // Otherwise set the setting accordingly
-                AppDelegate.userSettings.settings.updateInterval = 3.0
-            }
+            AppDelegate.userSettings.settings.updateInterval = 3.0
         default:
             // default to the medium option
-            if AppDelegate.userSettings.settings.updateInterval == 2.0 {
-                // Since this function is also called if the value wasn't changed, avoid unnecessary updateLoopTimeInterval() calls if the value was the same
-                return
-            } else {
-                // Otherwise set the setting accordingly
-                AppDelegate.userSettings.settings.updateInterval = 2.0
-            }
+            AppDelegate.userSettings.settings.updateInterval = 2.0
         }
+
+        // Since this function is also called if the value wasn't changed,
+        // avoid unnecessary updateLoopTimeInterval() calls if the value was the same
+        if oldUpdateInterval == AppDelegate.userSettings.settings.updateInterval {
+            return
+        }
+
         // If the timer was changed, update it
         if let appDelegate = AppDelegate.getInstance() {
             appDelegate.changeUpdateLoopTimeInterval(interval: AppDelegate.userSettings.settings.updateInterval)

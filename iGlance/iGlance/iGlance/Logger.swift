@@ -35,6 +35,9 @@ class Logger {
         }
     }
 
+    /**
+     * Opens a save dialog and allows the user to save the most recent log file at the chosen destination.
+     */
     func saveMostRecentLogFile() {
         // get the log file paths
         let logfilePaths = self.fileLogger.logFileManager.sortedLogFilePaths
@@ -92,6 +95,9 @@ class Logger {
         }
     }
 
+    /**
+     * Updates the log level accordingly to the user settings.
+     */
     func updateLogSettings() {
         if AppDelegate.userSettings.settings.advancedLogging {
             // log all messages
