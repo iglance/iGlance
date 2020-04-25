@@ -179,6 +179,9 @@ class AppDelegate: NSObject, NSApplicationDelegate {
         currentUpdateLoopTimer = timer
     }
 
+    /**
+     * Updates the UI elements of the currently displayed main view accordingly to the current user settings.
+     */
     private func updateGUIofCurrentMainView() {
         guard let mainWindowVC = mainWindow.contentViewController as? MainWindowViewController else {
             DDLogError("Could not call the 'contentViewController' of the main window to 'MainWindowViewController'")
