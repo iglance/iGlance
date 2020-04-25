@@ -42,6 +42,10 @@ class AboutModalViewController: ModalViewController {
         DDLogInfo("View will appear")
     }
 
+    override func updateGUIComponents() {
+        // do nothing, since we don't need to update GUI componentes here
+    }
+
     // MARK: -
     // MARK: Private Functions
 

@@ -26,6 +26,13 @@ class NetworkViewController: MainViewViewController {
     }
 
     // MARK: -
+    // MARK: Function Overrides
+    override func updateGUIComponents() {
+        // Call didSet methods of all GUI components
+        self.networkUsageCheckbox = { self.networkUsageCheckbox }()
+    }
+
+    // MARK: -
     // MARK: Actions
     @IBAction private func networkUsageCheckboxChanged(_ sender: NSButton) {
         // get the boolean value of the checkbox

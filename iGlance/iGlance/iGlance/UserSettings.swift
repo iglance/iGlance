@@ -149,4 +149,123 @@ class UserSettings {
 
         return false
     }
+
+    /*
+     * Reset settings to default
+     */
+    private func setDefaultSettings() {
+        self.settings = IGlanceUserSettings()
+    }
+
+    /**
+     * Opens a save dialog for exporting the current settings as a json file to the selected destination.
+     */
+    func exportUserSettings() {
+        DDLogInfo("Exporting user settings")
+        let savePanel = NSSavePanel()
+
+        savePanel.showsTagField = false
+        savePanel.title = "Export iGlance settings"
+        savePanel.prompt = "Save"
+        savePanel.nameFieldLabel = "Export path:"
+        savePanel.nameFieldStringValue = "settings"
+        savePanel.allowedFileTypes = ["json"]
+        savePanel.isExtensionHidden = false
+        savePanel.canSelectHiddenExtension = false
+        savePanel.runModal()
+        guard let saveURL = savePanel.url else {
+            return
+        }
+
+        let jsonEncoder = JSONEncoder()
+        var jsonData: Data
+
+        do {
+            jsonData = try jsonEncoder.encode(AppDelegate.userSettings.settings)
+        } catch {
+            return
+        }
+
+        let json = String(data: jsonData, encoding: String.Encoding.utf8)
+
+        do {
+            try json!.write(to: saveURL, atomically: true, encoding: .utf8)
+        } catch {
+            print(error)
+            return
+        }
+    }
+
+    /**
+     * Opens a dialog in which the user can select a JSON-file which contains the settings that are going to be imported.
+     */
+    func importUserSettings() {
+        let openPanel = NSOpenPanel()
+        openPanel.showsTagField = true
+        openPanel.title = "Import iGlance settings"
+        openPanel.prompt = "Open"
+        openPanel.nameFieldLabel = "Import path:"
+        openPanel.nameFieldStringValue = "settings.json"
+        openPanel.allowedFileTypes = ["json"]
+        openPanel.isExtensionHidden = false
+        openPanel.canSelectHiddenExtension = false
+        openPanel.runModal()
+
+        guard let importURL = openPanel.url else {
+            DDLogError("Error importing user settings file through dialog")
+            return
+        }
+
+        do {
+            let fileContents = try String(contentsOf: importURL, encoding: String.Encoding.utf8)
+            let jsonDecoder = JSONDecoder()
+            let jsonData = fileContents.data(using: .utf8)!
+            let newObject = try jsonDecoder.decode(IGlanceUserSettings.self, from: jsonData)
+            self.settings = newObject
+
+            // update the update loop timer
+            if let appDelegate = AppDelegate.getInstance() {
+                appDelegate.changeUpdateLoopTimeInterval(interval: AppDelegate.userSettings.settings.updateInterval)
+            } else {
+                DDLogError("Could not retrieve the App Delegate Instance")
+            }
+
+            // Clear image cache of bar graphs
+            AppDelegate.menuBarItemManager.cpuUsage.barGraph.clearImageCache()
+            AppDelegate.menuBarItemManager.memoryUsage.barGraph.clearImageCache()
+
+            // Set correct visibility of menubaritems
+            AppDelegate.menuBarItemManager.updateMenuBarItems()
+        } catch {
+            DDLogError("An error occured while importing settings")
+            Dialog.showErrorModal(messageText: "Error", informativeText: "An error occured while importing settings")
+        }
+    }
+
+    /**
+     * Opens a dialog in which the user has to confirm that the settings should be reset. If the user confirms the dialog all settings are reset to default.
+     */
+    func resetUserSettings() {
+        if Dialog.showConfirmModal(messageText: "Reset Settings", informativeText: "Are you sure that you want to reset all settings?") == .alertSecondButtonReturn {
+            // Cancel button clicked
+            return
+        }
+
+        // Reset settings to default
+        self.setDefaultSettings()
+
+        // update the update loop timer
+        if let appDelegate = AppDelegate.getInstance() {
+            appDelegate.changeUpdateLoopTimeInterval(interval: AppDelegate.userSettings.settings.updateInterval)
+        } else {
+            DDLogError("Could not retrieve the App Delegate Instance")
+        }
+
+        // Clear image cache of bar graphs
+        AppDelegate.menuBarItemManager.cpuUsage.barGraph.clearImageCache()
+        AppDelegate.menuBarItemManager.memoryUsage.barGraph.clearImageCache()
+
+        // Set correct visibility of menubaritems
+        AppDelegate.menuBarItemManager.updateMenuBarItems()
+    }
 }

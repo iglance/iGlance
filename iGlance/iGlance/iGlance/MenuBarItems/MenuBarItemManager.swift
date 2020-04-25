@@ -49,7 +49,7 @@ class MenuBarItemManager {
      */
     func updateMenuBarItems() {
         // iterate all menu bar items and call the update function for the visible ones
-        for item in menuBarItems where item.statusItem.isVisible {
+        for item in menuBarItems {
             item.update()
         }
     }
