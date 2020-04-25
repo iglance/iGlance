@@ -11,7 +11,7 @@ import ServiceManagement
 import CocoaLumberjack
 
 class Autostart: NSObject {
-    public static func updateAutostartOnBoot() {
+    static func updateAutostartOnBoot() {
         // enable the login item if the setting is true
         if AppDelegate.userSettings.settings.autostartOnBoot {
             if !SMLoginItemSetEnabled(LAUNCHER_BUNDLE_IDENTIFIER as CFString, true) {
