@@ -49,6 +49,10 @@ class DashboardViewController: MainViewViewController {
         DDLogInfo("Dashboard view did load")
     }
 
+    override func updateGUIComponents() {
+        // do nothing, since we don't need to update the GUI here
+    }
+
     // MARK: -
     // MARK: Private Functions
 

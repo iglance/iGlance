@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.Cocoa.Storyboard.XIB" version="3.0" toolsVersion="16096" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES">
+<document type="com.apple.InterfaceBuilder3.Cocoa.Storyboard.XIB" version="3.0" toolsVersion="15705" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES">
     <dependencies>
         <deployment identifier="macosx"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="16096"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="15705"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
@@ -67,12 +67,21 @@
                                     <items>
                                         <menuItem title="Import Settings..." id="aTl-1u-JFS">
                                             <modifierMask key="keyEquivalentModifierMask"/>
+                                            <connections>
+                                                <action selector="importSettingsWithSender:" target="Ady-hI-5gd" id="5rA-gf-tiZ"/>
+                                            </connections>
                                         </menuItem>
                                         <menuItem title="Export Settings..." id="pEa-Tm-cAy">
                                             <modifierMask key="keyEquivalentModifierMask"/>
+                                            <connections>
+                                                <action selector="exportSettingsWithSender:" target="Ady-hI-5gd" id="gtb-ox-Pcb"/>
+                                            </connections>
                                         </menuItem>
                                         <menuItem title="Reset Settings..." id="mjT-CA-nxz">
                                             <modifierMask key="keyEquivalentModifierMask"/>
+                                            <connections>
+                                                <action selector="resetSettingsWithSender:" target="Ady-hI-5gd" id="oPZ-Jn-OLU"/>
+                                            </connections>
                                         </menuItem>
                                         <menuItem isSeparatorItem="YES" id="edB-3D-5wF"/>
                                         <menuItem title="Close" keyEquivalent="w" id="4rx-Ty-iez">

@@ -132,6 +132,25 @@ class CpuViewController: MainViewViewController {
     }
 
     // MARK: -
+    // MARK: Function Overrides
+    override func updateGUIComponents() {
+        // Call didSet methods of all GUI components
+        self.cpuTempCheckbox = { self.cpuTempCheckbox }()
+        self.cpuUsageCheckbox = { self.cpuUsageCheckbox }()
+        self.graphSelector = { self.graphSelector }()
+        self.graphWidthStackView = { self.graphWidthStackView }()
+        self.graphWidthLabel = { self.graphWidthLabel }()
+        self.graphWidthSlider = { self.graphWidthSlider }()
+        self.usageColorWell = { self.usageColorWell }()
+        self.usageGraphBorderCheckbox = { self.usageGraphBorderCheckbox }()
+        self.colorGradientCheckbox = { self.colorGradientCheckbox }()
+        self.secondaryColorWell = { self.secondaryColorWell }()
+        self.graphSelectionStackView = { self.graphSelectionStackView }()
+        self.graphColorStackView = { self.graphColorStackView }()
+        self.secondaryColorStackView = { self.secondaryColorStackView }()
+    }
+
+    // MARK: -
     // MARK: Actions
 
     @IBAction private func cpuTempCheckboxChanged(_ sender: NSButton) {

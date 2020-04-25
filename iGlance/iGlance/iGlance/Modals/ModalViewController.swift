@@ -57,11 +57,22 @@ class ModalViewController: NSViewController {
     }
 
     /**
+     * Calls all didSet methods of all the outlets of the modal.
+     */
+    func updateGUIComponents() {
+        // Insert in inherited class
+        fatalError("Function 'updateGUIComponents' not implemented")
+    }
+
+    /**
      * Displays the modal centered and above the given parent window.
      */
     func showModal(parentWindow: NSWindow) {
         // first display the view controller since otherwise its window variable is nil
         presentAsModalWindow(self)
+
+        // trigger didSet methods of all outlets to update GUI
+        updateGUIComponents()
 
         // make the parent window unmovable
         parentWindow.isMovable = false

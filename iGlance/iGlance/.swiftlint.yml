@@ -112,7 +112,6 @@ whitelist_rules:
   - trailing_semicolon
   - trailing_whitespace
   - type_name
-  - unavailable_function
   - unneeded_break_in_switch
   - unneeded_parentheses_in_closure_argument
   - unowned_variable_capture
