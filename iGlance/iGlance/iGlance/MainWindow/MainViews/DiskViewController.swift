@@ -22,6 +22,13 @@ class DiskViewController: MainViewViewController {
     @IBOutlet private var diskkUsageCheckbox: NSButton!
 
     // MARK: -
+    // MARK: Function Overrides
+    override func updateGUIComponents() {
+        // Call didSet methods of all GUI components
+        self.diskkUsageCheckbox = { self.diskkUsageCheckbox }()
+    }
+
+    // MARK: -
     // MARK: Actions
 
     @IBAction private func diskUsageCheckboxChanged(_ sender: NSButton) {
