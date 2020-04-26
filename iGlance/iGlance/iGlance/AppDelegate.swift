@@ -17,6 +17,7 @@ import Cocoa
 import ServiceManagement
 import CocoaLumberjack
 import AppMover
+import Sparkle
 
 @NSApplicationMain
 class AppDelegate: NSObject, NSApplicationDelegate {
@@ -43,6 +44,16 @@ class AppDelegate: NSObject, NSApplicationDelegate {
     func applicationWillFinishLaunching(_ notification: Notification) {
         // call the update loop once on startup to render the menu bar items
         self.updateLoop()
+
+        // check if automatic updating is disabled
+        guard let sharedUpdater = SUUpdater.shared() else {
+            DDLogError("Could not retrieve the shared SUUpdater")
+            return
+        }
+        if !sharedUpdater.automaticallyChecksForUpdates {
+            UserDefaults.standard.set(true, forKey: "SUEnableAutomaticChecks")
+            DDLogInfo("Set 'SUEnableAutomaticChecks' to \(sharedUpdater.automaticallyChecksForUpdates)")
+        }
     }
 
     func applicationDidFinishLaunching(_ notification: Notification) {
