@@ -17,6 +17,7 @@ import Cocoa
 import ServiceManagement
 import CocoaLumberjack
 import AppMover
+import Sparkle
 
 @NSApplicationMain
 class AppDelegate: NSObject, NSApplicationDelegate {
@@ -43,6 +44,16 @@ class AppDelegate: NSObject, NSApplicationDelegate {
     func applicationWillFinishLaunching(_ notification: Notification) {
         // call the update loop once on startup to render the menu bar items
         self.updateLoop()
+
+        // check if automatic updating is disabled
+        guard let sharedUpdater = SUUpdater.shared() else {
+            DDLogError("Could not retrieve the shared SUUpdater")
+            return
+        }
+        if !sharedUpdater.automaticallyChecksForUpdates {
+            UserDefaults.standard.set(true, forKey: "SUEnableAutomaticChecks")
+            DDLogInfo("Set 'SUEnableAutomaticChecks' to \(sharedUpdater.automaticallyChecksForUpdates)")
+        }
     }
 
     func applicationDidFinishLaunching(_ notification: Notification) {
@@ -137,6 +148,47 @@ class AppDelegate: NSObject, NSApplicationDelegate {
         aboutModalViewController.showModal(parentWindow: mainWindow)
 
         DDLogInfo("Displaying the 'About' modal")
+    }
+
+    /**
+     * This function is called when the user selects 'Diagnostics > Save Logfile...'
+     */
+    @IBAction private func saveMostRecentLogFile(sender: AnyObject) {
+        self.logger.saveMostRecentLogFile()
+    }
+
+    /**
+    * This function is called when the user selects 'File > Export Settings...'
+    */
+    @IBAction private func exportSettings(sender: AnyObject) {
+        AppDelegate.userSettings.exportUserSettings()
+    }
+
+    /**
+    * This function is called when the user selects 'File > Import Settings...'
+    */
+    @IBAction private func importSettings(sender: AnyObject) {
+        AppDelegate.userSettings.importUserSettings()
+        self.updateGUIofCurrentMainView()
+        logger.updateLogSettings()
+        Autostart.updateAutostartOnBoot()
+    }
+
+    /**
+    * This function is called when the user selects 'File > Reset Settings...'
+    */
+    @IBAction private func resetSettings(sender: AnyObject) {
+        AppDelegate.userSettings.resetUserSettings()
+        self.updateGUIofCurrentMainView()
+        logger.updateLogSettings()
+        Autostart.updateAutostartOnBoot()
+    }
+
+    /**
+    * This function is called when the user selects 'iGlance > Preferences...'
+    */
+    @IBAction private func showPreferenceWindow(sender: AnyObject) {
+        self.showPreferenceWindow()
     }
 
     // MARK: -
@@ -243,6 +295,25 @@ class AppDelegate: NSObject, NSApplicationDelegate {
         self.currentUpdateLoopTimer = timer
     }
 
+    /**
+     * Updates the UI elements of the currently displayed main view accordingly to the current user settings.
+     */
+    private func updateGUIofCurrentMainView() {
+        guard let mainWindowVC = mainWindow.contentViewController as? MainWindowViewController else {
+            DDLogError("Could not call the 'contentViewController' of the main window to 'MainWindowViewController'")
+            return
+        }
+        guard let contentManagerVC = mainWindowVC.contentManagerViewController else {
+            DDLogError("'contentManagerViewController' of main window is nil")
+            return
+        }
+        guard let mainViewVC = contentManagerVC.currentViewController as? MainViewViewController else {
+            DDLogError("Could not cast the 'currentViewController' of the 'ContentManagerViewController' to 'MainViewViewController'")
+            return
+        }
+        mainViewVC.updateGUIComponents()
+    }
+
     // MARK: -
     // MARK: Static Functions
 
@@ -251,16 +322,5 @@ class AppDelegate: NSObject, NSApplicationDelegate {
      */
     static func getInstance() -> AppDelegate? {
         NSApplication.shared.delegate as? AppDelegate
-    }
-
-    // MARK: -
-    // MARK: Actions
-
-    @IBAction private func saveMostRecentLogFile(sender: AnyObject) {
-        self.logger.saveMostRecentLogFile()
-    }
-
-    @IBAction private func showPreferenceWindow(sender: AnyObject) {
-        self.showPreferenceWindow()
     }
 }

@@ -18,46 +18,18 @@ import CocoaLumberjack
 
 class DiskInfo {
     /**
-     * Returns a tuple with the first element beeing the size of the
-     * disk and the second element beeing the unit (e.g. MB, GB, TB...).
+     *  Returns the named tuple of used disk space and free disk space in bytes
      */
-    func getInternalDiskSize() -> (Int, String) {
-        guard let output = executeCommand(launchPath: "/usr/sbin/system_profiler", arguments: ["SPNVMeDataType", "SPSerialATADataType"]) else {
-            DDLogError("An error occurred while executing the system_profiler command")
-
-            return (0, "")
+    static func getFreeDiskUsageInfo() -> (usedSpace: Int, freeSpace: Int) {
+        let fileURL = URL(fileURLWithPath: "/")
+        do {
+            let values = try fileURL.resourceValues(forKeys: [.volumeTotalCapacityKey, .volumeAvailableCapacityKey])
+            let totalSpace = values.volumeTotalCapacity
+            let freeSpace = values.volumeAvailableCapacity
+            return (totalSpace! - freeSpace!, freeSpace!)
+        } catch {
+            DDLogError("Error retrieving capacity: \(error.localizedDescription)")
         }
-
-        DDLogInfo("Output of internal disk size command: \n\(output)")
-
-        // get all the devices
-        var devices = output.components(separatedBy: "\n\n          Capacity:")
-        if devices.isEmpty {
-            DDLogError("Could not find the keyword 'Capacity' in the command output")
-            return (0, "")
-        }
-
-        // remove the name of the disk
-        devices.removeFirst()
-
-        for device in devices {
-            let deviceLines = device.split(separator: "\n")
-
-            // the capacity is the first line the second part of the line
-            let lineParts = deviceLines[0].components(separatedBy: " ")
-            let size = Int(Float(lineParts[1].replacingOccurrences(of: ",", with: "."))!)
-            // unit is the third part of the line
-            let unit = String(lineParts[2])
-
-            for deviceLine in deviceLines {
-                if deviceLine.contains("Detachable Drive: No") {
-                    // if the current device is not detachable return the size of this device
-                    return (size, unit)
-                }
-            }
-        }
-
-        // if no capacity was found return a default value
-        return (0, "")
+        return (0, 0)
     }
 }

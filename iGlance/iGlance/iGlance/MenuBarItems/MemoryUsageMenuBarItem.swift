@@ -47,6 +47,10 @@ class MemoryUsageMenuBarItem: MenuBarItem {
     // MARK: Protocol Implementations
 
     func update() {
+        self.statusItem.isVisible = AppDelegate.userSettings.settings.memory.showUsage
+        if !self.statusItem.isVisible {
+            return
+        }
         let usage = AppDelegate.systemInfo.memory.getMemoryUsage()
         updateMenuBarIcon(memoryUsage: usage)
         updateMenuBarMenu(memoryUsage: usage)

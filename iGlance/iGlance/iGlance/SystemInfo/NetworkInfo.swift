@@ -105,28 +105,18 @@ class NetworkInfo {
      */
     func getCurrentlyUsedInterface() -> String {
         // create the process for the command
-        let process = Process()
-        process.launchPath = "/bin/bash"
-        process.arguments = ["-c", "route get 0.0.0.0 2>/dev/null | grep interface: | awk '{print $2}'"]
-
-        // create the pipe for the output
-        let pipe = Pipe()
-        process.standardOutput = pipe
-        process.launch()
-
-        // get the command output
-        let commandOutput = pipe.fileHandleForReading.readDataToEndOfFile()
-
-        DDLogInfo("Output of the network interface command: \n\(commandOutput)")
-
-        // get the currently used interface
-        guard let commandString = String(data: commandOutput, encoding: String.Encoding.utf8) else {
-            DDLogError("Something went wrong while casting the command output to a string")
+        guard let commandOutput = executeCommand(
+            launchPath: "/bin/bash",
+            arguments: ["-c", "route get 0.0.0.0 2>/dev/null | grep interface: | awk '{print $2}'"]
+            ) else {
+            DDLogError("An error occurred while executing the command to get the currently used network interface")
             return "en0"
         }
 
+        DDLogInfo("Output of the network interface command: \n\(commandOutput)")
+
         // get the interface name
-        let interfaceName = commandString.trimmingCharacters(in: .whitespacesAndNewlines)
+        let interfaceName = commandOutput.trimmingCharacters(in: .whitespacesAndNewlines)
 
         return interfaceName.isEmpty ? "en0" : interfaceName
     }

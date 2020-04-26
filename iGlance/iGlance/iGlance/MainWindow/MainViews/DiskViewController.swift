@@ -16,37 +16,27 @@
 import Cocoa
 import CocoaLumberjack
 
-class NetworkViewController: MainViewViewController {
+class DiskViewController: MainViewViewController {
     // MARK: -
     // MARK: Outlets
-    @IBOutlet private var networkUsageCheckbox: NSButton! {
-        didSet {
-            networkUsageCheckbox.state = AppDelegate.userSettings.settings.network.showBandwidth ? .on : .off
-        }
-    }
-
-    // MARK: -
-    // MARK: Function Overrides
-    override func updateGUIComponents() {
-        // Call didSet methods of all GUI components
-        self.networkUsageCheckbox = { self.networkUsageCheckbox }()
-    }
+    @IBOutlet private var diskkUsageCheckbox: NSButton!
 
     // MARK: -
     // MARK: Actions
-    @IBAction private func networkUsageCheckboxChanged(_ sender: NSButton) {
+
+    @IBAction private func diskUsageCheckboxChanged(_ sender: NSButton) {
         // get the boolean value of the checkbox
         let activated = sender.state == NSButton.StateValue.on
 
         // set the user setting
-        AppDelegate.userSettings.settings.network.showBandwidth = activated
+        AppDelegate.userSettings.settings.disk.showDiskUsage = activated
 
         if activated {
-            AppDelegate.menuBarItemManager.network.show()
+            AppDelegate.menuBarItemManager.diskUsage.show()
         } else {
-            AppDelegate.menuBarItemManager.network.hide()
+            AppDelegate.menuBarItemManager.diskUsage.hide()
         }
 
-        DDLogInfo("Did set network checkbox value to (\(activated))")
+        DDLogInfo("Did set disk checkbox value to (\(activated))")
     }
 }

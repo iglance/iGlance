@@ -61,7 +61,7 @@ class MainWindowViewController: NSViewController {
      */
     private func displayViewOf(sender: SidebarButtonView) {
         if let viewController = storyboard?.instantiateController(withIdentifier: sender.mainViewStoryboardID!) {
-            contentManagerViewController?.addNewViewController(viewController: ((viewController as? NSViewController)!))
+            contentManagerViewController?.addNewViewController(viewController: ((viewController as? MainViewViewController)!))
         }
     }
 }

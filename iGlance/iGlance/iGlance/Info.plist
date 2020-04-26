@@ -36,5 +36,9 @@
 	<string>https://raw.githubusercontent.com/iglance/iGlance/master/Sparkle/updates/appcast.xml</string>
 	<key>SUPublicEDKey</key>
 	<string>P3ARK4FDc8pGDsEcPHzAOcdQTLRecgY8FGAFaaXGWbs=</string>
+	<key>SUEnableAutomaticChecks</key>
+	<true/>
+	<key>SUScheduledCheckInterval</key>
+	<integer>7200</integer>
 </dict>
 </plist>

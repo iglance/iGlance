@@ -33,8 +33,12 @@ class DashboardViewController: MainViewViewController {
     // MARK: -
     // MARK: Private Variables
 
-    /** Variable that ensures that the system information in the dashboard is set only once on startup. */
-    private static var didSetSystemInfo: Bool = false
+    // the variables for the system info on the dashboard
+    // these are static such that when the user selects another main view the values are preserved
+    private static var cpuName: String?
+    private static var gpuName: String?
+    private static var ramSize: String?
+    private static var diskSize: String?
 
     // MARK: -
     // MARK: Function Overrides
@@ -47,6 +51,10 @@ class DashboardViewController: MainViewViewController {
         self.setBatteryInfo()
 
         DDLogInfo("Dashboard view did load")
+    }
+
+    override func updateGUIComponents() {
+        // do nothing, since we don't need to update the GUI here
     }
 
     // MARK: -
@@ -69,27 +77,33 @@ class DashboardViewController: MainViewViewController {
      * Sets the system information on the system dashboard box.
      */
     private func setSystemInfo() {
-        // prevent future executions
-        if DashboardViewController.self.didSetSystemInfo {
-            return
+        if DashboardViewController.cpuName == nil {
+            // set the cpu name
+            let cpuName = AppDelegate.systemInfo.cpu.getCpuName()
+            // remove the intel core branding
+            DashboardViewController.cpuName = cpuName.replacingOccurrences(of: "Intel(R) Core(TM) ", with: "")
         }
+        cpuNameLabel.stringValue = DashboardViewController.cpuName!
 
-        // set the variable on the first call
-        DashboardViewController.self.didSetSystemInfo = true
+        if DashboardViewController.gpuName == nil {
+            // set the gpu name
+            DashboardViewController.gpuName = AppDelegate.systemInfo.gpu.getGpuName()
+        }
+        gpuNameLabel.stringValue = DashboardViewController.gpuName!
 
-        // set the cpu name
-        let cpuName = AppDelegate.systemInfo.cpu.getCpuName()
-        // remove the intel core branding
-        cpuNameLabel.stringValue = cpuName.replacingOccurrences(of: "Intel(R) Core(TM) ", with: "")
+        if DashboardViewController.ramSize == nil {
+            // set the ram size
+            DashboardViewController.ramSize = "\(AppDelegate.systemInfo.memory.getTotalMemorySize()) GB"
+        }
+        ramSizeLabel.stringValue = DashboardViewController.ramSize!
 
-        // set the gpu name
-        gpuNameLabel.stringValue = AppDelegate.systemInfo.gpu.getGpuName()
-
-        // set the ram size
-        ramSizeLabel.stringValue = "\(AppDelegate.systemInfo.memory.getTotalMemorySize()) GB"
-
-        let diskSize = AppDelegate.systemInfo.disk.getInternalDiskSize()
-        diskSizeLabel.stringValue = "\(diskSize.0) \(diskSize.1)"
+        if DashboardViewController.diskSize == nil {
+            let (usedSpace, freeSpace) = DiskInfo.getFreeDiskUsageInfo()
+            let diskSize = convertToCorrectUnit(bytes: (usedSpace + freeSpace))
+            let sizeString = diskSize.unit <= .Gigabyte ? String(Int(diskSize.value)) : String(format: "%.2f", diskSize.value)
+            DashboardViewController.diskSize = "\(sizeString) \(diskSize.unit.rawValue)"
+        }
+        diskSizeLabel.stringValue = DashboardViewController.diskSize!
 
         DDLogInfo("Updated system info")
     }

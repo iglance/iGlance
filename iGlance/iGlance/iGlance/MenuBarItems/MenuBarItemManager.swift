@@ -28,6 +28,8 @@ class MenuBarItemManager {
     let network = NetworkMenuBarItem()
     /// The battery menu bar item
     let battery = BatteryMenuBarItem()
+    /// The disk usage menu bar item
+    let diskUsage = DiskUsageMenuBarItem()
 
     /// An array containing all the visible AND not visible menu bar items
     var menuBarItems: [MenuBarItem] = []
@@ -39,6 +41,7 @@ class MenuBarItemManager {
         menuBarItems.append(fan)
         menuBarItems.append(network)
         menuBarItems.append(battery)
+        menuBarItems.append(diskUsage)
     }
 
     /**
@@ -46,7 +49,7 @@ class MenuBarItemManager {
      */
     func updateMenuBarItems() {
         // iterate all menu bar items and call the update function for the visible ones
-        for item in menuBarItems where item.statusItem.isVisible {
+        for item in menuBarItems {
             item.update()
         }
     }

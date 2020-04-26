@@ -47,6 +47,11 @@ class BatteryMenuBarItem: MenuBarItem {
     // MARK: Protocol Implementations
 
     func update() {
+        self.statusItem.isVisible = AppDelegate.userSettings.settings.battery.showBatteryMenuBarItem
+        if !self.statusItem.isVisible {
+            return
+        }
+
         // get the current charge
         let currentCharge = AppDelegate.systemInfo.battery.getCharge()
         // get the state of the internal battery

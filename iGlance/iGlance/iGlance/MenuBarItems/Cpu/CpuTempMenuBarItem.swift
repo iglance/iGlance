@@ -21,6 +21,10 @@ class CpuTempMenuBarItem: MenuBarItem {
     // MARK: Protocol Implementations
 
     func update() {
+        self.statusItem.isVisible = AppDelegate.userSettings.settings.cpu.showTemperature
+        if !self.statusItem.isVisible {
+            return
+        }
         updateMenuBarIcon()
     }
 
