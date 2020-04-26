@@ -149,7 +149,7 @@ class AppDelegate: NSObject, NSApplicationDelegate {
 
         DDLogInfo("Displaying the 'About' modal")
     }
-    
+
     /**
      * This function is called when the user selects 'Diagnostics > Save Logfile...'
      */
