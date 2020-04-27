@@ -31,5 +31,5 @@ jobs:
 
     # Runs the linting command
     - name: run-linting-command
-      working-directory: ./iGlance
-      run: ./Pods/Swiftlint/swiftlint
+      working-directory: ./iGlance/iGlance
+      run: ../Pods/Swiftlint/swiftlint
