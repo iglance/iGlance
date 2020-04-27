@@ -20,11 +20,21 @@ jobs:
     # Steps represent a sequence of tasks that will be executed as part of the job
     steps:
     # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
-    - uses: actions/checkout@v2
+    - name: checkout repository
+      uses: actions/checkout@v2
       with:
         submodules: "recursive"
         
-    - uses: actions/cache@v1
+    - name: get pods home directory from cache
+      uses: actions/cache@v1
+      with:
+        path: ./iGlance/cocoaPodsHomeDir
+        key: ${{ runner.os }}--pods-home-key-${{ hashFiles('**/Podfile.lock') }}
+        restore-keys: |
+          ${{ runner.os }}--pods-home-key-
+        
+    - name: get installed pods from cache
+      uses: actions/cache@v1
       with:
         path: ./iGlance/Pods
         key: ${{ runner.os }}--pods-key-${{ hashFiles('**/Podfile.lock') }}
@@ -32,11 +42,13 @@ jobs:
           ${{ runner.os }}--pods-key-
     
     # install the necessary pods
-    - name: install-pods
+    - name: execute 'pod install'
       working-directory: ./iGlance
       run: pod install
+      env:
+        CP_HOME_DIR: ./cocoaPodsHomeDir
 
     # Runs the linting command
-    - name: run-linting-command
+    - name: run linting command
       working-directory: ./iGlance/iGlance
       run: ../Pods/Swiftlint/swiftlint
