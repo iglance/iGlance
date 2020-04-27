@@ -2,13 +2,9 @@ name: Build
 
 on:
   push:
-    branches: 
-      - master
-      - development
+    branches: [ master, development ]
   pull_request:
-    branches: 
-      - master
-      - development
+    branches: [ master, development ]
 
 jobs:
   build:
@@ -19,12 +15,19 @@ jobs:
     - uses: actions/checkout@v2
       with:
         submodules: 'recursive'
+        
     - uses: actions/cache@v1
       with:
         path: Pods
         key: ${{ runner.os }}--pods-${{ hashFiles('**/Podfile.lock') }}
         restore-keys: |
           ${{ runner.os }}--pods-
-    - name: Build
-      run: pod install && xcodebuild -workspace iGlance.xcworkspace -scheme iGlance -config Release CODE_SIGN_IDENTITY="" CODE_SIGNING_REQUIRED=NO
+          
+    - name: install-pods
       working-directory: ./iGlance
+      run: pod install
+
+    - name: run-build-command
+      working-directory: ./iGlance
+      run: xcodebuild -workspace iGlance.xcworkspace -scheme iGlance -config Release CODE_SIGN_IDENTITY="" CODE_SIGNING_REQUIRED=NO
+
