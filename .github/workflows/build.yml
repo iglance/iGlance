@@ -18,7 +18,7 @@ jobs:
         
     - uses: actions/cache@v1
       with:
-        path: Pods
+        path: ./iGlance/Pods
         key: ${{ runner.os }}--pods-${{ hashFiles('**/Podfile.lock') }}
         restore-keys: |
           ${{ runner.os }}--pods-
