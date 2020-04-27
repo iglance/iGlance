@@ -22,19 +22,14 @@ jobs:
         key: ${{ runner.os }}--pods-key-${{ hashFiles('**/Podfile.lock') }}
         restore-keys: |
           ${{ runner.os }}--pods-key-
-    
-    - uses: actions/cache@v1
-      with: 
-        path: ./iGlance/build
-        key: ${{ runner.os }}--build-key-${{ hashFiles('**/*.dSYM') }}
-        restore-keys: |
-          ${{ runner.os }}--build-key-
           
     - name: install-pods
       working-directory: ./iGlance
       run: pod install
+      env:
+        CP_HOME_DIR: ./cocoaPodsHomeDir  
 
     - name: run-build-command
       working-directory: ./iGlance
-      run: xcodebuild -workspace iGlance.xcworkspace -scheme iGlance -config Release CODE_SIGN_IDENTITY="" CODE_SIGNING_REQUIRED=NO CONFIGURATION_BUILD_DIR=${{ github.workspace }}/build
+      run: xcodebuild -workspace iGlance.xcworkspace -scheme iGlance -config Release CODE_SIGN_IDENTITY="" CODE_SIGNING_REQUIRED=NO
 
