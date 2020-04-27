@@ -20,7 +20,7 @@ jobs:
     - name: get pods home directory from cache
       uses: actions/cache@v1
       with:
-        path: ./iGlance/Pods
+        path: ./iGlance/cocoaPodsHomeDir
         key: ${{ runner.os }}--pods-home-key-${{ hashFiles('**/Podfile.lock') }}
         restore-keys: |
           ${{ runner.os }}--pods-home-key-
