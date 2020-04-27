@@ -26,7 +26,7 @@ jobs:
     - uses: actions/cache@v1
       with: 
         path: ./iGlance/build
-        key: ${{ runner.os }}--build-key-${{ hashFiles('**/Podfile.lock') }}
+        key: ${{ runner.os }}--build-key-${{ hashFiles('**/*.dSYM') }}
         restore-keys: |
           ${{ runner.os }}--build-key-
           
@@ -36,5 +36,5 @@ jobs:
 
     - name: run-build-command
       working-directory: ./iGlance
-      run: xcodebuild -workspace iGlance.xcworkspace -scheme iGlance -config Release CODE_SIGN_IDENTITY="" CODE_SIGNING_REQUIRED=NO CONFIGURATION_BUILD_DIR=$(pwd)/build
+      run: xcodebuild -workspace iGlance.xcworkspace -scheme iGlance -config Release CODE_SIGN_IDENTITY="" CODE_SIGNING_REQUIRED=NO CONFIGURATION_BUILD_DIR=${{ github.workspace }}/build
 
