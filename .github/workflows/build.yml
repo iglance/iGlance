@@ -13,17 +13,27 @@ jobs:
 
     steps:
     - uses: actions/checkout@v2
+      name: checkout repository
       with:
         submodules: 'recursive'
-        
+    
     - uses: actions/cache@v1
+      name: get pods home directory from cache
+      with:
+        path: ./iGlance/Pods
+        key: ${{ runner.os }}--pods-home-key-${{ hashFiles('**/Podfile.lock') }}
+        restore-keys: |
+          ${{ runner.os }}--pods-home-key-
+          
+    - uses: actions/cache@v1
+      name: get installed pods from cache
       with:
         path: ./iGlance/Pods
         key: ${{ runner.os }}--pods-key-${{ hashFiles('**/Podfile.lock') }}
         restore-keys: |
           ${{ runner.os }}--pods-key-
           
-    - name: install-pods
+    - name: execute 'pod install' 
       working-directory: ./iGlance
       run: pod install
       env:
@@ -32,4 +42,3 @@ jobs:
     - name: run-build-command
       working-directory: ./iGlance
       run: xcodebuild -workspace iGlance.xcworkspace -scheme iGlance -config Release CODE_SIGN_IDENTITY="" CODE_SIGNING_REQUIRED=NO
-
