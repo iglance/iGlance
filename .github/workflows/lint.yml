@@ -26,10 +26,10 @@ jobs:
         
     - uses: actions/cache@v1
       with:
-        path: Pods
-        key: ¢{{ runner.os }}--pods-${{ hashFiles('**/Podfile.lock') }}
+        path: ./iGlance/Pods
+        key: ${{ runner.os }}--pods-key-${{ hashFiles('**/Podfile.lock') }}
         restre-keys: |
-          ${{ runner.os }}--pods-
+          ${{ runner.os }}--pods-key-
     
     # install the necessary pods
     - name: install-pods
