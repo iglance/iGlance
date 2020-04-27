@@ -12,21 +12,21 @@ jobs:
     runs-on: macos-latest
 
     steps:
-    - uses: actions/checkout@v2
-      name: checkout repository
+    - name: checkout repository
+      uses: actions/checkout@v2
       with:
         submodules: 'recursive'
     
-    - uses: actions/cache@v1
-      name: get pods home directory from cache
+    - name: get pods home directory from cache
+      uses: actions/cache@v1
       with:
         path: ./iGlance/Pods
         key: ${{ runner.os }}--pods-home-key-${{ hashFiles('**/Podfile.lock') }}
         restore-keys: |
           ${{ runner.os }}--pods-home-key-
           
-    - uses: actions/cache@v1
-      name: get installed pods from cache
+    - name: get installed pods from cache
+      uses: actions/cache@v1
       with:
         path: ./iGlance/Pods
         key: ${{ runner.os }}--pods-key-${{ hashFiles('**/Podfile.lock') }}
