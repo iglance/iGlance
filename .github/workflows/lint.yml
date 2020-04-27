@@ -29,9 +29,9 @@ jobs:
       uses: actions/cache@v1
       with:
         path: ./iGlance/cocoaPodsHomeDir
-        key: ${{ runner.os }}--pods-home-key-${{ hashFiles('**/Podfile.lock') }}
+        key: ${{ runner.os }}--pods-homeDir-key-${{ hashFiles('**/Podfile.lock') }}
         restore-keys: |
-          ${{ runner.os }}--pods-home-key-
+          ${{ runner.os }}--pods-homeDir-key-
         
     - name: get installed pods from cache
       uses: actions/cache@v1
