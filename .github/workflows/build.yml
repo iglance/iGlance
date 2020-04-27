@@ -39,6 +39,6 @@ jobs:
       env:
         CP_HOME_DIR: ./cocoaPodsHomeDir  
 
-    - name: run-build-command
+    - name: build project
       working-directory: ./iGlance
       run: xcodebuild -workspace iGlance.xcworkspace -scheme iGlance -config Release CODE_SIGN_IDENTITY="" CODE_SIGNING_REQUIRED=NO
