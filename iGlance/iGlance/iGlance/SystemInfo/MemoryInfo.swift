@@ -26,7 +26,10 @@ class MemoryInfo {
 
         DDLogInfo("Read memory usage: \(usage)")
 
-        return (usage.free, usage.active, usage.inactive, usage.wired, usage.compressed, usage.appMemory)
+        let totalMemory = Double(getTotalMemorySize())
+        let usedMemory = Double(usage.appMemory + usage.compressed + usage.wired)
+        let freeMemory = Double(totalMemory - usedMemory)
+        return (freeMemory, usage.active, usage.inactive, usage.wired, usage.compressed, usage.appMemory)
     }
 
     /**

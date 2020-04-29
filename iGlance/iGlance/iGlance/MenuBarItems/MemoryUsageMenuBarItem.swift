@@ -26,7 +26,7 @@ class MemoryUsageMenuBarItem: MenuBarItem {
         super.init()
 
         // add the menu entries
-        menuItems.append(contentsOf: [activeMemoryMenuEntry, compressedMemoryMenuEntry, wiredMemoryMenuEntry, freeMemoryMenuEntry, NSMenuItem.separator()])
+        menuItems.append(contentsOf: [appMemoryMenuEntry, activeMemoryMenuEntry, compressedMemoryMenuEntry, wiredMemoryMenuEntry, freeMemoryMenuEntry, NSMenuItem.separator()])
     }
 
     // MARK: -
@@ -38,6 +38,7 @@ class MemoryUsageMenuBarItem: MenuBarItem {
     // MARK: -
     // MARK: Private Variables
 
+    private let appMemoryMenuEntry = NSMenuItem(title: "App Memory: \t N/A", action: nil, keyEquivalent: "")
     private let activeMemoryMenuEntry = NSMenuItem(title: "Active: \t\t\t N/A", action: nil, keyEquivalent: "")
     private let compressedMemoryMenuEntry = NSMenuItem(title: "Compressed: \t N/A", action: nil, keyEquivalent: "")
     private let wiredMemoryMenuEntry = NSMenuItem(title: "Wired: \t\t\t N/A", action: nil, keyEquivalent: "")
@@ -68,7 +69,7 @@ class MemoryUsageMenuBarItem: MenuBarItem {
             return
         }
 
-        let totalUsage = memoryUsage.active + memoryUsage.compressed + memoryUsage.wired
+        let totalUsage = Double(memoryUsage.active + memoryUsage.compressed + memoryUsage.wired)
 
         // get all the necessary settings
         let graphColor = AppDelegate.userSettings.settings.memory.usageGraphColor.nsColor
@@ -76,23 +77,24 @@ class MemoryUsageMenuBarItem: MenuBarItem {
         let drawBorder = AppDelegate.userSettings.settings.memory.showUsageGraphBorder
 
         if AppDelegate.userSettings.settings.memory.usageGraphKind == .bar {
-            button.image = self.barGraph.getImage(currentValue: Double(totalUsage), graphColor: graphColor, drawBorder: drawBorder, gradientColor: gradientColor)
+            button.image = self.barGraph.getImage(currentValue: totalUsage, graphColor: graphColor, drawBorder: drawBorder, gradientColor: gradientColor)
         } else {
-            button.image = self.lineGraph.getImage(currentValue: Double(totalUsage), graphColor: graphColor, drawBorder: drawBorder, gradientColor: gradientColor)
+            button.image = self.lineGraph.getImage(currentValue: totalUsage, graphColor: graphColor, drawBorder: drawBorder, gradientColor: gradientColor)
         }
 
         // add the value to the line graph history
         // this allows us to draw the resent history when the user switches to the line graph
-        self.lineGraph.addValue(value: Double(totalUsage))
+        self.lineGraph.addValue(value: totalUsage)
     }
 
     /**
      * Updates the menu of the menu bar item. This function is called during every update interval.
      */
     private func updateMenuBarMenu(memoryUsage: (free: Double, active: Double, inactive: Double, wired: Double, compressed: Double, appMemory: Double)) {
+        appMemoryMenuEntry.title = "App Memory: \t \(String(format: "%.2f", memoryUsage.appMemory)) GB"
         activeMemoryMenuEntry.title = "Active: \t\t\t \(String(format: "%.2f", memoryUsage.active)) GB"
         wiredMemoryMenuEntry.title = "Wired: \t\t\t \(String(format: "%.2f", memoryUsage.wired)) GB"
         compressedMemoryMenuEntry.title = "Compressed: \t \(String(format: "%.2f", memoryUsage.compressed)) GB"
-        freeMemoryMenuEntry.title = "Free: \t\t\t \(String(format: "%.2f", memoryUsage.free + memoryUsage.inactive)) GB"
+        freeMemoryMenuEntry.title = "Free: \t\t\t \(String(format: "%.2f", memoryUsage.free)) GB"
     }
 }
