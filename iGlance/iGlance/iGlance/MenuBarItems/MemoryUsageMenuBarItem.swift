@@ -62,7 +62,7 @@ class MemoryUsageMenuBarItem: MenuBarItem {
     /**
      * Updates the icon of the menu bar item. This function is called during every update interval.
      */
-    private func updateMenuBarIcon(memoryUsage: (free: Double, active: Double, inactive: Double, wired: Double, compressed: Double)) {
+    private func updateMenuBarIcon(memoryUsage: (free: Double, active: Double, inactive: Double, wired: Double, compressed: Double, appMemory: Double)) {
         guard let button = self.statusItem.button else {
             DDLogError("Could not retrieve the button of the 'MemoryUsageMenuBarItem'")
             return
@@ -89,7 +89,7 @@ class MemoryUsageMenuBarItem: MenuBarItem {
     /**
      * Updates the menu of the menu bar item. This function is called during every update interval.
      */
-    private func updateMenuBarMenu(memoryUsage: (free: Double, active: Double, inactive: Double, wired: Double, compressed: Double)) {
+    private func updateMenuBarMenu(memoryUsage: (free: Double, active: Double, inactive: Double, wired: Double, compressed: Double, appMemory: Double)) {
         activeMemoryMenuEntry.title = "Active: \t\t\t \(String(format: "%.2f", memoryUsage.active)) GB"
         wiredMemoryMenuEntry.title = "Wired: \t\t\t \(String(format: "%.2f", memoryUsage.wired)) GB"
         compressedMemoryMenuEntry.title = "Compressed: \t \(String(format: "%.2f", memoryUsage.compressed)) GB"

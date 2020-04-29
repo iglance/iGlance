@@ -21,12 +21,12 @@ class MemoryInfo {
     /**
      * Returns the usage of the RAM in GB.
      */
-    func getMemoryUsage() -> (free: Double, active: Double, inactive: Double, wired: Double, compressed: Double) {
+    func getMemoryUsage() -> (free: Double, active: Double, inactive: Double, wired: Double, compressed: Double, appMemory: Double) {
         let usage = SKSystem.memoryUsage()
 
         DDLogInfo("Read memory usage: \(usage)")
 
-        return usage
+        return (usage.free, usage.active, usage.inactive, usage.wired, usage.compressed, usage.appMemory)
     }
 
     /**
