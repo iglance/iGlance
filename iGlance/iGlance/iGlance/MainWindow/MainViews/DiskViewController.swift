@@ -19,7 +19,11 @@ import CocoaLumberjack
 class DiskViewController: MainViewViewController {
     // MARK: -
     // MARK: Outlets
-    @IBOutlet private var diskkUsageCheckbox: NSButton!
+    @IBOutlet private var diskkUsageCheckbox: NSButton! {
+        didSet {
+            diskkUsageCheckbox.state = AppDelegate.userSettings.settings.disk.showDiskUsage ? .on : .off
+        }
+    }
 
     // MARK: -
     // MARK: Function Overrides
