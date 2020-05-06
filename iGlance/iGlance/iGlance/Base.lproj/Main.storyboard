@@ -1443,8 +1443,8 @@
                         </constraints>
                     </view>
                     <connections>
+                        <outlet property="diskUsageCheckbox" destination="Sy9-Qu-Fl1" id="S6z-Jw-5OT"/>
                         <outlet property="diskUsageCheckboxChanged" destination="Sy9-Qu-Fl1" id="dNe-fr-TDS"/>
-                        <outlet property="diskkUsageCheckbox" destination="Sy9-Qu-Fl1" id="S6z-Jw-5OT"/>
                     </connections>
                 </viewController>
                 <customObject id="gBb-Kr-n6w" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
