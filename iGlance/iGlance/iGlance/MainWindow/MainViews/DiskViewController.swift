@@ -19,9 +19,9 @@ import CocoaLumberjack
 class DiskViewController: MainViewViewController {
     // MARK: -
     // MARK: Outlets
-    @IBOutlet private var diskkUsageCheckbox: NSButton! {
+    @IBOutlet private var diskUsageCheckbox: NSButton! {
         didSet {
-            diskkUsageCheckbox.state = AppDelegate.userSettings.settings.disk.showDiskUsage ? .on : .off
+            diskUsageCheckbox.state = AppDelegate.userSettings.settings.disk.showDiskUsage ? .on : .off
         }
     }
 
@@ -29,7 +29,7 @@ class DiskViewController: MainViewViewController {
     // MARK: Function Overrides
     override func updateGUIComponents() {
         // Call didSet methods of all GUI components
-        self.diskkUsageCheckbox = { self.diskkUsageCheckbox }()
+        self.diskUsageCheckbox = { self.diskUsageCheckbox }()
     }
 
     // MARK: -
