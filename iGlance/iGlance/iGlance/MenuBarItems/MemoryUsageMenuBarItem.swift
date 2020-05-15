@@ -26,7 +26,7 @@ class MemoryUsageMenuBarItem: MenuBarItem {
         super.init()
 
         // add the menu entries
-        menuItems.append(contentsOf: [appMemoryMenuEntry, activeMemoryMenuEntry, compressedMemoryMenuEntry, wiredMemoryMenuEntry, freeMemoryMenuEntry, NSMenuItem.separator()])
+        menuItems.append(contentsOf: [appMemoryMenuEntry, cachedFilesMemoryMenuEntry, activeMemoryMenuEntry, compressedMemoryMenuEntry, wiredMemoryMenuEntry, freeMemoryMenuEntry, NSMenuItem.separator()])
     }
 
     // MARK: -
@@ -39,6 +39,7 @@ class MemoryUsageMenuBarItem: MenuBarItem {
     // MARK: Private Variables
 
     private let appMemoryMenuEntry = NSMenuItem(title: "App Memory: \t N/A", action: nil, keyEquivalent: "")
+    private let cachedFilesMemoryMenuEntry = NSMenuItem(title: "Cached Files: \t N/A", action: nil, keyEquivalent: "")
     private let activeMemoryMenuEntry = NSMenuItem(title: "Active: \t\t\t N/A", action: nil, keyEquivalent: "")
     private let compressedMemoryMenuEntry = NSMenuItem(title: "Compressed: \t N/A", action: nil, keyEquivalent: "")
     private let wiredMemoryMenuEntry = NSMenuItem(title: "Wired: \t\t\t N/A", action: nil, keyEquivalent: "")
@@ -63,7 +64,9 @@ class MemoryUsageMenuBarItem: MenuBarItem {
     /**
      * Updates the icon of the menu bar item. This function is called during every update interval.
      */
-    private func updateMenuBarIcon(memoryUsage: (free: Double, active: Double, inactive: Double, wired: Double, compressed: Double, appMemory: Double)) {
+    private func updateMenuBarIcon(
+        memoryUsage: (free: Double, active: Double, inactive: Double, wired: Double, compressed: Double, appMemory: Double, cachedFiles: Double)
+    ) {
         guard let button = self.statusItem.button else {
             DDLogError("Could not retrieve the button of the 'MemoryUsageMenuBarItem'")
             return
@@ -90,8 +93,11 @@ class MemoryUsageMenuBarItem: MenuBarItem {
     /**
      * Updates the menu of the menu bar item. This function is called during every update interval.
      */
-    private func updateMenuBarMenu(memoryUsage: (free: Double, active: Double, inactive: Double, wired: Double, compressed: Double, appMemory: Double)) {
+    private func updateMenuBarMenu(
+        memoryUsage: (free: Double, active: Double, inactive: Double, wired: Double, compressed: Double, appMemory: Double, cachedFiles: Double)
+    ) {
         appMemoryMenuEntry.title = "App Memory: \t \(String(format: "%.2f", memoryUsage.appMemory)) GB"
+        cachedFilesMemoryMenuEntry.title = "Cached Files: \t \(String(format: "%.2f", memoryUsage.cachedFiles)) GB"
         activeMemoryMenuEntry.title = "Active: \t\t\t \(String(format: "%.2f", memoryUsage.active)) GB"
         wiredMemoryMenuEntry.title = "Wired: \t\t\t \(String(format: "%.2f", memoryUsage.wired)) GB"
         compressedMemoryMenuEntry.title = "Compressed: \t \(String(format: "%.2f", memoryUsage.compressed)) GB"

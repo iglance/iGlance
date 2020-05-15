@@ -21,7 +21,7 @@ class MemoryInfo {
     /**
      * Returns the usage of the RAM in GB.
      */
-    func getMemoryUsage() -> (free: Double, active: Double, inactive: Double, wired: Double, compressed: Double, appMemory: Double) {
+    func getMemoryUsage() -> (free: Double, active: Double, inactive: Double, wired: Double, compressed: Double, appMemory: Double, cachedFiles: Double) {
         let usage = SKSystem.memoryUsage()
 
         DDLogInfo("Read memory usage: \(usage)")
@@ -29,7 +29,8 @@ class MemoryInfo {
         let totalMemory = Double(getTotalMemorySize())
         let usedMemory = Double(usage.appMemory + usage.compressed + usage.wired)
         let freeMemory = Double(totalMemory - usedMemory)
-        return (freeMemory, usage.active, usage.inactive, usage.wired, usage.compressed, usage.appMemory)
+
+        return (freeMemory, usage.active, usage.inactive, usage.wired, usage.compressed, usage.appMemory, cachedFiles: usage.cachedFiles)
     }
 
     /**
