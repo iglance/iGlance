@@ -64,7 +64,7 @@ struct BatteryNotificationSettings: Codable {
 }
 
 struct BatterySettings: Codable {
-    var showBatteryMenuBarItem: Bool = true
+    var showBatteryMenuBarItem: Bool = AppDelegate.systemInfo.battery.hasBattery()
     /// Is true when the percentage of the battery charge is displayed. If the value is false, the remaining time is displayed instead
     var showPercentage: Bool = false
     var lowBatteryNotification = BatteryNotificationSettings(notifyUser: true, value: 20)
