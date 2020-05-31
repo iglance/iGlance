@@ -104,10 +104,16 @@ class BatteryInfo {
     // MARK: -
     // MARK: Private Variables
     private var skBattery = SKBattery()
+    private var internalBatteryPresent = true
 
     // MARK: -
     // MARK: Initializer & Deinitializer
     init() {
+        if !hasBattery() {
+            internalBatteryPresent = false
+            return
+        }
+
         if skBattery.open() != kIOReturnSuccess {
             DDLogError("Opening a connection to the battery failed")
         }
@@ -122,17 +128,31 @@ class BatteryInfo {
     // MARK: -
     // MARK: Instance Methods
 
+    func hasBattery() -> Bool {
+        guard let psInfo = getInternalBatteryInfo() else {
+            DDLogInfo("Could not retrieve internal battery info")
+            return false
+        }
+
+        return psInfo.present ?? false
+    }
+
     /**
      * Returns the health of the battery in percent (in the range [0,1]).
      */
     func getBatteryHealth() -> Float {
-        if !skBattery.connectionIsOpen() {
+        if !skBattery.connectionIsOpen() && internalBatteryPresent {
             DDLogError("Can't get battery health because there is no open connection to the battery")
             return 0
         }
 
         let maxCap = self.skBattery.maxCapacity()
-        let designCap = self.skBattery.designCapacity()
+        let designCap = self.skBattery.designCapacity() // can be zero
+        // check value to prevent division by zero
+        if designCap == 0 {
+            DDLogInfo("Design capacity value is zero")
+            return 0
+        }
 
         DDLogInfo("Read maximum capacity \(maxCap) and design capacity \(designCap) of battery")
 
@@ -143,7 +163,7 @@ class BatteryInfo {
      * Returns the cycle count of the battery.
      */
     func getBatteryCycles() -> Int {
-        if !skBattery.connectionIsOpen() {
+        if !skBattery.connectionIsOpen() && internalBatteryPresent {
             DDLogError("Can't get battery cycles because there is no open connection to the battery")
             return 0
         }
