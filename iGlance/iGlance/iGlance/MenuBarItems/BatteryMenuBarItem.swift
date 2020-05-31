@@ -67,8 +67,6 @@ class BatteryMenuBarItem: MenuBarItem {
         updateMenuBarIcon(currentCharge: currentCharge, isOnAC: isOnAC, isCharging: isCharging, isCharged: isCharged, batteryState: batteryState)
         updateMenuBarMenu(currentCharge: currentCharge, batteryState: batteryState)
 
-        // remove all previous sent notifications
-        NSUserNotificationCenter.default.removeAllDeliveredNotifications()
         // notify the user about the capacity of the battery if necessary
         if AppDelegate.userSettings.settings.battery.lowBatteryNotification.notifyUser {
             deliverLowBatteryNotification(currentCharge: currentCharge)
@@ -328,6 +326,10 @@ class BatteryMenuBarItem: MenuBarItem {
 
         if self.lastBatteryCharge > lowThreshold && currentCharge <= lowThreshold {
             deliverNotification(title: "Battery Info", message: "Battery is low", identifier: BATTERY_NOTIFICATION_IDENTIFIER)
+            DispatchQueue.main.asyncAfter(deadline: .now() + 4.0) {
+                DDLogInfo("Removing all delivered notifications")
+                NSUserNotificationCenter.default.removeAllDeliveredNotifications()
+            }
         }
     }
 
@@ -341,6 +343,10 @@ class BatteryMenuBarItem: MenuBarItem {
 
         if self.lastBatteryCharge < highThreshold &&  currentCharge >= highThreshold {
             deliverNotification(title: "Battery Info", message: "Battery is almost fully charged", identifier: BATTERY_NOTIFICATION_IDENTIFIER)
+            DispatchQueue.main.asyncAfter(deadline: .now() + 4.0) {
+                DDLogInfo("Removing all delivered notifications")
+                NSUserNotificationCenter.default.removeAllDeliveredNotifications()
+            }
         }
     }
 
