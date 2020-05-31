@@ -16,11 +16,6 @@ target 'iGlance' do
   pod "Sparkle"
 end
 
-target 'iGlanceLauncher' do
-  workspace "iGlance"
-  project "iGlance/iGlance.xcodeproj"
-end
-
 target "SMCKit" do
   workspace "iGlance"
   project "Libraries/SMCKit/SMCKit.xcodeproj"
