@@ -16,6 +16,7 @@
 import Cocoa
 import ServiceManagement
 import CocoaLumberjack
+import LaunchAtLogin
 
 class PreferenceModalViewController: ModalViewController {
     // MARK: -
@@ -167,8 +168,10 @@ class PreferenceModalViewController: ModalViewController {
 
     private func setAutostartOnBoot(buttonState: NSButton.StateValue) {
         // set the auto start on boot user setting
-        AppDelegate.userSettings.settings.autostartOnBoot = (buttonState == NSButton.StateValue.on)
-        Autostart.updateAutostartOnBoot()
+        let state = (buttonState == NSButton.StateValue.on)
+        AppDelegate.userSettings.settings.autostartOnBoot = state
+        LaunchAtLogin.isEnabled = state
+        DDLogInfo("Set 'Autostart on Boot' to \(state)")
     }
 
     private func setAdvancedLogging(buttonState: NSButton.StateValue) {

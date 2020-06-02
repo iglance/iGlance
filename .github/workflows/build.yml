@@ -37,7 +37,11 @@ jobs:
       working-directory: ./iGlance
       run: pod install
       env:
-        CP_HOME_DIR: ./cocoaPodsHomeDir  
+        CP_HOME_DIR: ./cocoaPodsHomeDir
+        
+    - name: execute 'carthage update'
+      working-directory: ./iGlance/iGlance
+      run: carthage update
 
     - name: build project
       working-directory: ./iGlance
