@@ -20,6 +20,8 @@ After cloning your forked repository you have to install the dependencies of the
 (cd ./iGlance && pod install && cd ./iGlance && carthage update)
 ```
 
+If you get an error during building the carthage libraries [this](https://stackoverflow.com/questions/40743713/command-line-tool-error-xcrun-error-unable-to-find-utility-xcodebuild-n) might help you.
+
 ## Getting ready for development
 
 We have a `master` and a `development` branch in this repository. The `master` branch is responsible for all the releases. We push to this branch only if we release a new version. The development (as the name suggests) is for developing.
