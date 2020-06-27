@@ -164,3 +164,4 @@ identifier_name:
     - "y2"
 excluded:
   - Pods
+  - Carthage
