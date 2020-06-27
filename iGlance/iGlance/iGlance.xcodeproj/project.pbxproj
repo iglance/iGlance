@@ -68,6 +68,7 @@
 		B4CFC47923FC3A3B00A0ED15 /* FanMenuBarItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = B4CFC47823FC3A3B00A0ED15 /* FanMenuBarItem.swift */; };
 		B4D82FDC23C1031800D502FF /* DiskInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = B4D82FDB23C1031800D502FF /* DiskInfo.swift */; };
 		B4D86E1B23AA710B00671B52 /* MainViewViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B4D86E1A23AA710B00671B52 /* MainViewViewController.swift */; };
+		B4DD2C2F24A7B26E003AC30A /* iGlanceUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = B4DD2C2E24A7B26E003AC30A /* iGlanceUITests.swift */; };
 		B4DE725F23C257610001CF46 /* Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = B4DE725E23C257610001CF46 /* Extensions.swift */; };
 		B4DE728023C2644A0001CF46 /* BatteryInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = B4DE727F23C2644A0001CF46 /* BatteryInfo.swift */; };
 		B4E909112427B33F00260479 /* BatteryMenuBarItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = B4E909102427B33F00260479 /* BatteryMenuBarItem.swift */; };
@@ -80,6 +81,16 @@
 		B4FE0DB323EF210500AE94E6 /* Graph.swift in Sources */ = {isa = PBXBuildFile; fileRef = B4FE0DB223EF210500AE94E6 /* Graph.swift */; };
 		DAB005682437C70F00E737DD /* DiskUsageMenuBarItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = DAB005672437C70F00E737DD /* DiskUsageMenuBarItem.swift */; };
 /* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		B4DD2C3124A7B26E003AC30A /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = B46789AA23A69ECA00CE572D /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = B46789B123A69ECA00CE572D;
+			remoteInfo = iGlance;
+		};
+/* End PBXContainerItemProxy section */
 
 /* Begin PBXCopyFilesBuildPhase section */
 		B4DE727523C25F8C0001CF46 /* Embed Frameworks */ = {
@@ -165,6 +176,9 @@
 		B4CFC47823FC3A3B00A0ED15 /* FanMenuBarItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FanMenuBarItem.swift; sourceTree = "<group>"; };
 		B4D82FDB23C1031800D502FF /* DiskInfo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DiskInfo.swift; sourceTree = "<group>"; };
 		B4D86E1A23AA710B00671B52 /* MainViewViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainViewViewController.swift; sourceTree = "<group>"; };
+		B4DD2C2C24A7B26E003AC30A /* iGlanceUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = iGlanceUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		B4DD2C2E24A7B26E003AC30A /* iGlanceUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = iGlanceUITests.swift; sourceTree = "<group>"; };
+		B4DD2C3024A7B26E003AC30A /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		B4DE725E23C257610001CF46 /* Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Extensions.swift; sourceTree = "<group>"; };
 		B4DE727F23C2644A0001CF46 /* BatteryInfo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BatteryInfo.swift; sourceTree = "<group>"; };
 		B4E909102427B33F00260479 /* BatteryMenuBarItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BatteryMenuBarItem.swift; sourceTree = "<group>"; };
@@ -189,6 +203,13 @@
 				B49B4EC524841CC200613454 /* LaunchAtLogin.framework in Frameworks */,
 				B49CDFF823E1E1950070D664 /* SMCKit.framework in Frameworks */,
 				6CA197EE9972523C071FC0F4 /* Pods_iGlance.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		B4DD2C2924A7B26E003AC30A /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -338,6 +359,7 @@
 			children = (
 				B4060E3023C4FAE200CD945E /* Shared */,
 				B46789B423A69ECA00CE572D /* iGlance */,
+				B4DD2C2D24A7B26E003AC30A /* iGlanceUITests */,
 				B46789B323A69ECA00CE572D /* Products */,
 				AAAB1F73870D1085E1944A64 /* Frameworks */,
 				9D3086A356E951C4DE7FB730 /* Pods */,
@@ -348,6 +370,7 @@
 			isa = PBXGroup;
 			children = (
 				B46789B223A69ECA00CE572D /* iGlance.app */,
+				B4DD2C2C24A7B26E003AC30A /* iGlanceUITests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -430,6 +453,15 @@
 			path = MainViews;
 			sourceTree = "<group>";
 		};
+		B4DD2C2D24A7B26E003AC30A /* iGlanceUITests */ = {
+			isa = PBXGroup;
+			children = (
+				B4DD2C2E24A7B26E003AC30A /* iGlanceUITests.swift */,
+				B4DD2C3024A7B26E003AC30A /* Info.plist */,
+			);
+			path = iGlanceUITests;
+			sourceTree = "<group>";
+		};
 		B4FE0DAD23EF1BCB00AE94E6 /* Utils */ = {
 			isa = PBXGroup;
 			children = (
@@ -465,6 +497,24 @@
 			productReference = B46789B223A69ECA00CE572D /* iGlance.app */;
 			productType = "com.apple.product-type.application";
 		};
+		B4DD2C2B24A7B26E003AC30A /* iGlanceUITests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = B4DD2C3324A7B26E003AC30A /* Build configuration list for PBXNativeTarget "iGlanceUITests" */;
+			buildPhases = (
+				B4DD2C2824A7B26E003AC30A /* Sources */,
+				B4DD2C2924A7B26E003AC30A /* Frameworks */,
+				B4DD2C2A24A7B26E003AC30A /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				B4DD2C3224A7B26E003AC30A /* PBXTargetDependency */,
+			);
+			name = iGlanceUITests;
+			productName = iGlanceUITests;
+			productReference = B4DD2C2C24A7B26E003AC30A /* iGlanceUITests.xctest */;
+			productType = "com.apple.product-type.bundle.ui-testing";
+		};
 /* End PBXNativeTarget section */
 
 /* Begin PBXProject section */
@@ -477,6 +527,10 @@
 				TargetAttributes = {
 					B46789B123A69ECA00CE572D = {
 						CreatedOnToolsVersion = 11.3;
+					};
+					B4DD2C2B24A7B26E003AC30A = {
+						CreatedOnToolsVersion = 11.5;
+						TestTargetID = B46789B123A69ECA00CE572D;
 					};
 				};
 			};
@@ -494,6 +548,7 @@
 			projectRoot = "";
 			targets = (
 				B46789B123A69ECA00CE572D /* iGlance */,
+				B4DD2C2B24A7B26E003AC30A /* iGlanceUITests */,
 			);
 		};
 /* End PBXProject section */
@@ -509,6 +564,13 @@
 				B4A0D378242E5F6600690098 /* NetworkStatisticsMenuView.xib in Resources */,
 				B44D507123C8F1030071609E /* Credits.plist in Resources */,
 				B41F6D5F23C8DE240046D637 /* PreferenceWindow.storyboard in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		B4DD2C2A24A7B26E003AC30A /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -656,7 +718,23 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		B4DD2C2824A7B26E003AC30A /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				B4DD2C2F24A7B26E003AC30A /* iGlanceUITests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		B4DD2C3224A7B26E003AC30A /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = B46789B123A69ECA00CE572D /* iGlance */;
+			targetProxy = B4DD2C3124A7B26E003AC30A /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
 
 /* Begin PBXVariantGroup section */
 		B46789BB23A69ECB00CE572D /* Main.storyboard */ = {
@@ -843,6 +921,46 @@
 			};
 			name = Release;
 		};
+		B4DD2C3424A7B26E003AC30A /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_STYLE = Automatic;
+				COMBINE_HIDPI_IMAGES = YES;
+				DEVELOPMENT_TEAM = J6GXEPK4NG;
+				INFOPLIST_FILE = iGlanceUITests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/../Frameworks",
+					"@loader_path/../Frameworks",
+				);
+				MACOSX_DEPLOYMENT_TARGET = 10.15;
+				PRODUCT_BUNDLE_IDENTIFIER = io.github.DomiH.iGlanceUITests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 5.0;
+				TEST_TARGET_NAME = iGlance;
+			};
+			name = Debug;
+		};
+		B4DD2C3524A7B26E003AC30A /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_STYLE = Automatic;
+				COMBINE_HIDPI_IMAGES = YES;
+				DEVELOPMENT_TEAM = J6GXEPK4NG;
+				INFOPLIST_FILE = iGlanceUITests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/../Frameworks",
+					"@loader_path/../Frameworks",
+				);
+				MACOSX_DEPLOYMENT_TARGET = 10.15;
+				PRODUCT_BUNDLE_IDENTIFIER = io.github.DomiH.iGlanceUITests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 5.0;
+				TEST_TARGET_NAME = iGlance;
+			};
+			name = Release;
+		};
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
@@ -860,6 +978,15 @@
 			buildConfigurations = (
 				B46789D923A69ECB00CE572D /* Debug */,
 				B46789DA23A69ECB00CE572D /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		B4DD2C3324A7B26E003AC30A /* Build configuration list for PBXNativeTarget "iGlanceUITests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				B4DD2C3424A7B26E003AC30A /* Debug */,
+				B4DD2C3524A7B26E003AC30A /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
