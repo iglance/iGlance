@@ -87,6 +87,10 @@ class SidebarButtonView: NSView {
         }
     }
 
+    override func isAccessibilityElement() -> Bool {
+        true
+    }
+
     // MARK: -
     // MARK: Private Functions
 

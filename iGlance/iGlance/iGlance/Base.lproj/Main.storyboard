@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.Cocoa.Storyboard.XIB" version="3.0" toolsVersion="15705" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES">
+<document type="com.apple.InterfaceBuilder3.Cocoa.Storyboard.XIB" version="3.0" toolsVersion="16097" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES">
     <dependencies>
         <deployment identifier="macosx"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="15705"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="16097"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
@@ -1514,6 +1514,7 @@
                                                             <constraint firstAttribute="width" constant="200" id="Zzm-Og-yyd"/>
                                                             <constraint firstAttribute="height" constant="50" id="cLB-ct-Q6u"/>
                                                         </constraints>
+                                                        <accessibility description="DashboardSidebarButton" identifier="DashboardSidebarButton"/>
                                                     </customView>
                                                     <customView identifier="CpuButtonView" translatesAutoresizingMaskIntoConstraints="NO" id="OP2-O2-OCg" userLabel="Cpu Button View" customClass="SidebarButtonView" customModule="iGlance" customModuleProvider="target">
                                                         <rect key="frame" x="0.0" y="240" width="200" height="50"/>
@@ -1553,6 +1554,7 @@
                                                             <constraint firstAttribute="width" constant="200" id="JE3-Ib-Hv4"/>
                                                             <constraint firstAttribute="height" constant="50" id="hMf-Dt-RTc"/>
                                                         </constraints>
+                                                        <accessibility description="CpuSidebarButton" identifier="CpuSidebarButton"/>
                                                     </customView>
                                                     <customView identifier="MemoryButtonView" translatesAutoresizingMaskIntoConstraints="NO" id="Wve-Ay-nHh" userLabel="Memory Button View" customClass="SidebarButtonView" customModule="iGlance" customModuleProvider="target">
                                                         <rect key="frame" x="0.0" y="192" width="200" height="50"/>
@@ -1592,6 +1594,7 @@
                                                             <constraint firstAttribute="height" constant="50" id="Hjy-ab-o7r"/>
                                                             <constraint firstAttribute="width" constant="200" id="sfe-hv-asp"/>
                                                         </constraints>
+                                                        <accessibility description="MemorySidebarButton" identifier="MemorySidebarButton"/>
                                                     </customView>
                                                     <customView identifier="NetworkButtonView" translatesAutoresizingMaskIntoConstraints="NO" id="23y-oU-wVB" userLabel="Network Button View" customClass="SidebarButtonView" customModule="iGlance" customModuleProvider="target">
                                                         <rect key="frame" x="0.0" y="144" width="200" height="50"/>
@@ -1631,6 +1634,7 @@
                                                             <constraint firstAttribute="height" constant="50" id="BTA-1g-rh9"/>
                                                             <constraint firstAttribute="width" constant="200" id="hbX-NG-ND0"/>
                                                         </constraints>
+                                                        <accessibility description="NetworkSidebarButton" identifier="NetworkSidebarButton"/>
                                                     </customView>
                                                     <customView identifier="FanButtonView" translatesAutoresizingMaskIntoConstraints="NO" id="Bat-cd-Dzk" userLabel="Fan Button View" customClass="SidebarButtonView" customModule="iGlance" customModuleProvider="target">
                                                         <rect key="frame" x="0.0" y="96" width="200" height="50"/>
@@ -1670,6 +1674,7 @@
                                                             <constraint firstAttribute="width" constant="200" id="7Q9-qD-4hb"/>
                                                             <constraint firstAttribute="height" constant="50" id="8RL-Yt-fPX"/>
                                                         </constraints>
+                                                        <accessibility description="FanSidebarButton" identifier="FanSidebarButton"/>
                                                     </customView>
                                                     <customView identifier="BatteryButtonView" translatesAutoresizingMaskIntoConstraints="NO" id="foz-Uh-7R0" userLabel="Battery Button View" customClass="SidebarButtonView" customModule="iGlance" customModuleProvider="target">
                                                         <rect key="frame" x="0.0" y="48" width="200" height="50"/>
@@ -1709,6 +1714,7 @@
                                                             <constraint firstAttribute="width" constant="200" id="iJJ-X5-sNd"/>
                                                             <constraint firstAttribute="height" constant="50" id="z6Z-9h-xDA"/>
                                                         </constraints>
+                                                        <accessibility description="BatterySidebarButton" identifier="BatterySidebarButton"/>
                                                     </customView>
                                                     <customView identifier="DiskButtonView" translatesAutoresizingMaskIntoConstraints="NO" id="3B3-B1-vJk" userLabel="Battery Button View" customClass="SidebarButtonView" customModule="iGlance" customModuleProvider="target">
                                                         <rect key="frame" x="0.0" y="0.0" width="200" height="50"/>
@@ -1748,6 +1754,7 @@
                                                             <constraint firstAttribute="width" constant="200" id="VAg-Db-zX5"/>
                                                             <constraint firstAttribute="height" constant="50" id="VsM-fW-1kV"/>
                                                         </constraints>
+                                                        <accessibility description="DiskSidebarButton" identifier="DiskSidebarButton"/>
                                                     </customView>
                                                 </subviews>
                                                 <visibilityPriorities>
@@ -1812,6 +1819,7 @@
                             <constraint firstItem="ADV-Ef-jdA" firstAttribute="leading" secondItem="3gi-0a-GRD" secondAttribute="leading" id="fWH-Bf-KB0"/>
                             <constraint firstItem="ADV-Ef-jdA" firstAttribute="top" secondItem="3gi-0a-GRD" secondAttribute="top" id="n2Y-Ld-kxc"/>
                         </constraints>
+                        <accessibility description="Sidebar"/>
                     </view>
                     <connections>
                         <outlet property="logoImage" destination="taj-99-r9F" id="vQJ-vo-JI4"/>

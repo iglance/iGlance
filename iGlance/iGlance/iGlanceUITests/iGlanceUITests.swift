@@ -23,21 +23,48 @@ class iGlanceUITests: XCTestCase {
         // Put teardown code here. This method is called after the invocation of each test method in the class.
     }
 
-    func testExample() throws {
-        // UI tests must launch the application that they test.
+    func testSidebarButtons() throws {
         let app = XCUIApplication()
         app.launch()
 
-        // Use recording to get started writing UI tests.
-        // Use XCTAssert and related functions to verify your tests produce the correct results.
+        openMainWindow(app: app)
+
+        let iglanceWindow = app.windows["iGlance"]
+        iglanceWindow.otherElements["CpuSidebarButton"].click()
+        iglanceWindow.otherElements["MemorySidebarButton"].click()
+        iglanceWindow.otherElements["NetworkSidebarButton"].click()
+        iglanceWindow.otherElements["FanSidebarButton"].click()
+        iglanceWindow.otherElements["BatterySidebarButton"].click()
+        iglanceWindow.otherElements["DiskSidebarButton"].click()
+        iglanceWindow.buttons[XCUIIdentifierCloseWindow].click()
     }
 
-    func testLaunchPerformance() throws {
-        if #available(macOS 10.15, iOS 13.0, tvOS 13.0, *) {
-            // This measures how long it takes to launch your application.
-            measure(metrics: [XCTOSSignpostMetric.applicationLaunch]) {
-                XCUIApplication().launch()
-            }
+    // MARK: Private Functions
+    // MARK: -
+
+    private func openMainWindow(app: XCUIApplication) {
+        // check if the window is already open
+        // swiftlint:disable:next empty_count
+        if app.windows.count > 0 {
+            return
         }
+
+        var foundActiveMenuBarIcon = false
+        var index = 0
+        var activeMenuBarItem: XCUIElement!
+        while !foundActiveMenuBarIcon {
+            activeMenuBarItem = app
+            .children(matching: .menuBar)
+            .element(boundBy: 1)
+            .children(matching: .statusItem)
+            .element(boundBy: index)
+
+            foundActiveMenuBarIcon = activeMenuBarItem.isEnabled
+
+            index += 1
+        }
+
+        activeMenuBarItem.click()
+        app.menuBars/*@START_MENU_TOKEN@*/.menuItems["showMainWindow"]/*[[".statusItems",".menus",".menuItems[\"Show window\"]",".menuItems[\"showMainWindow\"]"],[[[-1,3],[-1,2],[-1,1,2],[-1,0,1]],[[-1,3],[-1,2],[-1,1,2]],[[-1,3],[-1,2]]],[0]]@END_MENU_TOKEN@*/.click()
     }
 }
