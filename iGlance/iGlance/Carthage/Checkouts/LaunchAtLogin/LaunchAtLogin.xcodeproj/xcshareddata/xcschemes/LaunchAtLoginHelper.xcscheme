@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <Scheme
-   LastUpgradeVersion = "1140"
+   LastUpgradeVersion = "1020"
    version = "1.3">
    <BuildAction
       parallelizeBuildables = "YES"
@@ -14,10 +14,10 @@
             buildForAnalyzing = "YES">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "B46789B123A69ECA00CE572D"
-               BuildableName = "iGlance.app"
-               BlueprintName = "iGlance"
-               ReferencedContainer = "container:iGlance.xcodeproj">
+               BlueprintIdentifier = "E32E9B731EB87EA3000FEEE9"
+               BuildableName = "LaunchAtLoginHelper.app"
+               BlueprintName = "LaunchAtLoginHelper"
+               ReferencedContainer = "container:LaunchAtLogin.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>
       </BuildActionEntries>
@@ -29,6 +29,17 @@
       shouldUseLaunchSchemeArgsEnv = "YES">
       <Testables>
       </Testables>
+      <MacroExpansion>
+         <BuildableReference
+            BuildableIdentifier = "primary"
+            BlueprintIdentifier = "E32E9B731EB87EA3000FEEE9"
+            BuildableName = "LaunchAtLoginHelper.app"
+            BlueprintName = "LaunchAtLoginHelper"
+            ReferencedContainer = "container:LaunchAtLogin.xcodeproj">
+         </BuildableReference>
+      </MacroExpansion>
+      <AdditionalOptions>
+      </AdditionalOptions>
    </TestAction>
    <LaunchAction
       buildConfiguration = "Debug"
@@ -44,12 +55,14 @@
          runnableDebuggingMode = "0">
          <BuildableReference
             BuildableIdentifier = "primary"
-            BlueprintIdentifier = "B46789B123A69ECA00CE572D"
-            BuildableName = "iGlance.app"
-            BlueprintName = "iGlance"
-            ReferencedContainer = "container:iGlance.xcodeproj">
+            BlueprintIdentifier = "E32E9B731EB87EA3000FEEE9"
+            BuildableName = "LaunchAtLoginHelper.app"
+            BlueprintName = "LaunchAtLoginHelper"
+            ReferencedContainer = "container:LaunchAtLogin.xcodeproj">
          </BuildableReference>
       </BuildableProductRunnable>
+      <AdditionalOptions>
+      </AdditionalOptions>
    </LaunchAction>
    <ProfileAction
       buildConfiguration = "Release"
@@ -61,10 +74,10 @@
          runnableDebuggingMode = "0">
          <BuildableReference
             BuildableIdentifier = "primary"
-            BlueprintIdentifier = "B46789B123A69ECA00CE572D"
-            BuildableName = "iGlance.app"
-            BlueprintName = "iGlance"
-            ReferencedContainer = "container:iGlance.xcodeproj">
+            BlueprintIdentifier = "E32E9B731EB87EA3000FEEE9"
+            BuildableName = "LaunchAtLoginHelper.app"
+            BlueprintName = "LaunchAtLoginHelper"
+            ReferencedContainer = "container:LaunchAtLogin.xcodeproj">
          </BuildableReference>
       </BuildableProductRunnable>
    </ProfileAction>

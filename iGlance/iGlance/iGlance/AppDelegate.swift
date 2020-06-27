@@ -57,9 +57,6 @@ class AppDelegate: NSObject, NSApplicationDelegate {
     }
 
     func applicationDidFinishLaunching(_ notification: Notification) {
-        // kill the launcher app
-        killLauncherApplication()
-
         DDLogInfo("iGlance did launch")
 
         // check whether the app has to be moved into the applications folder
@@ -91,11 +88,6 @@ class AppDelegate: NSObject, NSApplicationDelegate {
 
         // return false to prevent a relaunch of the app
         return false
-    }
-
-    func applicationWillTerminate(_ notification: Notification) {
-        // kill the launcher app if it is still running
-        killLauncherApplication()
     }
 
     /**
@@ -171,7 +163,6 @@ class AppDelegate: NSObject, NSApplicationDelegate {
         AppDelegate.userSettings.importUserSettings()
         self.updateGUIofCurrentMainView()
         logger.updateLogSettings()
-        Autostart.updateAutostartOnBoot()
     }
 
     /**
@@ -181,7 +172,6 @@ class AppDelegate: NSObject, NSApplicationDelegate {
         AppDelegate.userSettings.resetUserSettings()
         self.updateGUIofCurrentMainView()
         logger.updateLogSettings()
-        Autostart.updateAutostartOnBoot()
     }
 
     /**
@@ -189,34 +179,6 @@ class AppDelegate: NSObject, NSApplicationDelegate {
     */
     @IBAction private func showPreferenceWindow(sender: AnyObject) {
         self.showPreferenceWindow()
-    }
-
-    // MARK: -
-    // MARK: Private Functions
-
-    /**
-     * Kills the iGlanceLauncher application.
-     */
-    private func killLauncherApplication() {
-        // get all currently running apps
-        let runningApps = NSWorkspace.shared.runningApplications
-        // check if the launcher is already running
-        // swiftlint:disable:next contains_over_filter_is_empty
-        let launcherIsRunning = !runningApps.filter {
-            $0.bundleIdentifier == LAUNCHER_BUNDLE_IDENTIFIER
-        }.isEmpty
-
-        if launcherIsRunning {
-            DDLogInfo("iGlance Launcher is running")
-            guard let mainAppBundleIdentifier = Bundle.main.bundleIdentifier else {
-                DDLogError("Could not retrieve the main bundle identifier")
-                return
-            }
-
-            // if the launcher application is running terminate it
-            DistributedNotificationCenter.default().post(name: .killLauncher, object: mainAppBundleIdentifier)
-            DDLogInfo("Sent notification to kill the launcher")
-        }
     }
 
     // MARK: -
