@@ -26,7 +26,7 @@ class MemoryUsageMenuBarItem: MenuBarItem {
         super.init()
 
         // add the menu entries
-        menuItems.append(contentsOf: [activeMemoryMenuEntry, compressedMemoryMenuEntry, wiredMemoryMenuEntry, freeMemoryMenuEntry, NSMenuItem.separator()])
+        menuItems.append(contentsOf: [appMemoryMenuEntry, cachedFilesMemoryMenuEntry, activeMemoryMenuEntry, compressedMemoryMenuEntry, wiredMemoryMenuEntry, freeMemoryMenuEntry, NSMenuItem.separator()])
     }
 
     // MARK: -
@@ -38,6 +38,8 @@ class MemoryUsageMenuBarItem: MenuBarItem {
     // MARK: -
     // MARK: Private Variables
 
+    private let appMemoryMenuEntry = NSMenuItem(title: "App Memory: \t N/A", action: nil, keyEquivalent: "")
+    private let cachedFilesMemoryMenuEntry = NSMenuItem(title: "Cached Files: \t N/A", action: nil, keyEquivalent: "")
     private let activeMemoryMenuEntry = NSMenuItem(title: "Active: \t\t\t N/A", action: nil, keyEquivalent: "")
     private let compressedMemoryMenuEntry = NSMenuItem(title: "Compressed: \t N/A", action: nil, keyEquivalent: "")
     private let wiredMemoryMenuEntry = NSMenuItem(title: "Wired: \t\t\t N/A", action: nil, keyEquivalent: "")
@@ -62,13 +64,15 @@ class MemoryUsageMenuBarItem: MenuBarItem {
     /**
      * Updates the icon of the menu bar item. This function is called during every update interval.
      */
-    private func updateMenuBarIcon(memoryUsage: (free: Double, active: Double, inactive: Double, wired: Double, compressed: Double)) {
+    private func updateMenuBarIcon(
+        memoryUsage: (free: Double, active: Double, inactive: Double, wired: Double, compressed: Double, appMemory: Double, cachedFiles: Double)
+    ) {
         guard let button = self.statusItem.button else {
             DDLogError("Could not retrieve the button of the 'MemoryUsageMenuBarItem'")
             return
         }
 
-        let totalUsage = memoryUsage.active + memoryUsage.compressed + memoryUsage.wired
+        let totalUsage = Double(memoryUsage.active + memoryUsage.compressed + memoryUsage.wired)
 
         // get all the necessary settings
         let graphColor = AppDelegate.userSettings.settings.memory.usageGraphColor.nsColor
@@ -76,23 +80,27 @@ class MemoryUsageMenuBarItem: MenuBarItem {
         let drawBorder = AppDelegate.userSettings.settings.memory.showUsageGraphBorder
 
         if AppDelegate.userSettings.settings.memory.usageGraphKind == .bar {
-            button.image = self.barGraph.getImage(currentValue: Double(totalUsage), graphColor: graphColor, drawBorder: drawBorder, gradientColor: gradientColor)
+            button.image = self.barGraph.getImage(currentValue: totalUsage, graphColor: graphColor, drawBorder: drawBorder, gradientColor: gradientColor)
         } else {
-            button.image = self.lineGraph.getImage(currentValue: Double(totalUsage), graphColor: graphColor, drawBorder: drawBorder, gradientColor: gradientColor)
+            button.image = self.lineGraph.getImage(currentValue: totalUsage, graphColor: graphColor, drawBorder: drawBorder, gradientColor: gradientColor)
         }
 
         // add the value to the line graph history
         // this allows us to draw the resent history when the user switches to the line graph
-        self.lineGraph.addValue(value: Double(totalUsage))
+        self.lineGraph.addValue(value: totalUsage)
     }
 
     /**
      * Updates the menu of the menu bar item. This function is called during every update interval.
      */
-    private func updateMenuBarMenu(memoryUsage: (free: Double, active: Double, inactive: Double, wired: Double, compressed: Double)) {
+    private func updateMenuBarMenu(
+        memoryUsage: (free: Double, active: Double, inactive: Double, wired: Double, compressed: Double, appMemory: Double, cachedFiles: Double)
+    ) {
+        appMemoryMenuEntry.title = "App Memory: \t \(String(format: "%.2f", memoryUsage.appMemory)) GB"
+        cachedFilesMemoryMenuEntry.title = "Cached Files: \t \(String(format: "%.2f", memoryUsage.cachedFiles)) GB"
         activeMemoryMenuEntry.title = "Active: \t\t\t \(String(format: "%.2f", memoryUsage.active)) GB"
         wiredMemoryMenuEntry.title = "Wired: \t\t\t \(String(format: "%.2f", memoryUsage.wired)) GB"
         compressedMemoryMenuEntry.title = "Compressed: \t \(String(format: "%.2f", memoryUsage.compressed)) GB"
-        freeMemoryMenuEntry.title = "Free: \t\t\t \(String(format: "%.2f", memoryUsage.free + memoryUsage.inactive)) GB"
+        freeMemoryMenuEntry.title = "Free: \t\t\t \(String(format: "%.2f", memoryUsage.free)) GB"
     }
 }

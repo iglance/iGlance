@@ -64,8 +64,11 @@ class BarGraph: Graph {
      * Returns the bar graph image for the menu bar.
      */
     func getImage(currentValue: Double, graphColor: NSColor, drawBorder: Bool, gradientColor: NSColor?) -> NSImage {
+        // get the rounded bar height
+        var barHeight = Double((maxBarHeight / self.maxValue) * currentValue)
+        barHeight = Double(round(barHeight * 100) / 100)
         // check whether we need to redraw the graph
-        let key = Key(value: currentValue, isDarkTheme: ThemeManager.isDarkTheme())
+        let key = Key(value: barHeight, isDarkTheme: ThemeManager.isDarkTheme())
 
         if imageCache[key] != nil {
             DDLogInfo("Using image from cache")
@@ -114,7 +117,9 @@ class BarGraph: Graph {
         image.lockFocus()
 
         // get the height of the bar
-        let barHeight = Double((maxBarHeight / self.maxValue) * currentValue)
+        var barHeight = Double((maxBarHeight / self.maxValue) * currentValue)
+        // round the height to two decimal places
+        barHeight = Double(round(barHeight * 100) / 100)
 
         // draw the gradient if necessary
         if gradientColor != nil {
