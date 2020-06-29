@@ -131,5 +131,20 @@
                 <enclosure url="https://raw.githubusercontent.com/iglance/iGlance/master/Sparkle/updates/iGlance2.0.8-2.0.2.delta" sparkle:version="2.0.8" sparkle:shortVersionString="2.0.8" sparkle:deltaFrom="2.0.2" length="880775" type="application/octet-stream" sparkle:edSignature="fYN0P01VcmWK0w583psJn7kM55kZipbjsdKWg2dbLrn0mIYGwgKT8Iggxtul5CRZO7uRR+JYeCZQBxXG6VkQCw=="/>
             </sparkle:deltas>
         </item>
+        <item>
+            <title>2.0.9</title>
+            <pubDate>Mon, 29 Jun 2020 17:32:13 +0200</pubDate>
+            <sparkle:releaseNotesLink>
+                https://iglance.github.io/release-notes.html
+            </sparkle:releaseNotesLink>
+            <sparkle:minimumSystemVersion>10.12</sparkle:minimumSystemVersion>
+            <enclosure url="https://github.com/iglance/iGlance/releases/download/v2.0.8/iGlance_v2.0.9.zip" sparkle:version="2.0.9" sparkle:shortVersionString="2.0.9" length="9612244" type="application/octet-stream" sparkle:edSignature="JCvnhPbIDHYxzjd5V3LMYQvvbZBNzwVJrQA5yoT2IKaNJfUMjIO/prh0po+vEB/D6hLBWfv2DWbvsquKMQm1Cw=="/>
+            <sparkle:deltas>
+                <enclosure url="https://raw.githubusercontent.com/iglance/iGlance/master/Sparkle/updates/iGlance2.0.9-2.0.8.delta" sparkle:version="2.0.9" sparkle:shortVersionString="2.0.9" sparkle:deltaFrom="2.0.8" length="3179688" type="application/octet-stream" sparkle:edSignature="wR159OeIxJ6+AlUE5MaOwkRiK8oTAINiE30DD84Fx8xWWYUyl+/iRwvAXQRPOop8RupViNta8wcXAkwLh1rdCQ=="/>
+                <enclosure url="https://raw.githubusercontent.com/iglance/iGlance/master/Sparkle/updates/iGlance2.0.9-2.0.7.delta" sparkle:version="2.0.9" sparkle:shortVersionString="2.0.9" sparkle:deltaFrom="2.0.7" length="3729106" type="application/octet-stream" sparkle:edSignature="KnSYIKWcTv61O67pjB8d/XO+XG27VHE9wdbXDOiuLvYuoi7G2BiUJEpSnhlE6xlP0CieafU1NLwbvuOIAHZRDw=="/>
+                <enclosure url="https://raw.githubusercontent.com/iglance/iGlance/master/Sparkle/updates/iGlance2.0.9-2.0.6.delta" sparkle:version="2.0.9" sparkle:shortVersionString="2.0.9" sparkle:deltaFrom="2.0.6" length="3735596" type="application/octet-stream" sparkle:edSignature="ftaAhctr2rINMgiF2eFQpUJ1uPO43IWedhKa71p0Tjm1NdbCtEyioVj5czrLRIJskM9IgFBDGJ99yPZkwJYBAQ=="/>
+                <enclosure url="https://raw.githubusercontent.com/iglance/iGlance/master/Sparkle/updates/iGlance2.0.9-2.0.5.delta" sparkle:version="2.0.9" sparkle:shortVersionString="2.0.9" sparkle:deltaFrom="2.0.5" length="3743574" type="application/octet-stream" sparkle:edSignature="31HWoENf9fRYj3F+W0oiq9jBDuOt/f46svCxQJS8As9KAmmoPW6mo0X93OLfyBYzhKXTxPNpauuBaMHuRLNWAQ=="/>
+            </sparkle:deltas>
+        </item>
     </channel>
 </rss>
