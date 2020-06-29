@@ -30,13 +30,49 @@ class iGlanceUITests: XCTestCase {
         openMainWindow(app: app)
 
         let iglanceWindow = app.windows["iGlance"]
-        iglanceWindow.otherElements["CpuSidebarButton"].click()
+
+        var mainView = iglanceWindow.otherElements["DashboardMainView"].waitForExistence(timeout: 5)
+        XCTAssert(mainView)
+
+        var sidebarButton = iglanceWindow.otherElements["CpuSidebarButton"]
+        sidebarButton.click()
+        
+        mainView = iglanceWindow.otherElements["CpuMainView"].waitForExistence(timeout: 5)
+        XCTAssert(mainView)
+
         iglanceWindow.otherElements["MemorySidebarButton"].click()
+        mainView = iglanceWindow.otherElements["MemoryMainView"].waitForExistence(timeout: 5)
+        XCTAssert(mainView)
+
         iglanceWindow.otherElements["NetworkSidebarButton"].click()
+        mainView = iglanceWindow.otherElements["NetworkMainView"].waitForExistence(timeout: 5)
+        XCTAssert(mainView)
+
         iglanceWindow.otherElements["FanSidebarButton"].click()
+        mainView = iglanceWindow.otherElements["FanMainView"].waitForExistence(timeout: 5)
+        XCTAssert(mainView)
+
         iglanceWindow.otherElements["BatterySidebarButton"].click()
+        mainView = iglanceWindow.otherElements["BatteryMainView"].waitForExistence(timeout: 5)
+        XCTAssert(mainView)
+
         iglanceWindow.otherElements["DiskSidebarButton"].click()
+        mainView = iglanceWindow.otherElements["DiskMainView"].waitForExistence(timeout: 5)
+        XCTAssert(mainView)
+
         iglanceWindow.buttons[XCUIIdentifierCloseWindow].click()
+    }
+
+    func testPreferenceWindow() throws {
+        let app = XCUIApplication()
+        app.launch()
+
+        openMainWindow(app: app)
+
+        print("test")
+
+        app.windows["iGlance"].children(matching: .button).element(boundBy: 0).click()
+        app.dialogs["Preference Modal View Controller"].buttons[XCUIIdentifierCloseWindow].click()
     }
 
     // MARK: Private Functions

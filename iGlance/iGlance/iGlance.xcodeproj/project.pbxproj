@@ -24,6 +24,7 @@
 		B43ABF2823AA1E99007F93BA /* SidebarButtonView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B43ABF2723AA1E99007F93BA /* SidebarButtonView.swift */; };
 		B43ABF2A23AA32FA007F93BA /* SidebarViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B43ABF2923AA32FA007F93BA /* SidebarViewController.swift */; };
 		B43ABF2C23AA3729007F93BA /* MainWindowController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B43ABF2B23AA3729007F93BA /* MainWindowController.swift */; };
+		B43D3A3B24AA506B00ACA966 /* MainViewView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B43D3A3A24AA506B00ACA966 /* MainViewView.swift */; };
 		B43E111323C3AF36000D58CF /* PreferenceModalViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B43E111223C3AF36000D58CF /* PreferenceModalViewController.swift */; };
 		B44D507123C8F1030071609E /* Credits.plist in Resources */ = {isa = PBXBuildFile; fileRef = B44D507023C8F1030071609E /* Credits.plist */; };
 		B4514DEE23F1898800C18E44 /* Queue.swift in Sources */ = {isa = PBXBuildFile; fileRef = B4514DED23F1898800C18E44 /* Queue.swift */; };
@@ -132,6 +133,7 @@
 		B43ABF2723AA1E99007F93BA /* SidebarButtonView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SidebarButtonView.swift; sourceTree = "<group>"; };
 		B43ABF2923AA32FA007F93BA /* SidebarViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SidebarViewController.swift; sourceTree = "<group>"; };
 		B43ABF2B23AA3729007F93BA /* MainWindowController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainWindowController.swift; sourceTree = "<group>"; };
+		B43D3A3A24AA506B00ACA966 /* MainViewView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainViewView.swift; sourceTree = "<group>"; };
 		B43E111223C3AF36000D58CF /* PreferenceModalViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PreferenceModalViewController.swift; sourceTree = "<group>"; };
 		B44D507023C8F1030071609E /* Credits.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Credits.plist; sourceTree = "<group>"; };
 		B4514DED23F1898800C18E44 /* Queue.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Queue.swift; sourceTree = "<group>"; };
@@ -442,6 +444,7 @@
 			isa = PBXGroup;
 			children = (
 				B4D86E1A23AA710B00671B52 /* MainViewViewController.swift */,
+				B43D3A3A24AA506B00ACA966 /* MainViewView.swift */,
 				B47D3C8B23ABEDCC00DE911F /* DashboardView */,
 				B459D29023E4A80800E6CC67 /* CpuViewController.swift */,
 				B415FF2623F459EF00ED6567 /* MemoryViewController.swift */,
@@ -674,6 +677,7 @@
 				B43ABF2C23AA3729007F93BA /* MainWindowController.swift in Sources */,
 				274CA92A244ED22600BD8163 /* DiskViewController.swift in Sources */,
 				B47094EA23C79F9A009D85AD /* ThemedLabel.swift in Sources */,
+				B43D3A3B24AA506B00ACA966 /* MainViewView.swift in Sources */,
 				B4D82FDC23C1031800D502FF /* DiskInfo.swift in Sources */,
 				B452554B23E358E7000F79BF /* MenuBarItem.swift in Sources */,
 				B4C8DD2523AA3DB8008DAE45 /* ContentManagerView.swift in Sources */,
