@@ -45,14 +45,6 @@ class MainWindowViewController: NSViewController {
         NSApp.setActivationPolicy(.regular)
     }
 
-    override func viewWillDisappear() {
-        // hide the dock icon of the app if at least one menu bar item is visible.
-        if AppDelegate.menuBarItemManager.menuBarItems.contains(where: { $0.statusItem.isVisible == true }) {
-            NSApp.setActivationPolicy(.accessory)
-            DDLogInfo("Hide dock icon")
-        }
-    }
-
     // MARK: -
     // MARK: Private Functions
     /**

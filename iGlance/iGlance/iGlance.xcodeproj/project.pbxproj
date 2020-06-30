@@ -64,6 +64,7 @@
 		B4C37E7023A91F3C008C7FC0 /* ThemeManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = B4C37E6F23A91F3C008C7FC0 /* ThemeManager.swift */; };
 		B4C8DD2523AA3DB8008DAE45 /* ContentManagerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B4C8DD2423AA3DB8008DAE45 /* ContentManagerView.swift */; };
 		B4C985E3244CB694002F8D3F /* Utils.swift in Sources */ = {isa = PBXBuildFile; fileRef = B4C985E2244CB694002F8D3F /* Utils.swift */; };
+		B4CC276824AB740700010C4F /* MainWindowDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = B4CC276724AB740700010C4F /* MainWindowDelegate.swift */; };
 		B4CFC47623FC393300A0ED15 /* FanViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B4CFC47523FC393300A0ED15 /* FanViewController.swift */; };
 		B4CFC47923FC3A3B00A0ED15 /* FanMenuBarItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = B4CFC47823FC3A3B00A0ED15 /* FanMenuBarItem.swift */; };
 		B4D82FDC23C1031800D502FF /* DiskInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = B4D82FDB23C1031800D502FF /* DiskInfo.swift */; };
@@ -161,6 +162,7 @@
 		B4C37E6F23A91F3C008C7FC0 /* ThemeManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ThemeManager.swift; sourceTree = "<group>"; };
 		B4C8DD2423AA3DB8008DAE45 /* ContentManagerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentManagerView.swift; sourceTree = "<group>"; };
 		B4C985E2244CB694002F8D3F /* Utils.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Utils.swift; sourceTree = "<group>"; };
+		B4CC276724AB740700010C4F /* MainWindowDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainWindowDelegate.swift; sourceTree = "<group>"; };
 		B4CFC47523FC393300A0ED15 /* FanViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FanViewController.swift; sourceTree = "<group>"; };
 		B4CFC47823FC3A3B00A0ED15 /* FanMenuBarItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FanMenuBarItem.swift; sourceTree = "<group>"; };
 		B4D82FDB23C1031800D502FF /* DiskInfo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DiskInfo.swift; sourceTree = "<group>"; };
@@ -236,6 +238,7 @@
 			children = (
 				B46789B723A69ECA00CE572D /* MainWindowViewController.swift */,
 				B43ABF2B23AA3729007F93BA /* MainWindowController.swift */,
+				B4CC276724AB740700010C4F /* MainWindowDelegate.swift */,
 				B4D86E1923AA70FD00671B52 /* MainViews */,
 				B40E946123A9436B00D63D17 /* MainViewManager */,
 				B4C37E5F23A78F4C008C7FC0 /* Sidebar */,
@@ -611,6 +614,7 @@
 				B41F6D6123C8DFC60046D637 /* AboutModalViewController.swift in Sources */,
 				B43ABF2C23AA3729007F93BA /* MainWindowController.swift in Sources */,
 				274CA92A244ED22600BD8163 /* DiskViewController.swift in Sources */,
+				B4CC276824AB740700010C4F /* MainWindowDelegate.swift in Sources */,
 				B47094EA23C79F9A009D85AD /* ThemedLabel.swift in Sources */,
 				B4D82FDC23C1031800D502FF /* DiskInfo.swift in Sources */,
 				B452554B23E358E7000F79BF /* MenuBarItem.swift in Sources */,
