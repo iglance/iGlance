@@ -49,7 +49,7 @@ We have nothing to do with an app called "iStats X: CPU & Memory" which is avail
 
 ### Version 2.1:
 
-- Import/Export Settings
+- ~~Import/Export Settings~~
 - Use database to save all the read information (for displaying graphs and to prevent reading value multiple times when changing e.g. the width of the menu bar items)
 - Add UI tests
 - Use drag and drop to arrange/add the menu bar items
@@ -69,10 +69,11 @@ There are two ways you can contribute to this project:
 
 # Credits
 
-- <a href="https://github.com/beltex">beltex</a> for providing the SMCKit and SystemKit Library
-- <a href="https://github.com/CocoaLumberjack/CocoaLumberjack">CocoaLumberjack</a> for their awesome logging framework
-- <a href="https://github.com/OskarGroth">Oskar Groth</a> for providing his AppMover framework
-- And of course all the other <a href="https://github.com/iglance/iGlance/graphs/contributors">contributors</a>.
+- [beltex](https://github.com/beltex) for providing the [SMCKit](https://github.com/beltex/SMCKit) and [SystemKit](https://github.com/beltex/SystemKit) Library
+- [CocoaLumberjack](https://github.com/CocoaLumberjack/CocoaLumberjack) for their awesome logging framework
+- [Oskar Groth](https://github.com/OskarGroth) for providing his [AppMover](https://github.com/OskarGroth/AppMover) framework
+- [Sindre Sorhus](https://github.com/sindresorhus) for providing his [LaunchAtLogin](https://github.com/sindresorhus/LaunchAtLogin) library
+- And of course all the other [contributors](https://github.com/iglance/iGlance/graphs/contributors)
 
 # License
 

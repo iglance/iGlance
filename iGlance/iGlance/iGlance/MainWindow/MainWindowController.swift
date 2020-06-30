@@ -19,7 +19,17 @@ import CocoaLumberjack
 class MainWindowController: NSWindowController {
     // MARK: -
     // MARK: Outlets
-    @IBOutlet private var mainWindow: NSWindow!
+    @IBOutlet private var mainWindow: NSWindow! {
+        didSet {
+            mainWindow.delegate = self.mainWindowDelegate
+        }
+    }
+
+    // MARK: -
+    // MARK: Instance Variables
+
+    // swiftlint:disable:next weak_delegate
+    private let mainWindowDelegate = MainWindowDelegate()
 
     override init(window: NSWindow?) {
         super.init(window: window)
