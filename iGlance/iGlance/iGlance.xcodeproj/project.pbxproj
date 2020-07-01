@@ -529,7 +529,7 @@
 			attributes = {
 				LastSwiftUpdateCheck = 1150;
 				LastUpgradeCheck = 1130;
-				ORGANIZATIONNAME = D0miH;
+				ORGANIZATIONNAME = iGlance;
 				TargetAttributes = {
 					B46789B123A69ECA00CE572D = {
 						CreatedOnToolsVersion = 11.3;

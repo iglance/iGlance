@@ -91,7 +91,7 @@ class SidebarButtonView: NSView {
      * This function is needed in order to find the accessibility identifier in the ui tests.
      */
     override func isAccessibilityElement() -> Bool {
-        return true
+        true
     }
 
     // MARK: -

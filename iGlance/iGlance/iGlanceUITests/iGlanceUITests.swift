@@ -36,7 +36,7 @@ class iGlanceUITests: XCTestCase {
 
         var sidebarButton = iglanceWindow.otherElements["CpuSidebarButton"]
         sidebarButton.click()
-        
+
         mainView = iglanceWindow.otherElements["CpuMainView"].waitForExistence(timeout: 5)
         XCTAssert(mainView)
 
@@ -68,8 +68,6 @@ class iGlanceUITests: XCTestCase {
         app.launch()
 
         openMainWindow(app: app)
-
-        print("test")
 
         app.windows["iGlance"].children(matching: .button).element(boundBy: 0).click()
         app.dialogs["Preference Modal View Controller"].buttons[XCUIIdentifierCloseWindow].click()
