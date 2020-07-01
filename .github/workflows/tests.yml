@@ -56,4 +56,4 @@ jobs:
     # Runs the linting command
     - name: run tests
       working-directory: ./iGlance
-      run: xctool -workspace iGlance.xcworkspace -scheme iGlanceUITests run-tests
+      run: xcodebuild -workspace iGlance.xcworkspace -scheme iGlanceUITests test
