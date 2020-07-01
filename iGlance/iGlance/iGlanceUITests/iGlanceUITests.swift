@@ -34,7 +34,7 @@ class iGlanceUITests: XCTestCase {
         var mainView = iglanceWindow.otherElements["DashboardMainView"].waitForExistence(timeout: 5)
         XCTAssert(mainView)
 
-        var sidebarButton = iglanceWindow.otherElements["CpuSidebarButton"]
+        let sidebarButton = iglanceWindow.otherElements["CpuSidebarButton"]
         sidebarButton.click()
 
         mainView = iglanceWindow.otherElements["CpuMainView"].waitForExistence(timeout: 5)
