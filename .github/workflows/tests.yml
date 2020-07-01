@@ -53,7 +53,12 @@ jobs:
       working-directory: ./iGlance/iGlance
       run: carthage update
 
-    # Runs the linting command
-    - name: run tests
+    # Runs the user interface tests
+    - name: run UI tests
       working-directory: ./iGlance
       run: xcodebuild test -workspace iGlance.xcworkspace -scheme iGlanceUITests -destination 'platform=OS X,arch=x86_64' CODE_SIGN_IDENTITY="" CODE_SIGNING_ALLOWED=NO -verbose
+      
+    # Runs the unit tests
+    - name: run unit tests
+      working-directory: ./iGlance
+      run: xcodebuild test -workspace iGlance.xcworkspace -scheme iGlanceUnitTests -destination 'platform=OS X,arch=x86_64' CODE_SIGN_IDENTITY="" CODE_SIGNING_ALLOWED=NO -verbose
