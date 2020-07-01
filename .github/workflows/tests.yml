@@ -56,4 +56,4 @@ jobs:
     # Runs the linting command
     - name: run tests
       working-directory: ./iGlance
-      run: xcodebuild -workspace iGlance.xcworkspace -scheme iGlanceUITests test
+      run: xcodebuild -workspace iGlance.xcworkspace -scheme iGlanceUITests test CODE_SIGN_IDENTITY="" CODE_SIGNING_ALLOWED=NO
