@@ -1,22 +1,30 @@
-name: Build
+# This is a basic workflow to help you get started with Actions
 
+name: Tests
+
+# Controls when the action will run. Triggers the workflow on push or pull request
+# events but only for the master branch
 on:
   push:
     branches: [ master, development ]
   pull_request:
     branches: [ master, development ]
 
+# A workflow run is made up of one or more jobs that can run sequentially or in parallel
 jobs:
-  build:
-
+  # This workflow contains a single job called "test"
+  test:
+    # The type of runner that the job will run on
     runs-on: macos-latest
 
+    # Steps represent a sequence of tasks that will be executed as part of the job
     steps:
+    # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
     - name: checkout repository
       uses: actions/checkout@v2
       with:
-        submodules: 'recursive'
-    
+        submodules: "recursive"
+        
     - name: get pods home directory from cache
       uses: actions/cache@v1
       with:
@@ -24,26 +32,28 @@ jobs:
         key: ${{ runner.os }}--pods-homeDir-key-${{ hashFiles('**/Podfile.lock') }}
         restore-keys: |
           ${{ runner.os }}--pods-homeDir-key-
-          
+        
     - name: get installed pods from cache
       uses: actions/cache@v1
       with:
         path: ./iGlance/Pods
         key: ${{ runner.os }}--pods-key-${{ hashFiles('**/Podfile.lock') }}
-        restore-keys: |
+        restre-keys: |
           ${{ runner.os }}--pods-key-
-          
-    - name: execute 'pod install' 
+    
+    # install the necessary pods
+    - name: execute 'pod install'
       working-directory: ./iGlance
       run: pod install
       env:
         CP_HOME_DIR: ./cocoaPodsHomeDir
-        
+    
     # update carthage
     - name: execute 'carthage update'
-      working-directory: ./iGlance/iGlance
-      run: carthage update
+    working-directory: ./iGlance/iGlance
+    run: carthage update
 
-    - name: build project
+    # Runs the linting command
+    - name: run tests
       working-directory: ./iGlance
-      run: xcodebuild -workspace iGlance.xcworkspace -scheme iGlance -config Release CODE_SIGN_IDENTITY="" CODE_SIGNING_REQUIRED=NO
+      run: xctool -workspace iGlance.xcworkspace -scheme iGlanceUITests run-tests
