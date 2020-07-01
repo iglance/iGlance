@@ -6,7 +6,7 @@ name: Tests
 # events but only for the master branch
 on:
   push:
-    branches: [ master, development ]
+    branches: [ master, development, feature/59-add-tests ]
   pull_request:
     branches: [ master, development ]
 
