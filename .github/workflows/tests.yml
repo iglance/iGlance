@@ -50,8 +50,8 @@ jobs:
     
     # update carthage
     - name: execute 'carthage update'
-    working-directory: ./iGlance/iGlance
-    run: carthage update
+      working-directory: ./iGlance/iGlance
+      run: carthage update
 
     # Runs the linting command
     - name: run tests
