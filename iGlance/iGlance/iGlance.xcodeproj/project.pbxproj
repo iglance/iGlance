@@ -932,6 +932,7 @@
 		B4DD2C3424A7B26E003AC30A /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
 				COMBINE_HIDPI_IMAGES = YES;
 				DEVELOPMENT_TEAM = J6GXEPK4NG;
@@ -942,8 +943,9 @@
 					"@loader_path/../Frameworks",
 				);
 				MACOSX_DEPLOYMENT_TARGET = 10.15;
-				PRODUCT_BUNDLE_IDENTIFIER = io.github.DomiH.iGlanceUITests;
+				PRODUCT_BUNDLE_IDENTIFIER = io.github.iglance.iGlanceUITests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_VERSION = 5.0;
 				TEST_TARGET_NAME = iGlance;
 			};
@@ -952,6 +954,7 @@
 		B4DD2C3524A7B26E003AC30A /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
 				COMBINE_HIDPI_IMAGES = YES;
 				DEVELOPMENT_TEAM = J6GXEPK4NG;
@@ -962,8 +965,9 @@
 					"@loader_path/../Frameworks",
 				);
 				MACOSX_DEPLOYMENT_TARGET = 10.15;
-				PRODUCT_BUNDLE_IDENTIFIER = io.github.DomiH.iGlanceUITests;
+				PRODUCT_BUNDLE_IDENTIFIER = io.github.iglance.iGlanceUITests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_VERSION = 5.0;
 				TEST_TARGET_NAME = iGlance;
 			};

@@ -68,7 +68,7 @@ class iGlanceUITests: XCTestCase {
         openMainWindow(app: app)
 
         app.windows["iGlance"].children(matching: .button).element(boundBy: 0).click()
-        app.dialogs["Preference Modal View Controller"].buttons[XCUIIdentifierCloseWindow].click()
+        XCTAssert(app.dialogs["Preference Modal View Controller"].exists)
     }
 
     // MARK: Private Functions
