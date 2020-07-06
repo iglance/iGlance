@@ -41,6 +41,16 @@ There are two possible ways to install iGlance:
 
    `brew cask install iglance`
 
+# Contribute
+
+There are two ways you can contribute to this project:
+
+1. You can star this repository and tell all your friends about our cool app ;)
+2. You can work on one of the open issues. Please read our [Contribution Guide](https://github.com/iglance/iGlance/blob/master/.github/CONTRIBUTING.md) and our [Code of Conduct](https://github.com/iglance/iGlance/blob/master/.github/CODE_OF_CONDUCT.md) before you start.
+
+Contributor Hall of Fame:  
+[![](https://sourcerer.io/fame/D0miH/iglance/iGlance/images/0)](https://sourcerer.io/fame/D0miH/iglance/iGlance/links/0)[![](https://sourcerer.io/fame/D0miH/iglance/iGlance/images/1)](https://sourcerer.io/fame/D0miH/iglance/iGlance/links/1)[![](https://sourcerer.io/fame/D0miH/iglance/iGlance/images/2)](https://sourcerer.io/fame/D0miH/iglance/iGlance/links/2)[![](https://sourcerer.io/fame/D0miH/iglance/iGlance/images/3)](https://sourcerer.io/fame/D0miH/iglance/iGlance/links/3)[![](https://sourcerer.io/fame/D0miH/iglance/iGlance/images/4)](https://sourcerer.io/fame/D0miH/iglance/iGlance/links/4)[![](https://sourcerer.io/fame/D0miH/iglance/iGlance/images/5)](https://sourcerer.io/fame/D0miH/iglance/iGlance/links/5)[![](https://sourcerer.io/fame/D0miH/iglance/iGlance/images/6)](https://sourcerer.io/fame/D0miH/iglance/iGlance/links/6)[![](https://sourcerer.io/fame/D0miH/iglance/iGlance/images/7)](https://sourcerer.io/fame/D0miH/iglance/iGlance/links/7)
+
 # Warning about iStat X
 
 We have nothing to do with an app called "iStats X: CPU & Memory" which is available in the App Store. iStats X is a copy of an old version of our app. The values of the cpu temperature or the fan speeds are just random values since it is technically not possible to read the cpu temperature using an app which is distrubuted over the App Store without downloading a helper which is distributed outside of the App Store. Those values have nothing to do with the real temperature of the cpu or the real fan speeds. If you bought this app and found iGlance through an update popup, you could try to get iStats X refunded over at https://support.apple.com/en-us/HT204084.
@@ -59,13 +69,6 @@ We have nothing to do with an app called "iStats X: CPU & Memory" which is avail
 - Add disk io menu bar item
 - Display the disk io (read/write speed)
 - Add the public ip address to the menu of the network menu bar item
-
-# Contribute
-
-There are two ways you can contribute to this project:
-
-1. You can star this repository and tell all your friends about our cool app ;)
-2. You can work on one of the open issues. Please read our [Contribution Guide](https://github.com/iglance/iGlance/blob/master/.github/CONTRIBUTING.md) and our [Code of Conduct](https://github.com/iglance/iGlance/blob/master/.github/CODE_OF_CONDUCT.md) before you start.
 
 # Credits
 
