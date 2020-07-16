@@ -176,25 +176,7 @@ public class UserSettings {
         }
 
         do {
-            let fileContents = try String(contentsOf: importURL, encoding: String.Encoding.utf8)
-            let jsonDecoder = JSONDecoder()
-            let jsonData = fileContents.data(using: .utf8)!
-            let newObject = try jsonDecoder.decode(IGlanceUserSettings.self, from: jsonData)
-            self.settings = newObject
-
-            // update the update loop timer
-            if let appDelegate = AppDelegate.getInstance() {
-                appDelegate.changeUpdateLoopTimeInterval(interval: AppDelegate.userSettings.settings.updateInterval)
-            } else {
-                DDLogError("Could not retrieve the App Delegate Instance")
-            }
-
-            // Clear image cache of bar graphs
-            AppDelegate.menuBarItemManager.cpuUsage.barGraph.clearImageCache()
-            AppDelegate.menuBarItemManager.memoryUsage.barGraph.clearImageCache()
-
-            // Set correct visibility of menubaritems
-            AppDelegate.menuBarItemManager.updateMenuBarItems()
+            try loadUserSettingsFromPath(importUrl: importURL)
         } catch {
             DDLogError("An error occured while importing settings")
             Dialog.showErrorModal(messageText: "Error", informativeText: "An error occured while importing settings")
@@ -212,6 +194,29 @@ public class UserSettings {
 
         // Reset settings to default
         self.setDefaultSettings()
+
+        // update the update loop timer
+        if let appDelegate = AppDelegate.getInstance() {
+            appDelegate.changeUpdateLoopTimeInterval(interval: AppDelegate.userSettings.settings.updateInterval)
+        } else {
+            DDLogError("Could not retrieve the App Delegate Instance")
+        }
+
+        // Clear image cache of bar graphs
+        AppDelegate.menuBarItemManager.cpuUsage.barGraph.clearImageCache()
+        AppDelegate.menuBarItemManager.memoryUsage.barGraph.clearImageCache()
+
+        // Set correct visibility of menubaritems
+        AppDelegate.menuBarItemManager.updateMenuBarItems()
+    }
+
+    func loadUserSettingsFromPath(importUrl: URL) throws {
+        let fileContents = try String(contentsOf: importUrl, encoding: String.Encoding.utf8)
+        let jsonDecoder = JSONDecoder()
+        let jsonData = fileContents.data(using: .utf8)!
+        // TODO: missing keys are not handled!!!
+        let newObject = try jsonDecoder.decode(IGlanceUserSettings.self, from: jsonData)
+        self.settings = newObject
 
         // update the update loop timer
         if let appDelegate = AppDelegate.getInstance() {

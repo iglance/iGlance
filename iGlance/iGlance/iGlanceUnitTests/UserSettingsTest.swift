@@ -12,7 +12,6 @@ import XCTest
 import SMCKit
 
 class UserSettingsTest: XCTestCase {
-    
     func resetUserSettings() throws {
         // create the user settings class
         let defaultSettings = UserSettings()
