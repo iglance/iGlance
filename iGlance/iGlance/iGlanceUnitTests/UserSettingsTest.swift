@@ -1,10 +1,17 @@
+//  Copyright (C) 2020  D0miH <https://github.com/D0miH> & Contributors <https://github.com/iglance/iGlance/graphs/contributors>
 //
-//  UserSettingsTest.swift
-//  iGlanceUnitTests
+//  This program is free software: you can redistribute it and/or modify
+//  it under the terms of the GNU General Public License as published by
+//  the Free Software Foundation, either version 3 of the License, or
+//  (at your option) any later version.
 //
-//  Created by Dominik on 01.07.20.
-//  Copyright © 2020 iGlance. All rights reserved.
+//  This program is distributed in the hope that it will be useful,
+//  but WITHOUT ANY WARRANTY; without even the implied warranty of
+//  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+//  GNU General Public License for more details.
 //
+//  You should have received a copy of the GNU General Public License
+//  along with this program.  If not, see <https://www.gnu.org/licenses/>.
 
 import XCTest
 
@@ -12,7 +19,7 @@ import XCTest
 import SMCKit
 
 class UserSettingsTest: XCTestCase {
-    func resetUserSettings() throws {
+    func testResetUserSettings() throws {
         // create the user settings class
         let defaultSettings = UserSettings()
         // reset the settings
@@ -54,5 +61,46 @@ class UserSettingsTest: XCTestCase {
 
         // assert that the disk settings are reset
         XCTAssertTrue(defaultSettings.settings.disk.showDiskUsage)
+    }
+
+    func testDecodeCpuSettings() throws {
+        let encoder = JSONEncoder()
+        let decoder = JSONDecoder()
+
+        let defaultCpuTempSettings = CpuSettings()
+
+        let compareToDefaultSettings = { (givenJsonDict: [String: String]) in
+            let jsonData = try encoder.encode(givenJsonDict)
+            let decodedSettings = try decoder.decode(CpuSettings.self, from: jsonData)
+            XCTAssertEqual(defaultCpuTempSettings, decodedSettings)
+        }
+
+        let cpuSettingsDict: [String: String] = [
+            "showTemperature": "true",
+            "showUsage": "true",
+            "usageGraphColor": "{ 'red': 0, 'alpha': 1, 'blue': 0, 'green': 1 }",
+            "usageGraphKind": "{'rawValue':1}",
+            "usageLineGraphWidth": "50",
+            "showUsageGraphBorder": "true",
+            "colorGradientSettings": "{'secondaryColor':{'red':1,'alpha':1,'blue':0,'green':0},'useGradient':false}"
+        ]
+        // check that all the needed keys are present
+        let defaultSettingsMirror = Mirror(reflecting: defaultCpuTempSettings)
+        for key in defaultSettingsMirror.children {
+            XCTAssertNotNil(key.label)
+            XCTAssertTrue(cpuSettingsDict.keys.contains(key.label!))
+        }
+
+        let createJsonDictWithoutKey = { (keyToOmit: String) -> [String: String] in
+            var writableDictCopy = cpuSettingsDict
+            writableDictCopy[keyToOmit] = nil
+            XCTAssertEqual(writableDictCopy.count, cpuSettingsDict.count - 1)
+            return writableDictCopy
+        }
+
+        for key in cpuSettingsDict.keys {
+            let testJsonDict = createJsonDictWithoutKey(key)
+            try compareToDefaultSettings(testJsonDict)
+        }
     }
 }
