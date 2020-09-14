@@ -17,6 +17,18 @@ import Cocoa
 import CocoaLumberjack
 
 class SidebarButtonView: NSView {
+    override init(frame: NSRect) {
+        super.init(frame: frame)
+        self.wantsLayer = true
+        self.layer?.cornerRadius = 8
+    }
+
+    required init?(coder: NSCoder) {
+        super.init(coder: coder)
+        self.wantsLayer = true
+        self.layer?.cornerRadius = 8
+    }
+
     // MARK: -
     // MARK: Public Instance Variables
     var mainViewStoryboardID: String?
