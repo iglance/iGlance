@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.Cocoa.Storyboard.XIB" version="3.0" toolsVersion="16097" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES">
+<document type="com.apple.InterfaceBuilder3.Cocoa.Storyboard.XIB" version="3.0" toolsVersion="16097.3" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES">
     <dependencies>
         <deployment identifier="macosx"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="16097"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="16097.3"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
@@ -1460,16 +1460,8 @@
                                 <rect key="frame" x="0.0" y="0.0" width="200" height="500"/>
                                 <subviews>
                                     <stackView distribution="fill" orientation="vertical" alignment="leading" spacing="0.0" horizontalStackHuggingPriority="249.99998474121094" verticalStackHuggingPriority="249.99998474121094" detachesHiddenViews="YES" translatesAutoresizingMaskIntoConstraints="NO" id="nip-rU-eMF">
-                                        <rect key="frame" x="0.0" y="76" width="200" height="424"/>
+                                        <rect key="frame" x="0.0" y="162" width="200" height="338"/>
                                         <subviews>
-                                            <imageView horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="taj-99-r9F">
-                                                <rect key="frame" x="10" y="338" width="180" height="86"/>
-                                                <constraints>
-                                                    <constraint firstAttribute="width" constant="180" id="OZm-2W-bg8"/>
-                                                    <constraint firstAttribute="height" constant="86" id="ZHh-R3-kTD"/>
-                                                </constraints>
-                                                <imageCell key="cell" refusesFirstResponder="YES" alignment="left" imageScaling="proportionallyUpOrDown" image="iGlance_logo_white" id="ZKe-tJ-yT9"/>
-                                            </imageView>
                                             <stackView distribution="fill" orientation="vertical" alignment="centerX" spacing="-2" horizontalStackHuggingPriority="249.99998474121094" verticalStackHuggingPriority="249.99998474121094" detachesHiddenViews="YES" translatesAutoresizingMaskIntoConstraints="NO" id="EiX-L0-7OK">
                                                 <rect key="frame" x="0.0" y="0.0" width="200" height="338"/>
                                                 <subviews>
@@ -1767,16 +1759,10 @@
                                                 </customSpacing>
                                             </stackView>
                                         </subviews>
-                                        <constraints>
-                                            <constraint firstItem="taj-99-r9F" firstAttribute="leading" secondItem="nip-rU-eMF" secondAttribute="leading" constant="10" id="9uh-vB-9p5"/>
-                                            <constraint firstAttribute="trailing" secondItem="taj-99-r9F" secondAttribute="trailing" constant="10" id="wZw-ES-xS9"/>
-                                        </constraints>
                                         <visibilityPriorities>
-                                            <integer value="1000"/>
                                             <integer value="1000"/>
                                         </visibilityPriorities>
                                         <customSpacing>
-                                            <real value="3.4028234663852886e+38"/>
                                             <real value="3.4028234663852886e+38"/>
                                         </customSpacing>
                                     </stackView>
@@ -1811,7 +1797,6 @@
                         </constraints>
                     </view>
                     <connections>
-                        <outlet property="logoImage" destination="taj-99-r9F" id="vQJ-vo-JI4"/>
                         <outlet property="preferenceButton" destination="ba0-st-6Ap" id="tlr-D9-XEz"/>
                         <outlet property="sidebarButtonStackView" destination="EiX-L0-7OK" id="JZs-DZ-ms0"/>
                     </connections>
@@ -1822,14 +1807,13 @@
         </scene>
     </scenes>
     <resources>
-        <image name="BatteryMenuIcon" width="120" height="120"/>
-        <image name="CpuMenuIcon" width="120" height="120"/>
-        <image name="DashboardMenuIcon" width="120" height="120"/>
-        <image name="DiskMenuIcon" width="439" height="366"/>
-        <image name="FanMenuIcon" width="120" height="120"/>
-        <image name="MemoryMenuIcon" width="120" height="120"/>
-        <image name="NetworkMenuIcon" width="120" height="120"/>
-        <image name="PreferencesMenuIcon" width="120" height="120"/>
-        <image name="iGlance_logo_white" width="1280" height="500"/>
+        <image name="BatteryMenuIcon" width="24" height="24"/>
+        <image name="CpuMenuIcon" width="24" height="24"/>
+        <image name="DashboardMenuIcon" width="24" height="24"/>
+        <image name="DiskMenuIcon" width="24" height="24"/>
+        <image name="FanMenuIcon" width="24" height="24"/>
+        <image name="MemoryMenuIcon" width="24" height="24"/>
+        <image name="NetworkMenuIcon" width="24" height="24"/>
+        <image name="PreferencesMenuIcon" width="24" height="24"/>
     </resources>
 </document>

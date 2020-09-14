@@ -34,7 +34,6 @@ class SidebarViewController: NSViewController {
     // MARK: -
     // MARK: Outlets
 
-    @IBOutlet private var logoImage: NSImageView!
     @IBOutlet private var sidebarButtonStackView: NSStackView!
     @IBOutlet private var preferenceButton: NSButton!
 
@@ -144,26 +143,12 @@ class SidebarViewController: NSViewController {
      */
     @objc
     private func onThemeChange() {
-        // change the sidebar logo
-        changeSidebarLogo()
-
         // change the preferences logo
         changePreferencesLogo()
 
         // update the sidebar button font color
         for identifier in sidebarButtonViewIDs {
             getSidebarButtonWith(identifier: identifier.buttonViewID)?.updateFontColor()
-        }
-    }
-
-    /**
-     * Depending on the current theme the white or black iGlance logo is selected.
-     */
-    private func changeSidebarLogo() {
-        if ThemeManager.isDarkTheme() {
-            self.logoImage.image = NSImage(named: "iGlance_logo_white")
-        } else {
-            self.logoImage.image = NSImage(named: "iGlance_logo_black")
         }
     }
 
