@@ -20,15 +20,6 @@ import CocoaLumberjack
 enum Theme: Int {
     case darkTheme, lightTheme
 
-    var titlebarColor: NSColor {
-        switch self {
-        case .darkTheme:
-            return NSColor.colorFrom(hex: "#222326")
-        default:
-            return NSColor.colorFrom(hex: "#5069B3")
-        }
-    }
-
     var sidebarColor: NSColor {
         switch self {
         case .darkTheme:
