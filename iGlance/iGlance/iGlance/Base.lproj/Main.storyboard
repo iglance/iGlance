@@ -1462,6 +1462,9 @@
                             <customView translatesAutoresizingMaskIntoConstraints="NO" id="ADV-Ef-jdA" userLabel="SidebarView" customClass="SidebarView" customModule="iGlance" customModuleProvider="target">
                                 <rect key="frame" x="0.0" y="0.0" width="230" height="500"/>
                                 <subviews>
+                                    <visualEffectView blendingMode="behindWindow" material="sidebar" state="followsWindowActiveState" translatesAutoresizingMaskIntoConstraints="NO" id="ABO-7c-hp4">
+                                        <rect key="frame" x="0.0" y="0.0" width="230" height="500"/>
+                                    </visualEffectView>
                                     <stackView distribution="fill" orientation="vertical" alignment="centerX" spacing="5" horizontalStackHuggingPriority="249.99998474121094" verticalStackHuggingPriority="249.99998474121094" detachesHiddenViews="YES" translatesAutoresizingMaskIntoConstraints="NO" id="EiX-L0-7OK">
                                         <rect key="frame" x="0.0" y="160" width="230" height="310"/>
                                         <subviews>
@@ -1790,11 +1793,15 @@
                                 <constraints>
                                     <constraint firstItem="EiX-L0-7OK" firstAttribute="leading" secondItem="ADV-Ef-jdA" secondAttribute="leading" id="0hl-xN-FT2"/>
                                     <constraint firstItem="ba0-st-6Ap" firstAttribute="leading" secondItem="ADV-Ef-jdA" secondAttribute="leading" constant="10" id="3lb-1U-Pb8"/>
+                                    <constraint firstItem="ABO-7c-hp4" firstAttribute="leading" secondItem="ADV-Ef-jdA" secondAttribute="leading" id="5rg-Rf-ygD"/>
                                     <constraint firstAttribute="width" constant="230" id="7YL-Li-d1p"/>
                                     <constraint firstAttribute="bottom" secondItem="ba0-st-6Ap" secondAttribute="bottom" constant="10" id="8zO-fp-VQA"/>
+                                    <constraint firstAttribute="bottom" secondItem="ABO-7c-hp4" secondAttribute="bottom" id="Qsp-d1-cWC"/>
                                     <constraint firstAttribute="height" constant="500" id="Saj-up-8ac"/>
                                     <constraint firstItem="EiX-L0-7OK" firstAttribute="top" secondItem="ADV-Ef-jdA" secondAttribute="top" constant="30" id="SsL-OZ-U7S"/>
+                                    <constraint firstAttribute="trailing" secondItem="ABO-7c-hp4" secondAttribute="trailing" id="Xqp-gR-UXT"/>
                                     <constraint firstItem="EiX-L0-7OK" firstAttribute="centerX" secondItem="ADV-Ef-jdA" secondAttribute="centerX" id="h0m-E1-d9T"/>
+                                    <constraint firstItem="ABO-7c-hp4" firstAttribute="top" secondItem="ADV-Ef-jdA" secondAttribute="top" id="l3y-uZ-gHg"/>
                                 </constraints>
                             </customView>
                         </subviews>
