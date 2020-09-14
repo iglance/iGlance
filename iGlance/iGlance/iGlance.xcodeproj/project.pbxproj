@@ -224,15 +224,6 @@
 			name = Frameworks;
 			sourceTree = "<group>";
 		};
-		B4060E3023C4FAE200CD945E /* Shared */ = {
-			isa = PBXGroup;
-			children = (
-				B4060E3123C4FAEF00CD945E /* Constants.swift */,
-				B4EFB55A23CA197500CF2FF2 /* CustomLogFormatter.swift */,
-			);
-			path = Shared;
-			sourceTree = "<group>";
-		};
 		B40E946023A9435200D63D17 /* MainWindow */ = {
 			isa = PBXGroup;
 			children = (
@@ -339,7 +330,6 @@
 		B46789A923A69ECA00CE572D = {
 			isa = PBXGroup;
 			children = (
-				B4060E3023C4FAE200CD945E /* Shared */,
 				B46789B423A69ECA00CE572D /* iGlance */,
 				B46789B323A69ECA00CE572D /* Products */,
 				AAAB1F73870D1085E1944A64 /* Frameworks */,
@@ -371,6 +361,8 @@
 				B4DE725E23C257610001CF46 /* Extensions.swift */,
 				B49F5D5623C5BCAF009E9BE6 /* UserSettings.swift */,
 				B46789BB23A69ECB00CE572D /* Main.storyboard */,
+				B4EFB55A23CA197500CF2FF2 /* CustomLogFormatter.swift */,
+				B4060E3123C4FAEF00CD945E /* Constants.swift */,
 				B46789B923A69ECB00CE572D /* Assets.xcassets */,
 				B46789BE23A69ECB00CE572D /* Info.plist */,
 				B46789BF23A69ECB00CE572D /* iGlance.entitlements */,
