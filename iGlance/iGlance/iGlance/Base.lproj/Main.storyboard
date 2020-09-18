@@ -244,7 +244,7 @@
         <scene sceneID="rBU-qB-hiS">
             <objects>
                 <viewController title="Dashboard View Controller" storyboardIdentifier="DashboardStoryboardID" id="jr8-g7-uLJ" customClass="DashboardViewController" customModule="iGlance" customModuleProvider="target" sceneMemberID="viewController">
-                    <view key="view" id="2gR-n0-wZE">
+                    <view key="view" id="2gR-n0-wZE" customClass="MainViewView" customModule="iGlance" customModuleProvider="target">
                         <rect key="frame" x="0.0" y="0.0" width="610" height="500"/>
                         <autoresizingMask key="autoresizingMask"/>
                         <subviews>
@@ -588,7 +588,7 @@
         <scene sceneID="uUd-va-qL0">
             <objects>
                 <viewController title="CPU View Controller" storyboardIdentifier="CpuStoryboardID" id="uGw-Yr-sBC" customClass="CpuViewController" customModule="iGlance" customModuleProvider="target" sceneMemberID="viewController">
-                    <view key="view" id="q0i-aM-agG">
+                    <view key="view" id="q0i-aM-agG" customClass="MainViewView" customModule="iGlance" customModuleProvider="target">
                         <rect key="frame" x="0.0" y="0.0" width="600" height="500"/>
                         <autoresizingMask key="autoresizingMask"/>
                         <subviews>
@@ -880,7 +880,7 @@
         <scene sceneID="voU-QA-JXU">
             <objects>
                 <viewController title="Memory View Controller" storyboardIdentifier="MemoryStoryboardID" id="Pbp-jU-Jl9" customClass="MemoryViewController" customModule="iGlance" customModuleProvider="target" sceneMemberID="viewController">
-                    <view key="view" id="XsI-br-NL6">
+                    <view key="view" id="XsI-br-NL6" customClass="MainViewView" customModule="iGlance" customModuleProvider="target">
                         <rect key="frame" x="0.0" y="0.0" width="600" height="500"/>
                         <autoresizingMask key="autoresizingMask"/>
                         <subviews>
@@ -1157,7 +1157,7 @@
         <scene sceneID="kEF-TN-Jqj">
             <objects>
                 <viewController title="Network View Controller" storyboardIdentifier="NetworkStoryboardID" id="16f-vh-LVT" customClass="NetworkViewController" customModule="iGlance" customModuleProvider="target" sceneMemberID="viewController">
-                    <view key="view" id="gLt-Uu-NnI">
+                    <view key="view" id="gLt-Uu-NnI" customClass="MainViewView" customModule="iGlance" customModuleProvider="target">
                         <rect key="frame" x="0.0" y="0.0" width="601" height="500"/>
                         <autoresizingMask key="autoresizingMask"/>
                         <subviews>
@@ -1191,7 +1191,7 @@
         <scene sceneID="pAg-29-Upi">
             <objects>
                 <viewController title="Fan View Controller" storyboardIdentifier="FanStoryboardID" id="76f-do-Hko" customClass="FanViewController" customModule="iGlance" customModuleProvider="target" sceneMemberID="viewController">
-                    <view key="view" id="X4Z-EU-k4i">
+                    <view key="view" id="X4Z-EU-k4i" customClass="MainViewView" customModule="iGlance" customModuleProvider="target">
                         <rect key="frame" x="0.0" y="0.0" width="601" height="500"/>
                         <autoresizingMask key="autoresizingMask"/>
                         <subviews>
@@ -1239,7 +1239,7 @@
         <scene sceneID="RUx-H1-VqW">
             <objects>
                 <viewController title="Battery View Controller" storyboardIdentifier="BatteryStoryboardID" id="jU5-ml-SBe" customClass="BatteryViewController" customModule="iGlance" customModuleProvider="target" sceneMemberID="viewController">
-                    <view key="view" id="q13-1a-uFQ">
+                    <view key="view" id="q13-1a-uFQ" customClass="MainViewView" customModule="iGlance" customModuleProvider="target">
                         <rect key="frame" x="0.0" y="0.0" width="601" height="500"/>
                         <autoresizingMask key="autoresizingMask"/>
                         <subviews>
@@ -1408,8 +1408,7 @@
                         <outlet property="highBatteryNotificationTextField" destination="fql-TY-U20" id="A4d-pr-dVo"/>
                         <outlet property="lowBatteryNotificationCheckbox" destination="oXr-Iu-yaB" id="VFz-77-TUq"/>
                         <outlet property="lowBatteryNotificationStackView" destination="hpg-OL-bVD" id="5VU-0M-yic"/>
-                        <outlet property="lowBatteryNotificationTextField" destination="gC3-R6-KGC" id="hPG-ag-hJF"/>
-                        <outlet property="lowBatteryTextField" destination="gC3-R6-KGC" id="W7f-9x-jio"/>
+                        <outlet property="lowBatteryNotificationTextField" destination="gC3-R6-KGC" id="t4s-81-FZd"/>
                         <segue destination="sVS-y8-9uS" kind="custom" identifier="BatteryToDisk" customClass="SegueBetweenEmbedded" customModule="iGlance" customModuleProvider="target" id="4W7-dq-KVu"/>
                     </connections>
                 </viewController>
@@ -1421,7 +1420,7 @@
         <scene sceneID="eGb-cO-Z3o">
             <objects>
                 <viewController storyboardIdentifier="DiskStoryboardID" id="sVS-y8-9uS" customClass="DiskViewController" customModule="iGlance" customModuleProvider="target" sceneMemberID="viewController">
-                    <view key="view" id="VIp-kZ-3dC">
+                    <view key="view" id="VIp-kZ-3dC" customClass="MainViewView" customModule="iGlance" customModuleProvider="target">
                         <rect key="frame" x="0.0" y="0.0" width="601" height="500"/>
                         <autoresizingMask key="autoresizingMask"/>
                         <subviews>
@@ -1443,8 +1442,7 @@
                         </constraints>
                     </view>
                     <connections>
-                        <outlet property="diskUsageCheckbox" destination="Sy9-Qu-Fl1" id="S6z-Jw-5OT"/>
-                        <outlet property="diskUsageCheckboxChanged" destination="Sy9-Qu-Fl1" id="dNe-fr-TDS"/>
+                        <outlet property="diskUsageCheckbox" destination="Sy9-Qu-Fl1" id="cmH-PE-KR3"/>
                     </connections>
                 </viewController>
                 <customObject id="gBb-Kr-n6w" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>

@@ -15,22 +15,13 @@
 
 import Cocoa
 
-/**
- * Parent class for the main views.
- */
-class MainViewViewController: NSViewController {
-    override func viewDidLoad() {
-        super.viewDidLoad()
+class MainViewView: NSView {
+    override func draw(_ dirtyRect: NSRect) {
+        // clear the view before drawing the content
+        NSColor.windowBackgroundColor.setFill()
+        self.bounds.fill()
 
-        // trigger didSet methods of all outlets to update GUI
-        updateGUIComponents()
-    }
-
-    /**
-     * This function will trigger the didSet of all outlets in the main view.
-     */
-    func updateGUIComponents() {
-        // Implement in inherited class
-        fatalError("Function 'updateGUIComponents' not implemented")
+        // draw the content
+        super.draw(dirtyRect)
     }
 }
