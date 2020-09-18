@@ -27,7 +27,7 @@ class SidebarView: NSView {
         super.draw(dirtyRect)
 
         // set the background color of the sidebar
-        ThemeManager.currentTheme().sidebarColor.setFill()
+        ThemeManager.currentTheme().mainViewBackgroundColor.setFill()
         dirtyRect.fill()
     }
 }

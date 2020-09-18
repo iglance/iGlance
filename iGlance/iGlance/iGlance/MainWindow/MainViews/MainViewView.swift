@@ -18,7 +18,7 @@ import Cocoa
 class MainViewView: NSView {
     override func draw(_ dirtyRect: NSRect) {
         // clear the view before drawing the content
-        NSColor.windowBackgroundColor.setFill()
+        ThemeManager.currentTheme().mainViewBackgroundColor.setFill()
         self.bounds.fill()
 
         // draw the content

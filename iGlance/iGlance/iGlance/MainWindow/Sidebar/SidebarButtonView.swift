@@ -166,11 +166,10 @@ class SidebarButtonView: NSView {
 
         // get the font color
         var fontColor = ThemeManager.currentTheme().fontColor
-        // when current theme is light set the font color to a light color on active sidebar buttons
-        if highlighted && ThemeManager.currentTheme() == Theme.lightTheme {
+        let fontColorHighlighted = ThemeManager.currentTheme().fontHighlightColor
+        if highlighted {
             // change the font color
-            fontColor = Theme.darkTheme.fontColor
-            return
+            fontColor = fontColorHighlighted
         }
 
         // set the color of the icon
