@@ -14,11 +14,10 @@
 //  along with this program.  If not, see <https://www.gnu.org/licenses/>.
 
 import Cocoa
-import ServiceManagement
 import CocoaLumberjack
 import LaunchAtLogin
 
-class PreferenceModalViewController: ModalViewController {
+class SettingsViewController: MainViewViewController {
     // MARK: -
     // MARK: Outlets
     @IBOutlet private var versionLabel: NSTextField!
@@ -110,8 +109,8 @@ class PreferenceModalViewController: ModalViewController {
     // MARK: Actions
 
     /**
-     * This function is called when the 'Autostart on boot' checkbox is clicked.
-     */
+    * This function is called when the 'Autostart on boot' checkbox is clicked.
+    */
     @IBAction private func autoStartCheckboxChanged(_ sender: NSButton) {
         DDLogInfo("'Autostart on Boot'-checkbox changed")
         self.setAutostartOnBoot(buttonState: sender.state)
@@ -136,16 +135,16 @@ class PreferenceModalViewController: ModalViewController {
     // MARK: Private Functions
 
     /**
-     * Called when the os theme changed.
-     */
+    * Called when the os theme changed.
+    */
     @objc
     private func onThemeChange() {
         changeLogo()
     }
 
     /**
-     * Set the version label to the current app version.
-     */
+    * Set the version label to the current app version.
+    */
     private func setVersionLabel() {
         // get the version of the app
         guard let appVersion = Bundle.main.infoDictionary?["CFBundleShortVersionString"] as? String else {
@@ -156,8 +155,8 @@ class PreferenceModalViewController: ModalViewController {
     }
 
     /**
-     * Sets the logo according to the current os theme.
-     */
+    * Sets the logo according to the current os theme.
+    */
     private func changeLogo() {
         if ThemeManager.isDarkTheme() {
             logoImage.image = NSImage(named: "iGlance_logo_white")
