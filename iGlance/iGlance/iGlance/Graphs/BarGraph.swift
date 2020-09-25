@@ -33,12 +33,12 @@ class BarGraph: Graph {
 
     /// The maximum height of the bar of the graph in pixel
     private var maxBarHeight: Double {
-        Double(self.imageSize.height - self.borderWidth * 2)
+        Double(self.imageSize.height - self.borderWidth * 2 - self.contentMargin * 2)
     }
 
     /// The width of the bar of the graph in pixel
     private var barWidth: Double {
-        Double(self.imageSize.width - self.borderWidth * 2)
+        Double(self.imageSize.width - self.borderWidth * 2 - self.contentMargin * 2)
     }
 
     // MARK: -
@@ -64,7 +64,7 @@ class BarGraph: Graph {
      * Returns the bar graph image for the menu bar.
      */
     func getImage(currentValue: Double, graphColor: NSColor, drawBorder: Bool, gradientColor: NSColor?) -> NSImage {
-        // get the rounded bar height
+        // get the bar height rounded to two decimal points
         var barHeight = Double((maxBarHeight / self.maxValue) * currentValue)
         barHeight = Double(round(barHeight * 100) / 100)
         // check whether we need to redraw the graph
@@ -128,7 +128,7 @@ class BarGraph: Graph {
 
             // draw the gradient image only has high as the current bar height
             gradientImage.draw(
-                at: NSPoint(x: self.borderWidth, y: self.borderWidth),
+                at: NSPoint(x: self.borderWidth + self.contentMargin, y: self.borderWidth + self.contentMargin),
                 from: NSRect(x: 0, y: 0, width: barWidth, height: barHeight),
                 operation: NSCompositingOperation.sourceOver,
                 fraction: 1.0
@@ -142,8 +142,9 @@ class BarGraph: Graph {
         barColor.set()
 
         // create the bar as a rectangle
-        let bar = NSRect(x: self.borderWidth, y: self.borderWidth, width: CGFloat(barWidth), height: CGFloat(barHeight))
-        bar.fill()
+        let bar = NSRect(x: self.borderWidth + self.contentMargin, y: self.borderWidth + self.contentMargin, width: CGFloat(barWidth), height: CGFloat(barHeight))
+        let roundedRect = NSBezierPath(roundedRect: bar, xRadius: 1.5, yRadius: 1.5)
+        roundedRect.fill()
 
         // unlock the focus of the image
         image.unlockFocus()

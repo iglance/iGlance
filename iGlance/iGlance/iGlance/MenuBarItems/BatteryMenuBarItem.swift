@@ -312,7 +312,7 @@ class BatteryMenuBarItem: MenuBarItem {
 
         // create and draw the charge indicator rectangle as a rounded rectangle
         let chargeBar = NSRect(x: borderWidth + chargeBarMargin, y: borderWidth + chargeBarMargin, width: chargeBarWidth, height: chargeBarCurrentHeight)
-        let roundedRect = NSBezierPath(roundedRect: chargeBar, xRadius: 1.0, yRadius: 1.0)
+        let roundedRect = NSBezierPath(roundedRect: chargeBar, xRadius: 1.5, yRadius: 1.5)
         (ThemeManager.isDarkTheme() ? NSColor.white : NSColor.black).set()
         roundedRect.fill()
 
