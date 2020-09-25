@@ -116,7 +116,7 @@ class BatteryMenuBarItem: MenuBarItem {
         let image = NSImage(
             size: NSSize(
                 width: buttonString.size().width + batteryIcon!.size.width + marginBetweenIconAndString,
-                height: CGFloat(self.menuBarHeight)
+                height: self.menuBarHeight
             )
         )
 
