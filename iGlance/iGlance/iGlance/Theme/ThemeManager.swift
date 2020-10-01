@@ -73,7 +73,20 @@ class ThemeManager {
      * - Returns: True if dark mode is enabled. Returns false otherwise.
      */
     static func isDarkTheme() -> Bool {
-        UserDefaults.standard.string(forKey: "AppleInterfaceStyle") != nil
+        var darkTheme = false
+
+        // Special thanks to @ruiaureliano <https://github.com/ruiaureliano> for investigating this issue and providing
+        // a fix: https://github.com/ruiaureliano/macOS-Appearance/blob/master/Appearance/Source/AppDelegate.swift
+        if #available(OSX 10.15, *) {
+            let appearanceDesc = NSApplication.shared.effectiveAppearance.debugDescription.lowercased()
+            darkTheme = appearanceDesc.contains("dark")
+        } else if #available(OSX 10.14, *) {
+            if let interfaceStyle = UserDefaults.standard.object(forKey: "AppleInterfaceStyle") as? String {
+                darkTheme = interfaceStyle.lowercased().contains("dark")
+            }
+        }
+
+        return darkTheme
     }
 
     /**
