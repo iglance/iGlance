@@ -1,19 +1,19 @@
 # This is a basic workflow to help you get started with Actions
 
-name: Linting
+name: Tests
 
 # Controls when the action will run. Triggers the workflow on push or pull request
 # events but only for the master branch
 on:
   push:
-    branches: [ master, development ]
+    branches: [ master, development, feature/59-add-tests ]
   pull_request:
     branches: [ master, development ]
 
 # A workflow run is made up of one or more jobs that can run sequentially or in parallel
 jobs:
-  # This workflow contains a single job called "lint"
-  lint:
+  # This workflow contains a single job called "test"
+  test:
     # The type of runner that the job will run on
     runs-on: macos-latest
 
@@ -47,13 +47,18 @@ jobs:
       run: pod install
       env:
         CP_HOME_DIR: ./cocoaPodsHomeDir
-        
+    
     # update carthage
     - name: execute 'carthage update'
       working-directory: ./iGlance/iGlance
       run: carthage update
 
-    # Runs the linting command
-    - name: run linting command
-      working-directory: ./iGlance/iGlance
-      run: ../Pods/Swiftlint/swiftlint
+    # Runs the user interface tests
+    - name: run UI tests
+      working-directory: ./iGlance
+      run: xcodebuild test -workspace iGlance.xcworkspace -scheme iGlanceUITests -destination 'platform=OS X,arch=x86_64' CODE_SIGN_IDENTITY="" CODE_SIGNING_ALLOWED=NO -verbose
+      
+    # Runs the unit tests
+    - name: run unit tests
+      working-directory: ./iGlance
+      run: xcodebuild test -workspace iGlance.xcworkspace -scheme iGlanceUnitTests -destination 'platform=OS X,arch=x86_64' CODE_SIGN_IDENTITY="" CODE_SIGNING_ALLOWED=NO -verbose
