@@ -20,6 +20,7 @@
 		B41F6D6823C8E4770046D637 /* ModalViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B41F6D6723C8E4770046D637 /* ModalViewController.swift */; };
 		B42BCE6023ABF73100A13601 /* DashboardViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B42BCE5F23ABF73100A13601 /* DashboardViewController.swift */; };
 		B42BCE6323AC01CC00A13601 /* SystemInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = B42BCE6223AC01CC00A13601 /* SystemInfo.swift */; };
+		B42F615124ACF724006C80C7 /* UserSettingsTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = B42F615024ACF724006C80C7 /* UserSettingsTest.swift */; };
 		B439332723E99E0800CDEB1D /* BarGraph.swift in Sources */ = {isa = PBXBuildFile; fileRef = B439332623E99E0800CDEB1D /* BarGraph.swift */; };
 		B43ABF2823AA1E99007F93BA /* SidebarButtonView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B43ABF2723AA1E99007F93BA /* SidebarButtonView.swift */; };
 		B43ABF2A23AA32FA007F93BA /* SidebarViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B43ABF2923AA32FA007F93BA /* SidebarViewController.swift */; };
@@ -69,6 +70,7 @@
 		B4CFC47923FC3A3B00A0ED15 /* FanMenuBarItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = B4CFC47823FC3A3B00A0ED15 /* FanMenuBarItem.swift */; };
 		B4D82FDC23C1031800D502FF /* DiskInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = B4D82FDB23C1031800D502FF /* DiskInfo.swift */; };
 		B4D86E1B23AA710B00671B52 /* MainViewViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B4D86E1A23AA710B00671B52 /* MainViewViewController.swift */; };
+		B4DD2C2F24A7B26E003AC30A /* iGlanceUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = B4DD2C2E24A7B26E003AC30A /* iGlanceUITests.swift */; };
 		B4DE725F23C257610001CF46 /* Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = B4DE725E23C257610001CF46 /* Extensions.swift */; };
 		B4DE728023C2644A0001CF46 /* BatteryInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = B4DE727F23C2644A0001CF46 /* BatteryInfo.swift */; };
 		B4E909112427B33F00260479 /* BatteryMenuBarItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = B4E909102427B33F00260479 /* BatteryMenuBarItem.swift */; };
@@ -81,6 +83,23 @@
 		B4FE0DB323EF210500AE94E6 /* Graph.swift in Sources */ = {isa = PBXBuildFile; fileRef = B4FE0DB223EF210500AE94E6 /* Graph.swift */; };
 		DAB005682437C70F00E737DD /* DiskUsageMenuBarItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = DAB005672437C70F00E737DD /* DiskUsageMenuBarItem.swift */; };
 /* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		B42F614B24ACEED6006C80C7 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = B46789AA23A69ECA00CE572D /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = B46789B123A69ECA00CE572D;
+			remoteInfo = iGlance;
+		};
+		B4DD2C3124A7B26E003AC30A /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = B46789AA23A69ECA00CE572D /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = B46789B123A69ECA00CE572D;
+			remoteInfo = iGlance;
+		};
+/* End PBXContainerItemProxy section */
 
 /* Begin PBXCopyFilesBuildPhase section */
 		B4DE727523C25F8C0001CF46 /* Embed Frameworks */ = {
@@ -118,6 +137,9 @@
 		B41F6D6723C8E4770046D637 /* ModalViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ModalViewController.swift; sourceTree = "<group>"; };
 		B42BCE5F23ABF73100A13601 /* DashboardViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DashboardViewController.swift; sourceTree = "<group>"; };
 		B42BCE6223AC01CC00A13601 /* SystemInfo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SystemInfo.swift; sourceTree = "<group>"; };
+		B42F614624ACEED6006C80C7 /* iGlanceUnitTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = iGlanceUnitTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		B42F614A24ACEED6006C80C7 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		B42F615024ACF724006C80C7 /* UserSettingsTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserSettingsTest.swift; sourceTree = "<group>"; };
 		B439332623E99E0800CDEB1D /* BarGraph.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BarGraph.swift; sourceTree = "<group>"; };
 		B43ABF2723AA1E99007F93BA /* SidebarButtonView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SidebarButtonView.swift; sourceTree = "<group>"; };
 		B43ABF2923AA32FA007F93BA /* SidebarViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SidebarViewController.swift; sourceTree = "<group>"; };
@@ -167,6 +189,9 @@
 		B4CFC47823FC3A3B00A0ED15 /* FanMenuBarItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FanMenuBarItem.swift; sourceTree = "<group>"; };
 		B4D82FDB23C1031800D502FF /* DiskInfo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DiskInfo.swift; sourceTree = "<group>"; };
 		B4D86E1A23AA710B00671B52 /* MainViewViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainViewViewController.swift; sourceTree = "<group>"; };
+		B4DD2C2C24A7B26E003AC30A /* iGlanceUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = iGlanceUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		B4DD2C2E24A7B26E003AC30A /* iGlanceUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = iGlanceUITests.swift; sourceTree = "<group>"; };
+		B4DD2C3024A7B26E003AC30A /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		B4DE725E23C257610001CF46 /* Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Extensions.swift; sourceTree = "<group>"; };
 		B4DE727F23C2644A0001CF46 /* BatteryInfo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BatteryInfo.swift; sourceTree = "<group>"; };
 		B4E909102427B33F00260479 /* BatteryMenuBarItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BatteryMenuBarItem.swift; sourceTree = "<group>"; };
@@ -182,6 +207,13 @@
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
+		B42F614324ACEED6006C80C7 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		B46789AF23A69ECA00CE572D /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
@@ -191,6 +223,13 @@
 				B49B4EC524841CC200613454 /* LaunchAtLogin.framework in Frameworks */,
 				B49CDFF823E1E1950070D664 /* SMCKit.framework in Frameworks */,
 				6CA197EE9972523C071FC0F4 /* Pods_iGlance.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		B4DD2C2924A7B26E003AC30A /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -274,6 +313,15 @@
 			path = SystemInfo;
 			sourceTree = "<group>";
 		};
+		B42F614724ACEED6006C80C7 /* iGlanceUnitTests */ = {
+			isa = PBXGroup;
+			children = (
+				B42F615024ACF724006C80C7 /* UserSettingsTest.swift */,
+				B42F614A24ACEED6006C80C7 /* Info.plist */,
+			);
+			path = iGlanceUnitTests;
+			sourceTree = "<group>";
+		};
 		B43283BB23C8D88700E871AE /* AboutModal */ = {
 			isa = PBXGroup;
 			children = (
@@ -321,6 +369,8 @@
 			isa = PBXGroup;
 			children = (
 				B46789B423A69ECA00CE572D /* iGlance */,
+				B4DD2C2D24A7B26E003AC30A /* iGlanceUITests */,
+				B42F614724ACEED6006C80C7 /* iGlanceUnitTests */,
 				B46789B323A69ECA00CE572D /* Products */,
 				AAAB1F73870D1085E1944A64 /* Frameworks */,
 				9D3086A356E951C4DE7FB730 /* Pods */,
@@ -331,6 +381,8 @@
 			isa = PBXGroup;
 			children = (
 				B46789B223A69ECA00CE572D /* iGlance.app */,
+				B4DD2C2C24A7B26E003AC30A /* iGlanceUITests.xctest */,
+				B42F614624ACEED6006C80C7 /* iGlanceUnitTests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -405,6 +457,7 @@
 			isa = PBXGroup;
 			children = (
 				B4D86E1A23AA710B00671B52 /* MainViewViewController.swift */,
+				B43D3A3A24AA506B00ACA966 /* MainViewView.swift */,
 				B47D3C8B23ABEDCC00DE911F /* DashboardView */,
 				B459D29023E4A80800E6CC67 /* CpuViewController.swift */,
 				B415FF2623F459EF00ED6567 /* MemoryViewController.swift */,
@@ -415,6 +468,15 @@
 				B4C65F3B2514F65D0029A835 /* SettingsViewController.swift */,
 			);
 			path = MainViews;
+			sourceTree = "<group>";
+		};
+		B4DD2C2D24A7B26E003AC30A /* iGlanceUITests */ = {
+			isa = PBXGroup;
+			children = (
+				B4DD2C2E24A7B26E003AC30A /* iGlanceUITests.swift */,
+				B4DD2C3024A7B26E003AC30A /* Info.plist */,
+			);
+			path = iGlanceUITests;
 			sourceTree = "<group>";
 		};
 		B4FE0DAD23EF1BCB00AE94E6 /* Utils */ = {
@@ -430,6 +492,24 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
+		B42F614524ACEED6006C80C7 /* iGlanceUnitTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = B42F614F24ACEED6006C80C7 /* Build configuration list for PBXNativeTarget "iGlanceUnitTests" */;
+			buildPhases = (
+				B42F614224ACEED6006C80C7 /* Sources */,
+				B42F614324ACEED6006C80C7 /* Frameworks */,
+				B42F614424ACEED6006C80C7 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				B42F614C24ACEED6006C80C7 /* PBXTargetDependency */,
+			);
+			name = iGlanceUnitTests;
+			productName = iGlanceUnitTests;
+			productReference = B42F614624ACEED6006C80C7 /* iGlanceUnitTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
 		B46789B123A69ECA00CE572D /* iGlance */ = {
 			isa = PBXNativeTarget;
 			buildConfigurationList = B46789D823A69ECB00CE572D /* Build configuration list for PBXNativeTarget "iGlance" */;
@@ -452,18 +532,44 @@
 			productReference = B46789B223A69ECA00CE572D /* iGlance.app */;
 			productType = "com.apple.product-type.application";
 		};
+		B4DD2C2B24A7B26E003AC30A /* iGlanceUITests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = B4DD2C3324A7B26E003AC30A /* Build configuration list for PBXNativeTarget "iGlanceUITests" */;
+			buildPhases = (
+				B4DD2C2824A7B26E003AC30A /* Sources */,
+				B4DD2C2924A7B26E003AC30A /* Frameworks */,
+				B4DD2C2A24A7B26E003AC30A /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				B4DD2C3224A7B26E003AC30A /* PBXTargetDependency */,
+			);
+			name = iGlanceUITests;
+			productName = iGlanceUITests;
+			productReference = B4DD2C2C24A7B26E003AC30A /* iGlanceUITests.xctest */;
+			productType = "com.apple.product-type.bundle.ui-testing";
+		};
 /* End PBXNativeTarget section */
 
 /* Begin PBXProject section */
 		B46789AA23A69ECA00CE572D /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
-				LastSwiftUpdateCheck = 1130;
-				LastUpgradeCheck = 1200;
-				ORGANIZATIONNAME = D0miH;
+				LastSwiftUpdateCheck = 1150;
+				LastUpgradeCheck = 1130;
+				ORGANIZATIONNAME = iGlance;
 				TargetAttributes = {
+					B42F614524ACEED6006C80C7 = {
+						CreatedOnToolsVersion = 11.5;
+						TestTargetID = B46789B123A69ECA00CE572D;
+					};
 					B46789B123A69ECA00CE572D = {
 						CreatedOnToolsVersion = 11.3;
+					};
+					B4DD2C2B24A7B26E003AC30A = {
+						CreatedOnToolsVersion = 11.5;
+						TestTargetID = B46789B123A69ECA00CE572D;
 					};
 				};
 			};
@@ -481,11 +587,20 @@
 			projectRoot = "";
 			targets = (
 				B46789B123A69ECA00CE572D /* iGlance */,
+				B4DD2C2B24A7B26E003AC30A /* iGlanceUITests */,
+				B42F614524ACEED6006C80C7 /* iGlanceUnitTests */,
 			);
 		};
 /* End PBXProject section */
 
 /* Begin PBXResourcesBuildPhase section */
+		B42F614424ACEED6006C80C7 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		B46789B023A69ECA00CE572D /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -495,6 +610,13 @@
 				B46789BD23A69ECB00CE572D /* Main.storyboard in Resources */,
 				B4A0D378242E5F6600690098 /* NetworkStatisticsMenuView.xib in Resources */,
 				B44D507123C8F1030071609E /* Credits.plist in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		B4DD2C2A24A7B26E003AC30A /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -578,6 +700,14 @@
 /* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
+		B42F614224ACEED6006C80C7 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				B42F615124ACF724006C80C7 /* UserSettingsTest.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		B46789AE23A69ECA00CE572D /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -598,6 +728,7 @@
 				274CA92A244ED22600BD8163 /* DiskViewController.swift in Sources */,
 				B4CC276824AB740700010C4F /* MainWindowDelegate.swift in Sources */,
 				B47094EA23C79F9A009D85AD /* ThemedLabel.swift in Sources */,
+				B43D3A3B24AA506B00ACA966 /* MainViewView.swift in Sources */,
 				B4D82FDC23C1031800D502FF /* DiskInfo.swift in Sources */,
 				B452554B23E358E7000F79BF /* MenuBarItem.swift in Sources */,
 				B4C8DD2523AA3DB8008DAE45 /* ContentManagerView.swift in Sources */,
@@ -644,7 +775,28 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		B4DD2C2824A7B26E003AC30A /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				B4DD2C2F24A7B26E003AC30A /* iGlanceUITests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		B42F614C24ACEED6006C80C7 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = B46789B123A69ECA00CE572D /* iGlance */;
+			targetProxy = B42F614B24ACEED6006C80C7 /* PBXContainerItemProxy */;
+		};
+		B4DD2C3224A7B26E003AC30A /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = B46789B123A69ECA00CE572D /* iGlance */;
+			targetProxy = B4DD2C3124A7B26E003AC30A /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
 
 /* Begin PBXVariantGroup section */
 		B46789BB23A69ECB00CE572D /* Main.storyboard */ = {
@@ -658,6 +810,52 @@
 /* End PBXVariantGroup section */
 
 /* Begin XCBuildConfiguration section */
+		B42F614D24ACEED6006C80C7 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_IDENTITY = "Apple Development";
+				CODE_SIGN_STYLE = Automatic;
+				COMBINE_HIDPI_IMAGES = YES;
+				DEVELOPMENT_TEAM = J6GXEPK4NG;
+				INFOPLIST_FILE = iGlanceUnitTests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/../Frameworks",
+					"@loader_path/../Frameworks",
+				);
+				MACOSX_DEPLOYMENT_TARGET = 10.15;
+				PRODUCT_BUNDLE_IDENTIFIER = io.github.iglance.iGlanceUnitTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE_SPECIFIER = "";
+				SWIFT_VERSION = 5.0;
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/iGlance.app/Contents/MacOS/iGlance";
+			};
+			name = Debug;
+		};
+		B42F614E24ACEED6006C80C7 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_IDENTITY = "Apple Development";
+				CODE_SIGN_STYLE = Automatic;
+				COMBINE_HIDPI_IMAGES = YES;
+				DEVELOPMENT_TEAM = J6GXEPK4NG;
+				INFOPLIST_FILE = iGlanceUnitTests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/../Frameworks",
+					"@loader_path/../Frameworks",
+				);
+				MACOSX_DEPLOYMENT_TARGET = 10.15;
+				PRODUCT_BUNDLE_IDENTIFIER = io.github.iglance.iGlanceUnitTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE_SPECIFIER = "";
+				SWIFT_VERSION = 5.0;
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/iGlance.app/Contents/MacOS/iGlance";
+			};
+			name = Release;
+		};
 		B46789D623A69ECB00CE572D /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
@@ -833,9 +1031,62 @@
 			};
 			name = Release;
 		};
+		B4DD2C3424A7B26E003AC30A /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_IDENTITY = "Apple Development";
+				CODE_SIGN_STYLE = Automatic;
+				COMBINE_HIDPI_IMAGES = YES;
+				DEVELOPMENT_TEAM = J6GXEPK4NG;
+				INFOPLIST_FILE = iGlanceUITests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/../Frameworks",
+					"@loader_path/../Frameworks",
+				);
+				MACOSX_DEPLOYMENT_TARGET = 10.15;
+				PRODUCT_BUNDLE_IDENTIFIER = io.github.iglance.iGlanceUITests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE_SPECIFIER = "";
+				SWIFT_VERSION = 5.0;
+				TEST_TARGET_NAME = iGlance;
+			};
+			name = Debug;
+		};
+		B4DD2C3524A7B26E003AC30A /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_IDENTITY = "Apple Development";
+				CODE_SIGN_STYLE = Automatic;
+				COMBINE_HIDPI_IMAGES = YES;
+				DEVELOPMENT_TEAM = J6GXEPK4NG;
+				INFOPLIST_FILE = iGlanceUITests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/../Frameworks",
+					"@loader_path/../Frameworks",
+				);
+				MACOSX_DEPLOYMENT_TARGET = 10.15;
+				PRODUCT_BUNDLE_IDENTIFIER = io.github.iglance.iGlanceUITests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE_SPECIFIER = "";
+				SWIFT_VERSION = 5.0;
+				TEST_TARGET_NAME = iGlance;
+			};
+			name = Release;
+		};
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
+		B42F614F24ACEED6006C80C7 /* Build configuration list for PBXNativeTarget "iGlanceUnitTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				B42F614D24ACEED6006C80C7 /* Debug */,
+				B42F614E24ACEED6006C80C7 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
 		B46789AD23A69ECA00CE572D /* Build configuration list for PBXProject "iGlance" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
@@ -850,6 +1101,15 @@
 			buildConfigurations = (
 				B46789D923A69ECB00CE572D /* Debug */,
 				B46789DA23A69ECB00CE572D /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		B4DD2C3324A7B26E003AC30A /* Build configuration list for PBXNativeTarget "iGlanceUITests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				B4DD2C3424A7B26E003AC30A /* Debug */,
+				B4DD2C3524A7B26E003AC30A /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;

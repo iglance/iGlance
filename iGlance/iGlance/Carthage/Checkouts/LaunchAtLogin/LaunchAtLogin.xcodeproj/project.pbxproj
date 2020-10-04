@@ -63,6 +63,7 @@
 		D9CFA59424C0FB5E005BC9E9 /* Sources */ = {
 			isa = PBXGroup;
 			children = (
+				E3A6EB57249009C3004D7101 /* LaunchAtLogin.entitlements */,
 				E32E9B651EB87D7B000FEEE9 /* LaunchAtLogin */,
 				E32E9B751EB87EA3000FEEE9 /* LaunchAtLoginHelper */,
 			);

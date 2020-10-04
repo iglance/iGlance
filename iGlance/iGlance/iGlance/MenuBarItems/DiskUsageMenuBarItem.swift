@@ -31,6 +31,11 @@ class DiskUsageMenuBarItem: MenuBarItem {
     }
 
     func update() {
+        self.statusItem.isVisible = AppDelegate.userSettings.settings.disk.showDiskUsage
+        if !self.statusItem.isVisible {
+            return
+        }
+
         updateMenuBarIcon()
     }
 

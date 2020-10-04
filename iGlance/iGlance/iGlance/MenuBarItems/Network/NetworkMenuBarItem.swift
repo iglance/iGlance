@@ -140,7 +140,7 @@ class NetworkMenuBarItem: MenuBarItem {
         let totalValueString = convertedTotal.unit >= .Gigabyte ? String(format: "%.1f", convertedTotal.value) : String(format: "%.2f", convertedTotal.value)
         networkStatsMenuView.setUploadLabel("\(upValueString) \(convertedUp.unit.rawValue)")
         networkStatsMenuView.setDownloadLabel("\(downValueString) \(convertedDown.unit.rawValue)")
-        networkStatsMenuView.setTotalLabel("\(totalValueString) \(convertedTotal.unit.rawValue)")
+        networkStatsMenuView.setTotalLabel("\(totalValueString) \(convertedTotal.unit.rawValue)")
     }
 
     // MARK: -
@@ -178,24 +178,19 @@ class NetworkMenuBarItem: MenuBarItem {
         let uploadString = self.createAttributedBandwidthString(value: valueStringUp, unit: up.unit.rawValue + "/s")
         let downloadString = self.createAttributedBandwidthString(value: valueStringDown, unit: down.unit.rawValue + "/s")
 
-        // get the up arrow icon
-        guard let arrowUpIcon = NSImage(named: "ArrowUpIcon")?.tint(color: ThemeManager.isDarkTheme() ? NSColor.white : NSColor.black) else {
-            DDLogError("An error occurred while loading the bandwidth arrow up menu bar icon")
-            return nil
-        }
-        // get the down arrow icon
-        guard let arrowDownIcon = NSImage(named: "ArrowDownIcon")?.tint(color: ThemeManager.isDarkTheme() ? NSColor.white : NSColor.black) else {
-            DDLogError("An error occurred while loading the bandwidth arrow down menu bar icon")
+        // get the bandwidth icon
+        guard let bandwidthIcon = NSImage(named: "NetworkBandwidthIcon") else {
+            DDLogError("An error occurred while loading the bandwidth menu bar icon")
             return nil
         }
 
         // create the menu bar image for the bandwidth.
         let bandwidthTextWidth = CGFloat(55) // this value was found by trail and error
-        let arrowIconWidth = arrowUpIcon.size.width
+        let bandwidthIconWidth = bandwidthIcon.size.width
         let menuBarImage = NSImage(
             size: NSSize(
-                width: bandwidthTextWidth + arrowIconWidth,
-                height: self.menuBarHeight
+                width: bandwidthTextWidth + bandwidthIconWidth,
+                height: CGFloat(self.menuBarHeight)
             )
         )
 
@@ -206,7 +201,7 @@ class NetworkMenuBarItem: MenuBarItem {
         let uploadStringSize = uploadString.size()
         uploadString.draw(
             at: NSPoint(
-                x: arrowIconWidth + bandwidthTextWidth - uploadStringSize.width,
+                x: bandwidthIconWidth + bandwidthTextWidth - uploadStringSize.width,
                 y: menuBarImage.size.height - 11 // this value was found by trail and error
             )
         )
@@ -214,29 +209,13 @@ class NetworkMenuBarItem: MenuBarItem {
         // draw the download string
         let downloadStringsize = downloadString.size()
         // y value was found by trail and error
-        downloadString.draw(at: NSPoint(x: arrowIconWidth + bandwidthTextWidth - downloadStringsize.width, y: -2))
+        downloadString.draw(at: NSPoint(x: bandwidthIconWidth + bandwidthTextWidth - downloadStringsize.width, y: -2))
+
+        // tint the icon to have the correct color depending on the current theme
+        let tintedBandwidthIcon = bandwidthIcon.tint(color: ThemeManager.isDarkTheme() ? NSColor.white : NSColor.black)
 
         // draw the bandwidth icon in front of the upload and download string
-        arrowUpIcon.draw(
-            at: NSPoint(
-                    x: 0,
-                    y: menuBarHeight - (arrowUpIcon.size.height + (menuBarHeight / 2.0 - arrowUpIcon.size.height))
-                ),
-            from: NSRect.zero,
-            operation: .sourceOver,
-            fraction: 1.0
-        )
-        arrowDownIcon.draw(
-            at: NSPoint(
-                    x: 0,
-                    y: menuBarHeight / 2.0 - arrowDownIcon.size.height
-                ),
-            from: NSRect.zero,
-            operation: .sourceOver,
-            fraction: 1.0
-        )
-
-        // tintedBandwidthIcon.draw(at: NSPoint(x: 0, y: 18 / 2 - tintedBandwidthIcon.size.height / 2), from: NSRect.zero, operation: .sourceOver, fraction: 1.0)
+        tintedBandwidthIcon.draw(at: NSPoint(x: 0, y: 18 / 2 - tintedBandwidthIcon.size.height / 2), from: NSRect.zero, operation: .sourceOver, fraction: 1.0)
 
         // unlock the focous of drawing
         menuBarImage.unlockFocus()
