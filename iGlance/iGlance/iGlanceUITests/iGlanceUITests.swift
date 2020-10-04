@@ -58,17 +58,11 @@ class iGlanceUITests: XCTestCase {
         mainView = iglanceWindow.otherElements["DiskMainView"].waitForExistence(timeout: 5)
         XCTAssert(mainView)
 
+        iglanceWindow.otherElements["SettingsSidebarButton"].click()
+        mainView = iglanceWindow.otherElements["SettingsMainView"].waitForExistence(timeout: 5)
+        XCTAssert(mainView)
+
         iglanceWindow.buttons[XCUIIdentifierCloseWindow].click()
-    }
-
-    func testPreferenceWindow() throws {
-        let app = XCUIApplication()
-        app.launch()
-
-        openMainWindow(app: app)
-
-        app.windows["iGlance"].children(matching: .button).element(boundBy: 0).click()
-        XCTAssert(app.dialogs["Preference Modal View Controller"].exists)
     }
 
     // MARK: Private Functions

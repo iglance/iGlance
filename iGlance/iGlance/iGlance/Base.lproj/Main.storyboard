@@ -607,7 +607,7 @@
                                 <rect key="frame" x="18" y="464" width="164" height="18"/>
                                 <buttonCell key="cell" type="check" title="Show CPU temperature" bezelStyle="regularSquare" imagePosition="left" state="on" inset="2" id="Cds-u8-W37">
                                     <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
-                                    <font key="font" metaFont="label" size="13"/>
+                                    <font key="font" metaFont="system"/>
                                 </buttonCell>
                                 <connections>
                                     <action selector="cpuTempCheckboxChanged:" target="uGw-Yr-sBC" id="P09-C8-f3l"/>
@@ -620,7 +620,7 @@
                                         <rect key="frame" x="-2" y="2" width="126" height="18"/>
                                         <buttonCell key="cell" type="check" title="Show CPU usage" bezelStyle="regularSquare" imagePosition="left" state="on" inset="2" id="cEi-JW-jiT">
                                             <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
-                                            <font key="font" metaFont="label" size="13"/>
+                                            <font key="font" metaFont="system"/>
                                         </buttonCell>
                                         <connections>
                                             <action selector="cpuUsageCheckboxChanged:" target="uGw-Yr-sBC" id="S39-Sy-390"/>
@@ -787,7 +787,7 @@
                                 <rect key="frame" x="48" y="379" width="139" height="18"/>
                                 <buttonCell key="cell" type="check" title="Show graph border" bezelStyle="regularSquare" imagePosition="left" state="on" inset="2" id="bIW-9G-JM9">
                                     <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
-                                    <font key="font" metaFont="label" size="13"/>
+                                    <font key="font" metaFont="system"/>
                                 </buttonCell>
                                 <connections>
                                     <action selector="usageGraphBorderCheckboxChanged:" target="uGw-Yr-sBC" id="uv0-rf-nRm"/>
@@ -800,7 +800,7 @@
                                         <rect key="frame" x="-2" y="1" width="134" height="18"/>
                                         <buttonCell key="cell" type="check" title="Use color gradient" bezelStyle="regularSquare" imagePosition="left" inset="2" id="FPC-vc-aOB">
                                             <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
-                                            <font key="font" metaFont="label" size="13"/>
+                                            <font key="font" metaFont="system"/>
                                         </buttonCell>
                                         <connections>
                                             <action selector="colorGradientCheckboxChanged:" target="uGw-Yr-sBC" id="oF4-Ed-SGW"/>
@@ -903,7 +903,7 @@
                                         <rect key="frame" x="-2" y="0.0" width="149" height="18"/>
                                         <buttonCell key="cell" type="check" title="Show memory usage" bezelStyle="regularSquare" imagePosition="left" state="on" inset="2" id="u5o-av-Pu4">
                                             <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
-                                            <font key="font" metaFont="label" size="13"/>
+                                            <font key="font" metaFont="system"/>
                                         </buttonCell>
                                         <connections>
                                             <action selector="memoryUsageCheckboxChanged:" target="Pbp-jU-Jl9" id="K0G-Bg-7yO"/>
@@ -998,7 +998,7 @@
                                 <rect key="frame" x="48" y="408" width="139" height="18"/>
                                 <buttonCell key="cell" type="check" title="Show graph border" bezelStyle="regularSquare" imagePosition="left" state="on" inset="2" id="kh9-1c-aYg">
                                     <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
-                                    <font key="font" metaFont="label" size="13"/>
+                                    <font key="font" metaFont="system"/>
                                 </buttonCell>
                                 <connections>
                                     <action selector="usageGraphBorderCheckboxChanged:" target="Pbp-jU-Jl9" id="6zZ-6N-oyV"/>
@@ -1082,7 +1082,7 @@
                                         <rect key="frame" x="-2" y="1" width="134" height="18"/>
                                         <buttonCell key="cell" type="check" title="Use color gradient" bezelStyle="regularSquare" imagePosition="left" inset="2" id="YkO-ft-bYs">
                                             <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
-                                            <font key="font" metaFont="label" size="13"/>
+                                            <font key="font" metaFont="system"/>
                                         </buttonCell>
                                         <connections>
                                             <action selector="colorGradientCheckboxChanged:" target="Pbp-jU-Jl9" id="pqU-db-CI3"/>
@@ -1178,7 +1178,7 @@
                                 <rect key="frame" x="18" y="464" width="148" height="18"/>
                                 <buttonCell key="cell" type="check" title="Show network usage" bezelStyle="regularSquare" imagePosition="left" state="on" inset="2" id="f3M-qC-YzO">
                                     <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
-                                    <font key="font" metaFont="label" size="13"/>
+                                    <font key="font" metaFont="system"/>
                                 </buttonCell>
                                 <connections>
                                     <action selector="networkUsageCheckboxChanged:" target="16f-vh-LVT" id="JT5-yX-NoF"/>
@@ -1213,7 +1213,7 @@
                                 <rect key="frame" x="18" y="464" width="119" height="18"/>
                                 <buttonCell key="cell" type="check" title="Show fan speed" bezelStyle="regularSquare" imagePosition="left" state="on" inset="2" id="u7q-ej-Rj9">
                                     <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
-                                    <font key="font" metaFont="label" size="13"/>
+                                    <font key="font" metaFont="system"/>
                                 </buttonCell>
                                 <connections>
                                     <action selector="fanSpeedCheckboxChanged:" target="76f-do-Hko" id="6df-fu-y73"/>
@@ -1223,7 +1223,7 @@
                                 <rect key="frame" x="48" y="440" width="145" height="18"/>
                                 <buttonCell key="cell" type="check" title="Show fan speed unit" bezelStyle="regularSquare" imagePosition="left" state="on" inset="2" id="u30-OG-Akj">
                                     <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
-                                    <font key="font" metaFont="label" size="13"/>
+                                    <font key="font" metaFont="system"/>
                                 </buttonCell>
                                 <connections>
                                     <action selector="fanSpeedUnitCheckboxChanged:" target="76f-do-Hko" id="pSC-0E-S8t"/>
@@ -1262,7 +1262,7 @@
                                 <rect key="frame" x="18" y="464" width="225" height="18"/>
                                 <buttonCell key="cell" type="check" title="Show battery symbol in menu bar" bezelStyle="regularSquare" imagePosition="left" state="on" inset="2" id="XXw-qA-EQk">
                                     <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
-                                    <font key="font" metaFont="label" size="13"/>
+                                    <font key="font" metaFont="system"/>
                                 </buttonCell>
                                 <connections>
                                     <action selector="batteryCheckboxChanged:" target="jU5-ml-SBe" id="I35-tU-m5M"/>
@@ -1309,7 +1309,7 @@
                                 <rect key="frame" x="18" y="409" width="217" height="18"/>
                                 <buttonCell key="cell" type="check" title="Show low battery notification at:" bezelStyle="regularSquare" imagePosition="left" state="on" inset="2" id="bgo-25-NLS">
                                     <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
-                                    <font key="font" metaFont="label" size="13"/>
+                                    <font key="font" metaFont="system"/>
                                 </buttonCell>
                                 <connections>
                                     <action selector="lowBatteryNotificationCheckboxChanged:" target="jU5-ml-SBe" id="g0a-kI-7y5"/>
@@ -1319,7 +1319,7 @@
                                 <rect key="frame" x="18" y="385" width="223" height="18"/>
                                 <buttonCell key="cell" type="check" title="Show high battery notification at:" bezelStyle="regularSquare" imagePosition="left" state="on" inset="2" id="qck-R5-sed">
                                     <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
-                                    <font key="font" metaFont="label" size="13"/>
+                                    <font key="font" metaFont="system"/>
                                 </buttonCell>
                                 <connections>
                                     <action selector="highBatteryNotificationCheckboxChanged:" target="jU5-ml-SBe" id="mrB-f4-Q5V"/>
@@ -1444,7 +1444,7 @@
                                 <rect key="frame" x="18" y="464" width="164" height="18"/>
                                 <buttonCell key="cell" type="check" title="Show disk space usage" bezelStyle="regularSquare" imagePosition="left" state="on" inset="2" id="QXI-2f-lHm">
                                     <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
-                                    <font key="font" metaFont="label" size="13"/>
+                                    <font key="font" metaFont="system"/>
                                 </buttonCell>
                                 <connections>
                                     <action selector="diskUsageCheckboxChanged:" target="sVS-y8-9uS" id="reD-5I-HjN"/>
@@ -1850,6 +1850,7 @@
                                                             <constraint firstAttribute="width" constant="200" id="mjW-ZK-rqu"/>
                                                             <constraint firstItem="Qi1-Xq-8G0" firstAttribute="leading" secondItem="2P1-JE-7vx" secondAttribute="leading" id="ww6-PT-O5t"/>
                                                         </constraints>
+                                                        <accessibility description="SettingsSidebarButton"/>
                                                     </customView>
                                                 </subviews>
                                                 <visibilityPriorities>
@@ -2070,7 +2071,7 @@
                             <constraint firstItem="gR8-Vb-Wl8" firstAttribute="centerY" secondItem="PLM-Rc-O84" secondAttribute="centerY" id="dFl-tH-eqj"/>
                             <constraint firstItem="gR8-Vb-Wl8" firstAttribute="centerX" secondItem="PLM-Rc-O84" secondAttribute="centerX" id="jpd-PJ-EiZ"/>
                         </constraints>
-                        <accessibility description="Sidebar"/>
+                        <accessibility description="SettingsMainView" identifier="SettingsMainView"/>
                     </view>
                     <connections>
                         <outlet property="advancedLoggingCheckbox" destination="kTd-Sa-6oc" id="Let-IY-Qdx"/>

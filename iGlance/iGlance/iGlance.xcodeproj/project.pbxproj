@@ -457,7 +457,6 @@
 			isa = PBXGroup;
 			children = (
 				B4D86E1A23AA710B00671B52 /* MainViewViewController.swift */,
-				B43D3A3A24AA506B00ACA966 /* MainViewView.swift */,
 				B47D3C8B23ABEDCC00DE911F /* DashboardView */,
 				B459D29023E4A80800E6CC67 /* CpuViewController.swift */,
 				B415FF2623F459EF00ED6567 /* MemoryViewController.swift */,
@@ -728,7 +727,6 @@
 				274CA92A244ED22600BD8163 /* DiskViewController.swift in Sources */,
 				B4CC276824AB740700010C4F /* MainWindowDelegate.swift in Sources */,
 				B47094EA23C79F9A009D85AD /* ThemedLabel.swift in Sources */,
-				B43D3A3B24AA506B00ACA966 /* MainViewView.swift in Sources */,
 				B4D82FDC23C1031800D502FF /* DiskInfo.swift in Sources */,
 				B452554B23E358E7000F79BF /* MenuBarItem.swift in Sources */,
 				B4C8DD2523AA3DB8008DAE45 /* ContentManagerView.swift in Sources */,
@@ -1047,6 +1045,7 @@
 				MACOSX_DEPLOYMENT_TARGET = 10.15;
 				PRODUCT_BUNDLE_IDENTIFIER = io.github.iglance.iGlanceUITests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "";
 				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_VERSION = 5.0;
 				TEST_TARGET_NAME = iGlance;
@@ -1069,6 +1068,7 @@
 				MACOSX_DEPLOYMENT_TARGET = 10.15;
 				PRODUCT_BUNDLE_IDENTIFIER = io.github.iglance.iGlanceUITests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "";
 				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_VERSION = 5.0;
 				TEST_TARGET_NAME = iGlance;

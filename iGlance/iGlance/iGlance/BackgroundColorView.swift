@@ -28,4 +28,8 @@ class BackgroundColorView: NSView {
         // draw the content
         super.draw(dirtyRect)
     }
+
+    override func isAccessibilityElement() -> Bool {
+        true
+    }
 }

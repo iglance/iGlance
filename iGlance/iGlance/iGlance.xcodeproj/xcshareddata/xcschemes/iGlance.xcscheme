@@ -28,6 +28,26 @@
       selectedLauncherIdentifier = "Xcode.DebuggerFoundation.Launcher.LLDB"
       shouldUseLaunchSchemeArgsEnv = "YES">
       <Testables>
+         <TestableReference
+            skipped = "NO">
+            <BuildableReference
+               BuildableIdentifier = "primary"
+               BlueprintIdentifier = "B4DD2C2B24A7B26E003AC30A"
+               BuildableName = "iGlanceUITests.xctest"
+               BlueprintName = "iGlanceUITests"
+               ReferencedContainer = "container:iGlance.xcodeproj">
+            </BuildableReference>
+         </TestableReference>
+         <TestableReference
+            skipped = "NO">
+            <BuildableReference
+               BuildableIdentifier = "primary"
+               BlueprintIdentifier = "B42F614524ACEED6006C80C7"
+               BuildableName = "iGlanceUnitTests.xctest"
+               BlueprintName = "iGlanceUnitTests"
+               ReferencedContainer = "container:iGlance.xcodeproj">
+            </BuildableReference>
+         </TestableReference>
       </Testables>
    </TestAction>
    <LaunchAction
