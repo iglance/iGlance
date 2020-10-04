@@ -113,8 +113,6 @@ class NetworkInfo {
             return "en0"
         }
 
-        DDLogInfo("Output of the network interface command: \n\(commandOutput)")
-
         // get the interface name
         let interfaceName = commandOutput.trimmingCharacters(in: .whitespacesAndNewlines)
 
