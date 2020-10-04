@@ -20,12 +20,30 @@ import CocoaLumberjack
 enum Theme: Int {
     case darkTheme, lightTheme
 
+    var titleBarBackgroundColor: NSColor {
+        switch self {
+        case .darkTheme:
+            return #colorLiteral(red: 0.09019607843, green: 0.1176470588, blue: 0.1568627451, alpha: 1)
+        case .lightTheme:
+            return #colorLiteral(red: 0.9490196078, green: 0.9490196078, blue: 0.9490196078, alpha: 1)
+        }
+    }
+
+    var borderColor: NSColor {
+        switch self {
+        case . darkTheme:
+            return #colorLiteral(red: 0, green: 0, blue: 0, alpha: 1)
+        case .lightTheme:
+            return #colorLiteral(red: 0.6156862745, green: 0.6156862745, blue: 0.6156862745, alpha: 1)
+        }
+    }
+
     var mainViewBackgroundColor: NSColor {
         switch self {
         case .darkTheme:
             return #colorLiteral(red: 0.1294117647, green: 0.1568627451, blue: 0.1960784314, alpha: 1)
         case .lightTheme:
-            return NSColor.colorFrom(hex: "FFFFFF")
+            return #colorLiteral(red: 0.9725490196, green: 0.9764705882, blue: 0.9764705882, alpha: 1)
         }
     }
 

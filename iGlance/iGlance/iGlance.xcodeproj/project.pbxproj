@@ -11,6 +11,7 @@
 		274CA92A244ED22600BD8163 /* DiskViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 274CA929244ED22600BD8163 /* DiskViewController.swift */; };
 		6CA197EE9972523C071FC0F4 /* Pods_iGlance.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6D3175EF0B347DBD4AE56293 /* Pods_iGlance.framework */; };
 		B4060E3223C4FAEF00CD945E /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = B4060E3123C4FAEF00CD945E /* Constants.swift */; };
+		B40BBA64251FB53500D2690E /* BackgroundColorView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B40BBA63251FB53500D2690E /* BackgroundColorView.swift */; };
 		B415FF2723F459EF00ED6567 /* MemoryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B415FF2623F459EF00ED6567 /* MemoryViewController.swift */; };
 		B415FF2A23F45F0800ED6567 /* MemoryUsageMenuBarItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = B415FF2923F45F0800ED6567 /* MemoryUsageMenuBarItem.swift */; };
 		B415FF2C23F45F6000ED6567 /* MemoryInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = B415FF2B23F45F6000ED6567 /* MemoryInfo.swift */; };
@@ -60,7 +61,6 @@
 		B4C37E6B23A8D715008C7FC0 /* SegueAnimator.swift in Sources */ = {isa = PBXBuildFile; fileRef = B4C37E6A23A8D715008C7FC0 /* SegueAnimator.swift */; };
 		B4C37E6D23A8D811008C7FC0 /* ContentManagerViewControllerHolder.swift in Sources */ = {isa = PBXBuildFile; fileRef = B4C37E6C23A8D811008C7FC0 /* ContentManagerViewControllerHolder.swift */; };
 		B4C37E7023A91F3C008C7FC0 /* ThemeManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = B4C37E6F23A91F3C008C7FC0 /* ThemeManager.swift */; };
-		B4C65F3A2514E8270029A835 /* MainViewView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B4C65F392514E8270029A835 /* MainViewView.swift */; };
 		B4C65F3C2514F65D0029A835 /* SettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B4C65F3B2514F65D0029A835 /* SettingsViewController.swift */; };
 		B4C8DD2523AA3DB8008DAE45 /* ContentManagerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B4C8DD2423AA3DB8008DAE45 /* ContentManagerView.swift */; };
 		B4C985E3244CB694002F8D3F /* Utils.swift in Sources */ = {isa = PBXBuildFile; fileRef = B4C985E2244CB694002F8D3F /* Utils.swift */; };
@@ -109,6 +109,7 @@
 		6D3175EF0B347DBD4AE56293 /* Pods_iGlance.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_iGlance.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		B4060E2E23C4F84D00CD945E /* ServiceManagement.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = ServiceManagement.framework; path = System/Library/Frameworks/ServiceManagement.framework; sourceTree = SDKROOT; };
 		B4060E3123C4FAEF00CD945E /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
+		B40BBA63251FB53500D2690E /* BackgroundColorView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BackgroundColorView.swift; sourceTree = "<group>"; };
 		B415FF2623F459EF00ED6567 /* MemoryViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MemoryViewController.swift; sourceTree = "<group>"; };
 		B415FF2923F45F0800ED6567 /* MemoryUsageMenuBarItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MemoryUsageMenuBarItem.swift; sourceTree = "<group>"; };
 		B415FF2B23F45F6000ED6567 /* MemoryInfo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MemoryInfo.swift; sourceTree = "<group>"; };
@@ -158,7 +159,6 @@
 		B4C37E6A23A8D715008C7FC0 /* SegueAnimator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SegueAnimator.swift; sourceTree = "<group>"; };
 		B4C37E6C23A8D811008C7FC0 /* ContentManagerViewControllerHolder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentManagerViewControllerHolder.swift; sourceTree = "<group>"; };
 		B4C37E6F23A91F3C008C7FC0 /* ThemeManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ThemeManager.swift; sourceTree = "<group>"; };
-		B4C65F392514E8270029A835 /* MainViewView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainViewView.swift; sourceTree = "<group>"; };
 		B4C65F3B2514F65D0029A835 /* SettingsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsViewController.swift; sourceTree = "<group>"; };
 		B4C8DD2423AA3DB8008DAE45 /* ContentManagerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentManagerView.swift; sourceTree = "<group>"; };
 		B4C985E2244CB694002F8D3F /* Utils.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Utils.swift; sourceTree = "<group>"; };
@@ -345,6 +345,7 @@
 				B40E946023A9435200D63D17 /* MainWindow */,
 				B4C37E6E23A91F2F008C7FC0 /* Theme */,
 				B4FE0DAD23EF1BCB00AE94E6 /* Utils */,
+				B40BBA63251FB53500D2690E /* BackgroundColorView.swift */,
 				B46789B523A69ECA00CE572D /* AppDelegate.swift */,
 				B4924F08244A2492000D8BDD /* RepeatingTimer.swift */,
 				B472EC1F243101DB002F7504 /* Logger.swift */,
@@ -404,7 +405,6 @@
 			isa = PBXGroup;
 			children = (
 				B4D86E1A23AA710B00671B52 /* MainViewViewController.swift */,
-				B4C65F392514E8270029A835 /* MainViewView.swift */,
 				B47D3C8B23ABEDCC00DE911F /* DashboardView */,
 				B459D29023E4A80800E6CC67 /* CpuViewController.swift */,
 				B415FF2623F459EF00ED6567 /* MemoryViewController.swift */,
@@ -616,6 +616,7 @@
 				B48BD19123E73F8E00152931 /* CpuUsageMenuBarItem.swift in Sources */,
 				B4C985E3244CB694002F8D3F /* Utils.swift in Sources */,
 				B4CFC47623FC393300A0ED15 /* FanViewController.swift in Sources */,
+				B40BBA64251FB53500D2690E /* BackgroundColorView.swift in Sources */,
 				B4A0D37A242E5FD500690098 /* NetworkStatisticsMenuView.swift in Sources */,
 				B4E909132427B5EA00260479 /* BatteryViewController.swift in Sources */,
 				B4924F09244A2492000D8BDD /* RepeatingTimer.swift in Sources */,
@@ -632,7 +633,6 @@
 				B4E9E53C2416AD1F0090E9E8 /* NetworkViewController.swift in Sources */,
 				B42BCE6323AC01CC00A13601 /* SystemInfo.swift in Sources */,
 				B4F4AF3B23FAFBD60033B5CE /* FanInfo.swift in Sources */,
-				B4C65F3A2514E8270029A835 /* MainViewView.swift in Sources */,
 				B415FF2A23F45F0800ED6567 /* MemoryUsageMenuBarItem.swift in Sources */,
 				B47D3C8D23ABEDF100DE911F /* CustomDashboardBox.swift in Sources */,
 				B4EFB55B23CA197500CF2FF2 /* CustomLogFormatter.swift in Sources */,

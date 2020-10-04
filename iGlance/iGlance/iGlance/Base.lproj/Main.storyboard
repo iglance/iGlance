@@ -148,11 +148,12 @@
         <scene sceneID="R2V-B0-nI4">
             <objects>
                 <windowController storyboardIdentifier="MainWindowController" id="B8D-0N-5wS" userLabel="Main Window Controller" customClass="MainWindowController" customModule="iGlance" customModuleProvider="target" sceneMemberID="viewController">
-                    <window key="window" title="iGlance" allowsToolTipsWhenApplicationIsInactive="NO" autorecalculatesKeyViewLoop="NO" releasedWhenClosed="NO" visibleAtLaunch="NO" animationBehavior="default" titlebarAppearsTransparent="YES" titleVisibility="hidden" id="IQv-IB-iLA">
-                        <windowStyleMask key="styleMask" titled="YES" closable="YES" miniaturizable="YES" texturedBackground="YES" fullSizeContentView="YES"/>
+                    <window key="window" title="iGlance" allowsToolTipsWhenApplicationIsInactive="NO" autorecalculatesKeyViewLoop="NO" releasedWhenClosed="NO" visibleAtLaunch="NO" animationBehavior="default" titlebarAppearsTransparent="YES" id="IQv-IB-iLA">
+                        <windowStyleMask key="styleMask" titled="YES" closable="YES" miniaturizable="YES" texturedBackground="YES"/>
                         <windowPositionMask key="initialPositionMask" leftStrut="YES" rightStrut="YES" topStrut="YES" bottomStrut="YES"/>
                         <rect key="contentRect" x="196" y="240" width="830" height="500"/>
                         <rect key="screenRect" x="0.0" y="0.0" width="1680" height="1027"/>
+                        <contentBorderThickness minY="0.0" maxY="0.0"/>
                     </window>
                     <connections>
                         <outlet property="mainWindow" destination="IQv-IB-iLA" id="jv6-u2-dA9"/>
@@ -167,23 +168,27 @@
         <scene sceneID="hIz-AP-VOD">
             <objects>
                 <viewController title="Main Window View Controller" storyboardIdentifier="MainWindowViewController" id="XfG-lQ-9wD" customClass="MainWindowViewController" customModule="iGlance" customModuleProvider="target" sceneMemberID="viewController">
-                    <view key="view" id="m2S-Jp-Qdl">
+                    <view key="view" id="m2S-Jp-Qdl" customClass="BackgroundColorView" customModule="iGlance" customModuleProvider="target">
                         <rect key="frame" x="0.0" y="0.0" width="830" height="500"/>
                         <autoresizingMask key="autoresizingMask" flexibleMinX="YES" widthSizable="YES" flexibleMaxX="YES" flexibleMinY="YES" heightSizable="YES" flexibleMaxY="YES"/>
                         <subviews>
-                            <stackView distribution="fill" orientation="horizontal" alignment="top" spacing="0.0" horizontalStackHuggingPriority="249.99998474121094" verticalStackHuggingPriority="249.99998474121094" detachesHiddenViews="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Obm-li-tfe">
-                                <rect key="frame" x="0.0" y="0.0" width="830" height="500"/>
+                            <stackView distribution="fill" orientation="horizontal" alignment="top" spacing="1" horizontalStackHuggingPriority="249.99998474121094" verticalStackHuggingPriority="249.99998474121094" detachesHiddenViews="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Obm-li-tfe">
+                                <rect key="frame" x="0.0" y="0.0" width="830" height="499"/>
                                 <subviews>
                                     <containerView translatesAutoresizingMaskIntoConstraints="NO" id="k5q-wB-g99">
-                                        <rect key="frame" x="0.0" y="0.0" width="230" height="500"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="229" height="499"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="499" id="Ync-PF-TG0"/>
+                                        </constraints>
                                         <connections>
                                             <segue destination="RxD-FS-69G" kind="embed" id="pOD-2c-LD8"/>
                                         </connections>
                                     </containerView>
                                     <containerView translatesAutoresizingMaskIntoConstraints="NO" id="59Y-Zf-R46">
-                                        <rect key="frame" x="230" y="0.0" width="600" height="500"/>
+                                        <rect key="frame" x="230" y="0.0" width="600" height="499"/>
                                         <constraints>
                                             <constraint firstAttribute="width" constant="600" id="DMS-cr-H3Q"/>
+                                            <constraint firstAttribute="height" constant="499" id="Ho7-xc-BB0"/>
                                         </constraints>
                                         <connections>
                                             <segue destination="zU9-is-Ney" kind="embed" id="tjU-FY-7Bj"/>
@@ -191,7 +196,12 @@
                                     </containerView>
                                 </subviews>
                                 <constraints>
+                                    <constraint firstItem="k5q-wB-g99" firstAttribute="top" secondItem="Obm-li-tfe" secondAttribute="top" id="0DC-XS-Jip"/>
+                                    <constraint firstItem="59Y-Zf-R46" firstAttribute="top" secondItem="Obm-li-tfe" secondAttribute="top" id="Boc-mm-nz9"/>
                                     <constraint firstItem="59Y-Zf-R46" firstAttribute="leading" secondItem="Obm-li-tfe" secondAttribute="leading" constant="230" id="MMl-Ak-dEN"/>
+                                    <constraint firstAttribute="bottom" secondItem="k5q-wB-g99" secondAttribute="bottom" id="Tlb-TO-DJ0"/>
+                                    <constraint firstAttribute="bottom" secondItem="59Y-Zf-R46" secondAttribute="bottom" id="vJg-vd-iju"/>
+                                    <constraint firstItem="k5q-wB-g99" firstAttribute="leading" secondItem="Obm-li-tfe" secondAttribute="leading" id="wZ3-f2-FGm"/>
                                 </constraints>
                                 <visibilityPriorities>
                                     <integer value="1000"/>
@@ -207,7 +217,7 @@
                             <constraint firstAttribute="bottom" secondItem="Obm-li-tfe" secondAttribute="bottom" id="5M6-vE-50e"/>
                             <constraint firstItem="Obm-li-tfe" firstAttribute="leading" secondItem="m2S-Jp-Qdl" secondAttribute="leading" id="ED0-q9-O7U"/>
                             <constraint firstAttribute="trailing" secondItem="Obm-li-tfe" secondAttribute="trailing" id="PRe-6N-8wn"/>
-                            <constraint firstItem="Obm-li-tfe" firstAttribute="top" secondItem="m2S-Jp-Qdl" secondAttribute="top" id="kZ4-Ab-5yf"/>
+                            <constraint firstItem="Obm-li-tfe" firstAttribute="top" secondItem="m2S-Jp-Qdl" secondAttribute="top" constant="1" id="kZ4-Ab-5yf"/>
                         </constraints>
                     </view>
                 </viewController>
@@ -244,7 +254,7 @@
         <scene sceneID="rBU-qB-hiS">
             <objects>
                 <viewController title="Dashboard View Controller" storyboardIdentifier="DashboardStoryboardID" id="jr8-g7-uLJ" customClass="DashboardViewController" customModule="iGlance" customModuleProvider="target" sceneMemberID="viewController">
-                    <view key="view" id="2gR-n0-wZE" customClass="MainViewView" customModule="iGlance" customModuleProvider="target">
+                    <view key="view" id="2gR-n0-wZE" customClass="BackgroundColorView" customModule="iGlance" customModuleProvider="target">
                         <rect key="frame" x="0.0" y="0.0" width="610" height="500"/>
                         <autoresizingMask key="autoresizingMask"/>
                         <subviews>
@@ -588,7 +598,7 @@
         <scene sceneID="uUd-va-qL0">
             <objects>
                 <viewController title="CPU View Controller" storyboardIdentifier="CpuStoryboardID" id="uGw-Yr-sBC" customClass="CpuViewController" customModule="iGlance" customModuleProvider="target" sceneMemberID="viewController">
-                    <view key="view" id="q0i-aM-agG" customClass="MainViewView" customModule="iGlance" customModuleProvider="target">
+                    <view key="view" id="q0i-aM-agG" customClass="BackgroundColorView" customModule="iGlance" customModuleProvider="target">
                         <rect key="frame" x="0.0" y="0.0" width="600" height="500"/>
                         <autoresizingMask key="autoresizingMask"/>
                         <subviews>
@@ -880,7 +890,7 @@
         <scene sceneID="voU-QA-JXU">
             <objects>
                 <viewController title="Memory View Controller" storyboardIdentifier="MemoryStoryboardID" id="Pbp-jU-Jl9" customClass="MemoryViewController" customModule="iGlance" customModuleProvider="target" sceneMemberID="viewController">
-                    <view key="view" id="XsI-br-NL6" customClass="MainViewView" customModule="iGlance" customModuleProvider="target">
+                    <view key="view" id="XsI-br-NL6" customClass="BackgroundColorView" customModule="iGlance" customModuleProvider="target">
                         <rect key="frame" x="0.0" y="0.0" width="600" height="500"/>
                         <autoresizingMask key="autoresizingMask"/>
                         <subviews>
@@ -1157,7 +1167,7 @@
         <scene sceneID="kEF-TN-Jqj">
             <objects>
                 <viewController title="Network View Controller" storyboardIdentifier="NetworkStoryboardID" id="16f-vh-LVT" customClass="NetworkViewController" customModule="iGlance" customModuleProvider="target" sceneMemberID="viewController">
-                    <view key="view" id="gLt-Uu-NnI" customClass="MainViewView" customModule="iGlance" customModuleProvider="target">
+                    <view key="view" id="gLt-Uu-NnI" customClass="BackgroundColorView" customModule="iGlance" customModuleProvider="target">
                         <rect key="frame" x="0.0" y="0.0" width="601" height="500"/>
                         <autoresizingMask key="autoresizingMask"/>
                         <subviews>
@@ -1191,7 +1201,7 @@
         <scene sceneID="pAg-29-Upi">
             <objects>
                 <viewController title="Fan View Controller" storyboardIdentifier="FanStoryboardID" id="76f-do-Hko" customClass="FanViewController" customModule="iGlance" customModuleProvider="target" sceneMemberID="viewController">
-                    <view key="view" id="X4Z-EU-k4i" customClass="MainViewView" customModule="iGlance" customModuleProvider="target">
+                    <view key="view" id="X4Z-EU-k4i" customClass="BackgroundColorView" customModule="iGlance" customModuleProvider="target">
                         <rect key="frame" x="0.0" y="0.0" width="601" height="500"/>
                         <autoresizingMask key="autoresizingMask"/>
                         <subviews>
@@ -1239,7 +1249,7 @@
         <scene sceneID="RUx-H1-VqW">
             <objects>
                 <viewController title="Battery View Controller" storyboardIdentifier="BatteryStoryboardID" id="jU5-ml-SBe" customClass="BatteryViewController" customModule="iGlance" customModuleProvider="target" sceneMemberID="viewController">
-                    <view key="view" id="q13-1a-uFQ" customClass="MainViewView" customModule="iGlance" customModuleProvider="target">
+                    <view key="view" id="q13-1a-uFQ" customClass="BackgroundColorView" customModule="iGlance" customModuleProvider="target">
                         <rect key="frame" x="0.0" y="0.0" width="601" height="500"/>
                         <autoresizingMask key="autoresizingMask"/>
                         <subviews>
@@ -1420,7 +1430,7 @@
         <scene sceneID="eGb-cO-Z3o">
             <objects>
                 <viewController storyboardIdentifier="DiskStoryboardID" id="sVS-y8-9uS" customClass="DiskViewController" customModule="iGlance" customModuleProvider="target" sceneMemberID="viewController">
-                    <view key="view" id="VIp-kZ-3dC" customClass="MainViewView" customModule="iGlance" customModuleProvider="target">
+                    <view key="view" id="VIp-kZ-3dC" customClass="BackgroundColorView" customModule="iGlance" customModuleProvider="target">
                         <rect key="frame" x="0.0" y="0.0" width="601" height="500"/>
                         <autoresizingMask key="autoresizingMask"/>
                         <subviews>
@@ -1454,7 +1464,7 @@
         <scene sceneID="DhV-CZ-Ilx">
             <objects>
                 <viewController storyboardIdentifier="SidebarViewController" id="RxD-FS-69G" customClass="SidebarViewController" customModule="iGlance" customModuleProvider="target" sceneMemberID="viewController">
-                    <view key="view" id="3gi-0a-GRD">
+                    <view key="view" id="3gi-0a-GRD" customClass="BackgroundColorView" customModule="iGlance" customModuleProvider="target">
                         <rect key="frame" x="0.0" y="0.0" width="230" height="500"/>
                         <autoresizingMask key="autoresizingMask"/>
                         <subviews>
@@ -1465,10 +1475,10 @@
                                         <rect key="frame" x="0.0" y="0.0" width="230" height="500"/>
                                     </visualEffectView>
                                     <stackView distribution="equalSpacing" orientation="vertical" alignment="centerX" spacing="0.0" horizontalStackHuggingPriority="249.99998474121094" verticalStackHuggingPriority="249.99998474121094" detachesHiddenViews="YES" translatesAutoresizingMaskIntoConstraints="NO" id="EiX-L0-7OK">
-                                        <rect key="frame" x="15" y="10" width="200" height="460"/>
+                                        <rect key="frame" x="15" y="10" width="200" height="480"/>
                                         <subviews>
                                             <stackView distribution="fill" orientation="vertical" alignment="leading" spacing="5" horizontalStackHuggingPriority="249.99998474121094" verticalStackHuggingPriority="249.99998474121094" detachesHiddenViews="YES" translatesAutoresizingMaskIntoConstraints="NO" id="i0J-DJ-3rW">
-                                                <rect key="frame" x="0.0" y="150" width="200" height="310"/>
+                                                <rect key="frame" x="0.0" y="170" width="200" height="310"/>
                                                 <subviews>
                                                     <customView identifier="DashboardButtonView" translatesAutoresizingMaskIntoConstraints="NO" id="YMG-9v-Bi1" userLabel="Dashboard Button View" customClass="SidebarButtonView" customModule="iGlance" customModuleProvider="target">
                                                         <rect key="frame" x="0.0" y="270" width="200" height="40"/>
@@ -1854,7 +1864,7 @@
                                     <constraint firstAttribute="bottom" secondItem="EiX-L0-7OK" secondAttribute="bottom" constant="10" id="DBc-Ak-tgI"/>
                                     <constraint firstAttribute="bottom" secondItem="ABO-7c-hp4" secondAttribute="bottom" id="Qsp-d1-cWC"/>
                                     <constraint firstAttribute="height" constant="500" id="Saj-up-8ac"/>
-                                    <constraint firstItem="EiX-L0-7OK" firstAttribute="top" secondItem="ADV-Ef-jdA" secondAttribute="top" constant="30" id="SsL-OZ-U7S"/>
+                                    <constraint firstItem="EiX-L0-7OK" firstAttribute="top" secondItem="ADV-Ef-jdA" secondAttribute="top" constant="10" id="SsL-OZ-U7S"/>
                                     <constraint firstAttribute="trailing" secondItem="ABO-7c-hp4" secondAttribute="trailing" id="Xqp-gR-UXT"/>
                                     <constraint firstItem="EiX-L0-7OK" firstAttribute="centerX" secondItem="ADV-Ef-jdA" secondAttribute="centerX" id="h0m-E1-d9T"/>
                                     <constraint firstItem="ABO-7c-hp4" firstAttribute="top" secondItem="ADV-Ef-jdA" secondAttribute="top" id="l3y-uZ-gHg"/>
@@ -1878,7 +1888,7 @@
         <scene sceneID="tXh-jk-PHk">
             <objects>
                 <viewController storyboardIdentifier="SettingsStoryboardID" id="nCO-fc-AGg" customClass="SettingsViewController" customModule="iGlance" customModuleProvider="target" sceneMemberID="viewController">
-                    <view key="view" id="PLM-Rc-O84" customClass="MainViewView" customModule="iGlance" customModuleProvider="target">
+                    <view key="view" id="PLM-Rc-O84" customClass="BackgroundColorView" customModule="iGlance" customModuleProvider="target">
                         <rect key="frame" x="0.0" y="0.0" width="601" height="500"/>
                         <autoresizingMask key="autoresizingMask"/>
                         <subviews>

@@ -86,9 +86,6 @@ class SettingsViewController: MainViewViewController {
         }
         versionLabel.stringValue = appVersion
 
-        // add a callback to change the logo depending on the current theme
-        ThemeManager.onThemeChange(self, #selector(onThemeChange))
-
         // add the correct logo image at startup
         changeLogo()
 
@@ -138,7 +135,9 @@ class SettingsViewController: MainViewViewController {
     * Called when the os theme changed.
     */
     @objc
-    private func onThemeChange() {
+    override func onThemeChange() {
+        super.onThemeChange()
+
         changeLogo()
     }
 

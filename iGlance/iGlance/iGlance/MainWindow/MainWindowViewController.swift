@@ -29,6 +29,9 @@ class MainWindowViewController: NSViewController {
 
         // add the on click event handler to the buttons of the sidebar
         sidebarViewController?.addOnClickEventHandler(eventHandler: displayViewOf(sender:))
+
+        (self.view as! BackgroundColorView).backgroundColor = ThemeManager.currentTheme().borderColor
+        ThemeManager.onThemeChange(self, #selector(self.onThemeChange))
     }
 
     override func prepare(for segue: NSStoryboardSegue, sender: Any?) {
@@ -55,5 +58,10 @@ class MainWindowViewController: NSViewController {
         if let viewController = storyboard?.instantiateController(withIdentifier: sender.mainViewStoryboardID!) {
             contentManagerViewController?.addNewViewController(viewController: ((viewController as? MainViewViewController)!))
         }
+    }
+
+    @objc
+    private func onThemeChange() {
+        (self.view as! BackgroundColorView).backgroundColor = ThemeManager.currentTheme().borderColor
     }
 }

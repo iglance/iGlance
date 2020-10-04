@@ -22,6 +22,7 @@ class MainWindowController: NSWindowController {
     @IBOutlet private var mainWindow: NSWindow! {
         didSet {
             mainWindow.delegate = self.mainWindowDelegate
+            mainWindow.backgroundColor = ThemeManager.currentTheme().titleBarBackgroundColor
         }
     }
 
@@ -71,6 +72,7 @@ class MainWindowController: NSWindowController {
 
     @objc
     private func updateMainWindow() {
+        mainWindow.backgroundColor = ThemeManager.currentTheme().titleBarBackgroundColor
         mainWindow.update()
     }
 }
