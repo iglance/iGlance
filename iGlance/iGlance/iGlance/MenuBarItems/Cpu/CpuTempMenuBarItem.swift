@@ -43,7 +43,7 @@ class CpuTempMenuBarItem: MenuBarItem {
         let buttonString = createAttributedTempString(value: temp)
 
         // create an image for the menu bar item
-        let imageWidth = 30
+        let imageWidth = CGFloat(30)
         let image = NSImage(size: NSSize(width: imageWidth, height: self.menubarHeightWithMargin))
 
         // lock the image to render the string

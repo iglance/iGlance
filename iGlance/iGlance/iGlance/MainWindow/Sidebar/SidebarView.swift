@@ -22,12 +22,4 @@ class SidebarView: NSView {
     override var mouseDownCanMoveWindow: Bool {
         false
     }
-
-    override func draw(_ dirtyRect: NSRect) {
-        super.draw(dirtyRect)
-
-        // set the background color of the sidebar
-        ThemeManager.currentTheme().sidebarColor.setFill()
-        dirtyRect.fill()
-    }
 }

@@ -24,11 +24,11 @@ class LineGraph: Graph {
     private var valueHistory: Queue = Queue<Double>()
     /// the number of values in the graph
     private var valueCount: Int {
-        Int(self.imageSize.width - self.borderWidth * 2)
+        Int(self.imageSize.width - self.borderWidth * 2 - self.contentMargin * 2)
     }
     /// the maximum height in pixel of the graph bars
     private var maxbarHeight: Double {
-        Double(self.imageSize.height - self.borderWidth * 2)
+        Double(self.imageSize.height - self.borderWidth * 2 - self.contentMargin * 2)
     }
     /// the maximum value of the graph (equals 100%)
     private let maxValue: Double
@@ -82,7 +82,7 @@ class LineGraph: Graph {
         }
 
         // iterate the values and draw a bar for each value on the correct position
-        var nextValuePosition = self.imageSize.width - self.borderWidth - 1
+        var nextValuePosition = self.imageSize.width - self.borderWidth - self.contentMargin - 1
         for value in valueHistory.makeIterator().reversed() {
             // if the value is zero we don't have to draw anything and can continue with the loop
             if value == 0 {
@@ -95,14 +95,14 @@ class LineGraph: Graph {
             // draw the gradient if necessary
             if gradientImage != nil {
                 gradientImage!.draw(
-                    at: NSPoint(x: nextValuePosition, y: self.borderWidth),
+                    at: NSPoint(x: nextValuePosition, y: self.borderWidth + self.contentMargin),
                     from: NSRect(x: 0, y: 0, width: barWidth, height: barHeight),
                     operation: NSCompositingOperation.sourceOver,
                     fraction: 1.0
                 )
             } else {
                 // create the rect and draw it
-                let valueBar = NSRect(x: nextValuePosition, y: self.borderWidth, width: CGFloat(barWidth), height: CGFloat(barHeight))
+                let valueBar = NSRect(x: nextValuePosition, y: self.borderWidth + self.contentMargin, width: CGFloat(barWidth), height: CGFloat(barHeight))
                 graphColor.setFill()
                 valueBar.fill()
             }

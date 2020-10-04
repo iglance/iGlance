@@ -9,12 +9,22 @@ This package works with both sandboxed and non-sandboxed apps and it's App Store
 ## Requirements
 
 - macOS 10.12+
-- Xcode 11+
-- Swift 5+
+- Xcode 12+
+- Swift 5.3+
 
 ## Install
 
+#### Swift Package Manager
+
+Xcode 12+ required.
+
+```
+.package(url: "https://github.com/sindresorhus/LaunchAtLogin", from: "4.0.0")
+```
+
 #### Carthage
+
+*Warning: Carthage is not recommended. Support for it will be removed at some point in the future.*
 
 ```
 github "sindresorhus/LaunchAtLogin"
@@ -24,11 +34,25 @@ github "sindresorhus/LaunchAtLogin"
 
 Add a new ["Run Script Phase"](http://stackoverflow.com/a/39633955/64949) **below** "Embed Frameworks" in "Build Phases" with the following:
 
+#### Swift Package Manager
+
+```sh
+"${BUILT_PRODUCTS_DIR}/LaunchAtLogin_LaunchAtLogin.bundle/Contents/Resources/copy-helper-swiftpm.sh"
+```
+
+#### Carthage
+
 ```sh
 "${PROJECT_DIR}/Carthage/Build/Mac/LaunchAtLogin.framework/Resources/copy-helper.sh"
 ```
 
-Use it in your app:
+### Use it in your app
+
+No need to store any state to UserDefaults.
+
+*Note that the [Mac App Store guidelines](https://developer.apple.com/app-store/review/guidelines/) requires “launch at login” functionality to be enabled in response to a user action. This is usually solved by making it a preference that is disabled by default. Many apps also let the user activate it in a welcome screen.*
+
+#### As static property
 
 ```swift
 import LaunchAtLogin
@@ -42,9 +66,80 @@ print(LaunchAtLogin.isEnabled)
 //=> true
 ```
 
-No need to store any state to UserDefaults.
+#### SwiftUI
 
-*Note that the [Mac App Store guidelines](https://developer.apple.com/app-store/review/guidelines/) requires “launch at login” functionality to be enabled in response to a user action. This is usually solved by making it a preference that is disabled by default. Many apps also let the user activate it in a welcome screen.*
+This package comes with a `LaunchAtLogin.Toggle` view which is like the built-in `Toggle` but with a predefined binding and label. Clicking the view toggles “launch at login” for your app.
+
+```swift
+struct ContentView: View {
+	var body: some View {
+		LaunchAtLogin.Toggle()
+	}
+}
+```
+
+The default label is `"Launch at login"`, but it can be overridden for localization and other needs:
+
+```swift
+struct ContentView: View {
+	var body: some View {
+		LaunchAtLogin.Toggle {
+			Text("Launch at login")
+		}
+	}
+}
+```
+
+Alternatively, you can use `LaunchAtLogin.observable` as a binding with `@ObservedObject`:
+
+```swift
+import SwiftUI
+import LaunchAtLogin
+
+struct ContentView: View {
+	@ObservedObject private var launchAtLogin = LaunchAtLogin.observable
+
+	var body: some View {
+		Toggle("Launch at login", isOn: $launchAtLogin.isEnabled)
+	}
+}
+```
+
+#### Combine
+
+Just subscribe to `LaunchAtLogin.publisher`:
+
+```swift
+import Combine
+import LaunchAtLogin
+
+final class ViewModel {
+	private var isLaunchAtLoginEnabled = LaunchAtLogin.isEnabled
+	private var cancellables = Set<AnyCancellable>()
+
+	func bind() {
+		LaunchAtLogin
+			.publisher
+			.assign(to: \.isLaunchAtLoginEnabled, on: self)
+			.store(in: &cancellables)
+	}
+}
+```
+
+#### Storyboards
+
+Bind the control to the `LaunchAtLogin.kvo` exposed property:
+
+```swift
+import Cocoa
+import LaunchAtLogin
+
+final class ViewController: NSViewController {
+	@objc dynamic var launchAtLogin = LaunchAtLogin.kvo
+}
+```
+
+<img src="storyboard-binding.png" width="445">
 
 ## How does it work?
 
@@ -52,9 +147,23 @@ The framework bundles the helper app needed to launch your app and copies it int
 
 ## FAQ
 
-#### The size of my app increased after adding `LaunchAtLogin`
+#### I'm getting a “No such file or directory” error when archiving my app
+
+Please ensure that the LaunchAtLogin run script phase is still below the “Embed Frameworks” phase. The order could have been accidentally changed.
+
+The build error usually presents itself as:
+
+```
+cp: […]/Resources/LaunchAtLoginHelper.app: No such file or directory
+rm: […]/Resources/copy-helper.sh: No such file or directory
+Command PhaseScriptExecution failed with a nonzero exit code
+```
+
+#### The size of my app increased after adding `LaunchAtLogin` when using Carthage
 
 The bundled launcher app is written in Swift and hence needs to embed the Swift runtime libraries. If your project targets macOS 10.14.4 or later, you can avoid embedding the Swift runtime libraries. First, open `./Carthage/Checkouts/LaunchAtLogin/LaunchAtLogin.xcodeproj` and set the deployment target to the same as your app, and then run `$ carthage build`. You'll have to do this each time you update `LaunchAtLogin`.
+
+This is not a problem when using Swift Package Manager.
 
 #### My app doesn't show up in “System Preferences › Users & Groups › Login Items”
 

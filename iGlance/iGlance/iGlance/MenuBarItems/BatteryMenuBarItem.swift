@@ -116,7 +116,7 @@ class BatteryMenuBarItem: MenuBarItem {
         let image = NSImage(
             size: NSSize(
                 width: buttonString.size().width + batteryIcon!.size.width + marginBetweenIconAndString,
-                height: CGFloat(self.menuBarHeight)
+                height: self.menuBarHeight
             )
         )
 
@@ -291,24 +291,30 @@ class BatteryMenuBarItem: MenuBarItem {
         // lock the focus
         batteryIcon.lockFocus()
 
-        // the battery icon in x2 resolution has a height of 36 and a width of 18 while the nob at the top is 3 pixels high
-        // the borders of the battery icon are 1.5 pixels thick
-        let borderWidth = 1.5 / 2
+        // the battery icon has a height of 18 and a width of 16 while the nob at the top is 1 pixel high.
+        // The borders of the battery icon are 1 pixel thick
+        let borderWidth = 1.0
+        // the margin of the charge indicator to the battery icon border
         let chargeBarMargin = 1.5
-        let batteryWidth = (18 / 2.0)
-        let batteryHeight = ((36 - 3) / 2.0)
+        // the width of the battery in pixel (including the border)
+        let batteryWidth = 8.0
+        // the height of the knob in pixel
+        let knobHeight = 1.0
+        // the height of the main part of the battery in pixel
+        let batteryHeight = 18.0 - knobHeight
 
-        // calculate the width and the max height of the bar
-        let chargeBarWidth = batteryWidth - (2 * borderWidth) - (2 * chargeBarMargin) // chargeBar has a margin of 0.5 pixels to the outline of the battery
+        // calculate the width and the max height of the charge indicator
+        let chargeBarWidth = batteryWidth - (2 * borderWidth) - (2 * chargeBarMargin)
         let chargeBarMaxHeight = batteryHeight - (2 * borderWidth) - (2 * chargeBarMargin)
 
-        // calculate the current height of the charge bar
+        // calculate the current height of the charge indicator
         let chargeBarCurrentHeight = (chargeBarMaxHeight / 100) * Double(currentCharge)
 
-        // create and draw the charge bar
+        // create and draw the charge indicator rectangle as a rounded rectangle
         let chargeBar = NSRect(x: borderWidth + chargeBarMargin, y: borderWidth + chargeBarMargin, width: chargeBarWidth, height: chargeBarCurrentHeight)
+        let roundedRect = NSBezierPath(roundedRect: chargeBar, xRadius: 1.5, yRadius: 1.5)
         (ThemeManager.isDarkTheme() ? NSColor.white : NSColor.black).set()
-        chargeBar.fill()
+        roundedRect.fill()
 
         // unlock the focus
         batteryIcon.unlockFocus()

@@ -98,7 +98,7 @@ class FanMenuBarItem: MenuBarItem {
         let buttonString = createAttributedRPMString(value: Int(curMaxFanSpeed), unit: AppDelegate.userSettings.settings.fan.showFanSpeedUnit)
 
         // create an image for the menu bar item
-        let imageWidth = AppDelegate.userSettings.settings.fan.showFanSpeedUnit ? 65 : 40
+        let imageWidth: CGFloat = AppDelegate.userSettings.settings.fan.showFanSpeedUnit ? 65.0 : 40.0
         let image = NSImage(size: NSSize(width: imageWidth, height: self.menubarHeightWithMargin))
 
         // lock the image to render the string

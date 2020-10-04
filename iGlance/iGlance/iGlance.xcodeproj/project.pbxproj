@@ -11,10 +11,10 @@
 		274CA92A244ED22600BD8163 /* DiskViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 274CA929244ED22600BD8163 /* DiskViewController.swift */; };
 		6CA197EE9972523C071FC0F4 /* Pods_iGlance.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6D3175EF0B347DBD4AE56293 /* Pods_iGlance.framework */; };
 		B4060E3223C4FAEF00CD945E /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = B4060E3123C4FAEF00CD945E /* Constants.swift */; };
+		B40BBA64251FB53500D2690E /* BackgroundColorView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B40BBA63251FB53500D2690E /* BackgroundColorView.swift */; };
 		B415FF2723F459EF00ED6567 /* MemoryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B415FF2623F459EF00ED6567 /* MemoryViewController.swift */; };
 		B415FF2A23F45F0800ED6567 /* MemoryUsageMenuBarItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = B415FF2923F45F0800ED6567 /* MemoryUsageMenuBarItem.swift */; };
 		B415FF2C23F45F6000ED6567 /* MemoryInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = B415FF2B23F45F6000ED6567 /* MemoryInfo.swift */; };
-		B41F6D5F23C8DE240046D637 /* PreferenceWindow.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B41F6D5E23C8DE240046D637 /* PreferenceWindow.storyboard */; };
 		B41F6D6123C8DFC60046D637 /* AboutModalViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B41F6D6023C8DFC60046D637 /* AboutModalViewController.swift */; };
 		B41F6D6523C8DFDF0046D637 /* AboutWindow.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B41F6D6423C8DFDF0046D637 /* AboutWindow.storyboard */; };
 		B41F6D6823C8E4770046D637 /* ModalViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B41F6D6723C8E4770046D637 /* ModalViewController.swift */; };
@@ -25,8 +25,6 @@
 		B43ABF2823AA1E99007F93BA /* SidebarButtonView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B43ABF2723AA1E99007F93BA /* SidebarButtonView.swift */; };
 		B43ABF2A23AA32FA007F93BA /* SidebarViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B43ABF2923AA32FA007F93BA /* SidebarViewController.swift */; };
 		B43ABF2C23AA3729007F93BA /* MainWindowController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B43ABF2B23AA3729007F93BA /* MainWindowController.swift */; };
-		B43D3A3B24AA506B00ACA966 /* MainViewView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B43D3A3A24AA506B00ACA966 /* MainViewView.swift */; };
-		B43E111323C3AF36000D58CF /* PreferenceModalViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B43E111223C3AF36000D58CF /* PreferenceModalViewController.swift */; };
 		B44D507123C8F1030071609E /* Credits.plist in Resources */ = {isa = PBXBuildFile; fileRef = B44D507023C8F1030071609E /* Credits.plist */; };
 		B4514DEE23F1898800C18E44 /* Queue.swift in Sources */ = {isa = PBXBuildFile; fileRef = B4514DED23F1898800C18E44 /* Queue.swift */; };
 		B452554B23E358E7000F79BF /* MenuBarItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = B452554723E358E7000F79BF /* MenuBarItem.swift */; };
@@ -64,6 +62,7 @@
 		B4C37E6B23A8D715008C7FC0 /* SegueAnimator.swift in Sources */ = {isa = PBXBuildFile; fileRef = B4C37E6A23A8D715008C7FC0 /* SegueAnimator.swift */; };
 		B4C37E6D23A8D811008C7FC0 /* ContentManagerViewControllerHolder.swift in Sources */ = {isa = PBXBuildFile; fileRef = B4C37E6C23A8D811008C7FC0 /* ContentManagerViewControllerHolder.swift */; };
 		B4C37E7023A91F3C008C7FC0 /* ThemeManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = B4C37E6F23A91F3C008C7FC0 /* ThemeManager.swift */; };
+		B4C65F3C2514F65D0029A835 /* SettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B4C65F3B2514F65D0029A835 /* SettingsViewController.swift */; };
 		B4C8DD2523AA3DB8008DAE45 /* ContentManagerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B4C8DD2423AA3DB8008DAE45 /* ContentManagerView.swift */; };
 		B4C985E3244CB694002F8D3F /* Utils.swift in Sources */ = {isa = PBXBuildFile; fileRef = B4C985E2244CB694002F8D3F /* Utils.swift */; };
 		B4CC276824AB740700010C4F /* MainWindowDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = B4CC276724AB740700010C4F /* MainWindowDelegate.swift */; };
@@ -129,10 +128,10 @@
 		6D3175EF0B347DBD4AE56293 /* Pods_iGlance.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_iGlance.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		B4060E2E23C4F84D00CD945E /* ServiceManagement.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = ServiceManagement.framework; path = System/Library/Frameworks/ServiceManagement.framework; sourceTree = SDKROOT; };
 		B4060E3123C4FAEF00CD945E /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
+		B40BBA63251FB53500D2690E /* BackgroundColorView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BackgroundColorView.swift; sourceTree = "<group>"; };
 		B415FF2623F459EF00ED6567 /* MemoryViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MemoryViewController.swift; sourceTree = "<group>"; };
 		B415FF2923F45F0800ED6567 /* MemoryUsageMenuBarItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MemoryUsageMenuBarItem.swift; sourceTree = "<group>"; };
 		B415FF2B23F45F6000ED6567 /* MemoryInfo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MemoryInfo.swift; sourceTree = "<group>"; };
-		B41F6D5E23C8DE240046D637 /* PreferenceWindow.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = PreferenceWindow.storyboard; sourceTree = "<group>"; };
 		B41F6D6023C8DFC60046D637 /* AboutModalViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AboutModalViewController.swift; sourceTree = "<group>"; };
 		B41F6D6423C8DFDF0046D637 /* AboutWindow.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = AboutWindow.storyboard; sourceTree = "<group>"; };
 		B41F6D6723C8E4770046D637 /* ModalViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ModalViewController.swift; sourceTree = "<group>"; };
@@ -145,8 +144,6 @@
 		B43ABF2723AA1E99007F93BA /* SidebarButtonView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SidebarButtonView.swift; sourceTree = "<group>"; };
 		B43ABF2923AA32FA007F93BA /* SidebarViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SidebarViewController.swift; sourceTree = "<group>"; };
 		B43ABF2B23AA3729007F93BA /* MainWindowController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainWindowController.swift; sourceTree = "<group>"; };
-		B43D3A3A24AA506B00ACA966 /* MainViewView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainViewView.swift; sourceTree = "<group>"; };
-		B43E111223C3AF36000D58CF /* PreferenceModalViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PreferenceModalViewController.swift; sourceTree = "<group>"; };
 		B44D507023C8F1030071609E /* Credits.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Credits.plist; sourceTree = "<group>"; };
 		B4514DED23F1898800C18E44 /* Queue.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Queue.swift; sourceTree = "<group>"; };
 		B452554723E358E7000F79BF /* MenuBarItem.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MenuBarItem.swift; sourceTree = "<group>"; };
@@ -184,6 +181,7 @@
 		B4C37E6A23A8D715008C7FC0 /* SegueAnimator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SegueAnimator.swift; sourceTree = "<group>"; };
 		B4C37E6C23A8D811008C7FC0 /* ContentManagerViewControllerHolder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentManagerViewControllerHolder.swift; sourceTree = "<group>"; };
 		B4C37E6F23A91F3C008C7FC0 /* ThemeManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ThemeManager.swift; sourceTree = "<group>"; };
+		B4C65F3B2514F65D0029A835 /* SettingsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsViewController.swift; sourceTree = "<group>"; };
 		B4C8DD2423AA3DB8008DAE45 /* ContentManagerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentManagerView.swift; sourceTree = "<group>"; };
 		B4C985E2244CB694002F8D3F /* Utils.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Utils.swift; sourceTree = "<group>"; };
 		B4CC276724AB740700010C4F /* MainWindowDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainWindowDelegate.swift; sourceTree = "<group>"; };
@@ -265,15 +263,6 @@
 			name = Frameworks;
 			sourceTree = "<group>";
 		};
-		B4060E3023C4FAE200CD945E /* Shared */ = {
-			isa = PBXGroup;
-			children = (
-				B4060E3123C4FAEF00CD945E /* Constants.swift */,
-				B4EFB55A23CA197500CF2FF2 /* CustomLogFormatter.swift */,
-			);
-			path = Shared;
-			sourceTree = "<group>";
-		};
 		B40E946023A9435200D63D17 /* MainWindow */ = {
 			isa = PBXGroup;
 			children = (
@@ -302,7 +291,6 @@
 		B41F6D6623C8E4620046D637 /* Modals */ = {
 			isa = PBXGroup;
 			children = (
-				B43E111423C3B1D8000D58CF /* PreferenceModal */,
 				B43283BB23C8D88700E871AE /* AboutModal */,
 				B41F6D6723C8E4770046D637 /* ModalViewController.swift */,
 			);
@@ -353,15 +341,6 @@
 			path = Graphs;
 			sourceTree = "<group>";
 		};
-		B43E111423C3B1D8000D58CF /* PreferenceModal */ = {
-			isa = PBXGroup;
-			children = (
-				B43E111223C3AF36000D58CF /* PreferenceModalViewController.swift */,
-				B41F6D5E23C8DE240046D637 /* PreferenceWindow.storyboard */,
-			);
-			path = PreferenceModal;
-			sourceTree = "<group>";
-		};
 		B452554623E358E7000F79BF /* MenuBarItems */ = {
 			isa = PBXGroup;
 			children = (
@@ -389,7 +368,6 @@
 		B46789A923A69ECA00CE572D = {
 			isa = PBXGroup;
 			children = (
-				B4060E3023C4FAE200CD945E /* Shared */,
 				B46789B423A69ECA00CE572D /* iGlance */,
 				B4DD2C2D24A7B26E003AC30A /* iGlanceUITests */,
 				B42F614724ACEED6006C80C7 /* iGlanceUnitTests */,
@@ -419,12 +397,15 @@
 				B40E946023A9435200D63D17 /* MainWindow */,
 				B4C37E6E23A91F2F008C7FC0 /* Theme */,
 				B4FE0DAD23EF1BCB00AE94E6 /* Utils */,
+				B40BBA63251FB53500D2690E /* BackgroundColorView.swift */,
 				B46789B523A69ECA00CE572D /* AppDelegate.swift */,
 				B4924F08244A2492000D8BDD /* RepeatingTimer.swift */,
 				B472EC1F243101DB002F7504 /* Logger.swift */,
 				B4DE725E23C257610001CF46 /* Extensions.swift */,
 				B49F5D5623C5BCAF009E9BE6 /* UserSettings.swift */,
 				B46789BB23A69ECB00CE572D /* Main.storyboard */,
+				B4EFB55A23CA197500CF2FF2 /* CustomLogFormatter.swift */,
+				B4060E3123C4FAEF00CD945E /* Constants.swift */,
 				B46789B923A69ECB00CE572D /* Assets.xcassets */,
 				B46789BE23A69ECB00CE572D /* Info.plist */,
 				B46789BF23A69ECB00CE572D /* iGlance.entitlements */,
@@ -476,7 +457,6 @@
 			isa = PBXGroup;
 			children = (
 				B4D86E1A23AA710B00671B52 /* MainViewViewController.swift */,
-				B43D3A3A24AA506B00ACA966 /* MainViewView.swift */,
 				B47D3C8B23ABEDCC00DE911F /* DashboardView */,
 				B459D29023E4A80800E6CC67 /* CpuViewController.swift */,
 				B415FF2623F459EF00ED6567 /* MemoryViewController.swift */,
@@ -484,6 +464,7 @@
 				B4E909122427B5EA00260479 /* BatteryViewController.swift */,
 				B4E9E53B2416AD1F0090E9E8 /* NetworkViewController.swift */,
 				274CA929244ED22600BD8163 /* DiskViewController.swift */,
+				B4C65F3B2514F65D0029A835 /* SettingsViewController.swift */,
 			);
 			path = MainViews;
 			sourceTree = "<group>";
@@ -628,7 +609,6 @@
 				B46789BD23A69ECB00CE572D /* Main.storyboard in Resources */,
 				B4A0D378242E5F6600690098 /* NetworkStatisticsMenuView.xib in Resources */,
 				B44D507123C8F1030071609E /* Credits.plist in Resources */,
-				B41F6D5F23C8DE240046D637 /* PreferenceWindow.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -733,7 +713,6 @@
 			files = (
 				B4CFC47923FC3A3B00A0ED15 /* FanMenuBarItem.swift in Sources */,
 				B4DE728023C2644A0001CF46 /* BatteryInfo.swift in Sources */,
-				B43E111323C3AF36000D58CF /* PreferenceModalViewController.swift in Sources */,
 				B4C37E6723A8CF89008C7FC0 /* ContentManagerViewController.swift in Sources */,
 				B4E9E53A2416ACCA0090E9E8 /* NetworkMenuBarItem.swift in Sources */,
 				B4D86E1B23AA710B00671B52 /* MainViewViewController.swift in Sources */,
@@ -748,13 +727,13 @@
 				274CA92A244ED22600BD8163 /* DiskViewController.swift in Sources */,
 				B4CC276824AB740700010C4F /* MainWindowDelegate.swift in Sources */,
 				B47094EA23C79F9A009D85AD /* ThemedLabel.swift in Sources */,
-				B43D3A3B24AA506B00ACA966 /* MainViewView.swift in Sources */,
 				B4D82FDC23C1031800D502FF /* DiskInfo.swift in Sources */,
 				B452554B23E358E7000F79BF /* MenuBarItem.swift in Sources */,
 				B4C8DD2523AA3DB8008DAE45 /* ContentManagerView.swift in Sources */,
 				B49CD58F23EB17D9009711E6 /* CodableColor.swift in Sources */,
 				B452554C23E358E7000F79BF /* CpuTempMenuBarItem.swift in Sources */,
 				B46F25D423B22DEC00E0A3F4 /* CpuInfo.swift in Sources */,
+				B4C65F3C2514F65D0029A835 /* SettingsViewController.swift in Sources */,
 				B47094EC23C7A30A009D85AD /* ThemedButton.swift in Sources */,
 				B41F6D6823C8E4770046D637 /* ModalViewController.swift in Sources */,
 				B459D29123E4A80800E6CC67 /* CpuViewController.swift in Sources */,
@@ -766,6 +745,7 @@
 				B48BD19123E73F8E00152931 /* CpuUsageMenuBarItem.swift in Sources */,
 				B4C985E3244CB694002F8D3F /* Utils.swift in Sources */,
 				B4CFC47623FC393300A0ED15 /* FanViewController.swift in Sources */,
+				B40BBA64251FB53500D2690E /* BackgroundColorView.swift in Sources */,
 				B4A0D37A242E5FD500690098 /* NetworkStatisticsMenuView.swift in Sources */,
 				B4E909132427B5EA00260479 /* BatteryViewController.swift in Sources */,
 				B4924F09244A2492000D8BDD /* RepeatingTimer.swift in Sources */,
@@ -900,6 +880,7 @@
 				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
 				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
 				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
 				CLANG_WARN_STRICT_PROTOTYPES = YES;
 				CLANG_WARN_SUSPICIOUS_MOVE = YES;
@@ -960,6 +941,7 @@
 				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
 				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
 				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
 				CLANG_WARN_STRICT_PROTOTYPES = YES;
 				CLANG_WARN_SUSPICIOUS_MOVE = YES;
@@ -1063,6 +1045,7 @@
 				MACOSX_DEPLOYMENT_TARGET = 10.15;
 				PRODUCT_BUNDLE_IDENTIFIER = io.github.iglance.iGlanceUITests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "";
 				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_VERSION = 5.0;
 				TEST_TARGET_NAME = iGlance;
@@ -1085,6 +1068,7 @@
 				MACOSX_DEPLOYMENT_TARGET = 10.15;
 				PRODUCT_BUNDLE_IDENTIFIER = io.github.iglance.iGlanceUITests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "";
 				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_VERSION = 5.0;
 				TEST_TARGET_NAME = iGlance;

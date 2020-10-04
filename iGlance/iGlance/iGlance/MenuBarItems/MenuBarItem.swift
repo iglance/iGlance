@@ -26,8 +26,8 @@ class MenuBarItemClass {
     let statusItem: NSStatusItem
 
     // define the height of the menu bar
-    let menuBarHeight = 18
-    let menubarHeightWithMargin = 16
+    let menuBarHeight = CGFloat(18.0)
+    let menubarHeightWithMargin = CGFloat(16)
 
     /// holds all the menu items for the menu. The menu is rebuild everytime an item is added or removed.
     var menuItems: [NSMenuItem] = [] {

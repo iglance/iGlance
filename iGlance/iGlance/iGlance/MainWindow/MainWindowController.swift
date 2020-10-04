@@ -22,6 +22,7 @@ class MainWindowController: NSWindowController {
     @IBOutlet private var mainWindow: NSWindow! {
         didSet {
             mainWindow.delegate = self.mainWindowDelegate
+            mainWindow.backgroundColor = ThemeManager.currentTheme().titleBarBackgroundColor
         }
     }
 
@@ -56,8 +57,6 @@ class MainWindowController: NSWindowController {
     // MARK: -
     // MARK: Function Overrides
     override func windowDidLoad() {
-        mainWindow.backgroundColor = ThemeManager.currentTheme().titlebarColor
-
         // set a callback to adjust the background color of the window if the theme changes
         ThemeManager.onThemeChange(self, #selector(updateMainWindow))
 
@@ -73,7 +72,7 @@ class MainWindowController: NSWindowController {
 
     @objc
     private func updateMainWindow() {
-        mainWindow.backgroundColor = ThemeManager.currentTheme().titlebarColor
+        mainWindow.backgroundColor = ThemeManager.currentTheme().titleBarBackgroundColor
         mainWindow.update()
     }
 }

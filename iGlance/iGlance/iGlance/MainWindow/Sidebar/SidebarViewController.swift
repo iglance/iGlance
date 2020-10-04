@@ -16,42 +16,54 @@
 import Cocoa
 import CocoaLumberjack
 
-class SidebarViewController: NSViewController {
-    // MARK: -
-    // MARK: Struct Definitions
+/**
+ * Structure to save the ID of a NSView of a sidebar button, its corresponding
+ * main view storyboard ID which is displayed in the container view when the button is clicked
+ * and the name of the icon of the sidebar button.
+ */
+struct SidebarButtonID {
+    let buttonViewID: String
+    let mainViewStoryboardID: String
+    let buttonIconID: String
+}
 
-    /**
-     * Structure to save the ID of a NSView of a sidebar button, its corresponding
-     * main view storyboard ID which is displayed in the container view when the button is clicked
-     * and the name of the icon of the sidebar button.
-     */
-    struct SidebarButtonIDs {
-        let buttonViewID: String
-        let mainViewStoryboardID: String
-        let buttonIconID: String
+enum SidebarButton: CaseIterable {
+    case Dashboard
+    case Cpu
+    case Memory
+    case Network
+    case Fan
+    case Battery
+    case Disk
+    case Settings
+
+    var instance: SidebarButtonID {
+        switch self {
+        case .Dashboard:
+            return SidebarButtonID(buttonViewID: "DashboardButtonView", mainViewStoryboardID: "DashboardStoryboardID", buttonIconID: "DashboardMenuIcon")
+        case .Cpu:
+            return SidebarButtonID(buttonViewID: "CpuButtonView", mainViewStoryboardID: "CpuStoryboardID", buttonIconID: "CpuMenuIcon")
+        case .Memory:
+            return SidebarButtonID(buttonViewID: "MemoryButtonView", mainViewStoryboardID: "MemoryStoryboardID", buttonIconID: "MemoryMenuIcon")
+        case .Network:
+            return SidebarButtonID(buttonViewID: "NetworkButtonView", mainViewStoryboardID: "NetworkStoryboardID", buttonIconID: "NetworkMenuIcon")
+        case .Fan:
+            return SidebarButtonID(buttonViewID: "FanButtonView", mainViewStoryboardID: "FanStoryboardID", buttonIconID: "FanMenuIcon")
+        case .Battery:
+            return SidebarButtonID(buttonViewID: "BatteryButtonView", mainViewStoryboardID: "BatteryStoryboardID", buttonIconID: "BatteryMenuIcon")
+        case .Disk:
+            return SidebarButtonID(buttonViewID: "DiskButtonView", mainViewStoryboardID: "DiskStoryboardID", buttonIconID: "DiskMenuIcon")
+        case .Settings:
+            return SidebarButtonID(buttonViewID: "SettingsButtonView", mainViewStoryboardID: "SettingsStoryboardID", buttonIconID: "SettingsMenuIcon")
+        }
     }
+}
 
+class SidebarViewController: NSViewController {
     // MARK: -
     // MARK: Outlets
 
-    @IBOutlet private var logoImage: NSImageView!
     @IBOutlet private var sidebarButtonStackView: NSStackView!
-    @IBOutlet private var preferenceButton: NSButton!
-
-    // MARK: -
-    // MARK: Private Variables
-
-    /** An array containing the IDs to all the sidebar buttons and their corresponding main view storyboard IDs*/
-    private var sidebarButtonViewIDs: [SidebarButtonIDs] = [
-        SidebarButtonIDs(buttonViewID: "DashboardButtonView", mainViewStoryboardID: "DashboardStoryboardID", buttonIconID: "DashboardMenuIcon"),
-        SidebarButtonIDs(buttonViewID: "CpuButtonView", mainViewStoryboardID: "CpuStoryboardID", buttonIconID: "CpuMenuIcon"),
-        SidebarButtonIDs(buttonViewID: "MemoryButtonView", mainViewStoryboardID: "MemoryStoryboardID", buttonIconID: "MemoryMenuIcon"),
-        SidebarButtonIDs(buttonViewID: "NetworkButtonView", mainViewStoryboardID: "NetworkStoryboardID", buttonIconID: "NetworkMenuIcon"),
-        SidebarButtonIDs(buttonViewID: "FanButtonView", mainViewStoryboardID: "FanStoryboardID", buttonIconID: "FanMenuIcon"),
-        SidebarButtonIDs(buttonViewID: "BatteryButtonView", mainViewStoryboardID: "BatteryStoryboardID", buttonIconID: "BatteryMenuIcon"),
-        SidebarButtonIDs(buttonViewID: "DiskButtonView", mainViewStoryboardID: "DiskStoryboardID", buttonIconID: "DiskMenuIcon")
-    ]
-    private var preferenceModalViewController: PreferenceModalViewController?
 
     // MARK: -
     // MARK: Function Overrides
@@ -60,36 +72,27 @@ class SidebarViewController: NSViewController {
         super.viewDidLoad()
 
         // set the storyboard ids of the main views and the the icon ids of the buttons
-        for identifier in sidebarButtonViewIDs {
-            let buttonView = getSidebarButtonWith(identifier: identifier.buttonViewID)!
+        for sidebarButton in SidebarButton.allCases {
+            guard let buttonView = getSidebarButtonWith(identifier: sidebarButton.instance.buttonViewID) else {
+                DDLogError("Could not get the sidebar button view with the identifier \(sidebarButton.instance.buttonViewID)")
+                continue
+            }
 
             // set the story board ids
-            buttonView.mainViewStoryboardID = identifier.mainViewStoryboardID
+            buttonView.mainViewStoryboardID = sidebarButton.instance.mainViewStoryboardID
 
             // set the icon ids
-            buttonView.iconName = identifier.buttonIconID
+            buttonView.iconName = sidebarButton.instance.buttonIconID
         }
 
         // on startup select the dashboard
-        getSidebarButtonWith(identifier: sidebarButtonViewIDs[0].buttonViewID)?.highlighted = true
+        getSidebarButtonWith(identifier: SidebarButton.Dashboard.instance.buttonViewID)?.highlighted = true
 
         // add a callback to change the logo depending on the current theme
         ThemeManager.onThemeChange(self, #selector(onThemeChange))
 
         // call the theme change callback once on startup to set the correct colors
         onThemeChange()
-    }
-
-    // MARK: -
-    // MARK: Actions
-
-    @IBAction private func preferenceButtonClick(_ sender: NSButton) {
-        guard let appDelegate = AppDelegate.getInstance() else {
-            DDLogError("Could not retrieve the app delegate instance")
-            return
-        }
-
-        appDelegate.showPreferenceWindow()
     }
 
     // MARK: -
@@ -109,8 +112,8 @@ class SidebarViewController: NSViewController {
         }
 
         // set the on click events
-        for identifier in sidebarButtonViewIDs {
-            getSidebarButtonWith(identifier: identifier.buttonViewID)?.onButtonClick(callback: proxyEventHandler)
+        for sidebarButton in SidebarButton.allCases {
+            getSidebarButtonWith(identifier: sidebarButton.instance.buttonViewID)?.onButtonClick(callback: proxyEventHandler)
         }
     }
 
@@ -120,10 +123,10 @@ class SidebarViewController: NSViewController {
      * - Parameter sender: The sidebar button view which was clicked.
      */
     func onButtonClick(_ sender: SidebarButtonView) {
-        for identifier in sidebarButtonViewIDs {
-            guard let buttonView = getSidebarButtonWith(identifier: identifier.buttonViewID) else {
-                DDLogError("Could not get the sidebar button view with the identifier \(identifier.buttonViewID)")
-                return
+        for sidebarButton in SidebarButton.allCases {
+            guard let buttonView = getSidebarButtonWith(identifier: sidebarButton.instance.buttonViewID) else {
+                DDLogError("Could not get the sidebar button view with the identifier \(sidebarButton.instance.buttonViewID)")
+                continue
             }
 
             if buttonView.identifier == sender.identifier {
@@ -136,6 +139,15 @@ class SidebarViewController: NSViewController {
         }
     }
 
+    func clickSidebarButton(sidebarButtonID: SidebarButtonID) {
+        guard let buttonView = getSidebarButtonWith(identifier: sidebarButtonID.buttonViewID) else {
+            DDLogError("Could not get the sidebar button view with the identifier \(sidebarButtonID.buttonViewID)")
+            return
+        }
+
+        buttonView.mouseDown(with: NSEvent())
+    }
+
     // MARK: -
     // MARK: Private Functions
 
@@ -144,37 +156,9 @@ class SidebarViewController: NSViewController {
      */
     @objc
     private func onThemeChange() {
-        // change the sidebar logo
-        changeSidebarLogo()
-
-        // change the preferences logo
-        changePreferencesLogo()
-
         // update the sidebar button font color
-        for identifier in sidebarButtonViewIDs {
-            getSidebarButtonWith(identifier: identifier.buttonViewID)?.updateFontColor()
-        }
-    }
-
-    /**
-     * Depending on the current theme the white or black iGlance logo is selected.
-     */
-    private func changeSidebarLogo() {
-        if ThemeManager.isDarkTheme() {
-            self.logoImage.image = NSImage(named: "iGlance_logo_white")
-        } else {
-            self.logoImage.image = NSImage(named: "iGlance_logo_black")
-        }
-    }
-
-    /**
-     * Depending on the current theme the grey or blue preference icon is selected.
-     */
-    private func changePreferencesLogo() {
-        if ThemeManager.isDarkTheme() {
-            self.preferenceButton.image = self.preferenceButton.image?.tint(color: ThemeManager.currentTheme().fontColor)
-        } else {
-            self.preferenceButton.image = self.preferenceButton.image?.tint(color: ThemeManager.currentTheme().fontColor)
+        for sidebarButton in SidebarButton.allCases {
+            getSidebarButtonWith(identifier: sidebarButton.instance.buttonViewID)?.updateFontColor()
         }
     }
 
@@ -183,8 +167,24 @@ class SidebarViewController: NSViewController {
      * - Returns: The SidebarButtonView instance. If no button with the given identifier was found nil is returned.
      */
     private func getSidebarButtonWith(identifier: String) -> SidebarButtonView? {
-        for subView in sidebarButtonStackView.subviews where subView.identifier?.rawValue == identifier {
-            return (subView as? SidebarButtonView)!
+        // search for the button in the sidebar using BFS
+        var viewsToSearch: [NSView] = [self.view]
+        while !viewsToSearch.isEmpty {
+            // get the current view
+            guard let currentSearchView = viewsToSearch.popLast() else {
+                DDLogError("Could not search view since it is nil")
+                continue
+            }
+
+            // check if the current view is the one we are searching
+            if currentSearchView.identifier?.rawValue == identifier {
+                return (currentSearchView as? SidebarButtonView)
+            }
+
+            // add all the subviews to the search stack
+            for view in currentSearchView.subviews {
+                viewsToSearch.insert(view, at: 0)
+            }
         }
 
         return nil

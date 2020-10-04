@@ -33,11 +33,11 @@ class CustomDashboardBox: NSBox {
 
     override var fillColor: NSColor {
         get {
-            ThemeManager.currentTheme().sidebarColor
+            ThemeManager.currentTheme().accentColor
         }
         // swiftlint:disable:next unused_setter_value
         set {
-            super.fillColor = ThemeManager.currentTheme().sidebarColor
+            super.fillColor = ThemeManager.currentTheme().accentColor
         }
     }
 
@@ -55,7 +55,7 @@ class CustomDashboardBox: NSBox {
     // MARK: Function Overrides
     override func draw(_ dirtyRect: NSRect) {
         // update the color depending on the current theme
-        self.fillColor = ThemeManager.currentTheme().sidebarColor
+        self.fillColor = ThemeManager.currentTheme().accentColor
 
         super.draw(dirtyRect)
     }
