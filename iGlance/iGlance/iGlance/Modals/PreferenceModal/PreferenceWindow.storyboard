@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.Cocoa.Storyboard.XIB" version="3.0" toolsVersion="15705" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES">
+<document type="com.apple.InterfaceBuilder3.Cocoa.Storyboard.XIB" version="3.0" toolsVersion="16097" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES">
     <dependencies>
         <deployment identifier="macosx"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="15705"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="16097"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
@@ -168,6 +168,7 @@
                             <constraint firstItem="AQo-ln-3eP" firstAttribute="centerX" secondItem="AXW-5W-vMJ" secondAttribute="centerX" id="rt5-sr-b6A"/>
                             <constraint firstItem="Dog-g4-PBP" firstAttribute="centerX" secondItem="AXW-5W-vMJ" secondAttribute="centerX" id="zpv-d6-S8Q"/>
                         </constraints>
+                        <accessibility description="PreferenceView"/>
                     </view>
                     <connections>
                         <outlet property="advancedLoggingCheckbox" destination="Dog-g4-PBP" id="S9H-YP-Eei"/>

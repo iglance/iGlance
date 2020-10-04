@@ -29,6 +29,9 @@ class NetworkMenuBarItem: MenuBarItem {
     /// The transmitted bytes since the last reset of every interface
     private var transmittedBytesPerInterface: [String: (up: UInt64, down: UInt64)] = [:]
 
+    /// The minimum width of the network menu bar item
+    private var minMenuBarItemWidth = CGFloat(55)
+
     // MARK: -
     // MARK: Overridden Functions
     override init() {
@@ -185,11 +188,12 @@ class NetworkMenuBarItem: MenuBarItem {
         }
 
         // create the menu bar image for the bandwidth.
-        let bandwidthTextWidth = CGFloat(55) // this value was found by trail and error
+        let bandwidthTextWidth = max(self.minMenuBarItemWidth, max(uploadString.size().width, downloadString.size().width))
         let bandwidthIconWidth = bandwidthIcon.size.width
+        let marginToIcons = CGFloat(5)
         let menuBarImage = NSImage(
             size: NSSize(
-                width: bandwidthTextWidth + bandwidthIconWidth,
+                width: bandwidthTextWidth + bandwidthIconWidth + marginToIcons,
                 height: CGFloat(self.menuBarHeight)
             )
         )
@@ -201,7 +205,7 @@ class NetworkMenuBarItem: MenuBarItem {
         let uploadStringSize = uploadString.size()
         uploadString.draw(
             at: NSPoint(
-                x: bandwidthIconWidth + bandwidthTextWidth - uploadStringSize.width,
+                x: bandwidthIconWidth + marginToIcons + bandwidthTextWidth - uploadStringSize.width,
                 y: menuBarImage.size.height - 11 // this value was found by trail and error
             )
         )
@@ -209,7 +213,7 @@ class NetworkMenuBarItem: MenuBarItem {
         // draw the download string
         let downloadStringsize = downloadString.size()
         // y value was found by trail and error
-        downloadString.draw(at: NSPoint(x: bandwidthIconWidth + bandwidthTextWidth - downloadStringsize.width, y: -2))
+        downloadString.draw(at: NSPoint(x: bandwidthIconWidth + marginToIcons + bandwidthTextWidth - downloadStringsize.width, y: -2))
 
         // tint the icon to have the correct color depending on the current theme
         let tintedBandwidthIcon = bandwidthIcon.tint(color: ThemeManager.isDarkTheme() ? NSColor.white : NSColor.black)

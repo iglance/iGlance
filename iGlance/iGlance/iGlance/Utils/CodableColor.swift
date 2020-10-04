@@ -29,3 +29,9 @@ struct CodableColor: Codable {
         alpha = nsColor.alphaComponent
     }
 }
+
+extension CodableColor: Equatable {
+    static func == (lhs: CodableColor, rhs: CodableColor) -> Bool {
+        lhs.red == rhs.red && lhs.green == rhs.green && lhs.blue == rhs.blue && lhs.alpha == rhs.alpha
+    }
+}

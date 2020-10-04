@@ -3,6 +3,7 @@ import Cocoa
 final class AppDelegate: NSObject, NSApplicationDelegate {
 	func applicationDidFinishLaunching(_ notification: Notification) {
 		let bundleId = Bundle.main.bundleIdentifier!
+		// TODO: Make this more strict by only replacing at the end
 		let mainBundleId = bundleId.replacingOccurrences(of: "-LaunchAtLoginHelper", with: "")
 
 		// Ensure the app is not already running
