@@ -20,48 +20,75 @@ import CocoaLumberjack
 enum Theme: Int {
     case darkTheme, lightTheme
 
-    var titlebarColor: NSColor {
+    var titleBarBackgroundColor: NSColor {
         switch self {
         case .darkTheme:
-            return NSColor.colorFrom(hex: "#222326")
-        default:
-            return NSColor.colorFrom(hex: "#5069B3")
+            return #colorLiteral(red: 0.09019607843, green: 0.1176470588, blue: 0.1568627451, alpha: 1)
+        case .lightTheme:
+            return #colorLiteral(red: 0.9490196078, green: 0.9490196078, blue: 0.9490196078, alpha: 1)
         }
     }
 
-    var sidebarColor: NSColor {
+    var borderColor: NSColor {
+        switch self {
+        case . darkTheme:
+            return #colorLiteral(red: 0, green: 0, blue: 0, alpha: 1)
+        case .lightTheme:
+            return #colorLiteral(red: 0.6156862745, green: 0.6156862745, blue: 0.6156862745, alpha: 1)
+        }
+    }
+
+    var mainViewBackgroundColor: NSColor {
         switch self {
         case .darkTheme:
-            return NSColor.colorFrom(hex: "#303440")
+            return #colorLiteral(red: 0.1294117647, green: 0.1568627451, blue: 0.1960784314, alpha: 1)
         case .lightTheme:
-            return NSColor.colorFrom(hex: "#D9D9D9")
+            return #colorLiteral(red: 0.9725490196, green: 0.9764705882, blue: 0.9764705882, alpha: 1)
+        }
+    }
+
+    var accentColor: NSColor {
+        switch self {
+        case .darkTheme:
+            return #colorLiteral(red: 1, green: 1, blue: 1, alpha: 0.08)
+        case .lightTheme:
+            return #colorLiteral(red: 0, green: 0, blue: 0, alpha: 0.08)
         }
     }
 
     var fontColor: NSColor {
         switch self {
         case .darkTheme:
-            return NSColor.colorFrom(hex: "#D9D9D9")
+            return #colorLiteral(red: 1, green: 1, blue: 1, alpha: 1)
         case .lightTheme:
-            return NSColor.colorFrom(hex: "#5069B3")
+            return #colorLiteral(red: 0, green: 0, blue: 0, alpha: 1)
+        }
+    }
+
+    var fontHighlightColor: NSColor {
+        switch self {
+        case .darkTheme:
+            return #colorLiteral(red: 1, green: 1, blue: 1, alpha: 1)
+        case .lightTheme:
+            return #colorLiteral(red: 1, green: 1, blue: 1, alpha: 1)
         }
     }
 
     var sidebarButtonHoverColor: NSColor {
         switch self {
         case .darkTheme:
-            return NSColor.colorFrom(hex: "#3D4766")
+            return #colorLiteral(red: 1, green: 1, blue: 1, alpha: 0.05)
         case .lightTheme:
-            return NSColor.colorFrom(hex: "#A3B0D9")
+            return #colorLiteral(red: 0.1137254902, green: 0.4901960784, blue: 1, alpha: 0.25)
         }
     }
 
     var sidebarButtonHighlightColor: NSColor {
         switch self {
         case .darkTheme:
-            return NSColor.colorFrom(hex: "#3D5499")
+            return #colorLiteral(red: 1, green: 1, blue: 1, alpha: 0.15)
         case .lightTheme:
-            return NSColor.colorFrom(hex: "#6B7DB3")
+            return #colorLiteral(red: 0.1137254902, green: 0.4901960784, blue: 1, alpha: 0.75)
         }
     }
 }

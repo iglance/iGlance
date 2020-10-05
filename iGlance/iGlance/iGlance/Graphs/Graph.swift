@@ -72,7 +72,9 @@ class GraphClass {
 
     // MARK: -
     // MARK: Instance Constants
-    let borderWidth = CGFloat(0.5)
+    let borderWidth = CGFloat(1.0)
+
+    let contentMargin = CGFloat(1.0)
 
     init() {
         self.imageSize = NSSize(width: 9, height: 18)
@@ -92,7 +94,7 @@ class GraphClass {
             width: self.imageSize.width - borderWidth, // subtract the border width once since half the border of each side has to be subtracted
             height: self.imageSize.height - borderWidth
         )
-        let roundedRect = NSBezierPath(roundedRect: rect, xRadius: 1.5, yRadius: 1.5)
+        let roundedRect = NSBezierPath(roundedRect: rect, xRadius: 3.0, yRadius: 3.0)
         roundedRect.lineWidth = borderWidth
 
         if ThemeManager.isDarkTheme() {
@@ -117,6 +119,7 @@ class GraphClass {
 
         // create the whole rect for the gradient. We will only render this rect partly
         let gradientRect = NSRect(x: 0, y: 0, width: CGFloat(barWidth), height: CGFloat(maxBarHeight))
+        let roundedRect = NSBezierPath(roundedRect: gradientRect, xRadius: 1.5, yRadius: 1.5)
 
         // lock the gradient image
         gradientImage.lockFocus()
@@ -127,14 +130,14 @@ class GraphClass {
 
             // return a one colored bar
             barColor.setFill()
-            gradientRect.fill()
+            roundedRect.fill()
             gradientImage.unlockFocus()
 
             return gradientImage
         }
 
         // draw the gradient into the rectangle
-        gradient.draw(in: gradientRect, angle: 90)
+        gradient.draw(in: roundedRect, angle: 90)
 
         // unlock the focus of the image
         gradientImage.unlockFocus()

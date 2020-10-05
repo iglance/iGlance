@@ -67,8 +67,6 @@ class NetworkInfo {
             return (up: 0, down: 0)
         }
 
-        DDLogInfo("Output of network bandwidth command: \n\(commandOutput)")
-
         // split the lines of the output
         let lowerCaseOutput = commandOutput.lowercased()
         let lines = lowerCaseOutput.split(separator: "\n")

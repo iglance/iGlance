@@ -81,7 +81,7 @@ class DiskUsageMenuBarItem: MenuBarItem {
         let menuBarImage = NSImage(
             size: NSSize(
                 width: iconWidth + textWidth,
-                height: CGFloat(self.menuBarHeight)
+                height: self.menuBarHeight
             )
         )
 

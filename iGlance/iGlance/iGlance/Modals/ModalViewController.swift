@@ -81,7 +81,7 @@ class ModalViewController: NSViewController {
         // center the modal on the parent window
         centerWindowOnParent(parentWindow: parentWindow)
 
-        // set the callback to make the main window movable again after the preference window was closed
+        // set the callback to make the main window movable again after the modal was closed
         self.onDisappear {
             parentWindow.isMovable = true
             DDLogInfo("Made the parent window movable again")

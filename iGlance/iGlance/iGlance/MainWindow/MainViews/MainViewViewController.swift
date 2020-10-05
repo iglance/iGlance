@@ -22,11 +22,10 @@ class MainViewViewController: NSViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        // create the visual effect view for the background blur
-        let visualEffectView = NSVisualEffectView(frame: self.view.frame)
-        visualEffectView.material = NSVisualEffectView.Material.menu
-        // add the visual effect view
-        self.view.addSubview(visualEffectView, positioned: NSWindow.OrderingMode.below, relativeTo: nil)
+        // set the color of the main view and add a callback to change the color on theme change
+        (self.view as! BackgroundColorView).backgroundColor = ThemeManager.currentTheme().mainViewBackgroundColor
+        ThemeManager.onThemeChange(self, #selector(self.onThemeChange))
+
         // trigger didSet methods of all outlets to update GUI
         updateGUIComponents()
     }
@@ -37,5 +36,10 @@ class MainViewViewController: NSViewController {
     func updateGUIComponents() {
         // Implement in inherited class
         fatalError("Function 'updateGUIComponents' not implemented")
+    }
+
+    @objc
+    func onThemeChange() {
+        (self.view as! BackgroundColorView).backgroundColor = ThemeManager.currentTheme().mainViewBackgroundColor
     }
 }
