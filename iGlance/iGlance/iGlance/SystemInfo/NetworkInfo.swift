@@ -67,8 +67,6 @@ class NetworkInfo {
             return (up: 0, down: 0)
         }
 
-        DDLogInfo("Output of network bandwidth command: \n\(commandOutput)")
-
         // split the lines of the output
         let lowerCaseOutput = commandOutput.lowercased()
         let lines = lowerCaseOutput.split(separator: "\n")
@@ -112,6 +110,8 @@ class NetworkInfo {
             DDLogError("An error occurred while executing the command to get the currently used network interface")
             return "en0"
         }
+
+        DDLogInfo("Output of the network interface command: \n\(commandOutput)")
 
         // get the interface name
         let interfaceName = commandOutput.trimmingCharacters(in: .whitespacesAndNewlines)
