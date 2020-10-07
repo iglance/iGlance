@@ -34,7 +34,9 @@ class AboutModalViewController: ModalViewController {
         self.setLicenseView()
 
         // add a callback to change the logo depending on the current theme
-        ThemeManager.onThemeChange(self, #selector(onThemeChange))
+        ThemeManager.addThemeChangeObserver(self) { _ in
+            self.changeLogo()
+        }
 
         // add the correct logo image at startup
         changeLogo()
@@ -48,12 +50,6 @@ class AboutModalViewController: ModalViewController {
 
     // MARK: -
     // MARK: Private Functions
-
-    @objc
-    private func onThemeChange() {
-        DDLogInfo("Theme changed")
-        changeLogo()
-    }
 
     /**
      * Set the version label to the current app version.

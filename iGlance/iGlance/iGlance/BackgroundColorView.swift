@@ -17,7 +17,11 @@ import Cocoa
 
 
 class BackgroundColorView: NSView {
-    var backgroundColor: NSColor?
+    var backgroundColor: NSColor? {
+        didSet {
+            self.needsDisplay = true
+        }
+    }
 
     override func draw(_ dirtyRect: NSRect) {
         if let color = self.backgroundColor {

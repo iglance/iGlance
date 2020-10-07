@@ -94,6 +94,8 @@ enum Theme: Int {
 }
 
 class ThemeManager {
+    private static var onThemeCallbackObjects: [NSObject: NSObject] = [:]
+
     /**
      * Indicates whether the theme of the os is dark.
      *
@@ -129,13 +131,32 @@ class ThemeManager {
 
     private init() {}
 
-    static func onThemeChange(_ observer: Any, _ selector: Selector) {
-        // add a callback to change the logo depending on the current theme
-        DistributedNotificationCenter.default.addObserver(
-            observer,
-            selector: selector,
-            name: .AppleInterfaceThemeChangedNotification,
-            object: nil
-        )
+    static func removeThemeChangeObserver(_ observer: NSObject) {
+        guard let observerObject = self.onThemeCallbackObjects[observer] else {
+            return
+        }
+
+        DistributedNotificationCenter.default.removeObserver(observerObject)
+        self.onThemeCallbackObjects[observer] = nil
+    }
+
+    static func removeAllThemeChangeObserver() {
+        for observerObject in self.onThemeCallbackObjects {
+            DistributedNotificationCenter.default.removeObserver(observerObject)
+        }
+    }
+
+    static func addThemeChangeObserver(_ observer: NSObject, _ callback: @escaping (Notification) -> Void) {
+        let observerObject = DistributedNotificationCenter.default.addObserver(
+            forName: .AppleInterfaceThemeChangedNotification,
+            object: nil,
+            queue: nil
+        ) { notification in
+            DispatchQueue.main.asyncAfter(deadline: .now() + 0.1) {
+                callback(notification)
+            }
+        }
+
+        self.onThemeCallbackObjects[observer] = observerObject as? NSObject
     }
 }
