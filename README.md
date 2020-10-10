@@ -1,4 +1,4 @@
-<p align="center"><img width="400" src="readme_images/logo.png" alt="iGlance logo"/></p>
+<p align="center"><img width="800" src="readme_images/logo.png" alt="iGlance logo"/></p>
 
 <p align="center">
    <a href="https://github.com/iglance/iGlance/actions?query=workflow%3ABuild">
