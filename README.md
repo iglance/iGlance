@@ -1,4 +1,4 @@
-<p align="center"><img width="400" src="icons/iGlance_logo_black.png" alt="iGlance logo"/></p>
+<p align="center"><img width="800" src="readme_images/logo.png" alt="iGlance logo"/></p>
 
 <p align="center">
    <a href="https://github.com/iglance/iGlance/actions?query=workflow%3ABuild">
@@ -18,8 +18,7 @@
 iGlance is a small system monitor that displays current stats about your Mac on the menu bar. It is built to be highly customizable so that everyone can adjust it to his/her needs. A full list of all the features is below. If you encounter any bugs or have suggestions for new features, feel free to write them down in the Issues tab.
 
 <p align="center">
-<img src="readme_images/Menubar_Preview.jpg" title="Menubar Preview" alt="Menubar Preview" width="400"/>
-<img src="readme_images/iGlance_Preview.jpg" title="iGlance Preview" alt="iGlance Preview"/>
+<img src="readme_images/iGlance_Preview.png" title="iGlance Preview" alt="iGlance Preview"/>
 </p>
 
 # Features
@@ -61,8 +60,8 @@ We have nothing to do with an app called "iStats X: CPU & Memory" which is avail
 
 - ~~Import/Export Settings~~
 - ~~Add tests for settings import/export~~
+- ~~App re-design for Big Sur~~
 - Use database to save all the read information (for displaying graphs and to prevent reading value multiple times when changing e.g. the width of the menu bar items)
-- App re-design for Big Sur
 - Use drag and drop to arrange/add the menu bar items
 
 ### Version 2.2
@@ -77,6 +76,7 @@ We have nothing to do with an app called "iStats X: CPU & Memory" which is avail
 - [CocoaLumberjack](https://github.com/CocoaLumberjack/CocoaLumberjack) for their awesome logging framework
 - [Oskar Groth](https://github.com/OskarGroth) for providing his [AppMover](https://github.com/OskarGroth/AppMover) framework
 - [Sindre Sorhus](https://github.com/sindresorhus) for providing his [LaunchAtLogin](https://github.com/sindresorhus/LaunchAtLogin) library
+- Facebook for making their [device mockups](https://facebook.design/devices) publicly available for the design community
 - And of course all the other [contributors](https://github.com/iglance/iGlance/graphs/contributors)
 
 # License
