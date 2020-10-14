@@ -83,6 +83,9 @@ class SidebarViewController: NSViewController {
 
             // set the icon ids
             buttonView.iconName = sidebarButton.instance.buttonIconID
+
+            // update the font color of the button depending on the current theme
+            self.getSidebarButtonWith(identifier: sidebarButton.instance.buttonViewID)?.updateFontColor()
         }
 
         // on startup select the dashboard

@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.Cocoa.Storyboard.XIB" version="3.0" toolsVersion="15702" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES">
+<document type="com.apple.InterfaceBuilder3.Cocoa.Storyboard.XIB" version="3.0" toolsVersion="17156" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES">
     <dependencies>
         <deployment identifier="macosx"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="15702"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="17156"/>
         <capability name="System colors introduced in macOS 10.14" minToolsVersion="10.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -1014,7 +1014,7 @@
                                 <rect key="frame" x="18" y="267" width="614" height="32"/>
                                 <textFieldCell key="cell" selectable="YES" id="Jn4-6M-2YU">
                                     <font key="font" metaFont="system"/>
-                                    <string key="title">iGlance is an open source project published under the MIT license. You can find the source code over at: https://github.com/iglance/iGlance</string>
+                                    <string key="title">iGlance is an open source project published under the GNU GPLv3 license. You can find the source code over at: https://github.com/iglance/iGlance</string>
                                     <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
                                     <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
                                 </textFieldCell>
@@ -1046,6 +1046,6 @@
         </scene>
     </scenes>
     <resources>
-        <image name="iGlance_logo_white" width="1280" height="500"/>
+        <image name="iGlance_logo_white" width="427" height="163"/>
     </resources>
 </document>
