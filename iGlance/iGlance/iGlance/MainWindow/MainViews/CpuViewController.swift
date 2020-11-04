@@ -25,6 +25,11 @@ class CpuViewController: MainViewViewController {
             cpuTempCheckbox.state = AppDelegate.userSettings.settings.cpu.showTemperature ? NSButton.StateValue.on : NSButton.StateValue.off
         }
     }
+    @IBOutlet private var cpuFanCheckbox: NSButton! {
+        didSet {
+            cpuFanCheckbox.state = AppDelegate.userSettings.settings.cpu.showFanSpeed ? NSButton.StateValue.on : NSButton.StateValue.off
+        }
+    }
     @IBOutlet private var cpuUsageCheckbox: NSButton! {
         didSet {
             cpuUsageCheckbox.state = AppDelegate.userSettings.settings.cpu.showUsage ? NSButton.StateValue.on : NSButton.StateValue.off
@@ -136,6 +141,7 @@ class CpuViewController: MainViewViewController {
     override func updateGUIComponents() {
         // Call didSet methods of all GUI components
         self.cpuTempCheckbox = { self.cpuTempCheckbox }()
+        self.cpuFanCheckbox = { self.cpuFanCheckbox }()
         self.cpuUsageCheckbox = { self.cpuUsageCheckbox }()
         self.graphSelector = { self.graphSelector }()
         self.graphWidthStackView = { self.graphWidthStackView }()
@@ -165,6 +171,20 @@ class CpuViewController: MainViewViewController {
             AppDelegate.menuBarItemManager.cpuTemp.show()
         } else {
             AppDelegate.menuBarItemManager.cpuTemp.hide()
+        }
+
+        DDLogInfo("Did set cpu temp checkbox value to (\(activated))")
+    }
+
+    @IBAction private func cpuFanCheckboxChanged(_ sender: NSButton) {
+        // get the boolean to the current state of the checkbox
+        let activated = sender.state == NSButton.StateValue.on
+
+        // set the user settings
+        AppDelegate.userSettings.settings.cpu.showFanSpeed = activated
+        if activated && !AppDelegate.userSettings.settings.cpu.showTemperature {
+            cpuTempCheckbox.state = .on
+            cpuTempCheckboxChanged(cpuTempCheckbox)
         }
 
         DDLogInfo("Did set cpu temp checkbox value to (\(activated))")
