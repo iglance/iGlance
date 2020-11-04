@@ -49,12 +49,18 @@ class DiskUsageMenuBarItem: MenuBarItem {
             return
         }
 
+        let hideUsedSpace = AppDelegate.userSettings.settings.disk.hideUsedSpace
         // get the sizes
         let (used, free) = DiskInfo.getFreeDiskUsageInfo()
-        let usedSpace = convertToCorrectUnit(bytes: used)
         let freeSpace = convertToCorrectUnit(bytes: free)
 
-        let menuBarImage = createMenuBarImage(used: usedSpace, free: freeSpace)
+        var menuBarImage: NSImage?
+        if hideUsedSpace {
+            menuBarImage = createOnlyFreeSpaceMenuImage(free: freeSpace)
+        } else {
+            let usedSpace = convertToCorrectUnit(bytes: used)
+            menuBarImage = createMenuBarImage(used: usedSpace, free: freeSpace)
+        }
 
         // set the menu bar item image
         button.image = menuBarImage
@@ -68,10 +74,10 @@ class DiskUsageMenuBarItem: MenuBarItem {
      */
     private func createMenuBarImage(used: (value: Double, unit: SystemInfo.ByteUnit), free: (value: Double, unit: SystemInfo.ByteUnit)) -> NSImage? {
         // create the attributed strings for the upload and download
-        let usedValueString = used.unit > .Gigabyte ? String(format: "%.2f", free.value) : String(format: "%.1f", free.value)
-        let freeValueString = free.unit > .Gigabyte ?String(format: "%.2f", used.value) : String(format: "%.1f", used.value)
-        let freeSpaceString = self.createAttributedString(text: "\(usedValueString) \(free.unit.rawValue)")
-        let usedSpaceString = self.createAttributedString(text: "\(freeValueString) \(used.unit.rawValue)")
+        let usedValueString = used.unit > .Gigabyte ? String(format: "%.2f", used.value) : String(format: "%.1f", used.value)
+        let freeValueString = free.unit > .Gigabyte ? String(format: "%.2f", free.value) : String(format: "%.1f", free.value)
+        let usedSpaceString = self.createAttributedString(text: "\(usedValueString) \(used.unit.rawValue)")
+        let freeSpaceString = self.createAttributedString(text: "\(freeValueString) \(free.unit.rawValue)")
 
         let freeStringSize = freeSpaceString.size()
         let usedStringSize = usedSpaceString.size()
@@ -111,18 +117,38 @@ class DiskUsageMenuBarItem: MenuBarItem {
         return menuBarImage
     }
 
+    private func createOnlyFreeSpaceMenuImage(free: (value: Double, unit: SystemInfo.ByteUnit)) -> NSImage? {
+        let freeValueString = free.unit > .Gigabyte ? String(format: "%.2f", free.value) : String(format: "%.1f", free.value)
+        let freeSpaceString = self.createAttributedString(text: "\(freeValueString) \(free.unit.rawValue)", isSingleLine: true)
+        let freeStringSize = freeSpaceString.size()
+        let menuBarImage = NSImage(
+            size: NSSize(
+                width: freeStringSize.width,
+                height: self.menuBarHeight
+            )
+        )
+        // focus the image to render the disk space values
+        menuBarImage.lockFocus()
+        let textOrigin = NSPoint(x: 0, y: (menuBarHeight - freeStringSize.height) / 2)
+        freeSpaceString.draw(at: textOrigin)
+        // unlock the focus of drawing
+        menuBarImage.unlockFocus()
+
+        return menuBarImage
+    }
+
     /**
      * Creates an attributed string that can be drawn on the menu bar image.
      */
-    private func createAttributedString(text: String) -> NSAttributedString {
-        let attrString = NSMutableAttributedString(
-            string: text,
-            attributes: [
-                NSAttributedString.Key.font: NSFont.systemFont(ofSize: 9),
-                NSAttributedString.Key.kern: 1.2,
-                NSAttributedString.Key.foregroundColor: ThemeManager.isDarkTheme() ? NSColor.white : NSColor.black
-            ]
-        )
+    private func createAttributedString(text: String, isSingleLine: Bool = false) -> NSAttributedString {
+        var attributes: [NSAttributedString.Key: Any] = [.foregroundColor: ThemeManager.isDarkTheme() ? NSColor.white : NSColor.black]
+        if isSingleLine {
+            attributes[.font] = NSFont.systemFont(ofSize: 13)
+        } else {
+            attributes[.font] = NSFont.systemFont(ofSize: 9)
+            attributes[.kern] = 1.2
+        }
+        let attrString = NSMutableAttributedString(string: text, attributes: attributes)
 
         return attrString
     }

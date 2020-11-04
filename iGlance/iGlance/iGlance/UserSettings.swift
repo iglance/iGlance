@@ -188,6 +188,7 @@ struct BatterySettings: Codable {
 
 struct DiskSettings: Codable {
     var showDiskUsage: Bool = true
+    var hideUsedSpace: Bool = false
 
     init() { }
 
@@ -196,6 +197,9 @@ struct DiskSettings: Codable {
 
         if let decodedShowDiskUsage = try? container.decodeIfPresent(Bool.self, forKey: .showDiskUsage) {
             self.showDiskUsage = decodedShowDiskUsage
+        }
+        if let decodedHideUsedSpace = try? container.decodeIfPresent(Bool.self, forKey: .hideUsedSpace) {
+            self.hideUsedSpace = decodedHideUsedSpace
         }
     }
 }

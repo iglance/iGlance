@@ -25,11 +25,18 @@ class DiskViewController: MainViewViewController {
         }
     }
 
+    @IBOutlet private var hideUsedSpaceCheckbox: NSButton! {
+        didSet {
+            diskUsageCheckbox.state = AppDelegate.userSettings.settings.disk.hideUsedSpace ? .on : .off
+        }
+    }
+
     // MARK: -
     // MARK: Function Overrides
     override func updateGUIComponents() {
         // Call didSet methods of all GUI components
         self.diskUsageCheckbox = { self.diskUsageCheckbox }()
+        self.hideUsedSpaceCheckbox = { self.hideUsedSpaceCheckbox }()
     }
 
     // MARK: -
@@ -49,5 +56,18 @@ class DiskViewController: MainViewViewController {
         }
 
         DDLogInfo("Did set disk checkbox value to (\(activated))")
+    }
+
+    @IBAction private func hideUsedSpaceChanged(_ sender: NSButton) {
+        // get the boolean value of the checkbox
+        let activated = sender.state == NSButton.StateValue.on
+
+        // set the user setting
+        AppDelegate.userSettings.settings.disk.hideUsedSpace = activated
+
+        // update the menu bar items to visualize the change
+        AppDelegate.menuBarItemManager.updateMenuBarItems()
+
+        DDLogInfo("Did set hide used space checkbox value to (\(activated))")
     }
 }
