@@ -165,7 +165,7 @@ class BatteryMenuBarItem: MenuBarItem {
             batteryIcon = NSImage(named: "BatteryIconCharging")
         } else if !isCharging && !isOnAC || !isOnAC && isCharging {
             // the case !isOnAC && isCharging occurs when the machine is unplugged from AC and the remaining time is still calculated
-            guard var iconTemplate = NSImage(named: "BatteryIcon") else {
+            guard var iconTemplate = NSImage(named: "BatteryIcon")?.copy() as? NSImage else {
                 DDLogError("Failed to load the battery template icon (battery state: \(batteryState)")
                 return nil
             }
