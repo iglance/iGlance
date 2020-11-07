@@ -38,7 +38,13 @@ class BatteryViewController: MainViewViewController {
         }
     }
 
-    @IBOutlet private var displayedInfoStackView: NSStackView! {
+    @IBOutlet private var batteryIconCheckbox: NSButton! {
+        didSet {
+            batteryIconCheckbox.state = AppDelegate.userSettings.settings.battery.showBatterIcon ? .on : .off
+        }
+    }
+
+    @IBOutlet private var displayedInfoStackView: NSView! {
         didSet {
             // if the usage is not displayed hide it
             if !AppDelegate.userSettings.settings.battery.showBatteryMenuBarItem {
@@ -130,6 +136,19 @@ class BatteryViewController: MainViewViewController {
         displayedInfoStackView.isHidden = !activated
 
         DDLogInfo("Did set battery checkbox value to (\(activated))")
+    }
+
+    @IBAction private func batteryIconCheckboxChanged(_ sender: NSButton) {
+        // get the boolean value of the checkbox
+        let activated = sender.state == .on
+
+        // set the user settings
+        AppDelegate.userSettings.settings.battery.showBatterIcon = activated
+
+        // update the menu bar items to make the change visible immediately
+        AppDelegate.menuBarItemManager.updateMenuBarItems()
+
+        DDLogInfo("Did set battery icon visibility checkbox value to (\(activated))")
     }
 
     @IBAction private func batterySelectorChanged(_ sender: NSPopUpButton) {

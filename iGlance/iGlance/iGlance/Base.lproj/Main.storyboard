@@ -1258,167 +1258,216 @@
                         <rect key="frame" x="0.0" y="0.0" width="601" height="500"/>
                         <autoresizingMask key="autoresizingMask"/>
                         <subviews>
-                            <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="4eh-dV-WXg">
-                                <rect key="frame" x="18" y="464" width="225" height="18"/>
-                                <buttonCell key="cell" type="check" title="Show battery symbol in menu bar" bezelStyle="regularSquare" imagePosition="left" state="on" inset="2" id="XXw-qA-EQk">
-                                    <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
-                                    <font key="font" metaFont="system"/>
-                                </buttonCell>
-                                <connections>
-                                    <action selector="batteryCheckboxChanged:" target="jU5-ml-SBe" id="I35-tU-m5M"/>
-                                </connections>
-                            </button>
-                            <stackView distribution="fill" orientation="horizontal" alignment="centerY" horizontalStackHuggingPriority="249.99998474121094" verticalStackHuggingPriority="249.99998474121094" detachesHiddenViews="YES" translatesAutoresizingMaskIntoConstraints="NO" id="5Ke-6G-cUj">
-                                <rect key="frame" x="50" y="435" width="172" height="21"/>
+                            <stackView distribution="fill" orientation="vertical" alignment="leading" horizontalStackHuggingPriority="249.99998474121094" verticalStackHuggingPriority="249.99998474121094" detachesHiddenViews="YES" translatesAutoresizingMaskIntoConstraints="NO" id="tkx-Yq-cUw">
+                                <rect key="frame" x="20" y="350" width="561" height="130"/>
                                 <subviews>
-                                    <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="0wv-qH-eqT">
-                                        <rect key="frame" x="-2" y="3" width="38" height="16"/>
-                                        <textFieldCell key="cell" lineBreakMode="clipping" title="Show" id="2IX-pu-lqb">
-                                            <font key="font" metaFont="label" size="13"/>
-                                            <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
-                                            <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
-                                        </textFieldCell>
-                                    </textField>
-                                    <popUpButton verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="d6S-Dy-d9p">
-                                        <rect key="frame" x="40" y="-3" width="135" height="25"/>
-                                        <popUpButtonCell key="cell" type="push" title="Remaining Time" bezelStyle="rounded" alignment="left" lineBreakMode="truncatingTail" state="on" borderStyle="borderAndBezel" imageScaling="proportionallyDown" inset="2" selectedItem="6Y8-jG-mb6" id="WPg-h8-scY">
-                                            <behavior key="behavior" lightByBackground="YES" lightByGray="YES"/>
-                                            <font key="font" metaFont="menu"/>
-                                            <menu key="menu" id="MPD-Vv-1HR">
-                                                <items>
-                                                    <menuItem title="Remaining Time" state="on" id="6Y8-jG-mb6"/>
-                                                    <menuItem title="Percentage" id="2yx-sR-WuB"/>
-                                                </items>
-                                            </menu>
-                                        </popUpButtonCell>
+                                    <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="4eh-dV-WXg">
+                                        <rect key="frame" x="-2" y="114" width="225" height="18"/>
+                                        <buttonCell key="cell" type="check" title="Show battery symbol in menu bar" bezelStyle="regularSquare" imagePosition="left" state="on" inset="2" id="XXw-qA-EQk">
+                                            <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
+                                            <font key="font" metaFont="system"/>
+                                        </buttonCell>
                                         <connections>
-                                            <action selector="batterySelectorChanged:" target="jU5-ml-SBe" id="znE-rR-uel"/>
+                                            <action selector="batteryCheckboxChanged:" target="jU5-ml-SBe" id="I35-tU-m5M"/>
                                         </connections>
-                                    </popUpButton>
-                                </subviews>
-                                <visibilityPriorities>
-                                    <integer value="1000"/>
-                                    <integer value="1000"/>
-                                </visibilityPriorities>
-                                <customSpacing>
-                                    <real value="3.4028234663852886e+38"/>
-                                    <real value="3.4028234663852886e+38"/>
-                                </customSpacing>
-                            </stackView>
-                            <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="oXr-Iu-yaB">
-                                <rect key="frame" x="18" y="409" width="217" height="18"/>
-                                <buttonCell key="cell" type="check" title="Show low battery notification at:" bezelStyle="regularSquare" imagePosition="left" state="on" inset="2" id="bgo-25-NLS">
-                                    <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
-                                    <font key="font" metaFont="system"/>
-                                </buttonCell>
-                                <connections>
-                                    <action selector="lowBatteryNotificationCheckboxChanged:" target="jU5-ml-SBe" id="g0a-kI-7y5"/>
-                                </connections>
-                            </button>
-                            <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="hSa-ks-RER">
-                                <rect key="frame" x="18" y="385" width="223" height="18"/>
-                                <buttonCell key="cell" type="check" title="Show high battery notification at:" bezelStyle="regularSquare" imagePosition="left" state="on" inset="2" id="qck-R5-sed">
-                                    <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
-                                    <font key="font" metaFont="system"/>
-                                </buttonCell>
-                                <connections>
-                                    <action selector="highBatteryNotificationCheckboxChanged:" target="jU5-ml-SBe" id="mrB-f4-Q5V"/>
-                                </connections>
-                            </button>
-                            <stackView distribution="fill" orientation="horizontal" alignment="centerY" spacing="2" horizontalStackHuggingPriority="249.99998474121094" verticalStackHuggingPriority="249.99998474121094" detachesHiddenViews="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Ngj-15-0zU">
-                                <rect key="frame" x="249" y="383" width="43" height="21"/>
-                                <subviews>
-                                    <textField verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="fql-TY-U20">
-                                        <rect key="frame" x="0.0" y="0.0" width="30" height="21"/>
-                                        <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" selectable="YES" editable="YES" sendsActionOnEndEditing="YES" state="on" borderStyle="bezel" placeholderString="90" drawsBackground="YES" id="4Vs-Bh-utr">
-                                            <numberFormatter key="formatter" formatterBehavior="default10_4" localizesFormat="NO" numberStyle="decimal" formatWidth="-1" minimumIntegerDigits="1" maximumIntegerDigits="2000000000" maximumFractionDigits="3" id="bWC-zY-XEd">
-                                                <real key="minimum" value="0.0"/>
-                                                <real key="maximum" value="100"/>
-                                            </numberFormatter>
-                                            <font key="font" metaFont="label" size="13"/>
-                                            <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
-                                            <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
-                                        </textFieldCell>
-                                    </textField>
-                                    <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="TVu-VY-4rc">
-                                        <rect key="frame" x="30" y="3" width="15" height="16"/>
-                                        <textFieldCell key="cell" lineBreakMode="clipping" title="%" id="vdk-yU-Gu3">
-                                            <font key="font" metaFont="label" size="13"/>
-                                            <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
-                                            <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
-                                        </textFieldCell>
-                                    </textField>
+                                    </button>
+                                    <customView translatesAutoresizingMaskIntoConstraints="NO" id="gp1-yD-uQF">
+                                        <rect key="frame" x="0.0" y="58" width="192" height="50"/>
+                                        <subviews>
+                                            <stackView distribution="fill" orientation="vertical" alignment="leading" horizontalStackHuggingPriority="249.99998474121094" verticalStackHuggingPriority="249.99998474121094" detachesHiddenViews="YES" translatesAutoresizingMaskIntoConstraints="NO" id="rs3-DQ-BRz">
+                                                <rect key="frame" x="20" y="0.0" width="172" height="50"/>
+                                                <subviews>
+                                                    <stackView distribution="fill" orientation="horizontal" alignment="centerY" horizontalStackHuggingPriority="249.99998474121094" verticalStackHuggingPriority="249.99998474121094" detachesHiddenViews="YES" translatesAutoresizingMaskIntoConstraints="NO" id="5Ke-6G-cUj">
+                                                        <rect key="frame" x="0.0" y="22" width="172" height="28"/>
+                                                        <subviews>
+                                                            <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="0wv-qH-eqT">
+                                                                <rect key="frame" x="-2" y="6" width="38" height="16"/>
+                                                                <textFieldCell key="cell" lineBreakMode="clipping" title="Show" id="2IX-pu-lqb">
+                                                                    <font key="font" metaFont="label" size="13"/>
+                                                                    <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
+                                                                    <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
+                                                                </textFieldCell>
+                                                            </textField>
+                                                            <popUpButton verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="d6S-Dy-d9p">
+                                                                <rect key="frame" x="40" y="1" width="135" height="25"/>
+                                                                <popUpButtonCell key="cell" type="push" title="Remaining Time" bezelStyle="rounded" alignment="left" lineBreakMode="truncatingTail" state="on" borderStyle="borderAndBezel" imageScaling="proportionallyDown" inset="2" selectedItem="6Y8-jG-mb6" id="WPg-h8-scY">
+                                                                    <behavior key="behavior" lightByBackground="YES" lightByGray="YES"/>
+                                                                    <font key="font" metaFont="menu"/>
+                                                                    <menu key="menu" id="MPD-Vv-1HR">
+                                                                        <items>
+                                                                            <menuItem title="Remaining Time" state="on" id="6Y8-jG-mb6"/>
+                                                                            <menuItem title="Percentage" id="2yx-sR-WuB"/>
+                                                                        </items>
+                                                                    </menu>
+                                                                </popUpButtonCell>
+                                                                <connections>
+                                                                    <action selector="batterySelectorChanged:" target="jU5-ml-SBe" id="znE-rR-uel"/>
+                                                                </connections>
+                                                            </popUpButton>
+                                                        </subviews>
+                                                        <visibilityPriorities>
+                                                            <integer value="1000"/>
+                                                            <integer value="1000"/>
+                                                        </visibilityPriorities>
+                                                        <customSpacing>
+                                                            <real value="3.4028234663852886e+38"/>
+                                                            <real value="3.4028234663852886e+38"/>
+                                                        </customSpacing>
+                                                    </stackView>
+                                                    <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="ccQ-im-RVc">
+                                                        <rect key="frame" x="-2" y="-2" width="132" height="18"/>
+                                                        <buttonCell key="cell" type="check" title="Show battery icon" bezelStyle="regularSquare" imagePosition="left" state="on" inset="2" id="vBY-2P-Yuj">
+                                                            <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
+                                                            <font key="font" metaFont="system"/>
+                                                        </buttonCell>
+                                                        <connections>
+                                                            <action selector="batteryIconCheckboxChanged:" target="jU5-ml-SBe" id="cbp-b1-tZt"/>
+                                                        </connections>
+                                                    </button>
+                                                </subviews>
+                                                <visibilityPriorities>
+                                                    <integer value="1000"/>
+                                                    <integer value="1000"/>
+                                                </visibilityPriorities>
+                                                <customSpacing>
+                                                    <real value="3.4028234663852886e+38"/>
+                                                    <real value="3.4028234663852886e+38"/>
+                                                </customSpacing>
+                                            </stackView>
+                                        </subviews>
+                                        <constraints>
+                                            <constraint firstItem="rs3-DQ-BRz" firstAttribute="leading" secondItem="gp1-yD-uQF" secondAttribute="leading" constant="20" id="AgX-gJ-VfV"/>
+                                            <constraint firstAttribute="bottom" secondItem="rs3-DQ-BRz" secondAttribute="bottom" id="BdJ-DR-9VJ"/>
+                                            <constraint firstAttribute="trailing" secondItem="rs3-DQ-BRz" secondAttribute="trailing" id="PqF-G8-p8M"/>
+                                            <constraint firstItem="rs3-DQ-BRz" firstAttribute="top" secondItem="gp1-yD-uQF" secondAttribute="top" id="YgP-Y1-ZVe"/>
+                                        </constraints>
+                                    </customView>
+                                    <stackView distribution="fill" orientation="horizontal" alignment="centerY" spacing="2" horizontalStackHuggingPriority="249.99998474121094" verticalStackHuggingPriority="249.99998474121094" detachesHiddenViews="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Ngj-15-0zU">
+                                        <rect key="frame" x="0.0" y="29" width="284" height="21"/>
+                                        <subviews>
+                                            <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="hSa-ks-RER">
+                                                <rect key="frame" x="-2" y="2" width="223" height="18"/>
+                                                <buttonCell key="cell" type="check" title="Show high battery notification at:" bezelStyle="regularSquare" imagePosition="left" state="on" inset="2" id="qck-R5-sed">
+                                                    <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
+                                                    <font key="font" metaFont="system"/>
+                                                </buttonCell>
+                                                <connections>
+                                                    <action selector="highBatteryNotificationCheckboxChanged:" target="jU5-ml-SBe" id="mrB-f4-Q5V"/>
+                                                </connections>
+                                            </button>
+                                            <textField verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="fql-TY-U20">
+                                                <rect key="frame" x="221" y="0.0" width="50" height="21"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="width" constant="50" id="VfR-mv-fEz"/>
+                                                </constraints>
+                                                <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" selectable="YES" editable="YES" sendsActionOnEndEditing="YES" state="on" borderStyle="bezel" placeholderString="90" drawsBackground="YES" id="4Vs-Bh-utr">
+                                                    <numberFormatter key="formatter" formatterBehavior="default10_4" localizesFormat="NO" numberStyle="decimal" formatWidth="-1" minimumIntegerDigits="1" maximumIntegerDigits="2000000000" maximumFractionDigits="3" id="bWC-zY-XEd">
+                                                        <real key="minimum" value="0.0"/>
+                                                        <real key="maximum" value="100"/>
+                                                    </numberFormatter>
+                                                    <font key="font" metaFont="label" size="13"/>
+                                                    <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
+                                                    <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
+                                                </textFieldCell>
+                                            </textField>
+                                            <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="TVu-VY-4rc">
+                                                <rect key="frame" x="271" y="3" width="15" height="16"/>
+                                                <textFieldCell key="cell" lineBreakMode="clipping" alignment="left" title="%" id="vdk-yU-Gu3">
+                                                    <font key="font" metaFont="label" size="13"/>
+                                                    <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
+                                                    <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
+                                                </textFieldCell>
+                                            </textField>
+                                        </subviews>
+                                        <visibilityPriorities>
+                                            <integer value="1000"/>
+                                            <integer value="1000"/>
+                                            <integer value="1000"/>
+                                        </visibilityPriorities>
+                                        <customSpacing>
+                                            <real value="3.4028234663852886e+38"/>
+                                            <real value="3.4028234663852886e+38"/>
+                                            <real value="3.4028234663852886e+38"/>
+                                        </customSpacing>
+                                    </stackView>
+                                    <stackView distribution="fill" orientation="horizontal" alignment="centerY" spacing="2" horizontalStackHuggingPriority="249.99998474121094" verticalStackHuggingPriority="249.99998474121094" detachesHiddenViews="YES" translatesAutoresizingMaskIntoConstraints="NO" id="hpg-OL-bVD">
+                                        <rect key="frame" x="0.0" y="0.0" width="284" height="21"/>
+                                        <subviews>
+                                            <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="oXr-Iu-yaB">
+                                                <rect key="frame" x="-2" y="2" width="223" height="18"/>
+                                                <buttonCell key="cell" type="check" title="Show low battery notification at:" bezelStyle="regularSquare" imagePosition="left" state="on" inset="2" id="bgo-25-NLS">
+                                                    <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
+                                                    <font key="font" metaFont="system"/>
+                                                </buttonCell>
+                                                <connections>
+                                                    <action selector="lowBatteryNotificationCheckboxChanged:" target="jU5-ml-SBe" id="g0a-kI-7y5"/>
+                                                </connections>
+                                            </button>
+                                            <textField verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="gC3-R6-KGC">
+                                                <rect key="frame" x="221" y="0.0" width="50" height="21"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="width" constant="50" id="HMY-qW-zbi"/>
+                                                </constraints>
+                                                <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" selectable="YES" editable="YES" sendsActionOnEndEditing="YES" state="on" borderStyle="bezel" placeholderString="20" drawsBackground="YES" id="doC-dN-jER">
+                                                    <numberFormatter key="formatter" formatterBehavior="default10_4" localizesFormat="NO" numberStyle="decimal" formatWidth="-1" minimumIntegerDigits="1" maximumIntegerDigits="2000000000" maximumFractionDigits="3" id="iC6-Hq-dee">
+                                                        <real key="minimum" value="0.0"/>
+                                                        <real key="maximum" value="100"/>
+                                                    </numberFormatter>
+                                                    <font key="font" metaFont="label" size="13"/>
+                                                    <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
+                                                    <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
+                                                </textFieldCell>
+                                            </textField>
+                                            <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="pOF-lH-UVr">
+                                                <rect key="frame" x="271" y="3" width="15" height="16"/>
+                                                <textFieldCell key="cell" lineBreakMode="clipping" alignment="left" title="%" id="2TR-la-2Ip">
+                                                    <font key="font" metaFont="label" size="13"/>
+                                                    <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
+                                                    <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
+                                                </textFieldCell>
+                                            </textField>
+                                        </subviews>
+                                        <visibilityPriorities>
+                                            <integer value="1000"/>
+                                            <integer value="1000"/>
+                                            <integer value="1000"/>
+                                        </visibilityPriorities>
+                                        <customSpacing>
+                                            <real value="3.4028234663852886e+38"/>
+                                            <real value="3.4028234663852886e+38"/>
+                                            <real value="3.4028234663852886e+38"/>
+                                        </customSpacing>
+                                    </stackView>
                                 </subviews>
                                 <constraints>
-                                    <constraint firstAttribute="width" constant="43" id="mOr-AX-CVQ"/>
+                                    <constraint firstItem="gC3-R6-KGC" firstAttribute="leading" secondItem="fql-TY-U20" secondAttribute="leading" id="RkT-fq-Deh"/>
                                 </constraints>
                                 <visibilityPriorities>
                                     <integer value="1000"/>
                                     <integer value="1000"/>
-                                </visibilityPriorities>
-                                <customSpacing>
-                                    <real value="3.4028234663852886e+38"/>
-                                    <real value="3.4028234663852886e+38"/>
-                                </customSpacing>
-                            </stackView>
-                            <stackView distribution="fill" orientation="horizontal" alignment="centerY" spacing="2" horizontalStackHuggingPriority="249.99998474121094" verticalStackHuggingPriority="249.99998474121094" detachesHiddenViews="YES" translatesAutoresizingMaskIntoConstraints="NO" id="hpg-OL-bVD">
-                                <rect key="frame" x="249" y="407" width="43" height="21"/>
-                                <subviews>
-                                    <textField verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="gC3-R6-KGC">
-                                        <rect key="frame" x="0.0" y="0.0" width="30" height="21"/>
-                                        <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" selectable="YES" editable="YES" sendsActionOnEndEditing="YES" state="on" borderStyle="bezel" placeholderString="20" drawsBackground="YES" id="doC-dN-jER">
-                                            <numberFormatter key="formatter" formatterBehavior="default10_4" localizesFormat="NO" numberStyle="decimal" formatWidth="-1" minimumIntegerDigits="1" maximumIntegerDigits="2000000000" maximumFractionDigits="3" id="iC6-Hq-dee">
-                                                <real key="minimum" value="0.0"/>
-                                                <real key="maximum" value="100"/>
-                                            </numberFormatter>
-                                            <font key="font" metaFont="label" size="13"/>
-                                            <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
-                                            <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
-                                        </textFieldCell>
-                                    </textField>
-                                    <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="pOF-lH-UVr">
-                                        <rect key="frame" x="30" y="3" width="15" height="16"/>
-                                        <textFieldCell key="cell" lineBreakMode="clipping" title="%" id="2TR-la-2Ip">
-                                            <font key="font" metaFont="label" size="13"/>
-                                            <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
-                                            <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
-                                        </textFieldCell>
-                                    </textField>
-                                </subviews>
-                                <constraints>
-                                    <constraint firstAttribute="width" constant="43" id="BoE-Cj-tu8"/>
-                                </constraints>
-                                <visibilityPriorities>
                                     <integer value="1000"/>
                                     <integer value="1000"/>
                                 </visibilityPriorities>
                                 <customSpacing>
+                                    <real value="3.4028234663852886e+38"/>
+                                    <real value="3.4028234663852886e+38"/>
                                     <real value="3.4028234663852886e+38"/>
                                     <real value="3.4028234663852886e+38"/>
                                 </customSpacing>
                             </stackView>
                         </subviews>
                         <constraints>
-                            <constraint firstItem="5Ke-6G-cUj" firstAttribute="top" secondItem="4eh-dV-WXg" secondAttribute="bottom" constant="10" id="9jP-iW-OnE"/>
-                            <constraint firstItem="hpg-OL-bVD" firstAttribute="top" secondItem="q13-1a-uFQ" secondAttribute="top" constant="72" id="E9y-DI-9NC"/>
-                            <constraint firstItem="4eh-dV-WXg" firstAttribute="leading" secondItem="q13-1a-uFQ" secondAttribute="leading" constant="20" id="GjL-Jb-ju2"/>
-                            <constraint firstItem="hpg-OL-bVD" firstAttribute="leading" secondItem="oXr-Iu-yaB" secondAttribute="trailing" constant="16" id="Mdy-eo-eQe"/>
-                            <constraint firstItem="Ngj-15-0zU" firstAttribute="top" secondItem="hpg-OL-bVD" secondAttribute="bottom" constant="3" id="NCk-ak-qQf"/>
-                            <constraint firstItem="hSa-ks-RER" firstAttribute="leading" secondItem="q13-1a-uFQ" secondAttribute="leading" constant="20" id="PGE-7s-Jg3"/>
-                            <constraint firstItem="oXr-Iu-yaB" firstAttribute="leading" secondItem="q13-1a-uFQ" secondAttribute="leading" constant="20" id="TP5-tG-YTd"/>
-                            <constraint firstItem="oXr-Iu-yaB" firstAttribute="top" secondItem="5Ke-6G-cUj" secondAttribute="bottom" constant="10" id="d4r-0g-6vc"/>
-                            <constraint firstItem="4eh-dV-WXg" firstAttribute="top" secondItem="q13-1a-uFQ" secondAttribute="top" constant="20" id="dJA-du-CZp"/>
-                            <constraint firstItem="Ngj-15-0zU" firstAttribute="leading" secondItem="hSa-ks-RER" secondAttribute="trailing" constant="10" id="eCH-Bg-TIK"/>
-                            <constraint firstItem="hSa-ks-RER" firstAttribute="top" secondItem="oXr-Iu-yaB" secondAttribute="bottom" constant="10" id="jL8-Gd-M3I"/>
-                            <constraint firstItem="5Ke-6G-cUj" firstAttribute="leading" secondItem="q13-1a-uFQ" secondAttribute="leading" constant="50" id="pV5-nZ-iyy"/>
-                            <constraint firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="4eh-dV-WXg" secondAttribute="trailing" constant="20" symbolic="YES" id="pi8-KM-Q3B"/>
+                            <constraint firstAttribute="trailing" secondItem="tkx-Yq-cUw" secondAttribute="trailing" constant="20" symbolic="YES" id="QUd-0b-WUV"/>
+                            <constraint firstItem="tkx-Yq-cUw" firstAttribute="leading" secondItem="q13-1a-uFQ" secondAttribute="leading" constant="20" symbolic="YES" id="WmV-YY-a2C"/>
+                            <constraint firstItem="tkx-Yq-cUw" firstAttribute="top" secondItem="q13-1a-uFQ" secondAttribute="top" constant="20" symbolic="YES" id="lQm-PZ-lz1"/>
                         </constraints>
                         <accessibility description="BatteryMainView" identifier="BatteryMainView"/>
                     </view>
                     <connections>
                         <outlet property="batteryCheckbox" destination="4eh-dV-WXg" id="aLI-Kf-WfG"/>
+                        <outlet property="batteryIconCheckbox" destination="ccQ-im-RVc" id="r53-7K-GwW"/>
                         <outlet property="batterySelector" destination="d6S-Dy-d9p" id="N7B-uT-WZF"/>
-                        <outlet property="displayedInfoStackView" destination="5Ke-6G-cUj" id="USC-DG-e3H"/>
+                        <outlet property="displayedInfoStackView" destination="gp1-yD-uQF" id="Ce7-aN-tIe"/>
                         <outlet property="highBatteryNotificationCheckbox" destination="hSa-ks-RER" id="0dC-gH-XJz"/>
                         <outlet property="highBatteryNotificationStackView" destination="Ngj-15-0zU" id="XKx-Vb-X10"/>
                         <outlet property="highBatteryNotificationTextField" destination="fql-TY-U20" id="A4d-pr-dVo"/>
