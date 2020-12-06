@@ -140,10 +140,18 @@ class FanMenuBarItem: MenuBarItem {
         // create the attributed string
         let string = String(value) + " " + (unit ? "RPM" : "")
 
+        func blackOrWhite() -> NSColor {
+            var returnColor = NSColor.black
+            if #available(macOS 11.0, *) {
+                returnColor = NSColor.white
+            }
+            return returnColor
+        }
+
         // define the attributes
         let attributes = [
             NSAttributedString.Key.font: NSFont.systemFont(ofSize: 13),
-            NSAttributedString.Key.foregroundColor: ThemeManager.isDarkTheme() ? NSColor.white : NSColor.black
+            NSAttributedString.Key.foregroundColor: ThemeManager.isDarkTheme() ? NSColor.white : blackOrWhite()
         ]
 
         // create the string

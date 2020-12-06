@@ -126,8 +126,16 @@ class BatteryMenuBarItem: MenuBarItem {
         // render the string
         buttonString.draw(at: NSPoint(x: image.size.width - buttonString.size().width, y: image.size.height / 2 - buttonString.size().height / 2))
 
+        func blackOrWhite() -> NSColor {
+            var returnColor = NSColor.black
+            if #available(macOS 11.0, *) {
+                returnColor = NSColor.white
+            }
+            return returnColor
+        }
+
         // tint the battery icon to match it to the theme of the os
-        let tintedBatteryIcon = batteryIcon!.tint(color: ThemeManager.isDarkTheme() ? NSColor.white : NSColor.black)
+        let tintedBatteryIcon = batteryIcon!.tint(color: ThemeManager.isDarkTheme() ? NSColor.white : blackOrWhite())
         // render the battery icon
         tintedBatteryIcon.draw(at: NSPoint(x: 0, y: 18 / 2 - tintedBatteryIcon.size.height / 2), from: NSRect.zero, operation: .sourceOver, fraction: 1.0)
 
@@ -194,10 +202,18 @@ class BatteryMenuBarItem: MenuBarItem {
     private func getRemainingTimeString(batteryState: InternalBatteryState) -> NSAttributedString {
         var buttonString: NSAttributedString
 
+        func blackOrWhite() -> NSColor {
+            var returnColor = NSColor.black
+            if #available(macOS 11.0, *) {
+                returnColor = NSColor.white
+            }
+            return returnColor
+        }
+
         // define the attributes
         let attributes = [
             NSAttributedString.Key.font: NSFont.systemFont(ofSize: 13),
-            NSAttributedString.Key.foregroundColor: ThemeManager.isDarkTheme() ? NSColor.white : NSColor.black
+            NSAttributedString.Key.foregroundColor: ThemeManager.isDarkTheme() ? NSColor.white : blackOrWhite()
         ]
 
         switch batteryState {
@@ -227,10 +243,18 @@ class BatteryMenuBarItem: MenuBarItem {
         let timeToFull = convertMinutesToHours(minutes: timeToFullMinutes)
         let timeToFullString = "\(timeToFull.hours):\(String(format: "%02d", timeToFull.minutes))"
 
+        func blackOrWhite() -> NSColor {
+            var returnColor = NSColor.black
+            if #available(macOS 11.0, *) {
+                returnColor = NSColor.white
+            }
+            return returnColor
+        }
+
         // define the attributes
         let attributes = [
             NSAttributedString.Key.font: NSFont.systemFont(ofSize: 13),
-            NSAttributedString.Key.foregroundColor: ThemeManager.isDarkTheme() ? NSColor.white : NSColor.black
+            NSAttributedString.Key.foregroundColor: ThemeManager.isDarkTheme() ? NSColor.white : blackOrWhite()
         ]
 
         return NSAttributedString(string: timeToFullString, attributes: attributes)
@@ -245,10 +269,18 @@ class BatteryMenuBarItem: MenuBarItem {
         let timeToEmpty = convertMinutesToHours(minutes: timeToEmptyMinutes)
         let timeToEmptyString = "\(timeToEmpty.hours):\(String(format: "%02d", timeToEmpty.minutes))"
 
+        func blackOrWhite() -> NSColor {
+            var returnColor = NSColor.black
+            if #available(macOS 11.0, *) {
+                returnColor = NSColor.white
+            }
+            return returnColor
+        }
+
         // define the attributes
         let attributes = [
             NSAttributedString.Key.font: NSFont.systemFont(ofSize: 13),
-            NSAttributedString.Key.foregroundColor: ThemeManager.isDarkTheme() ? NSColor.white : NSColor.black
+            NSAttributedString.Key.foregroundColor: ThemeManager.isDarkTheme() ? NSColor.white : blackOrWhite()
         ]
 
         return NSAttributedString(string: timeToEmptyString, attributes: attributes)
@@ -272,10 +304,18 @@ class BatteryMenuBarItem: MenuBarItem {
      * Returns the string that is displaying the current charge of the battery in percentage.
      */
     private func getPercentageString(currentCharge: Int) -> NSAttributedString {
+        func blackOrWhite() -> NSColor {
+            var returnColor = NSColor.black
+            if #available(macOS 11.0, *) {
+                returnColor = NSColor.white
+            }
+            return returnColor
+        }
+
         // define the attributes
         let attributes = [
             NSAttributedString.Key.font: NSFont.systemFont(ofSize: 13),
-            NSAttributedString.Key.foregroundColor: ThemeManager.isDarkTheme() ? NSColor.white : NSColor.black
+            NSAttributedString.Key.foregroundColor: ThemeManager.isDarkTheme() ? NSColor.white : blackOrWhite()
         ]
 
         return NSAttributedString(string: "\(currentCharge)%", attributes: attributes)
@@ -312,8 +352,17 @@ class BatteryMenuBarItem: MenuBarItem {
 
         // create and draw the charge indicator rectangle as a rounded rectangle
         let chargeBar = NSRect(x: borderWidth + chargeBarMargin, y: borderWidth + chargeBarMargin, width: chargeBarWidth, height: chargeBarCurrentHeight)
+
+        func blackOrWhite() -> NSColor {
+            var returnColor = NSColor.black
+            if #available(macOS 11.0, *) {
+                returnColor = NSColor.white
+            }
+            return returnColor
+        }
+
         let roundedRect = NSBezierPath(roundedRect: chargeBar, xRadius: 1.5, yRadius: 1.5)
-        (ThemeManager.isDarkTheme() ? NSColor.white : NSColor.black).set()
+        (ThemeManager.isDarkTheme() ? NSColor.white : blackOrWhite()).set()
         roundedRect.fill()
 
         // unlock the focus

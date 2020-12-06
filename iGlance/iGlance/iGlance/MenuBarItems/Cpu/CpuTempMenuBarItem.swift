@@ -72,9 +72,15 @@ class CpuTempMenuBarItem: MenuBarItem {
         let font = NSFont.systemFont(ofSize: 13)
 
         attribString.addAttribute(.font, value: font, range: NSRange(location: 0, length: string.count))
-        let fontColor = ThemeManager.isDarkTheme() ? NSColor.white : NSColor.black
-        attribString.addAttribute(.foregroundColor, value: fontColor, range: NSRange(location: 0, length: string.count))
 
-        return attribString
+        if #available(macOS 11.0, *) {
+            let fontColor = NSColor.white
+            attribString.addAttribute(.foregroundColor, value: fontColor, range: NSRange(location: 0, length: string.count))
+            return attribString
+        } else {
+            let fontColor = ThemeManager.isDarkTheme() ? NSColor.white : NSColor.black
+            attribString.addAttribute(.foregroundColor, value: fontColor, range: NSRange(location: 0, length: string.count))
+            return attribString
+        }
     }
 }
