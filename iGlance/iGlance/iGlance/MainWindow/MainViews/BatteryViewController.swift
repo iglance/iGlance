@@ -40,7 +40,7 @@ class BatteryViewController: MainViewViewController {
 
     @IBOutlet private var batteryIconCheckbox: NSButton! {
         didSet {
-            batteryIconCheckbox.state = AppDelegate.userSettings.settings.battery.showBatterIcon ? .on : .off
+            batteryIconCheckbox.state = AppDelegate.userSettings.settings.battery.showBatteryIcon ? .on : .off
         }
     }
 
@@ -143,7 +143,7 @@ class BatteryViewController: MainViewViewController {
         let activated = sender.state == .on
 
         // set the user settings
-        AppDelegate.userSettings.settings.battery.showBatterIcon = activated
+        AppDelegate.userSettings.settings.battery.showBatteryIcon = activated
 
         // update the menu bar items to make the change visible immediately
         AppDelegate.menuBarItemManager.updateMenuBarItems()

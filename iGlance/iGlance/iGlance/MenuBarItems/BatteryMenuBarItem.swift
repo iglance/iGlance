@@ -105,7 +105,7 @@ class BatteryMenuBarItem: MenuBarItem {
         }
 
         var batteryIcon: NSImage?
-        if AppDelegate.userSettings.settings.battery.showBatterIcon {
+        if AppDelegate.userSettings.settings.battery.showBatteryIcon {
             // get the battery icon
             batteryIcon = getBatteryIcon(currentCharge: currentCharge, isOnAC: isOnAC, isCharging: isCharging, isCharged: isCharged, batteryState: batteryState)
         }
