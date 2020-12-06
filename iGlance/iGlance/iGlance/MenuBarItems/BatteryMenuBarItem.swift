@@ -109,13 +109,13 @@ class BatteryMenuBarItem: MenuBarItem {
             // get the battery icon
             batteryIcon = getBatteryIcon(currentCharge: currentCharge, isOnAC: isOnAC, isCharging: isCharging, isCharged: isCharged, batteryState: batteryState)
         }
-        let betteryIconSize: CGSize = batteryIcon.map { $0.size } ?? .zero
+        let batteryIconSize: CGSize = batteryIcon.map { $0.size } ?? .zero
 
         // create the menu bar image
         let marginBetweenIconAndString = CGFloat(5)
         var iconWidth: CGFloat = buttonString.size().width
-        if betteryIconSize.width > .ulpOfOne {
-            iconWidth += betteryIconSize.width + marginBetweenIconAndString
+        if batteryIconSize.width > .ulpOfOne {
+            iconWidth += batteryIconSize.width + marginBetweenIconAndString
         }
 
         let iconSize = NSSize(width: iconWidth, height: self.menuBarHeight)
