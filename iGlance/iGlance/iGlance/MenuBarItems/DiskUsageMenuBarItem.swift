@@ -115,12 +115,20 @@ class DiskUsageMenuBarItem: MenuBarItem {
      * Creates an attributed string that can be drawn on the menu bar image.
      */
     private func createAttributedString(text: String) -> NSAttributedString {
+        func blackOrWhite() -> NSColor {
+            var returnColor = NSColor.black
+            if #available(macOS 11.0, *) {
+                returnColor = NSColor.white
+            }
+            return returnColor
+        }
+
         let attrString = NSMutableAttributedString(
             string: text,
             attributes: [
                 NSAttributedString.Key.font: NSFont.systemFont(ofSize: 9),
                 NSAttributedString.Key.kern: 1.2,
-                NSAttributedString.Key.foregroundColor: ThemeManager.isDarkTheme() ? NSColor.white : NSColor.black
+                NSAttributedString.Key.foregroundColor: ThemeManager.isDarkTheme() ? NSColor.white : blackOrWhite()
             ]
         )
 
