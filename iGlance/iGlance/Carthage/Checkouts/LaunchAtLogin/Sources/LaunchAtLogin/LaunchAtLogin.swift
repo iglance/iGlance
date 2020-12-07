@@ -57,7 +57,7 @@ extension LaunchAtLogin {
 // MARK: - LaunchAtLoginKVO
 extension LaunchAtLogin {
 	public final class KVO: NSObject {
-		@objc public dynamic var isEnabled: Bool {
+		@objc dynamic public var isEnabled: Bool {
 			get { LaunchAtLogin.isEnabled }
 			set {
 				LaunchAtLogin.isEnabled = newValue
