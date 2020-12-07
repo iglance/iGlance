@@ -58,21 +58,15 @@ class MainWindowController: NSWindowController {
     // MARK: Function Overrides
     override func windowDidLoad() {
         // set a callback to adjust the background color of the window if the theme changes
-        ThemeManager.onThemeChange(self, #selector(updateMainWindow))
+        ThemeManager.addThemeChangeObserver(self) { _ in
+            self.mainWindow.backgroundColor = ThemeManager.currentTheme().titleBarBackgroundColor
+            self.mainWindow.update()
+        }
 
         // hide the zoom window button
         self.window?.standardWindowButton(.zoomButton)?.isHidden = true
 
         // center the window
         self.window?.center()
-    }
-
-    // MARK: -
-    // MARK: Private Functions
-
-    @objc
-    private func updateMainWindow() {
-        mainWindow.backgroundColor = ThemeManager.currentTheme().titleBarBackgroundColor
-        mainWindow.update()
     }
 }

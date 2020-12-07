@@ -176,7 +176,7 @@ struct BatterySettings: Codable {
             self.showPercentage = decodedShowPercentage
         }
 
-        if let decodedLowBatteryNotification = try? container.decodeIfPresent(BatteryNotificationSettings.self, forKey: .highBatteryNotification) {
+        if let decodedLowBatteryNotification = try? container.decodeIfPresent(BatteryNotificationSettings.self, forKey: .lowBatteryNotification) {
             self.lowBatteryNotification = decodedLowBatteryNotification
         }
 
