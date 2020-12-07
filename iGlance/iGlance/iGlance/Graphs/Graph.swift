@@ -100,7 +100,11 @@ class GraphClass {
         if ThemeManager.isDarkTheme() {
             NSColor.white.set()
         } else {
-            NSColor.black.set()
+            if #available(macOS 11.0, *) {
+                NSColor.white.set()
+            } else {
+                NSColor.black.set()
+            }
         }
 
         // draw the border

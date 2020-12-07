@@ -170,6 +170,8 @@ class NetworkMenuBarItem: MenuBarItem {
         self.totalBytesOnLastReset[interfaceName] = AppDelegate.systemInfo.network.getTotalTransmittedBytesOf(interface: interfaceName)
     }
 
+
+
     /**
      * Returns the image that can be rendered on the menu bar.
      */
@@ -181,13 +183,23 @@ class NetworkMenuBarItem: MenuBarItem {
         let uploadString = self.createAttributedBandwidthString(value: valueStringUp, unit: up.unit.rawValue + "/s")
         let downloadString = self.createAttributedBandwidthString(value: valueStringDown, unit: down.unit.rawValue + "/s")
 
+        func blackOrWhite() -> NSColor {
+            var returnColor = NSColor.black
+            if #available(macOS 11.0, *) {
+                returnColor = NSColor.white
+            }
+            return returnColor
+        }
+
         // get the up arrow icon
-        guard let arrowUpIcon = NSImage(named: "ArrowUpIcon")?.tint(color: ThemeManager.isDarkTheme() ? NSColor.white : NSColor.black) else {
+        guard let arrowUpIcon = NSImage(named: "ArrowUpIcon")?.tint(color: ThemeManager.isDarkTheme() ? NSColor.white : blackOrWhite())
+        else {
             DDLogError("An error occurred while loading the bandwidth arrow up menu bar icon")
             return nil
         }
         // get the down arrow icon
-        guard let arrowDownIcon = NSImage(named: "ArrowDownIcon")?.tint(color: ThemeManager.isDarkTheme() ? NSColor.white : NSColor.black) else {
+        guard let arrowDownIcon = NSImage(named: "ArrowDownIcon")?.tint(color: ThemeManager.isDarkTheme() ? NSColor.white : blackOrWhite())
+        else {
             DDLogError("An error occurred while loading the bandwidth arrow down menu bar icon")
             return nil
         }
@@ -260,9 +272,17 @@ class NetworkMenuBarItem: MenuBarItem {
         attrString.addAttribute(.font, value: font, range: NSRange(location: 0, length: attrString.length - 1 - unit.count))
         attrString.addAttribute(.kern, value: 1.2, range: NSRange(location: 0, length: attrString.length - 1 - unit.count))
         attrString.addAttribute(.font, value: font, range: NSRange(location: attrString.length - unit.count, length: unit.count))
-        let fontColor = ThemeManager.isDarkTheme() ? NSColor.white : NSColor.black
-        attrString.addAttribute(.foregroundColor, value: fontColor, range: NSRange(location: 0, length: attrString.length))
 
-        return attrString
+        if #available(macOS 11.0, *) {
+            let fontColor = NSColor.white
+            attrString.addAttribute(.foregroundColor, value: fontColor, range: NSRange(location: 0, length: attrString.length))
+
+            return attrString
+        } else {
+            let fontColor = ThemeManager.isDarkTheme() ? NSColor.white : NSColor.black
+            attrString.addAttribute(.foregroundColor, value: fontColor, range: NSRange(location: 0, length: attrString.length))
+
+            return attrString
+        }
     }
 }
