@@ -83,13 +83,21 @@ class SidebarViewController: NSViewController {
 
             // set the icon ids
             buttonView.iconName = sidebarButton.instance.buttonIconID
+
+            // update the font color of the button depending on the current theme
+            self.getSidebarButtonWith(identifier: sidebarButton.instance.buttonViewID)?.updateFontColor()
         }
 
         // on startup select the dashboard
         getSidebarButtonWith(identifier: SidebarButton.Dashboard.instance.buttonViewID)?.highlighted = true
 
         // add a callback to change the logo depending on the current theme
-        ThemeManager.onThemeChange(self, #selector(onThemeChange))
+        ThemeManager.addThemeChangeObserver(self) { _ in
+            // update the sidebar button font color
+            for sidebarButton in SidebarButton.allCases {
+                self.getSidebarButtonWith(identifier: sidebarButton.instance.buttonViewID)?.updateFontColor()
+            }
+        }
 
         // call the theme change callback once on startup to set the correct colors
         onThemeChange()
@@ -156,10 +164,6 @@ class SidebarViewController: NSViewController {
      */
     @objc
     private func onThemeChange() {
-        // update the sidebar button font color
-        for sidebarButton in SidebarButton.allCases {
-            getSidebarButtonWith(identifier: sidebarButton.instance.buttonViewID)?.updateFontColor()
-        }
     }
 
     /**

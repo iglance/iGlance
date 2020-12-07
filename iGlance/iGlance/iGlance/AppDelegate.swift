@@ -90,6 +90,10 @@ class AppDelegate: NSObject, NSApplicationDelegate {
         return false
     }
 
+    func applicationWillTerminate(_ notification: Notification) {
+        ThemeManager.removeAllThemeChangeObserver()
+    }
+
     /**
      * This function will be called when the machine is waking up from sleep
      */
