@@ -104,32 +104,39 @@ class BatteryMenuBarItem: MenuBarItem {
             buttonString = getRemainingTimeString(batteryState: batteryState)
         }
 
-        // get the battery icon
-        let batteryIcon = getBatteryIcon(currentCharge: currentCharge, isOnAC: isOnAC, isCharging: isCharging, isCharged: isCharged, batteryState: batteryState)
-        // the battery icon is nil loading the icon failed
-        if batteryIcon == nil {
-            return
+        var batteryIcon: NSImage?
+        if AppDelegate.userSettings.settings.battery.showBatteryIcon {
+            // get the battery icon
+            batteryIcon = getBatteryIcon(currentCharge: currentCharge, isOnAC: isOnAC, isCharging: isCharging, isCharged: isCharged, batteryState: batteryState)
         }
+        let batteryIconSize: CGSize = batteryIcon?.size ?? .zero
 
         // create the menu bar image
         let marginBetweenIconAndString = CGFloat(5)
-        let image = NSImage(
-            size: NSSize(
-                width: buttonString.size().width + batteryIcon!.size.width + marginBetweenIconAndString,
-                height: self.menuBarHeight
-            )
-        )
+        var iconWidth: CGFloat = buttonString.size().width
+        if batteryIconSize.width > .ulpOfOne {
+            iconWidth += batteryIconSize.width + marginBetweenIconAndString
+        }
+
+        let iconSize = NSSize(width: iconWidth, height: self.menuBarHeight)
+        let image = NSImage(size: iconSize)
 
         // lock the image to render the string
         image.lockFocus()
 
         // render the string
-        buttonString.draw(at: NSPoint(x: image.size.width - buttonString.size().width, y: image.size.height / 2 - buttonString.size().height / 2))
+        buttonString.draw(at: NSPoint(x: iconSize.width - buttonString.size().width,
+                                      y: iconSize.height / 2 - buttonString.size().height / 2))
 
         // tint the battery icon to match it to the theme of the os
-        let tintedBatteryIcon = batteryIcon!.tint(color: ThemeManager.isDarkTheme() ? NSColor.white : NSColor.black)
-        // render the battery icon
-        tintedBatteryIcon.draw(at: NSPoint(x: 0, y: 18 / 2 - tintedBatteryIcon.size.height / 2), from: NSRect.zero, operation: .sourceOver, fraction: 1.0)
+        if let tintedBatteryIcon = batteryIcon?.tint(color: ThemeManager.isDarkTheme() ? NSColor.white : NSColor.black) {
+            // render the battery icon
+            tintedBatteryIcon.draw(
+                at: NSPoint(x: 0, y: (iconSize.height - tintedBatteryIcon.size.height) / 2),
+                from: NSRect.zero,
+                operation: .sourceOver,
+                fraction: 1.0)
+        }
 
         // unlock the focus of the image
         image.unlockFocus()
