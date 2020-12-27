@@ -109,7 +109,7 @@ class BatteryMenuBarItem: MenuBarItem {
             // get the battery icon
             batteryIcon = getBatteryIcon(currentCharge: currentCharge, isOnAC: isOnAC, isCharging: isCharging, isCharged: isCharged, batteryState: batteryState)
         }
-        let batteryIconSize: CGSize = batteryIcon.map { $0.size } ?? .zero
+        let batteryIconSize: CGSize = batteryIcon?.size ?? .zero
 
         // create the menu bar image
         let marginBetweenIconAndString = CGFloat(5)
