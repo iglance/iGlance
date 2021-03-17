@@ -132,16 +132,6 @@ class SettingsViewController: MainViewViewController {
     // MARK: Private Functions
 
     /**
-    * Called when the os theme changed.
-    */
-    @objc
-    override func onThemeChange() {
-        super.onThemeChange()
-
-        changeLogo()
-    }
-
-    /**
     * Set the version label to the current app version.
     */
     private func setVersionLabel() {
