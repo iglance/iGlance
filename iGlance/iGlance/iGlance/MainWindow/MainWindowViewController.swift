@@ -31,7 +31,9 @@ class MainWindowViewController: NSViewController {
         sidebarViewController?.addOnClickEventHandler(eventHandler: displayViewOf(sender:))
 
         (self.view as! BackgroundColorView).backgroundColor = ThemeManager.currentTheme().borderColor
-        ThemeManager.onThemeChange(self, #selector(self.onThemeChange))
+        ThemeManager.addThemeChangeObserver(self) { _ in
+            (self.view as! BackgroundColorView).backgroundColor = ThemeManager.currentTheme().borderColor
+        }
     }
 
     override func prepare(for segue: NSStoryboardSegue, sender: Any?) {
@@ -58,10 +60,5 @@ class MainWindowViewController: NSViewController {
         if let viewController = storyboard?.instantiateController(withIdentifier: sender.mainViewStoryboardID!) {
             contentManagerViewController?.addNewViewController(viewController: ((viewController as? MainViewViewController)!))
         }
-    }
-
-    @objc
-    private func onThemeChange() {
-        (self.view as! BackgroundColorView).backgroundColor = ThemeManager.currentTheme().borderColor
     }
 }
