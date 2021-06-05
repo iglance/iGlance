@@ -177,7 +177,7 @@ struct BatterySettings: Codable {
             self.showBatteryIcon = showBatteryIcon
         }
 
-        if let decodedShowPercentage = try? container.decodeIfPresent(Bool.self, forKey: .showBatteryMenuBarItem) {
+        if let decodedShowPercentage = try? container.decodeIfPresent(Bool.self, forKey: .showPercentage) {
             self.showPercentage = decodedShowPercentage
         }
 
@@ -225,8 +225,8 @@ struct IGlanceUserSettings: Codable {
         let container = try decoder.container(keyedBy: CodingKeys.self)
 
         // decode the keys, if they are not present use the default values
-        if let decodedAutostartOnBoot = try? container.decodeIfPresent(String.self, forKey: .autostartOnBoot) {
-            self.autostartOnBoot = decodedAutostartOnBoot.lowercased() == "true"
+        if let decodedAutostartOnBoot = try? container.decodeIfPresent(Bool.self, forKey: .autostartOnBoot) {
+            self.autostartOnBoot = decodedAutostartOnBoot
         }
         if let decodedAdvancedLogging = try? container.decodeIfPresent(Bool.self, forKey: .advancedLogging) {
             self.advancedLogging = decodedAdvancedLogging
