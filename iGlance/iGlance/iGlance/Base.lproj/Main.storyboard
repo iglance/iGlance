@@ -1524,16 +1524,30 @@
                                     <action selector="diskUsageCheckboxChanged:" target="sVS-y8-9uS" id="reD-5I-HjN"/>
                                 </connections>
                             </button>
+                            <button verticalHuggingPriority="750" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="c3g-ek-bBW">
+                                <rect key="frame" x="48" y="440" width="134" height="18"/>
+                                <buttonCell key="cell" type="check" title="Hide used space" bezelStyle="regularSquare" imagePosition="left" inset="2" id="PgF-Ao-F54">
+                                    <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
+                                    <font key="font" metaFont="system"/>
+                                </buttonCell>
+                                <connections>
+                                    <action selector="hideUsedSpaceChanged:" target="sVS-y8-9uS" id="2gw-fI-xKp"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <constraints>
                             <constraint firstItem="Sy9-Qu-Fl1" firstAttribute="leading" secondItem="VIp-kZ-3dC" secondAttribute="leading" constant="20" id="42d-Vc-Vd6"/>
                             <constraint firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="Sy9-Qu-Fl1" secondAttribute="trailing" constant="20" symbolic="YES" id="Oyp-eg-hdN"/>
+                            <constraint firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="c3g-ek-bBW" secondAttribute="trailing" id="Tuf-Mi-v9j"/>
+                            <constraint firstItem="c3g-ek-bBW" firstAttribute="leading" secondItem="VIp-kZ-3dC" secondAttribute="leading" constant="50" id="pUj-gu-DTQ"/>
+                            <constraint firstItem="c3g-ek-bBW" firstAttribute="top" secondItem="Sy9-Qu-Fl1" secondAttribute="bottom" constant="10" id="u6X-jI-p3I"/>
                             <constraint firstItem="Sy9-Qu-Fl1" firstAttribute="top" secondItem="VIp-kZ-3dC" secondAttribute="top" constant="20" id="wtl-XV-UiD"/>
                         </constraints>
                         <accessibility description="DiskMainView" identifier="DiskMainView"/>
                     </view>
                     <connections>
                         <outlet property="diskUsageCheckbox" destination="Sy9-Qu-Fl1" id="cmH-PE-KR3"/>
+                        <outlet property="hideUsedSpaceCheckbox" destination="c3g-ek-bBW" id="2la-YK-ptU"/>
                         <segue destination="nCO-fc-AGg" kind="custom" identifier="DiskToSettings" customClass="SegueBetweenEmbedded" customModule="iGlance" customModuleProvider="target" id="paY-LT-oG7"/>
                     </connections>
                 </viewController>
