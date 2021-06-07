@@ -614,7 +614,7 @@
                                 </connections>
                             </button>
                             <stackView distribution="fill" orientation="horizontal" alignment="centerY" spacing="5" horizontalStackHuggingPriority="249.99998474121094" verticalStackHuggingPriority="249.99998474121094" detachesHiddenViews="YES" translatesAutoresizingMaskIntoConstraints="NO" id="uK4-wT-QAk">
-                                <rect key="frame" x="20" y="435" width="256" height="21"/>
+                                <rect key="frame" x="20" y="411" width="256" height="21"/>
                                 <subviews>
                                     <button horizontalHuggingPriority="249" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="Kpt-VS-dwb">
                                         <rect key="frame" x="-2" y="2" width="126" height="18"/>
@@ -680,7 +680,7 @@
                                 </customSpacing>
                             </stackView>
                             <stackView distribution="fill" orientation="horizontal" alignment="centerY" horizontalStackHuggingPriority="249.99998474121094" verticalStackHuggingPriority="249.99998474121094" detachesHiddenViews="YES" translatesAutoresizingMaskIntoConstraints="NO" id="ET5-It-2lY">
-                                <rect key="frame" x="50" y="405" width="103" height="20"/>
+                                <rect key="frame" x="50" y="381" width="103" height="20"/>
                                 <subviews>
                                     <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="hvq-Z6-w6F">
                                         <rect key="frame" x="-2" y="2" width="79" height="16"/>
@@ -712,7 +712,7 @@
                                 </customSpacing>
                             </stackView>
                             <stackView hidden="YES" distribution="fill" orientation="horizontal" alignment="bottom" spacing="10" horizontalStackHuggingPriority="249.99998474121094" verticalStackHuggingPriority="249.99998474121094" detachesHiddenViews="YES" translatesAutoresizingMaskIntoConstraints="NO" id="DUt-WU-a5o">
-                                <rect key="frame" x="296" y="438" width="264" height="16"/>
+                                <rect key="frame" x="296" y="414" width="264" height="16"/>
                                 <subviews>
                                     <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="58k-mq-i3p">
                                         <rect key="frame" x="-2" y="0.0" width="82" height="16"/>
@@ -784,7 +784,7 @@
                                 </customSpacing>
                             </stackView>
                             <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="7uy-pD-grI">
-                                <rect key="frame" x="48" y="379" width="139" height="18"/>
+                                <rect key="frame" x="48" y="355" width="139" height="18"/>
                                 <buttonCell key="cell" type="check" title="Show graph border" bezelStyle="regularSquare" imagePosition="left" state="on" inset="2" id="bIW-9G-JM9">
                                     <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
                                     <font key="font" metaFont="system"/>
@@ -794,7 +794,7 @@
                                 </connections>
                             </button>
                             <stackView distribution="fill" orientation="horizontal" alignment="centerY" spacing="15" horizontalStackHuggingPriority="249.99998474121094" verticalStackHuggingPriority="249.99998474121094" detachesHiddenViews="YES" translatesAutoresizingMaskIntoConstraints="NO" id="3OR-d7-zts">
-                                <rect key="frame" x="50" y="351" width="257" height="20"/>
+                                <rect key="frame" x="50" y="327" width="257" height="20"/>
                                 <subviews>
                                     <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="u2P-Ah-WZf">
                                         <rect key="frame" x="-2" y="1" width="134" height="18"/>
@@ -848,18 +848,30 @@
                                     <real value="3.4028234663852886e+38"/>
                                 </customSpacing>
                             </stackView>
+                            <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="sUp-UF-DGC">
+                                <rect key="frame" x="48" y="440" width="122" height="18"/>
+                                <buttonCell key="cell" type="check" title="Show Fan speed" bezelStyle="regularSquare" imagePosition="left" inset="2" id="4IS-AH-4Is">
+                                    <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
+                                    <font key="font" metaFont="system"/>
+                                </buttonCell>
+                                <connections>
+                                    <action selector="cpuFanCheckboxChanged:" target="uGw-Yr-sBC" id="CF7-wQ-usY"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <constraints>
-                            <constraint firstItem="uK4-wT-QAk" firstAttribute="top" secondItem="Xe1-Jt-TNX" secondAttribute="bottom" constant="10" id="8rY-i8-XqG"/>
-                            <constraint firstItem="DUt-WU-a5o" firstAttribute="top" secondItem="q0i-aM-agG" secondAttribute="top" constant="46" id="9YC-Bf-KUj"/>
+                            <constraint firstItem="sUp-UF-DGC" firstAttribute="leading" secondItem="q0i-aM-agG" secondAttribute="leading" constant="50" id="4HC-RJ-oe7"/>
                             <constraint firstItem="Xe1-Jt-TNX" firstAttribute="leading" secondItem="q0i-aM-agG" secondAttribute="leading" constant="20" id="DRs-Qt-17T"/>
                             <constraint firstItem="Xe1-Jt-TNX" firstAttribute="top" secondItem="q0i-aM-agG" secondAttribute="top" constant="20" id="HAU-Hs-nVB"/>
                             <constraint firstItem="3OR-d7-zts" firstAttribute="top" secondItem="7uy-pD-grI" secondAttribute="bottom" constant="10" id="MPB-uW-Lzv"/>
                             <constraint firstItem="DUt-WU-a5o" firstAttribute="leading" secondItem="uK4-wT-QAk" secondAttribute="trailing" constant="20" id="Mh9-HG-5iZ"/>
+                            <constraint firstItem="uK4-wT-QAk" firstAttribute="top" secondItem="sUp-UF-DGC" secondAttribute="bottom" constant="10" id="WsY-SW-l8Y"/>
                             <constraint firstItem="3OR-d7-zts" firstAttribute="leading" secondItem="q0i-aM-agG" secondAttribute="leading" constant="50" id="aHf-xA-42J"/>
                             <constraint firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="Xe1-Jt-TNX" secondAttribute="trailing" constant="20" symbolic="YES" id="bbW-le-fNL"/>
                             <constraint firstItem="ET5-It-2lY" firstAttribute="top" secondItem="uK4-wT-QAk" secondAttribute="bottom" constant="10" id="gib-kn-MgW"/>
+                            <constraint firstItem="sUp-UF-DGC" firstAttribute="top" secondItem="Xe1-Jt-TNX" secondAttribute="bottom" constant="10" id="gqz-hS-hge"/>
                             <constraint firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="7uy-pD-grI" secondAttribute="trailing" constant="20" symbolic="YES" id="gsz-Yc-sCZ"/>
+                            <constraint firstItem="DUt-WU-a5o" firstAttribute="centerY" secondItem="uK4-wT-QAk" secondAttribute="centerY" id="ihy-o4-lGk"/>
                             <constraint firstItem="7uy-pD-grI" firstAttribute="top" secondItem="ET5-It-2lY" secondAttribute="bottom" constant="10" id="jJj-ps-sQl"/>
                             <constraint firstItem="uK4-wT-QAk" firstAttribute="leading" secondItem="q0i-aM-agG" secondAttribute="leading" constant="20" id="k9M-eE-vxB"/>
                             <constraint firstItem="ET5-It-2lY" firstAttribute="leading" secondItem="q0i-aM-agG" secondAttribute="leading" constant="50" id="w9C-V5-6Y8"/>
@@ -869,6 +881,7 @@
                     </view>
                     <connections>
                         <outlet property="colorGradientCheckbox" destination="u2P-Ah-WZf" id="c1t-W1-odS"/>
+                        <outlet property="cpuFanCheckbox" destination="sUp-UF-DGC" id="sNA-U6-CA6"/>
                         <outlet property="cpuTempCheckbox" destination="Xe1-Jt-TNX" id="QS5-Xf-9a3"/>
                         <outlet property="cpuUsageCheckbox" destination="Kpt-VS-dwb" id="Iyq-Nt-2xy"/>
                         <outlet property="graphColorStackView" destination="ET5-It-2lY" id="PTE-qE-dn2"/>

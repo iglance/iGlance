@@ -31,6 +31,7 @@ struct ColorGradientSettings: Codable, Equatable {
 
 struct CpuSettings: Codable, Equatable {
     var showTemperature: Bool = true
+    var showFanSpeed: Bool = false
     var showUsage: Bool = true
     var usageGraphColor = CodableColor(nsColor: NSColor.green)
     var usageGraphKind: GraphKind = .bar
@@ -49,6 +50,9 @@ struct CpuSettings: Codable, Equatable {
 
         if let decodedShowTemperature = try? container.decodeIfPresent(Bool.self, forKey: .showTemperature) {
             self.showTemperature = decodedShowTemperature
+        }
+        if let decodedShowFanSpeed = try? container.decodeIfPresent(Bool.self, forKey: .showFanSpeed) {
+            self.showFanSpeed = decodedShowFanSpeed
         }
         if let decodedShowUsage = try? container.decodeIfPresent(Bool.self, forKey: .showUsage) {
             self.showUsage = decodedShowUsage
@@ -72,6 +76,7 @@ struct CpuSettings: Codable, Equatable {
 
     static func == (lhs: CpuSettings, rhs: CpuSettings) -> Bool {
         lhs.showTemperature == rhs.showTemperature
+            && lhs.showFanSpeed == rhs.showFanSpeed
             && lhs.showUsage == rhs.showUsage
             && lhs.usageGraphColor == rhs.usageGraphColor
             && lhs.usageGraphKind == rhs.usageGraphKind
