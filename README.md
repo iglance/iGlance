@@ -1,3 +1,5 @@
+# ⚠️ This project is no longer under active development ⚠️
+
 <p align="center"><img width="800" src="readme_images/logo.png" alt="iGlance logo"/></p>
 
 <p align="center">
